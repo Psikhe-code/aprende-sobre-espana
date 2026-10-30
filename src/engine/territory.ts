@@ -17,8 +17,13 @@ export interface Comunidad {
   enFrase?: Formas;
   /** Capital. Canarias tiene dos. */
   capital: Formas | Formas[];
-  /** Explicación propia para la pregunta de su capital. "{capital}" se sustituye por su nombre. */
+  /**
+   * Explicación propia para la pregunta de su capital. "{capital}" se sustituye por su nombre.
+   * Si no la tiene, se genera una automática (ver questions.ts).
+   */
   notaCapital?: string;
+  /** Curiosidad histórica sobre la capital (capital de España o de un antiguo reino). "{capital}" igual. */
+  curiosidadCapital?: string;
 }
 
 export interface Provincia {

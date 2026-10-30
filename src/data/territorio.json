@@ -4,13 +4,15 @@
       "id": "01",
       "tipo": "comunidad",
       "nombre": {"oficial": "Andalucía", "castellano": "Andalucía"},
-      "capital": {"oficial": "Sevilla", "castellano": "Sevilla"}
+      "capital": {"oficial": "Sevilla", "castellano": "Sevilla"},
+      "notaCapital": "Sevilla es la capital y la ciudad más poblada de Andalucía, pero el Tribunal Superior de Justicia está en Granada."
     },
     {
       "id": "02",
       "tipo": "comunidad",
       "nombre": {"oficial": "Aragón", "castellano": "Aragón"},
-      "capital": {"oficial": "Zaragoza", "castellano": "Zaragoza"}
+      "capital": {"oficial": "Zaragoza", "castellano": "Zaragoza"},
+      "curiosidadCapital": "Zaragoza fue la capital del Reino de Aragón desde 1118 hasta 1707, cuando el reino perdió sus instituciones propias. Antes lo habían sido Jaca y Huesca."
     },
     {
       "id": "03",
@@ -18,75 +20,85 @@
       "nombre": {"oficial": "Principado de Asturias", "castellano": "Asturias"},
       "enFrase": {"oficial": "el Principado de Asturias", "castellano": "Asturias"},
       "capital": {"oficial": "Oviedo", "castellano": "Oviedo"},
-      "notaCapital": "Oviedo es la capital, aunque Gijón es la ciudad más poblada de Asturias."
+      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Oviedo». En 1983 recuperó el nombre de Asturias, que viene del pueblo de los astures. La comunidad se llama oficialmente Principado de Asturias por el título de Príncipe de Asturias, que lleva el heredero de la Corona desde 1388.",
+      "curiosidadCapital": "Oviedo fue la capital del Reino de Asturias desde el reinado de Alfonso II, que empezó en 791, hasta el año 924, cuando la corte se trasladó a León."
     },
     {
       "id": "04",
       "tipo": "comunidad",
       "nombre": {"oficial": "Illes Balears", "castellano": "Islas Baleares"},
       "enFrase": {"oficial": "las Illes Balears", "castellano": "las Islas Baleares"},
-      "capital": {"oficial": "Palma", "castellano": "Palma"}
+      "capital": {"oficial": "Palma", "castellano": "Palma"},
+      "notaCapital": "Su nombre oficial ha cambiado varias veces: pasó a «Palma» en 2008, volvió a «Palma de Mallorca» en 2012 y es «Palma» de nuevo desde 2016.",
+      "curiosidadCapital": "Palma fue capital, junto con Perpiñán, del Reino de Mallorca. Este reino tuvo reyes propios entre 1276 y 1344, y conservó sus instituciones hasta 1715."
     },
     {
       "id": "05",
       "tipo": "comunidad",
       "nombre": {"oficial": "Canarias", "castellano": "Canarias"},
       "capital": [{"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"}, {"oficial": "Las Palmas de Gran Canaria", "castellano": "Las Palmas de Gran Canaria"}],
-      "notaCapital": "La capitalidad de Canarias es compartida entre Santa Cruz de Tenerife y Las Palmas de Gran Canaria."
+      "notaCapital": "Las dos ciudades comparten la capitalidad, y la Presidencia del Gobierno canario cambia de una a otra en cada legislatura. Hasta 1927, cuando Canarias era una sola provincia, la única capital era Santa Cruz de Tenerife."
     },
     {
       "id": "06",
       "tipo": "comunidad",
       "nombre": {"oficial": "Cantabria", "castellano": "Cantabria"},
-      "capital": {"oficial": "Santander", "castellano": "Santander"}
+      "capital": {"oficial": "Santander", "castellano": "Santander"},
+      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Santander», aunque el nombre de Cantabria se seguía usando comúnmente. Con la autonomía, en 1982, recuperó el antiguo nombre de Cantabria, que viene del pueblo de los cántabros."
     },
     {
       "id": "07",
       "tipo": "comunidad",
       "nombre": {"oficial": "Castilla y León", "castellano": "Castilla y León"},
       "capital": {"oficial": "Valladolid", "castellano": "Valladolid"},
-      "notaCapital": "El Estatuto no fija una capital oficial, pero las Cortes y la Junta tienen su sede en Valladolid."
+      "notaCapital": "Ninguna ley fija la capital de Castilla y León, pero las Cortes y la Junta tienen su sede en Valladolid.",
+      "curiosidadCapital": "Valladolid fue capital de España entre 1601 y 1606, con Felipe III."
     },
     {
       "id": "08",
       "tipo": "comunidad",
       "nombre": {"oficial": "Castilla-La Mancha", "castellano": "Castilla-La Mancha"},
       "capital": {"oficial": "Toledo", "castellano": "Toledo"},
-      "notaCapital": "Toledo es la capital regional; Albacete es la ciudad más poblada."
+      "notaCapital": "Toledo es la sede de las Cortes y del Gobierno regional desde 1983, aunque Albacete es la ciudad más poblada y allí está el Tribunal Superior de Justicia.",
+      "curiosidadCapital": "Toledo fue la capital del reino visigodo desde el siglo VI hasta la conquista musulmana, en 711. Siglos después fue sede habitual de la corte de Castilla, hasta que Felipe II la llevó a Madrid en 1561."
     },
     {
       "id": "09",
       "tipo": "comunidad",
       "nombre": {"oficial": "Cataluña", "castellano": "Cataluña"},
-      "capital": {"oficial": "Barcelona", "castellano": "Barcelona"}
+      "capital": {"oficial": "Barcelona", "castellano": "Barcelona"},
+      "curiosidadCapital": "Aunque hoy es la segunda ciudad más poblada de España, Barcelona solo fue sede oficial de un reino en época visigoda, durante el siglo VI. Siglos después, como capital del condado de Barcelona, pasó a formar parte de la Corona de Aragón, pero los reyes se coronaban en Zaragoza, capital del Reino de Aragón."
     },
     {
       "id": "10",
       "tipo": "comunidad",
       "nombre": {"oficial": "Comunitat Valenciana", "castellano": "Comunidad Valenciana"},
       "enFrase": {"oficial": "la Comunitat Valenciana", "castellano": "la Comunidad Valenciana"},
-      "capital": {"oficial": "València", "castellano": "Valencia"}
+      "capital": {"oficial": "València", "castellano": "Valencia"},
+      "curiosidadCapital": "{capital} fue la capital del Reino de Valencia desde que Jaime I lo creó en 1238 hasta 1707, cuando perdió sus instituciones propias."
     },
     {
       "id": "11",
       "tipo": "comunidad",
       "nombre": {"oficial": "Extremadura", "castellano": "Extremadura"},
       "capital": {"oficial": "Mérida", "castellano": "Mérida"},
-      "notaCapital": "Mérida es la capital, aunque Badajoz es la ciudad más poblada de Extremadura."
+      "notaCapital": "Mérida es la capital desde 1983, aunque no es capital de provincia y Badajoz es la ciudad más poblada. Se eligió por su importancia histórica, y se suele decir que también como punto intermedio entre Badajoz y Cáceres.",
+      "curiosidadCapital": "Mérida fue fundada en el año 25 a. C. con el nombre de Augusta Emerita, y fue la capital de la provincia romana de Lusitania."
     },
     {
       "id": "12",
       "tipo": "comunidad",
       "nombre": {"oficial": "Galicia", "castellano": "Galicia"},
       "capital": {"oficial": "Santiago de Compostela", "castellano": "Santiago de Compostela"},
-      "notaCapital": "Santiago acoge la Xunta y el Parlamento de Galicia; Vigo es la ciudad más poblada."
+      "notaCapital": "En 1982 el Parlamento de Galicia eligió Santiago como sede de sus instituciones, aunque no es capital de provincia, Vigo es la ciudad más poblada y A Coruña había sido durante siglos la capital del antiguo Reino de Galicia. Se suele explicar por su peso histórico y religioso, como meta del Camino de Santiago, y por ser una opción neutral entre las grandes ciudades."
     },
     {
       "id": "13",
       "tipo": "comunidad",
       "nombre": {"oficial": "Comunidad de Madrid", "castellano": "Comunidad de Madrid"},
       "enFrase": {"oficial": "la Comunidad de Madrid", "castellano": "la Comunidad de Madrid"},
-      "capital": {"oficial": "Madrid", "castellano": "Madrid"}
+      "capital": {"oficial": "Madrid", "castellano": "Madrid"},
+      "curiosidadCapital": "Madrid es la capital de España desde 1561, salvo entre 1601 y 1606, cuando la corte estuvo en Valladolid."
     },
     {
       "id": "14",
@@ -94,14 +106,16 @@
       "nombre": {"oficial": "Región de Murcia", "castellano": "Región de Murcia"},
       "enFrase": {"oficial": "la Región de Murcia", "castellano": "la Región de Murcia"},
       "capital": {"oficial": "Murcia", "castellano": "Murcia"},
-      "notaCapital": "Murcia es la capital; Cartagena es la segunda ciudad de la región."
+      "notaCapital": "Murcia es la capital, pero la Asamblea Regional tiene su sede en Cartagena.",
+      "curiosidadCapital": "Murcia fue la capital del Reino de Murcia, que formó parte de la Corona de Castilla desde 1266 hasta la división en provincias de 1833."
     },
     {
       "id": "15",
       "tipo": "comunidad",
       "nombre": {"oficial": "Comunidad Foral de Navarra", "castellano": "Navarra"},
       "enFrase": {"oficial": "la Comunidad Foral de Navarra", "castellano": "Navarra"},
-      "capital": {"oficial": "Pamplona/Iruña", "castellano": "Pamplona"}
+      "capital": {"oficial": "Pamplona/Iruña", "castellano": "Pamplona"},
+      "curiosidadCapital": "{capital} fue la capital del Reino de Navarra, que nació hacia el año 824 como Reino de Pamplona. En 1515 se unió a Castilla, pero conservó sus instituciones propias hasta 1841."
     },
     {
       "id": "16",
@@ -109,27 +123,31 @@
       "nombre": {"oficial": "País Vasco", "castellano": "País Vasco"},
       "enFrase": {"oficial": "el País Vasco", "castellano": "el País Vasco"},
       "capital": {"oficial": "Vitoria-Gasteiz", "castellano": "Vitoria"},
-      "notaCapital": "{capital} es la sede del Parlamento y el Gobierno vascos, aunque Bilbao es más grande."
+      "notaCapital": "En 1980, con la primera ley que aprobó, el Parlamento Vasco eligió {capital} como sede del Parlamento y del Gobierno, aunque Bilbao es la ciudad más poblada. La Diputación de Álava ofreció edificios para las nuevas instituciones, y se suele explicar también por su posición central y por ser una opción neutral entre Bilbao y San Sebastián.",
+      "curiosidadCapital": "El primer Gobierno Vasco, formado en Gernika en 1936, tuvo su sede en Bilbao hasta junio de 1937, y después pasó al exilio, en París, hasta 1979."
     },
     {
       "id": "17",
       "tipo": "comunidad",
       "nombre": {"oficial": "La Rioja", "castellano": "La Rioja"},
-      "capital": {"oficial": "Logroño", "castellano": "Logroño"}
+      "capital": {"oficial": "Logroño", "castellano": "Logroño"},
+      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Logroño», aunque la región se llamaba La Rioja desde la Edad Media. En 1980 recuperó oficialmente ese nombre, que probablemente viene del río Oja."
     },
     {
       "id": "18",
       "tipo": "ciudad",
       "nombre": {"oficial": "Ceuta", "castellano": "Ceuta"},
       "capital": {"oficial": "Ceuta", "castellano": "Ceuta"},
-      "notaCapital": "Ceuta es una ciudad autónoma: no tiene una capital aparte, la propia ciudad es su capital."
+      "notaCapital": "Ceuta es una ciudad autónoma: no tiene una capital aparte, la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Cádiz. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
+      "curiosidadCapital": "Portugal conquistó Ceuta en 1415. Felipe II heredó la corona portuguesa en 1580, y en 1640, cuando Portugal se separó, la ciudad eligió seguir con el rey español. A diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Ceuta llevaba más de tres siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
     },
     {
       "id": "19",
       "tipo": "ciudad",
       "nombre": {"oficial": "Melilla", "castellano": "Melilla"},
       "capital": {"oficial": "Melilla", "castellano": "Melilla"},
-      "notaCapital": "Melilla es una ciudad autónoma: no tiene una capital aparte, la propia ciudad es su capital."
+      "notaCapital": "Melilla es una ciudad autónoma: no tiene una capital aparte, la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Málaga. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
+      "curiosidadCapital": "Una expedición enviada por el duque de Medina Sidonia tomó Melilla en 1497, en tiempos de los Reyes Católicos. A diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Melilla llevaba casi cinco siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
     }
   ],
   "provincias": [
