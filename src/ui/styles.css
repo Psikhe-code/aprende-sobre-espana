@@ -260,9 +260,9 @@ h1 {
 .verdict { display: inline-flex; align-self: flex-start; font-family: var(--f-display); font-weight: 700; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; }
 .verdict.ok { background: var(--ok-bg); color: var(--ok); }
 .verdict.bad { background: var(--bad-bg); color: var(--bad); }
-.why { margin: 0; max-width: 62ch; }
+.why { margin: 0; max-width: 62ch; white-space: pre-line; } /* pre-line: respeta los \n de las notas */
 .aka { margin: -4px 0 0; display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--muted); }
-.fact { margin: 0; max-width: 62ch; font-size: 15px; padding-left: 12px; border-left: 3px solid var(--ochre); }
+.fact { margin: 0; max-width: 62ch; white-space: pre-line; font-size: 15px; padding-left: 12px; border-left: 3px solid var(--ochre); }
 .fact b { display: block; font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ochre); }
 
 /* Final */

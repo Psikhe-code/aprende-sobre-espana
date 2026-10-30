@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../src/engine/categories";
 import { makeOptions, prepare } from "../src/engine/options";
-import { COMUNIDADES, capitalesDe, poolsFor } from "../src/engine/territory";
+import { AUTONOMIAS, COMUNIDADES, capitalesDe, poolsFor } from "../src/engine/territory";
 import { NAME_STYLES, type NameStyle, type Question } from "../src/engine/types";
 
 const REPS = 30;
@@ -56,9 +56,12 @@ for (const style of NAME_STYLES) {
       expect(find(style, "capital-ccaa:10").fact).toMatch(style === "oficial" ? /^València fue/ : /^Valencia fue/);
     });
 
-    it("las curiosidades solo están en las capitales, y las banderas no tienen", () => {
+    it("cada curiosidad de los datos llega a su pregunta de capital, y las banderas no tienen", () => {
+      // Se compara con territorio.json, así que no hay que tocar el test al añadir o quitar curiosidades.
+      for (const c of AUTONOMIAS) {
+        expect(Boolean(find(style, `capital-ccaa:${c.id}`).fact), c.id).toBe(Boolean(c.curiosidadCapital));
+      }
       expect(all.filter((q) => q.fact).every((q) => q.category === "capitalesCCAA")).toBe(true);
-      expect(all.filter((q) => q.fact)).toHaveLength(14);
     });
   });
 

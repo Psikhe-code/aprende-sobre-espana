@@ -73,6 +73,22 @@ describe("territorio", () => {
   });
 });
 
+describe("textos de las notas", () => {
+  const textos = [
+    ...AUTONOMIAS.flatMap((c) => [["notaCapital", c.id, c.notaCapital], ["curiosidadCapital", c.id, c.curiosidadCapital]]),
+    ...Object.entries(BANDERAS).map(([id, b]) => ["nota de bandera", id, b.nota])
+  ].filter(([, , t]) => t) as [string, string, string][];
+
+  it("no tienen espacios sobrantes: ni dobles, ni al principio o al final, ni junto a un salto de línea (\\n)", () => {
+    for (const [campo, id, t] of textos) {
+      const donde = `${campo} de ${id}: «${t.slice(0, 40)}…»`;
+      expect(t, donde).not.toMatch(/ {2}/);
+      expect(t, donde).not.toMatch(/^\s|\s$/);
+      expect(t, donde).not.toMatch(/ \n|\n /);
+    }
+  });
+});
+
 describe("banderas", () => {
   it("hay una por comunidad y ciudad autónoma, en orden de código INE, y su archivo existe", () => {
     // El orden se lee del texto del archivo: al cargarlo, JavaScript reordena las claves
