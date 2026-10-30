@@ -37,7 +37,7 @@
       "tipo": "comunidad",
       "nombre": {"oficial": "Canarias", "castellano": "Canarias"},
       "capital": [{"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"}, {"oficial": "Las Palmas de Gran Canaria", "castellano": "Las Palmas de Gran Canaria"}],
-      "notaCapital": "Las dos ciudades comparten la capitalidad, y la Presidencia del Gobierno canario cambia de una a otra en cada legislatura. Hasta 1927, cuando Canarias era una sola provincia, la única capital era Santa Cruz de Tenerife."
+      "notaCapital": "{capital} comparten la capitalidad, y la Presidencia del Gobierno canario cambia de una a otra en cada legislatura. Hasta 1927, cuando Canarias era una sola provincia, la única capital era Santa Cruz de Tenerife."
     },
     {
       "id": "06",
@@ -123,9 +123,8 @@
       "nombre": {"oficial": "País Vasco", "castellano": "País Vasco"},
       "enFrase": {"oficial": "el País Vasco", "castellano": "el País Vasco"},
       "capital": {"oficial": "Vitoria-Gasteiz", "castellano": "Vitoria"},
-      "notaCapital": "En 1980, con la primera ley que aprobó, el Parlamento Vasco eligió {capital} como sede del Parlamento y del Gobierno, aunque Bilbao es la ciudad más poblada. La Diputación de Álava ofreció edificios para las nuevas instituciones, y se suele explicar también por su posición central y por ser una opción neutral entre Bilbao y San Sebastián.",
-      "curiosidadCapital": "El primer Gobierno Vasco, formado en Gernika en 1936, tuvo su sede en Bilbao hasta junio de 1937, y después pasó al exilio, en París, hasta 1979."
-    },
+      "notaCapital": "En 1980, con la primera ley que aprobó, el Parlamento Vasco eligió {capital} como sede del Parlamento y del Gobierno, aunque Bilbao es la ciudad más poblada. La Diputación de Álava ofreció edificios para las nuevas instituciones, y se suele explicar también por su posición central y por ser una opción neutral entre Bilbao y San Sebastián."
+     },
     {
       "id": "17",
       "tipo": "comunidad",
@@ -138,7 +137,7 @@
       "tipo": "ciudad",
       "nombre": {"oficial": "Ceuta", "castellano": "Ceuta"},
       "capital": {"oficial": "Ceuta", "castellano": "Ceuta"},
-      "notaCapital": "Ceuta es una ciudad autónoma: no tiene una capital aparte, la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Cádiz. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
+      "notaCapital": "Ceuta es una ciudad autónoma: la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Cádiz. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
       "curiosidadCapital": "Portugal conquistó Ceuta en 1415. Felipe II heredó la corona portuguesa en 1580, y en 1640, cuando Portugal se separó, la ciudad eligió seguir con el rey español. A diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Ceuta llevaba más de tres siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
     },
     {
@@ -146,7 +145,7 @@
       "tipo": "ciudad",
       "nombre": {"oficial": "Melilla", "castellano": "Melilla"},
       "capital": {"oficial": "Melilla", "castellano": "Melilla"},
-      "notaCapital": "Melilla es una ciudad autónoma: no tiene una capital aparte, la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Málaga. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
+      "notaCapital": "Melilla es una ciudad autónoma: la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Málaga. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
       "curiosidadCapital": "Una expedición enviada por el duque de Medina Sidonia tomó Melilla en 1497, en tiempos de los Reyes Católicos. A diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Melilla llevaba casi cinco siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
     }
   ],
