@@ -36,7 +36,29 @@ for (const style of NAME_STYLES) {
         expect(new Set(q.traps).size, q.id).toBe(q.traps.length);
         expect(q.why.length, q.id).toBeGreaterThan(10);
         expect(q.why, q.id).not.toContain("{");
+        if (q.fact !== undefined) {
+          expect(q.fact.length, q.id).toBeGreaterThan(10);
+          expect(q.fact, q.id).not.toContain("{");
+        }
       }
+    });
+
+    it("las capitales sin nota propia tienen una automática que dice si también son capital de provincia", () => {
+      expect(find(style, "capital-ccaa:02").why).toBe("Zaragoza es la capital de Aragón y también de la provincia de Zaragoza.");
+      expect(find(style, "capital-ccaa:13").why).toBe("Madrid es la capital de la Comunidad de Madrid y también de la provincia de Madrid.");
+      const navarra = find(style, "capital-ccaa:15");
+      expect(navarra.why).toContain(style === "oficial" ? "Pamplona/Iruña es la capital de la Comunidad Foral" : "Pamplona es la capital de Navarra");
+    });
+
+    it("las notas y curiosidades sustituyen {capital} por el nombre en la forma de la pregunta", () => {
+      const vasco = find(style, "capital-ccaa:16");
+      expect(vasco.why).toContain(style === "oficial" ? "eligió Vitoria-Gasteiz" : "eligió Vitoria como");
+      expect(find(style, "capital-ccaa:10").fact).toMatch(style === "oficial" ? /^València fue/ : /^Valencia fue/);
+    });
+
+    it("las curiosidades solo están en las capitales, y las banderas no tienen", () => {
+      expect(all.filter((q) => q.fact).every((q) => q.category === "capitalesCCAA")).toBe(true);
+      expect(all.filter((q) => q.fact)).toHaveLength(14);
     });
   });
 

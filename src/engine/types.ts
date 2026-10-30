@@ -22,6 +22,8 @@ export interface Question {
   traps: string[];
   /** Explicación que se muestra al responder. */
   why: string;
+  /** Curiosidad opcional que se muestra al responder, después de la explicación. */
+  fact?: string;
   /** Valores del pool que nunca deben salir como incorrectos (porque también serían válidos). */
   exclude: string[];
   /** Solo para type "num": [mínimo, máximo]. */

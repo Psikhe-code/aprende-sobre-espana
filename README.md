@@ -76,7 +76,11 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
 
 - **`territorio.json`**:
   - Cada comunidad o ciudad autónoma tiene `id`, `tipo` (`comunidad` o `ciudad`), `nombre` y `capital` (una lista si es compartida, como Canarias).
-  - Opcionalmente: `enFrase`, cómo se nombra dentro de una frase si lleva artículo («el País Vasco»), y `notaCapital`, la explicación de su pregunta, donde `{capital}` se sustituye por el nombre de la capital.
+  - Opcionalmente:
+    - `enFrase`: cómo se nombra dentro de una frase si lleva artículo («el País Vasco»).
+    - `notaCapital`: la explicación de la pregunta de su capital, solo cuando hay algo que contar (la capital no es la ciudad más poblada o no es capital de provincia, instituciones repartidas, cambios de capital o de nombre). Si no la tiene, el juego genera una automática: *«Zaragoza es la capital de Aragón y también de la provincia de Zaragoza»*.
+    - `curiosidadCapital`: un dato histórico que se muestra después de la nota, si la ciudad fue capital de España o de un antiguo reino, con sus fechas. El final de un reino se cuenta desde que perdió sus instituciones propias.
+    - En los dos textos, `{capital}` se sustituye por el nombre de la capital en la forma de la pregunta.
   - Cada provincia tiene `id`, `nombre`, `capital` y el código de su `comunidad`.
 - **`banderas.json`**: por código, el `archivo` SVG, las `trampas` (códigos de banderas parecidas) y la `nota` que se muestra al responder.
 

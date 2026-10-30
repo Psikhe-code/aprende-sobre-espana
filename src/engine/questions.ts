@@ -1,5 +1,5 @@
 import { NAME_STYLES, type NameStyle, type Question } from "./types";
-import { AUTONOMIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, type Formas } from "./territory";
+import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, type Comunidad, type Formas } from "./territory";
 import banderas from "../data/banderas.json";
 
 // Preguntas generadas a partir de los datos del territorio y de las banderas.
@@ -22,6 +22,20 @@ function aliases(formas: Formas[], style: NameStyle): string[] {
 }
 
 /**
+ * Nota automática para las capitales que no tienen una propia: dice si la capital autonómica
+ * es también capital de provincia (y de cuál), que es justo lo que explica las trampas.
+ * "Zaragoza es la capital de Aragón y también de la provincia de Zaragoza."
+ */
+export function notaAutomatica(c: Comunidad, style: NameStyle): string {
+  const [capital] = capitalesDe(c);
+  const de = deAutonomia(c, style);
+  const provincia = PROVINCIAS.find((p) => p.capital.castellano === capital.castellano);
+  return provincia
+    ? `${capital[style]} es la capital ${de} y también de la provincia de ${provincia.nombre[style]}.`
+    : `${capital[style]} es la capital ${de}, aunque no es capital de provincia.`;
+}
+
+/**
  * Capitales autonómicas: una pregunta por comunidad y ciudad autónoma.
  * En Ceuta y Melilla la respuesta es la propia ciudad: parece un regalo, pero así se aprende.
  * Pool: todas las capitales (autonómicas y de provincia).
@@ -32,6 +46,9 @@ export function regionalCapitalQuestions(style: NameStyle): Question[] {
     const capitales = capitalesDe(c);
     const correctas = capitales.map((f) => f[style]);
     const de = deAutonomia(c, style);
+    const conCapital = (texto?: string) => texto?.replaceAll("{capital}", correctas.join(" y "));
+    const nota = conCapital(c.notaCapital);
+    const fact = conCapital(c.curiosidadCapital);
     const base = {
       id: `capital-ccaa:${c.id}`,
       type: "capitalCualquiera",
@@ -39,9 +56,9 @@ export function regionalCapitalQuestions(style: NameStyle): Question[] {
         ? CIUDADES.filter((x) => x.id !== c.id).flatMap((x) => capitalesDe(x).map((f) => f[style]))
         : provinciasDe(c.id).map((p) => p.capital[style])
       ).filter((cap) => !correctas.includes(cap)),
-      aliases: aliases([c.nombre, ...capitales], style)
+      aliases: aliases([c.nombre, ...capitales], style),
+      ...(fact ? { fact } : {})
     };
-    const nota = c.notaCapital?.replaceAll("{capital}", correctas.join(" y "));
     if (capitales.length > 1) {
       // Capitalidad compartida (Canarias): todas son correctas, así que ninguna sale como incorrecta.
       return {
@@ -59,7 +76,7 @@ export function regionalCapitalQuestions(style: NameStyle): Question[] {
       answer: correctas[0],
       answerKey: "ciudad:" + capitales[0].castellano,
       exclude: [],
-      why: nota ?? `${correctas[0]} es la capital ${de}.`
+      why: nota ?? notaAutomatica(c, style)
     };
   });
 }
