@@ -1,0 +1,211 @@
+{
+  "01": {
+    "archivo": "andalucia.svg",
+    "trampas": ["11", "06", "17"],
+    "nota": "Franjas verde, blanca y verde, con el escudo de Andalucía en el centro.",
+    "fuente": {
+      "titulo": "Flag of Andalucía.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Andaluc%C3%ADa.svg",
+      "autor": "Miguillen",
+      "licencia": "CC BY-SA 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  "02": {
+    "archivo": "aragon.svg",
+    "trampas": ["09", "10", "04"],
+    "nota": "Las cuatro barras rojas sobre amarillo, con el escudo de Aragón junto al mástil.",
+    "fuente": {
+      "titulo": "Flag of Aragon.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Aragon.svg",
+      "autor": "Willtron",
+      "licencia": "CC BY-SA 3.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  "03": {
+    "archivo": "asturias.svg",
+    "trampas": ["12", "05", "15"],
+    "nota": "Azul con la Cruz de la Victoria en amarillo, de la que cuelgan la alfa y la omega.",
+    "fuente": {
+      "titulo": "Flag of Asturias.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Asturias.svg",
+      "licencia": "Dominio público"
+    }
+  },
+  "04": {
+    "archivo": "islas-baleares.svg",
+    "trampas": ["09", "02", "10"],
+    "nota": "Las barras rojas y amarillas con un cuartel morado y un castillo blanco.",
+    "fuente": {
+      "titulo": "Flag of the Balearic Islands.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Balearic_Islands.svg",
+      "licencia": "CC0",
+      "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  "05": {
+    "archivo": "canarias.svg",
+    "trampas": ["17", "11", "03"],
+    "nota": "Tres franjas verticales: blanca, azul y amarilla, con el escudo de Canarias en el centro.",
+    "fuente": {
+      "titulo": "Flag of the Canary Islands.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Canary_Islands.svg",
+      "licencia": "Dominio público"
+    }
+  },
+  "06": {
+    "archivo": "cantabria.svg",
+    "trampas": ["13", "12", "16"],
+    "nota": "Dos franjas iguales, blanca y roja, con el escudo de Cantabria en el centro.",
+    "fuente": {
+      "titulo": "Flag of Cantabria (Official).svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Cantabria_(Official).svg",
+      "autor": "Miguillen",
+      "licencia": "CC BY-SA 2.5",
+      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/2.5/"
+    }
+  },
+  "07": {
+    "archivo": "castilla-y-leon.svg",
+    "trampas": ["08", "14", "15"],
+    "nota": "Cuartelada: castillos dorados sobre rojo y leones morados sobre blanco.",
+    "fuente": {
+      "titulo": "Flag of Castile and León.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Castile_and_Le%C3%B3n.svg",
+      "autor": "Rastrojo (D•ES)",
+      "licencia": "CC BY 3.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  "08": {
+    "archivo": "castilla-la-mancha.svg",
+    "trampas": ["07", "14", "13"],
+    "nota": "Mitad carmesí con un castillo dorado y mitad blanca.",
+    "fuente": {
+      "titulo": "Flag of Castilla-La Mancha.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Castile-La_Mancha.svg",
+      "licencia": "Dominio público"
+    }
+  },
+  "09": {
+    "archivo": "cataluna.svg",
+    "trampas": ["02", "10", "04"],
+    "nota": "La senyera: cuatro barras rojas sobre fondo amarillo.",
+    "fuente": {
+      "titulo": "Flag of Catalonia.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Catalonia.svg",
+      "licencia": "Dominio público"
+    }
+  },
+  "10": {
+    "archivo": "comunidad-valenciana.svg",
+    "trampas": ["09", "04", "02"],
+    "nota": "La senyera con una franja azul coronada junto al mástil.",
+    "fuente": {
+      "titulo": "Flag of the Valencian Community (2x3).svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Valencian_Community_(2x3).svg",
+      "licencia": "Dominio público"
+    }
+  },
+  "11": {
+    "archivo": "extremadura.svg",
+    "trampas": ["01", "17", "05"],
+    "nota": "Franjas verde, blanca y negra, con el escudo de Extremadura.",
+    "fuente": {
+      "titulo": "Flag of Extremadura (with coat of arms).svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Extremadura,_Spain_(with_coat_of_arms).svg",
+      "licencia": "Dominio público"
+    }
+  },
+  "12": {
+    "archivo": "galicia.svg",
+    "trampas": ["03", "06", "05"],
+    "nota": "Blanca con una banda azul en diagonal y el escudo de Galicia en el centro.",
+    "fuente": {
+      "titulo": "Flag of Galicia.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Galicia.svg",
+      "licencia": "Dominio público"
+    }
+  },
+  "13": {
+    "archivo": "comunidad-de-madrid.svg",
+    "trampas": ["14", "08", "15"],
+    "nota": "Carmesí con siete estrellas blancas de cinco puntas.",
+    "fuente": {
+      "titulo": "Flag of the Community of Madrid.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Community_of_Madrid.svg",
+      "licencia": "CC0",
+      "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  "14": {
+    "archivo": "region-de-murcia.svg",
+    "trampas": ["13", "08", "15"],
+    "nota": "Carmesí con cuatro castillos y siete coronas reales.",
+    "fuente": {
+      "titulo": "Flag of the Region of Murcia.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Region_of_Murcia.svg",
+      "licencia": "CC0",
+      "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  "15": {
+    "archivo": "navarra.svg",
+    "trampas": ["16", "14", "13"],
+    "nota": "Roja con el escudo de las cadenas de oro, coronado.",
+    "fuente": {
+      "titulo": "Flag of Navarre.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Navarre.svg",
+      "licencia": "Dominio público"
+    }
+  },
+  "16": {
+    "archivo": "pais-vasco.svg",
+    "trampas": ["15", "06", "17"],
+    "nota": "La ikurriña: fondo rojo, aspa verde y cruz blanca.",
+    "fuente": {
+      "titulo": "Flag of the Basque Country.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Basque_Country.svg",
+      "autor": "Daniele Schirmo (Frankie688)",
+      "licencia": "CC BY-SA 2.5",
+      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/2.5/"
+    }
+  },
+  "17": {
+    "archivo": "la-rioja.svg",
+    "trampas": ["11", "01", "05"],
+    "nota": "Cuatro franjas: roja, blanca, verde y amarilla, con el escudo de La Rioja en el centro.",
+    "fuente": {
+      "titulo": "Flag of La Rioja (with coat of arms).svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_La_Rioja_(with_coat_of_arms).svg",
+      "autor": "jynus",
+      "licencia": "CC BY 2.5",
+      "licenciaUrl": "https://creativecommons.org/licenses/by/2.5/"
+    }
+  },
+  "18": {
+    "archivo": "ceuta.svg",
+    "trampas": ["19"],
+    "nota": "Gironada de ocho piezas en blanco y negro, con el escudo de Ceuta en el centro: el de Portugal, herencia de su pasado portugués.",
+    "fuente": {
+      "titulo": "Flag of Ceuta.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Ceuta.svg",
+      "autor": "Ulaidh",
+      "licencia": "CC BY-SA 4.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  "19": {
+    "archivo": "melilla.svg",
+    "trampas": ["18", "12", "05"],
+    "nota": "Azul celeste con el escudo de Melilla en el centro.",
+    "fuente": {
+      "titulo": "Flag of Melilla.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Melilla.svg",
+      "autor": "SanchoPanzaXXI",
+      "licencia": "CC BY-SA 3.0",
+      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "comunidades": [
+    {
+      "id": "01",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Andalucía", "castellano": "Andalucía"},
+      "capital": {"oficial": "Sevilla", "castellano": "Sevilla"}
+    },
+    {
+      "id": "02",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Aragón", "castellano": "Aragón"},
+      "capital": {"oficial": "Zaragoza", "castellano": "Zaragoza"}
+    },
+    {
+      "id": "03",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Principado de Asturias", "castellano": "Asturias"},
+      "enFrase": {"oficial": "el Principado de Asturias", "castellano": "Asturias"},
+      "capital": {"oficial": "Oviedo", "castellano": "Oviedo"},
+      "notaCapital": "Oviedo es la capital, aunque Gijón es la ciudad más poblada de Asturias."
+    },
+    {
+      "id": "04",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Illes Balears", "castellano": "Islas Baleares"},
+      "enFrase": {"oficial": "las Illes Balears", "castellano": "las Islas Baleares"},
+      "capital": {"oficial": "Palma", "castellano": "Palma"}
+    },
+    {
+      "id": "05",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Canarias", "castellano": "Canarias"},
+      "capital": [{"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"}, {"oficial": "Las Palmas de Gran Canaria", "castellano": "Las Palmas de Gran Canaria"}],
+      "notaCapital": "La capitalidad de Canarias es compartida entre Santa Cruz de Tenerife y Las Palmas de Gran Canaria."
+    },
+    {
+      "id": "06",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Cantabria", "castellano": "Cantabria"},
+      "capital": {"oficial": "Santander", "castellano": "Santander"}
+    },
+    {
+      "id": "07",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Castilla y León", "castellano": "Castilla y León"},
+      "capital": {"oficial": "Valladolid", "castellano": "Valladolid"},
+      "notaCapital": "El Estatuto no fija una capital oficial, pero las Cortes y la Junta tienen su sede en Valladolid."
+    },
+    {
+      "id": "08",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Castilla-La Mancha", "castellano": "Castilla-La Mancha"},
+      "capital": {"oficial": "Toledo", "castellano": "Toledo"},
+      "notaCapital": "Toledo es la capital regional; Albacete es la ciudad más poblada."
+    },
+    {
+      "id": "09",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Cataluña", "castellano": "Cataluña"},
+      "capital": {"oficial": "Barcelona", "castellano": "Barcelona"}
+    },
+    {
+      "id": "10",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Comunitat Valenciana", "castellano": "Comunidad Valenciana"},
+      "enFrase": {"oficial": "la Comunitat Valenciana", "castellano": "la Comunidad Valenciana"},
+      "capital": {"oficial": "València", "castellano": "Valencia"}
+    },
+    {
+      "id": "11",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Extremadura", "castellano": "Extremadura"},
+      "capital": {"oficial": "Mérida", "castellano": "Mérida"},
+      "notaCapital": "Mérida es la capital, aunque Badajoz es la ciudad más poblada de Extremadura."
+    },
+    {
+      "id": "12",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Galicia", "castellano": "Galicia"},
+      "capital": {"oficial": "Santiago de Compostela", "castellano": "Santiago de Compostela"},
+      "notaCapital": "Santiago acoge la Xunta y el Parlamento de Galicia; Vigo es la ciudad más poblada."
+    },
+    {
+      "id": "13",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Comunidad de Madrid", "castellano": "Comunidad de Madrid"},
+      "enFrase": {"oficial": "la Comunidad de Madrid", "castellano": "la Comunidad de Madrid"},
+      "capital": {"oficial": "Madrid", "castellano": "Madrid"}
+    },
+    {
+      "id": "14",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Región de Murcia", "castellano": "Región de Murcia"},
+      "enFrase": {"oficial": "la Región de Murcia", "castellano": "la Región de Murcia"},
+      "capital": {"oficial": "Murcia", "castellano": "Murcia"},
+      "notaCapital": "Murcia es la capital; Cartagena es la segunda ciudad de la región."
+    },
+    {
+      "id": "15",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "Comunidad Foral de Navarra", "castellano": "Navarra"},
+      "enFrase": {"oficial": "la Comunidad Foral de Navarra", "castellano": "Navarra"},
+      "capital": {"oficial": "Pamplona/Iruña", "castellano": "Pamplona"}
+    },
+    {
+      "id": "16",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "País Vasco", "castellano": "País Vasco"},
+      "enFrase": {"oficial": "el País Vasco", "castellano": "el País Vasco"},
+      "capital": {"oficial": "Vitoria-Gasteiz", "castellano": "Vitoria"},
+      "notaCapital": "{capital} es la sede del Parlamento y el Gobierno vascos, aunque Bilbao es más grande."
+    },
+    {
+      "id": "17",
+      "tipo": "comunidad",
+      "nombre": {"oficial": "La Rioja", "castellano": "La Rioja"},
+      "capital": {"oficial": "Logroño", "castellano": "Logroño"}
+    },
+    {
+      "id": "18",
+      "tipo": "ciudad",
+      "nombre": {"oficial": "Ceuta", "castellano": "Ceuta"},
+      "capital": {"oficial": "Ceuta", "castellano": "Ceuta"},
+      "notaCapital": "Ceuta es una ciudad autónoma: no tiene una capital aparte, la propia ciudad es su capital."
+    },
+    {
+      "id": "19",
+      "tipo": "ciudad",
+      "nombre": {"oficial": "Melilla", "castellano": "Melilla"},
+      "capital": {"oficial": "Melilla", "castellano": "Melilla"},
+      "notaCapital": "Melilla es una ciudad autónoma: no tiene una capital aparte, la propia ciudad es su capital."
+    }
+  ],
+  "provincias": [
+    {"id": "01", "nombre": {"oficial": "Araba/Álava", "castellano": "Álava"}, "capital": {"oficial": "Vitoria-Gasteiz", "castellano": "Vitoria"}, "comunidad": "16"},
+    {"id": "02", "nombre": {"oficial": "Albacete", "castellano": "Albacete"}, "capital": {"oficial": "Albacete", "castellano": "Albacete"}, "comunidad": "08"},
+    {"id": "03", "nombre": {"oficial": "Alicante/Alacant", "castellano": "Alicante"}, "capital": {"oficial": "Alicante/Alacant", "castellano": "Alicante"}, "comunidad": "10"},
+    {"id": "04", "nombre": {"oficial": "Almería", "castellano": "Almería"}, "capital": {"oficial": "Almería", "castellano": "Almería"}, "comunidad": "01"},
+    {"id": "05", "nombre": {"oficial": "Ávila", "castellano": "Ávila"}, "capital": {"oficial": "Ávila", "castellano": "Ávila"}, "comunidad": "07"},
+    {"id": "06", "nombre": {"oficial": "Badajoz", "castellano": "Badajoz"}, "capital": {"oficial": "Badajoz", "castellano": "Badajoz"}, "comunidad": "11"},
+    {"id": "07", "nombre": {"oficial": "Illes Balears", "castellano": "Baleares"}, "capital": {"oficial": "Palma", "castellano": "Palma"}, "comunidad": "04"},
+    {"id": "08", "nombre": {"oficial": "Barcelona", "castellano": "Barcelona"}, "capital": {"oficial": "Barcelona", "castellano": "Barcelona"}, "comunidad": "09"},
+    {"id": "09", "nombre": {"oficial": "Burgos", "castellano": "Burgos"}, "capital": {"oficial": "Burgos", "castellano": "Burgos"}, "comunidad": "07"},
+    {"id": "10", "nombre": {"oficial": "Cáceres", "castellano": "Cáceres"}, "capital": {"oficial": "Cáceres", "castellano": "Cáceres"}, "comunidad": "11"},
+    {"id": "11", "nombre": {"oficial": "Cádiz", "castellano": "Cádiz"}, "capital": {"oficial": "Cádiz", "castellano": "Cádiz"}, "comunidad": "01"},
+    {"id": "12", "nombre": {"oficial": "Castellón/Castelló", "castellano": "Castellón"}, "capital": {"oficial": "Castelló de la Plana/Castellón de la Plana", "castellano": "Castellón de la Plana"}, "comunidad": "10"},
+    {"id": "13", "nombre": {"oficial": "Ciudad Real", "castellano": "Ciudad Real"}, "capital": {"oficial": "Ciudad Real", "castellano": "Ciudad Real"}, "comunidad": "08"},
+    {"id": "14", "nombre": {"oficial": "Córdoba", "castellano": "Córdoba"}, "capital": {"oficial": "Córdoba", "castellano": "Córdoba"}, "comunidad": "01"},
+    {"id": "15", "nombre": {"oficial": "A Coruña", "castellano": "La Coruña"}, "capital": {"oficial": "A Coruña", "castellano": "La Coruña"}, "comunidad": "12"},
+    {"id": "16", "nombre": {"oficial": "Cuenca", "castellano": "Cuenca"}, "capital": {"oficial": "Cuenca", "castellano": "Cuenca"}, "comunidad": "08"},
+    {"id": "17", "nombre": {"oficial": "Girona", "castellano": "Gerona"}, "capital": {"oficial": "Girona", "castellano": "Gerona"}, "comunidad": "09"},
+    {"id": "18", "nombre": {"oficial": "Granada", "castellano": "Granada"}, "capital": {"oficial": "Granada", "castellano": "Granada"}, "comunidad": "01"},
+    {"id": "19", "nombre": {"oficial": "Guadalajara", "castellano": "Guadalajara"}, "capital": {"oficial": "Guadalajara", "castellano": "Guadalajara"}, "comunidad": "08"},
+    {"id": "20", "nombre": {"oficial": "Gipuzkoa", "castellano": "Guipúzcoa"}, "capital": {"oficial": "Donostia/San Sebastián", "castellano": "San Sebastián"}, "comunidad": "16"},
+    {"id": "21", "nombre": {"oficial": "Huelva", "castellano": "Huelva"}, "capital": {"oficial": "Huelva", "castellano": "Huelva"}, "comunidad": "01"},
+    {"id": "22", "nombre": {"oficial": "Huesca", "castellano": "Huesca"}, "capital": {"oficial": "Huesca", "castellano": "Huesca"}, "comunidad": "02"},
+    {"id": "23", "nombre": {"oficial": "Jaén", "castellano": "Jaén"}, "capital": {"oficial": "Jaén", "castellano": "Jaén"}, "comunidad": "01"},
+    {"id": "24", "nombre": {"oficial": "León", "castellano": "León"}, "capital": {"oficial": "León", "castellano": "León"}, "comunidad": "07"},
+    {"id": "25", "nombre": {"oficial": "Lleida", "castellano": "Lérida"}, "capital": {"oficial": "Lleida", "castellano": "Lérida"}, "comunidad": "09"},
+    {"id": "26", "nombre": {"oficial": "La Rioja", "castellano": "La Rioja"}, "capital": {"oficial": "Logroño", "castellano": "Logroño"}, "comunidad": "17"},
+    {"id": "27", "nombre": {"oficial": "Lugo", "castellano": "Lugo"}, "capital": {"oficial": "Lugo", "castellano": "Lugo"}, "comunidad": "12"},
+    {"id": "28", "nombre": {"oficial": "Madrid", "castellano": "Madrid"}, "capital": {"oficial": "Madrid", "castellano": "Madrid"}, "comunidad": "13"},
+    {"id": "29", "nombre": {"oficial": "Málaga", "castellano": "Málaga"}, "capital": {"oficial": "Málaga", "castellano": "Málaga"}, "comunidad": "01"},
+    {"id": "30", "nombre": {"oficial": "Murcia", "castellano": "Murcia"}, "capital": {"oficial": "Murcia", "castellano": "Murcia"}, "comunidad": "14"},
+    {"id": "31", "nombre": {"oficial": "Navarra", "castellano": "Navarra"}, "capital": {"oficial": "Pamplona/Iruña", "castellano": "Pamplona"}, "comunidad": "15"},
+    {"id": "32", "nombre": {"oficial": "Ourense", "castellano": "Orense"}, "capital": {"oficial": "Ourense", "castellano": "Orense"}, "comunidad": "12"},
+    {"id": "33", "nombre": {"oficial": "Asturias", "castellano": "Asturias"}, "capital": {"oficial": "Oviedo", "castellano": "Oviedo"}, "comunidad": "03"},
+    {"id": "34", "nombre": {"oficial": "Palencia", "castellano": "Palencia"}, "capital": {"oficial": "Palencia", "castellano": "Palencia"}, "comunidad": "07"},
+    {"id": "35", "nombre": {"oficial": "Las Palmas", "castellano": "Las Palmas"}, "capital": {"oficial": "Las Palmas de Gran Canaria", "castellano": "Las Palmas de Gran Canaria"}, "comunidad": "05"},
+    {"id": "36", "nombre": {"oficial": "Pontevedra", "castellano": "Pontevedra"}, "capital": {"oficial": "Pontevedra", "castellano": "Pontevedra"}, "comunidad": "12"},
+    {"id": "37", "nombre": {"oficial": "Salamanca", "castellano": "Salamanca"}, "capital": {"oficial": "Salamanca", "castellano": "Salamanca"}, "comunidad": "07"},
+    {"id": "38", "nombre": {"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"}, "capital": {"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"}, "comunidad": "05"},
+    {"id": "39", "nombre": {"oficial": "Cantabria", "castellano": "Cantabria"}, "capital": {"oficial": "Santander", "castellano": "Santander"}, "comunidad": "06"},
+    {"id": "40", "nombre": {"oficial": "Segovia", "castellano": "Segovia"}, "capital": {"oficial": "Segovia", "castellano": "Segovia"}, "comunidad": "07"},
+    {"id": "41", "nombre": {"oficial": "Sevilla", "castellano": "Sevilla"}, "capital": {"oficial": "Sevilla", "castellano": "Sevilla"}, "comunidad": "01"},
+    {"id": "42", "nombre": {"oficial": "Soria", "castellano": "Soria"}, "capital": {"oficial": "Soria", "castellano": "Soria"}, "comunidad": "07"},
+    {"id": "43", "nombre": {"oficial": "Tarragona", "castellano": "Tarragona"}, "capital": {"oficial": "Tarragona", "castellano": "Tarragona"}, "comunidad": "09"},
+    {"id": "44", "nombre": {"oficial": "Teruel", "castellano": "Teruel"}, "capital": {"oficial": "Teruel", "castellano": "Teruel"}, "comunidad": "02"},
+    {"id": "45", "nombre": {"oficial": "Toledo", "castellano": "Toledo"}, "capital": {"oficial": "Toledo", "castellano": "Toledo"}, "comunidad": "08"},
+    {"id": "46", "nombre": {"oficial": "Valencia/València", "castellano": "Valencia"}, "capital": {"oficial": "València", "castellano": "Valencia"}, "comunidad": "10"},
+    {"id": "47", "nombre": {"oficial": "Valladolid", "castellano": "Valladolid"}, "capital": {"oficial": "Valladolid", "castellano": "Valladolid"}, "comunidad": "07"},
+    {"id": "48", "nombre": {"oficial": "Bizkaia", "castellano": "Vizcaya"}, "capital": {"oficial": "Bilbao", "castellano": "Bilbao"}, "comunidad": "16"},
+    {"id": "49", "nombre": {"oficial": "Zamora", "castellano": "Zamora"}, "capital": {"oficial": "Zamora", "castellano": "Zamora"}, "comunidad": "07"},
+    {"id": "50", "nombre": {"oficial": "Zaragoza", "castellano": "Zaragoza"}, "capital": {"oficial": "Zaragoza", "castellano": "Zaragoza"}, "comunidad": "02"},
+    {"id": "51", "nombre": {"oficial": "Ceuta", "castellano": "Ceuta"}, "capital": {"oficial": "Ceuta", "castellano": "Ceuta"}, "comunidad": "18"},
+    {"id": "52", "nombre": {"oficial": "Melilla", "castellano": "Melilla"}, "capital": {"oficial": "Melilla", "castellano": "Melilla"}, "comunidad": "19"}
+  ]
+}

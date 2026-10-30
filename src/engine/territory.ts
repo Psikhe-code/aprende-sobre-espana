@@ -1,0 +1,67 @@
+import territorio from "../data/territorio.json";
+import type { NameStyle, Pools } from "./types";
+
+// El formato de territorio.json está descrito en src/data/schema/territorio.schema.json
+// y los tests comprueban que el archivo lo cumple.
+
+/** Un nombre escrito en cada una de sus formas. */
+export type Formas = Record<NameStyle, string>;
+
+export interface Comunidad {
+  /** Código INE ("01" Andalucía … "17" La Rioja, "18" Ceuta, "19" Melilla). */
+  id: string;
+  /** Comunidad autónoma o ciudad autónoma (Ceuta y Melilla). */
+  tipo: "comunidad" | "ciudad";
+  nombre: Formas;
+  /** Cómo se nombra dentro de una frase, si no es igual que el nombre: "el País Vasco". */
+  enFrase?: Formas;
+  /** Capital. Canarias tiene dos. */
+  capital: Formas | Formas[];
+  /** Explicación propia para la pregunta de su capital. "{capital}" se sustituye por su nombre. */
+  notaCapital?: string;
+}
+
+export interface Provincia {
+  /** Código INE ("01" Álava … "50" Zaragoza, "51" Ceuta, "52" Melilla). */
+  id: string;
+  nombre: Formas;
+  capital: Formas;
+  /** Código INE de su comunidad o ciudad autónoma. */
+  comunidad: string;
+}
+
+/** Comunidades y ciudades autónomas. */
+export const AUTONOMIAS = territorio.comunidades as Comunidad[];
+/** Solo las 17 comunidades autónomas. */
+export const COMUNIDADES = AUTONOMIAS.filter((c) => c.tipo === "comunidad");
+export const PROVINCIAS: Provincia[] = territorio.provincias;
+
+const porId = new Map(AUTONOMIAS.map((c) => [c.id, c]));
+export function autonomia(id: string): Comunidad {
+  const c = porId.get(id);
+  if (!c) throw new Error(`No existe la comunidad o ciudad autónoma con código ${id}`);
+  return c;
+}
+
+export const provinciasDe = (id: string) => PROVINCIAS.filter((p) => p.comunidad === id);
+
+/** Las capitales de una comunidad, cada una con todas sus formas. */
+export const capitalesDe = (c: Comunidad): Formas[] => ([] as Formas[]).concat(c.capital);
+
+/** "de Galicia", "del País Vasco", "de la Comunitat Valenciana"… */
+export function deAutonomia(c: Comunidad, style: NameStyle): string {
+  return ("de " + (c.enFrase ?? c.nombre)[style]).replace(/^de el /, "del ");
+}
+
+/** Pools de respuestas: de aquí salen las opciones incorrectas según el `type` de cada pregunta. */
+export function poolsFor(style: NameStyle): Pools {
+  return {
+    /** Comunidades y ciudades autónomas. */
+    autonomia: AUTONOMIAS.map((c) => c.nombre[style]),
+    /** Capitales autonómicas y de provincia (incluidas Ceuta y Melilla). */
+    capitalCualquiera: [...new Set([
+      ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
+      ...PROVINCIAS.map((p) => p.capital[style])
+    ])]
+  };
+}

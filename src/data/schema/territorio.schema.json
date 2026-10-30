@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Territorio",
+  "description": "Comunidades y ciudades autónomas y provincias de España, identificadas por su código INE. Cada nombre se escribe en todas sus formas, aunque coincidan.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "comunidades",
+    "provincias"
+  ],
+  "definitions": {
+    "formas": {
+      "description": "Un nombre escrito en cada una de sus formas: primero la oficial y después las demás. Para añadir otra (p. ej. «ingles»), añádela aquí y en todos los nombres.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "oficial",
+        "castellano"
+      ],
+      "properties": {
+        "oficial": {
+          "description": "Denominación oficial (Girona, Bizkaia…).",
+          "type": "string",
+          "minLength": 1
+        },
+        "castellano": {
+          "description": "Forma en castellano: la que recomienda la RAE para textos en español (Gerona, Vizcaya…). Si coincide con la oficial, se repite.",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "codigo": {
+      "description": "Código INE (dos cifras).",
+      "type": "string",
+      "pattern": "^[0-9]{2}$"
+    }
+  },
+  "properties": {
+    "comunidades": {
+      "description": "Las 17 comunidades autónomas y las 2 ciudades autónomas, ordenadas por su código INE (01 Andalucía … 19 Melilla).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "tipo",
+          "nombre",
+          "capital"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/definitions/codigo"
+          },
+          "tipo": {
+            "description": "«comunidad» (comunidad autónoma) o «ciudad» (ciudad autónoma: Ceuta y Melilla).",
+            "enum": [
+              "comunidad",
+              "ciudad"
+            ]
+          },
+          "nombre": {
+            "$ref": "#/definitions/formas"
+          },
+          "enFrase": {
+            "description": "Cómo se nombra dentro de una frase, solo si no es igual que el nombre: «el País Vasco», «las Islas Baleares».",
+            "$ref": "#/definitions/formas"
+          },
+          "capital": {
+            "description": "Capital, o lista de capitales si la capitalidad es compartida (Canarias).",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/formas"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/formas"
+                },
+                "minItems": 2
+              }
+            ]
+          },
+          "notaCapital": {
+            "description": "Explicación propia para la pregunta de su capital. «{capital}» se sustituye por el nombre de la capital en la forma de la pregunta.",
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      }
+    },
+    "provincias": {
+      "description": "Las 50 provincias, más Ceuta y Melilla (51 y 52), ordenadas por su código INE (01 Álava … 52 Melilla).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "nombre",
+          "capital",
+          "comunidad"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/definitions/codigo"
+          },
+          "nombre": {
+            "$ref": "#/definitions/formas"
+          },
+          "capital": {
+            "$ref": "#/definitions/formas"
+          },
+          "comunidad": {
+            "description": "Código INE de su comunidad o ciudad autónoma.",
+            "$ref": "#/definitions/codigo"
+          }
+        }
+      }
+    }
+  }
+}

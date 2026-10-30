@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Banderas",
+  "description": "Bandera de cada comunidad o ciudad autónoma, por su código INE y en ese orden (01 … 19).",
+  "type": "object",
+  "propertyNames": {
+    "pattern": "^[0-9]{2}$"
+  },
+  "additionalProperties": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "archivo",
+      "trampas",
+      "nota",
+      "fuente"
+    ],
+    "properties": {
+      "archivo": {
+        "description": "Archivo SVG en src/data/banderas.",
+        "type": "string",
+        "pattern": "^[a-z0-9-]+\\.svg$"
+      },
+      "trampas": {
+        "description": "Códigos INE de comunidades o ciudades con banderas parecidas.",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[0-9]{2}$"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "nota": {
+        "description": "Explicación que se muestra al responder: cómo es la bandera.",
+        "type": "string",
+        "minLength": 10
+      },
+      "fuente": {
+        "description": "De dónde sale la imagen. Se muestra en la pantalla de Créditos.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "titulo",
+          "url",
+          "licencia"
+        ],
+        "properties": {
+          "titulo": {
+            "description": "Nombre del archivo en Wikimedia Commons.",
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "description": "Página del archivo en Wikimedia Commons.",
+            "type": "string",
+            "pattern": "^https://commons\\.wikimedia\\.org/wiki/File:"
+          },
+          "autor": {
+            "description": "Autor del dibujo. Obligatorio si la licencia pide atribución (CC BY, CC BY-SA).",
+            "type": "string",
+            "minLength": 1
+          },
+          "licencia": {
+            "description": "Licencia del dibujo.",
+            "enum": [
+              "Dominio público",
+              "CC0",
+              "CC BY 2.5",
+              "CC BY 3.0",
+              "CC BY 4.0",
+              "CC BY-SA 2.5",
+              "CC BY-SA 3.0",
+              "CC BY-SA 4.0"
+            ]
+          },
+          "licenciaUrl": {
+            "description": "Texto de la licencia.",
+            "type": "string",
+            "pattern": "^https://creativecommons\\.org/"
+          }
+        },
+        "if": {
+          "properties": {
+            "licencia": {
+              "pattern": "^CC BY"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "autor",
+            "licenciaUrl"
+          ]
+        }
+      }
+    }
+  }
+}

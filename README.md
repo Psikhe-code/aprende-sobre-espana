@@ -1,0 +1,147 @@
+# Geoquiz España
+
+Juego de preguntas sobre geografía de España. Partidas de 10 preguntas con opciones, explicación de cada respuesta y repaso de fallos.
+
+Ahora mismo tiene dos categorías, **Capitales autonómicas** y **Banderas autonómicas**, cada una con las 17 comunidades y las 2 ciudades autónomas (Ceuta y Melilla), mientras se afina la base del juego. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
+
+Hecho con TypeScript y Vite. Funciona en el navegador, se puede instalar como app (PWA) y funciona sin conexión.
+
+## Puesta en marcha
+
+Necesitas [Node.js](https://nodejs.org) 20 o superior.
+
+```bash
+npm install        # instala las dependencias (una sola vez)
+npm run dev        # arranca el juego en http://localhost:5173 y se recarga al guardar cambios
+```
+
+| Comando | Qué hace |
+| --- | --- |
+| `npm test` | Comprueba los datos y la lógica del juego (ver [Tests](#tests)) |
+| `npm run build` | Comprueba los tipos y genera la versión final en `dist/` |
+| `npm run preview` | Sirve la versión de `dist/` para probarla tal cual se publicará |
+
+## Publicación
+
+Cada cambio que llega a la rama `main` se publica solo en GitHub Pages (`.github/workflows/publicar.yml`): instala, pasa los tests, compila y sube la web. Si un test falla, no se publica y la web se queda con la última versión buena. El progreso se ve en la pestaña **Actions**.
+
+Para cambios grandes: se trabaja en una rama aparte y se mezcla con un *pull request*. En cada *pull request* se pasan los tests y la compilación (sin publicar), así se revisa antes de que llegue a la web.
+
+## Estructura
+
+```
+src/
+  data/                    ← CONTENIDO
+    territorio.json        comunidades y provincias, con sus códigos INE
+    banderas.json          bandera de cada comunidad: archivo, banderas parecidas y explicación
+    banderas/*.svg         una imagen por comunidad
+    schema/                descripción formal del formato de los JSON (se valida en los tests)
+  engine/                  ← MOTOR (sin interfaz)
+    territory.ts           carga el territorio y monta los pools de respuestas
+    questions.ts           genera las preguntas a partir de los datos
+    categories.ts          lista de categorías
+    options.ts             genera las opciones de cada pregunta
+    round.ts               elige las preguntas de una partida
+    game.ts                desarrollo de la partida: respuestas, aciertos, racha, final y récords
+    storage.ts             ajustes y récords guardados en el dispositivo
+  ui/                      ← INTERFAZ (solo dibuja y llama al motor)
+    app.ts                 pantallas y botones
+    styles.css             estilos (tema claro y oscuro según el sistema)
+  main.ts                  punto de entrada y modo sin conexión
+tests/                     comprobaciones automáticas
+public/                    iconos de la app
+```
+
+## Los datos
+
+Todo se identifica por su **código INE**: comunidades `01`–`17`, ciudades autónomas `18` (Ceuta) y `19` (Melilla), provincias `01`–`52`.
+
+**Orden:** en los archivos, todo va ordenado por código INE, y los tests lo comprueban. Es el orden oficial, coincide con el identificador y no depende de cómo se escriban los nombres. Los códigos se asignaron por orden alfabético de nombres antiguos: por eso Asturias es la provincia `33` (Oviedo), Cantabria la `39` (Santander) y La Rioja la `26` (Logroño). El orden de los archivos no afecta al juego, porque las preguntas se barajan. Si alguna pantalla muestra listas, debe ordenarlas al mostrarlas, alfabéticamente según la forma de nombres elegida.
+
+### Nombres: siempre en todas sus formas
+
+Cada nombre se escribe en todas sus formas, **aunque coincidan**, y siempre con la oficial primero:
+
+```json
+"nombre":  { "oficial": "Girona", "castellano": "Gerona" },
+"capital": { "oficial": "Sevilla", "castellano": "Sevilla" }
+```
+
+- **`oficial`**: la denominación oficial (Girona, Lleida, A Coruña, Ourense, Bizkaia, Gipuzkoa, Illes Balears, Castelló de la Plana/Castellón de la Plana…).
+- **`castellano`**: la forma que recomienda la RAE para textos en español (Gerona, Lérida, La Coruña, Orense, Vizcaya, Guipúzcoa, Islas Baleares…).
+
+Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una línea más dentro de cada nombre, en el esquema y en `NAME_STYLES` (`src/engine/types.ts`). Un juego en otro idioma necesitaría además traducir los enunciados, las explicaciones y la interfaz.
+
+### Archivos
+
+- **`territorio.json`**:
+  - Cada comunidad o ciudad autónoma tiene `id`, `tipo` (`comunidad` o `ciudad`), `nombre` y `capital` (una lista si es compartida, como Canarias).
+  - Opcionalmente: `enFrase`, cómo se nombra dentro de una frase si lleva artículo («el País Vasco»), y `notaCapital`, la explicación de su pregunta, donde `{capital}` se sustituye por el nombre de la capital.
+  - Cada provincia tiene `id`, `nombre`, `capital` y el código de su `comunidad`.
+- **`banderas.json`**: por código, el `archivo` SVG, las `trampas` (códigos de banderas parecidas) y la `nota` que se muestra al responder.
+
+### Validación
+
+Al ejecutar `npm test`, cada archivo se valida contra su esquema de `src/data/schema/`. Un campo mal escrito o un código que no existe hacen fallar el test con un mensaje que dice dónde está el error, por ejemplo:
+
+```
+/12: must have required property 'trampas'
+```
+
+Los tests también comprueban la coherencia entre archivos. Por ejemplo, si una ciudad es capital autonómica y de provincia, tiene que estar escrita igual en los dos sitios, en todas sus formas.
+
+En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras editas (configurado en `.vscode/settings.json`).
+
+## Cómo funciona
+
+**Preguntas.** Se generan a partir de los datos (`questions.ts`), una vez por cada forma de los nombres. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
+
+**Forma de los nombres.** En Opciones se marcan las formas con las que se quiere jugar: oficial, castellano o las dos (por defecto). Si hay varias marcadas, se sortea una en cada pregunta, para aprenderlas todas. Cada pregunta va **entera** en una forma (enunciado, respuesta y opciones), así que nunca se mezclan Gerona y Girona en las mismas opciones. Al responder se muestra la otra forma cuando es distinta: *«Vitoria-Gasteiz · en castellano, Vitoria»*.
+
+**Opciones.** Cada pregunta tiene un pool del que salen las incorrectas (todas las capitales, todas las comunidades) y unas trampas fijas (las confusiones típicas):
+
+- Al menos una incorrecta es siempre aleatoria del pool, para que las partidas no se repitan.
+- Lo que está en `exclude` nunca sale como incorrecto. Por ejemplo, en Canarias ninguna de sus dos capitales aparece como incorrecta.
+- El número de opciones es un parámetro (`DEFAULT_OPTIONS` en `round.ts`): el motor ya funciona con 4, 6 u 8.
+
+**Partida.** `round.ts` elige 10 preguntas, sorteando primero la categoría para repartirlas, sin repetir pregunta ni lugar como respuesta (aunque salga con otro nombre). `game.ts` lleva el desarrollo: responder, avanzar, aciertos, racha, fallos y si la partida cuenta para el récord. La interfaz solo dibuja lo que el motor le dice.
+
+**Actualizaciones.** Cuando se publica una versión nueva, se descarga en segundo plano y se aplica al volver al inicio u opciones, nunca a mitad de partida (`main.ts`).
+
+## Banderas
+
+Las de `src/data/banderas/` son las versiones **oficiales** de Wikimedia Commons, con escudo cuando la oficial lo lleva. Cada una conserva su proporción real (no todas son 3:2) y se muestra sin deformarla.
+
+En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Commons, enlace, autor y licencia. Algunas son de dominio público o CC0. Otras tienen licencia **CC BY** o **CC BY-SA**, que permiten usarlas citando al autor; por eso el juego tiene una pantalla de **Créditos** (enlace en la pantalla de inicio) que lista todas. El esquema y los tests exigen autor y enlace a la licencia cuando la licencia pide atribución.
+
+### Actualizar o cambiar una bandera
+
+La descarga desde aquí no se hace a mano: hay un proceso automático en GitHub (`scripts/descargar-banderas.py` y `.github/workflows/descargar-banderas.yml`).
+
+1. Crea la rama `banderas-descarga` desde `main`.
+2. Si quieres otra versión de alguna bandera, cambia su nombre de archivo en la lista `CANDIDATOS` del script.
+3. Sube la rama. GitHub descarga los archivos, con su ficha, licencia y autor, y los guarda en la carpeta `banderas-wikimedia/` de esa misma rama.
+4. Revisa las candidatas, copia la elegida a `src/data/banderas/` con el mismo nombre que la anterior, actualiza su `fuente` (y su `nota` si cambia el diseño) en `banderas.json`, y borra `banderas-wikimedia/` antes de mezclar.
+
+## Tests
+
+`npm test` comprueba:
+
+- **Datos**: que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen.
+- **Preguntas y opciones**, en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
+- **Partidas**: en cientos de partidas al azar, 10 preguntas sin repetir lugar y bien repartidas; con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa; aciertos, racha, fallos, final y récords.
+
+## Próximos pasos
+
+- **Banderas más ligeras**: algunas oficiales pesan bastante (la de Navarra, más de 400 KB). Se pueden optimizar sin perder calidad visible.
+- **Dificultades**: 4, 6 u 8 opciones (ya soportado por el motor), incorrectas más o menos parecidas según el nivel, y respuesta abierta.
+- **Guardado**: estadísticas por categoría y por pregunta (usando los identificadores), en lugar de récords por combinación.
+- **Desbloqueo de categorías** y recuperar las categorías del prototipo, ya con identificadores y esquema.
+- **App de Android** con [Capacitor](https://capacitorjs.com):
+  ```bash
+  npm install @capacitor/core @capacitor/cli @capacitor/android
+  npx cap init "Geoquiz España" es.geoquiz.app --web-dir dist
+  npx cap add android
+  npm run build && npx cap sync android
+  npx cap open android     # abre Android Studio para compilar y probar
+  ```

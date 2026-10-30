@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Juego de preguntas sobre geografía de España: capitales y banderas de las comunidades y ciudades autónomas.">
+  <meta name="theme-color" content="#14243a">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <title>Geoquiz España</title>
+</head>
+<body>
+  <div class="app">
+    <header class="masthead">
+      <svg id="contours" viewBox="0 0 300 220" aria-hidden="true"></svg>
+      <div class="eyebrow">Atlas de bolsillo · 10 hojas por partida</div>
+      <h1>Geoquiz España</h1>
+      <p class="lede">Capitales y banderas de las comunidades y ciudades autónomas. Elige en Opciones qué categorías entran y responde diez preguntas.</p>
+    </header>
+
+    <!-- Inicio -->
+    <section id="start" class="screen">
+      <div class="summary">
+        <div class="label">10 preguntas al azar de</div>
+        <div class="chips" id="chips"></div>
+        <div class="record" id="namesInfo"></div>
+        <div class="record" id="record"></div>
+      </div>
+      <div class="row">
+        <button class="primary" id="go">Jugar</button>
+        <button class="ghost" id="openOptions">Opciones</button>
+      </div>
+      <span class="hint">Atajos: teclas numéricas para responder, Intro para seguir.</span>
+      <button class="link" id="openCredits">Créditos</button>
+    </section>
+
+    <!-- Créditos -->
+    <section id="credits" class="screen" hidden>
+      <div class="stack tight">
+        <div class="label">Créditos · Banderas</div>
+        <p class="prose">Las banderas proceden de Wikimedia Commons. Las que tienen licencia Creative Commons se usan citando a su autor, como pide la licencia.</p>
+      </div>
+      <div class="credits" id="creditList"></div>
+      <div class="stack tight section-start">
+        <div class="label">Créditos · Datos y tipografías</div>
+        <p class="prose">Códigos y nombres oficiales de comunidades y provincias: Instituto Nacional de Estadística (INE). Formas en castellano: criterio de la Real Academia Española. Tipografías Barlow, Barlow Condensed y Literata, con licencia SIL Open Font License.</p>
+      </div>
+      <div class="row section-start"><button class="primary" id="closeCredits">Volver</button></div>
+    </section>
+
+    <!-- Opciones -->
+    <section id="options" class="screen" hidden>
+      <div class="stack tight">
+        <div class="label">Opciones · Categorías</div>
+        <span class="hint">Marca las categorías que quieres incluir. Las preguntas se mezclan al azar entre ellas.</span>
+      </div>
+      <div class="cats" id="cats"></div>
+      <p class="warn" id="noneWarn" hidden>Marca al menos una categoría para poder jugar.</p>
+      <div class="row" id="allCatsRow"><button class="ghost" id="allCats">Marcar todas</button></div>
+
+      <div class="stack tight section-start">
+        <div class="label">Opciones · Nombres de lugar</div>
+        <span class="hint">Si marcas más de una, cada pregunta sale al azar con una de ellas. Al responder verás siempre las otras formas del nombre.</span>
+      </div>
+      <div class="cats" id="names"></div>
+      <p class="warn" id="noNamesWarn" hidden>Marca al menos una forma de escribir los nombres.</p>
+
+      <div class="row section-start">
+        <button class="primary" id="doneOptions">Listo</button>
+      </div>
+    </section>
+
+    <!-- Partida -->
+    <section id="play" class="screen play" hidden>
+      <div class="hud">
+        <div class="sheet" id="sheet">Hoja 01 <span>/ 10</span></div>
+        <div class="stats">
+          <span>Aciertos <b id="hits">0</b></span>
+          <span>Racha <b id="streak">0</b></span>
+        </div>
+      </div>
+      <div class="track" id="track"></div>
+      <div class="card" id="card">
+        <div class="q-cat" id="qcat"></div>
+        <p class="question" id="question"></p>
+        <div class="flag" id="flag" hidden></div>
+        <div class="opts" id="opts"></div>
+        <p class="sr-only" id="announce" aria-live="polite"></p>
+        <div class="feedback" id="feedback" hidden>
+          <span class="verdict" id="verdict"></span>
+          <p class="why" id="why"></p>
+          <p class="aka" id="aka" hidden></p>
+          <div class="row"><button class="primary" id="next">Siguiente</button></div>
+        </div>
+      </div>
+      <div class="row"><button class="ghost" id="quit">Salir al menú</button></div>
+    </section>
+
+    <!-- Final -->
+    <section id="end" class="screen end" hidden>
+      <div class="result">
+        <div class="big" id="score">0<small>/10</small></div>
+        <div class="result-text">
+          <div class="verdict-title" id="endTitle"></div>
+          <div class="hint" id="endSub"></div>
+        </div>
+      </div>
+      <div class="row">
+        <button class="primary" id="review">Repasar fallos</button>
+        <button class="ghost" id="again">Otra partida</button>
+        <button class="ghost" id="menu">Menú</button>
+      </div>
+      <div class="stack">
+        <div class="label" id="missLabel">Tus fallos</div>
+        <div class="misses" id="misses"></div>
+      </div>
+    </section>
+  </div>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>
