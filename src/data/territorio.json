@@ -20,7 +20,7 @@
       "nombre": {"oficial": "Principado de Asturias", "castellano": "Asturias"},
       "enFrase": {"oficial": "el Principado de Asturias", "castellano": "Asturias"},
       "capital": {"oficial": "Oviedo", "castellano": "Oviedo"},
-      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Oviedo». \nEn 1983 recuperó el nombre de Asturias, que viene del pueblo de los astures. \nLa comunidad se llama oficialmente Principado de Asturias por el título de Príncipe de Asturias, que lleva el heredero de la Corona desde 1388.",
+      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Oviedo».\nEn 1983 recuperó el nombre de Asturias, que viene del pueblo de los astures.\nLa comunidad se llama oficialmente Principado de Asturias por el título de Príncipe de Asturias, que lleva el heredero de la Corona desde 1388.",
       "curiosidadCapital": "Oviedo fue la capital del Reino de Asturias desde el reinado de Alfonso II, que empezó en 791, hasta el año 924, cuando la corte se trasladó a León."
     },
     {
@@ -37,14 +37,14 @@
       "tipo": "comunidad",
       "nombre": {"oficial": "Canarias", "castellano": "Canarias"},
       "capital": [{"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"}, {"oficial": "Las Palmas de Gran Canaria", "castellano": "Las Palmas de Gran Canaria"}],
-      "notaCapital": "{capital} comparten la capitalidad, y la Presidencia del Gobierno canario cambia de una a otra en cada legislatura. \nHasta 1927, cuando Canarias era una sola provincia, la única capital era Santa Cruz de Tenerife."
+      "notaCapital": "{capital} comparten la capitalidad, y la Presidencia del Gobierno canario cambia de una a otra en cada legislatura.\nHasta 1927, cuando Canarias era una sola provincia, la única capital era Santa Cruz de Tenerife."
     },
     {
       "id": "06",
       "tipo": "comunidad",
       "nombre": {"oficial": "Cantabria", "castellano": "Cantabria"},
       "capital": {"oficial": "Santander", "castellano": "Santander"},
-      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Santander», aunque el nombre de Cantabria se seguía usando comúnmente. \nCon la autonomía, en 1982, recuperó el antiguo nombre de Cantabria, que viene del pueblo de los cántabros."
+      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Santander», aunque el nombre de Cantabria se seguía usando comúnmente.\nCon la autonomía, en 1982, recuperó el antiguo nombre de Cantabria, que viene del pueblo de los cántabros."
     },
     {
       "id": "07",
@@ -60,14 +60,14 @@
       "nombre": {"oficial": "Castilla-La Mancha", "castellano": "Castilla-La Mancha"},
       "capital": {"oficial": "Toledo", "castellano": "Toledo"},
       "notaCapital": "Toledo es la sede de las Cortes y del Gobierno regional desde 1983, aunque Albacete es la ciudad más poblada y allí está el Tribunal Superior de Justicia.",
-      "curiosidadCapital": "Toledo fue la capital del reino visigodo desde el siglo VI hasta la conquista musulmana, en 711. \nSiglos después fue sede habitual de la corte de Castilla, hasta que Felipe II la llevó a Madrid en 1561."
+      "curiosidadCapital": "Toledo fue la capital del reino visigodo desde el siglo VI hasta la conquista musulmana, en 711.\nSiglos después fue sede habitual de la corte de Castilla, hasta que Felipe II la llevó a Madrid en 1561."
     },
     {
       "id": "09",
       "tipo": "comunidad",
       "nombre": {"oficial": "Cataluña", "castellano": "Cataluña"},
       "capital": {"oficial": "Barcelona", "castellano": "Barcelona"},
-      "curiosidadCapital": "Aunque hoy es la segunda ciudad más poblada de España, Barcelona solo fue sede oficial de un reino en época visigoda, durante el siglo VI. \nSiglos después, como capital del condado de Barcelona, pasó a formar parte de la Corona de Aragón, pero los reyes se coronaban en Zaragoza, capital del Reino de Aragón."
+      "curiosidadCapital": "Aunque hoy es la segunda ciudad más poblada de España, Barcelona solo fue sede oficial de un reino en época visigoda, durante el siglo VI.\nSiglos después, como capital del condado de Barcelona, pasó a formar parte de la Corona de Aragón, pero los reyes se coronaban en Zaragoza, capital del Reino de Aragón."
     },
     {
       "id": "10",
@@ -82,7 +82,7 @@
       "tipo": "comunidad",
       "nombre": {"oficial": "Extremadura", "castellano": "Extremadura"},
       "capital": {"oficial": "Mérida", "castellano": "Mérida"},
-      "notaCapital": "Mérida es la capital desde 1983, aunque no es capital de provincia y Badajoz es la ciudad más poblada. \nSe eligió por su importancia histórica, y se suele decir que también como punto intermedio entre Badajoz y Cáceres.",
+      "notaCapital": "Mérida es la capital desde 1983, aunque no es capital de provincia y Badajoz es la ciudad más poblada.\nSe eligió por su importancia histórica, y se suele decir que también como punto intermedio entre Badajoz y Cáceres.",
       "curiosidadCapital": "Mérida fue fundada en el año 25 a. C. con el nombre de Augusta Emerita, y fue la capital de la provincia romana de Lusitania."
     },
     {
@@ -90,7 +90,7 @@
       "tipo": "comunidad",
       "nombre": {"oficial": "Galicia", "castellano": "Galicia"},
       "capital": {"oficial": "Santiago de Compostela", "castellano": "Santiago de Compostela"},
-      "notaCapital": "En 1982 el Parlamento de Galicia eligió Santiago como sede de sus instituciones, aunque no es capital de provincia, Vigo es la ciudad más poblada y A Coruña había sido durante siglos la capital del antiguo Reino de Galicia. \nSe suele explicar por su peso histórico y religioso, como meta del Camino de Santiago, y por ser una opción neutral entre las grandes ciudades."
+      "notaCapital": "En 1982 el Parlamento de Galicia eligió Santiago como sede de sus instituciones, aunque no es capital de provincia, Vigo es la ciudad más poblada y A Coruña había sido durante siglos la capital del antiguo Reino de Galicia.\nSe suele explicar por su peso histórico y religioso, como meta del Camino de Santiago, y por ser una opción neutral entre las grandes ciudades."
     },
     {
       "id": "13",
@@ -123,14 +123,14 @@
       "nombre": {"oficial": "País Vasco", "castellano": "País Vasco"},
       "enFrase": {"oficial": "el País Vasco", "castellano": "el País Vasco"},
       "capital": {"oficial": "Vitoria-Gasteiz", "castellano": "Vitoria"},
-      "notaCapital": "En 1980, con la primera ley que aprobó, el Parlamento Vasco eligió {capital} como sede del Parlamento y del Gobierno, aunque Bilbao es la ciudad más poblada. \nLa Diputación de Álava ofreció edificios para las nuevas instituciones, y se suele explicar también por su posición central y por ser una opción neutral entre Bilbao y San Sebastián."
-     },
+      "notaCapital": "En 1980, con la primera ley que aprobó, el Parlamento Vasco eligió {capital} como sede del Parlamento y del Gobierno, aunque Bilbao es la ciudad más poblada.\nLa Diputación de Álava ofreció edificios para las nuevas instituciones, y se suele explicar también por su posición central y por ser una opción neutral entre Bilbao y San Sebastián."
+    },
     {
       "id": "17",
       "tipo": "comunidad",
       "nombre": {"oficial": "La Rioja", "castellano": "La Rioja"},
       "capital": {"oficial": "Logroño", "castellano": "Logroño"},
-      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Logroño», aunque la región se llamaba La Rioja desde la Edad Media. \nEn 1980 recuperó oficialmente ese nombre, que probablemente viene del río Oja."
+      "notaCapital": "En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Logroño», aunque la región se llamaba La Rioja desde la Edad Media.\nEn 1980 recuperó oficialmente ese nombre, que probablemente viene del río Oja."
     },
     {
       "id": "18",
@@ -138,7 +138,7 @@
       "nombre": {"oficial": "Ceuta", "castellano": "Ceuta"},
       "capital": {"oficial": "Ceuta", "castellano": "Ceuta"},
       "notaCapital": "Ceuta es una ciudad autónoma: la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Cádiz. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
-      "curiosidadCapital": "Portugal conquistó Ceuta en 1415. Felipe II heredó la corona portuguesa en 1580, y en 1640, cuando Portugal se separó, la ciudad eligió seguir con el rey español. \nA diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Ceuta llevaba más de tres siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
+      "curiosidadCapital": "Portugal conquistó Ceuta en 1415. Felipe II heredó la corona portuguesa en 1580, y en 1640, cuando Portugal se separó, la ciudad eligió seguir con el rey español.\nA diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Ceuta llevaba más de tres siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
     },
     {
       "id": "19",
@@ -146,7 +146,7 @@
       "nombre": {"oficial": "Melilla", "castellano": "Melilla"},
       "capital": {"oficial": "Melilla", "castellano": "Melilla"},
       "notaCapital": "Melilla es una ciudad autónoma: la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Málaga. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
-      "curiosidadCapital": "Una expedición enviada por el duque de Medina Sidonia tomó Melilla en 1497, en tiempos de los Reyes Católicos. \nA diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Melilla llevaba casi cinco siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
+      "curiosidadCapital": "Una expedición enviada por el duque de Medina Sidonia tomó Melilla en 1497, en tiempos de los Reyes Católicos.\nA diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Melilla llevaba casi cinco siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
     }
   ],
   "provincias": [
