@@ -11,7 +11,9 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 ## Reglas de trabajo
 
 - **Privacidad:** no uses nunca el correo electrónico del usuario en ningún sitio: commits, cabeceras, archivos ni servicios externos. Los commits van firmados como `Psikhe-code <350356863+Psikhe-code@users.noreply.github.com>`. No escribas su nombre real en ningún sitio.
-- **Cambios siempre en una rama y con un pull request.** El usuario revisa y mezcla él mismo; no subas nada directamente a `main`. Cada PR lleva una explicación clara en español de qué cambia y cómo se ha comprobado.
+- **Tus cambios, siempre en una rama y con un pull request.** El PR es el momento en que el usuario revisa lo que has hecho; él lo mezcla. No subas nada directamente a `main`. Cada PR lleva una explicación clara en español de qué cambia y cómo se ha comprobado, con lo que se vio al probarlo en el navegador (capturas si ayudan).
+- **Los cambios del usuario** pueden ir directamente a `main` si son pequeños, como corregir una nota o una errata; edita desde github.dev. Para cambios más grandes o que toquen varios archivos, recomiéndale una rama. Si un cambio suyo en `main` hace fallar los tests (la publicación se para), avísale y propón el arreglo en un PR.
+- **Enlaces de prueba por PR** (Netlify, Cloudflare Pages…): descartados por ahora, porque trabaja solo y aún no hay jugadores. Reconsiderarlo si eso cambia. Para probar una rama sin mezclarla, la opción es Codespaces.
 - **Si el usuario solo pregunta, responde sin cambiar nada.** Haz cambios cuando los pida.
 - El usuario está aprendiendo GitHub y programación. Explica en lenguaje claro, en español, sin dar por sabidos los términos técnicos.
 - Antes de abrir un PR: `npx tsc --noEmit`, `npm test` y probar el juego en un navegador (Playwright), en móvil y escritorio.
