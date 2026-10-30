@@ -1,0 +1,141 @@
+[
+  {
+    "pregunta": "¿Qué río pasa por Sevilla?",
+    "respuesta": "Guadalquivir",
+    "tipo": "rio",
+    "trampas": ["Guadiana", "Genil", "Tajo"],
+    "explicacion": "El Guadalquivir es navegable desde el mar hasta Sevilla."
+  },
+  {
+    "pregunta": "¿Qué río pasa por Zaragoza?",
+    "respuesta": "Ebro",
+    "tipo": "rio",
+    "trampas": ["Segre", "Jalón", "Duero"],
+    "explicacion": "El Ebro cruza Zaragoza, donde también desembocan el Gállego y el Huerva.",
+    "excluir": ["Gállego", "Huerva"]
+  },
+  {
+    "pregunta": "¿Qué río rodea la ciudad de Toledo?",
+    "respuesta": "Tajo",
+    "tipo": "rio",
+    "trampas": ["Guadiana", "Alberche", "Jarama"],
+    "explicacion": "El Tajo forma un meandro que rodea casi por completo el casco histórico de Toledo."
+  },
+  {
+    "pregunta": "¿Qué río pasa por la ciudad de Valladolid?",
+    "respuesta": "Pisuerga",
+    "tipo": "rio",
+    "trampas": ["Arlanzón", "Tormes", "Esla"],
+    "explicacion": "El Pisuerga atraviesa Valladolid y desemboca en el Duero poco después.",
+    "excluir": ["Esgueva", "Duero"]
+  },
+  {
+    "pregunta": "¿Qué río pasa por Salamanca?",
+    "respuesta": "Tormes",
+    "tipo": "rio",
+    "trampas": ["Duero", "Pisuerga", "Alagón"],
+    "explicacion": "El Tormes pasa bajo el puente romano de Salamanca."
+  },
+  {
+    "pregunta": "¿Qué río pasa por la ciudad de Madrid?",
+    "respuesta": "Manzanares",
+    "tipo": "rio",
+    "trampas": ["Tajo", "Henares", "Alberche"],
+    "explicacion": "El Manzanares cruza Madrid y desemboca en el Jarama.",
+    "excluir": ["Jarama"]
+  },
+  {
+    "pregunta": "¿Qué río pasa por Murcia?",
+    "respuesta": "Segura",
+    "tipo": "rio",
+    "trampas": ["Júcar", "Turia", "Almanzora"],
+    "explicacion": "El Segura atraviesa Murcia y desemboca en Guardamar del Segura (Alicante).",
+    "excluir": ["Guadalentín"]
+  },
+  {
+    "pregunta": "¿Qué río pasa por Zamora?",
+    "respuesta": "Duero",
+    "tipo": "rio",
+    "trampas": ["Esla", "Tormes", "Pisuerga"],
+    "explicacion": "El Duero cruza Zamora antes de entrar en Portugal."
+  },
+  {
+    "pregunta": "¿Qué río pasa por Ourense?",
+    "respuesta": "Miño",
+    "tipo": "rio",
+    "trampas": ["Sil", "Ulla", "Limia"],
+    "explicacion": "El Miño cruza Ourense; su afluente el Sil se le une aguas arriba."
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo de la Península Ibérica?",
+    "respuesta": "Tajo",
+    "tipo": "rio",
+    "trampas": ["Ebro", "Duero", "Guadiana"],
+    "explicacion": "El Tajo recorre unos 1.000 km y desemboca en Lisboa."
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo que discurre solo por España?",
+    "respuesta": "Ebro",
+    "tipo": "rio",
+    "trampas": ["Guadalquivir", "Júcar", "Segura"],
+    "explicacion": "El Ebro mide unos 910 km y no sale de España."
+  },
+  {
+    "pregunta": "¿En qué comunidad autónoma nace el Ebro?",
+    "respuesta": "Cantabria",
+    "tipo": "comunidad",
+    "trampas": ["Navarra", "La Rioja", "Aragón"],
+    "explicacion": "El Ebro nace en Fontibre, cerca de Reinosa (Cantabria)."
+  },
+  {
+    "pregunta": "¿Qué río forma un gran delta en la costa de Tarragona?",
+    "respuesta": "Ebro",
+    "tipo": "rio",
+    "trampas": ["Llobregat", "Segre", "Júcar"],
+    "explicacion": "El delta del Ebro es una de las mayores zonas húmedas del Mediterráneo occidental."
+  },
+  {
+    "pregunta": "¿En qué ciudad desemboca el Duero?",
+    "respuesta": "Oporto",
+    "tipo": null,
+    "trampas": ["Lisboa", "Coímbra", "Aveiro", "Braga", "Viana do Castelo", "Figueira da Foz", "Vigo"],
+    "explicacion": "El Duero entra en Portugal y desemboca en el Atlántico en Oporto."
+  },
+  {
+    "pregunta": "¿Qué río marca la frontera con Portugal en su tramo final y desemboca en Ayamonte?",
+    "respuesta": "Guadiana",
+    "tipo": "rio",
+    "trampas": ["Guadalquivir", "Tinto", "Odiel"],
+    "explicacion": "El Guadiana separa Huelva del Algarve hasta su desembocadura."
+  },
+  {
+    "pregunta": "¿Qué río nace en la sierra de Cazorla?",
+    "respuesta": "Guadalquivir",
+    "tipo": "rio",
+    "trampas": ["Guadiana", "Genil", "Júcar"],
+    "explicacion": "El Guadalquivir nace en la sierra de Cazorla (Jaén).",
+    "excluir": ["Segura"]
+  },
+  {
+    "pregunta": "¿Qué río pasa por Granada?",
+    "respuesta": "Genil",
+    "tipo": "rio",
+    "trampas": ["Guadalquivir", "Segura", "Guadiana"],
+    "explicacion": "Por Granada pasan el Genil y su afluente el Darro.",
+    "excluir": ["Darro"]
+  },
+  {
+    "pregunta": "¿Qué afluente del Ebro pasa por Lleida?",
+    "respuesta": "Segre",
+    "tipo": "rio",
+    "trampas": ["Jalón", "Huerva", "Jiloca"],
+    "explicacion": "El Segre es el principal afluente del Ebro por la izquierda."
+  },
+  {
+    "pregunta": "¿Qué río tenía su cauce en el centro de Valencia, hoy convertido en jardín?",
+    "respuesta": "Turia",
+    "tipo": "rio",
+    "trampas": ["Júcar", "Segura", "Mijares"],
+    "explicacion": "Tras la riada de 1957 el Turia se desvió al sur de la ciudad y su antiguo cauce es hoy un gran parque."
+  }
+]

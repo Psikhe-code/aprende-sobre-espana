@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200"><rect x="0" y="0" width="300" height="22.82" fill="#FCDD09"/><rect x="0" y="22.22" width="300" height="22.82" fill="#DA121A"/><rect x="0" y="44.44" width="300" height="22.82" fill="#FCDD09"/><rect x="0" y="66.66" width="300" height="22.82" fill="#DA121A"/><rect x="0" y="88.88" width="300" height="22.82" fill="#FCDD09"/><rect x="0" y="111.11" width="300" height="22.82" fill="#DA121A"/><rect x="0" y="133.33" width="300" height="22.82" fill="#FCDD09"/><rect x="0" y="155.55" width="300" height="22.82" fill="#DA121A"/><rect x="0" y="177.77" width="300" height="22.82" fill="#FCDD09"/><defs><clipPath id="clip"><path d="M0,0 H70 V50 Q70,85 35,95 Q0,85 0,50 Z"/></clipPath></defs>
+  <g transform="translate(55 58)">
+  <g clip-path="url(#clip)">
+  <rect x="0" y="0" width="35" height="47.5" fill="#F6C21C"/><circle cx="17.5" cy="26" r="11" fill="#2E7D32"/><rect x="16" y="33" width="3" height="12" fill="#6D4C2F"/>
+  <rect x="16" y="4" width="3" height="10" fill="#DA121A"/><rect x="12.5" y="7.5" width="10" height="3" fill="#DA121A"/>
+  <rect x="35" y="0" width="35" height="47.5" fill="#1D4E9E"/><rect x="38" y="3" width="10" height="3" fill="#fff"/><rect x="41.5" y="0" width="3" height="11" fill="#fff"/>
+  <rect x="0" y="47.5" width="35" height="47.5" fill="#FFFFFF"/><rect x="15" y="47.5" width="5" height="48" fill="#DA121A"/><rect x="0" y="66" width="35" height="5" fill="#DA121A"/>
+  <circle cx="7.5" cy="57" r="3" fill="#222"/><circle cx="27.5" cy="57" r="3" fill="#222"/><circle cx="7.5" cy="80" r="3" fill="#222"/><circle cx="27.5" cy="80" r="3" fill="#222"/>
+  <rect x="35" y="47.5" width="35" height="47.5" fill="#FCDD09"/><rect x="38.5" y="47.5" width="4" height="47.5" fill="#DA121A"/><rect x="46.5" y="47.5" width="4" height="47.5" fill="#DA121A"/><rect x="54.5" y="47.5" width="4" height="47.5" fill="#DA121A"/><rect x="62.5" y="47.5" width="4" height="47.5" fill="#DA121A"/>
+  </g>
+  <path d="M0,0 H70 V50 Q70,85 35,95 Q0,85 0,50 Z" fill="none" stroke="#7A5C10" stroke-width="2"/>
+  </g><g transform="translate(70 30) scale(1.35)">
+  <path d="M2,19 H28 L30,6 L22,12 L15,2 L8,12 L0,6 Z" fill="#F6C21C"/>
+  <circle cx="0" cy="5" r="2" fill="#F6C21C"/><circle cx="15" cy="1.5" r="2" fill="#F6C21C"/><circle cx="30" cy="5" r="2" fill="#F6C21C"/>
+  </g></svg>

@@ -1,0 +1,87 @@
+{
+  "País Vasco": {
+    "archivo": "pais-vasco.svg",
+    "trampas": ["Navarra", "Cantabria", "La Rioja"],
+    "nota": "La ikurriña: fondo rojo, aspa verde y cruz blanca."
+  },
+  "Castilla-La Mancha": {
+    "archivo": "castilla-la-mancha.svg",
+    "trampas": ["Castilla y León", "Región de Murcia", "Comunidad de Madrid"],
+    "nota": "Mitad carmesí con un castillo dorado y mitad blanca."
+  },
+  "Comunidad Valenciana": {
+    "archivo": "comunidad-valenciana.svg",
+    "trampas": ["Cataluña", "Islas Baleares", "Aragón"],
+    "nota": "La senyera con una franja azul coronada junto al mástil."
+  },
+  "Andalucía": {
+    "archivo": "andalucia.svg",
+    "trampas": ["Extremadura", "Cantabria", "La Rioja"],
+    "nota": "Franjas verde, blanca y verde. La versión oficial lleva el escudo en el centro."
+  },
+  "Asturias": {
+    "archivo": "asturias.svg",
+    "trampas": ["Galicia", "Canarias", "Navarra"],
+    "nota": "Azul con la Cruz de la Victoria en amarillo, de la que cuelgan la alfa y la omega."
+  },
+  "Castilla y León": {
+    "archivo": "castilla-y-leon.svg",
+    "trampas": ["Castilla-La Mancha", "Región de Murcia", "Navarra"],
+    "nota": "Cuartelada: castillos dorados sobre rojo y leones morados sobre blanco."
+  },
+  "Extremadura": {
+    "archivo": "extremadura.svg",
+    "trampas": ["Andalucía", "La Rioja", "Canarias"],
+    "nota": "Franjas verde, blanca y negra. La versión oficial lleva el escudo en el centro."
+  },
+  "Islas Baleares": {
+    "archivo": "islas-baleares.svg",
+    "trampas": ["Cataluña", "Aragón", "Comunidad Valenciana"],
+    "nota": "Las barras rojas y amarillas con un cuartel morado y un castillo blanco."
+  },
+  "Cataluña": {
+    "archivo": "cataluna.svg",
+    "trampas": ["Aragón", "Comunidad Valenciana", "Islas Baleares"],
+    "nota": "La senyera: cuatro barras rojas sobre fondo amarillo."
+  },
+  "Cantabria": {
+    "archivo": "cantabria.svg",
+    "trampas": ["Comunidad de Madrid", "Galicia", "País Vasco"],
+    "nota": "Dos franjas iguales, blanca y roja."
+  },
+  "Galicia": {
+    "archivo": "galicia.svg",
+    "trampas": ["Asturias", "Cantabria", "Canarias"],
+    "nota": "Blanca con una banda azul en diagonal. La versión oficial lleva el escudo en el centro."
+  },
+  "Aragón": {
+    "archivo": "aragon.svg",
+    "trampas": ["Cataluña", "Comunidad Valenciana", "Islas Baleares"],
+    "nota": "Las cuatro barras rojas sobre amarillo, con el escudo de Aragón junto al mástil."
+  },
+  "La Rioja": {
+    "archivo": "la-rioja.svg",
+    "trampas": ["Extremadura", "Andalucía", "Canarias"],
+    "nota": "Cuatro franjas: roja, blanca, verde y amarilla. La versión oficial lleva el escudo en el centro."
+  },
+  "Comunidad de Madrid": {
+    "archivo": "comunidad-de-madrid.svg",
+    "trampas": ["Región de Murcia", "Castilla-La Mancha", "Navarra"],
+    "nota": "Carmesí con siete estrellas blancas de cinco puntas."
+  },
+  "Región de Murcia": {
+    "archivo": "region-de-murcia.svg",
+    "trampas": ["Comunidad de Madrid", "Castilla-La Mancha", "Navarra"],
+    "nota": "Carmesí con cuatro castillos y siete coronas reales."
+  },
+  "Navarra": {
+    "archivo": "navarra.svg",
+    "trampas": ["País Vasco", "Región de Murcia", "Comunidad de Madrid"],
+    "nota": "Roja con el escudo de las cadenas de oro, coronado."
+  },
+  "Canarias": {
+    "archivo": "canarias.svg",
+    "trampas": ["La Rioja", "Extremadura", "Asturias"],
+    "nota": "Tres franjas verticales: blanca, azul y amarilla."
+  }
+}

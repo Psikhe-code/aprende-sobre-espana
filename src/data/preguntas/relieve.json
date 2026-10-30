@@ -1,0 +1,95 @@
+[
+  {
+    "pregunta": "¿Cuál es el pico más alto de España?",
+    "respuesta": "Teide",
+    "tipo": "pico",
+    "trampas": ["Mulhacén", "Aneto", "Veleta"],
+    "explicacion": "El Teide, en Tenerife, mide 3.715 m."
+  },
+  {
+    "pregunta": "¿Cuál es la cumbre más alta de la España peninsular?",
+    "respuesta": "Mulhacén",
+    "tipo": "pico",
+    "trampas": ["Aneto", "Veleta", "Almanzor"],
+    "explicacion": "El Mulhacén, en Sierra Nevada, alcanza 3.479 m. El Teide es más alto, pero está en Canarias.",
+    "excluir": ["Teide"]
+  },
+  {
+    "pregunta": "¿Cuál es el pico más alto de los Pirineos?",
+    "respuesta": "Aneto",
+    "tipo": "pico",
+    "trampas": ["Monte Perdido", "Posets", "Pica d'Estats"],
+    "explicacion": "El Aneto, en Huesca, mide 3.404 m."
+  },
+  {
+    "pregunta": "¿En qué sierra está el pico Almanzor, techo del Sistema Central?",
+    "respuesta": "Sierra de Gredos",
+    "tipo": "sierra",
+    "trampas": ["Sierra de Guadarrama", "Sierra de Ayllón", "Sierra de Francia"],
+    "explicacion": "El Almanzor, en Gredos (Ávila), mide 2.591 m."
+  },
+  {
+    "pregunta": "¿Qué sistema montañoso separa las cuencas del Duero y del Tajo?",
+    "respuesta": "Sistema Central",
+    "tipo": "sistema",
+    "trampas": ["Sistema Ibérico", "Montes de Toledo", "Sierra Morena"],
+    "explicacion": "El Sistema Central divide la Meseta en dos: la Submeseta Norte (Duero) y la Sur (Tajo y Guadiana)."
+  },
+  {
+    "pregunta": "¿Qué cordillera separa la Meseta del valle del Guadalquivir?",
+    "respuesta": "Sierra Morena",
+    "tipo": "sistema",
+    "trampas": ["Cordillera Penibética", "Montes de Toledo", "Sistema Central"],
+    "explicacion": "Sierra Morena es el borde sur de la Meseta."
+  },
+  {
+    "pregunta": "¿Qué separa las cuencas del Tajo y del Guadiana?",
+    "respuesta": "Montes de Toledo",
+    "tipo": "sistema",
+    "trampas": ["Sierra Morena", "Sistema Central", "Sistema Ibérico"],
+    "explicacion": "Los Montes de Toledo dividen la Submeseta Sur en dos cuencas."
+  },
+  {
+    "pregunta": "¿A qué cordillera pertenecen los Picos de Europa?",
+    "respuesta": "Cordillera Cantábrica",
+    "tipo": "sistema",
+    "trampas": ["Pirineos", "Sistema Ibérico", "Montes de León"],
+    "explicacion": "Los Picos de Europa son el macizo más alto de la Cordillera Cantábrica."
+  },
+  {
+    "pregunta": "¿Cuál es la cumbre más alta del Sistema Ibérico?",
+    "respuesta": "Moncayo",
+    "tipo": "pico",
+    "trampas": ["Pico de Urbión", "San Lorenzo", "Javalambre"],
+    "explicacion": "El Moncayo, entre Zaragoza y Soria, mide 2.314 m."
+  },
+  {
+    "pregunta": "¿Cuál es el pico más alto de la Comunidad de Madrid?",
+    "respuesta": "Peñalara",
+    "tipo": "pico",
+    "trampas": ["Bola del Mundo", "Siete Picos", "La Maliciosa"],
+    "explicacion": "Peñalara, en la sierra de Guadarrama, mide 2.428 m."
+  },
+  {
+    "pregunta": "¿Qué gran unidad de relieve ocupa el centro de la Península?",
+    "respuesta": "La Meseta Central",
+    "tipo": null,
+    "trampas": [
+      "La depresión del Ebro",
+      "El Macizo Galaico",
+      "Las Cordilleras Béticas",
+      "La depresión del Guadalquivir",
+      "El Sistema Ibérico",
+      "Los Pirineos",
+      "La Cordillera Cantábrica"
+    ],
+    "explicacion": "La Meseta tiene una altitud media de unos 600–700 m."
+  },
+  {
+    "pregunta": "¿Cuál es el mayor lago de origen glaciar de la Península?",
+    "respuesta": "Lago de Sanabria",
+    "tipo": "lago",
+    "trampas": ["Lago de Enol", "Laguna Grande de Gredos", "Estany de Sant Maurici"],
+    "explicacion": "El lago de Sanabria está en Zamora."
+  }
+]

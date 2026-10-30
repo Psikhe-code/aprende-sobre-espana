@@ -1,0 +1,66 @@
+[
+  {
+    "pregunta": "¿Qué capital de provincia está a mayor altitud?",
+    "respuesta": "Ávila",
+    "tipo": "capital",
+    "trampas": ["Soria", "Teruel", "Segovia"],
+    "explicacion": "Ávila está a unos 1.130 m sobre el nivel del mar, la capital de provincia más alta de España."
+  },
+  {
+    "pregunta": "¿Cuál es la provincia más extensa de España?",
+    "respuesta": "Badajoz",
+    "tipo": "provincia",
+    "trampas": ["Cáceres", "Ciudad Real", "Zaragoza"],
+    "explicacion": "Badajoz ocupa unos 21.770 km². Le sigue Cáceres, también en Extremadura."
+  },
+  {
+    "pregunta": "¿Cuál es la provincia más pequeña de España?",
+    "respuesta": "Gipuzkoa",
+    "tipo": "provincia",
+    "trampas": ["Bizkaia", "Álava", "Pontevedra"],
+    "explicacion": "Gipuzkoa tiene unos 1.980 km²."
+  },
+  {
+    "pregunta": "¿Cuál es la provincia menos poblada de España?",
+    "respuesta": "Soria",
+    "tipo": "provincia",
+    "trampas": ["Teruel", "Zamora", "Segovia"],
+    "explicacion": "Soria ronda los 90.000 habitantes."
+  },
+  {
+    "pregunta": "¿Cuántas provincias tiene España?",
+    "respuesta": "50",
+    "tipo": "num",
+    "trampas": ["48", "52", "47"],
+    "explicacion": "España tiene 50 provincias, además de las ciudades autónomas de Ceuta y Melilla.",
+    "rango": [44, 56]
+  },
+  {
+    "pregunta": "¿En qué provincia está el desierto de Tabernas?",
+    "respuesta": "Almería",
+    "tipo": "provincia",
+    "trampas": ["Murcia", "Granada", "Alicante"],
+    "explicacion": "Tabernas, en Almería, es uno de los pocos paisajes semidesérticos de Europa y escenario de muchos wésterns."
+  },
+  {
+    "pregunta": "¿En qué provincia están Las Médulas, antiguas minas de oro romanas?",
+    "respuesta": "León",
+    "tipo": "provincia",
+    "trampas": ["Asturias", "Ourense", "Zamora"],
+    "explicacion": "Las Médulas están en El Bierzo (León) y son Patrimonio de la Humanidad."
+  },
+  {
+    "pregunta": "¿En qué provincia está el Parque Nacional de Ordesa y Monte Perdido?",
+    "respuesta": "Huesca",
+    "tipo": "provincia",
+    "trampas": ["Lleida", "Navarra", "Teruel"],
+    "explicacion": "Ordesa está en el Pirineo de Huesca, en Aragón."
+  },
+  {
+    "pregunta": "¿A qué provincia pertenece Llívia, un municipio rodeado por territorio francés?",
+    "respuesta": "Girona",
+    "tipo": "provincia",
+    "trampas": ["Lleida", "Huesca", "Navarra"],
+    "explicacion": "Llívia es un enclave de la provincia de Girona, en la Cerdaña."
+  }
+]

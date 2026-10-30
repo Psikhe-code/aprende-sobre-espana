@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200"><rect x="0" y="0" width="300" height="200" fill="#0071BC"/><g fill="#F6C21C">
+  <rect x="113" y="28" width="18" height="150"/><rect x="62" y="58" width="120" height="18"/>
+  <path d="M106,28 H138 L131,40 H113 Z"/><path d="M106,178 H138 L131,166 H113 Z"/>
+  <path d="M62,51 V83 L74,76 V58 Z"/><path d="M182,51 V83 L170,76 V58 Z"/>
+  </g>
+  <path d="M86,76 V92 M158,76 V92" stroke="#F6C21C" stroke-width="2"/>
+  <text x="86" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="#F6C21C">Α</text>
+  <text x="158" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="#F6C21C">Ω</text></svg>

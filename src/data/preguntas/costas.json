@@ -1,0 +1,131 @@
+[
+  {
+    "pregunta": "¿En qué provincia está la Costa del Sol?",
+    "respuesta": "Málaga",
+    "tipo": "provincia",
+    "trampas": ["Almería", "Granada", "Huelva"],
+    "explicacion": "La Costa del Sol recorre el litoral de Málaga.",
+    "excluir": ["Cádiz"]
+  },
+  {
+    "pregunta": "¿En qué provincia está la Costa Brava?",
+    "respuesta": "Girona",
+    "tipo": "provincia",
+    "trampas": ["Barcelona", "Tarragona", "Castellón"],
+    "explicacion": "La Costa Brava va de Blanes a la frontera francesa."
+  },
+  {
+    "pregunta": "¿En qué provincia está la Costa Blanca?",
+    "respuesta": "Alicante",
+    "tipo": "provincia",
+    "trampas": ["Murcia", "Valencia", "Almería"],
+    "explicacion": "La Costa Blanca es el litoral de Alicante."
+  },
+  {
+    "pregunta": "¿Qué provincias baña la Costa de la Luz?",
+    "respuesta": "Cádiz y Huelva",
+    "tipo": null,
+    "trampas": [
+      "Málaga y Granada",
+      "Almería y Murcia",
+      "Valencia y Castellón",
+      "Pontevedra y A Coruña",
+      "Girona y Barcelona",
+      "Almería y Granada",
+      "Murcia y Alicante"
+    ],
+    "explicacion": "La Costa de la Luz es el litoral atlántico andaluz."
+  },
+  {
+    "pregunta": "¿En qué provincia está la Costa Dorada?",
+    "respuesta": "Tarragona",
+    "tipo": "provincia",
+    "trampas": ["Barcelona", "Girona", "Castellón"],
+    "explicacion": "La Costa Dorada (Costa Daurada) es el litoral de Tarragona."
+  },
+  {
+    "pregunta": "¿En qué comunidad autónoma está la Costa Cálida?",
+    "respuesta": "Región de Murcia",
+    "tipo": "comunidad",
+    "trampas": ["Comunidad Valenciana", "Andalucía", "Cataluña"],
+    "explicacion": "La Costa Cálida es el litoral murciano, donde está el Mar Menor."
+  },
+  {
+    "pregunta": "¿En qué provincia está la Costa Tropical?",
+    "respuesta": "Granada",
+    "tipo": "provincia",
+    "trampas": ["Málaga", "Almería", "Cádiz"],
+    "explicacion": "La Costa Tropical es el litoral de Granada, con cultivos de mango y aguacate."
+  },
+  {
+    "pregunta": "¿Cuál es la isla más grande de España?",
+    "respuesta": "Mallorca",
+    "tipo": "isla",
+    "trampas": ["Tenerife", "Gran Canaria", "Fuerteventura"],
+    "explicacion": "Mallorca tiene unos 3.640 km²; Tenerife, unos 2.030 km²."
+  },
+  {
+    "pregunta": "¿Cuál es la isla más grande de Canarias?",
+    "respuesta": "Tenerife",
+    "tipo": "islaCan",
+    "trampas": ["Gran Canaria", "Fuerteventura", "Lanzarote"],
+    "explicacion": "Tenerife es la mayor y la más poblada del archipiélago."
+  },
+  {
+    "pregunta": "¿Cuántas islas habitadas tiene Canarias?",
+    "respuesta": "8",
+    "tipo": "num",
+    "trampas": ["7", "6", "9"],
+    "explicacion": "Desde 2018 La Graciosa está reconocida como la octava isla.",
+    "rango": [4, 12]
+  },
+  {
+    "pregunta": "¿Cuál es la isla balear más meridional?",
+    "respuesta": "Formentera",
+    "tipo": "islaBal",
+    "trampas": ["Ibiza", "Menorca", "Mallorca"],
+    "explicacion": "Formentera está al sur de Ibiza."
+  },
+  {
+    "pregunta": "¿En qué isla está el Parque Nacional de Timanfaya?",
+    "respuesta": "Lanzarote",
+    "tipo": "islaCan",
+    "trampas": ["Fuerteventura", "La Palma", "El Hierro"],
+    "explicacion": "Timanfaya se formó con las erupciones de 1730–1736."
+  },
+  {
+    "pregunta": "¿Qué cabo gallego se consideraba el fin del mundo conocido?",
+    "respuesta": "Finisterre",
+    "tipo": "cabo",
+    "trampas": ["Ortegal", "Estaca de Bares", "Cabo de Peñas"],
+    "explicacion": "Su nombre viene del latín finis terrae, 'fin de la tierra'."
+  },
+  {
+    "pregunta": "¿Cuál es el punto más meridional de la Europa continental?",
+    "respuesta": "Punta de Tarifa",
+    "tipo": "cabo",
+    "trampas": ["Cabo de Gata", "Cabo Trafalgar", "Punta Europa"],
+    "explicacion": "La punta de Tarifa (Cádiz) mira a Marruecos, a unos 14 km."
+  },
+  {
+    "pregunta": "¿Junto a qué ciudad está la Albufera, gran laguna litoral?",
+    "respuesta": "Valencia",
+    "tipo": "ciudad",
+    "trampas": ["Alicante", "Castellón de la Plana", "Tarragona"],
+    "explicacion": "La Albufera está a unos 10 km al sur de Valencia."
+  },
+  {
+    "pregunta": "¿En qué comunidad autónoma está el Mar Menor?",
+    "respuesta": "Región de Murcia",
+    "tipo": "comunidad",
+    "trampas": ["Comunidad Valenciana", "Andalucía", "Islas Baleares"],
+    "explicacion": "El Mar Menor es una laguna salada separada del Mediterráneo por La Manga."
+  },
+  {
+    "pregunta": "¿En qué comunidad está el Parque Nacional de Doñana?",
+    "respuesta": "Andalucía",
+    "tipo": "comunidad",
+    "trampas": ["Extremadura", "Región de Murcia", "Comunidad Valenciana"],
+    "explicacion": "Doñana se extiende por Huelva, Sevilla y Cádiz, junto a la desembocadura del Guadalquivir."
+  }
+]

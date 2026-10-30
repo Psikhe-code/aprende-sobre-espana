@@ -1,0 +1,67 @@
+[
+  {
+    "pregunta": "¿Cuántas comunidades autónomas hay en España?",
+    "respuesta": "17",
+    "tipo": "num",
+    "trampas": ["15", "16", "19"],
+    "explicacion": "Hay 17 comunidades autónomas y dos ciudades autónomas: Ceuta y Melilla.",
+    "rango": [12, 22]
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene más provincias?",
+    "respuesta": "Castilla y León",
+    "tipo": "comunidad",
+    "trampas": ["Andalucía", "Castilla-La Mancha", "Cataluña"],
+    "explicacion": "Castilla y León tiene 9 provincias; Andalucía, 8."
+  },
+  {
+    "pregunta": "¿Cuál es la comunidad autónoma más extensa?",
+    "respuesta": "Castilla y León",
+    "tipo": "comunidad",
+    "trampas": ["Andalucía", "Castilla-La Mancha", "Aragón"],
+    "explicacion": "Castilla y León ocupa unos 94.000 km², casi una quinta parte de España."
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene menos habitantes?",
+    "respuesta": "La Rioja",
+    "tipo": "comunidad",
+    "trampas": ["Cantabria", "Navarra", "Asturias"],
+    "explicacion": "La Rioja ronda los 320.000 habitantes. Solo las ciudades autónomas de Ceuta y Melilla tienen menos."
+  },
+  {
+    "pregunta": "¿Cuántas provincias tiene Andalucía?",
+    "respuesta": "8",
+    "tipo": "num",
+    "trampas": ["6", "7", "9"],
+    "explicacion": "Almería, Cádiz, Córdoba, Granada, Huelva, Jaén, Málaga y Sevilla.",
+    "rango": [4, 12]
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene más habitantes?",
+    "respuesta": "Andalucía",
+    "tipo": "comunidad",
+    "trampas": ["Cataluña", "Comunidad de Madrid", "Comunidad Valenciana"],
+    "explicacion": "Andalucía supera los 8,5 millones de habitantes, por delante de Cataluña y Madrid."
+  },
+  {
+    "pregunta": "¿Cuál de estas comunidades no tiene costa?",
+    "respuesta": ["Aragón", "Castilla y León", "Castilla-La Mancha", "Extremadura", "Comunidad de Madrid", "Navarra", "La Rioja"],
+    "tipo": "comCostera",
+    "explicacion": "Las comunidades sin mar son Aragón, Castilla y León, Castilla-La Mancha, Extremadura, Madrid, Navarra y La Rioja."
+  },
+  {
+    "pregunta": "¿Cuáles son las dos ciudades autónomas de España?",
+    "respuesta": "Ceuta y Melilla",
+    "tipo": null,
+    "trampas": [
+      "Ceuta y Llívia",
+      "Melilla y Tarifa",
+      "Ceuta y Algeciras",
+      "Llívia y Tarifa",
+      "Melilla y Almería",
+      "Ceuta y Gibraltar",
+      "Melilla y Cartagena"
+    ],
+    "explicacion": "Ceuta y Melilla están en el norte de África y tienen estatuto de ciudad autónoma."
+  }
+]
