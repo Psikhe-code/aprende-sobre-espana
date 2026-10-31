@@ -155,14 +155,21 @@ Solo están las de las provincias que tienen una bandera **aprobada formalmente 
 
 En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Commons, enlace, autor y licencia. Algunas son de dominio público o CC0. Otras tienen licencia **CC BY** o **CC BY-SA**, que permiten usarlas citando al autor; por eso el juego tiene una pantalla de **Créditos** (enlace en la pantalla de inicio) que lista todas. El esquema y los tests exigen autor y enlace a la licencia cuando la licencia pide atribución.
 
-### Actualizar o cambiar una bandera
+## Descargas con GitHub Actions
 
-La descarga desde aquí no se hace a mano: hay un proceso automático en GitHub (`scripts/descargar-banderas.py` y `.github/workflows/descargar-banderas.yml`).
+Algunas webs no se pueden abrir desde el entorno donde trabaja Claude (Wikimedia limita mucho las peticiones, y muchas webs oficiales las bloquean). Para eso hay dos procesos automáticos en GitHub. Los dos funcionan igual: se crea una **rama temporal** desde `main`, se edita la lista del script, se sube la rama, GitHub descarga los archivos y los guarda en esa misma rama. Cuando ya se han leído, la rama se borra. **Estas ramas no se mezclan nunca con `main`**: lo que haga falta se copia a una rama normal con su pull request.
+
+| Proceso | Rama temporal | Script | Para qué | Dónde guarda |
+| --- | --- | --- | --- | --- |
+| Descargar banderas | `banderas-descarga` | `scripts/descargar-banderas.py` | Archivos de Wikimedia Commons, con su ficha, autor y licencia: banderas, escudos o cualquier otra imagen | `banderas-wikimedia/` |
+| Descargar páginas | `paginas-descarga` | `scripts/descargar-paginas.py` | Páginas web (webs oficiales, Flags of the World, boletines, Wikipedia…) y, si se pide, las imágenes y PDF que enlazan | `paginas-descargadas/` |
+
+### Actualizar, cambiar o añadir una bandera
 
 1. Crea la rama `banderas-descarga` desde `main`.
-2. Si quieres otra versión de alguna bandera, cambia su nombre de archivo en la lista `CANDIDATOS` del script.
-3. Sube la rama. GitHub descarga los archivos, con su ficha, licencia y autor, y los guarda en la carpeta `banderas-wikimedia/` de esa misma rama.
-4. Revisa las candidatas, copia la elegida a `src/data/banderas/` con el mismo nombre que la anterior, actualiza su `fuente` (y su `descripcion` y `significado` si cambia el diseño) en `banderas.json`, y borra `banderas-wikimedia/` antes de mezclar.
+2. Pon en la lista `CANDIDATOS` del script los nombres de los archivos de Commons que quieras (también escudos, como «Coat of Arms of Teruel Province.svg»). La clave de cada grupo es libre: el código de la comunidad («12»), «p» y el código de la provincia («p44»)…
+3. Sube la rama. GitHub descarga los archivos y los guarda en `banderas-wikimedia/` de esa rama.
+4. Revisa las candidatas con su versión oficial. En una rama normal, copia la elegida a `src/data/banderas/` (las de provincia, convertidas a WebP, a `src/data/banderas/provincias/`) y actualiza su `fuente` (y su `descripcion` y `significado` si cambia el diseño) en el JSON. Después, borra la rama temporal.
 
 ## Tests
 
