@@ -105,7 +105,8 @@
           "id",
           "nombre",
           "capital",
-          "comunidad"
+          "comunidad",
+          "vecinas"
         ],
         "properties": {
           "id": {
@@ -120,6 +121,14 @@
           "comunidad": {
             "description": "Código INE de su comunidad o ciudad autónoma.",
             "$ref": "#/definitions/codigo"
+          },
+          "vecinas": {
+            "description": "Códigos INE de las provincias con las que tiene frontera terrestre (vacío en las islas, Ceuta y Melilla). Calculado con los mapas del Instituto Geográfico Nacional (paquete es-atlas). Sirve para elegir las trampas de la categoría Divisiones.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/codigo"
+            },
+            "uniqueItems": true
           },
           "trampas": {
             "description": "Solo en las provincias cuya capital no se llama como la provincia, y es lo que crea la pregunta de su capital. Códigos INE de provincias cercanas o que se confunden con ella: su capital y sus «ciudades» salen como trampa. En cada partida se sortean algunas.",

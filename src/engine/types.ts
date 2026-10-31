@@ -73,6 +73,8 @@ export const NAME_STYLES: NameStyle[] = ["oficial", "castellano"];
 export interface Category {
   id: string;
   name: string;
+  /** Cómo se llama en la partida según el territorio de la pregunta: «Capitales de provincia». */
+  labels: Record<Territorio, string>;
   /** Todas sus preguntas, de todos los territorios, en una forma de los nombres. */
   questions: (style: NameStyle) => Question[];
 }

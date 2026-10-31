@@ -37,9 +37,9 @@ const NAME_LABELS: Record<NameStyle, { name: string; example: string; short: str
 };
 
 /** Cómo se presenta cada territorio en Opciones, y qué se añade al nombre de la categoría en la partida. */
-const TERRITORIO_LABELS: Record<Territorio, { name: string; example: string; short: string; suffix: string }> = {
-  comunidad: { name: "Comunidades", example: "Las 17 comunidades y las ciudades autónomas de Ceuta y Melilla", short: "comunidades", suffix: "autonómicas" },
-  provincia: { name: "Provincias", example: "Por ahora, las capitales que no se llaman como su provincia", short: "provincias", suffix: "de provincia" }
+const TERRITORIO_LABELS: Record<Territorio, { name: string; example: string; short: string }> = {
+  comunidad: { name: "Comunidades", example: "Las 17 comunidades y las ciudades autónomas de Ceuta y Melilla, y de qué comunidad es cada provincia", short: "comunidades" },
+  provincia: { name: "Provincias", example: "Por ahora, las capitales que no se llaman como su provincia", short: "provincias" }
 };
 
 /** Botón de casilla para Opciones: marcado o no, con título y descripción. */
@@ -175,7 +175,7 @@ export function startApp(): App {
     $("sheet").replaceChildren(`Hoja ${pad(g.index + 1)} `, el("span", "", `/ ${pad(g.total)}`));
     $("hits").textContent = String(g.hits);
     $("streak").textContent = String(g.streak);
-    $("qcat").textContent = (g.review ? "Repaso · " : "") + `${categoryById(q.category)?.name ?? ""} ${TERRITORIO_LABELS[q.territorio].suffix}`;
+    $("qcat").textContent = (g.review ? "Repaso · " : "") + (categoryById(q.category)?.labels[q.territorio] ?? "");
     $("question").textContent = q.text;
 
     const flag = $("flag");

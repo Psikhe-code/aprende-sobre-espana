@@ -33,6 +33,8 @@ export interface Provincia {
   capital: Formas;
   /** Código INE de su comunidad o ciudad autónoma. */
   comunidad: string;
+  /** Códigos de las provincias con las que tiene frontera terrestre (vacío en las islas, Ceuta y Melilla). */
+  vecinas: string[];
   /**
    * Solo en las provincias cuya capital no se llama como la provincia (y es lo que crea la pregunta):
    * códigos de provincias cercanas o que se confunden. Su capital y sus ciudades salen como trampa.
@@ -61,6 +63,23 @@ export function autonomia(id: string): Comunidad {
 }
 
 export const provinciasDe = (id: string) => PROVINCIAS.filter((p) => p.comunidad === id);
+
+const provinciaPorId = new Map(PROVINCIAS.map((p) => [p.id, p]));
+export function provincia(id: string): Provincia {
+  const p = provinciaPorId.get(id);
+  if (!p) throw new Error(`No existe la provincia con código ${id}`);
+  return p;
+}
+
+/**
+ * Comunidades o ciudades autónomas que tienen frontera con una lista de provincias,
+ * sin contar la comunidad indicada. En orden de código.
+ */
+export function comunidadesVecinas(provincias: Provincia[], salvo: string): string[] {
+  const ids = new Set(provincias.flatMap((p) => p.vecinas.map((v) => provincia(v).comunidad)));
+  ids.delete(salvo);
+  return [...ids].sort();
+}
 
 /** Las capitales de una comunidad, cada una con todas sus formas. */
 export const capitalesDe = (c: Comunidad): Formas[] => ([] as Formas[]).concat(c.capital);
