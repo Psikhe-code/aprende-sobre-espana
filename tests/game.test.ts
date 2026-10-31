@@ -3,7 +3,7 @@ import { CATEGORY_IDS } from "../src/engine/categories";
 import { buildRound, rebuild, roundSize, OPTION_COUNTS, ROUND_LENGTH } from "../src/engine/round";
 import { PROVINCIAS, poolsFor } from "../src/engine/territory";
 import { BANDERAS_PROVINCIAS } from "../src/engine/questions";
-import { comboKey, loadState } from "../src/engine/storage";
+import { comboKey, loadState, STORAGE_KEY } from "../src/engine/storage";
 import { GameSession, applyRecord } from "../src/engine/game";
 import type { RoundQuestion } from "../src/engine/types";
 
@@ -200,7 +200,7 @@ describe("récords", () => {
 
 describe("guardado", () => {
   const conGuardado = (datos: unknown, fn: () => void) => {
-    const almacen = new Map([["geoquiz-es-v2", JSON.stringify(datos)]]);
+    const almacen = new Map([[STORAGE_KEY, JSON.stringify(datos)]]);
     const previo = (globalThis as { localStorage?: unknown }).localStorage;
     (globalThis as { localStorage?: unknown }).localStorage = {
       getItem: (k: string) => almacen.get(k) ?? null,

@@ -1,17 +1,23 @@
 import { defineConfig } from "vitest/config";
 import { VitePWA } from "vite-plugin-pwa";
+import paquete from "./package.json";
 
 export default defineConfig({
   // Rutas relativas: el mismo build sirve en un servidor, en GitHub Pages o dentro de la app de Android.
   base: "./",
+  // Versión (la de package.json) y momento de la publicación: se muestran al pie de la pantalla de inicio.
+  define: {
+    __VERSION__: JSON.stringify(paquete.version),
+    __PUBLICADO__: JSON.stringify(new Date().toISOString())
+  },
   plugins: [
     VitePWA({
       // "prompt": la versión nueva espera a que el juego decida cuándo aplicarla (ver src/main.ts).
       registerType: "prompt",
       includeAssets: ["icon.svg"],
       manifest: {
-        name: "Geoquiz España",
-        short_name: "Geoquiz",
+        name: "Aprende sobre España",
+        short_name: "Aprende España",
         description: "Juego de preguntas sobre geografía de España",
         lang: "es",
         start_url: "./",

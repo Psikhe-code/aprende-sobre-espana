@@ -1,4 +1,4 @@
-# Geoquiz España
+# Aprende sobre España
 
 Juego de preguntas sobre geografía de España. Partidas de 10 preguntas con opciones, explicación de cada respuesta y repaso de fallos.
 
@@ -141,7 +141,9 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 **Modo sin conexión.** Al abrir el juego se guarda en el dispositivo solo lo imprescindible: código, estilos, fuentes e iconos (unos 400 KB). Las banderas no se descargan todas de golpe: cada una se guarda la primera vez que sale, así que sin conexión funcionan las que ya se han visto. Cuando sea una app de Android, irán todas dentro de la app. Se configura en `vite.config.ts`.
 
-**Bandera siguiente por adelantado.** Mientras se responde una pregunta, el juego descarga y dibuja por adelantado la bandera de la siguiente (`flags.ts`), para que aparezca al instante aunque la conexión o el móvil sean lentos.
+**Bandera siguiente por adelantado.** Mientras se responde una pregunta, el juego descarga y dibuja por adelantado la bandera de la siguiente (`flags.ts`), para que aparezca al instante aunque la conexión o el móvil sean lentos. La de la primera pregunta también: la partida se prepara ya en la pantalla de inicio (y al terminar la anterior, para «Jugar otra vez»).
+
+**Versión.** Al pie de la pantalla de inicio se ve la versión (la de `package.json`) y cuándo se publicó, para saber si ya está aplicada la última. Cada cambio sube la versión: en esta primera etapa, el último número (0.1.1, 0.1.2…); el del medio, en hitos grandes. Se escribe al construir el juego (`define` en `vite.config.ts`).
 
 **Actualizaciones.** Cuando se publica una versión nueva, se descarga en segundo plano y se aplica al volver al inicio u opciones, nunca a mitad de partida (`main.ts`).
 
@@ -209,7 +211,7 @@ Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las tr
 - **App de Android** con [Capacitor](https://capacitorjs.com):
   ```bash
   npm install @capacitor/core @capacitor/cli @capacitor/android
-  npx cap init "Geoquiz España" es.geoquiz.app --web-dir dist
+  npx cap init "Aprende sobre España" es.aprendesobreespana.app --web-dir dist
   npx cap add android
   npm run build && npx cap sync android
   npx cap open android     # abre Android Studio para compilar y probar

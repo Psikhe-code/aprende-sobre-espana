@@ -4,7 +4,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 
 ## Proyecto
 
-- **Aprende sobre España** (repositorio `Psikhe-code/aprende-sobre-espana`). El juego se llama todavía **Geoquiz España** por dentro (título, icono, manifiesto); renombrarlo está pendiente de decidir con el usuario.
+- **Aprende sobre España** (repositorio `Psikhe-code/aprende-sobre-espana`). El juego se llamaba antes «Geoquiz España»; al cambiar el nombre también cambió la clave del guardado (ahora `aprende-sobre-espana`), y el usuario aceptó perder los récords de entonces.
 - Juego de preguntas tipo test, hecho con TypeScript + Vite, publicado en GitHub Pages y pensado para acabar como app de Android con Capacitor.
 - Ahora tiene tres categorías, **Capitales**, **Banderas** y **Divisiones**, y una opción de **territorio** (comunidades, provincias o las dos) que decide qué preguntas de cada categoría salen. De provincias solo hay, por ahora, las 8 capitales que no se llaman como su provincia, con trampas que se sortean en cada partida: la capital y las ciudades conocidas de provincias cercanas, y las de la propia provincia (en Asturias: Santander, Torrelavega, León, Ponferrada, Lugo, A Coruña, Ferrol, Gijón, Avilés…). Las trampas tienen que ser nombres relativamente conocidos que de verdad confundan; en las vascas, todas las ciudades vascas. Además, siempre sale como opción el nombre de la provincia («Asturias»): decidido así, aunque el jugador acabe sabiendo que nunca es la respuesta, porque esas excepciones son justo lo que se quiere enseñar. La rama `prototipo-v0.1` guarda el prototipo anterior con 8 categorías (provincias, ríos, relieve, costas…) para recuperarlas más adelante, ya con los criterios de abajo.
 
@@ -22,6 +22,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
   - Pantalla o diseño: lo anterior y probar el juego en un navegador (Playwright), en móvil y escritorio, con las capturas justas.
 - **Los tests comprueban reglas, no copian contenido:** las expectativas se calculan a partir de los datos («las trampas son las capitales de las provincias de `trampas`»), no se escriben a mano («las trampas de Asturias son Santander, León…»). Así, cambiar una nota o una trampa en los JSON no obliga a tocar los tests. Los textos que genera el código (notas automáticas) sí se comprueban palabra por palabra.
 - Interfaz, datos, documentación y mensajes de commit, en español.
+- **Versión:** cada PR sube la versión de `package.json` (`npm version X.Y.Z --no-git-tag-version`) y el PR dice cuál trae. Acordado con el usuario: en esta primera etapa todo va en 0.1.x, subiendo solo el último número en cada PR; el del medio, en hitos grandes (recuperar las categorías del prototipo, la app de Android…); 1.0, cuando el usuario lo dé por terminado. La versión y la fecha de publicación se ven al pie del inicio.
 
 ## Decisiones sobre los datos
 
@@ -54,8 +55,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 - Banderas de provincia: hay 15, las aprobadas formalmente y en uso público (criterio del usuario). Fuera quedan Barcelona (aprobada en 1971, casi sin uso), Lugo (en uso, pero su aprobación de 2006 nunca se publicó) y las que solo se usan sin aprobación (Ávila, Soria, Palencia, Salamanca, Valladolid, León, Huesca, Zaragoza, Málaga, Pontevedra…). Si alguna se aprueba o se confirma su uso, se puede añadir.
 - Preguntas al revés, como opción, cuando tenga sentido: de la capital a la comunidad, o de la comunidad a elegir entre varias banderas (esta necesita opciones con imagen).
 
-- Renombrar el juego (ahora «Geoquiz España») si el usuario lo decide.
-- Modo sin conexión: decidido, mientras sea web, guardar al abrir solo el código y cada bandera cuando sale por primera vez (no descargar todas de golpe). En la app de Android irán todas dentro. La bandera de la pregunta siguiente se descarga y se dibuja por adelantado (en un móvil lento, las más pesadas pasan de casi 1 s a unas décimas). La primera de cada partida no se prepara.
+- Modo sin conexión: decidido, mientras sea web, guardar al abrir solo el código y cada bandera cuando sale por primera vez (no descargar todas de golpe). En la app de Android irán todas dentro. La bandera de la pregunta siguiente se descarga y se dibuja por adelantado (en un móvil lento, las más pesadas pasan de casi 1 s a unas décimas). La primera de cada partida también: la partida se prepara en el inicio y al terminar la anterior.
 - Dificultad: ya se elige 4, 6 u 8 opciones en Opciones. Falta la **respuesta abierta** (está en Opciones como «próximamente», sin poder marcarse): decidir cómo comparar lo escrito (tildes, mayúsculas, formas oficial y castellana, «Vitoria» y «Vitoria-Gasteiz»).
 - **Puntuación** (idea del usuario, para más adelante; de momento no preocuparse de la puntuación): puntos aparte del récord de aciertos, con tiempo máximo por pregunta y más puntos por ir rápido, multiplicadores por racha, y más puntos por dificultad y por jugar con más categorías a la vez.
 - Guardado con estadísticas por categoría y por pregunta (usando los identificadores), y desbloqueo de categorías.

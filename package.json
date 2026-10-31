@@ -1,7 +1,7 @@
 {
   "name": "aprende-sobre-espana",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Juego de preguntas sobre geografía de España",
   "type": "module",
   "scripts": {
