@@ -3,15 +3,19 @@ import Ajv from "ajv";
 import territorio from "../src/data/territorio.json";
 import banderas from "../src/data/banderas.json";
 import banderasTexto from "../src/data/banderas.json?raw";
+import banderasProvincias from "../src/data/banderas-provincias.json";
+import banderasProvinciasTexto from "../src/data/banderas-provincias.json?raw";
+import banderasProvinciasSchema from "../src/data/schema/banderas-provincias.schema.json";
 import territorioSchema from "../src/data/schema/territorio.schema.json";
 import banderasSchema from "../src/data/schema/banderas.schema.json";
 import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../src/engine/territory";
 import { NAME_STYLES } from "../src/engine/types";
-import { BANDERAS } from "../src/engine/questions";
+import { BANDERAS, BANDERAS_PROVINCIAS } from "../src/engine/questions";
 
 // Comprobaciones del contenido: si alguien edita un JSON y se equivoca, el test dice dónde.
 
 const FLAG_FILES = Object.keys(import.meta.glob("../src/data/banderas/*.svg")).map((f) => f.split("/").pop());
+const PROVINCE_FLAG_FILES = Object.keys(import.meta.glob("../src/data/banderas/provincias/*.webp")).map((f) => f.split("/").pop());
 
 /** Valida un archivo contra su esquema y devuelve los errores en forma legible. */
 function schemaErrors(schema: object, data: unknown): string[] {
@@ -27,6 +31,9 @@ describe("formato de los archivos", () => {
   });
   it("banderas.json cumple su esquema", () => {
     expect(schemaErrors(banderasSchema, banderas).join("\n")).toBe("");
+  });
+  it("banderas-provincias.json cumple su esquema", () => {
+    expect(schemaErrors(banderasProvinciasSchema, banderasProvincias).join("\n")).toBe("");
   });
   it("el esquema detecta un campo mal escrito", () => {
     // Prueba de que la validación funciona: "trampa" en vez de "trampas".
@@ -136,7 +143,8 @@ describe("textos de las notas", () => {
   const textos = [
     ...AUTONOMIAS.flatMap((c) => [["notaCapital", c.id, c.notaCapital], ["curiosidadCapital", c.id, c.curiosidadCapital]]),
     ...PROVINCIAS.map((p) => ["notaCapital de provincia", p.id, p.notaCapital]),
-    ...Object.entries(BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]])
+    ...Object.entries(BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]]),
+    ...Object.entries(BANDERAS_PROVINCIAS).flatMap(([id, b]) => [["descripcion de bandera de provincia", id, b.descripcion], ["significado de bandera de provincia", id, b.significado]])
   ].filter(([, , t]) => t) as [string, string, string][];
   const donde = (campo: string, id: string, t: string) => `${campo} de ${id}: «${t.slice(0, 40)}…»`;
 
@@ -186,6 +194,39 @@ describe("banderas", () => {
     for (const [id, b] of Object.entries(BANDERAS)) {
       for (const t of b.trampas) expect(ids, `${id} → trampa ${t}`).toContain(t);
       expect(b.trampas, id).not.toContain(id);
+    }
+  });
+});
+
+describe("banderas de provincia", () => {
+  it("van en orden de código INE de provincia, son provincias que existen y su imagen existe", () => {
+    const enArchivo = [...banderasProvinciasTexto.matchAll(/^  "(\d{2})":/gm)].map((m) => m[1]);
+    expect(enArchivo).toEqual([...enArchivo].sort());
+    const provincias = PROVINCIAS.map((p) => p.id);
+    for (const [id, b] of Object.entries(BANDERAS_PROVINCIAS)) {
+      expect(provincias, id).toContain(id);
+      expect(PROVINCE_FLAG_FILES, `${id} → ${b.archivo}`).toContain(b.archivo);
+    }
+  });
+
+  it("no hay banderas de provincias que forman ellas solas una comunidad (repetirían la de la comunidad)", () => {
+    for (const id of Object.keys(BANDERAS_PROVINCIAS)) {
+      expect(provinciasDe(PROVINCIAS.find((p) => p.id === id)!.comunidad).length, id).toBeGreaterThan(1);
+    }
+  });
+
+  it("las trampas son otras provincias con bandera", () => {
+    const ids = Object.keys(BANDERAS_PROVINCIAS);
+    for (const [id, b] of Object.entries(BANDERAS_PROVINCIAS)) {
+      for (const t of b.trampas) expect(ids, `${id} → trampa ${t}`).toContain(t);
+      expect(b.trampas, id).not.toContain(id);
+    }
+  });
+
+  it("todas dicen de dónde salen, con autor y licencia", () => {
+    for (const [id, b] of Object.entries(BANDERAS_PROVINCIAS)) {
+      expect(b.fuente.autor, `${id} → autor`).toBeTruthy();
+      expect(b.fuente.licenciaUrl, `${id} → licencia`).toBeTruthy();
     }
   });
 });

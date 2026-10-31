@@ -1,0 +1,107 @@
+{
+  "01": {
+    "archivo": "alava.webp",
+    "trampas": ["48", "40", "20"],
+    "descripcion": "Roja oscura, con su escudo en el centro.",
+    "significado": "Es la bandera del territorio histórico de {provincia:01}.\nEl escudo muestra un castillo sobre una roca, un brazo con una espada y un león. Su lema, «En aumento de la justicia contra malhechores», se suele relacionar con la Hermandad de Álava, que perseguía a los delincuentes en la Edad Media.",
+    "fuente": {"titulo": "Flag of Álava.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_%C3%81lava.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  },
+  "04": {
+    "archivo": "almeria.webp",
+    "trampas": ["44", "18", "21"],
+    "descripcion": "Blanca, con una cruz roja que la atraviesa y su escudo en el centro.",
+    "significado": "La cruz roja sobre blanco, la de San Jorge, se relaciona con la ciudad de Almería desde que los Reyes Católicos la conquistaron en 1489. Según la tradición, ya la llevaban las tropas genovesas que ayudaron a Alfonso VII a tomarla en 1147.\nLa aprobó la Diputación en 2017.",
+    "fuente": {"titulo": "Flag Almería Province.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_Almer%C3%ADa_Province.svg", "autor": "Almju", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  },
+  "09": {
+    "archivo": "burgos.webp",
+    "trampas": ["14", "40", "45"],
+    "descripcion": "Morada, con su escudo en el centro.",
+    "significado": "El escudo une el de la ciudad de Burgos, con el busto de un rey, y un castillo dorado sobre rojo, el símbolo de Castilla.\nSe usa desde 1979. Del morado no hay una explicación clara.",
+    "fuente": {"titulo": "Flag Burgos Province.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_Burgos_Province.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  },
+  "11": {
+    "archivo": "cadiz.webp",
+    "trampas": ["41", "21", "14"],
+    "descripcion": "Verde, con su escudo en el centro y un borde de cuadros con castillos y leones.",
+    "significado": "El borde de castillos y leones recuerda a Castilla y León.\nEl escudo reúne los de doce ciudades de la provincia. Uno es el de la ciudad de Cádiz, con Hércules, que según la leyenda la fundó.",
+    "fuente": {"titulo": "Flag Cádiz Province.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_C%C3%A1diz_Province.svg", "autor": "Ulaidh", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  },
+  "14": {
+    "archivo": "cordoba.webp",
+    "trampas": ["09", "23", "41"],
+    "descripcion": "Morada, con su escudo en el centro.",
+    "significado": "El escudo tiene un león rojo sobre blanco, rodeado de castillos y leones, que recuerdan a Castilla y León.\nDel morado no hay una explicación clara.",
+    "fuente": {"titulo": "Provincia de Córdoba - Bandera.svg", "url": "https://commons.wikimedia.org/wiki/File:Provincia_de_C%C3%B3rdoba_-_Bandera.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+  },
+  "18": {
+    "archivo": "granada.webp",
+    "trampas": ["23", "41", "45"],
+    "descripcion": "Verde, con su escudo en el centro.",
+    "significado": "Es el verde que se usaba tradicionalmente. Se eligió porque recuerda al de los estandartes del reino nazarí de Granada y al de la bandera de Andalucía.\nEl escudo tiene una granada, el símbolo de la ciudad.",
+    "fuente": {"titulo": "Bandera de la provincia de Granada (España).svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_provincia_de_Granada_%28Espa%C3%B1a%29.svg", "autor": "Erlenmeyer", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+  },
+  "20": {
+    "archivo": "gipuzkoa.webp",
+    "trampas": ["01", "48", "44"],
+    "descripcion": "Blanca, con su escudo en el centro.",
+    "significado": "El escudo tiene tres tejos sobre las olas del mar, sostenidos por dos hombres salvajes. Su lema, en latín, dice «Bardulia fidelísima, nunca vencida»: los várdulos eran el pueblo que vivía allí en tiempos de los romanos.\nHasta 1977, el escudo llevaba también un rey y doce cañones que sus milicias tomaron a los franceses a principios del siglo XVI.",
+    "fuente": {"titulo": "Flag of Guipúzcoa.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Guip%C3%BAzcoa.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  },
+  "21": {
+    "archivo": "huelva.webp",
+    "trampas": ["32", "11", "41"],
+    "descripcion": "Azul, con su escudo en el centro: dos óvalos, uno con un castillo y otro con tres barcos.",
+    "significado": "Los tres barcos son las carabelas de Colón, que salió del puerto de Palos de la Frontera, en la provincia, el 3 de agosto de 1492.\nEl castillo es el de la ciudad de Huelva, con su lema en latín: «Puerto del mar y guarda de la tierra».",
+    "fuente": {"titulo": "Bandera de la Provincia De Huelva.svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_Provincia_De_Huelva.svg", "autor": "Miguel Ángel «fotógrafo»", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+  },
+  "23": {
+    "archivo": "jaen.webp",
+    "trampas": ["18", "41", "14"],
+    "descripcion": "Verde oliva, con su escudo en el centro.",
+    "significado": "El verde representa los olivares, los campos y la naturaleza de la provincia.\nLa aprobó la Diputación en 2014. Antes se usaba una bandera morada.",
+    "fuente": {"titulo": "Bandera de la provincia de Jaén.svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_provincia_de_Ja%C3%A9n.svg", "autor": "Juancharlie", "licencia": "CC BY 2.5", "licenciaUrl": "https://creativecommons.org/licenses/by/2.5/"}
+  },
+  "32": {
+    "archivo": "ourense.webp",
+    "trampas": ["21", "20", "48"],
+    "descripcion": "Azul, con once círculos blancos en el lado contrario al mástil y su escudo en el centro.",
+    "significado": "Los once círculos representan los ríos de la provincia, que dan forma a sus comarcas.\nEl escudo, con un puente, solo se pone cuando la bandera está en edificios públicos.",
+    "fuente": {"titulo": "Provincia de Ourense - Bandera.svg", "url": "https://commons.wikimedia.org/wiki/File:Provincia_de_Ourense_-_Bandera.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+  },
+  "40": {
+    "archivo": "segovia.webp",
+    "trampas": ["01", "48", "09"],
+    "descripcion": "Roja, con su escudo en el centro.",
+    "significado": "El escudo reúne los de las antiguas comarcas de la provincia, como Sepúlveda, Cuéllar y Riaza, y en el centro, el acueducto de Segovia.\nDel rojo no hay una explicación clara.",
+    "fuente": {"titulo": "Flag Segovia province.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_Segovia_province.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  },
+  "41": {
+    "archivo": "sevilla.webp",
+    "trampas": ["11", "18", "23"],
+    "descripcion": "Verde, con su escudo en el centro, rodeado de diez escudos pequeños.",
+    "significado": "El escudo central es el de la ciudad de Sevilla, con el rey San Fernando y el lema «NO8DO».\nLos diez escudos pequeños son los de las ciudades que eran cabeza de partido judicial en 1927, como Carmona, Écija u Osuna.\nEl verde es el que se usaba tradicionalmente.",
+    "fuente": {"titulo": "Flag of Diputacion de Sevilla Spain.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Diputacion_de_Sevilla_Spain.svg", "autor": "Apj (Taller de Heráldica y Vexilología de la Wikipedia en español)", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  },
+  "44": {
+    "archivo": "teruel.webp",
+    "trampas": ["04", "20", "45"],
+    "descripcion": "Blanca, con una cruz roja que la atraviesa y su escudo en el centro.",
+    "significado": "La cruz roja sobre blanco es la de San Jorge, patrón de Aragón, que también aparece en el escudo luchando contra el dragón.\nEl escudo tiene además las barras de Aragón, el toro y la estrella de Teruel, la Virgen de Albarracín y el castillo de Alcañiz.",
+    "fuente": {"titulo": "Flag of Teruel (province).svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Teruel_%28province%29.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  },
+  "45": {
+    "archivo": "toledo.webp",
+    "trampas": ["18", "41", "23"],
+    "descripcion": "Verde, con su escudo en el centro: un águila negra de dos cabezas.",
+    "significado": "El escudo es casi igual que el de la ciudad de Toledo, con el águila imperial, pero lleva a los lados las columnas de Hércules para distinguirlo.\nDel verde no hay una explicación clara: cuando se aprobó, en 2013, una academia de Toledo propuso cambiarlo, pero se mantuvo.",
+    "fuente": {"titulo": "Bandera de la provincia de Toledo.svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_provincia_de_Toledo.svg", "autor": "Asqueladd", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+  },
+  "48": {
+    "archivo": "bizkaia.webp",
+    "trampas": ["01", "40", "20"],
+    "descripcion": "Granate, con su escudo en el centro.",
+    "significado": "El escudo muestra el árbol de Gernika con una cruz, y un borde con ocho aspas rojas.\nEl árbol representa las leyes propias del territorio, que los reyes juraban respetar bajo él.",
+    "fuente": {"titulo": "Bandera de Vizcaya.svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_Vizcaya.svg", "autor": "SanchoPanzaXXI", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+  }
+}

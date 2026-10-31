@@ -45,7 +45,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 ## Pendiente
 
 - Divisiones (antes llamada «pertenencia») en comunidades ya está: «¿De qué comunidad autónoma es la provincia de Soria?», 43 provincias (sin las 9 que forman ellas solas una comunidad o ciudad autónoma), con las comunidades vecinas como trampas (campo `vecinas` de cada provincia). Falta la de provincias, «¿De qué provincia es Vigo?», que necesita el `ciudades.json`. El nombre «Divisiones» se eligió porque la categoría va del territorio que contiene a lo que tiene dentro (provincias de cada comunidad, ciudades de cada provincia); en la partida, cada pregunta lleva su etiqueta («Provincias de cada comunidad»).
-- Banderas de provincia: antes, comprobar cuáles tienen bandera oficial y si es de la provincia o de la Diputación.
+- Banderas de provincia: hay 15, las aprobadas formalmente y en uso público (criterio del usuario). Fuera quedan Barcelona (aprobada en 1971, casi sin uso), Lugo (en uso, pero su aprobación de 2006 nunca se publicó) y las que solo se usan sin aprobación (Ávila, Soria, Palencia, Salamanca, Valladolid, León, Huesca, Zaragoza, Málaga, Pontevedra…). Si alguna se aprueba o se confirma su uso, se puede añadir. Las imágenes van en WebP (los SVG pesan demasiado).
 - Preguntas al revés, como opción, cuando tenga sentido: de la capital a la comunidad, o de la comunidad a elegir entre varias banderas (esta necesita opciones con imagen).
 
 - Renombrar el juego (ahora «Geoquiz España») si el usuario lo decide.

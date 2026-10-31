@@ -91,16 +91,18 @@ describe("partidas: elección de preguntas", () => {
       for (const q of buildRound({ categories: CATEGORY_IDS, territorios: ["comunidad"] })) expect(q.territorio).toBe("comunidad");
       const provincias = buildRound({ categories: CATEGORY_IDS, territorios: ["provincia"] });
       for (const q of provincias) expect(q.territorio).toBe("provincia");
-      // Solo hay 8 capitales de provincia (y aún no hay banderas de provincia): la partida tiene 8.
-      expect(provincias).toHaveLength(8);
+      expect(provincias).toHaveLength(ROUND_LENGTH);
+      // Solo capitales de provincia: hay 8, así que la partida tiene 8.
+      expect(buildRound({ categories: ["capitales"], territorios: ["provincia"] })).toHaveLength(8);
     }
   });
 
   it("calcula cuántas preguntas tendrá la partida según la selección", () => {
     expect(roundSize(CATEGORY_IDS)).toBe(ROUND_LENGTH);
     expect(roundSize(["capitales"], ["provincia"])).toBe(8);
-    expect(roundSize(["banderas"], ["provincia"])).toBe(0);
-    expect(buildRound({ categories: ["banderas"], territorios: ["provincia"] })).toHaveLength(0);
+    expect(roundSize(["banderas"], ["provincia"])).toBe(10);
+    expect(roundSize(["divisiones"], ["provincia"])).toBe(0);
+    expect(buildRound({ categories: ["divisiones"], territorios: ["provincia"] })).toHaveLength(0);
   });
 
   it("con comunidades y provincias, no repite la misma ciudad como respuesta (Oviedo de Asturias, provincia y comunidad)", () => {

@@ -37,7 +37,7 @@ export interface Question {
   exclude: string[];
   /** Solo para type "num": [mínimo, máximo]. */
   range?: [number, number];
-  /** Código INE de la comunidad o ciudad autónoma cuya bandera se muestra con la pregunta. */
+  /** Bandera que se muestra con la pregunta: código de la comunidad ("12") o "p" y código de provincia ("p48"). */
   flag?: string;
   /** Otras formas de los nombres de la pregunta, para mostrarlas al responder: "Girona · en castellano, Gerona". */
   aliases: string[];
