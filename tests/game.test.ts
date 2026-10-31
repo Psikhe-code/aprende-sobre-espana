@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORY_IDS } from "../src/engine/categories";
 import { buildRound, rebuild, roundSize, OPTION_COUNTS, ROUND_LENGTH } from "../src/engine/round";
-import { poolsFor } from "../src/engine/territory";
+import { PROVINCIAS, poolsFor } from "../src/engine/territory";
+import { BANDERAS_PROVINCIAS } from "../src/engine/questions";
 import { comboKey, loadState } from "../src/engine/storage";
 import { GameSession, applyRecord } from "../src/engine/game";
 import type { RoundQuestion } from "../src/engine/types";
@@ -9,6 +10,8 @@ import type { RoundQuestion } from "../src/engine/types";
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
 const rq = (id: string, answer: string): RoundQuestion =>
   ({ id, text: id, answer, answerKey: id, type: null, traps: [], why: "", exclude: [], aliases: [], territorio: "comunidad", category: "c", style: "castellano", options: [answer, "X"] });
+/** Preguntas de capital de provincia que hay en los datos (las provincias con trampas). */
+const CAPITALES_PROVINCIA = PROVINCIAS.filter((p) => p.trampas).length;
 const tenQuestions = () => Array.from({ length: ROUND_LENGTH }, (_, i) => rq("q" + i, "A"));
 
 describe("partidas: elección de preguntas", () => {
@@ -92,15 +95,15 @@ describe("partidas: elección de preguntas", () => {
       const provincias = buildRound({ categories: CATEGORY_IDS, territorios: ["provincia"] });
       for (const q of provincias) expect(q.territorio).toBe("provincia");
       expect(provincias).toHaveLength(ROUND_LENGTH);
-      // Solo capitales de provincia: hay 8, así que la partida tiene 8.
-      expect(buildRound({ categories: ["capitales"], territorios: ["provincia"] })).toHaveLength(8);
+      // Solo capitales de provincia: hay menos de 10, así que la partida tiene las que haya.
+      expect(buildRound({ categories: ["capitales"], territorios: ["provincia"] })).toHaveLength(CAPITALES_PROVINCIA);
     }
   });
 
   it("calcula cuántas preguntas tendrá la partida según la selección", () => {
     expect(roundSize(CATEGORY_IDS)).toBe(ROUND_LENGTH);
-    expect(roundSize(["capitales"], ["provincia"])).toBe(8);
-    expect(roundSize(["banderas"], ["provincia"])).toBe(10);
+    expect(roundSize(["capitales"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, CAPITALES_PROVINCIA));
+    expect(roundSize(["banderas"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, Object.keys(BANDERAS_PROVINCIAS).length));
     expect(roundSize(["divisiones"], ["provincia"])).toBe(0);
     expect(buildRound({ categories: ["divisiones"], territorios: ["provincia"] })).toHaveLength(0);
   });

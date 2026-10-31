@@ -16,7 +16,11 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 - **Enlaces de prueba por PR** (Netlify, Cloudflare Pages…): descartados por ahora, porque trabaja solo y aún no hay jugadores. Reconsiderarlo si eso cambia. Para probar una rama sin mezclarla, la opción es Codespaces.
 - **Si el usuario solo pregunta, responde sin cambiar nada.** Haz cambios cuando los pida.
 - El usuario está aprendiendo GitHub y programación. Explica en lenguaje claro, en español, sin dar por sabidos los términos técnicos.
-- Antes de abrir un PR: `npx tsc --noEmit`, `npm test` y probar el juego en un navegador (Playwright), en móvil y escritorio.
+- **Comprobaciones antes de un PR, según el tipo de cambio** (para no gastar tiempo ni tokens de más):
+  - Textos, notas, trampas o datos: solo `npx tsc --noEmit` y `npm test`. Sin tests nuevos ni navegador.
+  - Lógica del motor (cómo se eligen preguntas u opciones): lo anterior y tests nuevos de esa lógica.
+  - Pantalla o diseño: lo anterior y probar el juego en un navegador (Playwright), en móvil y escritorio, con las capturas justas.
+- **Los tests comprueban reglas, no copian contenido:** las expectativas se calculan a partir de los datos («las trampas son las capitales de las provincias de `trampas`»), no se escriben a mano («las trampas de Asturias son Santander, León…»). Así, cambiar una nota o una trampa en los JSON no obliga a tocar los tests. Los textos que genera el código (notas automáticas) sí se comprueban palabra por palabra.
 - Interfaz, datos, documentación y mensajes de commit, en español.
 
 ## Decisiones sobre los datos

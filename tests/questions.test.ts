@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../src/engine/categories";
 import { makeOptions, prepare } from "../src/engine/options";
-import { BANDERAS, notaCapitalProvincia, prepararTexto } from "../src/engine/questions";
-import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, capitalesDe, poolsFor } from "../src/engine/territory";
+import { BANDERAS, BANDERAS_PROVINCIAS, notaAutomatica, notaCapitalProvincia, prepararTexto } from "../src/engine/questions";
+import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, autonomia, capitalesDe, deAutonomia, poolsFor, provincia, provinciasDe } from "../src/engine/territory";
 import { questionsIn } from "../src/engine/round";
 import { NAME_STYLES, type NameStyle, type Question } from "../src/engine/types";
 
@@ -15,124 +15,126 @@ for (const style of NAME_STYLES) {
   const pools = poolsFor(style);
 
   describe(`[${style}] banco de preguntas`, () => {
-    it("comunidades: 19 capitales y 19 banderas (17 comunidades y 2 ciudades autónomas)", () => {
-      expect(questionsIn("capitales", ["comunidad"])).toHaveLength(19);
-      expect(questionsIn("banderas", ["comunidad"])).toHaveLength(19);
+    // Estos tests comprueban reglas: cómo se convierten los datos en preguntas.
+    // Las expectativas se calculan a partir de los datos, así que cambiar una nota, una trampa
+    // o una ciudad en los JSON no obliga a tocar los tests.
+    const nombreProv = (id: string) => provincia(id).nombre[style];
+    const conTrampas = PROVINCIAS.filter((p) => p.trampas);
+
+    it("comunidades: una capital y una bandera por comunidad y ciudad autónoma", () => {
+      expect(questionsIn("capitales", ["comunidad"])).toHaveLength(AUTONOMIAS.length);
+      expect(questionsIn("banderas", ["comunidad"])).toHaveLength(AUTONOMIAS.length);
     });
 
-    it("provincias: capitales solo de las 8 provincias cuya capital se llama distinto, y 15 banderas", () => {
-      const provincias = questionsIn("capitales", ["provincia"]);
-      expect(provincias.map((q) => q.id)).toEqual(["01", "07", "20", "26", "31", "33", "39", "48"].map((id) => `capital-provincia:${id}`));
-      for (const q of provincias) {
-        const p = PROVINCIAS.find((x) => `capital-provincia:${x.id}` === q.id)!;
-        expect(p.nombre.castellano, q.id).not.toBe(p.capital.castellano);
-      }
-      expect(questionsIn("banderas", ["provincia"]).map((q) => q.id.split(":")[1])).toEqual(
-        ["01", "04", "09", "11", "14", "18", "20", "21", "23", "32", "40", "41", "44", "45", "48"]);
+    it("provincias: capitales de las provincias con trampas (cuya capital se llama distinto) y una bandera por cada provincia que la tenga", () => {
+      expect(questionsIn("capitales", ["provincia"]).map((q) => q.id)).toEqual(conTrampas.map((p) => `capital-provincia:${p.id}`));
+      for (const p of conTrampas) expect(p.nombre.castellano, p.id).not.toBe(p.capital.castellano);
+      expect(questionsIn("banderas", ["provincia"]).map((q) => q.id)).toEqual(Object.keys(BANDERAS_PROVINCIAS).sort().map((id) => `bandera-provincia:${id}`));
     });
 
-    it("banderas de provincia: enunciado, respuesta, trampas parecidas, descripción y significado", () => {
-      const teruel = find(style, "bandera-provincia:44");
-      expect(teruel.text).toBe("¿De qué provincia es esta bandera?");
-      expect(teruel.answer).toBe("Teruel");
-      expect(teruel.flag).toBe("p44");
-      expect(teruel.traps).toContain("Almería");
-      expect(teruel.why).toContain("cruz roja");
-      expect(teruel.meaning).toContain("San Jorge");
-      expect(find(style, "bandera-provincia:01").meaning).toContain(style === "oficial" ? "territorio histórico de Araba/Álava" : "territorio histórico de Álava");
-      // El pool son solo las provincias con bandera.
-      for (const q of questionsIn("banderas", ["provincia"])) expect(q.type).toBe("provinciaConBandera");
-      expect(pools.provinciaConBandera).toHaveLength(15);
-    });
-
-    it("capitales de provincia: enunciado, trampas (capitales que se confunden y ciudades de la provincia) y nota", () => {
-      const asturias = find(style, "capital-provincia:33");
-      expect(asturias.text).toBe("¿Cuál es la capital de la provincia de Asturias?");
-      expect(asturias.answer).toBe("Oviedo");
-      expect(asturias.traps).toEqual(["Santander", "Torrelavega", "Santillana del Mar", "Laredo", "Comillas", "León", "Ponferrada", "Astorga",
-        "Lugo", style === "oficial" ? "A Coruña" : "La Coruña", "Ferrol", "Gijón", "Avilés", "Llanes", "Mieres"]);
-      expect(asturias.why).toBe("En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Oviedo». En 1983 recuperó el nombre de Asturias.\nGijón es la ciudad más poblada de Asturias, más que Oviedo.");
-      // Mismo lugar que la pregunta de la comunidad: no salen las dos en una partida.
-      expect(asturias.answerKey).toBe(find(style, "capital-ccaa:03").answerKey);
-      const vizcaya = find(style, "capital-provincia:48");
-      expect(vizcaya.text).toBe(style === "oficial" ? "¿Cuál es la capital de la provincia de Bizkaia?" : "¿Cuál es la capital de la provincia de Vizcaya?");
-      // Las ciudades vascas salen en todas las provincias vascas.
-      for (const c of style === "oficial" ? ["Vitoria-Gasteiz", "Laguardia", "Donostia/San Sebastián", "Irun", "Hondarribia", "Barakaldo", "Gernika-Lumo"]
-        : ["Vitoria", "Laguardia", "San Sebastián", "Irún", "Fuenterrabía", "Baracaldo", "Guernica"]) {
-        if (c !== vizcaya.answer) expect(vizcaya.traps, c).toContain(c);
-      }
-      expect(find(style, "capital-provincia:20").traps).toContain(style === "oficial" ? "Gernika-Lumo" : "Guernica");
-      expect(vizcaya.why).toContain(style === "oficial" ? "pero Bizkaia conservó" : "pero Vizcaya conservó");
-      expect(vizcaya.why).toContain("\nBilbao es su ciudad más poblada");
-    });
-
-    it("en las capitales de provincia sale siempre el nombre de la provincia como trampa", () => {
-      for (const q0 of all.filter((q) => q.id.startsWith("capital-provincia:"))) {
-        const p = PROVINCIAS.find((x) => `capital-provincia:${x.id}` === q0.id)!;
-        expect(q0.forcedTraps, q0.id).toEqual([p.nombre[style]]);
-        for (let r = 0; r < 20; r++) expect(prepare(q0, 4, pools).options, q0.id).toContain(p.nombre[style]);
-      }
-    });
-
-    it("donde la capital se llama como la comunidad, las trampas incluyen ciudades reales cercanas", () => {
-      expect(find(style, "capital-ccaa:13").traps).toEqual(["Alcalá de Henares", "Aranjuez", "El Escorial"]);
-      expect(find(style, "capital-ccaa:14").traps).toEqual(["Cartagena"]);
-      expect(find(style, "capital-ccaa:10").traps).toEqual(style === "oficial"
-        ? ["Alicante/Alacant", "Castelló de la Plana/Castellón de la Plana", "Elche/Elx", "Benidorm"]
-        : ["Alicante", "Castellón de la Plana", "Elche", "Benidorm"]);
-    });
-
-    it("en las capitales autonómicas sale siempre una trampa con el nombre de la comunidad o parecido", () => {
-      const esperadas: Record<string, string[]> = {
-        "01": ["Andalucía"], "02": ["Aragón", "Jaca"], "03": ["Asturias"], "04": ["Mallorca"], "05": ["Gran Canaria", "Tenerife"],
-        "06": ["Cantabria"], "07": ["León"], "08": ["La Mancha"], "09": ["Cataluña"], "11": ["Extremadura"], "12": ["Galicia"],
-        "15": ["Navarra"], "16": ["Euskadi"], "17": ["Rioja"]
-      };
+    it("capitales autonómicas: trampas (capitales de provincia de la comunidad y ciudades trampa), trampa fija y nota", () => {
       for (const c of AUTONOMIAS) {
-        const q0 = find(style, `capital-ccaa:${c.id}`);
-        expect(q0.forcedTraps, c.id).toEqual(esperadas[c.id]);
-        if (!esperadas[c.id]) continue;
+        const q = find(style, `capital-ccaa:${c.id}`);
+        const correctas = capitalesDe(c).map((f) => f[style]);
+        const deLaComunidad = c.tipo === "ciudad"
+          ? AUTONOMIAS.filter((x) => x.tipo === "ciudad" && x.id !== c.id).flatMap((x) => capitalesDe(x).map((f) => f[style]))
+          : provinciasDe(c.id).map((p) => p.capital[style]);
+        expect(q.traps, c.id).toEqual([...deLaComunidad, ...(c.ciudadesTrampa ?? []).map((f) => f[style])].filter((x) => !correctas.includes(x)));
+        expect(q.forcedTraps, c.id).toEqual(c.trampasCapital?.map((f) => f[style]));
+        if (c.notaCapital) expect(q.why, c.id).toBe(prepararTexto(c.notaCapital, style, correctas.join(" y ")));
+        if (c.curiosidadCapital) expect(q.fact, c.id).toBe(prepararTexto(c.curiosidadCapital, style, correctas.join(" y ")));
+      }
+    });
+
+    it("capitales autonómicas sin nota propia: nota automática que dice si también es capital de provincia", () => {
+      expect(notaAutomatica(autonomia("02"), "castellano")).toBe("Zaragoza es la capital de Aragón y también de la provincia de Zaragoza.");
+      expect(notaAutomatica(autonomia("15"), "oficial")).toBe("Pamplona/Iruña es la capital de la Comunidad Foral de Navarra y también de la provincia de Navarra.");
+      for (const c of AUTONOMIAS.filter((x) => !x.notaCapital && capitalesDe(x).length === 1)) {
+        expect(find(style, `capital-ccaa:${c.id}`).why, c.id).toBe(notaAutomatica(c, style));
+      }
+    });
+
+    it("capitales de provincia: enunciado, trampas (provincias cercanas y ciudades propias), nombre de la provincia como trampa fija y nota", () => {
+      for (const p of conTrampas) {
+        const q = find(style, `capital-provincia:${p.id}`);
+        const capital = p.capital[style];
+        const trampas = [...p.trampas!.flatMap((id) => [provincia(id).capital, ...(provincia(id).ciudades ?? [])]), ...(p.ciudades ?? [])].map((f) => f[style]);
+        expect(q.text, p.id).toBe(`¿Cuál es la capital de la provincia de ${p.nombre[style]}?`);
+        expect(q.answer, p.id).toBe(capital);
+        expect(q.traps, p.id).toEqual([...new Set(trampas)].filter((x) => x !== capital));
+        expect(q.forcedTraps, p.id).toEqual([p.nombre[style]]);
+        expect(q.why, p.id).toBe(p.notaCapital ? prepararTexto(p.notaCapital, style, capital) : notaCapitalProvincia(p, style));
+        // Mismo lugar que la capital de su comunidad, si coincide: así no salen las dos en una partida.
+        expect(q.answerKey, p.id).toBe("ciudad:" + p.capital.castellano);
+      }
+    });
+
+    it("la nota automática de provincia, para las que no tengan una propia", () => {
+      const sinNota = (id: string) => ({ ...provincia(id), notaCapital: undefined });
+      expect(notaCapitalProvincia(sinNota("48"), "castellano")).toBe("Bilbao es la capital de la provincia de Vizcaya. La capital del País Vasco es Vitoria.");
+      expect(notaCapitalProvincia(sinNota("01"), "castellano")).toBe("Vitoria es la capital de la provincia de Álava y también del País Vasco.");
+      expect(notaCapitalProvincia(sinNota("33"), "castellano")).toBe("Oviedo es la capital de la provincia de Asturias. Como es la única provincia de Asturias, también es la capital de la comunidad.");
+    });
+
+    it("la trampa fija sale siempre, y una sola, también cuando hay varias para sortear", () => {
+      for (const q0 of all.filter((q) => q.forcedTraps)) {
         for (let r = 0; r < 20; r++) {
-          expect(prepare(q0, 4, pools).options.filter((o) => esperadas[c.id].includes(o)), c.id).toHaveLength(1);
+          expect(prepare(q0, 4, pools).options.filter((o) => q0.forcedTraps!.includes(o)), q0.id).toHaveLength(1);
         }
       }
     });
 
-    it("en cada partida se sortean distintas trampas de provincia", () => {
-      const q0 = find(style, "capital-provincia:33");
+    it("en cada partida se sortean distintas trampas", () => {
+      const q0 = [...all].sort((a, b) => b.traps.length - a.traps.length)[0];
       const vistas = new Set<string>();
-      for (let r = 0; r < 200; r++) prepare(q0, 4, pools).options.filter((o) => q0.traps.includes(o)).forEach((o) => vistas.add(o));
-      expect([...vistas].sort()).toEqual([...q0.traps].sort());
+      for (let r = 0; r < 300; r++) prepare(q0, 4, pools).options.filter((o) => q0.traps.includes(o)).forEach((o) => vistas.add(o));
+      expect([...vistas].sort(), q0.id).toEqual([...q0.traps].sort());
     });
 
-    it("la nota automática de provincia, para las que no tengan una propia", () => {
-      const p = (id: string) => ({ ...PROVINCIAS.find((x) => x.id === id)!, notaCapital: undefined });
-      expect(notaCapitalProvincia(p("48"), "castellano")).toBe("Bilbao es la capital de la provincia de Vizcaya. La capital del País Vasco es Vitoria.");
-      expect(notaCapitalProvincia(p("01"), "castellano")).toBe("Vitoria es la capital de la provincia de Álava y también del País Vasco.");
-      expect(notaCapitalProvincia(p("33"), "castellano")).toBe("Oviedo es la capital de la provincia de Asturias. Como es la única provincia de Asturias, también es la capital de la comunidad.");
+    it("banderas: descripción y significado de los datos, enunciado y trampas", () => {
+      for (const c of AUTONOMIAS) {
+        const q = find(style, `bandera-ccaa:${c.id}`);
+        expect(q.why, c.id).toBe(prepararTexto(BANDERAS[c.id].descripcion, style));
+        expect(q.meaning, c.id).toBe(prepararTexto(BANDERAS[c.id].significado, style));
+        expect(q.flag, c.id).toBe(c.id);
+      }
+      for (const [id, b] of Object.entries(BANDERAS_PROVINCIAS)) {
+        const q = find(style, `bandera-provincia:${id}`);
+        expect(q.text).toBe("¿De qué provincia es esta bandera?");
+        expect(q.answer, id).toBe(nombreProv(id));
+        expect(q.traps, id).toEqual(b.trampas.map(nombreProv));
+        expect(q.why, id).toBe(prepararTexto(b.descripcion, style));
+        expect(q.meaning, id).toBe(prepararTexto(b.significado, style));
+        expect(q.flag, id).toBe("p" + id);
+        expect(q.type, id).toBe("provinciaConBandera");
+      }
+      expect(pools.provinciaConBandera).toHaveLength(Object.keys(BANDERAS_PROVINCIAS).length);
+      // Solo las banderas tienen significado.
+      expect(all.filter((q) => q.meaning).every((q) => q.category === "banderas")).toBe(true);
     });
 
-    it("divisiones: las 43 provincias de comunidades con varias provincias; de provincias, ninguna todavía", () => {
-      const qs = questionsIn("divisiones", ["comunidad"]);
-      expect(qs).toHaveLength(43);
-      const fuera = qs.map((q) => q.id.split(":")[1]).filter((id) => ["07", "26", "28", "30", "31", "33", "39", "51", "52"].includes(id));
-      expect(fuera).toEqual([]);
+    it("divisiones: las provincias de comunidades con varias provincias, con nota que las nombra todas", () => {
+      const conVarias = PROVINCIAS.filter((p) => provinciasDe(p.comunidad).length > 1);
+      expect(questionsIn("divisiones", ["comunidad"]).map((q) => q.id)).toEqual(conVarias.map((p) => `provincia-ccaa:${p.id}`));
       expect(questionsIn("divisiones", ["provincia"])).toHaveLength(0);
+      for (const p of conVarias) {
+        const q = find(style, `provincia-ccaa:${p.id}`);
+        const c = autonomia(p.comunidad);
+        expect(q.text, p.id).toBe(`¿De qué comunidad autónoma es la provincia de ${p.nombre[style]}?`);
+        expect(q.answer, p.id).toBe(c.nombre[style]);
+        expect(q.why, p.id).toMatch(new RegExp(`^La provincia de ${p.nombre[style].replace(/[/()]/g, "\\$&")} es ${deAutonomia(c, style)}, que tiene `));
+        for (const x of provinciasDe(c.id)) expect(q.why, `${p.id} → ${x.id}`).toContain(x.nombre[style]);
+      }
     });
 
-    it("divisiones: enunciado, comunidades vecinas como trampas y nota con las provincias de la comunidad", () => {
-      const soria = find(style, "provincia-ccaa:42");
-      expect(soria.text).toBe("¿De qué comunidad autónoma es la provincia de Soria?");
-      expect(soria.answer).toBe("Castilla y León");
-      expect(soria.traps).toEqual(["Aragón", "Castilla-La Mancha", "La Rioja"]);
-      expect(soria.why).toBe("La provincia de Soria es de Castilla y León, que tiene nueve provincias: Ávila, Burgos, León, Palencia, Salamanca, Segovia, Soria, Valladolid y Zamora.");
-      const albacete = find(style, "provincia-ccaa:02");
-      expect(albacete.traps).toContain(style === "oficial" ? "Región de Murcia" : "Región de Murcia");
-      expect(albacete.traps).toContain("Andalucía");
-      // Valladolid solo linda con provincias de su comunidad: las trampas son las vecinas de Castilla y León.
-      expect(find(style, "provincia-ccaa:47").traps.length).toBeGreaterThan(2);
-      // Canarias no tiene fronteras terrestres: la trampa es el otro archipiélago.
-      expect(find(style, "provincia-ccaa:35").traps).toEqual([style === "oficial" ? "Illes Balears" : "Islas Baleares"]);
+    it("divisiones: las trampas son las comunidades que lindan con la provincia (si hay al menos dos)", () => {
+      for (const p of PROVINCIAS.filter((x) => provinciasDe(x.comunidad).length > 1)) {
+        const q = find(style, `provincia-ccaa:${p.id}`);
+        const lindan = [...new Set(p.vecinas.map((v) => provincia(v).comunidad))].filter((id) => id !== p.comunidad);
+        if (lindan.length >= 2) expect([...q.traps].sort(), p.id).toEqual(lindan.map((id) => autonomia(id).nombre[style]).sort());
+        expect(q.traps, p.id).not.toContain(autonomia(p.comunidad).nombre[style]);
+        expect(q.traps.length, p.id).toBeGreaterThan(0);
+      }
     });
 
     it("divisiones: Ceuta y Melilla nunca salen como opción (la pregunta dice «comunidad autónoma»)", () => {
@@ -142,7 +144,7 @@ for (const style of NAME_STYLES) {
       }
     });
 
-    it("cada pregunta dice su territorio: las de provincia son solo las de capital de provincia", () => {
+    it("cada pregunta dice su territorio: las de provincia son las de capital y bandera de provincia", () => {
       for (const q of all) expect(q.territorio, q.id).toBe(/^(capital|bandera)-provincia:/.test(q.id) ? "provincia" : "comunidad");
     });
 
@@ -172,43 +174,7 @@ for (const style of NAME_STYLES) {
       }
     });
 
-    it("las capitales sin nota propia tienen una automática que dice si también son capital de provincia", () => {
-      expect(find(style, "capital-ccaa:02").why).toBe("Zaragoza es la capital de Aragón y también de la provincia de Zaragoza.");
-      expect(find(style, "capital-ccaa:13").why).toBe("Madrid es la capital de la Comunidad de Madrid y también de la provincia de Madrid.");
-      const navarra = find(style, "capital-ccaa:15");
-      expect(navarra.why).toContain(style === "oficial" ? "Pamplona/Iruña es la capital de la Comunidad Foral" : "Pamplona es la capital de Navarra");
-    });
-
-    it("las notas y curiosidades sustituyen {capital} por el nombre en la forma de la pregunta", () => {
-      const vasco = find(style, "capital-ccaa:16");
-      expect(vasco.why).toContain(style === "oficial" ? "eligió Vitoria-Gasteiz" : "eligió Vitoria como");
-      expect(find(style, "capital-ccaa:10").fact).toMatch(style === "oficial" ? /^València fue/ : /^Valencia fue/);
-    });
-
-    it("las marcas de provincia salen en la forma de la pregunta, en capitales y en banderas", () => {
-      const oficial = style === "oficial";
-      expect(find(style, "capital-ccaa:12").why).toContain(oficial ? "y A Coruña había sido" : "y La Coruña había sido");
-      expect(find(style, "bandera-ccaa:12").meaning).toContain(oficial ? "del puerto de A Coruña:" : "del puerto de La Coruña:");
-      const vasco = find(style, "capital-ccaa:16").why;
-      expect(vasco).toContain(oficial ? "La Diputación de Araba/Álava" : "La Diputación de Álava");
-      expect(vasco).toContain(oficial ? "entre Bilbao y Donostia/San Sebastián." : "entre Bilbao y San Sebastián.");
-      expect(find(style, "bandera-ccaa:16").meaning).toContain(oficial ? "bandera de Bizkaia," : "bandera de Vizcaya,");
-    });
-
-    it("las banderas muestran su descripción y, aparte, su significado; las capitales no tienen significado", () => {
-      for (const c of AUTONOMIAS) {
-        const q = find(style, `bandera-ccaa:${c.id}`);
-        expect(q.why, c.id).toBe(BANDERAS[c.id].descripcion.trim());
-        expect(q.meaning, c.id).toBeTruthy();
-        expect(find(style, `capital-ccaa:${c.id}`).meaning, c.id).toBeUndefined();
-      }
-    });
-
-    it("cada curiosidad de los datos llega a su pregunta de capital, y las banderas no tienen", () => {
-      // Se compara con territorio.json, así que no hay que tocar el test al añadir o quitar curiosidades.
-      for (const c of AUTONOMIAS) {
-        expect(Boolean(find(style, `capital-ccaa:${c.id}`).fact), c.id).toBe(Boolean(c.curiosidadCapital));
-      }
+    it("solo las capitales tienen curiosidad", () => {
       expect(all.filter((q) => q.fact).every((q) => q.category === "capitales")).toBe(true);
     });
   });
@@ -243,13 +209,10 @@ for (const style of NAME_STYLES) {
       expect([...seen].sort()).toEqual([...new Set(capitales)].sort());
     });
 
-    it("Ceuta y Melilla: su capital es la propia ciudad; trampas, la otra ciudad y ciudades cercanas de los dos lados del estrecho", () => {
-      const ceuta = find(style, "capital-ccaa:18");
-      expect(ceuta.text).toBe("¿Cuál es la capital de Ceuta?");
-      expect(ceuta.answer).toBe("Ceuta");
-      expect(ceuta.traps).toEqual(["Melilla", "Tetuán", "Tánger", "Nador", "Alhucemas", "Algeciras", "Tarifa"]);
-      expect(ceuta.why).toContain("ciudad autónoma");
-      expect(find(style, "capital-ccaa:19").traps).toEqual(["Ceuta", "Tetuán", "Tánger", "Nador", "Alhucemas", "Algeciras", "Tarifa"]);
+    it("Ceuta y Melilla: su capital es la propia ciudad", () => {
+      for (const c of AUTONOMIAS.filter((x) => x.tipo === "ciudad")) {
+        expect(find(style, `capital-ccaa:${c.id}`).answer, c.id).toBe(c.nombre[style]);
+      }
     });
 
     it("Canarias: ninguna de sus dos capitales sale como incorrecta", () => {
