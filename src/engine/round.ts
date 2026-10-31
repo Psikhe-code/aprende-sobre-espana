@@ -1,4 +1,4 @@
-import { NAME_STYLES, type NameStyle, type Question, type RoundQuestion, type Rng } from "./types";
+import { NAME_STYLES, TERRITORIOS, type NameStyle, type Question, type RoundQuestion, type Rng, type Territorio } from "./types";
 import { categoryById } from "./categories";
 import { poolsFor } from "./territory";
 import { pick, shuffle } from "./random";
@@ -9,6 +9,8 @@ export const ROUND_LENGTH = 10;
 export const DEFAULT_OPTIONS = 4;
 /** Formas de los nombres por defecto: todas, sorteadas en cada pregunta para aprenderlas. */
 export const DEFAULT_NAMES: NameStyle[] = [...NAME_STYLES];
+/** Territorios por defecto: comunidades y provincias. */
+export const DEFAULT_TERRITORIOS: Territorio[] = [...TERRITORIOS];
 
 export interface RoundSettings {
   categories: string[];
@@ -16,7 +18,24 @@ export interface RoundSettings {
   options?: number;
   /** Formas de los nombres marcadas. Si hay varias, se sortea una en cada pregunta. */
   names?: NameStyle[];
+  /** Territorios marcados: solo salen preguntas de estos. */
+  territorios?: Territorio[];
   rng?: Rng;
+}
+
+/** Preguntas de una categoría en los territorios marcados (en la forma oficial: los ids son iguales en todas). */
+export function questionsIn(categoryId: string, territorios: Territorio[] = DEFAULT_TERRITORIOS): Question[] {
+  const cat = categoryById(categoryId);
+  return cat ? cat.questions(NAME_STYLES[0]).filter((q) => territorios.includes(q.territorio)) : [];
+}
+
+/**
+ * Cuántas preguntas tendrá una partida con esta selección: 10, o menos si no hay tantos lugares distintos
+ * (por ejemplo, solo capitales de provincia). Cero si la selección no tiene preguntas.
+ */
+export function roundSize(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, length = ROUND_LENGTH): number {
+  const lugares = new Set(categories.flatMap((id) => questionsIn(id, territorios)).map((q) => JSON.stringify(q.answerKey)));
+  return Math.min(length, lugares.size);
 }
 
 type Picked = Question & { category: string; style: NameStyle; answer: string; answerKey: string };
@@ -28,7 +47,7 @@ type Picked = Question & { category: string; style: NameStyle; answer: string; a
  * - La forma de los nombres (oficial o castellano) se fija para cada pregunta entera:
  *   una de las marcadas, sorteada si hay varias.
  */
-export function pickQuestions({ categories, length = ROUND_LENGTH, names = DEFAULT_NAMES, rng = Math.random }: RoundSettings): Picked[] {
+export function pickQuestions({ categories, length = ROUND_LENGTH, names = DEFAULT_NAMES, territorios = DEFAULT_TERRITORIOS, rng = Math.random }: RoundSettings): Picked[] {
   const styles = NAME_STYLES.filter((s) => names.includes(s));
   if (!styles.length) throw new Error("Hay que marcar al menos una forma de los nombres");
   // La misma pregunta (mismo id) generada en cada forma.
@@ -37,14 +56,16 @@ export function pickQuestions({ categories, length = ROUND_LENGTH, names = DEFAU
   for (const catId of categories) {
     const cat = categoryById(catId);
     if (!cat) continue;
+    const ids = new Set(questionsIn(catId, territorios).map((q) => q.id));
+    if (!ids.size) continue;
     for (const style of NAME_STYLES) {
-      for (const q of cat.questions(style)) {
+      for (const q of cat.questions(style).filter((x) => ids.has(x.id))) {
         const v = versions.get(q.id) ?? ({} as Record<NameStyle, Question>);
         v[style] = q;
         versions.set(q.id, v);
       }
     }
-    decks[catId] = shuffle(cat.questions(NAME_STYLES[0]).map((q) => q.id), rng);
+    decks[catId] = shuffle([...ids], rng);
   }
   const out: Picked[] = [];
   while (out.length < length) {

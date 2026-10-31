@@ -34,7 +34,16 @@ export interface Question {
   flag?: string;
   /** Otras formas de los nombres de la pregunta, para mostrarlas al responder: "Girona · en castellano, Gerona". */
   aliases: string[];
+  /** Si la pregunta es sobre comunidades (y ciudades autónomas) o sobre provincias. Se elige en Opciones. */
+  territorio: Territorio;
 }
+
+/**
+ * Territorio de una pregunta. En Opciones se marcan uno o los dos, y cada categoría
+ * (capitales, banderas…) incluye solo sus preguntas de los territorios marcados.
+ */
+export type Territorio = "comunidad" | "provincia";
+export const TERRITORIOS: Territorio[] = ["comunidad", "provincia"];
 
 /** Pregunta lista para jugar: respuesta y forma de los nombres fijadas, y opciones ya generadas. */
 export interface RoundQuestion extends Question {
@@ -58,7 +67,7 @@ export const NAME_STYLES: NameStyle[] = ["oficial", "castellano"];
 export interface Category {
   id: string;
   name: string;
-  description: string;
+  /** Todas sus preguntas, de todos los territorios, en una forma de los nombres. */
   questions: (style: NameStyle) => Question[];
 }
 

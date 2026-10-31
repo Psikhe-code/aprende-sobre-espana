@@ -2,7 +2,7 @@
 
 Juego de preguntas sobre geografía de España. Partidas de 10 preguntas con opciones, explicación de cada respuesta y repaso de fallos.
 
-Ahora mismo tiene dos categorías, **Capitales autonómicas** y **Banderas autonómicas**, cada una con las 17 comunidades y las 2 ciudades autónomas (Ceuta y Melilla), mientras se afina la base del juego. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
+Ahora mismo tiene dos categorías, **Capitales** y **Banderas**, y en Opciones se elige el **territorio**: comunidades (las 17 y las 2 ciudades autónomas, Ceuta y Melilla), provincias o las dos. De provincias, por ahora solo hay capitales: las 8 que no se llaman como su provincia. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
 
 Hecho con TypeScript y Vite. Funciona en el navegador, se puede instalar como app (PWA) y funciona sin conexión.
 
@@ -81,6 +81,7 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
     - `notaCapital`: la explicación de la pregunta de su capital, solo cuando hay algo que contar (la capital no es la ciudad más poblada o no es capital de provincia, instituciones repartidas, cambios de capital o de nombre). Si no la tiene, el juego genera una automática: *«Zaragoza es la capital de Aragón y también de la provincia de Zaragoza»*.
     - `curiosidadCapital`: un dato histórico que se muestra después de la nota, si la ciudad fue capital de España o de un antiguo reino, con sus fechas. El final de un reino se cuenta desde que perdió sus instituciones propias.
   - Cada provincia tiene `id`, `nombre`, `capital` y el código de su `comunidad`.
+  - Opcionalmente, `ciudades`: otras ciudades de la provincia que salen como trampa en la pregunta de su capital. Solo las tienen las provincias cuya capital no se llama como la provincia, y es lo que crea esa pregunta: *«¿Cuál es la capital de la provincia de Asturias?»*, con Gijón y Avilés como trampas.
 - **`banderas.json`**: por código, el `archivo` SVG, las `trampas` (códigos de banderas parecidas) y dos textos que se muestran al responder:
   - `descripcion`: cómo es la bandera, en una o dos frases sencillas.
   - `significado`: de dónde vienen sus partes y qué significan, una idea por línea. Se muestra aparte, con la etiqueta «Significado».
@@ -117,13 +118,15 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 **Forma de los nombres.** En Opciones se marcan las formas con las que se quiere jugar: oficial, castellano o las dos (por defecto). Si hay varias marcadas, se sortea una en cada pregunta, para aprenderlas todas. Cada pregunta va **entera** en una forma (enunciado, respuesta y opciones), así que nunca se mezclan Gerona y Girona en las mismas opciones. Al responder se muestra la otra forma cuando es distinta: *«Vitoria-Gasteiz · en castellano, Vitoria»*.
 
+**Territorio.** Cada pregunta dice si es de comunidades o de provincias (`territorio`). Las categorías reúnen las de los dos, y en Opciones se marca cuáles salen (por defecto, los dos). Si una selección no da para 10 preguntas (por ejemplo, solo capitales de provincia), la partida tiene las que haya, y cuenta para el récord igual. Si no tiene ninguna (banderas de provincia, que aún no existen), Opciones lo avisa.
+
 **Opciones.** Cada pregunta tiene un pool del que salen las incorrectas (todas las capitales, todas las comunidades) y unas trampas fijas (las confusiones típicas):
 
 - Al menos una incorrecta es siempre aleatoria del pool, para que las partidas no se repitan.
 - Lo que está en `exclude` nunca sale como incorrecto. Por ejemplo, en Canarias ninguna de sus dos capitales aparece como incorrecta.
 - El número de opciones es un parámetro (`DEFAULT_OPTIONS` en `round.ts`): el motor ya funciona con 4, 6 u 8.
 
-**Partida.** `round.ts` elige 10 preguntas, sorteando primero la categoría para repartirlas, sin repetir pregunta ni lugar como respuesta (aunque salga con otro nombre). `game.ts` lleva el desarrollo: responder, avanzar, aciertos, racha, fallos y si la partida cuenta para el récord. La interfaz solo dibuja lo que el motor le dice.
+**Partida.** `round.ts` elige 10 preguntas de las categorías y territorios marcados, sorteando primero la categoría para repartirlas, sin repetir pregunta ni lugar como respuesta (aunque salga con otro nombre). `game.ts` lleva el desarrollo: responder, avanzar, aciertos, racha, fallos y si la partida cuenta para el récord. La interfaz solo dibuja lo que el motor le dice.
 
 **Actualizaciones.** Cuando se publica una versión nueva, se descarga en segundo plano y se aplica al volver al inicio u opciones, nunca a mitad de partida (`main.ts`).
 

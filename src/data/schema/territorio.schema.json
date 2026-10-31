@@ -120,6 +120,15 @@
           "comunidad": {
             "description": "Código INE de su comunidad o ciudad autónoma.",
             "$ref": "#/definitions/codigo"
+          },
+          "ciudades": {
+            "description": "Solo en las provincias cuya capital no se llama como la provincia: otras ciudades de la provincia que salen como trampa en la pregunta de su capital (las más pobladas o conocidas). Su presencia es lo que crea la pregunta de capital de provincia.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/formas"
+            },
+            "minItems": 1,
+            "uniqueItems": true
           }
         }
       }

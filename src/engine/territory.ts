@@ -33,6 +33,11 @@ export interface Provincia {
   capital: Formas;
   /** Código INE de su comunidad o ciudad autónoma. */
   comunidad: string;
+  /**
+   * Solo en las provincias cuya capital no se llama como la provincia: otras ciudades suyas,
+   * que salen como trampa en la pregunta de su capital.
+   */
+  ciudades?: Formas[];
 }
 
 /** Comunidades y ciudades autónomas. */
@@ -67,6 +72,11 @@ export function poolsFor(style: NameStyle): Pools {
     capitalCualquiera: [...new Set([
       ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
       ...PROVINCIAS.map((p) => p.capital[style])
+    ])],
+    /** Todas las capitales, más las ciudades trampa de las provincias. */
+    capitalOCiudad: [...new Set([
+      ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
+      ...PROVINCIAS.flatMap((p) => [p.capital, ...(p.ciudades ?? [])].map((f) => f[style]))
     ])]
   };
 }

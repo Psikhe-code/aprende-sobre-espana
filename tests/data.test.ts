@@ -63,6 +63,21 @@ describe("territorio", () => {
     for (const c of AUTONOMIAS) expect(provinciasDe(c.id).length, c.id).toBeGreaterThan(0);
   });
 
+  it("las ciudades trampa solo están en provincias cuya capital se llama distinto, y no son capitales ni se repiten", () => {
+    for (const style of NAME_STYLES) {
+      const capitales = new Set(poolsFor(style).capitalCualquiera);
+      const vistas = new Set<string>();
+      for (const p of PROVINCIAS.filter((x) => x.ciudades)) {
+        expect(p.nombre.castellano, p.id).not.toBe(p.capital.castellano);
+        for (const c of p.ciudades!) {
+          expect(capitales.has(c[style]), `${p.id} → ${c[style]}`).toBe(false);
+          expect(vistas.has(c[style]), `${p.id} → ${c[style]} repetida`).toBe(false);
+          vistas.add(c[style]);
+        }
+      }
+    }
+  });
+
   it("una ciudad que es capital autonómica y de provincia se escribe igual en los dos sitios, en todas sus formas", () => {
     for (const c of COMUNIDADES) {
       for (const cap of capitalesDe(c)) {

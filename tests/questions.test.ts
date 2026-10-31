@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../src/engine/categories";
 import { makeOptions, prepare } from "../src/engine/options";
 import { BANDERAS, prepararTexto } from "../src/engine/questions";
-import { AUTONOMIAS, COMUNIDADES, capitalesDe, poolsFor } from "../src/engine/territory";
+import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, capitalesDe, poolsFor } from "../src/engine/territory";
+import { questionsIn } from "../src/engine/round";
 import { NAME_STYLES, type NameStyle, type Question } from "../src/engine/types";
 
 const REPS = 30;
@@ -14,9 +15,40 @@ for (const style of NAME_STYLES) {
   const pools = poolsFor(style);
 
   describe(`[${style}] banco de preguntas`, () => {
-    it("19 capitales y 19 banderas (17 comunidades y 2 ciudades autónomas)", () => {
-      expect(CATEGORIES.find((c) => c.id === "capitalesCCAA")!.questions(style)).toHaveLength(19);
-      expect(CATEGORIES.find((c) => c.id === "banderasCCAA")!.questions(style)).toHaveLength(19);
+    it("comunidades: 19 capitales y 19 banderas (17 comunidades y 2 ciudades autónomas)", () => {
+      expect(questionsIn("capitales", ["comunidad"])).toHaveLength(19);
+      expect(questionsIn("banderas", ["comunidad"])).toHaveLength(19);
+    });
+
+    it("provincias: capitales solo de las 8 provincias cuya capital se llama distinto; banderas, ninguna todavía", () => {
+      const provincias = questionsIn("capitales", ["provincia"]);
+      expect(provincias.map((q) => q.id)).toEqual(["01", "07", "20", "26", "31", "33", "39", "48"].map((id) => `capital-provincia:${id}`));
+      for (const q of provincias) {
+        const p = PROVINCIAS.find((x) => `capital-provincia:${x.id}` === q.id)!;
+        expect(p.nombre.castellano, q.id).not.toBe(p.capital.castellano);
+      }
+      expect(questionsIn("banderas", ["provincia"])).toHaveLength(0);
+    });
+
+    it("capitales de provincia: enunciado, ciudades trampa de la misma provincia y nota", () => {
+      const asturias = find(style, "capital-provincia:33");
+      expect(asturias.text).toBe("¿Cuál es la capital de la provincia de Asturias?");
+      expect(asturias.answer).toBe("Oviedo");
+      expect(asturias.traps).toEqual(["Gijón", "Avilés"]);
+      expect(asturias.why).toContain("Como es la única provincia");
+      // Mismo lugar que la pregunta de la comunidad: no salen las dos en una partida.
+      expect(asturias.answerKey).toBe(find(style, "capital-ccaa:03").answerKey);
+      const vizcaya = find(style, "capital-provincia:48");
+      expect(vizcaya.text).toBe(style === "oficial" ? "¿Cuál es la capital de la provincia de Bizkaia?" : "¿Cuál es la capital de la provincia de Vizcaya?");
+      expect(vizcaya.traps).toEqual(style === "oficial" ? ["Barakaldo", "Gernika-Lumo"] : ["Baracaldo", "Guernica"]);
+      expect(vizcaya.why).toBe(`Bilbao es la capital de la provincia de ${style === "oficial" ? "Bizkaia" : "Vizcaya"}. La capital del País Vasco es ${style === "oficial" ? "Vitoria-Gasteiz" : "Vitoria"}.`);
+      expect(find(style, "capital-provincia:01").why).toBe(style === "oficial"
+        ? "Vitoria-Gasteiz es la capital de la provincia de Araba/Álava y también del País Vasco."
+        : "Vitoria es la capital de la provincia de Álava y también del País Vasco.");
+    });
+
+    it("cada pregunta dice su territorio: las de provincia son solo las de capital de provincia", () => {
+      for (const q of all) expect(q.territorio, q.id).toBe(q.id.startsWith("capital-provincia:") ? "provincia" : "comunidad");
     });
 
     it("los identificadores son únicos", () => {
@@ -82,7 +114,7 @@ for (const style of NAME_STYLES) {
       for (const c of AUTONOMIAS) {
         expect(Boolean(find(style, `capital-ccaa:${c.id}`).fact), c.id).toBe(Boolean(c.curiosidadCapital));
       }
-      expect(all.filter((q) => q.fact).every((q) => q.category === "capitalesCCAA")).toBe(true);
+      expect(all.filter((q) => q.fact).every((q) => q.category === "capitales")).toBe(true);
     });
   });
 
@@ -103,7 +135,7 @@ for (const style of NAME_STYLES) {
     }
 
     it("las capitales autonómicas y las de Ceuta y Melilla también salen como incorrectas", () => {
-      const qs = all.filter((q) => q.category === "capitalesCCAA");
+      const qs = all.filter((q) => q.category === "capitales");
       const capitales = [...COMUNIDADES.flatMap((c) => capitalesDe(c).map((f) => f[style])), "Ceuta", "Melilla"];
       const seen = new Set<string>();
       for (let r = 0; r < 300; r++) {
