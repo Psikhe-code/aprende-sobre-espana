@@ -1,230 +1,278 @@
 {
-  "01": {
-    "archivo": "andalucia.svg",
-    "trampas": ["11", "06", "17"],
-    "descripcion": "Tres franjas iguales, verde, blanca y verde, con su escudo en el centro.",
-    "significado": "El verde simboliza la esperanza y evoca los campos de la región.\nEl blanco simboliza la pureza y la paz, y evoca las típicas casas blancas de la región.\nSe la conoce como «la blanca y verde» o «arbonaida».",
-    "fuente": {
-      "titulo": "Flag of Andalucía.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Andaluc%C3%ADa.svg",
-      "autor": "Miguillen",
-      "licencia": "CC BY-SA 4.0",
-      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  "comunidades": [
+    {
+      "id": "01",
+      "archivo": "andalucia.svg",
+      "trampas": ["11", "06", "17"],
+      "descripcion": "Tres franjas iguales, verde, blanca y verde, con su escudo en el centro.",
+      "significado": "El verde simboliza la esperanza y evoca los campos de la región.\nEl blanco simboliza la pureza y la paz, y evoca las típicas casas blancas de la región.\nSe la conoce como «la blanca y verde» o «arbonaida».",
+      "fuente": {"titulo": "Flag of Andalucía.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Andaluc%C3%ADa.svg", "autor": "Miguillen", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "02",
+      "archivo": "aragon.svg",
+      "trampas": ["09", "10", "04"],
+      "descripcion": "Cuatro barras rojas sobre fondo amarillo, que forman nueve franjas alternas. Lleva su escudo cerca del mástil.",
+      "significado": "Las cuatro barras rojas sobre amarillo eran la señal de los reyes de Aragón, símbolo de su poder desde el siglo XII. Por eso las comparten las comunidades que formaron parte de la Corona de Aragón.\nSe dice que sus colores podrían venir de los que usaba el Papa para sellar sus documentos, al declararse el rey Sancho Ramírez su vasallo en el siglo XI.",
+      "fuente": {"titulo": "Flag of Aragon.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Aragon.svg", "autor": "Willtron", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+    },
+    {
+      "id": "03",
+      "archivo": "asturias.svg",
+      "trampas": ["12", "05", "15"],
+      "descripcion": "Azul, con una cruz amarilla cerca del mástil. De sus brazos cuelgan dos letras griegas: la alfa y la omega.",
+      "significado": "La Cruz de la Victoria es, según la tradición, la que llevaba Pelayo en la batalla de Covadonga, considerada el inicio de la Reconquista. Siglos después se cubrió de oro y piedras preciosas, y hoy se guarda en la catedral de Oviedo. Por eso en la bandera es amarilla, del color del oro.\nLa alfa y la omega son la primera y la última letras del alfabeto griego, y simbolizan a Dios como principio y fin de todo.\nDel azul no hay una explicación oficial. Se suele decir que representa el cielo.",
+      "fuente": {"titulo": "Flag of Asturias.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Asturias.svg", "licencia": "Dominio público"}
+    },
+    {
+      "id": "04",
+      "archivo": "islas-baleares.svg",
+      "trampas": ["09", "02", "10"],
+      "descripcion": "Cuatro barras rojas sobre fondo amarillo, que forman nueve franjas alternas. En la esquina junto al mástil, un cuadro morado con un castillo blanco.",
+      "significado": "Las cuatro barras rojas sobre amarillo eran la señal de los reyes de Aragón, símbolo de su poder desde el siglo XII. Por eso las comparten las comunidades que formaron parte de la Corona de Aragón. Las islas formaron parte de ella desde que Jaime I las conquistó en el siglo XIII.\nEl castillo representa el palacio de la Almudaina, en Palma, y el recuadro morado con el castillo procede de la antigua bandera de la ciudad. Se suele contar que se añadió para distinguir los barcos de Mallorca de los del resto de la Corona.\nDel morado no hay una explicación clara.",
+      "fuente": {"titulo": "Flag of the Balearic Islands.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Balearic_Islands.svg", "licencia": "CC0", "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"}
+    },
+    {
+      "id": "05",
+      "archivo": "canarias.svg",
+      "trampas": ["17", "11", "03"],
+      "descripcion": "Tres franjas verticales iguales, blanca, azul y amarilla, con su escudo en el centro.",
+      "significado": "Une los colores de las antiguas banderas marítimas de las dos provincias canarias: el blanco y el azul de Santa Cruz de Tenerife, y el azul y el amarillo de Las Palmas.\nLos colores están colocados como las provincias en el mapa: el blanco, junto al mástil, queda al oeste, como Santa Cruz de Tenerife; el amarillo, al este, como Las Palmas; y el azul, que comparten las dos, en el centro.",
+      "fuente": {"titulo": "Flag of the Canary Islands.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Canary_Islands.svg", "licencia": "Dominio público"}
+    },
+    {
+      "id": "06",
+      "archivo": "cantabria.svg",
+      "trampas": ["13", "12", "16"],
+      "descripcion": "Dos franjas iguales, blanca arriba y roja abajo, con su escudo en el centro.",
+      "significado": "Sus colores no tienen un significado oficial. Su origen más citado es la bandera que identificaba a los barcos del puerto de Santander en los siglos XVIII o XIX, aunque los historiadores no se ponen de acuerdo.",
+      "fuente": {"titulo": "Flag of Cantabria (Official).svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Cantabria_(Official).svg", "autor": "Miguillen", "licencia": "CC BY-SA 2.5", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/2.5/"}
+    },
+    {
+      "id": "07",
+      "archivo": "castilla-y-leon.svg",
+      "trampas": ["08", "14", "15"],
+      "descripcion": "Cuatro cuadros: dos rojos con un castillo dorado y dos blancos con un león morado. Es el mismo dibujo que su escudo.",
+      "significado": "Viene de los símbolos de Castilla y de León, que Fernando III juntó cuando, en 1230, unió los dos reinos. Se suele decir que los repartió en cuatro cuadros para que ninguno quedara por encima del otro.\nEl castillo representa a Castilla, cuyo nombre viene de los castillos que se levantaron en la Reconquista.\nEl león representa a León, aunque, curiosamente, el nombre de la ciudad no viene realmente del animal, sino de la legión romana que acampó allí. Con el tiempo, su nombre en latín, «Legio», acabó convirtiéndose en «León».",
+      "fuente": {"titulo": "Flag of Castile and León.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Castile_and_Le%C3%B3n.svg", "autor": "Rastrojo (D•ES)", "licencia": "CC BY 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by/3.0/"}
+    },
+    {
+      "id": "08",
+      "archivo": "castilla-la-mancha.svg",
+      "trampas": ["07", "14", "13"],
+      "descripcion": "Dividida en dos mitades: roja con un castillo dorado, junto al mástil, y blanca.",
+      "significado": "La mitad roja con el castillo viene de la antigua bandera de Castilla, el reino al que perteneció la región.\nLa mitad blanca recuerda a las órdenes militares, como las de Calatrava y Santiago, que conquistaron y organizaron La Mancha en la Edad Media.",
+      "fuente": {"titulo": "Flag of Castilla-La Mancha.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Castile-La_Mancha.svg", "licencia": "Dominio público"}
+    },
+    {
+      "id": "09",
+      "archivo": "cataluna.svg",
+      "trampas": ["02", "10", "04"],
+      "descripcion": "Cuatro barras rojas sobre fondo amarillo, que forman nueve franjas alternas.",
+      "significado": "Las cuatro barras rojas sobre amarillo eran la señal de los reyes de Aragón, símbolo de su poder desde el siglo XII. Por eso las comparten las comunidades que formaron parte de la Corona de Aragón.\nLas barras más antiguas que se conservan son de mediados del siglo XII, poco después de que el Reino de Aragón y el condado de Barcelona se unieran, así que no se sabe de cuál de los dos venían originalmente.\nUna leyenda catalana cuenta que las barras representan cuatro dedos manchados con la sangre del conde Wifredo el Velloso, herido en una batalla, pero los historiadores la consideran un invento del siglo XVI.\nTanto esta como la valenciana se conocen como «senyera», que en catalán y en valenciano significa «bandera».",
+      "fuente": {"titulo": "Flag of Catalonia.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Catalonia.svg", "licencia": "Dominio público"}
+    },
+    {
+      "id": "10",
+      "archivo": "comunidad-valenciana.svg",
+      "trampas": ["09", "04", "02"],
+      "descripcion": "Cuatro barras rojas sobre fondo amarillo, que forman nueve franjas alternas. Junto al mástil, una franja azul con una corona dorada dibujada a lo largo.",
+      "significado": "Las cuatro barras rojas sobre amarillo eran la señal de los reyes de Aragón, símbolo de su poder desde el siglo XII. Por eso las comparten las comunidades que formaron parte de la Corona de Aragón. El Reino de Valencia formó parte de ella desde que Jaime I lo conquistó en 1238.\nLa franja azul es propia de Valencia, y su origen no está claro. Según la tradición, la corona que lleva fue un honor que el rey Pedro IV concedió a la ciudad en el siglo XIV por su lealtad.\nTanto esta como la catalana se conocen como «senyera», que en catalán y en valenciano significa «bandera». La valenciana es la antigua Real Senyera de la ciudad de Valencia, que se adoptó para toda la comunidad.",
+      "fuente": {"titulo": "Flag of the Valencian Community (2x3).svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Valencian_Community_(2x3).svg", "licencia": "Dominio público"}
+    },
+    {
+      "id": "11",
+      "archivo": "extremadura.svg",
+      "trampas": ["01", "17", "05"],
+      "descripcion": "Tres franjas iguales, verde, blanca y negra, con su escudo cerca del mástil.",
+      "significado": "Oficialmente, cada color recuerda una parte de su historia en la Edad Media.\nEl verde, la Orden de Alcántara, una orden militar muy importante en la región.\nEl blanco, la bandera del Reino de León, que repobló gran parte de Extremadura.\nEl negro, la bandera de los reyes de la taifa de Badajoz, en el siglo XI.\nPero también se suele decir que el verde simboliza la esperanza; el blanco, la pureza de su naturaleza; y el negro, la tristeza de los emigrantes que tuvieron que dejar su tierra.",
+      "fuente": {"titulo": "Flag of Extremadura (with coat of arms).svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Extremadura,_Spain_(with_coat_of_arms).svg", "licencia": "Dominio público"}
+    },
+    {
+      "id": "12",
+      "archivo": "galicia.svg",
+      "trampas": ["03", "06", "05"],
+      "descripcion": "Blanca, con una banda azul en diagonal y su escudo en el centro.",
+      "significado": "Viene de la bandera que identificaba a los barcos del puerto de {provincia.capital:15}: los emigrantes gallegos la veían al partir hacia América, y empezaron a usarla como bandera de Galicia en Cuba, a finales del siglo XIX.\nSus colores no tienen un significado oficial.",
+      "fuente": {"titulo": "Flag of Galicia.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Galicia.svg", "licencia": "Dominio público"}
+    },
+    {
+      "id": "13",
+      "archivo": "comunidad-de-madrid.svg",
+      "trampas": ["14", "08", "15"],
+      "descripcion": "Roja, con siete estrellas blancas: cuatro arriba y tres abajo.",
+      "significado": "El rojo viene de la antigua bandera de Castilla, y recuerda que la historia de Madrid es castellana.\nLas siete estrellas vienen del escudo de la ciudad de Madrid, y se suelen relacionar con la Osa Mayor.",
+      "fuente": {"titulo": "Flag of the Community of Madrid.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Community_of_Madrid.svg", "licencia": "CC0", "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"}
+    },
+    {
+      "id": "14",
+      "archivo": "region-de-murcia.svg",
+      "trampas": ["13", "08", "15"],
+      "descripcion": "Roja, con cuatro castillos dorados en la esquina superior junto al mástil y siete coronas en la esquina inferior opuesta.",
+      "significado": "Se suele decir que los cuatro castillos recuerdan que fue tierra de frontera, entre Aragón, el reino nazarí de Granada y el mar.\nLas siete coronas vienen del escudo de la ciudad de Murcia, y son honores que le dieron los reyes. Las cinco primeras se atribuyen a Alfonso X, y la sexta se la dio Pedro I en 1361, por su ayuda en una guerra contra Aragón. La séptima se suele atribuir a Felipe V, por su lealtad en la Guerra de Sucesión.",
+      "fuente": {"titulo": "Flag of the Region of Murcia.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Region_of_Murcia.svg", "licencia": "CC0", "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"}
+    },
+    {
+      "id": "15",
+      "archivo": "navarra.svg",
+      "trampas": ["16", "14", "13"],
+      "descripcion": "Roja, con su escudo en el centro.",
+      "significado": "El rojo es el color del fondo de su escudo, que se extiende a toda la bandera.\nSu escudo tiene unas cadenas doradas. Según una leyenda del siglo XV, son las que rompió el rey Sancho VII en la batalla de las Navas de Tolosa, en 1212.",
+      "fuente": {"titulo": "Flag of Navarre.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Navarre.svg", "licencia": "Dominio público"}
+    },
+    {
+      "id": "16",
+      "archivo": "pais-vasco.svg",
+      "trampas": ["15", "06", "17"],
+      "descripcion": "Roja, con un aspa verde y, encima, una cruz blanca.",
+      "significado": "Nació en 1894 como bandera de {provincia:48}, y después pasó a representar a todo el País Vasco.\nEl rojo representa a su pueblo.\nEl aspa verde es la cruz de San Andrés, y recuerda una batalla que, según la tradición, se ganó el día de ese santo, símbolo de su independencia. Es verde como el árbol de Gernika, símbolo de sus leyes propias.\nLa cruz blanca representa a Dios.\nSe la conoce como «ikurriña», de «ikur», que en euskera significa «señal» o «símbolo».",
+      "fuente": {"titulo": "Flag of the Basque Country.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Basque_Country.svg", "autor": "Daniele Schirmo (Frankie688)", "licencia": "CC BY-SA 2.5", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/2.5/"}
+    },
+    {
+      "id": "17",
+      "archivo": "la-rioja.svg",
+      "trampas": ["11", "01", "05"],
+      "descripcion": "Cuatro franjas iguales, roja, blanca, verde y amarilla, con su escudo en el centro.",
+      "significado": "Cada color representa algo característico de la región.\nEl rojo, los viñedos.\nEl blanco, la luz.\nEl verde, la huerta.\nEl amarillo, la fertilidad.",
+      "fuente": {"titulo": "Flag of La Rioja (with coat of arms).svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_La_Rioja_(with_coat_of_arms).svg", "autor": "jynus", "licencia": "CC BY 2.5", "licenciaUrl": "https://creativecommons.org/licenses/by/2.5/"}
+    },
+    {
+      "id": "18",
+      "archivo": "ceuta.svg",
+      "trampas": ["19"],
+      "descripcion": "Ocho triángulos blancos y negros que salen del centro, con su escudo en medio.",
+      "significado": "Viene de la bandera de Lisboa. Según la tradición, es la que los portugueses izaron al conquistar la ciudad en 1415.\nEl escudo es casi idéntico al de Portugal. Ceuta conservó la bandera y el escudo al pasar a formar parte de España en el siglo XVII, como recuerdo de su pasado portugués.",
+      "fuente": {"titulo": "Flag of Ceuta.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Ceuta.svg", "autor": "Ulaidh", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "19",
+      "archivo": "melilla.svg",
+      "trampas": ["18", "12", "05"],
+      "descripcion": "Azul celeste, con su escudo en el centro.",
+      "significado": "Del azul celeste no hay una explicación clara.\nEl escudo viene del de la casa de Medina Sidonia, cuyo duque envió la expedición que tomó la ciudad en 1497.",
+      "fuente": {"titulo": "Flag of Melilla.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Melilla.svg", "autor": "SanchoPanzaXXI", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
     }
-  },
-  "02": {
-    "archivo": "aragon.svg",
-    "trampas": ["09", "10", "04"],
-    "descripcion": "Cuatro barras rojas sobre fondo amarillo, que forman nueve franjas alternas. Lleva su escudo cerca del mástil.",
-    "significado": "Las cuatro barras rojas sobre amarillo eran la señal de los reyes de Aragón, símbolo de su poder desde el siglo XII. Por eso las comparten las comunidades que formaron parte de la Corona de Aragón.\nSe dice que sus colores podrían venir de los que usaba el Papa para sellar sus documentos, al declararse el rey Sancho Ramírez su vasallo en el siglo XI.",
-    "fuente": {
-      "titulo": "Flag of Aragon.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Aragon.svg",
-      "autor": "Willtron",
-      "licencia": "CC BY-SA 3.0",
-      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+  ],
+  "provincias": [
+    {
+      "id": "01",
+      "archivo": "alava.svg",
+      "trampas": ["48", "40", "20"],
+      "descripcion": "Roja oscura, con su escudo en el centro.",
+      "significado": "Es la bandera del territorio histórico de {provincia:01}.\nEl escudo muestra un castillo sobre una roca, un brazo con una espada y un león. Su lema, «En aumento de la justicia contra malhechores», se suele relacionar con la Hermandad de Álava, que perseguía a los delincuentes en la Edad Media.",
+      "fuente": {"titulo": "Flag of Álava.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_%C3%81lava.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "04",
+      "archivo": "almeria.svg",
+      "trampas": ["44", "18", "21"],
+      "descripcion": "Blanca, con una cruz roja que la atraviesa y su escudo en el centro.",
+      "significado": "La cruz roja sobre blanco, la de San Jorge, se relaciona con la ciudad de Almería desde que los Reyes Católicos la conquistaron en 1489. Según la tradición, ya la llevaban las tropas genovesas que ayudaron a Alfonso VII a tomarla en 1147.\nLa aprobó la Diputación en 2017.",
+      "fuente": {"titulo": "Flag Almería Province.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_Almer%C3%ADa_Province.svg", "autor": "Almju", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "09",
+      "archivo": "burgos.svg",
+      "trampas": ["14", "40", "45"],
+      "descripcion": "Morada, con su escudo en el centro.",
+      "significado": "El escudo une el de la ciudad de Burgos, con el busto de un rey, y un castillo dorado sobre rojo, el símbolo de Castilla.\nSe usa desde 1979. Del morado no hay una explicación clara.",
+      "fuente": {"titulo": "Flag Burgos Province.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_Burgos_Province.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "11",
+      "archivo": "cadiz.svg",
+      "trampas": ["41", "21", "14"],
+      "descripcion": "Verde, con su escudo en el centro y un borde de cuadros con castillos y leones.",
+      "significado": "El borde de castillos y leones recuerda a Castilla y León.\nEl escudo reúne los de doce ciudades de la provincia. Uno es el de la ciudad de Cádiz, con Hércules, que según la leyenda la fundó.",
+      "fuente": {"titulo": "Flag Cádiz Province.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_C%C3%A1diz_Province.svg", "autor": "Ulaidh", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "14",
+      "archivo": "cordoba.svg",
+      "trampas": ["09", "23", "41"],
+      "descripcion": "Morada, con su escudo en el centro.",
+      "significado": "El escudo tiene un león rojo sobre blanco, rodeado de castillos y leones, que recuerdan a Castilla y León.\nDel morado no hay una explicación clara.",
+      "fuente": {"titulo": "Provincia de Córdoba - Bandera.svg", "url": "https://commons.wikimedia.org/wiki/File:Provincia_de_C%C3%B3rdoba_-_Bandera.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+    },
+    {
+      "id": "18",
+      "archivo": "granada.svg",
+      "trampas": ["23", "41", "45"],
+      "descripcion": "Verde, con su escudo en el centro.",
+      "significado": "Es el verde que se usaba tradicionalmente. Se eligió porque recuerda al de los estandartes del reino nazarí de Granada y al de la bandera de Andalucía.\nEl escudo tiene una granada, el símbolo de la ciudad.",
+      "fuente": {"titulo": "Bandera de la provincia de Granada (España).svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_provincia_de_Granada_%28Espa%C3%B1a%29.svg", "autor": "Erlenmeyer", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+    },
+    {
+      "id": "20",
+      "archivo": "gipuzkoa.svg",
+      "trampas": ["01", "48", "44"],
+      "descripcion": "Blanca, con su escudo en el centro.",
+      "significado": "El escudo tiene tres tejos sobre las olas del mar, sostenidos por dos hombres salvajes. Su lema, en latín, dice «Bardulia fidelísima, nunca vencida»: los várdulos eran el pueblo que vivía allí en tiempos de los romanos.\nHasta 1977, el escudo llevaba también un rey y doce cañones que sus milicias tomaron a los franceses a principios del siglo XVI.",
+      "fuente": {"titulo": "Flag of Guipúzcoa.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Guip%C3%BAzcoa.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "21",
+      "archivo": "huelva.svg",
+      "trampas": ["32", "11", "41"],
+      "descripcion": "Azul, con su escudo en el centro: dos óvalos, uno con un castillo y otro con tres barcos.",
+      "significado": "Los tres barcos son las carabelas de Colón, que salió del puerto de Palos de la Frontera, en la provincia, el 3 de agosto de 1492.\nEl castillo es el de la ciudad de Huelva, con su lema en latín: «Puerto del mar y guarda de la tierra».",
+      "fuente": {"titulo": "Bandera de la Provincia De Huelva.svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_Provincia_De_Huelva.svg", "autor": "Miguel Ángel «fotógrafo»", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+    },
+    {
+      "id": "23",
+      "archivo": "jaen.svg",
+      "trampas": ["18", "41", "14"],
+      "descripcion": "Verde oliva, con su escudo en el centro.",
+      "significado": "El verde representa los olivares, los campos y la naturaleza de la provincia.\nLa aprobó la Diputación en 2014. Antes se usaba una bandera morada.",
+      "fuente": {"titulo": "Bandera de la provincia de Jaén.svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_provincia_de_Ja%C3%A9n.svg", "autor": "Juancharlie", "licencia": "CC BY 2.5", "licenciaUrl": "https://creativecommons.org/licenses/by/2.5/"}
+    },
+    {
+      "id": "32",
+      "archivo": "ourense.svg",
+      "trampas": ["21", "20", "48"],
+      "descripcion": "Azul, con once círculos blancos en el lado contrario al mástil y su escudo en el centro.",
+      "significado": "Los once círculos representan los ríos de la provincia, que dan forma a sus comarcas.\nEl escudo, con un puente, solo se pone cuando la bandera está en edificios públicos.",
+      "fuente": {"titulo": "Provincia de Ourense - Bandera.svg", "url": "https://commons.wikimedia.org/wiki/File:Provincia_de_Ourense_-_Bandera.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+    },
+    {
+      "id": "40",
+      "archivo": "segovia.svg",
+      "trampas": ["01", "48", "09"],
+      "descripcion": "Roja, con su escudo en el centro.",
+      "significado": "El escudo reúne los de las antiguas comarcas de la provincia, como Sepúlveda, Cuéllar y Riaza, y en el centro, el acueducto de Segovia.\nDel rojo no hay una explicación clara.",
+      "fuente": {"titulo": "Flag Segovia province.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_Segovia_province.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "41",
+      "archivo": "sevilla.svg",
+      "trampas": ["11", "18", "23"],
+      "descripcion": "Verde, con su escudo en el centro, rodeado de diez escudos pequeños.",
+      "significado": "El escudo central es el de la ciudad de Sevilla, con el rey San Fernando y el lema «NO8DO».\nLos diez escudos pequeños son los de las ciudades que eran cabeza de partido judicial en 1927, como Carmona, Écija u Osuna.\nEl verde es el que se usaba tradicionalmente.",
+      "fuente": {"titulo": "Flag of Diputacion de Sevilla Spain.svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Diputacion_de_Sevilla_Spain.svg", "autor": "Apj (Taller de Heráldica y Vexilología de la Wikipedia en español)", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "44",
+      "archivo": "teruel.svg",
+      "trampas": ["04", "20", "45"],
+      "descripcion": "Blanca, con una cruz roja que la atraviesa y su escudo en el centro.",
+      "significado": "La cruz roja sobre blanco es la de San Jorge, patrón de Aragón, que también aparece en el escudo luchando contra el dragón.\nEl escudo tiene además las barras de Aragón, el toro y la estrella de Teruel, la Virgen de Albarracín y el castillo de Alcañiz.",
+      "fuente": {"titulo": "Flag of Teruel (province).svg", "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Teruel_%28province%29.svg", "autor": "HansenBCN", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
+    },
+    {
+      "id": "45",
+      "archivo": "toledo.svg",
+      "trampas": ["18", "41", "23"],
+      "descripcion": "Verde, con su escudo en el centro: un águila negra de dos cabezas.",
+      "significado": "El escudo es casi igual que el de la ciudad de Toledo, con el águila imperial, pero lleva a los lados las columnas de Hércules para distinguirlo.\nDel verde no hay una explicación clara: cuando se aprobó, en 2013, una academia de Toledo propuso cambiarlo, pero se mantuvo.",
+      "fuente": {"titulo": "Bandera de la provincia de Toledo.svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_provincia_de_Toledo.svg", "autor": "Asqueladd", "licencia": "CC BY-SA 3.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"}
+    },
+    {
+      "id": "48",
+      "archivo": "bizkaia.svg",
+      "trampas": ["01", "40", "20"],
+      "descripcion": "Granate, con su escudo en el centro.",
+      "significado": "El escudo muestra el árbol de Gernika con una cruz, y un borde con ocho aspas rojas.\nEl árbol representa las leyes propias del territorio, que los reyes juraban respetar bajo él.",
+      "fuente": {"titulo": "Bandera de Vizcaya.svg", "url": "https://commons.wikimedia.org/wiki/File:Bandera_de_Vizcaya.svg", "autor": "SanchoPanzaXXI", "licencia": "CC BY-SA 4.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"}
     }
-  },
-  "03": {
-    "archivo": "asturias.svg",
-    "trampas": ["12", "05", "15"],
-    "descripcion": "Azul, con una cruz amarilla cerca del mástil. De sus brazos cuelgan dos letras griegas: la alfa y la omega.",
-    "significado": "La Cruz de la Victoria es, según la tradición, la que llevaba Pelayo en la batalla de Covadonga, considerada el inicio de la Reconquista. Siglos después se cubrió de oro y piedras preciosas, y hoy se guarda en la catedral de Oviedo. Por eso en la bandera es amarilla, del color del oro.\nLa alfa y la omega son la primera y la última letras del alfabeto griego, y simbolizan a Dios como principio y fin de todo.\nDel azul no hay una explicación oficial. Se suele decir que representa el cielo.",
-    "fuente": {
-      "titulo": "Flag of Asturias.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Asturias.svg",
-      "licencia": "Dominio público"
-    }
-  },
-  "04": {
-    "archivo": "islas-baleares.svg",
-    "trampas": ["09", "02", "10"],
-    "descripcion": "Cuatro barras rojas sobre fondo amarillo, que forman nueve franjas alternas. En la esquina junto al mástil, un cuadro morado con un castillo blanco.",
-    "significado": "Las cuatro barras rojas sobre amarillo eran la señal de los reyes de Aragón, símbolo de su poder desde el siglo XII. Por eso las comparten las comunidades que formaron parte de la Corona de Aragón. Las islas formaron parte de ella desde que Jaime I las conquistó en el siglo XIII.\nEl castillo representa el palacio de la Almudaina, en Palma, y el recuadro morado con el castillo procede de la antigua bandera de la ciudad. Se suele contar que se añadió para distinguir los barcos de Mallorca de los del resto de la Corona.\nDel morado no hay una explicación clara.",
-    "fuente": {
-      "titulo": "Flag of the Balearic Islands.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Balearic_Islands.svg",
-      "licencia": "CC0",
-      "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
-    }
-  },
-  "05": {
-    "archivo": "canarias.svg",
-    "trampas": ["17", "11", "03"],
-    "descripcion": "Tres franjas verticales iguales, blanca, azul y amarilla, con su escudo en el centro.",
-    "significado": "Une los colores de las antiguas banderas marítimas de las dos provincias canarias: el blanco y el azul de Santa Cruz de Tenerife, y el azul y el amarillo de Las Palmas.\nLos colores están colocados como las provincias en el mapa: el blanco, junto al mástil, queda al oeste, como Santa Cruz de Tenerife; el amarillo, al este, como Las Palmas; y el azul, que comparten las dos, en el centro.",
-    "fuente": {
-      "titulo": "Flag of the Canary Islands.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Canary_Islands.svg",
-      "licencia": "Dominio público"
-    }
-  },
-  "06": {
-    "archivo": "cantabria.svg",
-    "trampas": ["13", "12", "16"],
-    "descripcion": "Dos franjas iguales, blanca arriba y roja abajo, con su escudo en el centro.",
-    "significado": "Sus colores no tienen un significado oficial. Su origen más citado es la bandera que identificaba a los barcos del puerto de Santander en los siglos XVIII o XIX, aunque los historiadores no se ponen de acuerdo.",
-    "fuente": {
-      "titulo": "Flag of Cantabria (Official).svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Cantabria_(Official).svg",
-      "autor": "Miguillen",
-      "licencia": "CC BY-SA 2.5",
-      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/2.5/"
-    }
-  },
-  "07": {
-    "archivo": "castilla-y-leon.svg",
-    "trampas": ["08", "14", "15"],
-    "descripcion": "Cuatro cuadros: dos rojos con un castillo dorado y dos blancos con un león morado. Es el mismo dibujo que su escudo.",
-    "significado": "Viene de los símbolos de Castilla y de León, que Fernando III juntó cuando, en 1230, unió los dos reinos. Se suele decir que los repartió en cuatro cuadros para que ninguno quedara por encima del otro.\nEl castillo representa a Castilla, cuyo nombre viene de los castillos que se levantaron en la Reconquista.\nEl león representa a León, aunque, curiosamente, el nombre de la ciudad no viene realmente del animal, sino de la legión romana que acampó allí. Con el tiempo, su nombre en latín, «Legio», acabó convirtiéndose en «León».",
-    "fuente": {
-      "titulo": "Flag of Castile and León.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Castile_and_Le%C3%B3n.svg",
-      "autor": "Rastrojo (D•ES)",
-      "licencia": "CC BY 3.0",
-      "licenciaUrl": "https://creativecommons.org/licenses/by/3.0/"
-    }
-  },
-  "08": {
-    "archivo": "castilla-la-mancha.svg",
-    "trampas": ["07", "14", "13"],
-    "descripcion": "Dividida en dos mitades: roja con un castillo dorado, junto al mástil, y blanca.",
-    "significado": "La mitad roja con el castillo viene de la antigua bandera de Castilla, el reino al que perteneció la región.\nLa mitad blanca recuerda a las órdenes militares, como las de Calatrava y Santiago, que conquistaron y organizaron La Mancha en la Edad Media.",
-    "fuente": {
-      "titulo": "Flag of Castilla-La Mancha.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Castile-La_Mancha.svg",
-      "licencia": "Dominio público"
-    }
-  },
-  "09": {
-    "archivo": "cataluna.svg",
-    "trampas": ["02", "10", "04"],
-    "descripcion": "Cuatro barras rojas sobre fondo amarillo, que forman nueve franjas alternas.",
-    "significado": "Las cuatro barras rojas sobre amarillo eran la señal de los reyes de Aragón, símbolo de su poder desde el siglo XII. Por eso las comparten las comunidades que formaron parte de la Corona de Aragón.\nLas barras más antiguas que se conservan son de mediados del siglo XII, poco después de que el Reino de Aragón y el condado de Barcelona se unieran, así que no se sabe de cuál de los dos venían originalmente.\nUna leyenda catalana cuenta que las barras representan cuatro dedos manchados con la sangre del conde Wifredo el Velloso, herido en una batalla, pero los historiadores la consideran un invento del siglo XVI.\nTanto esta como la valenciana se conocen como «senyera», que en catalán y en valenciano significa «bandera».",
-    "fuente": {
-      "titulo": "Flag of Catalonia.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Catalonia.svg",
-      "licencia": "Dominio público"
-    }
-  },
-  "10": {
-    "archivo": "comunidad-valenciana.svg",
-    "trampas": ["09", "04", "02"],
-    "descripcion": "Cuatro barras rojas sobre fondo amarillo, que forman nueve franjas alternas. Junto al mástil, una franja azul con una corona dorada dibujada a lo largo.",
-    "significado": "Las cuatro barras rojas sobre amarillo eran la señal de los reyes de Aragón, símbolo de su poder desde el siglo XII. Por eso las comparten las comunidades que formaron parte de la Corona de Aragón. El Reino de Valencia formó parte de ella desde que Jaime I lo conquistó en 1238.\nLa franja azul es propia de Valencia, y su origen no está claro. Según la tradición, la corona que lleva fue un honor que el rey Pedro IV concedió a la ciudad en el siglo XIV por su lealtad.\nTanto esta como la catalana se conocen como «senyera», que en catalán y en valenciano significa «bandera». La valenciana es la antigua Real Senyera de la ciudad de Valencia, que se adoptó para toda la comunidad.",
-    "fuente": {
-      "titulo": "Flag of the Valencian Community (2x3).svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Valencian_Community_(2x3).svg",
-      "licencia": "Dominio público"
-    }
-  },
-  "11": {
-    "archivo": "extremadura.svg",
-    "trampas": ["01", "17", "05"],
-    "descripcion": "Tres franjas iguales, verde, blanca y negra, con su escudo cerca del mástil.",
-    "significado": "Oficialmente, cada color recuerda una parte de su historia en la Edad Media.\nEl verde, la Orden de Alcántara, una orden militar muy importante en la región.\nEl blanco, la bandera del Reino de León, que repobló gran parte de Extremadura.\nEl negro, la bandera de los reyes de la taifa de Badajoz, en el siglo XI.\nPero también se suele decir que el verde simboliza la esperanza; el blanco, la pureza de su naturaleza; y el negro, la tristeza de los emigrantes que tuvieron que dejar su tierra.",
-    "fuente": {
-      "titulo": "Flag of Extremadura (with coat of arms).svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Extremadura,_Spain_(with_coat_of_arms).svg",
-      "licencia": "Dominio público"
-    }
-  },
-  "12": {
-    "archivo": "galicia.svg",
-    "trampas": ["03", "06", "05"],
-    "descripcion": "Blanca, con una banda azul en diagonal y su escudo en el centro.",
-    "significado": "Viene de la bandera que identificaba a los barcos del puerto de {provincia.capital:15}: los emigrantes gallegos la veían al partir hacia América, y empezaron a usarla como bandera de Galicia en Cuba, a finales del siglo XIX.\nSus colores no tienen un significado oficial.",
-    "fuente": {
-      "titulo": "Flag of Galicia.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Galicia.svg",
-      "licencia": "Dominio público"
-    }
-  },
-  "13": {
-    "archivo": "comunidad-de-madrid.svg",
-    "trampas": ["14", "08", "15"],
-    "descripcion": "Roja, con siete estrellas blancas: cuatro arriba y tres abajo.",
-    "significado": "El rojo viene de la antigua bandera de Castilla, y recuerda que la historia de Madrid es castellana.\nLas siete estrellas vienen del escudo de la ciudad de Madrid, y se suelen relacionar con la Osa Mayor.",
-    "fuente": {
-      "titulo": "Flag of the Community of Madrid.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Community_of_Madrid.svg",
-      "licencia": "CC0",
-      "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
-    }
-  },
-  "14": {
-    "archivo": "region-de-murcia.svg",
-    "trampas": ["13", "08", "15"],
-    "descripcion": "Roja, con cuatro castillos dorados en la esquina superior junto al mástil y siete coronas en la esquina inferior opuesta.",
-    "significado": "Se suele decir que los cuatro castillos recuerdan que fue tierra de frontera, entre Aragón, el reino nazarí de Granada y el mar.\nLas siete coronas vienen del escudo de la ciudad de Murcia, y son honores que le dieron los reyes. Las cinco primeras se atribuyen a Alfonso X, y la sexta se la dio Pedro I en 1361, por su ayuda en una guerra contra Aragón. La séptima se suele atribuir a Felipe V, por su lealtad en la Guerra de Sucesión.",
-    "fuente": {
-      "titulo": "Flag of the Region of Murcia.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Region_of_Murcia.svg",
-      "licencia": "CC0",
-      "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
-    }
-  },
-  "15": {
-    "archivo": "navarra.svg",
-    "trampas": ["16", "14", "13"],
-    "descripcion": "Roja, con su escudo en el centro.",
-    "significado": "El rojo es el color del fondo de su escudo, que se extiende a toda la bandera.\nSu escudo tiene unas cadenas doradas. Según una leyenda del siglo XV, son las que rompió el rey Sancho VII en la batalla de las Navas de Tolosa, en 1212.",
-    "fuente": {
-      "titulo": "Flag of Navarre.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Navarre.svg",
-      "licencia": "Dominio público"
-    }
-  },
-  "16": {
-    "archivo": "pais-vasco.svg",
-    "trampas": ["15", "06", "17"],
-    "descripcion": "Roja, con un aspa verde y, encima, una cruz blanca.",
-    "significado": "Nació en 1894 como bandera de {provincia:48}, y después pasó a representar a todo el País Vasco.\nEl rojo representa a su pueblo.\nEl aspa verde es la cruz de San Andrés, y recuerda una batalla que, según la tradición, se ganó el día de ese santo, símbolo de su independencia. Es verde como el árbol de Gernika, símbolo de sus leyes propias.\nLa cruz blanca representa a Dios.\nSe la conoce como «ikurriña», de «ikur», que en euskera significa «señal» o «símbolo».",
-    "fuente": {
-      "titulo": "Flag of the Basque Country.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Basque_Country.svg",
-      "autor": "Daniele Schirmo (Frankie688)",
-      "licencia": "CC BY-SA 2.5",
-      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/2.5/"
-    }
-  },
-  "17": {
-    "archivo": "la-rioja.svg",
-    "trampas": ["11", "01", "05"],
-    "descripcion": "Cuatro franjas iguales, roja, blanca, verde y amarilla, con su escudo en el centro.",
-    "significado": "Cada color representa algo característico de la región.\nEl rojo, los viñedos.\nEl blanco, la luz.\nEl verde, la huerta.\nEl amarillo, la fertilidad.",
-    "fuente": {
-      "titulo": "Flag of La Rioja (with coat of arms).svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_La_Rioja_(with_coat_of_arms).svg",
-      "autor": "jynus",
-      "licencia": "CC BY 2.5",
-      "licenciaUrl": "https://creativecommons.org/licenses/by/2.5/"
-    }
-  },
-  "18": {
-    "archivo": "ceuta.svg",
-    "trampas": ["19"],
-    "descripcion": "Ocho triángulos blancos y negros que salen del centro, con su escudo en medio.",
-    "significado": "Viene de la bandera de Lisboa. Según la tradición, es la que los portugueses izaron al conquistar la ciudad en 1415.\nEl escudo es casi idéntico al de Portugal. Ceuta conservó la bandera y el escudo al pasar a formar parte de España en el siglo XVII, como recuerdo de su pasado portugués.",
-    "fuente": {
-      "titulo": "Flag of Ceuta.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Ceuta.svg",
-      "autor": "Ulaidh",
-      "licencia": "CC BY-SA 4.0",
-      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  "19": {
-    "archivo": "melilla.svg",
-    "trampas": ["18", "12", "05"],
-    "descripcion": "Azul celeste, con su escudo en el centro.",
-    "significado": "Del azul celeste no hay una explicación clara.\nEl escudo viene del de la casa de Medina Sidonia, cuyo duque envió la expedición que tomó la ciudad en 1497.",
-    "fuente": {
-      "titulo": "Flag of Melilla.svg",
-      "url": "https://commons.wikimedia.org/wiki/File:Flag_of_Melilla.svg",
-      "autor": "SanchoPanzaXXI",
-      "licencia": "CC BY-SA 3.0",
-      "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  }
+  ]
 }

@@ -36,6 +36,8 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 ## Banderas
 
 - Son las versiones **oficiales de Wikimedia Commons**, con escudo cuando la oficial lo lleva, y se muestran con su proporción real.
+- Van en **SVG** (decisión del usuario: nítidas en cualquier pantalla), **limpias con SVGO** (`npm run limpiar-bandera -- <archivo>`, solo las nuevas; un test lo comprueba). Comprobado punto a punto que la limpieza no cambia nada visible. Se probó WebP para las de provincia y se descartó.
+- `banderas.json` tiene dos listas, `comunidades` y `provincias`, como `territorio.json`; las imágenes, en `banderas/comunidades/` y `banderas/provincias/`. Criterio del usuario: estandarizar la forma de hacer las cosas salvo que haya un motivo concreto.
 - Cada bandera guarda su `fuente` (archivo, enlace, autor, licencia) en `banderas.json`. Las CC BY / CC BY-SA exigen autor, y aparecen en la pantalla de Créditos.
 - Cada bandera tiene `descripcion` (cómo es, en lenguaje sencillo) y `significado` (una idea por línea). Criterios acordados para el significado:
   - Cada nota se entiende sola, sin dar por leídas las demás. Las que comparten las barras de Aragón usan la misma frase.
@@ -49,11 +51,11 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 ## Pendiente
 
 - Divisiones (antes llamada «pertenencia») en comunidades ya está: «¿De qué comunidad autónoma es la provincia de Soria?», 43 provincias (sin las 9 que forman ellas solas una comunidad o ciudad autónoma), con las comunidades vecinas como trampas (campo `vecinas` de cada provincia). Falta la de provincias, «¿De qué provincia es Vigo?», que necesita el `ciudades.json`. El nombre «Divisiones» se eligió porque la categoría va del territorio que contiene a lo que tiene dentro (provincias de cada comunidad, ciudades de cada provincia); en la partida, cada pregunta lleva su etiqueta («Provincias de cada comunidad»).
-- Banderas de provincia: hay 15, las aprobadas formalmente y en uso público (criterio del usuario). Fuera quedan Barcelona (aprobada en 1971, casi sin uso), Lugo (en uso, pero su aprobación de 2006 nunca se publicó) y las que solo se usan sin aprobación (Ávila, Soria, Palencia, Salamanca, Valladolid, León, Huesca, Zaragoza, Málaga, Pontevedra…). Si alguna se aprueba o se confirma su uso, se puede añadir. Las imágenes van en WebP (los SVG pesan demasiado).
+- Banderas de provincia: hay 15, las aprobadas formalmente y en uso público (criterio del usuario). Fuera quedan Barcelona (aprobada en 1971, casi sin uso), Lugo (en uso, pero su aprobación de 2006 nunca se publicó) y las que solo se usan sin aprobación (Ávila, Soria, Palencia, Salamanca, Valladolid, León, Huesca, Zaragoza, Málaga, Pontevedra…). Si alguna se aprueba o se confirma su uso, se puede añadir.
 - Preguntas al revés, como opción, cuando tenga sentido: de la capital a la comunidad, o de la comunidad a elegir entre varias banderas (esta necesita opciones con imagen).
 
 - Renombrar el juego (ahora «Geoquiz España») si el usuario lo decide.
-- Optimizar el peso de las banderas: el juego carga unos 2 MB; la de Navarra pesa más de 400 KB.
+- Modo sin conexión: decidido, mientras sea web, guardar al abrir solo el código y cada bandera cuando sale por primera vez (no descargar todas de golpe). En la app de Android irán todas dentro. La bandera de la pregunta siguiente se descarga y se dibuja por adelantado (en un móvil lento, las más pesadas pasan de casi 1 s a unas décimas). La primera de cada partida no se prepara.
 - Dificultad: ya se elige 4, 6 u 8 opciones en Opciones. Falta la **respuesta abierta** (está en Opciones como «próximamente», sin poder marcarse): decidir cómo comparar lo escrito (tildes, mayúsculas, formas oficial y castellana, «Vitoria» y «Vitoria-Gasteiz»).
 - **Puntuación** (idea del usuario, para más adelante; de momento no preocuparse de la puntuación): puntos aparte del récord de aciertos, con tiempo máximo por pregunta y más puntos por ir rápido, multiplicadores por racha, y más puntos por dificultad y por jugar con más categorías a la vez.
 - Guardado con estadísticas por categoría y por pregunta (usando los identificadores), y desbloqueo de categorías.

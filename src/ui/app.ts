@@ -3,7 +3,7 @@ import { buildRound, rebuild, questionsIn, roundSize, OPTION_COUNTS } from "../e
 import { GameSession, applyRecord, type GameResult } from "../engine/game";
 import { loadState, saveState, comboKey, type SavedState } from "../engine/storage";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "../engine/types";
-import { flagImage } from "./flags";
+import { flagImage, precargarBandera } from "./flags";
 import { BANDERAS, BANDERAS_PROVINCIAS, type BanderaInfo } from "../engine/questions";
 import { AUTONOMIAS, provincia } from "../engine/territory";
 import { drawContours } from "./contours";
@@ -208,6 +208,9 @@ export function startApp(): App {
     flag.replaceChildren();
     if (q.flag) flag.append(flagImage(q.flag));
     flag.hidden = !q.flag;
+    // Mientras se responde esta, se va descargando la bandera de la siguiente.
+    const siguiente = g.questions[g.index + 1];
+    if (siguiente?.flag) precargarBandera(siguiente.flag);
 
     renderTrack();
 

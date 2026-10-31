@@ -1,103 +1,224 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Banderas",
-  "description": "Bandera de cada comunidad o ciudad autónoma, por su código INE y en ese orden (01 … 19).",
+  "description": "Banderas de las comunidades y ciudades autónomas y de las provincias, cada una con su código INE y en orden de código. Los dibujos son SVG de Wikimedia Commons, limpiados con SVGO (npm run limpiar-banderas).",
   "type": "object",
-  "propertyNames": {
-    "pattern": "^[0-9]{2}$"
+  "additionalProperties": false,
+  "required": [
+    "comunidades",
+    "provincias"
+  ],
+  "definitions": {
+    "codigo": {
+      "description": "Código INE (dos cifras).",
+      "type": "string",
+      "pattern": "^[0-9]{2}$"
+    }
   },
-  "additionalProperties": {
-    "type": "object",
-    "additionalProperties": false,
-    "required": [
-      "archivo",
-      "trampas",
-      "descripcion",
-      "significado",
-      "fuente"
-    ],
-    "properties": {
-      "archivo": {
-        "description": "Archivo SVG en src/data/banderas.",
-        "type": "string",
-        "pattern": "^[a-z0-9-]+\\.svg$"
-      },
-      "trampas": {
-        "description": "Códigos INE de comunidades o ciudades con banderas parecidas.",
-        "type": "array",
-        "items": {
-          "type": "string",
-          "pattern": "^[0-9]{2}$"
-        },
-        "minItems": 1,
-        "uniqueItems": true
-      },
-      "descripcion": {
-        "description": "Cómo es la bandera, en una o dos frases sencillas. Es lo primero que se muestra al responder.",
-        "type": "string",
-        "minLength": 10
-      },
-      "significado": {
-        "description": "De dónde vienen sus partes y qué significan, una idea por línea (separadas con \\n). Se muestra después de la descripción, con la etiqueta «Significado». Marcas que se sustituyen por nombres en la forma de la pregunta: «{provincia:NN}», el nombre de la provincia con código INE NN; «{provincia.capital:NN}», la capital de esa provincia.",
-        "type": "string",
-        "minLength": 10
-      },
-      "fuente": {
-        "description": "De dónde sale la imagen. Se muestra en la pantalla de Créditos.",
+  "properties": {
+    "comunidades": {
+      "description": "Bandera de cada comunidad o ciudad autónoma (01 … 19).",
+      "type": "array",
+      "items": {
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "titulo",
-          "url",
-          "licencia"
+          "id",
+          "archivo",
+          "trampas",
+          "descripcion",
+          "significado",
+          "fuente"
         ],
         "properties": {
-          "titulo": {
-            "description": "Nombre del archivo en Wikimedia Commons.",
-            "type": "string",
-            "minLength": 1
+          "id": {
+            "$ref": "#/definitions/codigo"
           },
-          "url": {
-            "description": "Página del archivo en Wikimedia Commons.",
+          "archivo": {
+            "description": "Archivo SVG en src/data/banderas/comunidades.",
             "type": "string",
-            "pattern": "^https://commons\\.wikimedia\\.org/wiki/File:"
+            "pattern": "^[a-z0-9-]+\\.svg$"
           },
-          "autor": {
-            "description": "Autor del dibujo. Obligatorio si la licencia pide atribución (CC BY, CC BY-SA).",
+          "trampas": {
+            "description": "Códigos INE de comunidades o ciudades con banderas parecidas.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/codigo"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "descripcion": {
+            "description": "Cómo es la bandera, en una o dos frases sencillas. Es lo primero que se muestra al responder.",
             "type": "string",
-            "minLength": 1
+            "minLength": 10
           },
-          "licencia": {
-            "description": "Licencia del dibujo.",
-            "enum": [
-              "Dominio público",
-              "CC0",
-              "CC BY 2.5",
-              "CC BY 3.0",
-              "CC BY 4.0",
-              "CC BY-SA 2.5",
-              "CC BY-SA 3.0",
-              "CC BY-SA 4.0"
-            ]
-          },
-          "licenciaUrl": {
-            "description": "Texto de la licencia.",
+          "significado": {
+            "description": "De dónde vienen sus partes y qué significan, una idea por línea (separadas con \\n). Se muestra después de la descripción, con la etiqueta «Significado». Marcas que se sustituyen por nombres en la forma de la pregunta: «{provincia:NN}», el nombre de la provincia con código INE NN; «{provincia.capital:NN}», la capital de esa provincia.",
             "type": "string",
-            "pattern": "^https://creativecommons\\.org/"
-          }
-        },
-        "if": {
-          "properties": {
-            "licencia": {
-              "pattern": "^CC BY"
+            "minLength": 10
+          },
+          "fuente": {
+            "description": "De dónde sale la imagen. Se muestra en la pantalla de Créditos.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "titulo",
+              "url",
+              "licencia"
+            ],
+            "properties": {
+              "titulo": {
+                "description": "Nombre del archivo en Wikimedia Commons.",
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "description": "Página del archivo en Wikimedia Commons.",
+                "type": "string",
+                "pattern": "^https://commons\\.wikimedia\\.org/wiki/File:"
+              },
+              "autor": {
+                "description": "Autor del dibujo. Obligatorio si la licencia pide atribución (CC BY, CC BY-SA).",
+                "type": "string",
+                "minLength": 1
+              },
+              "licencia": {
+                "description": "Licencia del dibujo.",
+                "enum": [
+                  "Dominio público",
+                  "CC0",
+                  "CC BY 2.5",
+                  "CC BY 3.0",
+                  "CC BY 4.0",
+                  "CC BY-SA 2.5",
+                  "CC BY-SA 3.0",
+                  "CC BY-SA 4.0"
+                ]
+              },
+              "licenciaUrl": {
+                "description": "Texto de la licencia.",
+                "type": "string",
+                "pattern": "^https://creativecommons\\.org/"
+              }
+            },
+            "if": {
+              "properties": {
+                "licencia": {
+                  "pattern": "^CC BY"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "autor",
+                "licenciaUrl"
+              ]
             }
           }
-        },
-        "then": {
-          "required": [
-            "autor",
-            "licenciaUrl"
-          ]
+        }
+      }
+    },
+    "provincias": {
+      "description": "Bandera de cada provincia que tiene una aprobada formalmente y en uso público. Casi siempre es la de su Diputación (en el País Vasco, la del territorio histórico).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "archivo",
+          "trampas",
+          "descripcion",
+          "significado",
+          "fuente"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/definitions/codigo"
+          },
+          "archivo": {
+            "description": "Archivo SVG en src/data/banderas/provincias.",
+            "type": "string",
+            "pattern": "^[a-z0-9-]+\\.svg$"
+          },
+          "trampas": {
+            "description": "Códigos INE de provincias con banderas parecidas.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/codigo"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "descripcion": {
+            "description": "Cómo es la bandera, en una o dos frases sencillas. Es lo primero que se muestra al responder.",
+            "type": "string",
+            "minLength": 10
+          },
+          "significado": {
+            "description": "De dónde vienen sus partes y qué significan, una idea por línea (separadas con \\n). Se muestra después de la descripción, con la etiqueta «Significado». Marcas que se sustituyen por nombres en la forma de la pregunta: «{provincia:NN}», el nombre de la provincia con código INE NN; «{provincia.capital:NN}», la capital de esa provincia.",
+            "type": "string",
+            "minLength": 10
+          },
+          "fuente": {
+            "description": "De dónde sale la imagen. Se muestra en la pantalla de Créditos.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "titulo",
+              "url",
+              "licencia"
+            ],
+            "properties": {
+              "titulo": {
+                "description": "Nombre del archivo en Wikimedia Commons.",
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "description": "Página del archivo en Wikimedia Commons.",
+                "type": "string",
+                "pattern": "^https://commons\\.wikimedia\\.org/wiki/File:"
+              },
+              "autor": {
+                "description": "Autor del dibujo. Obligatorio si la licencia pide atribución (CC BY, CC BY-SA).",
+                "type": "string",
+                "minLength": 1
+              },
+              "licencia": {
+                "description": "Licencia del dibujo.",
+                "enum": [
+                  "Dominio público",
+                  "CC0",
+                  "CC BY 2.5",
+                  "CC BY 3.0",
+                  "CC BY 4.0",
+                  "CC BY-SA 2.5",
+                  "CC BY-SA 3.0",
+                  "CC BY-SA 4.0"
+                ]
+              },
+              "licenciaUrl": {
+                "description": "Texto de la licencia.",
+                "type": "string",
+                "pattern": "^https://creativecommons\\.org/"
+              }
+            },
+            "if": {
+              "properties": {
+                "licencia": {
+                  "pattern": "^CC BY"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "autor",
+                "licenciaUrl"
+              ]
+            }
+          }
         }
       }
     }

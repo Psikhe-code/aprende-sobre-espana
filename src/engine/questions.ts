@@ -1,7 +1,6 @@
 import { NAME_STYLES, type NameStyle, type Question } from "./types";
 import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, comunidadesVecinas, provincia, type Comunidad, type Formas, type Provincia } from "./territory";
 import banderas from "../data/banderas.json";
-import banderasProvincias from "../data/banderas-provincias.json";
 
 // Preguntas generadas a partir de los datos del territorio y de las banderas.
 // Cada pregunta se genera en una forma de los nombres (oficial o castellano), toda entera en esa forma.
@@ -208,9 +207,11 @@ export function divisionQuestions(style: NameStyle): Question[] {
 // ---------- Banderas ----------
 
 export interface BanderaInfo {
-  /** Archivo SVG en src/data/banderas. */
+  /** Código INE de la comunidad, ciudad autónoma o provincia. */
+  id: string;
+  /** Archivo SVG en src/data/banderas/comunidades o src/data/banderas/provincias. */
   archivo: string;
-  /** Códigos INE de las comunidades o ciudades con banderas parecidas. */
+  /** Códigos INE de las comunidades (o provincias) con banderas parecidas. */
   trampas: string[];
   /** Cómo es la bandera, en una o dos frases sencillas. Se muestra al responder. */
   descripcion: string;
@@ -219,13 +220,14 @@ export interface BanderaInfo {
   /** De dónde sale la imagen: se muestra en Créditos. */
   fuente: { titulo: string; url: string; autor?: string; licencia: string; licenciaUrl?: string };
 }
-/** Información de cada bandera, por código INE de la comunidad o ciudad autónoma. */
-export const BANDERAS: Record<string, BanderaInfo> = banderas;
+const porCodigo = (lista: BanderaInfo[]) => Object.fromEntries(lista.map((b) => [b.id, b]));
+/** Información de cada bandera, por código INE de la comunidad o ciudad autónoma (banderas.json, «comunidades»). */
+export const BANDERAS: Record<string, BanderaInfo> = porCodigo(banderas.comunidades);
 /**
- * Banderas de provincia, por código INE de provincia: solo las aprobadas formalmente y en uso público.
- * Casi siempre son las de su Diputación (en el País Vasco, las del territorio histórico).
+ * Banderas de provincia, por código INE de provincia (banderas.json, «provincias»): solo las aprobadas
+ * formalmente y en uso público. Casi siempre son las de su Diputación (en el País Vasco, las del territorio histórico).
  */
-export const BANDERAS_PROVINCIAS: Record<string, BanderaInfo> = banderasProvincias;
+export const BANDERAS_PROVINCIAS: Record<string, BanderaInfo> = porCodigo(banderas.provincias);
 
 /**
  * Clave de la bandera que se muestra con una pregunta (campo `flag`):
