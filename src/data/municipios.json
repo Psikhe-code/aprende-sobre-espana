@@ -12,7 +12,7 @@
       "nombre": {"oficial": "Laguardia", "castellano": "Laguardia"},
       "poblacion": 1459,
       "puesto": 17,
-      "motivo": "es una villa medieval amurallada en el centro de la Rioja Alavesa, tierra de vino"
+      "curiosidad": "Es una villa medieval amurallada en el centro de la Rioja Alavesa, tierra de vino."
     },
     {
       "id": "01036",
@@ -49,7 +49,7 @@
       "nombre": {"oficial": "Alcoi/Alcoy", "castellano": "Alcoy"},
       "poblacion": 61468,
       "puesto": 6,
-      "motivo": "sus fiestas de Moros y Cristianos son de las más famosas de España"
+      "curiosidad": "Sus fiestas de Moros y Cristianos son de las más famosas de España."
     },
     {
       "id": "03014",
@@ -62,7 +62,7 @@
       "nombre": {"oficial": "Benidorm", "castellano": "Benidorm"},
       "poblacion": 77327,
       "puesto": 5,
-      "motivo": "es uno de los destinos turísticos más visitados de España, con sus rascacielos junto al mar"
+      "curiosidad": "Es uno de los destinos turísticos más visitados de España, con sus rascacielos junto al mar."
     },
     {
       "id": "03065",
@@ -75,7 +75,7 @@
       "nombre": {"oficial": "Orihuela", "castellano": "Orihuela"},
       "poblacion": 84560,
       "puesto": 4,
-      "motivo": "es la ciudad natal del poeta Miguel Hernández"
+      "curiosidad": "Es la ciudad natal del poeta Miguel Hernández."
     },
     {
       "id": "03133",
@@ -142,14 +142,14 @@
       "nombre": {"oficial": "Olivenza", "castellano": "Olivenza"},
       "poblacion": 11789,
       "puesto": 9,
-      "motivo": "fue portuguesa hasta 1801, y Portugal nunca ha reconocido oficialmente que sea española"
+      "curiosidad": "Fue portuguesa hasta 1801, y Portugal nunca ha reconocido oficialmente que sea española."
     },
     {
       "id": "06158",
       "nombre": {"oficial": "Zafra", "castellano": "Zafra"},
       "poblacion": 16735,
       "puesto": 6,
-      "motivo": "tiene un casco histórico muy bien conservado y una feria de ganado de las más antiguas de España"
+      "curiosidad": "Tiene un casco histórico muy bien conservado y una feria de ganado de las más antiguas de España."
     },
     {
       "id": "07011",
@@ -162,7 +162,7 @@
       "nombre": {"oficial": "Ciutadella de Menorca", "castellano": "Ciudadela de Menorca"},
       "poblacion": 32431,
       "puesto": 9,
-      "motivo": "fue la capital de Menorca hasta el siglo XVIII"
+      "curiosidad": "Fue la capital de Menorca hasta el siglo XVIII."
     },
     {
       "id": "07026",
@@ -175,14 +175,14 @@
       "nombre": {"oficial": "Maó", "castellano": "Mahón"},
       "poblacion": 30666,
       "puesto": 10,
-      "motivo": "es la capital de Menorca"
+      "curiosidad": "Es la capital de Menorca."
     },
     {
       "id": "07033",
       "nombre": {"oficial": "Manacor", "castellano": "Manacor"},
       "poblacion": 49153,
       "puesto": 4,
-      "motivo": "es la ciudad natal del tenista Rafa Nadal"
+      "curiosidad": "Es la ciudad natal del tenista Rafa Nadal."
     },
     {
       "id": "07040",
@@ -195,7 +195,7 @@
       "nombre": {"oficial": "Badalona", "castellano": "Badalona"},
       "poblacion": 231542,
       "puesto": 4,
-      "motivo": "es el cuarto municipio más poblado de Cataluña, pegado a Barcelona"
+      "curiosidad": "Es el cuarto municipio más poblado de Cataluña, pegado a Barcelona."
     },
     {
       "id": "08019",
@@ -214,14 +214,14 @@
       "nombre": {"oficial": "Sabadell", "castellano": "Sabadell"},
       "poblacion": 225368,
       "puesto": 5,
-      "motivo": "tiene más de 200.000 habitantes y fue uno de los grandes centros de la industria textil catalana"
+      "curiosidad": "Tiene más de 200.000 habitantes y fue uno de los grandes centros de la industria textil catalana."
     },
     {
       "id": "08270",
       "nombre": {"oficial": "Sitges", "castellano": "Sitges"},
       "poblacion": 32609,
       "puesto": 32,
-      "motivo": "sus playas, su carnaval y su festival de cine fantástico atraen a visitantes de todo el mundo"
+      "curiosidad": "Sus playas, su carnaval y su festival de cine fantástico atraen a visitantes de todo el mundo."
     },
     {
       "id": "08279",
@@ -234,7 +234,7 @@
       "nombre": {"oficial": "Vic", "castellano": "Vic"},
       "poblacion": 50796,
       "puesto": 20,
-      "motivo": "tiene un casco antiguo con un templo romano y una gran plaza mayor, y es famosa por su salchichón"
+      "curiosidad": "Tiene un casco antiguo con un templo romano y una gran plaza mayor, y es famosa por su salchichón."
     },
     {
       "id": "09018",
@@ -247,7 +247,7 @@
       "nombre": {"oficial": "Atapuerca", "castellano": "Atapuerca"},
       "poblacion": 178,
       "puesto": 128,
-      "motivo": "en su sierra están los yacimientos de Atapuerca, donde se han encontrado algunos de los restos humanos más antiguos de Europa"
+      "curiosidad": "En su sierra están los yacimientos de Atapuerca, donde se han encontrado algunos de los restos humanos más antiguos de Europa."
     },
     {
       "id": "09059",
@@ -266,7 +266,7 @@
       "nombre": {"oficial": "Santo Domingo de Silos", "castellano": "Santo Domingo de Silos"},
       "poblacion": 251,
       "puesto": 104,
-      "motivo": "su monasterio es famoso por su claustro románico y por el canto gregoriano de sus monjes"
+      "curiosidad": "Su monasterio es famoso por su claustro románico y por el canto gregoriano de sus monjes."
     },
     {
       "id": "10037",
@@ -279,7 +279,7 @@
       "nombre": {"oficial": "Guadalupe", "castellano": "Guadalupe"},
       "poblacion": 1722,
       "puesto": 35,
-      "motivo": "su monasterio, Patrimonio de la Humanidad, fue uno de los más importantes de España"
+      "curiosidad": "Su monasterio, Patrimonio de la Humanidad, fue uno de los más importantes de España."
     },
     {
       "id": "10131",
@@ -298,7 +298,7 @@
       "nombre": {"oficial": "Trujillo", "castellano": "Trujillo"},
       "poblacion": 8611,
       "puesto": 6,
-      "motivo": "es la ciudad natal de Francisco Pizarro, el conquistador de Perú"
+      "curiosidad": "Es la ciudad natal de Francisco Pizarro, el conquistador de Perú."
     },
     {
       "id": "11004",
@@ -311,7 +311,7 @@
       "nombre": {"oficial": "Arcos de la Frontera", "castellano": "Arcos de la Frontera"},
       "poblacion": 31267,
       "puesto": 11,
-      "motivo": "es uno de los pueblos blancos más famosos de Andalucía, sobre una gran peña"
+      "curiosidad": "Es uno de los pueblos blancos más famosos de Andalucía, sobre una gran peña."
     },
     {
       "id": "11012",
@@ -330,14 +330,14 @@
       "nombre": {"oficial": "Sanlúcar de Barrameda", "castellano": "Sanlúcar de Barrameda"},
       "poblacion": 70012,
       "puesto": 7,
-      "motivo": "de su puerto salió en 1519 la expedición de Magallanes y Elcano, que dio la primera vuelta al mundo"
+      "curiosidad": "De su puerto salió en 1519 la expedición de Magallanes y Elcano, que dio la primera vuelta al mundo."
     },
     {
       "id": "11035",
       "nombre": {"oficial": "Tarifa", "castellano": "Tarifa"},
       "poblacion": 18613,
       "puesto": 17,
-      "motivo": "es el punto más al sur de la península ibérica, frente a África"
+      "curiosidad": "Es el punto más al sur de la península ibérica, frente a África."
     },
     {
       "id": "12032",
@@ -356,14 +356,14 @@
       "nombre": {"oficial": "Morella", "castellano": "Morella"},
       "poblacion": 2501,
       "puesto": 28,
-      "motivo": "es una villa medieval amurallada, coronada por un castillo"
+      "curiosidad": "Es una villa medieval amurallada, coronada por un castillo."
     },
     {
       "id": "12089",
       "nombre": {"oficial": "Peníscola/Peñíscola", "castellano": "Peñíscola"},
       "poblacion": 8774,
       "puesto": 14,
-      "motivo": "su castillo, sobre una roca junto al mar, fue la residencia del papa Luna"
+      "curiosidad": "Su castillo, sobre una roca junto al mar, fue la residencia del papa Luna."
     },
     {
       "id": "12135",
@@ -376,7 +376,7 @@
       "nombre": {"oficial": "Almagro", "castellano": "Almagro"},
       "poblacion": 9190,
       "puesto": 14,
-      "motivo": "conserva un corral de comedias del siglo XVII que todavía se usa, y celebra un festival de teatro clásico"
+      "curiosidad": "Conserva un corral de comedias del siglo XVII que todavía se usa, y celebra un festival de teatro clásico."
     },
     {
       "id": "13034",
@@ -401,7 +401,7 @@
       "nombre": {"oficial": "Valdepeñas", "castellano": "Valdepeñas"},
       "poblacion": 30782,
       "puesto": 5,
-      "motivo": "da nombre a un vino con denominación de origen propia"
+      "curiosidad": "Da nombre a un vino con denominación de origen propia."
     },
     {
       "id": "14021",
@@ -426,7 +426,7 @@
       "nombre": {"oficial": "Betanzos", "castellano": "Betanzos"},
       "poblacion": 13533,
       "puesto": 16,
-      "motivo": "fue una de las siete capitales del antiguo reino de Galicia"
+      "curiosidad": "Fue una de las siete capitales del antiguo reino de Galicia."
     },
     {
       "id": "15030",
@@ -445,7 +445,7 @@
       "nombre": {"oficial": "Fisterra", "castellano": "Finisterre"},
       "poblacion": 4666,
       "puesto": 53,
-      "motivo": "su cabo se consideraba en la Antigüedad el fin del mundo, y es el final de muchos caminos de Santiago"
+      "curiosidad": "Su cabo se consideraba en la Antigüedad el fin del mundo, y es el final de muchos caminos de Santiago."
     },
     {
       "id": "15078",
@@ -476,7 +476,7 @@
       "nombre": {"oficial": "Cadaqués", "castellano": "Cadaqués"},
       "poblacion": 2918,
       "puesto": 52,
-      "motivo": "es un pueblo de pescadores de la Costa Brava muy ligado al pintor Salvador Dalí"
+      "curiosidad": "Es un pueblo de pescadores de la Costa Brava muy ligado al pintor Salvador Dalí."
     },
     {
       "id": "17066",
@@ -501,7 +501,7 @@
       "nombre": {"oficial": "Ripoll", "castellano": "Ripoll"},
       "poblacion": 10665,
       "puesto": 19,
-      "motivo": "su monasterio de Santa María se considera la cuna de Cataluña"
+      "curiosidad": "Su monasterio de Santa María se considera la cuna de Cataluña."
     },
     {
       "id": "18017",
@@ -520,7 +520,7 @@
       "nombre": {"oficial": "Guadix", "castellano": "Guadix"},
       "poblacion": 18881,
       "puesto": 12,
-      "motivo": "tiene un barrio entero de casas cueva"
+      "curiosidad": "Tiene un barrio entero de casas cueva."
     },
     {
       "id": "18140",
@@ -533,7 +533,7 @@
       "nombre": {"oficial": "Santa Fe", "castellano": "Santa Fe"},
       "poblacion": 15494,
       "puesto": 14,
-      "motivo": "en ella se firmaron en 1492 las Capitulaciones de Santa Fe, el acuerdo entre los Reyes Católicos y Colón"
+      "curiosidad": "En ella se firmaron en 1492 las Capitulaciones de Santa Fe, el acuerdo entre los Reyes Católicos y Colón."
     },
     {
       "id": "19024",
@@ -558,21 +558,21 @@
       "nombre": {"oficial": "Sigüenza", "castellano": "Sigüenza"},
       "poblacion": 4911,
       "puesto": 11,
-      "motivo": "es una ciudad medieval con una gran catedral y un castillo"
+      "curiosidad": "Es una ciudad medieval con una gran catedral y un castillo."
     },
     {
       "id": "20030",
       "nombre": {"oficial": "Eibar", "castellano": "Eibar"},
       "poblacion": 27484,
       "puesto": 4,
-      "motivo": "es una ciudad industrial, famosa desde hace siglos por sus fábricas de armas, y después de bicicletas"
+      "curiosidad": "Es una ciudad industrial, famosa desde hace siglos por sus fábricas de armas, y después de bicicletas."
     },
     {
       "id": "20036",
       "nombre": {"oficial": "Hondarribia", "castellano": "Fuenterrabía"},
       "poblacion": 16788,
       "puesto": 10,
-      "motivo": "es una villa amurallada junto a la frontera con Francia, en la desembocadura del Bidasoa"
+      "curiosidad": "Es una villa amurallada junto a la frontera con Francia, en la desembocadura del Bidasoa."
     },
     {
       "id": "20045",
@@ -597,7 +597,7 @@
       "nombre": {"oficial": "Zarautz", "castellano": "Zarauz"},
       "poblacion": 23496,
       "puesto": 5,
-      "motivo": "tiene una de las playas más largas de la costa vasca, muy famosa por el surf"
+      "curiosidad": "Tiene una de las playas más largas de la costa vasca, muy famosa por el surf."
     },
     {
       "id": "21005",
@@ -622,39 +622,42 @@
       "nombre": {"oficial": "Moguer", "castellano": "Moguer"},
       "poblacion": 24083,
       "puesto": 4,
-      "motivo": "es la ciudad natal del poeta Juan Ramón Jiménez, premio Nobel y autor de «Platero y yo»"
+      "curiosidad": "Es la ciudad natal del poeta Juan Ramón Jiménez, premio Nobel y autor de «Platero y yo»."
     },
     {
       "id": "21055",
       "nombre": {"oficial": "Palos de la Frontera", "castellano": "Palos de la Frontera"},
       "poblacion": 12938,
       "puesto": 12,
-      "motivo": "de su puerto salió Colón en 1492, en su primer viaje a América"
+      "curiosidad": "De su puerto salió Colón en 1492, en su primer viaje a América."
     },
     {
       "id": "22048",
       "nombre": {"oficial": "Barbastro", "castellano": "Barbastro"},
       "poblacion": 17807,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "En 1137 se pactó aquí la boda de Petronila, la heredera del reino de Aragón, que entonces tenía un año, con el conde de Barcelona. De esa unión nació la Corona de Aragón."
     },
     {
       "id": "22125",
       "nombre": {"oficial": "Huesca", "castellano": "Huesca"},
       "poblacion": 55454,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Cuenta la leyenda que, cuando el reino de Aragón conquistó Huesca en 1096, san Jorge apareció en plena batalla para ayudar, y por eso es hoy el patrón de Aragón. Las cuatro cabezas del escudo aragonés representarían las de cuatro jefes musulmanes muertos ese día."
     },
     {
       "id": "22130",
       "nombre": {"oficial": "Jaca", "castellano": "Jaca"},
       "poblacion": 14024,
       "puesto": 5,
-      "motivo": "fue la primera capital del reino de Aragón"
+      "curiosidad": "Es especialmente conocida por ser la primera capital del reino de Aragón, cuando este era todavía un pequeño reino de montaña en el Pirineo."
     },
     {
       "id": "22158",
       "nombre": {"oficial": "Monzón", "castellano": "Monzón"},
       "poblacion": 18525,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "En lo alto de la ciudad está el castillo de los templarios, donde pasó su infancia Jaime I, que se quedó huérfano siendo muy pequeño y llegó a ser uno de los reyes más importantes de Aragón."
     },
     {
       "id": "23005",
@@ -667,7 +670,7 @@
       "nombre": {"oficial": "Baeza", "castellano": "Baeza"},
       "poblacion": 15575,
       "puesto": 8,
-      "motivo": "sus monumentos renacentistas son Patrimonio de la Humanidad, junto con los de Úbeda"
+      "curiosidad": "Sus monumentos renacentistas son Patrimonio de la Humanidad, junto con los de Úbeda."
     },
     {
       "id": "23050",
@@ -686,14 +689,14 @@
       "nombre": {"oficial": "Úbeda", "castellano": "Úbeda"},
       "poblacion": 33588,
       "puesto": 4,
-      "motivo": "sus monumentos renacentistas son Patrimonio de la Humanidad, junto con los de Baeza"
+      "curiosidad": "Sus monumentos renacentistas son Patrimonio de la Humanidad, junto con los de Baeza."
     },
     {
       "id": "24008",
       "nombre": {"oficial": "Astorga", "castellano": "Astorga"},
       "poblacion": 10305,
       "puesto": 5,
-      "motivo": "es una parada importante del Camino de Santiago, con un palacio de Gaudí"
+      "curiosidad": "Es una parada importante del Camino de Santiago, con un palacio de Gaudí."
     },
     {
       "id": "24089",
@@ -730,7 +733,7 @@
       "nombre": {"oficial": "La Seu d'Urgell", "castellano": "La Seo de Urgel"},
       "poblacion": 13009,
       "puesto": 5,
-      "motivo": "su obispo es uno de los dos copríncipes de Andorra"
+      "curiosidad": "Su obispo es uno de los dos copríncipes de Andorra."
     },
     {
       "id": "25217",
@@ -743,7 +746,7 @@
       "nombre": {"oficial": "Vielha e Mijaran", "castellano": "Vielha e Mijaran"},
       "poblacion": 5865,
       "puesto": 14,
-      "motivo": "es la capital del Valle de Arán, donde se habla aranés"
+      "curiosidad": "Es la capital del Valle de Arán, donde se habla aranés."
     },
     {
       "id": "26018",
@@ -762,7 +765,7 @@
       "nombre": {"oficial": "Haro", "castellano": "Haro"},
       "poblacion": 12167,
       "puesto": 4,
-      "motivo": "sus bodegas de vino de Rioja y su Batalla del Vino son famosas"
+      "curiosidad": "Sus bodegas de vino de Rioja y su Batalla del Vino son famosas."
     },
     {
       "id": "26089",
@@ -775,14 +778,14 @@
       "nombre": {"oficial": "San Millán de la Cogolla", "castellano": "San Millán de la Cogolla"},
       "poblacion": 214,
       "puesto": 72,
-      "motivo": "en sus monasterios se escribieron algunas de las primeras palabras conocidas en castellano"
+      "curiosidad": "En sus monasterios se escribieron algunas de las primeras palabras conocidas en castellano."
     },
     {
       "id": "26138",
       "nombre": {"oficial": "Santo Domingo de la Calzada", "castellano": "Santo Domingo de la Calzada"},
       "poblacion": 6441,
       "puesto": 9,
-      "motivo": "es una parada del Camino de Santiago, famosa por el gallo y la gallina vivos de su catedral, que recuerdan una leyenda"
+      "curiosidad": "Es una parada del Camino de Santiago, famosa por el gallo y la gallina vivos de su catedral, que recuerdan una leyenda."
     },
     {
       "id": "27028",
@@ -801,14 +804,14 @@
       "nombre": {"oficial": "Ribadeo", "castellano": "Ribadeo"},
       "poblacion": 10022,
       "puesto": 7,
-      "motivo": "en su costa está la playa de las Catedrales, con grandes arcos de roca"
+      "curiosidad": "En su costa está la playa de las Catedrales, con grandes arcos de roca."
     },
     {
       "id": "27057",
       "nombre": {"oficial": "Sarria", "castellano": "Sarria"},
       "poblacion": 13726,
       "puesto": 5,
-      "motivo": "es el punto de partida más habitual del Camino de Santiago, a algo más de 100 kilómetros de Santiago"
+      "curiosidad": "Es el punto de partida más habitual del Camino de Santiago, a algo más de 100 kilómetros de Santiago."
     },
     {
       "id": "27066",
@@ -827,14 +830,14 @@
       "nombre": {"oficial": "Aranjuez", "castellano": "Aranjuez"},
       "poblacion": 63040,
       "puesto": 20,
-      "motivo": "tiene un palacio real con grandes jardines, Patrimonio de la Humanidad"
+      "curiosidad": "Tiene un palacio real con grandes jardines, Patrimonio de la Humanidad."
     },
     {
       "id": "28052",
       "nombre": {"oficial": "Chinchón", "castellano": "Chinchón"},
       "poblacion": 5800,
       "puesto": 80,
-      "motivo": "tiene una plaza mayor rodeada de balcones de madera, de las más bonitas de España"
+      "curiosidad": "Tiene una plaza mayor rodeada de balcones de madera, de las más bonitas de España."
     },
     {
       "id": "28079",
@@ -853,14 +856,14 @@
       "nombre": {"oficial": "San Lorenzo de El Escorial", "castellano": "San Lorenzo de El Escorial"},
       "poblacion": 18872,
       "puesto": 38,
-      "motivo": "tiene el monasterio de El Escorial, que mandó construir Felipe II"
+      "curiosidad": "Tiene el monasterio de El Escorial, que mandó construir Felipe II."
     },
     {
       "id": "29015",
       "nombre": {"oficial": "Antequera", "castellano": "Antequera"},
       "poblacion": 41849,
       "puesto": 11,
-      "motivo": "sus dólmenes, de la Prehistoria, son Patrimonio de la Humanidad"
+      "curiosidad": "Sus dólmenes, de la Prehistoria, son Patrimonio de la Humanidad."
     },
     {
       "id": "29067",
@@ -885,21 +888,21 @@
       "nombre": {"oficial": "Ronda", "castellano": "Ronda"},
       "poblacion": 33671,
       "puesto": 12,
-      "motivo": "su Puente Nuevo sobre el tajo del río Guadalevín y su plaza de toros están entre los lugares más visitados de Andalucía"
+      "curiosidad": "Su Puente Nuevo sobre el tajo del río Guadalevín y su plaza de toros están entre los lugares más visitados de Andalucía."
     },
     {
       "id": "29901",
       "nombre": {"oficial": "Torremolinos", "castellano": "Torremolinos"},
       "poblacion": 71329,
       "puesto": 8,
-      "motivo": "fue uno de los primeros lugares de la Costa del Sol que se hicieron famosos por el turismo"
+      "curiosidad": "Fue uno de los primeros lugares de la Costa del Sol que se hicieron famosos por el turismo."
     },
     {
       "id": "30015",
       "nombre": {"oficial": "Caravaca de la Cruz", "castellano": "Caravaca de la Cruz"},
       "poblacion": 26126,
       "puesto": 15,
-      "motivo": "es una de las ciudades santas del catolicismo, por la reliquia de la Vera Cruz"
+      "curiosidad": "Es una de las ciudades santas del catolicismo, por la reliquia de la Vera Cruz."
     },
     {
       "id": "30016",
@@ -930,14 +933,14 @@
       "nombre": {"oficial": "Estella-Lizarra", "castellano": "Estella"},
       "poblacion": 14317,
       "puesto": 7,
-      "motivo": "es una ciudad medieval del Camino de Santiago"
+      "curiosidad": "Es una ciudad medieval del Camino de Santiago."
     },
     {
       "id": "31191",
       "nombre": {"oficial": "Olite/Erriberri", "castellano": "Olite"},
       "poblacion": 4069,
       "puesto": 30,
-      "motivo": "tiene un gran palacio real, residencia de los reyes de Navarra en la Edad Media"
+      "curiosidad": "Tiene un gran palacio real, residencia de los reyes de Navarra en la Edad Media."
     },
     {
       "id": "31201",
@@ -950,7 +953,7 @@
       "nombre": {"oficial": "Orreaga/Roncesvalles", "castellano": "Roncesvalles"},
       "poblacion": 25,
       "puesto": 271,
-      "motivo": "es la primera parada del Camino de Santiago en España, y allí fue la batalla de Roncesvalles, en el año 778"
+      "curiosidad": "Es la primera parada del Camino de Santiago en España, y allí fue la batalla de Roncesvalles, en el año 778."
     },
     {
       "id": "31232",
@@ -975,7 +978,7 @@
       "nombre": {"oficial": "Ribadavia", "castellano": "Ribadavia"},
       "poblacion": 4895,
       "puesto": 11,
-      "motivo": "es la capital del vino Ribeiro y conserva su antiguo barrio judío"
+      "curiosidad": "Es la capital del vino Ribeiro y conserva su antiguo barrio judío."
     },
     {
       "id": "32085",
@@ -994,7 +997,7 @@
       "nombre": {"oficial": "Cangas de Onís", "castellano": "Cangas de Onís"},
       "poblacion": 6344,
       "puesto": 25,
-      "motivo": "fue la primera capital del reino de Asturias, y en su término está Covadonga"
+      "curiosidad": "Fue la primera capital del reino de Asturias, y en su término está Covadonga."
     },
     {
       "id": "33024",
@@ -1007,7 +1010,7 @@
       "nombre": {"oficial": "Llanes", "castellano": "Llanes"},
       "poblacion": 13486,
       "puesto": 12,
-      "motivo": "es una villa marinera con playas y acantilados muy visitados"
+      "curiosidad": "Es una villa marinera con playas y acantilados muy visitados."
     },
     {
       "id": "33044",
@@ -1026,7 +1029,7 @@
       "nombre": {"oficial": "Frómista", "castellano": "Frómista"},
       "poblacion": 727,
       "puesto": 26,
-      "motivo": "su iglesia de San Martín es uno de los ejemplos más famosos del románico en España"
+      "curiosidad": "Su iglesia de San Martín es uno de los ejemplos más famosos del románico en España."
     },
     {
       "id": "34120",
@@ -1045,7 +1048,7 @@
       "nombre": {"oficial": "Arrecife", "castellano": "Arrecife"},
       "poblacion": 70811,
       "puesto": 4,
-      "motivo": "es la capital de Lanzarote"
+      "curiosidad": "Es la capital de Lanzarote."
     },
     {
       "id": "35016",
@@ -1058,14 +1061,14 @@
       "nombre": {"oficial": "Puerto del Rosario", "castellano": "Puerto del Rosario"},
       "poblacion": 46150,
       "puesto": 6,
-      "motivo": "es la capital de Fuerteventura"
+      "curiosidad": "Es la capital de Fuerteventura."
     },
     {
       "id": "35019",
       "nombre": {"oficial": "San Bartolomé de Tirajana", "castellano": "San Bartolomé de Tirajana"},
       "poblacion": 54291,
       "puesto": 5,
-      "motivo": "en su término están Maspalomas y Playa del Inglés, de los lugares más turísticos de Canarias"
+      "curiosidad": "En su término están Maspalomas y Playa del Inglés, de los lugares más turísticos de Canarias."
     },
     {
       "id": "35022",
@@ -1084,7 +1087,7 @@
       "nombre": {"oficial": "Baiona", "castellano": "Bayona"},
       "poblacion": 12361,
       "puesto": 20,
-      "motivo": "a su puerto llegó en 1493 la carabela Pinta, con la primera noticia en Europa del viaje de Colón"
+      "curiosidad": "A su puerto llegó en 1493 la carabela Pinta, con la primera noticia en Europa del viaje de Colón."
     },
     {
       "id": "36038",
@@ -1097,14 +1100,14 @@
       "nombre": {"oficial": "Sanxenxo", "castellano": "Sanxenxo"},
       "poblacion": 18016,
       "puesto": 13,
-      "motivo": "es uno de los destinos de playa más visitados de Galicia"
+      "curiosidad": "Es uno de los destinos de playa más visitados de Galicia."
     },
     {
       "id": "36055",
       "nombre": {"oficial": "Tui", "castellano": "Tuy"},
       "poblacion": 17468,
       "puesto": 14,
-      "motivo": "es una ciudad fronteriza con Portugal, con una catedral fortificada junto al río Miño"
+      "curiosidad": "Es una ciudad fronteriza con Portugal, con una catedral fortificada junto al río Miño."
     },
     {
       "id": "36057",
@@ -1123,7 +1126,7 @@
       "nombre": {"oficial": "Alba de Tormes", "castellano": "Alba de Tormes"},
       "poblacion": 5099,
       "puesto": 10,
-      "motivo": "en ella murió y está enterrada Santa Teresa de Jesús"
+      "curiosidad": "En ella murió y está enterrada Santa Teresa de Jesús."
     },
     {
       "id": "37046",
@@ -1136,7 +1139,7 @@
       "nombre": {"oficial": "Ciudad Rodrigo", "castellano": "Ciudad Rodrigo"},
       "poblacion": 11750,
       "puesto": 4,
-      "motivo": "es una ciudad amurallada cerca de Portugal, famosa por su Carnaval del Toro"
+      "curiosidad": "Es una ciudad amurallada cerca de Portugal, famosa por su Carnaval del Toro."
     },
     {
       "id": "37274",
@@ -1167,21 +1170,21 @@
       "nombre": {"oficial": "Puerto de la Cruz", "castellano": "Puerto de la Cruz"},
       "poblacion": 31137,
       "puesto": 8,
-      "motivo": "fue uno de los primeros destinos turísticos de Canarias"
+      "curiosidad": "Fue uno de los primeros destinos turísticos de Canarias."
     },
     {
       "id": "38036",
       "nombre": {"oficial": "San Sebastián de la Gomera", "castellano": "San Sebastián de la Gomera"},
       "poblacion": 9574,
       "puesto": 21,
-      "motivo": "es la capital de La Gomera, y allí hizo Colón su última escala antes de cruzar el Atlántico en 1492"
+      "curiosidad": "Es la capital de La Gomera, y allí hizo Colón su última escala antes de cruzar el Atlántico en 1492."
     },
     {
       "id": "38037",
       "nombre": {"oficial": "Santa Cruz de la Palma", "castellano": "Santa Cruz de la Palma"},
       "poblacion": 15690,
       "puesto": 17,
-      "motivo": "es la capital de la isla de La Palma"
+      "curiosidad": "Es la capital de la isla de La Palma."
     },
     {
       "id": "38038",
@@ -1200,14 +1203,14 @@
       "nombre": {"oficial": "Comillas", "castellano": "Comillas"},
       "poblacion": 2075,
       "puesto": 47,
-      "motivo": "tiene El Capricho, una de las primeras obras de Gaudí"
+      "curiosidad": "Tiene El Capricho, una de las primeras obras de Gaudí."
     },
     {
       "id": "39035",
       "nombre": {"oficial": "Laredo", "castellano": "Laredo"},
       "poblacion": 10698,
       "puesto": 10,
-      "motivo": "tiene una playa muy larga y celebra la Batalla de Flores"
+      "curiosidad": "Tiene una playa muy larga y celebra la Batalla de Flores."
     },
     {
       "id": "39075",
@@ -1220,7 +1223,7 @@
       "nombre": {"oficial": "Santillana del Mar", "castellano": "Santillana del Mar"},
       "poblacion": 4189,
       "puesto": 26,
-      "motivo": "es una villa medieval muy bien conservada, y en su término está la cueva de Altamira"
+      "curiosidad": "Es una villa medieval muy bien conservada, y en su término está la cueva de Altamira."
     },
     {
       "id": "39087",
@@ -1245,7 +1248,7 @@
       "nombre": {"oficial": "Real Sitio de San Ildefonso", "castellano": "Real Sitio de San Ildefonso"},
       "poblacion": 5217,
       "puesto": 5,
-      "motivo": "en él está el palacio de La Granja, con sus jardines y fuentes, que mandó construir Felipe V"
+      "curiosidad": "En él está el palacio de La Granja, con sus jardines y fuentes, que mandó construir Felipe V."
     },
     {
       "id": "40194",
@@ -1258,7 +1261,7 @@
       "nombre": {"oficial": "Sepúlveda", "castellano": "Sepúlveda"},
       "poblacion": 979,
       "puesto": 27,
-      "motivo": "es una villa medieval junto a las hoces del río Duratón"
+      "curiosidad": "Es una villa medieval junto a las hoces del río Duratón."
     },
     {
       "id": "41004",
@@ -1271,7 +1274,7 @@
       "nombre": {"oficial": "Carmona", "castellano": "Carmona"},
       "poblacion": 30240,
       "puesto": 10,
-      "motivo": "conserva murallas, puertas y una gran necrópolis de la época romana"
+      "curiosidad": "Conserva murallas, puertas y una gran necrópolis de la época romana."
     },
     {
       "id": "41038",
@@ -1284,14 +1287,14 @@
       "nombre": {"oficial": "Écija", "castellano": "Écija"},
       "poblacion": 39659,
       "puesto": 7,
-      "motivo": "la llaman «la ciudad de las torres» y «la sartén de Andalucía», por su calor"
+      "curiosidad": "La llaman «la ciudad de las torres» y «la sartén de Andalucía», por su calor."
     },
     {
       "id": "41068",
       "nombre": {"oficial": "Osuna", "castellano": "Osuna"},
       "poblacion": 17396,
       "puesto": 22,
-      "motivo": "tiene un gran conjunto monumental, con una universidad del siglo XVI"
+      "curiosidad": "Tiene un gran conjunto monumental, con una universidad del siglo XVI."
     },
     {
       "id": "41091",
@@ -1316,7 +1319,7 @@
       "nombre": {"oficial": "Medinaceli", "castellano": "Medinaceli"},
       "poblacion": 686,
       "puesto": 17,
-      "motivo": "conserva un arco romano de tres vanos, el único de este tipo en España"
+      "curiosidad": "Conserva un arco romano de tres vanos, el único de este tipo en España."
     },
     {
       "id": "42173",
@@ -1341,7 +1344,7 @@
       "nombre": {"oficial": "Tortosa", "castellano": "Tortosa"},
       "poblacion": 35997,
       "puesto": 5,
-      "motivo": "fue una ciudad importante en época romana y musulmana, junto al río Ebro, cerca de su delta"
+      "curiosidad": "Fue una ciudad importante en época romana y musulmana, junto al río Ebro, cerca de su delta."
     },
     {
       "id": "43163",
@@ -1354,39 +1357,42 @@
       "nombre": {"oficial": "Salou", "castellano": "Salou"},
       "poblacion": 31491,
       "puesto": 7,
-      "motivo": "es uno de los destinos de playa más visitados de Cataluña, junto al parque PortAventura"
+      "curiosidad": "Es uno de los destinos de playa más visitados de Cataluña, junto al parque PortAventura."
     },
     {
       "id": "44009",
       "nombre": {"oficial": "Albarracín", "castellano": "Albarracín"},
       "poblacion": 998,
       "puesto": 18,
-      "motivo": "es uno de los pueblos más bonitos de España, con sus casas rojizas y su muralla"
+      "curiosidad": "Es especialmente conocido por ser uno de los pueblos más bonitos de España, en lo alto de una montaña casi rodeada por el río Guadalaviar."
     },
     {
       "id": "44013",
       "nombre": {"oficial": "Alcañiz", "castellano": "Alcañiz"},
       "poblacion": 16505,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Sobre la ciudad se alza el castillo que fue la sede de la orden de Calatrava en toda la Corona de Aragón, y que hoy es un parador donde se puede comer y dormir."
     },
     {
       "id": "44025",
       "nombre": {"oficial": "Andorra", "castellano": "Andorra"},
       "poblacion": 7223,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Aunque se llama igual, este municipio de Teruel no tiene nada que ver con el país de los Pirineos ni con su capital, Andorra la Vella."
     },
     {
       "id": "44216",
       "nombre": {"oficial": "Teruel", "castellano": "Teruel"},
       "poblacion": 36655,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Es conocida por sus torres mudéjares, que son Patrimonio de la Humanidad, y por la leyenda de los Amantes de Teruel, dos jóvenes del siglo XIII que murieron de pena porque no pudieron casarse."
     },
     {
       "id": "45053",
       "nombre": {"oficial": "Consuegra", "castellano": "Consuegra"},
       "poblacion": 9767,
       "puesto": 14,
-      "motivo": "sus molinos de viento y su castillo recuerdan al Quijote"
+      "curiosidad": "Sus molinos de viento y su castillo recuerdan al Quijote."
     },
     {
       "id": "45081",
@@ -1417,14 +1423,14 @@
       "nombre": {"oficial": "Xàtiva", "castellano": "Játiva"},
       "poblacion": 31008,
       "puesto": 13,
-      "motivo": "es la ciudad de la familia Borja, de la que salieron dos papas"
+      "curiosidad": "Es la ciudad de la familia Borja, de la que salieron dos papas."
     },
     {
       "id": "46220",
       "nombre": {"oficial": "Sagunt/Sagunto", "castellano": "Sagunto"},
       "poblacion": 73031,
       "puesto": 5,
-      "motivo": "en el año 219 a. C. resistió el asedio de Aníbal, que dio comienzo a la segunda guerra púnica"
+      "curiosidad": "En el año 219 a. C. resistió el asedio de Aníbal, que dio comienzo a la segunda guerra púnica."
     },
     {
       "id": "46244",
@@ -1456,28 +1462,28 @@
       "nombre": {"oficial": "Medina del Campo", "castellano": "Medina del Campo"},
       "poblacion": 20215,
       "puesto": 4,
-      "motivo": "en ella murió Isabel la Católica en 1504, y tiene el castillo de la Mota"
+      "curiosidad": "En ella murió Isabel la Católica en 1504, y tiene el castillo de la Mota."
     },
     {
       "id": "47114",
       "nombre": {"oficial": "Peñafiel", "castellano": "Peñafiel"},
       "poblacion": 5143,
       "puesto": 13,
-      "motivo": "su castillo, largo y estrecho como un barco, domina la Ribera del Duero"
+      "curiosidad": "Su castillo, largo y estrecho como un barco, domina la Ribera del Duero."
     },
     {
       "id": "47161",
       "nombre": {"oficial": "Simancas", "castellano": "Simancas"},
       "poblacion": 5533,
       "puesto": 11,
-      "motivo": "en su castillo está el Archivo General de Simancas, uno de los archivos históricos más importantes de España"
+      "curiosidad": "En su castillo está el Archivo General de Simancas, uno de los archivos históricos más importantes de España."
     },
     {
       "id": "47165",
       "nombre": {"oficial": "Tordesillas", "castellano": "Tordesillas"},
       "poblacion": 8773,
       "puesto": 7,
-      "motivo": "en ella se firmó en 1494 el Tratado de Tordesillas, que repartió el Nuevo Mundo entre Castilla y Portugal"
+      "curiosidad": "En ella se firmó en 1494 el Tratado de Tordesillas, que repartió el Nuevo Mundo entre Castilla y Portugal."
     },
     {
       "id": "47186",
@@ -1508,14 +1514,14 @@
       "nombre": {"oficial": "Gernika-Lumo", "castellano": "Guernica"},
       "poblacion": 17129,
       "puesto": 14,
-      "motivo": "su árbol es el símbolo de las libertades tradicionales de Vizcaya, y fue bombardeada en 1937"
+      "curiosidad": "Su árbol es el símbolo de las libertades tradicionales de Vizcaya, y fue bombardeada en 1937."
     },
     {
       "id": "48078",
       "nombre": {"oficial": "Portugalete", "castellano": "Portugalete"},
       "poblacion": 44843,
       "puesto": 5,
-      "motivo": "tiene el Puente de Vizcaya, el puente transbordador más antiguo del mundo, Patrimonio de la Humanidad"
+      "curiosidad": "Tiene el Puente de Vizcaya, el puente transbordador más antiguo del mundo, Patrimonio de la Humanidad."
     },
     {
       "id": "49021",
@@ -1528,7 +1534,7 @@
       "nombre": {"oficial": "Puebla de Sanabria", "castellano": "Puebla de Sanabria"},
       "poblacion": 1378,
       "puesto": 9,
-      "motivo": "es una villa medieval con castillo, junto al lago de Sanabria"
+      "curiosidad": "Es una villa medieval con castillo, junto al lago de Sanabria."
     },
     {
       "id": "49219",
@@ -1546,40 +1552,43 @@
       "id": "50067",
       "nombre": {"oficial": "Calatayud", "castellano": "Calatayud"},
       "poblacion": 20158,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "En el siglo XIX, durante un breve tiempo, Aragón tuvo cuatro provincias en vez de tres, y Calatayud fue la capital de la cuarta."
     },
     {
       "id": "50074",
       "nombre": {"oficial": "Caspe", "castellano": "Caspe"},
       "poblacion": 10365,
       "puesto": 7,
-      "motivo": "allí se firmó en 1412 el Compromiso de Caspe, que eligió al rey de Aragón"
+      "curiosidad": "Es especialmente conocida por el Compromiso de Caspe, la reunión en la que, en 1412, representantes de Aragón, Cataluña y Valencia eligieron al nuevo rey de Aragón, porque el anterior había muerto sin hijos."
     },
     {
       "id": "50114",
       "nombre": {"oficial": "Fuendetodos", "castellano": "Fuendetodos"},
       "poblacion": 130,
       "puesto": 183,
-      "motivo": "es el pueblo natal del pintor Francisco de Goya"
+      "curiosidad": "Es especialmente conocido por ser el pueblo donde nació Goya, el pintor aragonés más famoso, y su casa natal se puede visitar."
     },
     {
       "id": "50251",
       "nombre": {"oficial": "Tarazona", "castellano": "Tarazona"},
       "poblacion": 10873,
       "puesto": 6,
-      "motivo": "es una ciudad monumental, con su catedral y su antiguo barrio judío, al pie del Moncayo"
+      "curiosidad": "Es especialmente conocida por su casco histórico, con su catedral y su antiguo barrio judío, y por el Cipotegato, un personaje de sus fiestas que tiene que cruzar la plaza mientras todo el mundo le tira tomates."
     },
     {
       "id": "50272",
       "nombre": {"oficial": "Utebo", "castellano": "Utebo"},
       "poblacion": 19116,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Su iglesia tiene la «Torre de los Espejos», llamada así por los más de 8.000 azulejos que la decoran, y que se considera una de las torres mudéjares más bonitas de Aragón."
     },
     {
       "id": "50297",
       "nombre": {"oficial": "Zaragoza", "castellano": "Zaragoza"},
       "poblacion": 693091,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Según la tradición, la Virgen se apareció aquí al apóstol Santiago sobre un pilar, y por eso su gran basílica es la del Pilar, que da nombre a tantas mujeres en España."
     },
     {
       "id": "51001",

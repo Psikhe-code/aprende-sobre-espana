@@ -86,9 +86,7 @@ export interface Municipio {
   poblacion: number;
   /** Puesto entre los municipios de su provincia, de más a menos habitantes (1 = el más poblado). */
   puesto: number;
-  /** Solo en los que no están entre los tres más poblados: por qué es conocido. */
-  motivo?: string;
-  /** Curiosidad opcional sobre el municipio. */
+  /** Curiosidad sobre el municipio. Obligatoria en los que no están entre los tres más poblados: por qué es conocido. */
   curiosidad?: string;
   /** Municipios de otras provincias que se llaman igual (código INE y habitantes). */
   mismoNombre?: { id: string; poblacion: number }[];

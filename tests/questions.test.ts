@@ -164,7 +164,7 @@ for (const style of NAME_STYLES) {
       }
     });
 
-    it("municipios: la nota dice su puesto (si está entre los tres más poblados) o su motivo, con la población del INE y el año", () => {
+    it("municipios: la nota dice su puesto (si está entre los tres más poblados) y su población, con el año del INE; la curiosidad va aparte", () => {
       const ordinal: Record<number, string> = { 2: "segundo", 3: "tercer" };
       for (const m of MUNICIPIOS) {
         const p = provincia(m.id.slice(0, 2));
@@ -177,10 +177,12 @@ for (const style of NAME_STYLES) {
           : m.puesto === 1 ? `${n} es el municipio más poblado ${dePr}, más incluso que la capital, ${p.capital[style]}: ${hab}.`
           : m.puesto <= 3 && capital ? `${n} es la capital ${dePr} y su ${ordinal[m.puesto]} municipio más poblado: ${hab}.`
           : m.puesto <= 3 ? `${n} es el ${ordinal[m.puesto]} municipio más poblado ${dePr}: ${hab}.`
-          : `${n} tiene ${hab} y no está entre los tres municipios más poblados ${dePr}, pero es muy conocido: ${prepararTexto(m.motivo!, style)}.`;
+          : `${n} tiene ${hab} y no está entre los tres municipios más poblados ${dePr}.`;
         const otros = (m.mismoNombre ?? []).map((x) =>
           `En la provincia de ${nombreProv(x.id.slice(0, 2))} hay otro municipio que también se llama ${m.nombre.oficial}, con ${x.poblacion.toLocaleString("es-ES")} habitantes.`);
-        expect(find(style, `municipio-provincia:${m.id}`).why, m.id).toBe([esperada, otros.join(" ")].filter(Boolean).join("\n"));
+        const q = find(style, `municipio-provincia:${m.id}`);
+        expect(q.why, m.id).toBe([esperada, otros.join(" ")].filter(Boolean).join("\n"));
+        expect(q.fact, m.id).toBe(m.curiosidad ? prepararTexto(m.curiosidad, style) : undefined);
       }
       // Los miles se separan con punto, como se escribe en español.
       expect((293837).toLocaleString("es-ES")).toBe("293.837");
@@ -226,8 +228,8 @@ for (const style of NAME_STYLES) {
       }
     });
 
-    it("solo las capitales tienen curiosidad", () => {
-      expect(all.filter((q) => q.fact).every((q) => q.category === "capitales")).toBe(true);
+    it("solo las capitales y los municipios tienen curiosidad", () => {
+      expect(all.filter((q) => q.fact).every((q) => q.category === "capitales" || q.id.startsWith("municipio-provincia:"))).toBe(true);
     });
   });
 
