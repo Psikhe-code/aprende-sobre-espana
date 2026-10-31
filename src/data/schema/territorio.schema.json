@@ -87,6 +87,15 @@
             "type": "string",
             "minLength": 10
           },
+          "ciudadesTrampa": {
+            "description": "Solo en las comunidades o ciudades autónomas cuya capital se llama como ellas (Madrid, Murcia, Valencia, Ceuta, Melilla): ciudades reales y conocidas, de la comunidad o cercanas, que salen como trampa en la pregunta de su capital (Cartagena en Murcia, Tetuán en Ceuta). Se sortean junto con las demás trampas.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/formas"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
           "trampasCapital": {
             "description": "Trampa que sale siempre en la pregunta de su capital: un nombre que se confunde con la capital porque se parece al de la comunidad (Andalucía, La Mancha, León) o al de sus islas (Mallorca). Si hay varias, en cada partida se sortea una (Aragón o Jaca). No se pone si la capital se llama como la comunidad (Madrid, Murcia, Valencia, Ceuta, Melilla).",
             "type": "array",

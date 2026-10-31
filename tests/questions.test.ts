@@ -59,6 +59,14 @@ for (const style of NAME_STYLES) {
       }
     });
 
+    it("donde la capital se llama como la comunidad, las trampas incluyen ciudades reales cercanas", () => {
+      expect(find(style, "capital-ccaa:13").traps).toEqual(["Alcalá de Henares", "Aranjuez", "El Escorial"]);
+      expect(find(style, "capital-ccaa:14").traps).toEqual(["Cartagena"]);
+      expect(find(style, "capital-ccaa:10").traps).toEqual(style === "oficial"
+        ? ["Alicante/Alacant", "Castelló de la Plana/Castellón de la Plana", "Elche/Elx", "Benidorm"]
+        : ["Alicante", "Castellón de la Plana", "Elche", "Benidorm"]);
+    });
+
     it("en las capitales autonómicas sale siempre una trampa con el nombre de la comunidad o parecido", () => {
       const esperadas: Record<string, string[]> = {
         "01": ["Andalucía"], "02": ["Aragón", "Jaca"], "03": ["Asturias"], "04": ["Mallorca"], "05": ["Gran Canaria", "Tenerife"],
@@ -190,13 +198,13 @@ for (const style of NAME_STYLES) {
       expect([...seen].sort()).toEqual([...new Set(capitales)].sort());
     });
 
-    it("Ceuta y Melilla: su capital es la propia ciudad, y la otra ciudad es la trampa", () => {
+    it("Ceuta y Melilla: su capital es la propia ciudad; trampas, la otra ciudad y ciudades cercanas de los dos lados del estrecho", () => {
       const ceuta = find(style, "capital-ccaa:18");
       expect(ceuta.text).toBe("¿Cuál es la capital de Ceuta?");
       expect(ceuta.answer).toBe("Ceuta");
-      expect(ceuta.traps).toEqual(["Melilla"]);
+      expect(ceuta.traps).toEqual(["Melilla", "Tetuán", "Tánger", "Nador", "Alhucemas", "Algeciras", "Tarifa"]);
       expect(ceuta.why).toContain("ciudad autónoma");
-      expect(find(style, "capital-ccaa:19").traps).toEqual(["Ceuta"]);
+      expect(find(style, "capital-ccaa:19").traps).toEqual(["Ceuta", "Tetuán", "Tánger", "Nador", "Alhucemas", "Algeciras", "Tarifa"]);
     });
 
     it("Canarias: ninguna de sus dos capitales sale como incorrecta", () => {

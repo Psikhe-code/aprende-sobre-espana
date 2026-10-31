@@ -84,6 +84,7 @@
       "nombre": {"oficial": "Comunitat Valenciana", "castellano": "Comunidad Valenciana"},
       "enFrase": {"oficial": "la Comunitat Valenciana", "castellano": "la Comunidad Valenciana"},
       "capital": {"oficial": "València", "castellano": "Valencia"},
+      "ciudadesTrampa": [{"oficial": "Elche/Elx", "castellano": "Elche"}, {"oficial": "Benidorm", "castellano": "Benidorm"}],
       "curiosidadCapital": "{capital} fue la capital del Reino de Valencia desde que Jaime I lo creó en 1238 hasta 1707, cuando perdió sus instituciones propias."
     },
     {
@@ -109,6 +110,7 @@
       "nombre": {"oficial": "Comunidad de Madrid", "castellano": "Comunidad de Madrid"},
       "enFrase": {"oficial": "la Comunidad de Madrid", "castellano": "la Comunidad de Madrid"},
       "capital": {"oficial": "Madrid", "castellano": "Madrid"},
+      "ciudadesTrampa": [{"oficial": "Alcalá de Henares", "castellano": "Alcalá de Henares"}, {"oficial": "Aranjuez", "castellano": "Aranjuez"}, {"oficial": "El Escorial", "castellano": "El Escorial"}],
       "curiosidadCapital": "Madrid es la capital de España desde 1561, salvo entre 1601 y 1606, cuando la corte estuvo en Valladolid."
     },
     {
@@ -117,6 +119,7 @@
       "nombre": {"oficial": "Región de Murcia", "castellano": "Región de Murcia"},
       "enFrase": {"oficial": "la Región de Murcia", "castellano": "la Región de Murcia"},
       "capital": {"oficial": "Murcia", "castellano": "Murcia"},
+      "ciudadesTrampa": [{"oficial": "Cartagena", "castellano": "Cartagena"}],
       "notaCapital": "Murcia es la capital, pero la Asamblea Regional tiene su sede en Cartagena.",
       "curiosidadCapital": "Murcia fue la capital del Reino de Murcia, que formó parte de la Corona de Castilla desde 1266 hasta la división en provincias de 1833."
     },
@@ -151,6 +154,7 @@
       "tipo": "ciudad",
       "nombre": {"oficial": "Ceuta", "castellano": "Ceuta"},
       "capital": {"oficial": "Ceuta", "castellano": "Ceuta"},
+      "ciudadesTrampa": [{"oficial": "Tetuán", "castellano": "Tetuán"}, {"oficial": "Tánger", "castellano": "Tánger"}, {"oficial": "Nador", "castellano": "Nador"}, {"oficial": "Alhucemas", "castellano": "Alhucemas"}, {"oficial": "Algeciras", "castellano": "Algeciras"}, {"oficial": "Tarifa", "castellano": "Tarifa"}],
       "notaCapital": "Ceuta es una ciudad autónoma: la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Cádiz. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
       "curiosidadCapital": "Portugal conquistó Ceuta en 1415. Felipe II heredó la corona portuguesa en 1580, y en 1640, cuando Portugal se separó, la ciudad eligió seguir con el rey español.\nA diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Ceuta llevaba más de tres siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
     },
@@ -159,6 +163,7 @@
       "tipo": "ciudad",
       "nombre": {"oficial": "Melilla", "castellano": "Melilla"},
       "capital": {"oficial": "Melilla", "castellano": "Melilla"},
+      "ciudadesTrampa": [{"oficial": "Tetuán", "castellano": "Tetuán"}, {"oficial": "Tánger", "castellano": "Tánger"}, {"oficial": "Nador", "castellano": "Nador"}, {"oficial": "Alhucemas", "castellano": "Alhucemas"}, {"oficial": "Algeciras", "castellano": "Algeciras"}, {"oficial": "Tarifa", "castellano": "Tarifa"}],
       "notaCapital": "Melilla es una ciudad autónoma: la propia ciudad es su capital. Hasta 1995 formaba parte de la provincia de Málaga. Ese año recibió su estatuto de ciudad autónoma, con más competencias que un ayuntamiento, pero sin poder aprobar leyes propias.",
       "curiosidadCapital": "Una expedición enviada por el duque de Medina Sidonia tomó Melilla en 1497, en tiempos de los Reyes Católicos.\nA diferencia del Protectorado de Marruecos, que España gobernó solo entre 1912 y 1956, Melilla llevaba casi cinco siglos siendo española, así que no pasó a Marruecos con él cuando este se independizó."
     }

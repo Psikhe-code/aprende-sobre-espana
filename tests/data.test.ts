@@ -90,6 +90,16 @@ describe("territorio", () => {
     }
   });
 
+  it("las ciudades trampa de las comunidades solo están donde la capital se llama como la comunidad, y no son capitales", () => {
+    const capitales = new Set(poolsFor("castellano").capitalCualquiera);
+    for (const c of AUTONOMIAS) {
+      const coincide = capitalesDe(c).some((f) => c.nombre.castellano.includes(f.castellano));
+      expect(Boolean(c.ciudadesTrampa), `${c.id}: ciudades trampa`).toBe(coincide);
+      expect(Boolean(c.trampasCapital), `${c.id}: trampa fija`).toBe(!coincide);
+      for (const f of c.ciudadesTrampa ?? []) expect(capitales.has(f.castellano), `${c.id} → ${f.castellano}`).toBe(false);
+    }
+  });
+
   it("las trampas fijas de las capitales autonómicas no son su capital ni el nombre exacto de una capital que sea la respuesta", () => {
     for (const c of AUTONOMIAS.filter((x) => x.trampasCapital)) {
       for (const style of NAME_STYLES) {
