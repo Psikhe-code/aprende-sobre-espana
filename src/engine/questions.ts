@@ -76,6 +76,8 @@ export function regionalCapitalQuestions(style: NameStyle): Question[] {
       ).filter((cap) => !correctas.includes(cap)),
       aliases: aliases([c.nombre, ...capitales], style),
       territorio: "comunidad" as const,
+      // Trampa fija: el nombre de la comunidad o algo parecido (Andalucía, La Mancha, Mallorca…).
+      ...(c.trampasCapital ? { forcedTraps: c.trampasCapital.map((f) => f[style]) } : {}),
       ...(fact ? { fact } : {})
     };
     if (capitales.length > 1) {

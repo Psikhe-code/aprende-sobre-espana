@@ -90,6 +90,15 @@ describe("territorio", () => {
     }
   });
 
+  it("las trampas fijas de las capitales autonómicas no son su capital ni el nombre exacto de una capital que sea la respuesta", () => {
+    for (const c of AUTONOMIAS.filter((x) => x.trampasCapital)) {
+      for (const style of NAME_STYLES) {
+        const capitales = capitalesDe(c).map((f) => f[style]);
+        for (const t of c.trampasCapital!) expect(capitales, `${c.id} → ${t[style]}`).not.toContain(t[style]);
+      }
+    }
+  });
+
   it("una ciudad que es capital autonómica y de provincia se escribe igual en los dos sitios, en todas sus formas", () => {
     for (const c of COMUNIDADES) {
       for (const cap of capitalesDe(c)) {

@@ -15,7 +15,7 @@ export function poolFor(q: Question, pools: Pools): string[] {
 /**
  * Devuelve `n` opciones mezcladas: la correcta, algunas trampas y el resto del pool.
  *
- * - Las trampas fijas (`forcedTraps`) salen siempre.
+ * - Siempre sale una trampa fija (`forcedTraps`), sorteada si hay varias.
  * - Si hay pool, como mucho n-2 incorrectas son trampas (contando las fijas): siempre queda
  *   al menos un hueco aleatorio, para que las partidas no se repitan.
  * - Nunca aparecen valores de `exclude` ni duplicados.
@@ -23,7 +23,8 @@ export function poolFor(q: Question, pools: Pools): string[] {
  */
 export function makeOptions(q: Question & { answer: string }, n: number, pools: Pools, rng: Rng = Math.random): string[] {
   const banned = new Set([q.answer, ...q.exclude]);
-  const forced = [...new Set(q.forcedTraps ?? [])].filter((v) => !banned.has(v)).slice(0, n - 1);
+  const fijas = [...new Set(q.forcedTraps ?? [])].filter((v) => !banned.has(v));
+  const forced = fijas.length && n > 1 ? [pick(fijas, rng)] : [];
   forced.forEach((v) => banned.add(v));
   const traps = shuffle(q.traps.filter((v) => !banned.has(v)), rng);
   const pool = poolFor(q, pools);

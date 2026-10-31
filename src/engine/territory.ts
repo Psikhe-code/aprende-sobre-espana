@@ -22,6 +22,11 @@ export interface Comunidad {
    * Si no la tiene, se genera una automática (ver questions.ts).
    */
   notaCapital?: string;
+  /**
+   * Trampa que sale siempre en la pregunta de su capital, por parecerse al nombre de la comunidad
+   * (Andalucía, La Mancha, León) o de sus islas (Mallorca). Si hay varias, se sortea una en cada partida.
+   */
+  trampasCapital?: Formas[];
   /** Curiosidad histórica sobre la capital (capital de España o de un antiguo reino). "{capital}" igual. */
   curiosidadCapital?: string;
 }
