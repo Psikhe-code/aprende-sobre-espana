@@ -30,8 +30,7 @@ EXT = re.compile(r"\.(svg|png|jpe?g|gif|webp|pdf)(\?|$)", re.I)
 #   "wikipedia-banderas-provincias": ("https://en.wikipedia.org/w/index.php?title=List_of_provincial_flags_of_Spain&action=raw", False),
 #   "simbolos-asturias": ("https://www.asturias.es/…/simbolos-principado-asturias", True),
 PAGINAS = {
-    "ine-pobmun25": ("https://www.ine.es/pob_xls/pobmun25.xlsx", False),
-    "ine-pobmun24": ("https://www.ine.es/pob_xls/pobmun24.xlsx", False),
+    "boe-poblacion-2025": ("https://boe.es/boe/dias/2025/12/11/pdfs/BOE-A-2025-25362.pdf", False),
 }
 
 
