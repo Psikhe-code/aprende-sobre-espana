@@ -83,12 +83,12 @@
             ]
           },
           "notaCapital": {
-            "description": "Explicación propia para la pregunta de su capital, cuando hay algo que contar: capital que no es la ciudad más poblada o no es capital de provincia, instituciones repartidas, cambios de capital o de nombre. Si no la tiene, el juego genera una automática («Zaragoza es la capital de Aragón y también de la provincia de Zaragoza»). «{capital}» se sustituye por el nombre de la capital en la forma de la pregunta.",
+            "description": "Explicación propia para la pregunta de su capital, cuando hay algo que contar: capital que no es la ciudad más poblada o no es capital de provincia, instituciones repartidas, cambios de capital o de nombre. Si no la tiene, el juego genera una automática («Zaragoza es la capital de Aragón y también de la provincia de Zaragoza»). Marcas que se sustituyen por nombres en la forma de la pregunta: «{capital}», la capital de la comunidad; «{provincia:NN}», el nombre de la provincia con código INE NN; «{provincia.capital:NN}», la capital de esa provincia.",
             "type": "string",
             "minLength": 10
           },
           "curiosidadCapital": {
-            "description": "Curiosidad histórica sobre la capital, que se muestra al responder después de la nota: si fue capital de España o de un antiguo reino, con sus fechas (el final de un reino es cuando perdió sus instituciones propias). «{capital}» se sustituye por el nombre de la capital en la forma de la pregunta.",
+            "description": "Curiosidad histórica sobre la capital, que se muestra al responder después de la nota: si fue capital de España o de un antiguo reino, con sus fechas (el final de un reino es cuando perdió sus instituciones propias). Marcas que se sustituyen por nombres en la forma de la pregunta: «{capital}», la capital de la comunidad; «{provincia:NN}», el nombre de la provincia con código INE NN; «{provincia.capital:NN}», la capital de esa provincia.",
             "type": "string",
             "minLength": 10
           }

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../src/engine/categories";
 import { makeOptions, prepare } from "../src/engine/options";
+import { BANDERAS, prepararTexto } from "../src/engine/questions";
 import { AUTONOMIAS, COMUNIDADES, capitalesDe, poolsFor } from "../src/engine/territory";
 import { NAME_STYLES, type NameStyle, type Question } from "../src/engine/types";
 
@@ -36,9 +37,10 @@ for (const style of NAME_STYLES) {
         expect(new Set(q.traps).size, q.id).toBe(q.traps.length);
         expect(q.why.length, q.id).toBeGreaterThan(10);
         expect(q.why, q.id).not.toContain("{");
-        if (q.fact !== undefined) {
-          expect(q.fact.length, q.id).toBeGreaterThan(10);
-          expect(q.fact, q.id).not.toContain("{");
+        for (const texto of [q.fact, q.meaning]) {
+          if (texto === undefined) continue;
+          expect(texto.length, q.id).toBeGreaterThan(10);
+          expect(texto, q.id).not.toContain("{");
         }
       }
     });
@@ -54,6 +56,25 @@ for (const style of NAME_STYLES) {
       const vasco = find(style, "capital-ccaa:16");
       expect(vasco.why).toContain(style === "oficial" ? "eligió Vitoria-Gasteiz" : "eligió Vitoria como");
       expect(find(style, "capital-ccaa:10").fact).toMatch(style === "oficial" ? /^València fue/ : /^Valencia fue/);
+    });
+
+    it("las marcas de provincia salen en la forma de la pregunta, en capitales y en banderas", () => {
+      const oficial = style === "oficial";
+      expect(find(style, "capital-ccaa:12").why).toContain(oficial ? "y A Coruña había sido" : "y La Coruña había sido");
+      expect(find(style, "bandera-ccaa:12").meaning).toContain(oficial ? "del puerto de A Coruña:" : "del puerto de La Coruña:");
+      const vasco = find(style, "capital-ccaa:16").why;
+      expect(vasco).toContain(oficial ? "La Diputación de Araba/Álava" : "La Diputación de Álava");
+      expect(vasco).toContain(oficial ? "entre Bilbao y Donostia/San Sebastián." : "entre Bilbao y San Sebastián.");
+      expect(find(style, "bandera-ccaa:16").meaning).toContain(oficial ? "bandera de Bizkaia," : "bandera de Vizcaya,");
+    });
+
+    it("las banderas muestran su descripción y, aparte, su significado; las capitales no tienen significado", () => {
+      for (const c of AUTONOMIAS) {
+        const q = find(style, `bandera-ccaa:${c.id}`);
+        expect(q.why, c.id).toBe(BANDERAS[c.id].descripcion.trim());
+        expect(q.meaning, c.id).toBeTruthy();
+        expect(find(style, `capital-ccaa:${c.id}`).meaning, c.id).toBeUndefined();
+      }
     });
 
     it("cada curiosidad de los datos llega a su pregunta de capital, y las banderas no tienen", () => {
@@ -113,6 +134,18 @@ for (const style of NAME_STYLES) {
     });
   });
 }
+
+describe("preparación de los textos de las notas", () => {
+  it("quita los espacios sobrantes al principio, al final y junto a los saltos de línea", () => {
+    expect(prepararTexto(" Primera línea. \n Segunda línea.\t\nTercera. ", "castellano")).toBe("Primera línea.\nSegunda línea.\nTercera.");
+  });
+
+  it("sustituye las marcas según la forma, y deja tal cual una provincia que no existe", () => {
+    const t = "{provincia:20}, {provincia.capital:20}, {capital} y {provincia:99}";
+    expect(prepararTexto(t, "oficial", "Vitoria-Gasteiz")).toBe("Gipuzkoa, Donostia/San Sebastián, Vitoria-Gasteiz y {provincia:99}");
+    expect(prepararTexto(t, "castellano", "Vitoria")).toBe("Guipúzcoa, San Sebastián, Vitoria y {provincia:99}");
+  });
+});
 
 describe("formas de los nombres", () => {
   it("castellano usa la forma española y oficial la denominación oficial", () => {

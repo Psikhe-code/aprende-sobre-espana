@@ -12,7 +12,8 @@
     "required": [
       "archivo",
       "trampas",
-      "nota",
+      "descripcion",
+      "significado",
       "fuente"
     ],
     "properties": {
@@ -31,8 +32,13 @@
         "minItems": 1,
         "uniqueItems": true
       },
-      "nota": {
-        "description": "Explicación que se muestra al responder: cómo es la bandera.",
+      "descripcion": {
+        "description": "Cómo es la bandera, en una o dos frases sencillas. Es lo primero que se muestra al responder.",
+        "type": "string",
+        "minLength": 10
+      },
+      "significado": {
+        "description": "De dónde vienen sus partes y qué significan, una idea por línea (separadas con \\n). Se muestra después de la descripción, con la etiqueta «Significado». Marcas que se sustituyen por nombres en la forma de la pregunta: «{provincia:NN}», el nombre de la provincia con código INE NN; «{provincia.capital:NN}», la capital de esa provincia.",
         "type": "string",
         "minLength": 10
       },

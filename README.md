@@ -80,9 +80,24 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
     - `enFrase`: cómo se nombra dentro de una frase si lleva artículo («el País Vasco»).
     - `notaCapital`: la explicación de la pregunta de su capital, solo cuando hay algo que contar (la capital no es la ciudad más poblada o no es capital de provincia, instituciones repartidas, cambios de capital o de nombre). Si no la tiene, el juego genera una automática: *«Zaragoza es la capital de Aragón y también de la provincia de Zaragoza»*.
     - `curiosidadCapital`: un dato histórico que se muestra después de la nota, si la ciudad fue capital de España o de un antiguo reino, con sus fechas. El final de un reino se cuenta desde que perdió sus instituciones propias.
-    - En los dos textos, `{capital}` se sustituye por el nombre de la capital en la forma de la pregunta.
   - Cada provincia tiene `id`, `nombre`, `capital` y el código de su `comunidad`.
-- **`banderas.json`**: por código, el `archivo` SVG, las `trampas` (códigos de banderas parecidas) y la `nota` que se muestra al responder.
+- **`banderas.json`**: por código, el `archivo` SVG, las `trampas` (códigos de banderas parecidas) y dos textos que se muestran al responder:
+  - `descripcion`: cómo es la bandera, en una o dos frases sencillas.
+  - `significado`: de dónde vienen sus partes y qué significan, una idea por línea. Se muestra aparte, con la etiqueta «Significado».
+
+### Marcas en los textos
+
+En las notas de las capitales y de las banderas se pueden escribir marcas entre llaves, que el juego sustituye por el nombre en la forma de la pregunta (oficial o castellano):
+
+| Marca | Se sustituye por | Ejemplo |
+| --- | --- | --- |
+| `{capital}` | la capital de la comunidad (solo en las notas de capitales) | Vitoria-Gasteiz / Vitoria |
+| `{provincia:NN}` | el nombre de la provincia con código INE `NN` | `{provincia:01}` → Araba/Álava / Álava |
+| `{provincia.capital:NN}` | la capital de esa provincia | `{provincia.capital:15}` → A Coruña / La Coruña |
+
+Los tests comprueban que cada marca está bien escrita y que el código existe. Los nombres históricos («Reino de Valencia») o los que hablan del propio nombre se escriben tal cual, sin marca.
+
+Los espacios al principio, al final o junto a un salto de línea (`\n`) no importan: el juego los quita al mostrar el texto.
 
 ### Validación
 
@@ -125,7 +140,7 @@ La descarga desde aquí no se hace a mano: hay un proceso automático en GitHub 
 1. Crea la rama `banderas-descarga` desde `main`.
 2. Si quieres otra versión de alguna bandera, cambia su nombre de archivo en la lista `CANDIDATOS` del script.
 3. Sube la rama. GitHub descarga los archivos, con su ficha, licencia y autor, y los guarda en la carpeta `banderas-wikimedia/` de esa misma rama.
-4. Revisa las candidatas, copia la elegida a `src/data/banderas/` con el mismo nombre que la anterior, actualiza su `fuente` (y su `nota` si cambia el diseño) en `banderas.json`, y borra `banderas-wikimedia/` antes de mezclar.
+4. Revisa las candidatas, copia la elegida a `src/data/banderas/` con el mismo nombre que la anterior, actualiza su `fuente` (y su `descripcion` y `significado` si cambia el diseño) en `banderas.json`, y borra `banderas-wikimedia/` antes de mezclar.
 
 ## Tests
 
