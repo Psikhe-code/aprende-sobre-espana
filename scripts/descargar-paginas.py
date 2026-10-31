@@ -30,9 +30,20 @@ EXT = re.compile(r"\.(svg|png|jpe?g|gif|webp|pdf)(\?|$)", re.I)
 #   "wikipedia-banderas-provincias": ("https://en.wikipedia.org/w/index.php?title=List_of_provincial_flags_of_Spain&action=raw", False),
 #   "simbolos-asturias": ("https://www.asturias.es/…/simbolos-principado-asturias", True),
 PAGINAS = {
-    "ine-pobmun-zip": ("https://www.ine.es/pob_xls/pobmun.zip", False),
-    "ine-pobmun25-xls": ("https://www.ine.es/pob_xls/pobmun25.xls", False),
-    "ine-pobmun24-xls": ("https://www.ine.es/pob_xls/pobmun24.xls", False),
+    "wiki-huesca": ("https://es.wikipedia.org/w/index.php?title=Huesca&action=raw", False),
+    "wiki-monzon": ("https://es.wikipedia.org/w/index.php?title=Monz%C3%B3n&action=raw", False),
+    "wiki-barbastro": ("https://es.wikipedia.org/w/index.php?title=Barbastro&action=raw", False),
+    "wiki-jaca": ("https://es.wikipedia.org/w/index.php?title=Jaca&action=raw", False),
+    "wiki-teruel": ("https://es.wikipedia.org/w/index.php?title=Teruel&action=raw", False),
+    "wiki-alcaniz": ("https://es.wikipedia.org/w/index.php?title=Alca%C3%B1iz&action=raw", False),
+    "wiki-andorra": ("https://es.wikipedia.org/w/index.php?title=Andorra_%28Teruel%29&action=raw", False),
+    "wiki-albarracin": ("https://es.wikipedia.org/w/index.php?title=Albarrac%C3%ADn&action=raw", False),
+    "wiki-zaragoza": ("https://es.wikipedia.org/w/index.php?title=Zaragoza&action=raw", False),
+    "wiki-calatayud": ("https://es.wikipedia.org/w/index.php?title=Calatayud&action=raw", False),
+    "wiki-utebo": ("https://es.wikipedia.org/w/index.php?title=Utebo&action=raw", False),
+    "wiki-tarazona": ("https://es.wikipedia.org/w/index.php?title=Tarazona&action=raw", False),
+    "wiki-caspe": ("https://es.wikipedia.org/w/index.php?title=Caspe&action=raw", False),
+    "wiki-fuendetodos": ("https://es.wikipedia.org/w/index.php?title=Fuendetodos&action=raw", False),
 }
 
 
