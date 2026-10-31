@@ -1,0 +1,12 @@
+{
+ "ine-pobmun25": {
+  "fuente": "https://www.ine.es/pob_xls/pobmun25.xlsx",
+  "enlaces": [],
+  "error": "<HTTPError 404: 'Not Found'>"
+ },
+ "ine-pobmun24": {
+  "fuente": "https://www.ine.es/pob_xls/pobmun24.xlsx",
+  "enlaces": [],
+  "error": "<HTTPError 404: 'Not Found'>"
+ }
+}
