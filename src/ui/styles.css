@@ -219,8 +219,10 @@ h1 {
   text-wrap: balance;
 }
 /* Banderas: cada una con su proporción real (no todas son 3:2) */
-.flag { display: flex; margin-top: -4px; }
-.flag img { display: block; height: 150px; width: auto; max-width: 100%; border: 1px solid var(--line); border-radius: 3px; }
+.flag { display: flex; justify-content: center; margin-top: -4px; }
+.flag img { display: block; height: 150px; width: auto; max-width: 100%; object-fit: contain; border: 1px solid var(--line); border-radius: 3px; }
+/* En pantallas anchas, más grande: en el ordenador los escudos de las provincias se quedaban diminutos. */
+@media (min-width: 700px) { .flag img { height: clamp(150px, 30vh, 240px); } } /* en portátiles bajos, algo menos */
 .miss-flag { display: flex; margin-block: 4px 2px; }
 .miss-flag img { display: block; height: 36px; width: auto; border: 1px solid var(--line); border-radius: 2px; }
 .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
