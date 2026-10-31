@@ -2,10 +2,6 @@ import { describe, expect, it } from "vitest";
 import Ajv from "ajv";
 import territorio from "../src/data/territorio.json";
 import banderas from "../src/data/banderas.json";
-import banderasTexto from "../src/data/banderas.json?raw";
-import banderasProvincias from "../src/data/banderas-provincias.json";
-import banderasProvinciasTexto from "../src/data/banderas-provincias.json?raw";
-import banderasProvinciasSchema from "../src/data/schema/banderas-provincias.schema.json";
 import territorioSchema from "../src/data/schema/territorio.schema.json";
 import banderasSchema from "../src/data/schema/banderas.schema.json";
 import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../src/engine/territory";
@@ -14,8 +10,11 @@ import { BANDERAS, BANDERAS_PROVINCIAS } from "../src/engine/questions";
 
 // Comprobaciones del contenido: si alguien edita un JSON y se equivoca, el test dice dónde.
 
-const FLAG_FILES = Object.keys(import.meta.glob("../src/data/banderas/*.svg")).map((f) => f.split("/").pop());
-const PROVINCE_FLAG_FILES = Object.keys(import.meta.glob("../src/data/banderas/provincias/*.webp")).map((f) => f.split("/").pop());
+const svgs = (carpeta: string, todos: Record<string, string>) =>
+  Object.fromEntries(Object.entries(todos).filter(([f]) => f.includes(`/${carpeta}/`)).map(([f, texto]) => [f.split("/").pop()!, texto]));
+const TODOS_LOS_SVG = import.meta.glob("../src/data/banderas/*/*.svg", { eager: true, query: "?raw", import: "default" }) as Record<string, string>;
+const FLAG_FILES = svgs("comunidades", TODOS_LOS_SVG);
+const PROVINCE_FLAG_FILES = svgs("provincias", TODOS_LOS_SVG);
 
 /** Valida un archivo contra su esquema y devuelve los errores en forma legible. */
 function schemaErrors(schema: object, data: unknown): string[] {
@@ -32,12 +31,9 @@ describe("formato de los archivos", () => {
   it("banderas.json cumple su esquema", () => {
     expect(schemaErrors(banderasSchema, banderas).join("\n")).toBe("");
   });
-  it("banderas-provincias.json cumple su esquema", () => {
-    expect(schemaErrors(banderasProvinciasSchema, banderasProvincias).join("\n")).toBe("");
-  });
   it("el esquema detecta un campo mal escrito", () => {
     // Prueba de que la validación funciona: "trampa" en vez de "trampas".
-    const roto = { "01": { archivo: "andalucia.svg", trampa: ["11"], descripcion: "Descripción de prueba", significado: "Significado de prueba" } };
+    const roto = { comunidades: [{ id: "01", archivo: "andalucia.svg", trampa: ["11"], descripcion: "Descripción de prueba", significado: "Significado de prueba" }], provincias: [] };
     expect(schemaErrors(banderasSchema, roto).length).toBeGreaterThan(0);
   });
 });
@@ -172,11 +168,8 @@ describe("textos de las notas", () => {
 
 describe("banderas", () => {
   it("hay una por comunidad y ciudad autónoma, en orden de código INE, y su archivo existe", () => {
-    // El orden se lee del texto del archivo: al cargarlo, JavaScript reordena las claves
-    // que parecen números ("10"…"19" pasarían delante de "01"…"09").
-    const enArchivo = [...banderasTexto.matchAll(/^  "(\d{2})":/gm)].map((m) => m[1]);
-    expect(enArchivo).toEqual(AUTONOMIAS.map((c) => c.id));
-    for (const [id, b] of Object.entries(BANDERAS)) expect(FLAG_FILES, `${id} → ${b.archivo}`).toContain(b.archivo);
+    expect(banderas.comunidades.map((b) => b.id)).toEqual(AUTONOMIAS.map((c) => c.id));
+    for (const b of banderas.comunidades) expect(Object.keys(FLAG_FILES), `${b.id} → ${b.archivo}`).toContain(b.archivo);
   });
 
   it("cada bandera dice de dónde sale, y las que piden atribución tienen autor", () => {
@@ -199,13 +192,13 @@ describe("banderas", () => {
 });
 
 describe("banderas de provincia", () => {
-  it("van en orden de código INE de provincia, son provincias que existen y su imagen existe", () => {
-    const enArchivo = [...banderasProvinciasTexto.matchAll(/^  "(\d{2})":/gm)].map((m) => m[1]);
-    expect(enArchivo).toEqual([...enArchivo].sort());
+  it("van en orden de código INE de provincia, sin repetirse, son provincias que existen y su imagen existe", () => {
+    const ids = banderas.provincias.map((b) => b.id);
+    expect(ids).toEqual([...new Set(ids)].sort());
     const provincias = PROVINCIAS.map((p) => p.id);
-    for (const [id, b] of Object.entries(BANDERAS_PROVINCIAS)) {
-      expect(provincias, id).toContain(id);
-      expect(PROVINCE_FLAG_FILES, `${id} → ${b.archivo}`).toContain(b.archivo);
+    for (const b of banderas.provincias) {
+      expect(provincias, b.id).toContain(b.id);
+      expect(Object.keys(PROVINCE_FLAG_FILES), `${b.id} → ${b.archivo}`).toContain(b.archivo);
     }
   });
 
@@ -227,6 +220,20 @@ describe("banderas de provincia", () => {
     for (const [id, b] of Object.entries(BANDERAS_PROVINCIAS)) {
       expect(b.fuente.autor, `${id} → autor`).toBeTruthy();
       expect(b.fuente.licenciaUrl, `${id} → licencia`).toBeTruthy();
+    }
+  });
+});
+
+describe("imágenes de las banderas", () => {
+  it("cada SVG de las carpetas corresponde a una bandera de banderas.json (no sobran archivos)", () => {
+    expect(Object.keys(FLAG_FILES).sort()).toEqual(banderas.comunidades.map((b) => b.archivo).sort());
+    expect(Object.keys(PROVINCE_FLAG_FILES).sort()).toEqual(banderas.provincias.map((b) => b.archivo).sort());
+  });
+
+  it("están limpias con SVGO: en una sola línea y sin datos del programa de dibujo", () => {
+    // Si falla con una bandera nueva: npm run limpiar-bandera -- src/data/banderas/<carpeta>/<archivo>.svg
+    for (const [archivo, texto] of Object.entries({ ...FLAG_FILES, ...PROVINCE_FLAG_FILES })) {
+      expect(texto.trim(), archivo).not.toMatch(/\n|<metadata|<!--|inkscape:|sodipodi:|xmlns:rdf/);
     }
   });
 });
