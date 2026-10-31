@@ -25,8 +25,20 @@ export default defineConfig({
         ]
       },
       workbox: {
-        // Todo el juego (código, fuentes y banderas) queda guardado para jugar sin conexión.
-        globPatterns: ["**/*.{js,css,html,svg,png,webp,woff2}"]
+        // Modo sin conexión: al abrir el juego se guarda solo lo imprescindible (código, estilos, fuentes e iconos).
+        // Las banderas no se descargan todas de golpe: cada una se guarda la primera vez que sale en una partida
+        // (runtimeCaching, abajo), así que sin conexión funcionan las que ya se han visto.
+        // Cuando sea una app de Android, todas las banderas irán dentro de la app.
+        globPatterns: ["**/*.{js,css,html,png,woff2}", "icon.svg"],
+        runtimeCaching: [
+          {
+            // Las imágenes de assets/ llevan en el nombre una huella de su contenido (navarra-DPTmvb2U.svg):
+            // si una bandera cambia, cambia su nombre, así que la copia guardada nunca queda vieja.
+            urlPattern: ({ url }) => /\/assets\/[^/]+\.svg$/.test(url.pathname),
+            handler: "CacheFirst",
+            options: { cacheName: "banderas", expiration: { maxEntries: 100 } }
+          }
+        ]
       }
     })
   ],

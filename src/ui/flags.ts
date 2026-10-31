@@ -20,3 +20,22 @@ export function flagImage(clave: string): HTMLImageElement {
   img.decoding = "async";
   return img;
 }
+
+// Banderas pedidas por adelantado. Se guardan aquí para que el navegador no las descarte antes de terminar.
+const precargadas = new Map<string, HTMLImageElement>();
+
+/**
+ * Descarga y prepara una bandera antes de que haga falta (la de la pregunta siguiente),
+ * para que aparezca al instante al pasar de pregunta, aunque la conexión sea lenta.
+ */
+export function precargarBandera(clave: string): void {
+  const url = flagUrl(clave);
+  if (!url || precargadas.has(url)) return;
+  const img = new Image();
+  img.decoding = "async";
+  img.src = url;
+  // decode() también la dibuja por adelantado: los escudos detallados tardan un poco en dibujarse.
+  img.decode?.().catch(() => {});
+  precargadas.set(url, img);
+}
+
