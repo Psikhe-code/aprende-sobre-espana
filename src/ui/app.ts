@@ -106,6 +106,7 @@ export function startApp(): App {
     record.replaceChildren();
     if (rec != null) record.append("Récord con esta selección: ", el("b", "", `${rec}/${roundSize(state.selected, state.territorios)}`));
     else record.textContent = "Aún no has jugado con esta selección.";
+    prepararPartida();
   }
 
   // ---------- Opciones ----------
@@ -183,12 +184,29 @@ export function startApp(): App {
   }
 
   // ---------- Partida ----------
+  /**
+   * Partida preparada de antemano (en el inicio y al terminar una partida), para descargar y dibujar
+   * ya la bandera de su primera pregunta: así aparece al instante al pulsar «Jugar».
+   * Se guarda con la selección para la que se hizo; si el jugador cambia las opciones, se prepara otra.
+   */
+  let preparada: { seleccion: string; preguntas: ReturnType<typeof buildRound> } | null = null;
+  const seleccionActual = () => JSON.stringify([state.selected, state.names, state.territorios, state.opciones]);
+  const nuevaPartida = () => buildRound({ categories: state.selected, names: state.names, territorios: state.territorios, options: state.opciones });
+  function prepararPartida() {
+    if (!canPlay()) { preparada = null; return; }
+    if (preparada?.seleccion !== seleccionActual()) preparada = { seleccion: seleccionActual(), preguntas: nuevaPartida() };
+    const primera = preparada.preguntas[0];
+    if (primera?.flag) precargarBandera(primera.flag);
+  }
+
   function start(session?: GameSession) {
     if (!session && !canPlay()) return openOptions();
-    game = session ?? new GameSession(
-      buildRound({ categories: state.selected, names: state.names, territorios: state.territorios, options: state.opciones }),
-      { expected: roundSize(state.selected, state.territorios) }
-    );
+    if (session) game = session;
+    else {
+      const preguntas = preparada?.seleccion === seleccionActual() ? preparada.preguntas : nuevaPartida();
+      preparada = null; // cada partida preparada se juega una sola vez
+      game = new GameSession(preguntas, { expected: roundSize(state.selected, state.territorios) });
+    }
     $("track").style.setProperty("--n", String(game.total));
     show("play");
     renderQuestion();
@@ -312,6 +330,7 @@ export function startApp(): App {
     }
     $("review").hidden = !r.misses.length;
     show("end");
+    prepararPartida(); // para «Jugar otra vez»
   }
 
   // ---------- Créditos ----------
@@ -348,6 +367,12 @@ export function startApp(): App {
       roundSize(state.selected, state.territorios) > 0;
   }
   function goHome() { renderStart(); show("start"); }
+
+  // Versión al pie del inicio, para saber si ya se ve la última publicada.
+  const publicado = new Date(__PUBLICADO__);
+  $("version").textContent = import.meta.env.DEV
+    ? `Versión ${__VERSION__} · en desarrollo`
+    : `Versión ${__VERSION__} · publicada el ${publicado.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" })} a las ${publicado.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}`;
 
   $("go").addEventListener("click", () => start());
   $("next").addEventListener("click", next);

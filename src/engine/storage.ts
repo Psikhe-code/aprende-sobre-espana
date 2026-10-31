@@ -22,6 +22,7 @@ export interface SavedState {
   opciones: OptionCount;
 }
 
+// La clave conserva el nombre antiguo del juego (Geoquiz): cambiarla borraría los récords guardados.
 const KEY = "geoquiz-es-v2";
 
 function read(): Partial<SavedState> {
