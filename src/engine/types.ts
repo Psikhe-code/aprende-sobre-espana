@@ -24,6 +24,8 @@ export interface Question {
   why: string;
   /** Curiosidad opcional que se muestra al responder, después de la explicación. */
   fact?: string;
+  /** Significado opcional (de una bandera) que se muestra al responder, después de la explicación. */
+  meaning?: string;
   /** Valores del pool que nunca deben salir como incorrectos (porque también serían válidos). */
   exclude: string[];
   /** Solo para type "num": [mínimo, máximo]. */

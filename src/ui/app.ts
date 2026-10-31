@@ -198,6 +198,8 @@ export function startApp(): App {
     // Otras formas de los nombres: "Girona · en castellano, Gerona"
     $("aka").replaceChildren(...game.current.aliases.map((a) => el("span", "", a)));
     $("aka").hidden = !game.current.aliases.length;
+    $("meaningText").textContent = game.current.meaning ?? "";
+    $("meaning").hidden = !game.current.meaning;
     $("factText").textContent = game.current.fact ?? "";
     $("fact").hidden = !game.current.fact;
     announce(r.correct ? "Correcto." : `Incorrecto. Era ${r.answer}.`);

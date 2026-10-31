@@ -30,7 +30,7 @@ describe("formato de los archivos", () => {
   });
   it("el esquema detecta un campo mal escrito", () => {
     // Prueba de que la validación funciona: "trampa" en vez de "trampas".
-    const roto = { "01": { archivo: "andalucia.svg", trampa: ["11"], nota: "Nota de prueba larga" } };
+    const roto = { "01": { archivo: "andalucia.svg", trampa: ["11"], descripcion: "Descripción de prueba", significado: "Significado de prueba" } };
     expect(schemaErrors(banderasSchema, roto).length).toBeGreaterThan(0);
   });
 });
@@ -76,15 +76,28 @@ describe("territorio", () => {
 describe("textos de las notas", () => {
   const textos = [
     ...AUTONOMIAS.flatMap((c) => [["notaCapital", c.id, c.notaCapital], ["curiosidadCapital", c.id, c.curiosidadCapital]]),
-    ...Object.entries(BANDERAS).map(([id, b]) => ["nota de bandera", id, b.nota])
+    ...Object.entries(BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]])
   ].filter(([, , t]) => t) as [string, string, string][];
+  const donde = (campo: string, id: string, t: string) => `${campo} de ${id}: «${t.slice(0, 40)}…»`;
 
-  it("no tienen espacios sobrantes: ni dobles, ni al principio o al final, ni junto a un salto de línea (\\n)", () => {
+  // Los espacios junto a los saltos de línea (\n) y al principio o al final sí se permiten:
+  // el juego los quita al mostrar el texto (prepararTexto), así que no hace falta cuidarlos al editar.
+  it("no tienen espacios dobles dentro de una frase", () => {
     for (const [campo, id, t] of textos) {
-      const donde = `${campo} de ${id}: «${t.slice(0, 40)}…»`;
-      expect(t, donde).not.toMatch(/ {2}/);
-      expect(t, donde).not.toMatch(/^\s|\s$/);
-      expect(t, donde).not.toMatch(/ \n|\n /);
+      for (const linea of t.split("\n")) expect(linea.trim(), donde(campo, id, t)).not.toMatch(/ {2}/);
+    }
+  });
+
+  it("las marcas entre llaves son válidas y apuntan a provincias que existen", () => {
+    const provincias = new Set(PROVINCIAS.map((p) => p.id));
+    for (const [campo, id, t] of textos) {
+      for (const [marca] of t.matchAll(/\{[^}]*\}/g)) {
+        const m = marca.match(/^\{provincia(?:\.capital)?:(\d{2})\}$/);
+        const valida = m ? provincias.has(m[1]) : marca === "{capital}" && campo.endsWith("Capital");
+        expect(valida, `${donde(campo, id, t)} → ${marca}`).toBe(true);
+      }
+      // Llaves sueltas, sin cerrar o sin abrir.
+      expect(t.replace(/\{[^{}]*\}/g, ""), donde(campo, id, t)).not.toMatch(/[{}]/);
     }
   });
 });

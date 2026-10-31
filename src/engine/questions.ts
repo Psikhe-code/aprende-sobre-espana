@@ -22,6 +22,24 @@ function aliases(formas: Formas[], style: NameStyle): string[] {
 }
 
 /**
+ * Prepara un texto de las notas para mostrarlo en la forma de la pregunta:
+ * - `{provincia:NN}` → el nombre de la provincia con código INE NN («Araba/Álava» o «Álava»).
+ * - `{provincia.capital:NN}` → la capital de esa provincia («A Coruña» o «La Coruña»).
+ * - `{capital}` → la capital de la comunidad (solo en las notas de capitales, que la pasan aparte).
+ * Además quita los espacios que sobren al principio, al final y junto a los saltos de línea.
+ * Una marca con un código que no existe se deja tal cual, y los tests la detectan.
+ */
+export function prepararTexto(texto: string, style: NameStyle, capital?: string): string {
+  const conMarcas = texto.replace(/\{provincia(\.capital)?:(\d{2})\}/g, (marca, esCapital: string | undefined, id: string) => {
+    const p = PROVINCIAS.find((x) => x.id === id);
+    if (!p) return marca;
+    return (esCapital ? p.capital : p.nombre)[style];
+  });
+  const conCapital = capital === undefined ? conMarcas : conMarcas.replaceAll("{capital}", capital);
+  return conCapital.replace(/[ \t]*\n[ \t]*/g, "\n").trim();
+}
+
+/**
  * Nota automática para las capitales que no tienen una propia: dice si la capital autonómica
  * es también capital de provincia (y de cuál), que es justo lo que explica las trampas.
  * "Zaragoza es la capital de Aragón y también de la provincia de Zaragoza."
@@ -46,9 +64,9 @@ export function regionalCapitalQuestions(style: NameStyle): Question[] {
     const capitales = capitalesDe(c);
     const correctas = capitales.map((f) => f[style]);
     const de = deAutonomia(c, style);
-    const conCapital = (texto?: string) => texto?.replaceAll("{capital}", correctas.join(" y "));
-    const nota = conCapital(c.notaCapital);
-    const fact = conCapital(c.curiosidadCapital);
+    const preparar = (texto?: string) => (texto ? prepararTexto(texto, style, correctas.join(" y ")) : undefined);
+    const nota = preparar(c.notaCapital);
+    const fact = preparar(c.curiosidadCapital);
     const base = {
       id: `capital-ccaa:${c.id}`,
       type: "capitalCualquiera",
@@ -88,7 +106,10 @@ export interface BanderaInfo {
   archivo: string;
   /** Códigos INE de las comunidades o ciudades con banderas parecidas. */
   trampas: string[];
-  nota: string;
+  /** Cómo es la bandera, en una o dos frases sencillas. Se muestra al responder. */
+  descripcion: string;
+  /** De dónde vienen sus partes y qué significan. Se muestra después, con la etiqueta «Significado». */
+  significado: string;
   /** De dónde sale la imagen: se muestra en Créditos. */
   fuente: { titulo: string; url: string; autor?: string; licencia: string; licenciaUrl?: string };
 }
@@ -106,7 +127,8 @@ export function flagQuestions(style: NameStyle): Question[] {
     type: "autonomia",
     traps: BANDERAS[c.id].trampas.map((id) => autonomia(id).nombre[style]),
     exclude: [],
-    why: BANDERAS[c.id].nota,
+    why: prepararTexto(BANDERAS[c.id].descripcion, style),
+    meaning: prepararTexto(BANDERAS[c.id].significado, style),
     flag: c.id,
     aliases: aliases([c.nombre], style)
   }));

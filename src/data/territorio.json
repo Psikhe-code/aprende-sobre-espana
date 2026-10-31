@@ -90,7 +90,7 @@
       "tipo": "comunidad",
       "nombre": {"oficial": "Galicia", "castellano": "Galicia"},
       "capital": {"oficial": "Santiago de Compostela", "castellano": "Santiago de Compostela"},
-      "notaCapital": "En 1982 el Parlamento de Galicia eligió Santiago como sede de sus instituciones, aunque no es capital de provincia, Vigo es la ciudad más poblada y A Coruña había sido durante siglos la capital del antiguo Reino de Galicia.\nSe suele explicar por su peso histórico y religioso, como meta del Camino de Santiago, y por ser una opción neutral entre las grandes ciudades."
+      "notaCapital": "En 1982 el Parlamento de Galicia eligió Santiago como sede de sus instituciones, aunque no es capital de provincia, Vigo es la ciudad más poblada y {provincia.capital:15} había sido durante siglos la capital del antiguo Reino de Galicia.\nSe suele explicar por su peso histórico y religioso, como meta del Camino de Santiago, y por ser una opción neutral entre las grandes ciudades."
     },
     {
       "id": "13",
@@ -123,7 +123,7 @@
       "nombre": {"oficial": "País Vasco", "castellano": "País Vasco"},
       "enFrase": {"oficial": "el País Vasco", "castellano": "el País Vasco"},
       "capital": {"oficial": "Vitoria-Gasteiz", "castellano": "Vitoria"},
-      "notaCapital": "En 1980, con la primera ley que aprobó, el Parlamento Vasco eligió {capital} como sede del Parlamento y del Gobierno, aunque Bilbao es la ciudad más poblada.\nLa Diputación de Álava ofreció edificios para las nuevas instituciones, y se suele explicar también por su posición central y por ser una opción neutral entre Bilbao y San Sebastián."
+      "notaCapital": "En 1980, con la primera ley que aprobó, el Parlamento Vasco eligió {capital} como sede del Parlamento y del Gobierno, aunque Bilbao es la ciudad más poblada.\nLa Diputación de {provincia:01} ofreció edificios para las nuevas instituciones, y se suele explicar también por su posición central y por ser una opción neutral entre Bilbao y {provincia.capital:20}."
     },
     {
       "id": "17",

@@ -33,6 +33,13 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 
 - Son las versiones **oficiales de Wikimedia Commons**, con escudo cuando la oficial lo lleva, y se muestran con su proporción real.
 - Cada bandera guarda su `fuente` (archivo, enlace, autor, licencia) en `banderas.json`. Las CC BY / CC BY-SA exigen autor, y aparecen en la pantalla de Créditos.
+- Cada bandera tiene `descripcion` (cómo es, en lenguaje sencillo) y `significado` (una idea por línea). Criterios acordados para el significado:
+  - Cada nota se entiende sola, sin dar por leídas las demás. Las que comparten las barras de Aragón usan la misma frase.
+  - Se cuenta directamente, sin «según la ley…» ni «según el acuerdo…». Lo dudoso o tradicional se marca con «se suele decir», «según la tradición» o «según una leyenda», y lo que no tiene explicación, con «no hay una explicación clara».
+  - Palabras sencillas: «bandera» en vez de «pendón» o «estandarte», «cuadros» en vez de «cuarteles».
+  - El nombre propio de la bandera (senyera, ikurriña…) va en la última línea.
+  - Antes de proponer un texto, comprobar las fuentes; si no hay respaldo, decirlo.
+- En las notas, los nombres que cambian según la forma van con marcas (`{provincia:NN}`, `{provincia.capital:NN}`); ver el README.
 - Desde el entorno de Claude, Wikimedia limita mucho las peticiones. Para descargar banderas se usa GitHub Actions: subir la rama `banderas-descarga` ejecuta `scripts/descargar-banderas.py` (ver README).
 
 ## Pendiente
