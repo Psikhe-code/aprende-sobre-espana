@@ -35,10 +35,13 @@ export interface Provincia {
   comunidad: string;
   /**
    * Solo en las provincias cuya capital no se llama como la provincia (y es lo que crea la pregunta):
-   * códigos de provincias cuya capital puede confundirse con la suya. Salen como trampa.
+   * códigos de provincias cercanas o que se confunden. Su capital y sus ciudades salen como trampa.
    */
   trampas?: string[];
-  /** Otras ciudades conocidas de la provincia que salen como trampa (Gijón en Asturias). */
+  /**
+   * Ciudades conocidas de la provincia, que no son capitales (Gijón en Asturias). Salen como trampa
+   * en la pregunta de su capital y en las de las provincias que la tengan en `trampas`.
+   */
   ciudades?: Formas[];
   /** Explicación propia para la pregunta de su capital. "{capital}" se sustituye por su nombre. */
   notaCapital?: string;

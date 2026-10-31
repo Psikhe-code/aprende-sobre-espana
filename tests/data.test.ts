@@ -72,8 +72,8 @@ describe("territorio", () => {
         expect(id, `${p.id} se pone a sí misma de trampa`).not.toBe(p.id);
       }
     }
-    // Ciudades y notas solo tienen sentido en provincias con pregunta de capital.
-    for (const p of PROVINCIAS.filter((x) => !x.trampas)) expect(p.ciudades ?? p.notaCapital, p.id).toBeUndefined();
+    // Las notas solo tienen sentido en provincias con pregunta de capital.
+    for (const p of PROVINCIAS.filter((x) => !x.trampas)) expect(p.notaCapital, p.id).toBeUndefined();
   });
 
   it("las ciudades de las provincias no son capitales ni se repiten", () => {

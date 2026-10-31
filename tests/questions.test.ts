@@ -34,15 +34,19 @@ for (const style of NAME_STYLES) {
       const asturias = find(style, "capital-provincia:33");
       expect(asturias.text).toBe("¿Cuál es la capital de la provincia de Asturias?");
       expect(asturias.answer).toBe("Oviedo");
-      expect(asturias.traps).toEqual([style === "oficial" ? "Santander" : "Santander", "León", "Lugo", style === "oficial" ? "A Coruña" : "La Coruña", "Gijón", "Avilés"]);
+      expect(asturias.traps).toEqual(["Santander", "Torrelavega", "Santillana del Mar", "Laredo", "Comillas", "León", "Ponferrada", "Astorga",
+        "Lugo", style === "oficial" ? "A Coruña" : "La Coruña", "Ferrol", "Gijón", "Avilés", "Llanes", "Mieres"]);
       expect(asturias.why).toBe("En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Oviedo». En 1983 recuperó el nombre de Asturias.\nGijón es la ciudad más poblada de Asturias, más que Oviedo.");
       // Mismo lugar que la pregunta de la comunidad: no salen las dos en una partida.
       expect(asturias.answerKey).toBe(find(style, "capital-ccaa:03").answerKey);
       const vizcaya = find(style, "capital-provincia:48");
       expect(vizcaya.text).toBe(style === "oficial" ? "¿Cuál es la capital de la provincia de Bizkaia?" : "¿Cuál es la capital de la provincia de Vizcaya?");
-      expect(vizcaya.traps).toEqual(style === "oficial"
-        ? ["Vitoria-Gasteiz", "Donostia/San Sebastián", "Santander", "Barakaldo", "Gernika-Lumo"]
-        : ["Vitoria", "San Sebastián", "Santander", "Baracaldo", "Guernica"]);
+      // Las ciudades vascas salen en todas las provincias vascas.
+      for (const c of style === "oficial" ? ["Vitoria-Gasteiz", "Laguardia", "Donostia/San Sebastián", "Irun", "Hondarribia", "Barakaldo", "Gernika-Lumo"]
+        : ["Vitoria", "Laguardia", "San Sebastián", "Irún", "Fuenterrabía", "Baracaldo", "Guernica"]) {
+        if (c !== vizcaya.answer) expect(vizcaya.traps, c).toContain(c);
+      }
+      expect(find(style, "capital-provincia:20").traps).toContain(style === "oficial" ? "Gernika-Lumo" : "Guernica");
       expect(vizcaya.why).toContain(style === "oficial" ? "pero Bizkaia conservó" : "pero Vizcaya conservó");
       expect(vizcaya.why).toContain("\nBilbao es su ciudad más poblada");
     });

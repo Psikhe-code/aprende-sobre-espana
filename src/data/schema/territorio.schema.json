@@ -122,7 +122,7 @@
             "$ref": "#/definitions/codigo"
           },
           "trampas": {
-            "description": "Solo en las provincias cuya capital no se llama como la provincia, y es lo que crea la pregunta de su capital. Códigos INE de provincias cuya capital puede confundirse con la suya (otras capitales vascas, de la costa cantábrica, de otros archipiélagos…). En cada partida se sortean algunas, junto con las ciudades.",
+            "description": "Solo en las provincias cuya capital no se llama como la provincia, y es lo que crea la pregunta de su capital. Códigos INE de provincias cercanas o que se confunden con ella: su capital y sus «ciudades» salen como trampa. En cada partida se sortean algunas.",
             "type": "array",
             "items": {
               "$ref": "#/definitions/codigo"
@@ -131,7 +131,7 @@
             "uniqueItems": true
           },
           "ciudades": {
-            "description": "Otras ciudades conocidas de la provincia que pueden confundirse con su capital (Gijón en Asturias). Salen como trampa junto con las capitales de «trampas».",
+            "description": "Ciudades relativamente conocidas de la provincia, que no son capitales (Gijón en Asturias). Salen como trampa en la pregunta de capital de su provincia y en las de las provincias que la incluyan en «trampas».",
             "type": "array",
             "items": {
               "$ref": "#/definitions/formas"
