@@ -1,14 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORY_IDS } from "../src/engine/categories";
-import { buildRound, rebuild, ROUND_LENGTH } from "../src/engine/round";
+import { buildRound, rebuild, roundSize, ROUND_LENGTH } from "../src/engine/round";
 import { poolsFor } from "../src/engine/territory";
-import { loadState } from "../src/engine/storage";
+import { comboKey, loadState } from "../src/engine/storage";
 import { GameSession, applyRecord } from "../src/engine/game";
 import type { RoundQuestion } from "../src/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
 const rq = (id: string, answer: string): RoundQuestion =>
-  ({ id, text: id, answer, answerKey: id, type: null, traps: [], why: "", exclude: [], aliases: [], category: "c", style: "castellano", options: [answer, "X"] });
+  ({ id, text: id, answer, answerKey: id, type: null, traps: [], why: "", exclude: [], aliases: [], territorio: "comunidad", category: "c", style: "castellano", options: [answer, "X"] });
 const tenQuestions = () => Array.from({ length: ROUND_LENGTH }, (_, i) => rq("q" + i, "A"));
 
 describe("partidas: elección de preguntas", () => {
@@ -22,7 +22,7 @@ describe("partidas: elección de preguntas", () => {
 
   it("solo incluyen las categorías marcadas", () => {
     for (let r = 0; r < 50; r++) {
-      for (const q of buildRound({ categories: ["banderasCCAA"] })) expect(q.category).toBe("banderasCCAA");
+      for (const q of buildRound({ categories: ["banderas"] })) expect(q.category).toBe("banderas");
     }
   });
 
@@ -39,7 +39,7 @@ describe("partidas: elección de preguntas", () => {
       for (const q of buildRound({ categories: CATEGORY_IDS, names: ["oficial", "castellano"] })) {
         seen.add(q.style);
         const pool = poolsFor(q.style)[q.type!];
-        for (const o of q.options) expect(pool, `${q.id} [${q.style}] → ${o}`).toContain(o);
+        for (const o of q.options) if (!q.forcedTraps?.includes(o)) expect(pool, `${q.id} [${q.style}] → ${o}`).toContain(o);
       }
     }
     expect([...seen].sort()).toEqual(["castellano", "oficial"]);
@@ -65,11 +65,35 @@ describe("partidas: elección de preguntas", () => {
     let flags = 0, total = 0;
     for (let r = 0; r < 300; r++) {
       const round = buildRound({ categories: CATEGORY_IDS });
-      flags += round.filter((q) => q.category === "banderasCCAA").length;
+      flags += round.filter((q) => q.category === "banderas").length;
       total += round.length;
     }
     expect(flags / total).toBeGreaterThan(0.4);
     expect(flags / total).toBeLessThan(0.6);
+  });
+
+  it("solo salen preguntas de los territorios marcados", () => {
+    for (let r = 0; r < 100; r++) {
+      for (const q of buildRound({ categories: CATEGORY_IDS, territorios: ["comunidad"] })) expect(q.territorio).toBe("comunidad");
+      const provincias = buildRound({ categories: CATEGORY_IDS, territorios: ["provincia"] });
+      for (const q of provincias) expect(q.territorio).toBe("provincia");
+      // Solo hay 8 capitales de provincia (y aún no hay banderas de provincia): la partida tiene 8.
+      expect(provincias).toHaveLength(8);
+    }
+  });
+
+  it("calcula cuántas preguntas tendrá la partida según la selección", () => {
+    expect(roundSize(CATEGORY_IDS)).toBe(ROUND_LENGTH);
+    expect(roundSize(["capitales"], ["provincia"])).toBe(8);
+    expect(roundSize(["banderas"], ["provincia"])).toBe(0);
+    expect(buildRound({ categories: ["banderas"], territorios: ["provincia"] })).toHaveLength(0);
+  });
+
+  it("con comunidades y provincias, no repite la misma ciudad como respuesta (Oviedo de Asturias, provincia y comunidad)", () => {
+    for (let r = 0; r < 300; r++) {
+      const keys = buildRound({ categories: ["capitales"], territorios: ["comunidad", "provincia"] }).map((q) => q.answerKey);
+      expect(new Set(keys).size).toBe(keys.length);
+    }
   });
 
   it("el repaso conserva las preguntas y regenera las opciones", () => {
@@ -128,6 +152,8 @@ describe("partidas: desarrollo", () => {
     expect(play(new GameSession(tenQuestions())).counts).toBe(true);
     expect(play(new GameSession(tenQuestions(), { review: true })).counts).toBe(false);
     expect(play(new GameSession(tenQuestions().slice(0, 3))).counts).toBe(false);
+    // Una selección que solo da para 8 preguntas cuenta si la partida tiene esas 8.
+    expect(play(new GameSession(tenQuestions().slice(0, 8), { expected: 8 })).counts).toBe(true);
   });
 });
 
@@ -150,5 +176,38 @@ describe("récords", () => {
     const r = applyRecord(best, "k", result(10, false));
     expect(r.isNewRecord).toBe(false);
     expect(best).toEqual({ k: 4 });
+  });
+});
+
+describe("guardado", () => {
+  const conGuardado = (datos: unknown, fn: () => void) => {
+    const almacen = new Map([["geoquiz-es-v2", JSON.stringify(datos)]]);
+    const previo = (globalThis as { localStorage?: unknown }).localStorage;
+    (globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => almacen.get(k) ?? null,
+      setItem: (k: string, v: string) => { almacen.set(k, v); }
+    };
+    try { fn(); } finally { (globalThis as { localStorage?: unknown }).localStorage = previo; }
+  };
+
+  it("por defecto están marcados los dos territorios", () => {
+    expect(loadState().territorios).toEqual(["comunidad", "provincia"]);
+  });
+
+  it("la clave del récord incluye las categorías y los territorios, en orden", () => {
+    expect(comboKey(["banderas", "capitales"], ["provincia", "comunidad"])).toBe("capitales+banderas/comunidad+provincia");
+    expect(comboKey(["capitales"], ["comunidad"])).toBe("capitales/comunidad");
+  });
+
+  it("convierte lo guardado con los nombres antiguos de categoría, sin perder selección ni récords", () => {
+    conGuardado({
+      selected: ["banderasCCAA"], known: ["capitalesCCAA", "banderasCCAA"], names: ["oficial"],
+      best: { "capitalesCCAA+banderasCCAA": 8, banderasCCAA: 6 }
+    }, () => {
+      const s = loadState();
+      expect(s.selected).toEqual(["banderas"]);
+      expect(s.names).toEqual(["oficial"]);
+      expect(s.best).toEqual({ "capitales+banderas/comunidad": 8, "banderas/comunidad": 6 });
+    });
   });
 });

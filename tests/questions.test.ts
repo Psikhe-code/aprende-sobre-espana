@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../src/engine/categories";
 import { makeOptions, prepare } from "../src/engine/options";
-import { BANDERAS, prepararTexto } from "../src/engine/questions";
-import { AUTONOMIAS, COMUNIDADES, capitalesDe, poolsFor } from "../src/engine/territory";
+import { BANDERAS, notaCapitalProvincia, prepararTexto } from "../src/engine/questions";
+import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, capitalesDe, poolsFor } from "../src/engine/territory";
+import { questionsIn } from "../src/engine/round";
 import { NAME_STYLES, type NameStyle, type Question } from "../src/engine/types";
 
 const REPS = 30;
@@ -14,9 +15,66 @@ for (const style of NAME_STYLES) {
   const pools = poolsFor(style);
 
   describe(`[${style}] banco de preguntas`, () => {
-    it("19 capitales y 19 banderas (17 comunidades y 2 ciudades autónomas)", () => {
-      expect(CATEGORIES.find((c) => c.id === "capitalesCCAA")!.questions(style)).toHaveLength(19);
-      expect(CATEGORIES.find((c) => c.id === "banderasCCAA")!.questions(style)).toHaveLength(19);
+    it("comunidades: 19 capitales y 19 banderas (17 comunidades y 2 ciudades autónomas)", () => {
+      expect(questionsIn("capitales", ["comunidad"])).toHaveLength(19);
+      expect(questionsIn("banderas", ["comunidad"])).toHaveLength(19);
+    });
+
+    it("provincias: capitales solo de las 8 provincias cuya capital se llama distinto; banderas, ninguna todavía", () => {
+      const provincias = questionsIn("capitales", ["provincia"]);
+      expect(provincias.map((q) => q.id)).toEqual(["01", "07", "20", "26", "31", "33", "39", "48"].map((id) => `capital-provincia:${id}`));
+      for (const q of provincias) {
+        const p = PROVINCIAS.find((x) => `capital-provincia:${x.id}` === q.id)!;
+        expect(p.nombre.castellano, q.id).not.toBe(p.capital.castellano);
+      }
+      expect(questionsIn("banderas", ["provincia"])).toHaveLength(0);
+    });
+
+    it("capitales de provincia: enunciado, trampas (capitales que se confunden y ciudades de la provincia) y nota", () => {
+      const asturias = find(style, "capital-provincia:33");
+      expect(asturias.text).toBe("¿Cuál es la capital de la provincia de Asturias?");
+      expect(asturias.answer).toBe("Oviedo");
+      expect(asturias.traps).toEqual(["Santander", "Torrelavega", "Santillana del Mar", "Laredo", "Comillas", "León", "Ponferrada", "Astorga",
+        "Lugo", style === "oficial" ? "A Coruña" : "La Coruña", "Ferrol", "Gijón", "Avilés", "Llanes", "Mieres"]);
+      expect(asturias.why).toBe("En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Oviedo». En 1983 recuperó el nombre de Asturias.\nGijón es la ciudad más poblada de Asturias, más que Oviedo.");
+      // Mismo lugar que la pregunta de la comunidad: no salen las dos en una partida.
+      expect(asturias.answerKey).toBe(find(style, "capital-ccaa:03").answerKey);
+      const vizcaya = find(style, "capital-provincia:48");
+      expect(vizcaya.text).toBe(style === "oficial" ? "¿Cuál es la capital de la provincia de Bizkaia?" : "¿Cuál es la capital de la provincia de Vizcaya?");
+      // Las ciudades vascas salen en todas las provincias vascas.
+      for (const c of style === "oficial" ? ["Vitoria-Gasteiz", "Laguardia", "Donostia/San Sebastián", "Irun", "Hondarribia", "Barakaldo", "Gernika-Lumo"]
+        : ["Vitoria", "Laguardia", "San Sebastián", "Irún", "Fuenterrabía", "Baracaldo", "Guernica"]) {
+        if (c !== vizcaya.answer) expect(vizcaya.traps, c).toContain(c);
+      }
+      expect(find(style, "capital-provincia:20").traps).toContain(style === "oficial" ? "Gernika-Lumo" : "Guernica");
+      expect(vizcaya.why).toContain(style === "oficial" ? "pero Bizkaia conservó" : "pero Vizcaya conservó");
+      expect(vizcaya.why).toContain("\nBilbao es su ciudad más poblada");
+    });
+
+    it("en las capitales de provincia sale siempre el nombre de la provincia como trampa", () => {
+      for (const q0 of all.filter((q) => q.id.startsWith("capital-provincia:"))) {
+        const p = PROVINCIAS.find((x) => `capital-provincia:${x.id}` === q0.id)!;
+        expect(q0.forcedTraps, q0.id).toEqual([p.nombre[style]]);
+        for (let r = 0; r < 20; r++) expect(prepare(q0, 4, pools).options, q0.id).toContain(p.nombre[style]);
+      }
+    });
+
+    it("en cada partida se sortean distintas trampas de provincia", () => {
+      const q0 = find(style, "capital-provincia:33");
+      const vistas = new Set<string>();
+      for (let r = 0; r < 200; r++) prepare(q0, 4, pools).options.filter((o) => q0.traps.includes(o)).forEach((o) => vistas.add(o));
+      expect([...vistas].sort()).toEqual([...q0.traps].sort());
+    });
+
+    it("la nota automática de provincia, para las que no tengan una propia", () => {
+      const p = (id: string) => ({ ...PROVINCIAS.find((x) => x.id === id)!, notaCapital: undefined });
+      expect(notaCapitalProvincia(p("48"), "castellano")).toBe("Bilbao es la capital de la provincia de Vizcaya. La capital del País Vasco es Vitoria.");
+      expect(notaCapitalProvincia(p("01"), "castellano")).toBe("Vitoria es la capital de la provincia de Álava y también del País Vasco.");
+      expect(notaCapitalProvincia(p("33"), "castellano")).toBe("Oviedo es la capital de la provincia de Asturias. Como es la única provincia de Asturias, también es la capital de la comunidad.");
+    });
+
+    it("cada pregunta dice su territorio: las de provincia son solo las de capital de provincia", () => {
+      for (const q of all) expect(q.territorio, q.id).toBe(q.id.startsWith("capital-provincia:") ? "provincia" : "comunidad");
     });
 
     it("los identificadores son únicos", () => {
@@ -82,7 +140,7 @@ for (const style of NAME_STYLES) {
       for (const c of AUTONOMIAS) {
         expect(Boolean(find(style, `capital-ccaa:${c.id}`).fact), c.id).toBe(Boolean(c.curiosidadCapital));
       }
-      expect(all.filter((q) => q.fact).every((q) => q.category === "capitalesCCAA")).toBe(true);
+      expect(all.filter((q) => q.fact).every((q) => q.category === "capitales")).toBe(true);
     });
   });
 
@@ -95,7 +153,8 @@ for (const style of NAME_STYLES) {
             expect(q.options, q.id).toHaveLength(n);
             expect(q.options, q.id).toContain(q.answer);
             expect(new Set(q.options).size, q.id).toBe(n);
-            for (const o of q.options) expect(pools[q.type!], `${q.id} → ${o}`).toContain(o);
+            for (const o of q.options) if (!q.forcedTraps?.includes(o)) expect(pools[q.type!], `${q.id} → ${o}`).toContain(o);
+            for (const f of q.forcedTraps ?? []) expect(q.options, `${q.id} → trampa fija ${f}`).toContain(f);
             for (const x of q.exclude) if (x !== q.answer) expect(q.options, `${q.id} → ${x}`).not.toContain(x);
           }
         }
@@ -103,7 +162,7 @@ for (const style of NAME_STYLES) {
     }
 
     it("las capitales autonómicas y las de Ceuta y Melilla también salen como incorrectas", () => {
-      const qs = all.filter((q) => q.category === "capitalesCCAA");
+      const qs = all.filter((q) => q.category === "capitales");
       const capitales = [...COMUNIDADES.flatMap((c) => capitalesDe(c).map((f) => f[style])), "Ceuta", "Melilla"];
       const seen = new Set<string>();
       for (let r = 0; r < 300; r++) {
@@ -185,6 +244,16 @@ describe("reglas de las opciones (con datos de prueba)", () => {
     const q = synthetic({ traps: ["B", "C", "D", "E"] });
     for (let r = 0; r < 50; r++) {
       expect(makeOptions(q, 4, { t: ["A", "F", "G", "H", "I"] }).filter((o) => q.traps.includes(o)).length).toBeLessThanOrEqual(2);
+    }
+  });
+
+  it("las trampas fijas salen siempre y cuentan dentro del máximo: sigue quedando un hueco al azar", () => {
+    const q = synthetic({ traps: ["B", "C", "D", "E"], forcedTraps: ["Z"] });
+    for (let r = 0; r < 50; r++) {
+      const opts = makeOptions(q, 4, { t: ["A", "F", "G", "H", "I"] });
+      expect(opts).toContain("Z");
+      expect(opts.filter((o) => ["B", "C", "D", "E", "Z"].includes(o)).length).toBe(2);
+      expect(opts.filter((o) => ["F", "G", "H", "I"].includes(o)).length).toBe(1);
     }
   });
 

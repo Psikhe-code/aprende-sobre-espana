@@ -18,8 +18,14 @@ export interface Question {
    * "num" genera números dentro de `range`. null = solo `traps`.
    */
   type: string | null;
-  /** Incorrectas "trampa": las confusiones típicas. */
+  /** Incorrectas "trampa": las confusiones típicas. Si hay más de las que caben, se sortean. */
   traps: string[];
+  /**
+   * Incorrectas que salen siempre, sin sortear: la confusión que la pregunta quiere enseñar
+   * (en las capitales de provincia, el propio nombre de la provincia: «Asturias» como capital de Asturias).
+   * Cuentan dentro del máximo de trampas, así que sigue quedando un hueco al azar.
+   */
+  forcedTraps?: string[];
   /** Explicación que se muestra al responder. */
   why: string;
   /** Curiosidad opcional que se muestra al responder, después de la explicación. */
@@ -34,7 +40,16 @@ export interface Question {
   flag?: string;
   /** Otras formas de los nombres de la pregunta, para mostrarlas al responder: "Girona · en castellano, Gerona". */
   aliases: string[];
+  /** Si la pregunta es sobre comunidades (y ciudades autónomas) o sobre provincias. Se elige en Opciones. */
+  territorio: Territorio;
 }
+
+/**
+ * Territorio de una pregunta. En Opciones se marcan uno o los dos, y cada categoría
+ * (capitales, banderas…) incluye solo sus preguntas de los territorios marcados.
+ */
+export type Territorio = "comunidad" | "provincia";
+export const TERRITORIOS: Territorio[] = ["comunidad", "provincia"];
 
 /** Pregunta lista para jugar: respuesta y forma de los nombres fijadas, y opciones ya generadas. */
 export interface RoundQuestion extends Question {
@@ -58,7 +73,7 @@ export const NAME_STYLES: NameStyle[] = ["oficial", "castellano"];
 export interface Category {
   id: string;
   name: string;
-  description: string;
+  /** Todas sus preguntas, de todos los territorios, en una forma de los nombres. */
   questions: (style: NameStyle) => Question[];
 }
 

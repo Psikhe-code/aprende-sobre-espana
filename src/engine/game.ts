@@ -28,6 +28,11 @@ export class GameSession {
   readonly questions: readonly RoundQuestion[];
   /** Repaso de fallos: se juega igual pero no cuenta para récords. */
   readonly review: boolean;
+  /**
+   * Preguntas que debe tener una partida completa con esta selección: normalmente 10,
+   * menos si la selección no da para tantas (ver roundSize). Solo cuenta para récords si las tiene.
+   */
+  readonly expected: number;
 
   private i = 0;
   private hitCount = 0;
@@ -36,10 +41,11 @@ export class GameSession {
   private outcomes: boolean[] = [];
   private missList: Miss[] = [];
 
-  constructor(questions: RoundQuestion[], options: { review?: boolean } = {}) {
+  constructor(questions: RoundQuestion[], options: { review?: boolean; expected?: number } = {}) {
     if (!questions.length) throw new Error("Una partida necesita al menos una pregunta");
     this.questions = questions;
     this.review = options.review ?? false;
+    this.expected = options.expected ?? ROUND_LENGTH;
   }
 
   get index() { return this.i; }
@@ -85,7 +91,7 @@ export class GameSession {
       bestStreak: this.best,
       misses: [...this.missList],
       review: this.review,
-      counts: this.finished && !this.review && this.total === ROUND_LENGTH
+      counts: this.finished && !this.review && this.total === this.expected
     };
   }
 }

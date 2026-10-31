@@ -1,5 +1,5 @@
 import { NAME_STYLES, type NameStyle, type Question } from "./types";
-import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, type Comunidad, type Formas } from "./territory";
+import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, type Comunidad, type Formas, type Provincia } from "./territory";
 import banderas from "../data/banderas.json";
 
 // Preguntas generadas a partir de los datos del territorio y de las banderas.
@@ -75,6 +75,7 @@ export function regionalCapitalQuestions(style: NameStyle): Question[] {
         : provinciasDe(c.id).map((p) => p.capital[style])
       ).filter((cap) => !correctas.includes(cap)),
       aliases: aliases([c.nombre, ...capitales], style),
+      territorio: "comunidad" as const,
       ...(fact ? { fact } : {})
     };
     if (capitales.length > 1) {
@@ -95,6 +96,56 @@ export function regionalCapitalQuestions(style: NameStyle): Question[] {
       answerKey: "ciudad:" + capitales[0].castellano,
       exclude: [],
       why: nota ?? notaAutomatica(c, style)
+    };
+  });
+}
+
+/**
+ * Nota de la pregunta de capital de provincia: relaciona la provincia con su comunidad.
+ * "Bilbao es la capital de la provincia de Vizcaya. La capital del País Vasco es Vitoria."
+ */
+export function notaCapitalProvincia(p: Provincia, style: NameStyle): string {
+  const c = autonomia(p.comunidad);
+  const de = deAutonomia(c, style);
+  const base = `${p.capital[style]} es la capital de la provincia de ${p.nombre[style]}`;
+  if (provinciasDe(c.id).length === 1) return `${base}. Como es la única provincia ${de}, también es la capital de la comunidad.`;
+  const capitalComunidad = capitalesDe(c)[0];
+  if (capitalComunidad.castellano === p.capital.castellano) return `${base} y también ${de}.`;
+  return `${base}. La capital ${de} es ${capitalComunidad[style]}.`;
+}
+
+/**
+ * Capitales de provincia: solo las provincias cuya capital no se llama como la provincia
+ * (las que tienen `trampas` en territorio.json). En las demás la pregunta sería un regalo.
+ * Pool: todas las capitales y las ciudades de las provincias.
+ * Trampas: la capital y las `ciudades` de cada provincia de `trampas` (las cercanas o que se confunden),
+ * y las `ciudades` de la propia provincia. Como son muchas, en cada partida se sortean cuáles salen.
+ * La respuesta es el mismo lugar que en la pregunta de su comunidad (Oviedo), así que
+ * en una partida no salen las dos.
+ */
+export function provincialCapitalQuestions(style: NameStyle): Question[] {
+  return PROVINCIAS.filter((p) => p.trampas?.length).map((p) => {
+    const capital = p.capital[style];
+    // Capital y ciudades de cada provincia cercana, y ciudades de la propia provincia.
+    const cercanas = p.trampas!.map((id) => PROVINCIAS.find((x) => x.id === id)!);
+    const trampas = [
+      ...cercanas.flatMap((x) => [x.capital, ...(x.ciudades ?? [])]),
+      ...(p.ciudades ?? [])
+    ].map((f) => f[style]);
+    return {
+      id: `capital-provincia:${p.id}`,
+      text: `¿Cuál es la capital de la provincia de ${p.nombre[style]}?`,
+      answer: capital,
+      answerKey: "ciudad:" + p.capital.castellano,
+      type: "capitalOCiudad",
+      traps: [...new Set(trampas)].filter((x) => x !== capital),
+      // Siempre sale el propio nombre de la provincia, que no es una ciudad: es justo la confusión
+      // que enseña la pregunta (en casi todas las provincias, la capital se llama igual).
+      forcedTraps: [p.nombre[style]],
+      exclude: [],
+      why: p.notaCapital ? prepararTexto(p.notaCapital, style, capital) : notaCapitalProvincia(p, style),
+      aliases: aliases([p.nombre, p.capital], style),
+      territorio: "provincia" as const
     };
   });
 }
@@ -130,6 +181,7 @@ export function flagQuestions(style: NameStyle): Question[] {
     why: prepararTexto(BANDERAS[c.id].descripcion, style),
     meaning: prepararTexto(BANDERAS[c.id].significado, style),
     flag: c.id,
-    aliases: aliases([c.nombre], style)
+    aliases: aliases([c.nombre], style),
+    territorio: "comunidad" as const
   }));
 }

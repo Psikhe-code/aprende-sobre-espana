@@ -1,8 +1,8 @@
 import { CATEGORIES, CATEGORY_IDS, categoryById } from "../engine/categories";
-import { buildRound, rebuild, ROUND_LENGTH } from "../engine/round";
+import { buildRound, rebuild, questionsIn, roundSize } from "../engine/round";
 import { GameSession, applyRecord, type GameResult } from "../engine/game";
 import { loadState, saveState, comboKey, type SavedState } from "../engine/storage";
-import { NAME_STYLES, type NameStyle } from "../engine/types";
+import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "../engine/types";
 import { flagImage } from "./flags";
 import { BANDERAS } from "../engine/questions";
 import { AUTONOMIAS } from "../engine/territory";
@@ -34,6 +34,12 @@ const TICK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L
 const NAME_LABELS: Record<NameStyle, { name: string; example: string; short: string }> = {
   oficial: { name: "Nombre oficial", example: "Girona, Bizkaia, Illes Balears…", short: "oficial" },
   castellano: { name: "En castellano", example: "Gerona, Vizcaya, Islas Baleares…", short: "en castellano" }
+};
+
+/** Cómo se presenta cada territorio en Opciones, y qué se añade al nombre de la categoría en la partida. */
+const TERRITORIO_LABELS: Record<Territorio, { name: string; example: string; short: string; suffix: string }> = {
+  comunidad: { name: "Comunidades", example: "Las 17 comunidades y las ciudades autónomas de Ceuta y Melilla", short: "comunidades", suffix: "autonómicas" },
+  provincia: { name: "Provincias", example: "Por ahora, las capitales que no se llaman como su provincia", short: "provincias", suffix: "de provincia" }
 };
 
 /** Botón de casilla para Opciones: marcado o no, con título y descripción. */
@@ -85,10 +91,12 @@ export function startApp(): App {
     $("namesInfo").textContent = names.length > 1
       ? `Nombres: ${names.map((s) => NAME_LABELS[s].short).join(" y ")}, al azar en cada pregunta.`
       : `Nombres: solo ${NAME_LABELS[names[0]].short}.`;
-    const rec = state.best[comboKey(state.selected)];
+    const territorios = TERRITORIOS.filter((x) => state.territorios.includes(x));
+    $("territoriosInfo").textContent = `Territorio: ${territorios.map((x) => TERRITORIO_LABELS[x].short).join(" y ")}.`;
+    const rec = state.best[comboKey(state.selected, state.territorios)];
     const record = $("record");
     record.replaceChildren();
-    if (rec != null) record.append("Récord con esta selección: ", el("b", "", `${rec}/${ROUND_LENGTH}`));
+    if (rec != null) record.append("Récord con esta selección: ", el("b", "", `${rec}/${roundSize(state.selected, state.territorios)}`));
     else record.textContent = "Aún no has jugado con esta selección.";
   }
 
@@ -97,8 +105,14 @@ export function startApp(): App {
     // Categorías
     $("cats").replaceChildren(...CATEGORIES.map((c) => {
       const on = state.selected.includes(c.id);
+      // Preguntas de cada territorio, y cuántas salen con los territorios marcados.
+      const porTerritorio = TERRITORIOS.map((x) => {
+        const n = questionsIn(c.id, [x]).length;
+        return `${TERRITORIO_LABELS[x].name}: ${n || "próximamente"}`;
+      }).join(" · ");
+      const n = questionsIn(c.id, state.territorios).length;
       return toggleCard("cat-" + c.id, on, c.name,
-        [["cat-desc", c.description], ["cat-count", `${c.questions(NAME_STYLES[0]).length} preguntas`]],
+        [["cat-desc", porTerritorio], ["cat-count", n ? `${n} preguntas con los territorios marcados` : "Sin preguntas con los territorios marcados"]],
         () => {
           state.selected = on ? state.selected.filter((x) => x !== c.id) : [...state.selected, c.id];
           save();
@@ -123,13 +137,32 @@ export function startApp(): App {
     const noNames = !state.names.length;
     $("noNamesWarn").hidden = !noNames;
 
-    $<HTMLButtonElement>("doneOptions").disabled = noCats || noNames;
+    // Territorios (se puede marcar más de uno)
+    $("territorios").replaceChildren(...TERRITORIOS.map((x) => {
+      const on = state.territorios.includes(x);
+      return toggleCard("terr-" + x, on, TERRITORIO_LABELS[x].name, [["cat-desc", TERRITORIO_LABELS[x].example]], () => {
+        state.territorios = on ? state.territorios.filter((y) => y !== x) : TERRITORIOS.filter((y) => y === x || state.territorios.includes(y));
+        save();
+        renderOptions();
+        $("terr-" + x).focus();
+      });
+    }));
+    const noTerr = !state.territorios.length;
+    $("noTerrWarn").hidden = !noTerr;
+    // Categorías y territorios marcados, pero sin preguntas (p. ej. solo banderas y solo provincias).
+    const empty = !noCats && !noTerr && roundSize(state.selected, state.territorios) === 0;
+    $("emptyWarn").hidden = !empty;
+
+    $<HTMLButtonElement>("doneOptions").disabled = noCats || noNames || noTerr || empty;
   }
 
   // ---------- Partida ----------
   function start(session?: GameSession) {
-    if (!session && (!state.selected.length || !state.names.length)) return openOptions();
-    game = session ?? new GameSession(buildRound({ categories: state.selected, names: state.names }));
+    if (!session && !canPlay()) return openOptions();
+    game = session ?? new GameSession(
+      buildRound({ categories: state.selected, names: state.names, territorios: state.territorios }),
+      { expected: roundSize(state.selected, state.territorios) }
+    );
     $("track").style.setProperty("--n", String(game.total));
     show("play");
     renderQuestion();
@@ -142,7 +175,7 @@ export function startApp(): App {
     $("sheet").replaceChildren(`Hoja ${pad(g.index + 1)} `, el("span", "", `/ ${pad(g.total)}`));
     $("hits").textContent = String(g.hits);
     $("streak").textContent = String(g.streak);
-    $("qcat").textContent = (g.review ? "Repaso · " : "") + (categoryById(q.category)?.name ?? "");
+    $("qcat").textContent = (g.review ? "Repaso · " : "") + `${categoryById(q.category)?.name ?? ""} ${TERRITORIO_LABELS[q.territorio].suffix}`;
     $("question").textContent = q.text;
 
     const flag = $("flag");
@@ -218,13 +251,13 @@ export function startApp(): App {
   function finish() {
     if (!game) return;
     const r = game.result();
-    const key = comboKey(state.selected);
+    const key = comboKey(state.selected, state.territorios);
     const rec = applyRecord(state.best, key, r);
     if (rec.isNewRecord) { state = { ...state, best: rec.best }; save(); }
 
     $("score").replaceChildren(String(r.hits), el("small", "", `/${r.total}`));
     $("endTitle").textContent = rating(r);
-    const recText = !r.review && rec.record != null ? ` · Récord con esta selección: ${rec.record}/${ROUND_LENGTH}` : "";
+    const recText = !r.review && rec.record != null ? ` · Récord con esta selección: ${rec.record}/${game.expected}` : "";
     $("endSub").textContent = (r.review ? "Repaso de fallos" : "Partida") + ` · Mejor racha: ${r.bestStreak}` + recText;
 
     const misses = $("misses");
@@ -277,6 +310,11 @@ export function startApp(): App {
 
   // ---------- Navegación ----------
   function openOptions() { renderOptions(); show("options"); }
+  /** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y alguna pregunta. */
+  function canPlay() {
+    return state.selected.length > 0 && state.names.length > 0 && state.territorios.length > 0 &&
+      roundSize(state.selected, state.territorios) > 0;
+  }
   function goHome() { renderStart(); show("start"); }
 
   $("go").addEventListener("click", () => start());
@@ -284,7 +322,7 @@ export function startApp(): App {
   $("openOptions").addEventListener("click", openOptions);
   $("openCredits").addEventListener("click", () => { renderCredits(); show("credits"); });
   $("closeCredits").addEventListener("click", goHome);
-  $("doneOptions").addEventListener("click", () => { if (state.selected.length && state.names.length) goHome(); });
+  $("doneOptions").addEventListener("click", () => { if (canPlay()) goHome(); });
   $("allCats").addEventListener("click", () => { state.selected = [...CATEGORY_IDS]; save(); renderOptions(); });
   $("quit").addEventListener("click", () => { game = null; goHome(); });
   $("again").addEventListener("click", () => start());

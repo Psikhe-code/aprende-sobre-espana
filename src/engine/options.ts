@@ -15,17 +15,20 @@ export function poolFor(q: Question, pools: Pools): string[] {
 /**
  * Devuelve `n` opciones mezcladas: la correcta, algunas trampas y el resto del pool.
  *
- * - Si hay pool, como mucho n-2 incorrectas son trampas: siempre queda al menos
- *   un hueco aleatorio, para que las partidas no se repitan.
+ * - Las trampas fijas (`forcedTraps`) salen siempre.
+ * - Si hay pool, como mucho n-2 incorrectas son trampas (contando las fijas): siempre queda
+ *   al menos un hueco aleatorio, para que las partidas no se repitan.
  * - Nunca aparecen valores de `exclude` ni duplicados.
  * - Si el pool se queda corto, se completa con las trampas que sobren.
  */
 export function makeOptions(q: Question & { answer: string }, n: number, pools: Pools, rng: Rng = Math.random): string[] {
   const banned = new Set([q.answer, ...q.exclude]);
+  const forced = [...new Set(q.forcedTraps ?? [])].filter((v) => !banned.has(v)).slice(0, n - 1);
+  forced.forEach((v) => banned.add(v));
   const traps = shuffle(q.traps.filter((v) => !banned.has(v)), rng);
   const pool = poolFor(q, pools);
-  const k = pool.length ? Math.min(traps.length, n - 2) : n - 1;
-  const wrong = traps.slice(0, k);
+  const k = Math.max(0, (pool.length ? Math.min(traps.length + forced.length, n - 2) : n - 1) - forced.length);
+  const wrong = [...forced, ...traps.slice(0, k)];
   wrong.forEach((v) => banned.add(v));
   const fill = shuffle(pool.filter((v) => !banned.has(v)), rng);
   while (wrong.length < n - 1 && fill.length) wrong.push(fill.pop()!);

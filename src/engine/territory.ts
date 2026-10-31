@@ -33,6 +33,18 @@ export interface Provincia {
   capital: Formas;
   /** Código INE de su comunidad o ciudad autónoma. */
   comunidad: string;
+  /**
+   * Solo en las provincias cuya capital no se llama como la provincia (y es lo que crea la pregunta):
+   * códigos de provincias cercanas o que se confunden. Su capital y sus ciudades salen como trampa.
+   */
+  trampas?: string[];
+  /**
+   * Ciudades conocidas de la provincia, que no son capitales (Gijón en Asturias). Salen como trampa
+   * en la pregunta de su capital y en las de las provincias que la tengan en `trampas`.
+   */
+  ciudades?: Formas[];
+  /** Explicación propia para la pregunta de su capital. "{capital}" se sustituye por su nombre. */
+  notaCapital?: string;
 }
 
 /** Comunidades y ciudades autónomas. */
@@ -67,6 +79,11 @@ export function poolsFor(style: NameStyle): Pools {
     capitalCualquiera: [...new Set([
       ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
       ...PROVINCIAS.map((p) => p.capital[style])
+    ])],
+    /** Todas las capitales, más las ciudades trampa de las provincias. */
+    capitalOCiudad: [...new Set([
+      ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
+      ...PROVINCIAS.flatMap((p) => [p.capital, ...(p.ciudades ?? [])].map((f) => f[style]))
     ])]
   };
 }

@@ -63,6 +63,33 @@ describe("territorio", () => {
     for (const c of AUTONOMIAS) expect(provinciasDe(c.id).length, c.id).toBeGreaterThan(0);
   });
 
+  it("las trampas de provincia solo están en provincias cuya capital se llama distinto, y apuntan a otras provincias", () => {
+    const ids = PROVINCIAS.map((p) => p.id);
+    for (const p of PROVINCIAS.filter((x) => x.trampas)) {
+      expect(p.nombre.castellano, p.id).not.toBe(p.capital.castellano);
+      for (const id of p.trampas!) {
+        expect(ids, `${p.id} → ${id}`).toContain(id);
+        expect(id, `${p.id} se pone a sí misma de trampa`).not.toBe(p.id);
+      }
+    }
+    // Las notas solo tienen sentido en provincias con pregunta de capital.
+    for (const p of PROVINCIAS.filter((x) => !x.trampas)) expect(p.notaCapital, p.id).toBeUndefined();
+  });
+
+  it("las ciudades de las provincias no son capitales ni se repiten", () => {
+    for (const style of NAME_STYLES) {
+      const capitales = new Set(poolsFor(style).capitalCualquiera);
+      const vistas = new Set<string>();
+      for (const p of PROVINCIAS.filter((x) => x.ciudades)) {
+        for (const c of p.ciudades!) {
+          expect(capitales.has(c[style]), `${p.id} → ${c[style]}`).toBe(false);
+          expect(vistas.has(c[style]), `${p.id} → ${c[style]} repetida`).toBe(false);
+          vistas.add(c[style]);
+        }
+      }
+    }
+  });
+
   it("una ciudad que es capital autonómica y de provincia se escribe igual en los dos sitios, en todas sus formas", () => {
     for (const c of COMUNIDADES) {
       for (const cap of capitalesDe(c)) {
@@ -76,6 +103,7 @@ describe("territorio", () => {
 describe("textos de las notas", () => {
   const textos = [
     ...AUTONOMIAS.flatMap((c) => [["notaCapital", c.id, c.notaCapital], ["curiosidadCapital", c.id, c.curiosidadCapital]]),
+    ...PROVINCIAS.map((p) => ["notaCapital de provincia", p.id, p.notaCapital]),
     ...Object.entries(BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]])
   ].filter(([, , t]) => t) as [string, string, string][];
   const donde = (campo: string, id: string, t: string) => `${campo} de ${id}: «${t.slice(0, 40)}…»`;
@@ -93,7 +121,7 @@ describe("textos de las notas", () => {
     for (const [campo, id, t] of textos) {
       for (const [marca] of t.matchAll(/\{[^}]*\}/g)) {
         const m = marca.match(/^\{provincia(?:\.capital)?:(\d{2})\}$/);
-        const valida = m ? provincias.has(m[1]) : marca === "{capital}" && campo.endsWith("Capital");
+        const valida = m ? provincias.has(m[1]) : marca === "{capital}" && campo.includes("Capital");
         expect(valida, `${donde(campo, id, t)} → ${marca}`).toBe(true);
       }
       // Llaves sueltas, sin cerrar o sin abrir.
