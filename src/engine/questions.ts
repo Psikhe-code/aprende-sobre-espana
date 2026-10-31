@@ -139,6 +139,9 @@ export function provincialCapitalQuestions(style: NameStyle): Question[] {
       answerKey: "ciudad:" + p.capital.castellano,
       type: "capitalOCiudad",
       traps: [...new Set(trampas)].filter((x) => x !== capital),
+      // Siempre sale el propio nombre de la provincia, que no es una ciudad: es justo la confusión
+      // que enseña la pregunta (en casi todas las provincias, la capital se llama igual).
+      forcedTraps: [p.nombre[style]],
       exclude: [],
       why: p.notaCapital ? prepararTexto(p.notaCapital, style, capital) : notaCapitalProvincia(p, style),
       aliases: aliases([p.nombre, p.capital], style),

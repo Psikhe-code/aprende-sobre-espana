@@ -85,7 +85,7 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
   - Solo en las provincias cuya capital no se llama como la provincia, lo que crea la pregunta *«¿Cuál es la capital de la provincia de Asturias?»*:
     - `trampas`: códigos de provincias cercanas o que se confunden con ella. Su capital y sus `ciudades` salen como trampa (en Asturias: Santander, Torrelavega, León, Ponferrada, Lugo, A Coruña, Ferrol…).
     - `notaCapital` (opcional): la explicación, con las mismas marcas que las notas de las comunidades. Si no la tiene, se genera una automática que la relaciona con su comunidad.
-    - En cada partida se sortean cuáles de esas trampas salen, así que las opciones cambian.
+    - En cada partida se sortean cuáles de esas trampas salen, así que las opciones cambian. Además, siempre sale como opción el propio nombre de la provincia.
 - **`banderas.json`**: por código, el `archivo` SVG, las `trampas` (códigos de banderas parecidas) y dos textos que se muestran al responder:
   - `descripcion`: cómo es la bandera, en una o dos frases sencillas.
   - `significado`: de dónde vienen sus partes y qué significan, una idea por línea. Se muestra aparte, con la etiqueta «Significado».
@@ -126,6 +126,7 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 **Opciones.** Cada pregunta tiene un pool del que salen las incorrectas (todas las capitales, todas las comunidades) y unas trampas fijas (las confusiones típicas):
 
+- Algunas preguntas tienen una trampa fija (`forcedTraps`) que sale siempre: en las capitales de provincia, el propio nombre de la provincia («Asturias» como capital de Asturias), porque es justo la confusión que enseña la pregunta.
 - Al menos una incorrecta es siempre aleatoria del pool, para que las partidas no se repitan.
 - Lo que está en `exclude` nunca sale como incorrecto. Por ejemplo, en Canarias ninguna de sus dos capitales aparece como incorrecta.
 - El número de opciones es un parámetro (`DEFAULT_OPTIONS` en `round.ts`): el motor ya funciona con 4, 6 u 8.

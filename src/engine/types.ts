@@ -18,8 +18,14 @@ export interface Question {
    * "num" genera números dentro de `range`. null = solo `traps`.
    */
   type: string | null;
-  /** Incorrectas "trampa": las confusiones típicas. */
+  /** Incorrectas "trampa": las confusiones típicas. Si hay más de las que caben, se sortean. */
   traps: string[];
+  /**
+   * Incorrectas que salen siempre, sin sortear: la confusión que la pregunta quiere enseñar
+   * (en las capitales de provincia, el propio nombre de la provincia: «Asturias» como capital de Asturias).
+   * Cuentan dentro del máximo de trampas, así que sigue quedando un hueco al azar.
+   */
+  forcedTraps?: string[];
   /** Explicación que se muestra al responder. */
   why: string;
   /** Curiosidad opcional que se muestra al responder, después de la explicación. */

@@ -51,6 +51,14 @@ for (const style of NAME_STYLES) {
       expect(vizcaya.why).toContain("\nBilbao es su ciudad más poblada");
     });
 
+    it("en las capitales de provincia sale siempre el nombre de la provincia como trampa", () => {
+      for (const q0 of all.filter((q) => q.id.startsWith("capital-provincia:"))) {
+        const p = PROVINCIAS.find((x) => `capital-provincia:${x.id}` === q0.id)!;
+        expect(q0.forcedTraps, q0.id).toEqual([p.nombre[style]]);
+        for (let r = 0; r < 20; r++) expect(prepare(q0, 4, pools).options, q0.id).toContain(p.nombre[style]);
+      }
+    });
+
     it("en cada partida se sortean distintas trampas de provincia", () => {
       const q0 = find(style, "capital-provincia:33");
       const vistas = new Set<string>();
@@ -145,7 +153,8 @@ for (const style of NAME_STYLES) {
             expect(q.options, q.id).toHaveLength(n);
             expect(q.options, q.id).toContain(q.answer);
             expect(new Set(q.options).size, q.id).toBe(n);
-            for (const o of q.options) expect(pools[q.type!], `${q.id} → ${o}`).toContain(o);
+            for (const o of q.options) if (!q.forcedTraps?.includes(o)) expect(pools[q.type!], `${q.id} → ${o}`).toContain(o);
+            for (const f of q.forcedTraps ?? []) expect(q.options, `${q.id} → trampa fija ${f}`).toContain(f);
             for (const x of q.exclude) if (x !== q.answer) expect(q.options, `${q.id} → ${x}`).not.toContain(x);
           }
         }
@@ -235,6 +244,16 @@ describe("reglas de las opciones (con datos de prueba)", () => {
     const q = synthetic({ traps: ["B", "C", "D", "E"] });
     for (let r = 0; r < 50; r++) {
       expect(makeOptions(q, 4, { t: ["A", "F", "G", "H", "I"] }).filter((o) => q.traps.includes(o)).length).toBeLessThanOrEqual(2);
+    }
+  });
+
+  it("las trampas fijas salen siempre y cuentan dentro del máximo: sigue quedando un hueco al azar", () => {
+    const q = synthetic({ traps: ["B", "C", "D", "E"], forcedTraps: ["Z"] });
+    for (let r = 0; r < 50; r++) {
+      const opts = makeOptions(q, 4, { t: ["A", "F", "G", "H", "I"] });
+      expect(opts).toContain("Z");
+      expect(opts.filter((o) => ["B", "C", "D", "E", "Z"].includes(o)).length).toBe(2);
+      expect(opts.filter((o) => ["F", "G", "H", "I"].includes(o)).length).toBe(1);
     }
   });
 

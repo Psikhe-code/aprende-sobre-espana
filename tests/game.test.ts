@@ -39,7 +39,7 @@ describe("partidas: elección de preguntas", () => {
       for (const q of buildRound({ categories: CATEGORY_IDS, names: ["oficial", "castellano"] })) {
         seen.add(q.style);
         const pool = poolsFor(q.style)[q.type!];
-        for (const o of q.options) expect(pool, `${q.id} [${q.style}] → ${o}`).toContain(o);
+        for (const o of q.options) if (!q.forcedTraps?.includes(o)) expect(pool, `${q.id} [${q.style}] → ${o}`).toContain(o);
       }
     }
     expect([...seen].sort()).toEqual(["castellano", "oficial"]);
