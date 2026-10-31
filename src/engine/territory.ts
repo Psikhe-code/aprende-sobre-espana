@@ -34,10 +34,14 @@ export interface Provincia {
   /** Código INE de su comunidad o ciudad autónoma. */
   comunidad: string;
   /**
-   * Solo en las provincias cuya capital no se llama como la provincia: otras ciudades suyas,
-   * que salen como trampa en la pregunta de su capital.
+   * Solo en las provincias cuya capital no se llama como la provincia (y es lo que crea la pregunta):
+   * códigos de provincias cuya capital puede confundirse con la suya. Salen como trampa.
    */
+  trampas?: string[];
+  /** Otras ciudades conocidas de la provincia que salen como trampa (Gijón en Asturias). */
   ciudades?: Formas[];
+  /** Explicación propia para la pregunta de su capital. "{capital}" se sustituye por su nombre. */
+  notaCapital?: string;
 }
 
 /** Comunidades y ciudades autónomas. */

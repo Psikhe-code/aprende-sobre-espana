@@ -116,25 +116,33 @@ export function notaCapitalProvincia(p: Provincia, style: NameStyle): string {
 
 /**
  * Capitales de provincia: solo las provincias cuya capital no se llama como la provincia
- * (las que tienen `ciudades` en territorio.json). En las demás la pregunta sería un regalo.
- * Pool: todas las capitales y todas las ciudades trampa.
- * Trampas: otras ciudades de la misma provincia (Gijón y Avilés en Asturias…).
+ * (las que tienen `trampas` en territorio.json). En las demás la pregunta sería un regalo.
+ * Pool: todas las capitales y las ciudades de las provincias.
+ * Trampas: las capitales de las provincias de `trampas` y las `ciudades` de la propia provincia.
+ * Como son más de dos, en cada partida se sortean cuáles salen.
  * La respuesta es el mismo lugar que en la pregunta de su comunidad (Oviedo), así que
  * en una partida no salen las dos.
  */
 export function provincialCapitalQuestions(style: NameStyle): Question[] {
-  return PROVINCIAS.filter((p) => p.ciudades?.length).map((p) => ({
-    id: `capital-provincia:${p.id}`,
-    text: `¿Cuál es la capital de la provincia de ${p.nombre[style]}?`,
-    answer: p.capital[style],
-    answerKey: "ciudad:" + p.capital.castellano,
-    type: "capitalOCiudad",
-    traps: p.ciudades!.map((f) => f[style]),
-    exclude: [],
-    why: notaCapitalProvincia(p, style),
-    aliases: aliases([p.nombre, p.capital], style),
-    territorio: "provincia" as const
-  }));
+  return PROVINCIAS.filter((p) => p.trampas?.length).map((p) => {
+    const capital = p.capital[style];
+    const trampas = [
+      ...p.trampas!.map((id) => PROVINCIAS.find((x) => x.id === id)!.capital[style]),
+      ...(p.ciudades ?? []).map((f) => f[style])
+    ];
+    return {
+      id: `capital-provincia:${p.id}`,
+      text: `¿Cuál es la capital de la provincia de ${p.nombre[style]}?`,
+      answer: capital,
+      answerKey: "ciudad:" + p.capital.castellano,
+      type: "capitalOCiudad",
+      traps: [...new Set(trampas)].filter((x) => x !== capital),
+      exclude: [],
+      why: p.notaCapital ? prepararTexto(p.notaCapital, style, capital) : notaCapitalProvincia(p, style),
+      aliases: aliases([p.nombre, p.capital], style),
+      territorio: "provincia" as const
+    };
+  });
 }
 
 // ---------- Banderas ----------

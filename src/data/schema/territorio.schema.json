@@ -121,14 +121,28 @@
             "description": "Código INE de su comunidad o ciudad autónoma.",
             "$ref": "#/definitions/codigo"
           },
+          "trampas": {
+            "description": "Solo en las provincias cuya capital no se llama como la provincia, y es lo que crea la pregunta de su capital. Códigos INE de provincias cuya capital puede confundirse con la suya (otras capitales vascas, de la costa cantábrica, de otros archipiélagos…). En cada partida se sortean algunas, junto con las ciudades.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/codigo"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
           "ciudades": {
-            "description": "Solo en las provincias cuya capital no se llama como la provincia: otras ciudades de la provincia que salen como trampa en la pregunta de su capital (las más pobladas o conocidas). Su presencia es lo que crea la pregunta de capital de provincia.",
+            "description": "Otras ciudades conocidas de la provincia que pueden confundirse con su capital (Gijón en Asturias). Salen como trampa junto con las capitales de «trampas».",
             "type": "array",
             "items": {
               "$ref": "#/definitions/formas"
             },
             "minItems": 1,
             "uniqueItems": true
+          },
+          "notaCapital": {
+            "description": "Explicación de la pregunta de su capital: por qué la provincia no se llama como su capital y algún dato de interés. Si no la tiene, el juego genera una automática que la relaciona con su comunidad. Marcas: «{capital}», la capital de esta provincia; «{provincia:NN}» y «{provincia.capital:NN}», como en las notas de las comunidades.",
+            "type": "string",
+            "minLength": 10
           }
         }
       }

@@ -81,7 +81,11 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
     - `notaCapital`: la explicación de la pregunta de su capital, solo cuando hay algo que contar (la capital no es la ciudad más poblada o no es capital de provincia, instituciones repartidas, cambios de capital o de nombre). Si no la tiene, el juego genera una automática: *«Zaragoza es la capital de Aragón y también de la provincia de Zaragoza»*.
     - `curiosidadCapital`: un dato histórico que se muestra después de la nota, si la ciudad fue capital de España o de un antiguo reino, con sus fechas. El final de un reino se cuenta desde que perdió sus instituciones propias.
   - Cada provincia tiene `id`, `nombre`, `capital` y el código de su `comunidad`.
-  - Opcionalmente, `ciudades`: otras ciudades de la provincia que salen como trampa en la pregunta de su capital. Solo las tienen las provincias cuya capital no se llama como la provincia, y es lo que crea esa pregunta: *«¿Cuál es la capital de la provincia de Asturias?»*, con Gijón y Avilés como trampas.
+  - Solo en las provincias cuya capital no se llama como la provincia, lo que crea la pregunta *«¿Cuál es la capital de la provincia de Asturias?»*:
+    - `trampas`: códigos de provincias cuya capital puede confundirse con la suya (Santander, León, Lugo, A Coruña).
+    - `ciudades` (opcional): otras ciudades conocidas de la provincia (Gijón, Avilés).
+    - `notaCapital` (opcional): la explicación, con las mismas marcas que las notas de las comunidades. Si no la tiene, se genera una automática que la relaciona con su comunidad.
+    - En cada partida se sortean cuáles de esas trampas salen, así que las opciones cambian.
 - **`banderas.json`**: por código, el `archivo` SVG, las `trampas` (códigos de banderas parecidas) y dos textos que se muestran al responder:
   - `descripcion`: cómo es la bandera, en una o dos frases sencillas.
   - `significado`: de dónde vienen sus partes y qué significan, una idea por línea. Se muestra aparte, con la etiqueta «Significado».

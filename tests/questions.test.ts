@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../src/engine/categories";
 import { makeOptions, prepare } from "../src/engine/options";
-import { BANDERAS, prepararTexto } from "../src/engine/questions";
+import { BANDERAS, notaCapitalProvincia, prepararTexto } from "../src/engine/questions";
 import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, capitalesDe, poolsFor } from "../src/engine/territory";
 import { questionsIn } from "../src/engine/round";
 import { NAME_STYLES, type NameStyle, type Question } from "../src/engine/types";
@@ -30,21 +30,35 @@ for (const style of NAME_STYLES) {
       expect(questionsIn("banderas", ["provincia"])).toHaveLength(0);
     });
 
-    it("capitales de provincia: enunciado, ciudades trampa de la misma provincia y nota", () => {
+    it("capitales de provincia: enunciado, trampas (capitales que se confunden y ciudades de la provincia) y nota", () => {
       const asturias = find(style, "capital-provincia:33");
       expect(asturias.text).toBe("¿Cuál es la capital de la provincia de Asturias?");
       expect(asturias.answer).toBe("Oviedo");
-      expect(asturias.traps).toEqual(["Gijón", "Avilés"]);
-      expect(asturias.why).toContain("Como es la única provincia");
+      expect(asturias.traps).toEqual([style === "oficial" ? "Santander" : "Santander", "León", "Lugo", style === "oficial" ? "A Coruña" : "La Coruña", "Gijón", "Avilés"]);
+      expect(asturias.why).toBe("En 1833 casi todas las provincias tomaron el nombre de su capital, y esta se llamó «provincia de Oviedo». En 1983 recuperó el nombre de Asturias.\nGijón es la ciudad más poblada de Asturias, más que Oviedo.");
       // Mismo lugar que la pregunta de la comunidad: no salen las dos en una partida.
       expect(asturias.answerKey).toBe(find(style, "capital-ccaa:03").answerKey);
       const vizcaya = find(style, "capital-provincia:48");
       expect(vizcaya.text).toBe(style === "oficial" ? "¿Cuál es la capital de la provincia de Bizkaia?" : "¿Cuál es la capital de la provincia de Vizcaya?");
-      expect(vizcaya.traps).toEqual(style === "oficial" ? ["Barakaldo", "Gernika-Lumo"] : ["Baracaldo", "Guernica"]);
-      expect(vizcaya.why).toBe(`Bilbao es la capital de la provincia de ${style === "oficial" ? "Bizkaia" : "Vizcaya"}. La capital del País Vasco es ${style === "oficial" ? "Vitoria-Gasteiz" : "Vitoria"}.`);
-      expect(find(style, "capital-provincia:01").why).toBe(style === "oficial"
-        ? "Vitoria-Gasteiz es la capital de la provincia de Araba/Álava y también del País Vasco."
-        : "Vitoria es la capital de la provincia de Álava y también del País Vasco.");
+      expect(vizcaya.traps).toEqual(style === "oficial"
+        ? ["Vitoria-Gasteiz", "Donostia/San Sebastián", "Santander", "Barakaldo", "Gernika-Lumo"]
+        : ["Vitoria", "San Sebastián", "Santander", "Baracaldo", "Guernica"]);
+      expect(vizcaya.why).toContain(style === "oficial" ? "pero Bizkaia conservó" : "pero Vizcaya conservó");
+      expect(vizcaya.why).toContain("\nBilbao es su ciudad más poblada");
+    });
+
+    it("en cada partida se sortean distintas trampas de provincia", () => {
+      const q0 = find(style, "capital-provincia:33");
+      const vistas = new Set<string>();
+      for (let r = 0; r < 200; r++) prepare(q0, 4, pools).options.filter((o) => q0.traps.includes(o)).forEach((o) => vistas.add(o));
+      expect([...vistas].sort()).toEqual([...q0.traps].sort());
+    });
+
+    it("la nota automática de provincia, para las que no tengan una propia", () => {
+      const p = (id: string) => ({ ...PROVINCIAS.find((x) => x.id === id)!, notaCapital: undefined });
+      expect(notaCapitalProvincia(p("48"), "castellano")).toBe("Bilbao es la capital de la provincia de Vizcaya. La capital del País Vasco es Vitoria.");
+      expect(notaCapitalProvincia(p("01"), "castellano")).toBe("Vitoria es la capital de la provincia de Álava y también del País Vasco.");
+      expect(notaCapitalProvincia(p("33"), "castellano")).toBe("Oviedo es la capital de la provincia de Asturias. Como es la única provincia de Asturias, también es la capital de la comunidad.");
     });
 
     it("cada pregunta dice su territorio: las de provincia son solo las de capital de provincia", () => {
