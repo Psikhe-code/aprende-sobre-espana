@@ -96,6 +96,31 @@
             "description": "Curiosidad opcional sobre el municipio, que se muestra después de la nota. Una idea por línea (separadas con \\n).",
             "type": "string",
             "minLength": 10
+          },
+          "mismoNombre": {
+            "description": "Municipios de otras provincias que se llaman igual (Torrent, en Valencia y en Gerona). Lo calcula scripts/actualizar-poblacion.py con la lista completa del INE. Sus provincias nunca salen como opción, y la nota lo cuenta.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "poblacion"
+              ],
+              "properties": {
+                "id": {
+                  "description": "Código INE del otro municipio.",
+                  "type": "string",
+                  "pattern": "^[0-9]{5}$"
+                },
+                "poblacion": {
+                  "description": "Sus habitantes, en el año de «datosPoblacion».",
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
           }
         }
       }

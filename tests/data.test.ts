@@ -275,6 +275,16 @@ describe("municipios", () => {
     }
   });
 
+  it("los que se llaman igual que otro municipio lo apuntan con una provincia distinta que existe", () => {
+    const provincias = PROVINCIAS.map((p) => p.id);
+    for (const m of MUNICIPIOS) {
+      for (const x of m.mismoNombre ?? []) {
+        expect(provincias, `${m.id} → ${x.id}`).toContain(x.id.slice(0, 2));
+        expect(x.id.slice(0, 2), `${m.id} → ${x.id}`).not.toBe(m.id.slice(0, 2));
+      }
+    }
+  });
+
   for (const style of NAME_STYLES) {
     it(`[${style}] los nombres no se repiten (la pregunta sería ambigua)`, () => {
       const nombres = MUNICIPIOS.map((m) => m.nombre[style]);

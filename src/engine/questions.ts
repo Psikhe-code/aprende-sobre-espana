@@ -241,6 +241,17 @@ export function notaMunicipio(m: Municipio, style: NameStyle): string {
 }
 
 /**
+ * Frase sobre los municipios de otras provincias que se llaman igual, que se añade a la nota:
+ * «En la provincia de Gerona hay otro municipio que también se llama Torrent, con 182 habitantes.»
+ * Usa el nombre oficial, que es el que comparten.
+ */
+export function notaMismoNombre(m: Municipio, style: NameStyle): string {
+  return (m.mismoNombre ?? []).map((x) =>
+    `En la provincia de ${provincia(x.id.slice(0, 2)).nombre[style]} hay otro municipio que también se llama ${m.nombre.oficial}, con ${x.poblacion.toLocaleString("es-ES")} habitantes.`
+  ).join(" ");
+}
+
+/**
  * Divisiones de las provincias (sus municipios): «¿De qué provincia es el municipio de Vigo?».
  * Salen todos los de municipios.json: los tres más poblados de cada provincia y los añadidos por su historia o cultura.
  * Pool: las provincias. Trampas: las vecinas (ver provinciasTrampa).
@@ -256,8 +267,9 @@ export function municipioQuestions(style: NameStyle): Question[] {
       answerKey: "provincia:" + p.id,
       type: "provincia",
       traps: provinciasTrampa(p).map((id) => provincia(id).nombre[style]),
-      exclude: [],
-      why: notaMunicipio(m, style),
+      // Si en otra provincia hay un municipio que se llama igual, esa provincia también sería correcta.
+      exclude: (m.mismoNombre ?? []).map((x) => provincia(x.id.slice(0, 2)).nombre[style]),
+      why: [notaMunicipio(m, style), notaMismoNombre(m, style)].filter(Boolean).join("\n"),
       fact: m.curiosidad ? prepararTexto(m.curiosidad, style) : undefined,
       aliases: aliases([m.nombre, p.nombre], style),
       territorio: "provincia" as const

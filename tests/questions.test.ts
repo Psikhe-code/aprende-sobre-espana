@@ -178,10 +178,22 @@ for (const style of NAME_STYLES) {
           : m.puesto <= 3 && capital ? `${n} es la capital ${dePr} y su ${ordinal[m.puesto]} municipio más poblado: ${hab}.`
           : m.puesto <= 3 ? `${n} es el ${ordinal[m.puesto]} municipio más poblado ${dePr}: ${hab}.`
           : `${n} tiene ${hab} y no está entre los tres municipios más poblados ${dePr}, pero es muy conocido: ${prepararTexto(m.motivo!, style)}.`;
-        expect(find(style, `municipio-provincia:${m.id}`).why, m.id).toBe(esperada);
+        const otros = (m.mismoNombre ?? []).map((x) =>
+          `En la provincia de ${nombreProv(x.id.slice(0, 2))} hay otro municipio que también se llama ${m.nombre.oficial}, con ${x.poblacion.toLocaleString("es-ES")} habitantes.`);
+        expect(find(style, `municipio-provincia:${m.id}`).why, m.id).toBe([esperada, otros.join(" ")].filter(Boolean).join("\n"));
       }
       // Los miles se separan con punto, como se escribe en español.
       expect((293837).toLocaleString("es-ES")).toBe("293.837");
+    });
+
+    it("municipios con el mismo nombre en otra provincia: esa provincia nunca sale como opción", () => {
+      const conDobles = MUNICIPIOS.filter((m) => m.mismoNombre);
+      for (const m of conDobles) {
+        const q = all.find((x) => x.id === `municipio-provincia:${m.id}`)!;
+        const otras = m.mismoNombre!.map((x) => nombreProv(x.id.slice(0, 2)));
+        expect([...q.exclude].sort(), m.id).toEqual([...otras].sort());
+        for (let r = 0; r < REPS; r++) for (const o of otras) expect(prepare(q, 8, pools).options, m.id).not.toContain(o);
+      }
     });
 
     it("cada pregunta dice su territorio: las de provincia son las de capital, bandera y municipios de provincia", () => {
