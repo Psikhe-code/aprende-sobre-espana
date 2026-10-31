@@ -59,6 +59,30 @@ for (const style of NAME_STYLES) {
       }
     });
 
+    it("donde la capital se llama como la comunidad, las trampas incluyen ciudades reales cercanas", () => {
+      expect(find(style, "capital-ccaa:13").traps).toEqual(["Alcalá de Henares", "Aranjuez", "El Escorial"]);
+      expect(find(style, "capital-ccaa:14").traps).toEqual(["Cartagena"]);
+      expect(find(style, "capital-ccaa:10").traps).toEqual(style === "oficial"
+        ? ["Alicante/Alacant", "Castelló de la Plana/Castellón de la Plana", "Elche/Elx", "Benidorm"]
+        : ["Alicante", "Castellón de la Plana", "Elche", "Benidorm"]);
+    });
+
+    it("en las capitales autonómicas sale siempre una trampa con el nombre de la comunidad o parecido", () => {
+      const esperadas: Record<string, string[]> = {
+        "01": ["Andalucía"], "02": ["Aragón", "Jaca"], "03": ["Asturias"], "04": ["Mallorca"], "05": ["Gran Canaria", "Tenerife"],
+        "06": ["Cantabria"], "07": ["León"], "08": ["La Mancha"], "09": ["Cataluña"], "11": ["Extremadura"], "12": ["Galicia"],
+        "15": ["Navarra"], "16": ["Euskadi"], "17": ["Rioja"]
+      };
+      for (const c of AUTONOMIAS) {
+        const q0 = find(style, `capital-ccaa:${c.id}`);
+        expect(q0.forcedTraps, c.id).toEqual(esperadas[c.id]);
+        if (!esperadas[c.id]) continue;
+        for (let r = 0; r < 20; r++) {
+          expect(prepare(q0, 4, pools).options.filter((o) => esperadas[c.id].includes(o)), c.id).toHaveLength(1);
+        }
+      }
+    });
+
     it("en cada partida se sortean distintas trampas de provincia", () => {
       const q0 = find(style, "capital-provincia:33");
       const vistas = new Set<string>();
@@ -184,7 +208,7 @@ for (const style of NAME_STYLES) {
             expect(q.options, q.id).toContain(q.answer);
             expect(new Set(q.options).size, q.id).toBe(n);
             for (const o of q.options) if (!q.forcedTraps?.includes(o)) expect(pools[q.type!], `${q.id} → ${o}`).toContain(o);
-            for (const f of q.forcedTraps ?? []) expect(q.options, `${q.id} → trampa fija ${f}`).toContain(f);
+            if (q.forcedTraps) expect(q.options.filter((o) => q.forcedTraps!.includes(o)), `${q.id} → trampa fija`).toHaveLength(1);
             for (const x of q.exclude) if (x !== q.answer) expect(q.options, `${q.id} → ${x}`).not.toContain(x);
           }
         }
@@ -204,13 +228,13 @@ for (const style of NAME_STYLES) {
       expect([...seen].sort()).toEqual([...new Set(capitales)].sort());
     });
 
-    it("Ceuta y Melilla: su capital es la propia ciudad, y la otra ciudad es la trampa", () => {
+    it("Ceuta y Melilla: su capital es la propia ciudad; trampas, la otra ciudad y ciudades cercanas de los dos lados del estrecho", () => {
       const ceuta = find(style, "capital-ccaa:18");
       expect(ceuta.text).toBe("¿Cuál es la capital de Ceuta?");
       expect(ceuta.answer).toBe("Ceuta");
-      expect(ceuta.traps).toEqual(["Melilla"]);
+      expect(ceuta.traps).toEqual(["Melilla", "Tetuán", "Tánger", "Nador", "Alhucemas", "Algeciras", "Tarifa"]);
       expect(ceuta.why).toContain("ciudad autónoma");
-      expect(find(style, "capital-ccaa:19").traps).toEqual(["Ceuta"]);
+      expect(find(style, "capital-ccaa:19").traps).toEqual(["Ceuta", "Tetuán", "Tánger", "Nador", "Alhucemas", "Algeciras", "Tarifa"]);
     });
 
     it("Canarias: ninguna de sus dos capitales sale como incorrecta", () => {
@@ -285,6 +309,17 @@ describe("reglas de las opciones (con datos de prueba)", () => {
       expect(opts.filter((o) => ["B", "C", "D", "E", "Z"].includes(o)).length).toBe(2);
       expect(opts.filter((o) => ["F", "G", "H", "I"].includes(o)).length).toBe(1);
     }
+  });
+
+  it("si hay varias trampas fijas, sale una sola, sorteada", () => {
+    const q = synthetic({ traps: ["B", "C"], forcedTraps: ["Y", "Z"] });
+    const vistas = new Set<string>();
+    for (let r = 0; r < 100; r++) {
+      const fijas = makeOptions(q, 4, { t: ["A", "F", "G", "H"] }).filter((o) => o === "Y" || o === "Z");
+      expect(fijas).toHaveLength(1);
+      vistas.add(fijas[0]);
+    }
+    expect([...vistas].sort()).toEqual(["Y", "Z"]);
   });
 
   it("sin pool, todas las incorrectas salen de las trampas", () => {

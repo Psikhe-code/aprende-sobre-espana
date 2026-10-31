@@ -22,6 +22,16 @@ export interface Comunidad {
    * Si no la tiene, se genera una automática (ver questions.ts).
    */
   notaCapital?: string;
+  /**
+   * Trampa que sale siempre en la pregunta de su capital, por parecerse al nombre de la comunidad
+   * (Andalucía, La Mancha, León) o de sus islas (Mallorca). Si hay varias, se sortea una en cada partida.
+   */
+  trampasCapital?: Formas[];
+  /**
+   * Solo donde la capital se llama como la comunidad (Madrid, Murcia, Valencia, Ceuta, Melilla):
+   * ciudades reales y conocidas, de la comunidad o cercanas, que salen como trampa en la pregunta de su capital.
+   */
+  ciudadesTrampa?: Formas[];
   /** Curiosidad histórica sobre la capital (capital de España o de un antiguo reino). "{capital}" igual. */
   curiosidadCapital?: string;
 }
@@ -99,9 +109,9 @@ export function poolsFor(style: NameStyle): Pools {
       ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
       ...PROVINCIAS.map((p) => p.capital[style])
     ])],
-    /** Todas las capitales, más las ciudades trampa de las provincias. */
+    /** Todas las capitales, más las ciudades de las provincias y las ciudades trampa de las comunidades. */
     capitalOCiudad: [...new Set([
-      ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
+      ...AUTONOMIAS.flatMap((c) => [...capitalesDe(c), ...(c.ciudadesTrampa ?? [])].map((f) => f[style])),
       ...PROVINCIAS.flatMap((p) => [p.capital, ...(p.ciudades ?? [])].map((f) => f[style]))
     ])]
   };

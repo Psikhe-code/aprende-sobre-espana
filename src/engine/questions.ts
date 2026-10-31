@@ -56,8 +56,10 @@ export function notaAutomatica(c: Comunidad, style: NameStyle): string {
 /**
  * Capitales autonómicas: una pregunta por comunidad y ciudad autónoma.
  * En Ceuta y Melilla la respuesta es la propia ciudad: parece un regalo, pero así se aprende.
- * Pool: todas las capitales (autonómicas y de provincia).
- * Trampas: las capitales de provincia de la misma comunidad; en las ciudades autónomas, la otra ciudad.
+ * Pool: todas las capitales (autonómicas y de provincia) y las ciudades que se usan como trampa.
+ * Trampas: las capitales de provincia de la misma comunidad (en las ciudades autónomas, la otra ciudad)
+ * y, donde la capital se llama como la comunidad, sus `ciudadesTrampa` (Cartagena en Murcia).
+ * Trampa fija: `trampasCapital`, el nombre de la comunidad o algo parecido (Andalucía, Mallorca).
  */
 export function regionalCapitalQuestions(style: NameStyle): Question[] {
   return AUTONOMIAS.map((c) => {
@@ -69,13 +71,17 @@ export function regionalCapitalQuestions(style: NameStyle): Question[] {
     const fact = preparar(c.curiosidadCapital);
     const base = {
       id: `capital-ccaa:${c.id}`,
-      type: "capitalCualquiera",
-      traps: (c.tipo === "ciudad"
-        ? CIUDADES.filter((x) => x.id !== c.id).flatMap((x) => capitalesDe(x).map((f) => f[style]))
-        : provinciasDe(c.id).map((p) => p.capital[style])
-      ).filter((cap) => !correctas.includes(cap)),
+      type: "capitalOCiudad",
+      traps: [
+        ...(c.tipo === "ciudad"
+          ? CIUDADES.filter((x) => x.id !== c.id).flatMap((x) => capitalesDe(x).map((f) => f[style]))
+          : provinciasDe(c.id).map((p) => p.capital[style])),
+        ...(c.ciudadesTrampa ?? []).map((f) => f[style])
+      ].filter((cap) => !correctas.includes(cap)),
       aliases: aliases([c.nombre, ...capitales], style),
       territorio: "comunidad" as const,
+      // Trampa fija: el nombre de la comunidad o algo parecido (Andalucía, La Mancha, Mallorca…).
+      ...(c.trampasCapital ? { forcedTraps: c.trampasCapital.map((f) => f[style]) } : {}),
       ...(fact ? { fact } : {})
     };
     if (capitales.length > 1) {

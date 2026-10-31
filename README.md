@@ -78,6 +78,8 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
   - Cada comunidad o ciudad autónoma tiene `id`, `tipo` (`comunidad` o `ciudad`), `nombre` y `capital` (una lista si es compartida, como Canarias).
   - Opcionalmente:
     - `enFrase`: cómo se nombra dentro de una frase si lleva artículo («el País Vasco»).
+    - `trampasCapital`: la trampa que sale siempre en la pregunta de su capital, porque se parece al nombre de la comunidad o de sus islas: Andalucía, La Mancha, León, Mallorca, Rioja… Si hay varias (Aragón o Jaca, Gran Canaria o Tenerife), se sortea una en cada partida. No la tienen las comunidades cuya capital se llama como ellas (Madrid, Murcia, Valencia, Ceuta y Melilla).
+    - `ciudadesTrampa`: solo en esas cinco, ciudades reales y conocidas que salen como trampa en la pregunta de su capital, sorteadas con las demás: Alcalá de Henares, Aranjuez y El Escorial (Madrid), Cartagena (Murcia), Elche y Benidorm (Valencia), y Tetuán, Tánger, Nador, Alhucemas, Algeciras y Tarifa (Ceuta y Melilla). Las ciudades extranjeras van con su forma española en los dos estilos.
     - `notaCapital`: la explicación de la pregunta de su capital, solo cuando hay algo que contar (la capital no es la ciudad más poblada o no es capital de provincia, instituciones repartidas, cambios de capital o de nombre). Si no la tiene, el juego genera una automática: *«Zaragoza es la capital de Aragón y también de la provincia de Zaragoza»*.
     - `curiosidadCapital`: un dato histórico que se muestra después de la nota, si la ciudad fue capital de España o de un antiguo reino, con sus fechas. El final de un reino se cuenta desde que perdió sus instituciones propias.
   - Cada provincia tiene `id`, `nombre`, `capital` y el código de su `comunidad`.
@@ -127,7 +129,7 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 **Opciones.** Cada pregunta tiene un pool del que salen las incorrectas (todas las capitales, todas las comunidades) y unas trampas fijas (las confusiones típicas):
 
-- Algunas preguntas tienen una trampa fija (`forcedTraps`) que sale siempre: en las capitales de provincia, el propio nombre de la provincia («Asturias» como capital de Asturias), porque es justo la confusión que enseña la pregunta.
+- Algunas preguntas tienen una trampa fija (`forcedTraps`) que sale siempre (si hay varias, una sorteada): en las capitales de provincia, el propio nombre de la provincia («Asturias» como capital de Asturias), y en las autonómicas, la de `trampasCapital` («Andalucía», «Mallorca»…). Es justo la confusión que enseña la pregunta.
 - Al menos una incorrecta es siempre aleatoria del pool, para que las partidas no se repitan.
 - Lo que está en `exclude` nunca sale como incorrecto. Por ejemplo, en Canarias ninguna de sus dos capitales aparece como incorrecta.
 - El número de opciones es un parámetro (`DEFAULT_OPTIONS` en `round.ts`): el motor ya funciona con 4, 6 u 8.
