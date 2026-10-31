@@ -1,9 +1,19 @@
 {
- "boe-poblacion-2025": {
-  "fuente": "https://boe.es/boe/dias/2025/12/11/pdfs/BOE-A-2025-25362.pdf",
+ "ine-pobmun-zip": {
+  "fuente": "https://www.ine.es/pob_xls/pobmun.zip",
   "enlaces": [],
-  "archivo": "boe-poblacion-2025.pdf",
-  "tipo": "application/pdf",
-  "bytes": 274759
+  "archivo": "ine-pobmun-zip.bin",
+  "tipo": "application/zip",
+  "bytes": 10118293
+ },
+ "ine-pobmun25-xls": {
+  "fuente": "https://www.ine.es/pob_xls/pobmun25.xls",
+  "enlaces": [],
+  "error": "<HTTPError 404: 'Not Found'>"
+ },
+ "ine-pobmun24-xls": {
+  "fuente": "https://www.ine.es/pob_xls/pobmun24.xls",
+  "enlaces": [],
+  "error": "<HTTPError 404: 'Not Found'>"
  }
 }
