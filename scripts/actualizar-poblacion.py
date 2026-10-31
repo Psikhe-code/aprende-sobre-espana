@@ -8,24 +8,46 @@ con la herramienta de páginas (rama paginas-descarga, ver el README).
 
 Uso:  python3 scripts/actualizar-poblacion.py pobmun26.xlsx 2026
 
-Cambia solo «poblacion» y «puesto» de cada municipio, y el año en «datosPoblacion». Los nombres y los
-motivos no se tocan. Al terminar avisa si algún municipio entra o sale de los tres más poblados de su
-provincia: los que salen necesitan un «motivo» para seguir en el juego, y los que entran hay que añadirlos.
+Cambia solo «poblacion» y «puesto» de cada municipio, el año en «datosPoblacion» y «mismoNombre» (los
+municipios de otras provincias que se llaman igual). Los nombres y los motivos no se tocan. Al terminar
+avisa si algún municipio entra o sale de los tres más poblados de su provincia (los que salen necesitan un
+«motivo» para seguir en el juego, y los que entran hay que añadirlos) y si cambia algún «mismoNombre».
 """
-import json, sys
+import json, re, sys, unicodedata
 import openpyxl
 
 ARCHIVO = "src/data/municipios.json"
 
 
 def leer_ine(ruta):
-    """Población de cada municipio del Excel del INE, por código (cinco cifras: provincia y municipio)."""
+    """Población y nombre de cada municipio del Excel del INE, por código (cinco cifras: provincia y municipio)."""
     filas = openpyxl.load_workbook(ruta, read_only=True).active.iter_rows(values_only=True)
-    pob = {}
+    pob, nombres = {}, {}
     for f in filas:
         if f[0] and f[2] and str(f[0]).isdigit() and isinstance(f[4], int):
             pob[f"{f[0]}{f[2]}"] = f[4]
-    return pob
+            nombres[f"{f[0]}{f[2]}"] = f[3]
+    return pob, nombres
+
+
+def claves(nombre):
+    """Formas de un nombre para compararlas: cada parte de «Elx/Elche», con el artículo delante
+    («Toro, El» → «el toro») y sin tildes ni mayúsculas."""
+    out = set()
+    for parte in nombre.split("/"):
+        parte = parte.strip()
+        m = re.match(r"^(.*), (El|La|Los|Las|L'|A|O|Os|As|Es|Sa|la|el|les|els)$", parte)
+        if m:
+            parte = m.group(2) + ("" if m.group(2).endswith("'") else " ") + m.group(1)
+        out.add("".join(c for c in unicodedata.normalize("NFD", parte.lower()) if unicodedata.category(c) != "Mn"))
+    return out
+
+
+def mismo_nombre(m, pob, nombres):
+    """Municipios de otras provincias que se llaman igual que este (en alguna de sus formas)."""
+    propias = set().union(*(claves(v) for v in m["nombre"].values()))
+    return [{"id": c, "poblacion": pob[c]} for c in sorted(nombres)
+            if c[:2] != m["id"][:2] and claves(nombres[c]) & propias]
 
 
 def puestos(pob):
@@ -52,7 +74,7 @@ def escribir(datos):
 
 def main(ruta, año):
     datos = json.load(open(ARCHIVO, encoding="utf-8"))
-    pob = leer_ine(ruta)
+    pob, nombres = leer_ine(ruta)
     rango = puestos(pob)
     for m in datos["municipios"]:
         if m["id"] not in pob:
@@ -60,6 +82,13 @@ def main(ruta, año):
             continue
         antes = m.get("puesto")
         m["poblacion"], m["puesto"] = pob[m["id"]], rango[m["id"]]
+        iguales = mismo_nombre(m, pob, nombres)
+        if [x["id"] for x in iguales] != [x["id"] for x in m.get("mismoNombre", [])]:
+            print(f"AVISO: cambian los municipios que se llaman como {m['nombre']['oficial']}:", [nombres[x["id"]] for x in iguales])
+        if iguales:
+            m["mismoNombre"] = iguales
+        else:
+            m.pop("mismoNombre", None)
         if antes and (antes <= 3) != (m["puesto"] <= 3):
             print(f"AVISO: {m['nombre']['oficial']} pasa del puesto {antes} al {m['puesto']}")
     tienen = {m["id"] for m in datos["municipios"]}

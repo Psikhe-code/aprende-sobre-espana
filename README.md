@@ -102,10 +102,11 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
   - `poblacion` y `puesto` (su puesto en la provincia, de más a menos habitantes), según el INE. El año está en `datosPoblacion`.
   - `motivo`: solo en los que no están entre los tres más poblados, por qué son conocidos.
   - `curiosidad` (opcional): se muestra después de la nota. Están pendientes de escribir.
+  - `mismoNombre`: solo si en otra provincia hay un municipio que se llama igual (Torrent, en Valencia y en Gerona). Esa provincia nunca sale como opción, y la nota lo cuenta: *«En la provincia de Gerona hay otro municipio que también se llama Torrent, con 182 habitantes.»* Lo calcula el script de población con la lista completa del INE.
 
   La nota de cada municipio la genera el juego con esos datos: *«Vigo es el municipio más poblado de la provincia de Pontevedra, más incluso que la capital, Pontevedra: 294.489 habitantes (INE, 2025).»* o *«Palos de la Frontera tiene 12.938 habitantes (INE, 2025) y no está entre los tres municipios más poblados de la provincia de Huelva, pero es muy conocido: de su puerto salió Colón en 1492…»*. Las trampas son las provincias vecinas (en las islas, Ceuta y Melilla, las otras provincias sin vecinas). Como la respuesta es la provincia, en una partida no salen dos municipios de la misma.
 
-  **Actualizar la población cada año.** El INE publica en diciembre las cifras a 1 de enero en [pobmun.zip](https://www.ine.es/pob_xls/pobmun.zip), con un Excel por año. Se descarga con la herramienta de páginas (más abajo) y se ejecuta `python3 scripts/actualizar-poblacion.py pobmun26.xlsx 2026` (necesita `pip install openpyxl`). Solo cambia la población, el puesto y el año, y avisa si algún municipio entra o sale de los tres más poblados.
+  **Actualizar la población cada año.** El INE publica en diciembre las cifras a 1 de enero en [pobmun.zip](https://www.ine.es/pob_xls/pobmun.zip), con un Excel por año. Se descarga con la herramienta de páginas (más abajo) y se ejecuta `python3 scripts/actualizar-poblacion.py pobmun26.xlsx 2026` (necesita `pip install openpyxl`). Solo cambia la población, el puesto, el año y `mismoNombre`, y avisa si algún municipio entra o sale de los tres más poblados o si aparece otro municipio con el mismo nombre.
 
 ### Marcas en los textos
 

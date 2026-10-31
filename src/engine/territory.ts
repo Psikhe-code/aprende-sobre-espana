@@ -90,6 +90,8 @@ export interface Municipio {
   motivo?: string;
   /** Curiosidad opcional sobre el municipio. */
   curiosidad?: string;
+  /** Municipios de otras provincias que se llaman igual (código INE y habitantes). */
+  mismoNombre?: { id: string; poblacion: number }[];
 }
 /** Municipios que salen en el juego, en orden de código INE. */
 export const MUNICIPIOS: Municipio[] = municipios.municipios;
