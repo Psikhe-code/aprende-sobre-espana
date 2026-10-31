@@ -1,5 +1,5 @@
 import { NAME_STYLES, type NameStyle, type Question } from "./types";
-import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, type Comunidad, type Formas, type Provincia } from "./territory";
+import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, comunidadesVecinas, type Comunidad, type Formas, type Provincia } from "./territory";
 import banderas from "../data/banderas.json";
 
 // Preguntas generadas a partir de los datos del territorio y de las banderas.
@@ -146,6 +146,54 @@ export function provincialCapitalQuestions(style: NameStyle): Question[] {
       why: p.notaCapital ? prepararTexto(p.notaCapital, style, capital) : notaCapitalProvincia(p, style),
       aliases: aliases([p.nombre, p.capital], style),
       territorio: "provincia" as const
+    };
+  });
+}
+
+// ---------- Pertenencia ----------
+
+const NUMEROS = ["ninguna", "una", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
+
+/**
+ * Comunidades que se pueden confundir con la de una provincia, por códigos:
+ * - las que tienen frontera con la provincia (Albacete → Comunitat Valenciana, Murcia, Andalucía);
+ * - si no llegan a dos (Valladolid solo linda con provincias de Castilla y León),
+ *   también las que tienen frontera con su comunidad;
+ * - sin fronteras terrestres (Canarias), las otras comunidades o ciudades fuera de la península.
+ */
+export function comunidadesTrampa(p: Provincia): string[] {
+  const propias = comunidadesVecinas([p], p.comunidad);
+  if (propias.length >= 2) return propias;
+  const deLaComunidad = comunidadesVecinas(provinciasDe(p.comunidad), p.comunidad);
+  if (deLaComunidad.length) return [...new Set([...propias, ...deLaComunidad])];
+  return AUTONOMIAS.filter((c) => c.id !== p.comunidad && provinciasDe(c.id).every((x) => !x.vecinas.length)).map((c) => c.id);
+}
+
+/**
+ * Pertenencia de provincias a comunidades: «¿De qué comunidad autónoma es la provincia de Soria?».
+ * Solo las provincias de comunidades con varias provincias (43): en las demás la pregunta sería
+ * un regalo (Asturias es del Principado de Asturias).
+ * Pool: las comunidades autónomas, sin Ceuta y Melilla (la pregunta dice «comunidad autónoma»).
+ * Trampas: las comunidades vecinas (ver comunidadesTrampa).
+ * La respuesta es la comunidad, así que en una partida no salen dos provincias de la misma.
+ */
+export function membershipQuestions(style: NameStyle): Question[] {
+  const ciudades = CIUDADES.map((c) => c.nombre[style]);
+  return PROVINCIAS.filter((p) => provinciasDe(p.comunidad).length > 1).map((p) => {
+    const c = autonomia(p.comunidad);
+    const hermanas = provinciasDe(c.id).map((x) => x.nombre[style]).sort((a, b) => a.localeCompare(b, "es"));
+    const lista = `${hermanas.slice(0, -1).join(", ")} y ${hermanas[hermanas.length - 1]}`;
+    return {
+      id: `pertenencia-provincia:${p.id}`,
+      text: `¿De qué comunidad autónoma es la provincia de ${p.nombre[style]}?`,
+      answer: c.nombre[style],
+      answerKey: "autonomia:" + c.id,
+      type: "autonomia",
+      traps: comunidadesTrampa(p).map((id) => autonomia(id).nombre[style]).filter((n) => !ciudades.includes(n)),
+      exclude: ciudades,
+      why: `La provincia de ${p.nombre[style]} es ${deAutonomia(c, style)}, que tiene ${NUMEROS[hermanas.length]} provincias: ${lista}.`,
+      aliases: aliases([p.nombre, c.nombre], style),
+      territorio: "comunidad" as const
     };
   });
 }

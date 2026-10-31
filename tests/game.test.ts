@@ -62,14 +62,17 @@ describe("partidas: elección de preguntas", () => {
   });
 
   it("reparten las preguntas entre las categorías", () => {
-    let flags = 0, total = 0;
+    const cuenta: Record<string, number> = {};
+    let total = 0;
     for (let r = 0; r < 300; r++) {
-      const round = buildRound({ categories: CATEGORY_IDS });
-      flags += round.filter((q) => q.category === "banderas").length;
-      total += round.length;
+      for (const q of buildRound({ categories: CATEGORY_IDS })) cuenta[q.category] = (cuenta[q.category] ?? 0) + 1;
+      total += ROUND_LENGTH;
     }
-    expect(flags / total).toBeGreaterThan(0.4);
-    expect(flags / total).toBeLessThan(0.6);
+    // Se sortea primero la categoría: cada una sale más o menos en la misma proporción.
+    for (const id of CATEGORY_IDS) {
+      expect(cuenta[id] / total, id).toBeGreaterThan(1 / CATEGORY_IDS.length - 0.08);
+      expect(cuenta[id] / total, id).toBeLessThan(1 / CATEGORY_IDS.length + 0.08);
+    }
   });
 
   it("solo salen preguntas de los territorios marcados", () => {
@@ -205,7 +208,8 @@ describe("guardado", () => {
       best: { "capitalesCCAA+banderasCCAA": 8, banderasCCAA: 6 }
     }, () => {
       const s = loadState();
-      expect(s.selected).toEqual(["banderas"]);
+      // «pertenencia» no existía cuando se guardó, así que se marca sola, como toda categoría nueva.
+      expect(s.selected).toEqual(["banderas", "pertenencia"]);
       expect(s.names).toEqual(["oficial"]);
       expect(s.best).toEqual({ "capitales+banderas/comunidad": 8, "banderas/comunidad": 6 });
     });

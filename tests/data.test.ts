@@ -63,6 +63,19 @@ describe("territorio", () => {
     for (const c of AUTONOMIAS) expect(provinciasDe(c.id).length, c.id).toBeGreaterThan(0);
   });
 
+  it("las provincias vecinas existen, son recíprocas y no hay ninguna en las islas, Ceuta ni Melilla", () => {
+    const ids = PROVINCIAS.map((p) => p.id);
+    for (const p of PROVINCIAS) {
+      for (const v of p.vecinas) {
+        expect(ids, `${p.id} → ${v}`).toContain(v);
+        expect(v, `${p.id} es vecina de sí misma`).not.toBe(p.id);
+        expect(PROVINCIAS.find((x) => x.id === v)!.vecinas, `${v} no tiene a ${p.id}`).toContain(p.id);
+      }
+    }
+    for (const id of ["07", "35", "38", "51", "52"]) expect(PROVINCIAS.find((p) => p.id === id)!.vecinas, id).toEqual([]);
+    expect(PROVINCIAS.find((p) => p.id === "33")!.vecinas).toEqual(["24", "27", "39"]);
+  });
+
   it("las trampas de provincia solo están en provincias cuya capital se llama distinto, y apuntan a otras provincias", () => {
     const ids = PROVINCIAS.map((p) => p.id);
     for (const p of PROVINCIAS.filter((x) => x.trampas)) {

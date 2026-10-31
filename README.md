@@ -2,7 +2,7 @@
 
 Juego de preguntas sobre geografía de España. Partidas de 10 preguntas con opciones, explicación de cada respuesta y repaso de fallos.
 
-Ahora mismo tiene dos categorías, **Capitales** y **Banderas**, y en Opciones se elige el **territorio**: comunidades (las 17 y las 2 ciudades autónomas, Ceuta y Melilla), provincias o las dos. De provincias, por ahora solo hay capitales: las 8 que no se llaman como su provincia. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
+Ahora mismo tiene tres categorías, **Capitales**, **Banderas** y **Pertenencia** (de qué comunidad es cada provincia), y en Opciones se elige el **territorio**: comunidades (las 17 y las 2 ciudades autónomas, Ceuta y Melilla), provincias o las dos. De provincias, por ahora solo hay capitales: las 8 que no se llaman como su provincia. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
 
 Hecho con TypeScript y Vite. Funciona en el navegador, se puede instalar como app (PWA) y funciona sin conexión.
 
@@ -81,6 +81,7 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
     - `notaCapital`: la explicación de la pregunta de su capital, solo cuando hay algo que contar (la capital no es la ciudad más poblada o no es capital de provincia, instituciones repartidas, cambios de capital o de nombre). Si no la tiene, el juego genera una automática: *«Zaragoza es la capital de Aragón y también de la provincia de Zaragoza»*.
     - `curiosidadCapital`: un dato histórico que se muestra después de la nota, si la ciudad fue capital de España o de un antiguo reino, con sus fechas. El final de un reino se cuenta desde que perdió sus instituciones propias.
   - Cada provincia tiene `id`, `nombre`, `capital` y el código de su `comunidad`.
+  - `vecinas`: códigos de las provincias con las que tiene frontera terrestre (vacío en las islas, Ceuta y Melilla). Se calcularon con los mapas del Instituto Geográfico Nacional (paquete [es-atlas](https://github.com/martgnz/es-atlas)), y los tests comprueban que son recíprocas. Sirven para las trampas de pertenencia: en *«¿De qué comunidad autónoma es la provincia de Soria?»* salen Aragón, Castilla-La Mancha y La Rioja.
   - Opcionalmente, `ciudades`: ciudades relativamente conocidas de la provincia que no son capitales (Gijón, Avilés). Se usan como trampas.
   - Solo en las provincias cuya capital no se llama como la provincia, lo que crea la pregunta *«¿Cuál es la capital de la provincia de Asturias?»*:
     - `trampas`: códigos de provincias cercanas o que se confunden con ella. Su capital y sus `ciudades` salen como trampa (en Asturias: Santander, Torrelavega, León, Ponferrada, Lugo, A Coruña, Ferrol…).

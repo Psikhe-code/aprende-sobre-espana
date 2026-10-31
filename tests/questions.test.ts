@@ -73,6 +73,36 @@ for (const style of NAME_STYLES) {
       expect(notaCapitalProvincia(p("33"), "castellano")).toBe("Oviedo es la capital de la provincia de Asturias. Como es la única provincia de Asturias, también es la capital de la comunidad.");
     });
 
+    it("pertenencia: las 43 provincias de comunidades con varias provincias; de provincias, ninguna todavía", () => {
+      const qs = questionsIn("pertenencia", ["comunidad"]);
+      expect(qs).toHaveLength(43);
+      const fuera = qs.map((q) => q.id.split(":")[1]).filter((id) => ["07", "26", "28", "30", "31", "33", "39", "51", "52"].includes(id));
+      expect(fuera).toEqual([]);
+      expect(questionsIn("pertenencia", ["provincia"])).toHaveLength(0);
+    });
+
+    it("pertenencia: enunciado, comunidades vecinas como trampas y nota con las provincias de la comunidad", () => {
+      const soria = find(style, "pertenencia-provincia:42");
+      expect(soria.text).toBe("¿De qué comunidad autónoma es la provincia de Soria?");
+      expect(soria.answer).toBe("Castilla y León");
+      expect(soria.traps).toEqual(["Aragón", "Castilla-La Mancha", "La Rioja"]);
+      expect(soria.why).toBe("La provincia de Soria es de Castilla y León, que tiene nueve provincias: Ávila, Burgos, León, Palencia, Salamanca, Segovia, Soria, Valladolid y Zamora.");
+      const albacete = find(style, "pertenencia-provincia:02");
+      expect(albacete.traps).toContain(style === "oficial" ? "Región de Murcia" : "Región de Murcia");
+      expect(albacete.traps).toContain("Andalucía");
+      // Valladolid solo linda con provincias de su comunidad: las trampas son las vecinas de Castilla y León.
+      expect(find(style, "pertenencia-provincia:47").traps.length).toBeGreaterThan(2);
+      // Canarias no tiene fronteras terrestres: la trampa es el otro archipiélago.
+      expect(find(style, "pertenencia-provincia:35").traps).toEqual([style === "oficial" ? "Illes Balears" : "Islas Baleares"]);
+    });
+
+    it("pertenencia: Ceuta y Melilla nunca salen como opción (la pregunta dice «comunidad autónoma»)", () => {
+      const ciudades = AUTONOMIAS.filter((c) => c.tipo === "ciudad").map((c) => c.nombre[style]);
+      for (const q0 of all.filter((q) => q.category === "pertenencia")) {
+        for (let r = 0; r < 10; r++) for (const c of ciudades) expect(prepare(q0, 8, pools).options, q0.id).not.toContain(c);
+      }
+    });
+
     it("cada pregunta dice su territorio: las de provincia son solo las de capital de provincia", () => {
       for (const q of all) expect(q.territorio, q.id).toBe(q.id.startsWith("capital-provincia:") ? "provincia" : "comunidad");
     });
