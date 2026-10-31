@@ -27,7 +27,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 ## Decisiones sobre los datos
 
 - Todo se identifica por **código INE**: comunidades `01`–`17`, ciudades autónomas `18` (Ceuta) y `19` (Melilla), provincias `01`–`52`. Los archivos van **ordenados por código** y los tests lo comprueban.
-- **Nombres en todas sus formas, aunque coincidan, con la oficial primero:** `{ "oficial": "Girona", "castellano": "Gerona" }`. Castellano = forma recomendada por la RAE para textos en español. Oficial = denominación oficial (INE/BOE). La estructura está pensada para añadir más formas (p. ej. inglés).
+- **Nombres en todas sus formas, aunque coincidan, con la oficial primero:** `{ "oficial": "Girona", "castellano": "Gerona" }`. Castellano = forma recomendada por la RAE para textos en español, pero solo si es la de uso común: si apenas se usa (Tarrasa, Guecho, Vich…), se repite la oficial (Terrassa, Getxo, Vic). Criterio del usuario: no forzar nombres. Oficial = denominación oficial (INE/BOE). La estructura está pensada para añadir más formas (p. ej. inglés).
 - En Opciones, el jugador marca qué formas quiere (oficial, castellano o las dos; por defecto, las dos). Cada pregunta sale **entera** en una forma, sorteada si hay varias, y al responder se muestran las otras formas del nombre.
 - Las repeticiones en una partida se comparan **por lugar** (`answerKey`), no por cómo se escribe.
 - Ceuta y Melilla son `tipo: "ciudad"`. Salen en capitales (su capital es la propia ciudad, con una nota que lo explica) y en banderas. El enunciado de banderas es igual para todas («comunidad o ciudad autónoma») para no delatar la respuesta.
