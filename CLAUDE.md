@@ -4,7 +4,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 
 ## Proyecto
 
-- **Aprende sobre España** (repositorio `Psikhe-code/aprende-sobre-espana`). El juego se llamaba antes «Geoquiz España»; solo queda ese nombre en la clave del guardado (`geoquiz-es-v2`), que no se cambia para no borrar los récords.
+- **Aprende sobre España** (repositorio `Psikhe-code/aprende-sobre-espana`). El juego se llamaba antes «Geoquiz España»; al cambiar el nombre también cambió la clave del guardado (ahora `aprende-sobre-espana`), y el usuario aceptó perder los récords de entonces.
 - Juego de preguntas tipo test, hecho con TypeScript + Vite, publicado en GitHub Pages y pensado para acabar como app de Android con Capacitor.
 - Ahora tiene tres categorías, **Capitales**, **Banderas** y **Divisiones**, y una opción de **territorio** (comunidades, provincias o las dos) que decide qué preguntas de cada categoría salen. De provincias solo hay, por ahora, las 8 capitales que no se llaman como su provincia, con trampas que se sortean en cada partida: la capital y las ciudades conocidas de provincias cercanas, y las de la propia provincia (en Asturias: Santander, Torrelavega, León, Ponferrada, Lugo, A Coruña, Ferrol, Gijón, Avilés…). Las trampas tienen que ser nombres relativamente conocidos que de verdad confundan; en las vascas, todas las ciudades vascas. Además, siempre sale como opción el nombre de la provincia («Asturias»): decidido así, aunque el jugador acabe sabiendo que nunca es la respuesta, porque esas excepciones son justo lo que se quiere enseñar. La rama `prototipo-v0.1` guarda el prototipo anterior con 8 categorías (provincias, ríos, relieve, costas…) para recuperarlas más adelante, ya con los criterios de abajo.
 

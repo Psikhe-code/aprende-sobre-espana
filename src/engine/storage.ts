@@ -22,12 +22,12 @@ export interface SavedState {
   opciones: OptionCount;
 }
 
-// La clave conserva el nombre antiguo del juego (Geoquiz): cambiarla borraría los récords guardados.
-const KEY = "geoquiz-es-v2";
+/** Clave con la que se guarda todo en el dispositivo. Si se cambia, se pierde lo guardado. */
+export const STORAGE_KEY = "aprende-sobre-espana";
 
 function read(): Partial<SavedState> {
   try {
-    return JSON.parse(localStorage.getItem(KEY) ?? "{}") ?? {};
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") ?? {};
   } catch {
     return {};
   }
@@ -66,7 +66,7 @@ export function loadState(): SavedState {
 
 export function saveState(state: SavedState): void {
   try {
-    localStorage.setItem(KEY, JSON.stringify({ ...state, known: [...CATEGORY_IDS] }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...state, known: [...CATEGORY_IDS] }));
   } catch {
     // Sin almacenamiento (modo privado, etc.): el juego funciona igual, solo no recuerda.
   }
