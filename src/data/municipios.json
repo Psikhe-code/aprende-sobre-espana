@@ -153,7 +153,7 @@
     },
     {
       "id": "07011",
-      "nombre": {"oficial": "Calvià", "castellano": "Calviá"},
+      "nombre": {"oficial": "Calvià", "castellano": "Calvià"},
       "poblacion": 53793,
       "puesto": 3
     },
@@ -225,13 +225,13 @@
     },
     {
       "id": "08279",
-      "nombre": {"oficial": "Terrassa", "castellano": "Tarrasa"},
+      "nombre": {"oficial": "Terrassa", "castellano": "Terrassa"},
       "poblacion": 233270,
       "puesto": 3
     },
     {
       "id": "08298",
-      "nombre": {"oficial": "Vic", "castellano": "Vich"},
+      "nombre": {"oficial": "Vic", "castellano": "Vic"},
       "poblacion": 50796,
       "puesto": 20,
       "motivo": "tiene un casco antiguo con un templo romano y una gran plaza mayor, y es famosa por su salchichón"
@@ -727,7 +727,7 @@
     },
     {
       "id": "25203",
-      "nombre": {"oficial": "La Seu d'Urgell", "castellano": "Seo de Urgel"},
+      "nombre": {"oficial": "La Seu d'Urgell", "castellano": "La Seo de Urgel"},
       "poblacion": 13009,
       "puesto": 5,
       "motivo": "su obispo es uno de los dos copríncipes de Andorra"
@@ -740,7 +740,7 @@
     },
     {
       "id": "25243",
-      "nombre": {"oficial": "Vielha e Mijaran", "castellano": "Viella y Medio Arán"},
+      "nombre": {"oficial": "Vielha e Mijaran", "castellano": "Vielha e Mijaran"},
       "poblacion": 5865,
       "puesto": 14,
       "motivo": "es la capital del Valle de Arán, donde se habla aranés"
@@ -812,7 +812,7 @@
     },
     {
       "id": "27066",
-      "nombre": {"oficial": "Viveiro", "castellano": "Vivero"},
+      "nombre": {"oficial": "Viveiro", "castellano": "Viveiro"},
       "poblacion": 15120,
       "puesto": 3
     },
@@ -960,7 +960,7 @@
     },
     {
       "id": "32019",
-      "nombre": {"oficial": "O Carballiño", "castellano": "Carballino"},
+      "nombre": {"oficial": "O Carballiño", "castellano": "O Carballiño"},
       "poblacion": 14249,
       "puesto": 2
     },
@@ -1094,7 +1094,7 @@
     },
     {
       "id": "36051",
-      "nombre": {"oficial": "Sanxenxo", "castellano": "Sangenjo"},
+      "nombre": {"oficial": "Sanxenxo", "castellano": "Sanxenxo"},
       "poblacion": 18016,
       "puesto": 13,
       "motivo": "es uno de los destinos de playa más visitados de Galicia"
@@ -1498,7 +1498,7 @@
     },
     {
       "id": "48044",
-      "nombre": {"oficial": "Getxo", "castellano": "Guecho"},
+      "nombre": {"oficial": "Getxo", "castellano": "Getxo"},
       "poblacion": 75752,
       "puesto": 3
     },
