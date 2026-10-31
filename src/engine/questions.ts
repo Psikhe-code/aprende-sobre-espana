@@ -218,7 +218,7 @@ export function provinciasTrampa(p: Provincia): string[] {
 
 /**
  * Nota de un municipio, generada con sus datos: si está entre los tres más poblados de su provincia,
- * qué puesto ocupa y su población; si no, su población y el motivo por el que es conocido.
+ * qué puesto ocupa y su población; si no, su población. Por qué es conocido lo cuenta su curiosidad.
  * La población lleva siempre la fuente y el año: «293.837 habitantes (INE, 2025)».
  */
 export function notaMunicipio(m: Municipio, style: NameStyle): string {
@@ -237,7 +237,7 @@ export function notaMunicipio(m: Municipio, style: NameStyle): string {
       ? `${nombre} es la capital ${deProvincia} y su ${ORDINAL[m.puesto]} municipio más poblado: ${habitantes}.`
       : `${nombre} es el ${ORDINAL[m.puesto]} municipio más poblado ${deProvincia}: ${habitantes}.`;
   }
-  return `${nombre} tiene ${habitantes} y no está entre los tres municipios más poblados ${deProvincia}, pero es muy conocido: ${prepararTexto(m.motivo ?? "", style)}.`;
+  return `${nombre} tiene ${habitantes} y no está entre los tres municipios más poblados ${deProvincia}.`;
 }
 
 /**

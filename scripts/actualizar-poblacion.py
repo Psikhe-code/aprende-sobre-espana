@@ -9,9 +9,9 @@ con la herramienta de páginas (rama paginas-descarga, ver el README).
 Uso:  python3 scripts/actualizar-poblacion.py pobmun26.xlsx 2026
 
 Cambia solo «poblacion» y «puesto» de cada municipio, el año en «datosPoblacion» y «mismoNombre» (los
-municipios de otras provincias que se llaman igual). Los nombres y los motivos no se tocan. Al terminar
+municipios de otras provincias que se llaman igual). Los nombres y las curiosidades no se tocan. Al terminar
 avisa si algún municipio entra o sale de los tres más poblados de su provincia (los que salen necesitan un
-«motivo» para seguir en el juego, y los que entran hay que añadirlos) y si cambia algún «mismoNombre».
+«curiosidad» que explique por qué siguen en el juego, y los que entran hay que añadirlos) y si cambia algún «mismoNombre».
 """
 import json, re, sys, unicodedata
 import openpyxl

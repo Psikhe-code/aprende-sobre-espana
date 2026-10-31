@@ -146,7 +146,7 @@ describe("textos de las notas", () => {
     ...PROVINCIAS.map((p) => ["notaCapital de provincia", p.id, p.notaCapital]),
     ...Object.entries(BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]]),
     ...Object.entries(BANDERAS_PROVINCIAS).flatMap(([id, b]) => [["descripcion de bandera de provincia", id, b.descripcion], ["significado de bandera de provincia", id, b.significado]]),
-    ...MUNICIPIOS.flatMap((m) => [["motivo de municipio", m.id, m.motivo], ["curiosidad de municipio", m.id, m.curiosidad]])
+    ...MUNICIPIOS.map((m) => ["curiosidad de municipio", m.id, m.curiosidad])
   ].filter(([, , t]) => t) as [string, string, string][];
   const donde = (campo: string, id: string, t: string) => `${campo} de ${id}: «${t.slice(0, 40)}…»`;
 
@@ -264,8 +264,8 @@ describe("municipios", () => {
     }
   });
 
-  it("los que no están entre los tres más poblados llevan un motivo, y los demás no", () => {
-    for (const m of MUNICIPIOS) expect(Boolean(m.motivo), `${m.id} ${m.nombre.oficial} (puesto ${m.puesto})`).toBe(m.puesto > 3);
+  it("los que no están entre los tres más poblados llevan una curiosidad que explica por qué están en el juego", () => {
+    for (const m of MUNICIPIOS.filter((x) => x.puesto > 3)) expect(m.curiosidad, `${m.id} ${m.nombre.oficial} (puesto ${m.puesto})`).toBeTruthy();
   });
 
   it("el puesto concuerda con la población: en cada provincia, a más puesto, menos habitantes", () => {
