@@ -150,7 +150,7 @@ export function provincialCapitalQuestions(style: NameStyle): Question[] {
   });
 }
 
-// ---------- Pertenencia ----------
+// ---------- Divisiones ----------
 
 const NUMEROS = ["ninguna", "una", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
 
@@ -170,21 +170,21 @@ export function comunidadesTrampa(p: Provincia): string[] {
 }
 
 /**
- * Pertenencia de provincias a comunidades: «¿De qué comunidad autónoma es la provincia de Soria?».
+ * Divisiones de las comunidades (las provincias de cada una): «¿De qué comunidad autónoma es la provincia de Soria?».
  * Solo las provincias de comunidades con varias provincias (43): en las demás la pregunta sería
  * un regalo (Asturias es del Principado de Asturias).
  * Pool: las comunidades autónomas, sin Ceuta y Melilla (la pregunta dice «comunidad autónoma»).
  * Trampas: las comunidades vecinas (ver comunidadesTrampa).
  * La respuesta es la comunidad, así que en una partida no salen dos provincias de la misma.
  */
-export function membershipQuestions(style: NameStyle): Question[] {
+export function divisionQuestions(style: NameStyle): Question[] {
   const ciudades = CIUDADES.map((c) => c.nombre[style]);
   return PROVINCIAS.filter((p) => provinciasDe(p.comunidad).length > 1).map((p) => {
     const c = autonomia(p.comunidad);
     const hermanas = provinciasDe(c.id).map((x) => x.nombre[style]).sort((a, b) => a.localeCompare(b, "es"));
     const lista = `${hermanas.slice(0, -1).join(", ")} y ${hermanas[hermanas.length - 1]}`;
     return {
-      id: `pertenencia-provincia:${p.id}`,
+      id: `provincia-ccaa:${p.id}`,
       text: `¿De qué comunidad autónoma es la provincia de ${p.nombre[style]}?`,
       answer: c.nombre[style],
       answerKey: "autonomia:" + c.id,

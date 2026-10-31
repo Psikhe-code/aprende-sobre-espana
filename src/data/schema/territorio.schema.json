@@ -123,7 +123,7 @@
             "$ref": "#/definitions/codigo"
           },
           "vecinas": {
-            "description": "Códigos INE de las provincias con las que tiene frontera terrestre (vacío en las islas, Ceuta y Melilla). Calculado con los mapas del Instituto Geográfico Nacional (paquete es-atlas). Sirve para elegir las trampas de las preguntas de pertenencia.",
+            "description": "Códigos INE de las provincias con las que tiene frontera terrestre (vacío en las islas, Ceuta y Melilla). Calculado con los mapas del Instituto Geográfico Nacional (paquete es-atlas). Sirve para elegir las trampas de la categoría Divisiones.",
             "type": "array",
             "items": {
               "$ref": "#/definitions/codigo"

@@ -208,8 +208,8 @@ describe("guardado", () => {
       best: { "capitalesCCAA+banderasCCAA": 8, banderasCCAA: 6 }
     }, () => {
       const s = loadState();
-      // «pertenencia» no existía cuando se guardó, así que se marca sola, como toda categoría nueva.
-      expect(s.selected).toEqual(["banderas", "pertenencia"]);
+      // «divisiones» no existía cuando se guardó, así que se marca sola, como toda categoría nueva.
+      expect(s.selected).toEqual(["banderas", "divisiones"]);
       expect(s.names).toEqual(["oficial"]);
       expect(s.best).toEqual({ "capitales+banderas/comunidad": 8, "banderas/comunidad": 6 });
     });
