@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Municipios",
+  "description": "Municipios que salen en el juego, cada uno con su código INE y en orden de código: los tres más poblados de cada provincia (contando la capital) y otros conocidos por su historia o su cultura, que llevan un «motivo». La población y el puesto se actualizan con scripts/actualizar-poblacion.py.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "datosPoblacion",
+    "municipios"
+  ],
+  "definitions": {
+    "formas": {
+      "description": "El nombre en cada una de sus formas: primero la oficial (la del INE) y después en castellano. Si coinciden, se repite.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "oficial",
+        "castellano"
+      ],
+      "properties": {
+        "oficial": {
+          "description": "Denominación oficial, la del INE (Elx/Elche, A Coruña…). En las capitales, la misma que en territorio.json.",
+          "type": "string",
+          "minLength": 1
+        },
+        "castellano": {
+          "description": "Forma en castellano (Elche, La Coruña…).",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "properties": {
+    "datosPoblacion": {
+      "description": "De dónde salen las cifras de población de todos los municipios.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "año",
+        "fuente",
+        "url"
+      ],
+      "properties": {
+        "año": {
+          "description": "Año de las cifras (población a 1 de enero de ese año). Se muestra en las notas.",
+          "type": "integer",
+          "minimum": 2000
+        },
+        "fuente": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "municipios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "nombre",
+          "poblacion",
+          "puesto"
+        ],
+        "properties": {
+          "id": {
+            "description": "Código INE del municipio, cinco cifras: las dos primeras son las de su provincia (36057, Vigo, provincia 36).",
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "nombre": {
+            "$ref": "#/definitions/formas"
+          },
+          "poblacion": {
+            "description": "Habitantes según el INE, en el año de «datosPoblacion».",
+            "type": "integer",
+            "minimum": 1
+          },
+          "puesto": {
+            "description": "Puesto entre los municipios de su provincia, de más a menos habitantes (1 = el más poblado).",
+            "type": "integer",
+            "minimum": 1
+          },
+          "motivo": {
+            "description": "Solo en los que no están entre los tres más poblados de su provincia: por qué es conocido, como continuación de la frase «Palos de la Frontera tiene 12.938 habitantes (INE, 2025) y no está entre los tres municipios más poblados de la provincia de Huelva, pero es muy conocido: …» («de su puerto salió Colón en 1492»). Admite las marcas {provincia:NN} y {provincia.capital:NN}.",
+            "type": "string",
+            "minLength": 10
+          },
+          "curiosidad": {
+            "description": "Curiosidad opcional sobre el municipio, que se muestra después de la nota. Una idea por línea (separadas con \\n).",
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      }
+    }
+  }
+}

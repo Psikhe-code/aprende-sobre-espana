@@ -2,7 +2,7 @@
 
 Juego de preguntas sobre geografía de España. Partidas de 10 preguntas con opciones, explicación de cada respuesta y repaso de fallos.
 
-Ahora mismo tiene tres categorías, **Capitales**, **Banderas** y **Divisiones** (qué provincias tiene cada comunidad), y en Opciones se elige el **territorio**: comunidades (las 17 y las 2 ciudades autónomas, Ceuta y Melilla), provincias o las dos. De provincias, por ahora solo hay capitales: las 8 que no se llaman como su provincia. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
+Ahora mismo tiene tres categorías, **Capitales**, **Banderas** y **Divisiones** (qué provincias tiene cada comunidad y de qué provincia es cada municipio), y en Opciones se elige el **territorio**: comunidades (las 17 y las 2 ciudades autónomas, Ceuta y Melilla), provincias o las dos. De provincias hay las capitales que no se llaman como su provincia, las banderas de provincia y los municipios. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
 
 Hecho con TypeScript y Vite. Funciona en el navegador y se puede instalar como app (PWA). Sin conexión funciona con las banderas que ya han salido alguna vez (ver «Modo sin conexión»).
 
@@ -34,6 +34,7 @@ src/
   data/                    ← CONTENIDO
     territorio.json        comunidades y provincias, con sus códigos INE
     banderas.json          banderas de las comunidades y de las provincias: archivo, banderas parecidas y explicación
+    municipios.json        municipios de cada provincia, con su código INE y su población
     banderas/comunidades/  una imagen SVG por comunidad o ciudad autónoma
     banderas/provincias/   una imagen SVG por provincia con bandera
     schema/                descripción formal del formato de los JSON (se valida en los tests)
@@ -94,6 +95,17 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
 - **`banderas.json`**: dos listas, `comunidades` y `provincias`, como en `territorio.json`, ordenadas por código. Cada bandera lleva su `id` (código INE), el `archivo` SVG, las `trampas` (códigos de banderas parecidas: comunidades en las de comunidad, provincias en las de provincia), su `fuente` y dos textos que se muestran al responder:
   - `descripcion`: cómo es la bandera, en una o dos frases sencillas.
   - `significado`: de dónde vienen sus partes y qué significan, una idea por línea. Se muestra aparte, con la etiqueta «Significado».
+
+- **`municipios.json`**: los municipios de la pregunta *«¿De qué provincia es el municipio de Vigo?»* (Divisiones, en provincias), en orden de código INE. Entran los **tres más poblados de cada provincia**, contando la capital (en Ceuta y Melilla, el único), y otros que no lo son pero son muy conocidos por su historia o su cultura (Palos de la Frontera, Úbeda, Tordesillas…). Cada uno lleva:
+  - `id`: código INE del municipio, cinco cifras; las dos primeras son las de su provincia (`36057`, Vigo, provincia `36`).
+  - `nombre`: en sus formas, la oficial del INE y en castellano (`Elx/Elche` y `Elche`). Las capitales, con las mismas formas que en `territorio.json`.
+  - `poblacion` y `puesto` (su puesto en la provincia, de más a menos habitantes), según el INE. El año está en `datosPoblacion`.
+  - `motivo`: solo en los que no están entre los tres más poblados, por qué son conocidos.
+  - `curiosidad` (opcional): se muestra después de la nota. Están pendientes de escribir.
+
+  La nota de cada municipio la genera el juego con esos datos: *«Vigo es el municipio más poblado de la provincia de Pontevedra, más incluso que la capital, Pontevedra: 294.489 habitantes (INE, 2025).»* o *«Palos de la Frontera tiene 12.938 habitantes (INE, 2025) y no está entre los tres municipios más poblados de la provincia de Huelva, pero es muy conocido: de su puerto salió Colón en 1492…»*. Las trampas son las provincias vecinas (en las islas, Ceuta y Melilla, las otras provincias sin vecinas). Como la respuesta es la provincia, en una partida no salen dos municipios de la misma.
+
+  **Actualizar la población cada año.** El INE publica en diciembre las cifras a 1 de enero en [pobmun.zip](https://www.ine.es/pob_xls/pobmun.zip), con un Excel por año. Se descarga con la herramienta de páginas (más abajo) y se ejecuta `python3 scripts/actualizar-poblacion.py pobmun26.xlsx 2026` (necesita `pip install openpyxl`). Solo cambia la población, el puesto y el año, y avisa si algún municipio entra o sale de los tres más poblados.
 
 ### Marcas en los textos
 
@@ -196,7 +208,7 @@ El proceso solo arranca si el commit que subes cambia el script (o el workflow).
 
 `npm test` comprueba:
 
-- **Datos**: que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen, que no sobran imágenes y que están limpias con SVGO.
+- **Datos**: que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen, que no sobran imágenes y que están limpias con SVGO; que en cada provincia están sus tres municipios más poblados y su capital, que los demás llevan motivo y que el puesto concuerda con la población.
 - **Preguntas y opciones**, en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
 - **Partidas**: en cientos de partidas al azar, 10 preguntas sin repetir lugar y bien repartidas; con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa; aciertos, racha, fallos, final y récords.
 

@@ -1,5 +1,5 @@
 import { NAME_STYLES, type NameStyle, type Question } from "./types";
-import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, comunidadesVecinas, provincia, type Comunidad, type Formas, type Provincia } from "./territory";
+import { AUTONOMIAS, PROVINCIAS, MUNICIPIOS, AÑO_POBLACION, autonomia, provinciasDe, deAutonomia, capitalesDe, comunidadesVecinas, provincia, provinciaDeMunicipio, esCapital, type Comunidad, type Formas, type Municipio, type Provincia } from "./territory";
 import banderas from "../data/banderas.json";
 
 // Preguntas generadas a partir de los datos del territorio y de las banderas.
@@ -200,6 +200,67 @@ export function divisionQuestions(style: NameStyle): Question[] {
       why: `La provincia de ${p.nombre[style]} es ${deAutonomia(c, style)}, que tiene ${NUMEROS[hermanas.length]} provincias: ${lista}.`,
       aliases: aliases([p.nombre, c.nombre], style),
       territorio: "comunidad" as const
+    };
+  });
+}
+
+// ---------- Municipios de cada provincia ----------
+
+const ORDINAL = ["", "", "segundo", "tercer"];
+
+/**
+ * Provincias trampa de una provincia: sus vecinas. Las que no tienen ninguna (las islas, Ceuta y Melilla)
+ * usan las otras provincias sin vecinas: así Las Palmas y Santa Cruz de Tenerife se confunden entre ellas.
+ */
+export function provinciasTrampa(p: Provincia): string[] {
+  return p.vecinas.length ? p.vecinas : PROVINCIAS.filter((x) => x.id !== p.id && !x.vecinas.length).map((x) => x.id);
+}
+
+/**
+ * Nota de un municipio, generada con sus datos: si está entre los tres más poblados de su provincia,
+ * qué puesto ocupa y su población; si no, su población y el motivo por el que es conocido.
+ * La población lleva siempre la fuente y el año: «293.837 habitantes (INE, 2025)».
+ */
+export function notaMunicipio(m: Municipio, style: NameStyle): string {
+  const p = provincia(provinciaDeMunicipio(m));
+  const nombre = m.nombre[style];
+  const habitantes = `${m.poblacion.toLocaleString("es-ES")} habitantes (INE, ${AÑO_POBLACION})`;
+  const deProvincia = `de la provincia de ${p.nombre[style]}`;
+  if (autonomia(p.comunidad).tipo === "ciudad") return `${nombre} es a la vez municipio, provincia y ciudad autónoma: ${habitantes}.`;
+  if (m.puesto === 1) {
+    return esCapital(m)
+      ? `${nombre} es la capital y el municipio más poblado ${deProvincia}: ${habitantes}.`
+      : `${nombre} es el municipio más poblado ${deProvincia}, más incluso que la capital, ${p.capital[style]}: ${habitantes}.`;
+  }
+  if (m.puesto <= 3) {
+    return esCapital(m)
+      ? `${nombre} es la capital ${deProvincia} y su ${ORDINAL[m.puesto]} municipio más poblado: ${habitantes}.`
+      : `${nombre} es el ${ORDINAL[m.puesto]} municipio más poblado ${deProvincia}: ${habitantes}.`;
+  }
+  return `${nombre} tiene ${habitantes} y no está entre los tres municipios más poblados ${deProvincia}, pero es muy conocido: ${prepararTexto(m.motivo ?? "", style)}.`;
+}
+
+/**
+ * Divisiones de las provincias (sus municipios): «¿De qué provincia es el municipio de Vigo?».
+ * Salen todos los de municipios.json: los tres más poblados de cada provincia y los añadidos por su historia o cultura.
+ * Pool: las provincias. Trampas: las vecinas (ver provinciasTrampa).
+ * La respuesta es la provincia, así que en una partida no salen dos municipios de la misma.
+ */
+export function municipioQuestions(style: NameStyle): Question[] {
+  return MUNICIPIOS.map((m) => {
+    const p = provincia(provinciaDeMunicipio(m));
+    return {
+      id: `municipio-provincia:${m.id}`,
+      text: `¿De qué provincia es el municipio de ${m.nombre[style]}?`,
+      answer: p.nombre[style],
+      answerKey: "provincia:" + p.id,
+      type: "provincia",
+      traps: provinciasTrampa(p).map((id) => provincia(id).nombre[style]),
+      exclude: [],
+      why: notaMunicipio(m, style),
+      fact: m.curiosidad ? prepararTexto(m.curiosidad, style) : undefined,
+      aliases: aliases([m.nombre, p.nombre], style),
+      territorio: "provincia" as const
     };
   });
 }

@@ -1,0 +1,1596 @@
+{
+  "datosPoblacion": {"año": 2025, "fuente": "INE, cifras oficiales de población de los municipios españoles a 1 de enero (revisión del Padrón municipal)", "url": "https://www.ine.es/pob_xls/pobmun.zip"},
+  "municipios": [
+    {
+      "id": "01002",
+      "nombre": {"oficial": "Amurrio", "castellano": "Amurrio"},
+      "poblacion": 10364,
+      "puesto": 3
+    },
+    {
+      "id": "01031",
+      "nombre": {"oficial": "Laguardia", "castellano": "Laguardia"},
+      "poblacion": 1459,
+      "puesto": 17,
+      "motivo": "es una villa medieval amurallada en el centro de la Rioja Alavesa, tierra de vino"
+    },
+    {
+      "id": "01036",
+      "nombre": {"oficial": "Laudio/Llodio", "castellano": "Llodio"},
+      "poblacion": 18077,
+      "puesto": 2
+    },
+    {
+      "id": "01059",
+      "nombre": {"oficial": "Vitoria-Gasteiz", "castellano": "Vitoria"},
+      "poblacion": 260699,
+      "puesto": 1
+    },
+    {
+      "id": "02003",
+      "nombre": {"oficial": "Albacete", "castellano": "Albacete"},
+      "poblacion": 175400,
+      "puesto": 1
+    },
+    {
+      "id": "02037",
+      "nombre": {"oficial": "Hellín", "castellano": "Hellín"},
+      "poblacion": 30836,
+      "puesto": 2
+    },
+    {
+      "id": "02081",
+      "nombre": {"oficial": "Villarrobledo", "castellano": "Villarrobledo"},
+      "poblacion": 25400,
+      "puesto": 3
+    },
+    {
+      "id": "03009",
+      "nombre": {"oficial": "Alcoi/Alcoy", "castellano": "Alcoy"},
+      "poblacion": 61468,
+      "puesto": 6,
+      "motivo": "sus fiestas de Moros y Cristianos son de las más famosas de España"
+    },
+    {
+      "id": "03014",
+      "nombre": {"oficial": "Alicante/Alacant", "castellano": "Alicante"},
+      "poblacion": 366221,
+      "puesto": 1
+    },
+    {
+      "id": "03031",
+      "nombre": {"oficial": "Benidorm", "castellano": "Benidorm"},
+      "poblacion": 77327,
+      "puesto": 5,
+      "motivo": "es uno de los destinos turísticos más visitados de España, con sus rascacielos junto al mar"
+    },
+    {
+      "id": "03065",
+      "nombre": {"oficial": "Elx/Elche", "castellano": "Elche"},
+      "poblacion": 245557,
+      "puesto": 2
+    },
+    {
+      "id": "03099",
+      "nombre": {"oficial": "Orihuela", "castellano": "Orihuela"},
+      "poblacion": 84560,
+      "puesto": 4,
+      "motivo": "es la ciudad natal del poeta Miguel Hernández"
+    },
+    {
+      "id": "03133",
+      "nombre": {"oficial": "Torrevieja", "castellano": "Torrevieja"},
+      "poblacion": 98533,
+      "puesto": 3
+    },
+    {
+      "id": "04013",
+      "nombre": {"oficial": "Almería", "castellano": "Almería"},
+      "poblacion": 205468,
+      "puesto": 1
+    },
+    {
+      "id": "04079",
+      "nombre": {"oficial": "Roquetas de Mar", "castellano": "Roquetas de Mar"},
+      "poblacion": 111240,
+      "puesto": 2
+    },
+    {
+      "id": "04902",
+      "nombre": {"oficial": "El Ejido", "castellano": "El Ejido"},
+      "poblacion": 91440,
+      "puesto": 3
+    },
+    {
+      "id": "05014",
+      "nombre": {"oficial": "Arenas de San Pedro", "castellano": "Arenas de San Pedro"},
+      "poblacion": 6460,
+      "puesto": 3
+    },
+    {
+      "id": "05016",
+      "nombre": {"oficial": "Arévalo", "castellano": "Arévalo"},
+      "poblacion": 7851,
+      "puesto": 2
+    },
+    {
+      "id": "05019",
+      "nombre": {"oficial": "Ávila", "castellano": "Ávila"},
+      "poblacion": 59107,
+      "puesto": 1
+    },
+    {
+      "id": "06015",
+      "nombre": {"oficial": "Badajoz", "castellano": "Badajoz"},
+      "poblacion": 150209,
+      "puesto": 1
+    },
+    {
+      "id": "06044",
+      "nombre": {"oficial": "Don Benito", "castellano": "Don Benito"},
+      "poblacion": 37986,
+      "puesto": 3
+    },
+    {
+      "id": "06083",
+      "nombre": {"oficial": "Mérida", "castellano": "Mérida"},
+      "poblacion": 60225,
+      "puesto": 2
+    },
+    {
+      "id": "06095",
+      "nombre": {"oficial": "Olivenza", "castellano": "Olivenza"},
+      "poblacion": 11789,
+      "puesto": 9,
+      "motivo": "fue portuguesa hasta 1801, y Portugal nunca ha reconocido oficialmente que sea española"
+    },
+    {
+      "id": "06158",
+      "nombre": {"oficial": "Zafra", "castellano": "Zafra"},
+      "poblacion": 16735,
+      "puesto": 6,
+      "motivo": "tiene un casco histórico muy bien conservado y una feria de ganado de las más antiguas de España"
+    },
+    {
+      "id": "07011",
+      "nombre": {"oficial": "Calvià", "castellano": "Calviá"},
+      "poblacion": 53793,
+      "puesto": 3
+    },
+    {
+      "id": "07015",
+      "nombre": {"oficial": "Ciutadella de Menorca", "castellano": "Ciudadela de Menorca"},
+      "poblacion": 32431,
+      "puesto": 9,
+      "motivo": "fue la capital de Menorca hasta el siglo XVIII"
+    },
+    {
+      "id": "07026",
+      "nombre": {"oficial": "Eivissa", "castellano": "Ibiza"},
+      "poblacion": 55337,
+      "puesto": 2
+    },
+    {
+      "id": "07032",
+      "nombre": {"oficial": "Maó", "castellano": "Mahón"},
+      "poblacion": 30666,
+      "puesto": 10,
+      "motivo": "es la capital de Menorca"
+    },
+    {
+      "id": "07033",
+      "nombre": {"oficial": "Manacor", "castellano": "Manacor"},
+      "poblacion": 49153,
+      "puesto": 4,
+      "motivo": "es la ciudad natal del tenista Rafa Nadal"
+    },
+    {
+      "id": "07040",
+      "nombre": {"oficial": "Palma", "castellano": "Palma"},
+      "poblacion": 434786,
+      "puesto": 1
+    },
+    {
+      "id": "08015",
+      "nombre": {"oficial": "Badalona", "castellano": "Badalona"},
+      "poblacion": 231542,
+      "puesto": 4,
+      "motivo": "es el cuarto municipio más poblado de Cataluña, pegado a Barcelona"
+    },
+    {
+      "id": "08019",
+      "nombre": {"oficial": "Barcelona", "castellano": "Barcelona"},
+      "poblacion": 1731649,
+      "puesto": 1
+    },
+    {
+      "id": "08101",
+      "nombre": {"oficial": "L'Hospitalet de Llobregat", "castellano": "Hospitalet de Llobregat"},
+      "poblacion": 289510,
+      "puesto": 2
+    },
+    {
+      "id": "08187",
+      "nombre": {"oficial": "Sabadell", "castellano": "Sabadell"},
+      "poblacion": 225368,
+      "puesto": 5,
+      "motivo": "tiene más de 200.000 habitantes y fue uno de los grandes centros de la industria textil catalana"
+    },
+    {
+      "id": "08270",
+      "nombre": {"oficial": "Sitges", "castellano": "Sitges"},
+      "poblacion": 32609,
+      "puesto": 32,
+      "motivo": "sus playas, su carnaval y su festival de cine fantástico atraen a visitantes de todo el mundo"
+    },
+    {
+      "id": "08279",
+      "nombre": {"oficial": "Terrassa", "castellano": "Tarrasa"},
+      "poblacion": 233270,
+      "puesto": 3
+    },
+    {
+      "id": "08298",
+      "nombre": {"oficial": "Vic", "castellano": "Vich"},
+      "poblacion": 50796,
+      "puesto": 20,
+      "motivo": "tiene un casco antiguo con un templo romano y una gran plaza mayor, y es famosa por su salchichón"
+    },
+    {
+      "id": "09018",
+      "nombre": {"oficial": "Aranda de Duero", "castellano": "Aranda de Duero"},
+      "poblacion": 33956,
+      "puesto": 3
+    },
+    {
+      "id": "09029",
+      "nombre": {"oficial": "Atapuerca", "castellano": "Atapuerca"},
+      "poblacion": 178,
+      "puesto": 128,
+      "motivo": "en su sierra están los yacimientos de Atapuerca, donde se han encontrado algunos de los restos humanos más antiguos de Europa"
+    },
+    {
+      "id": "09059",
+      "nombre": {"oficial": "Burgos", "castellano": "Burgos"},
+      "poblacion": 177402,
+      "puesto": 1
+    },
+    {
+      "id": "09219",
+      "nombre": {"oficial": "Miranda de Ebro", "castellano": "Miranda de Ebro"},
+      "poblacion": 36622,
+      "puesto": 2
+    },
+    {
+      "id": "09358",
+      "nombre": {"oficial": "Santo Domingo de Silos", "castellano": "Santo Domingo de Silos"},
+      "poblacion": 251,
+      "puesto": 104,
+      "motivo": "su monasterio es famoso por su claustro románico y por el canto gregoriano de sus monjes"
+    },
+    {
+      "id": "10037",
+      "nombre": {"oficial": "Cáceres", "castellano": "Cáceres"},
+      "poblacion": 96651,
+      "puesto": 1
+    },
+    {
+      "id": "10087",
+      "nombre": {"oficial": "Guadalupe", "castellano": "Guadalupe"},
+      "poblacion": 1722,
+      "puesto": 35,
+      "motivo": "su monasterio, Patrimonio de la Humanidad, fue uno de los más importantes de España"
+    },
+    {
+      "id": "10131",
+      "nombre": {"oficial": "Navalmoral de la Mata", "castellano": "Navalmoral de la Mata"},
+      "poblacion": 17352,
+      "puesto": 3
+    },
+    {
+      "id": "10148",
+      "nombre": {"oficial": "Plasencia", "castellano": "Plasencia"},
+      "poblacion": 40132,
+      "puesto": 2
+    },
+    {
+      "id": "10195",
+      "nombre": {"oficial": "Trujillo", "castellano": "Trujillo"},
+      "poblacion": 8611,
+      "puesto": 6,
+      "motivo": "es la ciudad natal de Francisco Pizarro, el conquistador de Perú"
+    },
+    {
+      "id": "11004",
+      "nombre": {"oficial": "Algeciras", "castellano": "Algeciras"},
+      "poblacion": 126589,
+      "puesto": 2
+    },
+    {
+      "id": "11006",
+      "nombre": {"oficial": "Arcos de la Frontera", "castellano": "Arcos de la Frontera"},
+      "poblacion": 31267,
+      "puesto": 11,
+      "motivo": "es uno de los pueblos blancos más famosos de Andalucía, sobre una gran peña"
+    },
+    {
+      "id": "11012",
+      "nombre": {"oficial": "Cádiz", "castellano": "Cádiz"},
+      "poblacion": 109950,
+      "puesto": 3
+    },
+    {
+      "id": "11020",
+      "nombre": {"oficial": "Jerez de la Frontera", "castellano": "Jerez de la Frontera"},
+      "poblacion": 213634,
+      "puesto": 1
+    },
+    {
+      "id": "11032",
+      "nombre": {"oficial": "Sanlúcar de Barrameda", "castellano": "Sanlúcar de Barrameda"},
+      "poblacion": 70012,
+      "puesto": 7,
+      "motivo": "de su puerto salió en 1519 la expedición de Magallanes y Elcano, que dio la primera vuelta al mundo"
+    },
+    {
+      "id": "11035",
+      "nombre": {"oficial": "Tarifa", "castellano": "Tarifa"},
+      "poblacion": 18613,
+      "puesto": 17,
+      "motivo": "es el punto más al sur de la península ibérica, frente a África"
+    },
+    {
+      "id": "12032",
+      "nombre": {"oficial": "Borriana/Burriana", "castellano": "Burriana"},
+      "poblacion": 37915,
+      "puesto": 3
+    },
+    {
+      "id": "12040",
+      "nombre": {"oficial": "Castelló de la Plana/Castellón de la Plana", "castellano": "Castellón de la Plana"},
+      "poblacion": 183711,
+      "puesto": 1
+    },
+    {
+      "id": "12080",
+      "nombre": {"oficial": "Morella", "castellano": "Morella"},
+      "poblacion": 2501,
+      "puesto": 28,
+      "motivo": "es una villa medieval amurallada, coronada por un castillo"
+    },
+    {
+      "id": "12089",
+      "nombre": {"oficial": "Peníscola/Peñíscola", "castellano": "Peñíscola"},
+      "poblacion": 8774,
+      "puesto": 14,
+      "motivo": "su castillo, sobre una roca junto al mar, fue la residencia del papa Luna"
+    },
+    {
+      "id": "12135",
+      "nombre": {"oficial": "Vila-real", "castellano": "Villarreal"},
+      "poblacion": 53623,
+      "puesto": 2
+    },
+    {
+      "id": "13013",
+      "nombre": {"oficial": "Almagro", "castellano": "Almagro"},
+      "poblacion": 9190,
+      "puesto": 14,
+      "motivo": "conserva un corral de comedias del siglo XVII que todavía se usa, y celebra un festival de teatro clásico"
+    },
+    {
+      "id": "13034",
+      "nombre": {"oficial": "Ciudad Real", "castellano": "Ciudad Real"},
+      "poblacion": 76217,
+      "puesto": 1
+    },
+    {
+      "id": "13071",
+      "nombre": {"oficial": "Puertollano", "castellano": "Puertollano"},
+      "poblacion": 45565,
+      "puesto": 2
+    },
+    {
+      "id": "13082",
+      "nombre": {"oficial": "Tomelloso", "castellano": "Tomelloso"},
+      "poblacion": 37060,
+      "puesto": 3
+    },
+    {
+      "id": "13087",
+      "nombre": {"oficial": "Valdepeñas", "castellano": "Valdepeñas"},
+      "poblacion": 30782,
+      "puesto": 5,
+      "motivo": "da nombre a un vino con denominación de origen propia"
+    },
+    {
+      "id": "14021",
+      "nombre": {"oficial": "Córdoba", "castellano": "Córdoba"},
+      "poblacion": 323262,
+      "puesto": 1
+    },
+    {
+      "id": "14038",
+      "nombre": {"oficial": "Lucena", "castellano": "Lucena"},
+      "poblacion": 43408,
+      "puesto": 2
+    },
+    {
+      "id": "14056",
+      "nombre": {"oficial": "Puente Genil", "castellano": "Puente Genil"},
+      "poblacion": 29963,
+      "puesto": 3
+    },
+    {
+      "id": "15009",
+      "nombre": {"oficial": "Betanzos", "castellano": "Betanzos"},
+      "poblacion": 13533,
+      "puesto": 16,
+      "motivo": "fue una de las siete capitales del antiguo reino de Galicia"
+    },
+    {
+      "id": "15030",
+      "nombre": {"oficial": "A Coruña", "castellano": "La Coruña"},
+      "poblacion": 251543,
+      "puesto": 1
+    },
+    {
+      "id": "15036",
+      "nombre": {"oficial": "Ferrol", "castellano": "Ferrol"},
+      "poblacion": 64367,
+      "puesto": 3
+    },
+    {
+      "id": "15037",
+      "nombre": {"oficial": "Fisterra", "castellano": "Finisterre"},
+      "poblacion": 4666,
+      "puesto": 53,
+      "motivo": "su cabo se consideraba en la Antigüedad el fin del mundo, y es el final de muchos caminos de Santiago"
+    },
+    {
+      "id": "15078",
+      "nombre": {"oficial": "Santiago de Compostela", "castellano": "Santiago de Compostela"},
+      "poblacion": 100965,
+      "puesto": 2
+    },
+    {
+      "id": "16078",
+      "nombre": {"oficial": "Cuenca", "castellano": "Cuenca"},
+      "poblacion": 53600,
+      "puesto": 1
+    },
+    {
+      "id": "16175",
+      "nombre": {"oficial": "Quintanar del Rey", "castellano": "Quintanar del Rey"},
+      "poblacion": 7508,
+      "puesto": 3
+    },
+    {
+      "id": "16203",
+      "nombre": {"oficial": "Tarancón", "castellano": "Tarancón"},
+      "poblacion": 16748,
+      "puesto": 2
+    },
+    {
+      "id": "17032",
+      "nombre": {"oficial": "Cadaqués", "castellano": "Cadaqués"},
+      "poblacion": 2918,
+      "puesto": 52,
+      "motivo": "es un pueblo de pescadores de la Costa Brava muy ligado al pintor Salvador Dalí"
+    },
+    {
+      "id": "17066",
+      "nombre": {"oficial": "Figueres", "castellano": "Figueras"},
+      "poblacion": 49689,
+      "puesto": 2
+    },
+    {
+      "id": "17079",
+      "nombre": {"oficial": "Girona", "castellano": "Gerona"},
+      "poblacion": 108666,
+      "puesto": 1
+    },
+    {
+      "id": "17095",
+      "nombre": {"oficial": "Lloret de Mar", "castellano": "Lloret de Mar"},
+      "poblacion": 43000,
+      "puesto": 3
+    },
+    {
+      "id": "17147",
+      "nombre": {"oficial": "Ripoll", "castellano": "Ripoll"},
+      "poblacion": 10665,
+      "puesto": 19,
+      "motivo": "su monasterio de Santa María se considera la cuna de Cataluña"
+    },
+    {
+      "id": "18017",
+      "nombre": {"oficial": "Almuñécar", "castellano": "Almuñécar"},
+      "poblacion": 27544,
+      "puesto": 3
+    },
+    {
+      "id": "18087",
+      "nombre": {"oficial": "Granada", "castellano": "Granada"},
+      "poblacion": 233975,
+      "puesto": 1
+    },
+    {
+      "id": "18089",
+      "nombre": {"oficial": "Guadix", "castellano": "Guadix"},
+      "poblacion": 18881,
+      "puesto": 12,
+      "motivo": "tiene un barrio entero de casas cueva"
+    },
+    {
+      "id": "18140",
+      "nombre": {"oficial": "Motril", "castellano": "Motril"},
+      "poblacion": 59862,
+      "puesto": 2
+    },
+    {
+      "id": "18175",
+      "nombre": {"oficial": "Santa Fe", "castellano": "Santa Fe"},
+      "poblacion": 15494,
+      "puesto": 14,
+      "motivo": "en ella se firmaron en 1492 las Capitulaciones de Santa Fe, el acuerdo entre los Reyes Católicos y Colón"
+    },
+    {
+      "id": "19024",
+      "nombre": {"oficial": "Alovera", "castellano": "Alovera"},
+      "poblacion": 14526,
+      "puesto": 3
+    },
+    {
+      "id": "19046",
+      "nombre": {"oficial": "Azuqueca de Henares", "castellano": "Azuqueca de Henares"},
+      "poblacion": 35924,
+      "puesto": 2
+    },
+    {
+      "id": "19130",
+      "nombre": {"oficial": "Guadalajara", "castellano": "Guadalajara"},
+      "poblacion": 92834,
+      "puesto": 1
+    },
+    {
+      "id": "19257",
+      "nombre": {"oficial": "Sigüenza", "castellano": "Sigüenza"},
+      "poblacion": 4911,
+      "puesto": 11,
+      "motivo": "es una ciudad medieval con una gran catedral y un castillo"
+    },
+    {
+      "id": "20030",
+      "nombre": {"oficial": "Eibar", "castellano": "Eibar"},
+      "poblacion": 27484,
+      "puesto": 4,
+      "motivo": "es una ciudad industrial, famosa desde hace siglos por sus fábricas de armas, y después de bicicletas"
+    },
+    {
+      "id": "20036",
+      "nombre": {"oficial": "Hondarribia", "castellano": "Fuenterrabía"},
+      "poblacion": 16788,
+      "puesto": 10,
+      "motivo": "es una villa amurallada junto a la frontera con Francia, en la desembocadura del Bidasoa"
+    },
+    {
+      "id": "20045",
+      "nombre": {"oficial": "Irun", "castellano": "Irún"},
+      "poblacion": 63835,
+      "puesto": 2
+    },
+    {
+      "id": "20067",
+      "nombre": {"oficial": "Errenteria", "castellano": "Rentería"},
+      "poblacion": 39363,
+      "puesto": 3
+    },
+    {
+      "id": "20069",
+      "nombre": {"oficial": "Donostia/San Sebastián", "castellano": "San Sebastián"},
+      "poblacion": 189866,
+      "puesto": 1
+    },
+    {
+      "id": "20079",
+      "nombre": {"oficial": "Zarautz", "castellano": "Zarauz"},
+      "poblacion": 23496,
+      "puesto": 5,
+      "motivo": "tiene una de las playas más largas de la costa vasca, muy famosa por el surf"
+    },
+    {
+      "id": "21005",
+      "nombre": {"oficial": "Almonte", "castellano": "Almonte"},
+      "poblacion": 24864,
+      "puesto": 3
+    },
+    {
+      "id": "21041",
+      "nombre": {"oficial": "Huelva", "castellano": "Huelva"},
+      "poblacion": 143215,
+      "puesto": 1
+    },
+    {
+      "id": "21044",
+      "nombre": {"oficial": "Lepe", "castellano": "Lepe"},
+      "poblacion": 29677,
+      "puesto": 2
+    },
+    {
+      "id": "21050",
+      "nombre": {"oficial": "Moguer", "castellano": "Moguer"},
+      "poblacion": 24083,
+      "puesto": 4,
+      "motivo": "es la ciudad natal del poeta Juan Ramón Jiménez, premio Nobel y autor de «Platero y yo»"
+    },
+    {
+      "id": "21055",
+      "nombre": {"oficial": "Palos de la Frontera", "castellano": "Palos de la Frontera"},
+      "poblacion": 12938,
+      "puesto": 12,
+      "motivo": "de su puerto salió Colón en 1492, en su primer viaje a América"
+    },
+    {
+      "id": "22048",
+      "nombre": {"oficial": "Barbastro", "castellano": "Barbastro"},
+      "poblacion": 17807,
+      "puesto": 3
+    },
+    {
+      "id": "22125",
+      "nombre": {"oficial": "Huesca", "castellano": "Huesca"},
+      "poblacion": 55454,
+      "puesto": 1
+    },
+    {
+      "id": "22130",
+      "nombre": {"oficial": "Jaca", "castellano": "Jaca"},
+      "poblacion": 14024,
+      "puesto": 5,
+      "motivo": "fue la primera capital del reino de Aragón"
+    },
+    {
+      "id": "22158",
+      "nombre": {"oficial": "Monzón", "castellano": "Monzón"},
+      "poblacion": 18525,
+      "puesto": 2
+    },
+    {
+      "id": "23005",
+      "nombre": {"oficial": "Andújar", "castellano": "Andújar"},
+      "poblacion": 35610,
+      "puesto": 3
+    },
+    {
+      "id": "23009",
+      "nombre": {"oficial": "Baeza", "castellano": "Baeza"},
+      "poblacion": 15575,
+      "puesto": 8,
+      "motivo": "sus monumentos renacentistas son Patrimonio de la Humanidad, junto con los de Úbeda"
+    },
+    {
+      "id": "23050",
+      "nombre": {"oficial": "Jaén", "castellano": "Jaén"},
+      "poblacion": 112235,
+      "puesto": 1
+    },
+    {
+      "id": "23055",
+      "nombre": {"oficial": "Linares", "castellano": "Linares"},
+      "poblacion": 55633,
+      "puesto": 2
+    },
+    {
+      "id": "23092",
+      "nombre": {"oficial": "Úbeda", "castellano": "Úbeda"},
+      "poblacion": 33588,
+      "puesto": 4,
+      "motivo": "sus monumentos renacentistas son Patrimonio de la Humanidad, junto con los de Baeza"
+    },
+    {
+      "id": "24008",
+      "nombre": {"oficial": "Astorga", "castellano": "Astorga"},
+      "poblacion": 10305,
+      "puesto": 5,
+      "motivo": "es una parada importante del Camino de Santiago, con un palacio de Gaudí"
+    },
+    {
+      "id": "24089",
+      "nombre": {"oficial": "León", "castellano": "León"},
+      "poblacion": 123446,
+      "puesto": 1
+    },
+    {
+      "id": "24115",
+      "nombre": {"oficial": "Ponferrada", "castellano": "Ponferrada"},
+      "poblacion": 63186,
+      "puesto": 2
+    },
+    {
+      "id": "24142",
+      "nombre": {"oficial": "San Andrés del Rabanedo", "castellano": "San Andrés del Rabanedo"},
+      "poblacion": 29944,
+      "puesto": 3
+    },
+    {
+      "id": "25040",
+      "nombre": {"oficial": "Balaguer", "castellano": "Balaguer"},
+      "poblacion": 17729,
+      "puesto": 3
+    },
+    {
+      "id": "25120",
+      "nombre": {"oficial": "Lleida", "castellano": "Lérida"},
+      "poblacion": 146266,
+      "puesto": 1
+    },
+    {
+      "id": "25203",
+      "nombre": {"oficial": "La Seu d'Urgell", "castellano": "Seo de Urgel"},
+      "poblacion": 13009,
+      "puesto": 5,
+      "motivo": "su obispo es uno de los dos copríncipes de Andorra"
+    },
+    {
+      "id": "25217",
+      "nombre": {"oficial": "Tàrrega", "castellano": "Tárrega"},
+      "poblacion": 19057,
+      "puesto": 2
+    },
+    {
+      "id": "25243",
+      "nombre": {"oficial": "Vielha e Mijaran", "castellano": "Viella y Medio Arán"},
+      "poblacion": 5865,
+      "puesto": 14,
+      "motivo": "es la capital del Valle de Arán, donde se habla aranés"
+    },
+    {
+      "id": "26018",
+      "nombre": {"oficial": "Arnedo", "castellano": "Arnedo"},
+      "poblacion": 15140,
+      "puesto": 3
+    },
+    {
+      "id": "26036",
+      "nombre": {"oficial": "Calahorra", "castellano": "Calahorra"},
+      "poblacion": 25367,
+      "puesto": 2
+    },
+    {
+      "id": "26071",
+      "nombre": {"oficial": "Haro", "castellano": "Haro"},
+      "poblacion": 12167,
+      "puesto": 4,
+      "motivo": "sus bodegas de vino de Rioja y su Batalla del Vino son famosas"
+    },
+    {
+      "id": "26089",
+      "nombre": {"oficial": "Logroño", "castellano": "Logroño"},
+      "poblacion": 152150,
+      "puesto": 1
+    },
+    {
+      "id": "26130",
+      "nombre": {"oficial": "San Millán de la Cogolla", "castellano": "San Millán de la Cogolla"},
+      "poblacion": 214,
+      "puesto": 72,
+      "motivo": "en sus monasterios se escribieron algunas de las primeras palabras conocidas en castellano"
+    },
+    {
+      "id": "26138",
+      "nombre": {"oficial": "Santo Domingo de la Calzada", "castellano": "Santo Domingo de la Calzada"},
+      "poblacion": 6441,
+      "puesto": 9,
+      "motivo": "es una parada del Camino de Santiago, famosa por el gallo y la gallina vivos de su catedral, que recuerdan una leyenda"
+    },
+    {
+      "id": "27028",
+      "nombre": {"oficial": "Lugo", "castellano": "Lugo"},
+      "poblacion": 100143,
+      "puesto": 1
+    },
+    {
+      "id": "27031",
+      "nombre": {"oficial": "Monforte de Lemos", "castellano": "Monforte de Lemos"},
+      "poblacion": 18933,
+      "puesto": 2
+    },
+    {
+      "id": "27051",
+      "nombre": {"oficial": "Ribadeo", "castellano": "Ribadeo"},
+      "poblacion": 10022,
+      "puesto": 7,
+      "motivo": "en su costa está la playa de las Catedrales, con grandes arcos de roca"
+    },
+    {
+      "id": "27057",
+      "nombre": {"oficial": "Sarria", "castellano": "Sarria"},
+      "poblacion": 13726,
+      "puesto": 5,
+      "motivo": "es el punto de partida más habitual del Camino de Santiago, a algo más de 100 kilómetros de Santiago"
+    },
+    {
+      "id": "27066",
+      "nombre": {"oficial": "Viveiro", "castellano": "Vivero"},
+      "poblacion": 15120,
+      "puesto": 3
+    },
+    {
+      "id": "28005",
+      "nombre": {"oficial": "Alcalá de Henares", "castellano": "Alcalá de Henares"},
+      "poblacion": 203208,
+      "puesto": 3
+    },
+    {
+      "id": "28013",
+      "nombre": {"oficial": "Aranjuez", "castellano": "Aranjuez"},
+      "poblacion": 63040,
+      "puesto": 20,
+      "motivo": "tiene un palacio real con grandes jardines, Patrimonio de la Humanidad"
+    },
+    {
+      "id": "28052",
+      "nombre": {"oficial": "Chinchón", "castellano": "Chinchón"},
+      "poblacion": 5800,
+      "puesto": 80,
+      "motivo": "tiene una plaza mayor rodeada de balcones de madera, de las más bonitas de España"
+    },
+    {
+      "id": "28079",
+      "nombre": {"oficial": "Madrid", "castellano": "Madrid"},
+      "poblacion": 3506730,
+      "puesto": 1
+    },
+    {
+      "id": "28092",
+      "nombre": {"oficial": "Móstoles", "castellano": "Móstoles"},
+      "poblacion": 214817,
+      "puesto": 2
+    },
+    {
+      "id": "28131",
+      "nombre": {"oficial": "San Lorenzo de El Escorial", "castellano": "San Lorenzo de El Escorial"},
+      "poblacion": 18872,
+      "puesto": 38,
+      "motivo": "tiene el monasterio de El Escorial, que mandó construir Felipe II"
+    },
+    {
+      "id": "29015",
+      "nombre": {"oficial": "Antequera", "castellano": "Antequera"},
+      "poblacion": 41849,
+      "puesto": 11,
+      "motivo": "sus dólmenes, de la Prehistoria, son Patrimonio de la Humanidad"
+    },
+    {
+      "id": "29067",
+      "nombre": {"oficial": "Málaga", "castellano": "Málaga"},
+      "poblacion": 599063,
+      "puesto": 1
+    },
+    {
+      "id": "29069",
+      "nombre": {"oficial": "Marbella", "castellano": "Marbella"},
+      "poblacion": 159786,
+      "puesto": 2
+    },
+    {
+      "id": "29070",
+      "nombre": {"oficial": "Mijas", "castellano": "Mijas"},
+      "poblacion": 95104,
+      "puesto": 3
+    },
+    {
+      "id": "29084",
+      "nombre": {"oficial": "Ronda", "castellano": "Ronda"},
+      "poblacion": 33671,
+      "puesto": 12,
+      "motivo": "su Puente Nuevo sobre el tajo del río Guadalevín y su plaza de toros están entre los lugares más visitados de Andalucía"
+    },
+    {
+      "id": "29901",
+      "nombre": {"oficial": "Torremolinos", "castellano": "Torremolinos"},
+      "poblacion": 71329,
+      "puesto": 8,
+      "motivo": "fue uno de los primeros lugares de la Costa del Sol que se hicieron famosos por el turismo"
+    },
+    {
+      "id": "30015",
+      "nombre": {"oficial": "Caravaca de la Cruz", "castellano": "Caravaca de la Cruz"},
+      "poblacion": 26126,
+      "puesto": 15,
+      "motivo": "es una de las ciudades santas del catolicismo, por la reliquia de la Vera Cruz"
+    },
+    {
+      "id": "30016",
+      "nombre": {"oficial": "Cartagena", "castellano": "Cartagena"},
+      "poblacion": 220704,
+      "puesto": 2
+    },
+    {
+      "id": "30024",
+      "nombre": {"oficial": "Lorca", "castellano": "Lorca"},
+      "poblacion": 98969,
+      "puesto": 3
+    },
+    {
+      "id": "30030",
+      "nombre": {"oficial": "Murcia", "castellano": "Murcia"},
+      "poblacion": 479405,
+      "puesto": 1
+    },
+    {
+      "id": "31086",
+      "nombre": {"oficial": "Valle de Egüés/Eguesibar", "castellano": "Valle de Egüés"},
+      "poblacion": 22825,
+      "puesto": 3
+    },
+    {
+      "id": "31097",
+      "nombre": {"oficial": "Estella-Lizarra", "castellano": "Estella"},
+      "poblacion": 14317,
+      "puesto": 7,
+      "motivo": "es una ciudad medieval del Camino de Santiago"
+    },
+    {
+      "id": "31191",
+      "nombre": {"oficial": "Olite/Erriberri", "castellano": "Olite"},
+      "poblacion": 4069,
+      "puesto": 30,
+      "motivo": "tiene un gran palacio real, residencia de los reyes de Navarra en la Edad Media"
+    },
+    {
+      "id": "31201",
+      "nombre": {"oficial": "Pamplona/Iruña", "castellano": "Pamplona"},
+      "poblacion": 209094,
+      "puesto": 1
+    },
+    {
+      "id": "31211",
+      "nombre": {"oficial": "Orreaga/Roncesvalles", "castellano": "Roncesvalles"},
+      "poblacion": 25,
+      "puesto": 271,
+      "motivo": "es la primera parada del Camino de Santiago en España, y allí fue la batalla de Roncesvalles, en el año 778"
+    },
+    {
+      "id": "31232",
+      "nombre": {"oficial": "Tudela", "castellano": "Tudela"},
+      "poblacion": 38903,
+      "puesto": 2
+    },
+    {
+      "id": "32019",
+      "nombre": {"oficial": "O Carballiño", "castellano": "Carballino"},
+      "poblacion": 14249,
+      "puesto": 2
+    },
+    {
+      "id": "32054",
+      "nombre": {"oficial": "Ourense", "castellano": "Orense"},
+      "poblacion": 105769,
+      "puesto": 1
+    },
+    {
+      "id": "32069",
+      "nombre": {"oficial": "Ribadavia", "castellano": "Ribadavia"},
+      "poblacion": 4895,
+      "puesto": 11,
+      "motivo": "es la capital del vino Ribeiro y conserva su antiguo barrio judío"
+    },
+    {
+      "id": "32085",
+      "nombre": {"oficial": "Verín", "castellano": "Verín"},
+      "poblacion": 13956,
+      "puesto": 3
+    },
+    {
+      "id": "33004",
+      "nombre": {"oficial": "Avilés", "castellano": "Avilés"},
+      "poblacion": 75517,
+      "puesto": 3
+    },
+    {
+      "id": "33012",
+      "nombre": {"oficial": "Cangas de Onís", "castellano": "Cangas de Onís"},
+      "poblacion": 6344,
+      "puesto": 25,
+      "motivo": "fue la primera capital del reino de Asturias, y en su término está Covadonga"
+    },
+    {
+      "id": "33024",
+      "nombre": {"oficial": "Gijón", "castellano": "Gijón"},
+      "poblacion": 269894,
+      "puesto": 1
+    },
+    {
+      "id": "33036",
+      "nombre": {"oficial": "Llanes", "castellano": "Llanes"},
+      "poblacion": 13486,
+      "puesto": 12,
+      "motivo": "es una villa marinera con playas y acantilados muy visitados"
+    },
+    {
+      "id": "33044",
+      "nombre": {"oficial": "Oviedo", "castellano": "Oviedo"},
+      "poblacion": 223968,
+      "puesto": 2
+    },
+    {
+      "id": "34004",
+      "nombre": {"oficial": "Aguilar de Campoo", "castellano": "Aguilar de Campoo"},
+      "poblacion": 6916,
+      "puesto": 2
+    },
+    {
+      "id": "34074",
+      "nombre": {"oficial": "Frómista", "castellano": "Frómista"},
+      "poblacion": 727,
+      "puesto": 26,
+      "motivo": "su iglesia de San Martín es uno de los ejemplos más famosos del románico en España"
+    },
+    {
+      "id": "34120",
+      "nombre": {"oficial": "Palencia", "castellano": "Palencia"},
+      "poblacion": 77466,
+      "puesto": 1
+    },
+    {
+      "id": "34225",
+      "nombre": {"oficial": "Villamuriel de Cerrato", "castellano": "Villamuriel de Cerrato"},
+      "poblacion": 6501,
+      "puesto": 3
+    },
+    {
+      "id": "35004",
+      "nombre": {"oficial": "Arrecife", "castellano": "Arrecife"},
+      "poblacion": 70811,
+      "puesto": 4,
+      "motivo": "es la capital de Lanzarote"
+    },
+    {
+      "id": "35016",
+      "nombre": {"oficial": "Las Palmas de Gran Canaria", "castellano": "Las Palmas de Gran Canaria"},
+      "poblacion": 381868,
+      "puesto": 1
+    },
+    {
+      "id": "35017",
+      "nombre": {"oficial": "Puerto del Rosario", "castellano": "Puerto del Rosario"},
+      "poblacion": 46150,
+      "puesto": 6,
+      "motivo": "es la capital de Fuerteventura"
+    },
+    {
+      "id": "35019",
+      "nombre": {"oficial": "San Bartolomé de Tirajana", "castellano": "San Bartolomé de Tirajana"},
+      "poblacion": 54291,
+      "puesto": 5,
+      "motivo": "en su término están Maspalomas y Playa del Inglés, de los lugares más turísticos de Canarias"
+    },
+    {
+      "id": "35022",
+      "nombre": {"oficial": "Santa Lucía de Tirajana", "castellano": "Santa Lucía de Tirajana"},
+      "poblacion": 78584,
+      "puesto": 3
+    },
+    {
+      "id": "35026",
+      "nombre": {"oficial": "Telde", "castellano": "Telde"},
+      "poblacion": 104168,
+      "puesto": 2
+    },
+    {
+      "id": "36003",
+      "nombre": {"oficial": "Baiona", "castellano": "Bayona"},
+      "poblacion": 12361,
+      "puesto": 20,
+      "motivo": "a su puerto llegó en 1493 la carabela Pinta, con la primera noticia en Europa del viaje de Colón"
+    },
+    {
+      "id": "36038",
+      "nombre": {"oficial": "Pontevedra", "castellano": "Pontevedra"},
+      "poblacion": 83316,
+      "puesto": 2
+    },
+    {
+      "id": "36051",
+      "nombre": {"oficial": "Sanxenxo", "castellano": "Sangenjo"},
+      "poblacion": 18016,
+      "puesto": 13,
+      "motivo": "es uno de los destinos de playa más visitados de Galicia"
+    },
+    {
+      "id": "36055",
+      "nombre": {"oficial": "Tui", "castellano": "Tuy"},
+      "poblacion": 17468,
+      "puesto": 14,
+      "motivo": "es una ciudad fronteriza con Portugal, con una catedral fortificada junto al río Miño"
+    },
+    {
+      "id": "36057",
+      "nombre": {"oficial": "Vigo", "castellano": "Vigo"},
+      "poblacion": 294489,
+      "puesto": 1
+    },
+    {
+      "id": "36060",
+      "nombre": {"oficial": "Vilagarcía de Arousa", "castellano": "Villagarcía de Arosa"},
+      "poblacion": 37888,
+      "puesto": 3
+    },
+    {
+      "id": "37008",
+      "nombre": {"oficial": "Alba de Tormes", "castellano": "Alba de Tormes"},
+      "poblacion": 5099,
+      "puesto": 10,
+      "motivo": "en ella murió y está enterrada Santa Teresa de Jesús"
+    },
+    {
+      "id": "37046",
+      "nombre": {"oficial": "Béjar", "castellano": "Béjar"},
+      "poblacion": 11993,
+      "puesto": 3
+    },
+    {
+      "id": "37107",
+      "nombre": {"oficial": "Ciudad Rodrigo", "castellano": "Ciudad Rodrigo"},
+      "poblacion": 11750,
+      "puesto": 4,
+      "motivo": "es una ciudad amurallada cerca de Portugal, famosa por su Carnaval del Toro"
+    },
+    {
+      "id": "37274",
+      "nombre": {"oficial": "Salamanca", "castellano": "Salamanca"},
+      "poblacion": 146110,
+      "puesto": 1
+    },
+    {
+      "id": "37294",
+      "nombre": {"oficial": "Santa Marta de Tormes", "castellano": "Santa Marta de Tormes"},
+      "poblacion": 14976,
+      "puesto": 2
+    },
+    {
+      "id": "38006",
+      "nombre": {"oficial": "Arona", "castellano": "Arona"},
+      "poblacion": 87793,
+      "puesto": 3
+    },
+    {
+      "id": "38023",
+      "nombre": {"oficial": "San Cristóbal de La Laguna", "castellano": "San Cristóbal de La Laguna"},
+      "poblacion": 161108,
+      "puesto": 2
+    },
+    {
+      "id": "38028",
+      "nombre": {"oficial": "Puerto de la Cruz", "castellano": "Puerto de la Cruz"},
+      "poblacion": 31137,
+      "puesto": 8,
+      "motivo": "fue uno de los primeros destinos turísticos de Canarias"
+    },
+    {
+      "id": "38036",
+      "nombre": {"oficial": "San Sebastián de la Gomera", "castellano": "San Sebastián de la Gomera"},
+      "poblacion": 9574,
+      "puesto": 21,
+      "motivo": "es la capital de La Gomera, y allí hizo Colón su última escala antes de cruzar el Atlántico en 1492"
+    },
+    {
+      "id": "38037",
+      "nombre": {"oficial": "Santa Cruz de la Palma", "castellano": "Santa Cruz de la Palma"},
+      "poblacion": 15690,
+      "puesto": 17,
+      "motivo": "es la capital de la isla de La Palma"
+    },
+    {
+      "id": "38038",
+      "nombre": {"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"},
+      "poblacion": 211957,
+      "puesto": 1
+    },
+    {
+      "id": "39020",
+      "nombre": {"oficial": "Castro-Urdiales", "castellano": "Castro-Urdiales"},
+      "poblacion": 33450,
+      "puesto": 3
+    },
+    {
+      "id": "39024",
+      "nombre": {"oficial": "Comillas", "castellano": "Comillas"},
+      "poblacion": 2075,
+      "puesto": 47,
+      "motivo": "tiene El Capricho, una de las primeras obras de Gaudí"
+    },
+    {
+      "id": "39035",
+      "nombre": {"oficial": "Laredo", "castellano": "Laredo"},
+      "poblacion": 10698,
+      "puesto": 10,
+      "motivo": "tiene una playa muy larga y celebra la Batalla de Flores"
+    },
+    {
+      "id": "39075",
+      "nombre": {"oficial": "Santander", "castellano": "Santander"},
+      "poblacion": 175425,
+      "puesto": 1
+    },
+    {
+      "id": "39076",
+      "nombre": {"oficial": "Santillana del Mar", "castellano": "Santillana del Mar"},
+      "poblacion": 4189,
+      "puesto": 26,
+      "motivo": "es una villa medieval muy bien conservada, y en su término está la cueva de Altamira"
+    },
+    {
+      "id": "39087",
+      "nombre": {"oficial": "Torrelavega", "castellano": "Torrelavega"},
+      "poblacion": 51796,
+      "puesto": 2
+    },
+    {
+      "id": "40063",
+      "nombre": {"oficial": "Cuéllar", "castellano": "Cuéllar"},
+      "poblacion": 9527,
+      "puesto": 3
+    },
+    {
+      "id": "40076",
+      "nombre": {"oficial": "El Espinar", "castellano": "El Espinar"},
+      "poblacion": 10409,
+      "puesto": 2
+    },
+    {
+      "id": "40181",
+      "nombre": {"oficial": "Real Sitio de San Ildefonso", "castellano": "Real Sitio de San Ildefonso"},
+      "poblacion": 5217,
+      "puesto": 5,
+      "motivo": "en él está el palacio de La Granja, con sus jardines y fuentes, que mandó construir Felipe V"
+    },
+    {
+      "id": "40194",
+      "nombre": {"oficial": "Segovia", "castellano": "Segovia"},
+      "poblacion": 52375,
+      "puesto": 1
+    },
+    {
+      "id": "40195",
+      "nombre": {"oficial": "Sepúlveda", "castellano": "Sepúlveda"},
+      "poblacion": 979,
+      "puesto": 27,
+      "motivo": "es una villa medieval junto a las hoces del río Duratón"
+    },
+    {
+      "id": "41004",
+      "nombre": {"oficial": "Alcalá de Guadaíra", "castellano": "Alcalá de Guadaíra"},
+      "poblacion": 77474,
+      "puesto": 3
+    },
+    {
+      "id": "41024",
+      "nombre": {"oficial": "Carmona", "castellano": "Carmona"},
+      "poblacion": 30240,
+      "puesto": 10,
+      "motivo": "conserva murallas, puertas y una gran necrópolis de la época romana"
+    },
+    {
+      "id": "41038",
+      "nombre": {"oficial": "Dos Hermanas", "castellano": "Dos Hermanas"},
+      "poblacion": 142519,
+      "puesto": 2
+    },
+    {
+      "id": "41039",
+      "nombre": {"oficial": "Écija", "castellano": "Écija"},
+      "poblacion": 39659,
+      "puesto": 7,
+      "motivo": "la llaman «la ciudad de las torres» y «la sartén de Andalucía», por su calor"
+    },
+    {
+      "id": "41068",
+      "nombre": {"oficial": "Osuna", "castellano": "Osuna"},
+      "poblacion": 17396,
+      "puesto": 22,
+      "motivo": "tiene un gran conjunto monumental, con una universidad del siglo XVI"
+    },
+    {
+      "id": "41091",
+      "nombre": {"oficial": "Sevilla", "castellano": "Sevilla"},
+      "poblacion": 689423,
+      "puesto": 1
+    },
+    {
+      "id": "42020",
+      "nombre": {"oficial": "Almazán", "castellano": "Almazán"},
+      "poblacion": 5544,
+      "puesto": 2
+    },
+    {
+      "id": "42043",
+      "nombre": {"oficial": "Burgo de Osma-Ciudad de Osma", "castellano": "El Burgo de Osma"},
+      "poblacion": 5283,
+      "puesto": 3
+    },
+    {
+      "id": "42113",
+      "nombre": {"oficial": "Medinaceli", "castellano": "Medinaceli"},
+      "poblacion": 686,
+      "puesto": 17,
+      "motivo": "conserva un arco romano de tres vanos, el único de este tipo en España"
+    },
+    {
+      "id": "42173",
+      "nombre": {"oficial": "Soria", "castellano": "Soria"},
+      "poblacion": 41025,
+      "puesto": 1
+    },
+    {
+      "id": "43123",
+      "nombre": {"oficial": "Reus", "castellano": "Reus"},
+      "poblacion": 111601,
+      "puesto": 2
+    },
+    {
+      "id": "43148",
+      "nombre": {"oficial": "Tarragona", "castellano": "Tarragona"},
+      "poblacion": 143649,
+      "puesto": 1
+    },
+    {
+      "id": "43155",
+      "nombre": {"oficial": "Tortosa", "castellano": "Tortosa"},
+      "poblacion": 35997,
+      "puesto": 5,
+      "motivo": "fue una ciudad importante en época romana y musulmana, junto al río Ebro, cerca de su delta"
+    },
+    {
+      "id": "43163",
+      "nombre": {"oficial": "El Vendrell", "castellano": "El Vendrell"},
+      "poblacion": 41133,
+      "puesto": 3
+    },
+    {
+      "id": "43905",
+      "nombre": {"oficial": "Salou", "castellano": "Salou"},
+      "poblacion": 31491,
+      "puesto": 7,
+      "motivo": "es uno de los destinos de playa más visitados de Cataluña, junto al parque PortAventura"
+    },
+    {
+      "id": "44009",
+      "nombre": {"oficial": "Albarracín", "castellano": "Albarracín"},
+      "poblacion": 998,
+      "puesto": 18,
+      "motivo": "es uno de los pueblos más bonitos de España, con sus casas rojizas y su muralla"
+    },
+    {
+      "id": "44013",
+      "nombre": {"oficial": "Alcañiz", "castellano": "Alcañiz"},
+      "poblacion": 16505,
+      "puesto": 2
+    },
+    {
+      "id": "44025",
+      "nombre": {"oficial": "Andorra", "castellano": "Andorra"},
+      "poblacion": 7223,
+      "puesto": 3
+    },
+    {
+      "id": "44216",
+      "nombre": {"oficial": "Teruel", "castellano": "Teruel"},
+      "poblacion": 36655,
+      "puesto": 1
+    },
+    {
+      "id": "45053",
+      "nombre": {"oficial": "Consuegra", "castellano": "Consuegra"},
+      "poblacion": 9767,
+      "puesto": 14,
+      "motivo": "sus molinos de viento y su castillo recuerdan al Quijote"
+    },
+    {
+      "id": "45081",
+      "nombre": {"oficial": "Illescas", "castellano": "Illescas"},
+      "poblacion": 33301,
+      "puesto": 3
+    },
+    {
+      "id": "45165",
+      "nombre": {"oficial": "Talavera de la Reina", "castellano": "Talavera de la Reina"},
+      "poblacion": 83803,
+      "puesto": 2
+    },
+    {
+      "id": "45168",
+      "nombre": {"oficial": "Toledo", "castellano": "Toledo"},
+      "poblacion": 87216,
+      "puesto": 1
+    },
+    {
+      "id": "46131",
+      "nombre": {"oficial": "Gandia", "castellano": "Gandía"},
+      "poblacion": 83135,
+      "puesto": 3
+    },
+    {
+      "id": "46145",
+      "nombre": {"oficial": "Xàtiva", "castellano": "Játiva"},
+      "poblacion": 31008,
+      "puesto": 13,
+      "motivo": "es la ciudad de la familia Borja, de la que salieron dos papas"
+    },
+    {
+      "id": "46220",
+      "nombre": {"oficial": "Sagunt/Sagunto", "castellano": "Sagunto"},
+      "poblacion": 73031,
+      "puesto": 5,
+      "motivo": "en el año 219 a. C. resistió el asedio de Aníbal, que dio comienzo a la segunda guerra púnica"
+    },
+    {
+      "id": "46244",
+      "nombre": {"oficial": "Torrent", "castellano": "Torrente"},
+      "poblacion": 90928,
+      "puesto": 2
+    },
+    {
+      "id": "46250",
+      "nombre": {"oficial": "València", "castellano": "Valencia"},
+      "poblacion": 840792,
+      "puesto": 1
+    },
+    {
+      "id": "47010",
+      "nombre": {"oficial": "Arroyo de la Encomienda", "castellano": "Arroyo de la Encomienda"},
+      "poblacion": 22800,
+      "puesto": 3
+    },
+    {
+      "id": "47076",
+      "nombre": {"oficial": "Laguna de Duero", "castellano": "Laguna de Duero"},
+      "poblacion": 22965,
+      "puesto": 2
+    },
+    {
+      "id": "47085",
+      "nombre": {"oficial": "Medina del Campo", "castellano": "Medina del Campo"},
+      "poblacion": 20215,
+      "puesto": 4,
+      "motivo": "en ella murió Isabel la Católica en 1504, y tiene el castillo de la Mota"
+    },
+    {
+      "id": "47114",
+      "nombre": {"oficial": "Peñafiel", "castellano": "Peñafiel"},
+      "poblacion": 5143,
+      "puesto": 13,
+      "motivo": "su castillo, largo y estrecho como un barco, domina la Ribera del Duero"
+    },
+    {
+      "id": "47161",
+      "nombre": {"oficial": "Simancas", "castellano": "Simancas"},
+      "poblacion": 5533,
+      "puesto": 11,
+      "motivo": "en su castillo está el Archivo General de Simancas, uno de los archivos históricos más importantes de España"
+    },
+    {
+      "id": "47165",
+      "nombre": {"oficial": "Tordesillas", "castellano": "Tordesillas"},
+      "poblacion": 8773,
+      "puesto": 7,
+      "motivo": "en ella se firmó en 1494 el Tratado de Tordesillas, que repartió el Nuevo Mundo entre Castilla y Portugal"
+    },
+    {
+      "id": "47186",
+      "nombre": {"oficial": "Valladolid", "castellano": "Valladolid"},
+      "poblacion": 302614,
+      "puesto": 1
+    },
+    {
+      "id": "48013",
+      "nombre": {"oficial": "Barakaldo", "castellano": "Baracaldo"},
+      "poblacion": 102986,
+      "puesto": 2
+    },
+    {
+      "id": "48020",
+      "nombre": {"oficial": "Bilbao", "castellano": "Bilbao"},
+      "poblacion": 351124,
+      "puesto": 1
+    },
+    {
+      "id": "48044",
+      "nombre": {"oficial": "Getxo", "castellano": "Guecho"},
+      "poblacion": 75752,
+      "puesto": 3
+    },
+    {
+      "id": "48046",
+      "nombre": {"oficial": "Gernika-Lumo", "castellano": "Guernica"},
+      "poblacion": 17129,
+      "puesto": 14,
+      "motivo": "su árbol es el símbolo de las libertades tradicionales de Vizcaya, y fue bombardeada en 1937"
+    },
+    {
+      "id": "48078",
+      "nombre": {"oficial": "Portugalete", "castellano": "Portugalete"},
+      "poblacion": 44843,
+      "puesto": 5,
+      "motivo": "tiene el Puente de Vizcaya, el puente transbordador más antiguo del mundo, Patrimonio de la Humanidad"
+    },
+    {
+      "id": "49021",
+      "nombre": {"oficial": "Benavente", "castellano": "Benavente"},
+      "poblacion": 17309,
+      "puesto": 2
+    },
+    {
+      "id": "49166",
+      "nombre": {"oficial": "Puebla de Sanabria", "castellano": "Puebla de Sanabria"},
+      "poblacion": 1378,
+      "puesto": 9,
+      "motivo": "es una villa medieval con castillo, junto al lago de Sanabria"
+    },
+    {
+      "id": "49219",
+      "nombre": {"oficial": "Toro", "castellano": "Toro"},
+      "poblacion": 8336,
+      "puesto": 3
+    },
+    {
+      "id": "49275",
+      "nombre": {"oficial": "Zamora", "castellano": "Zamora"},
+      "poblacion": 59815,
+      "puesto": 1
+    },
+    {
+      "id": "50067",
+      "nombre": {"oficial": "Calatayud", "castellano": "Calatayud"},
+      "poblacion": 20158,
+      "puesto": 2
+    },
+    {
+      "id": "50074",
+      "nombre": {"oficial": "Caspe", "castellano": "Caspe"},
+      "poblacion": 10365,
+      "puesto": 7,
+      "motivo": "allí se firmó en 1412 el Compromiso de Caspe, que eligió al rey de Aragón"
+    },
+    {
+      "id": "50114",
+      "nombre": {"oficial": "Fuendetodos", "castellano": "Fuendetodos"},
+      "poblacion": 130,
+      "puesto": 183,
+      "motivo": "es el pueblo natal del pintor Francisco de Goya"
+    },
+    {
+      "id": "50251",
+      "nombre": {"oficial": "Tarazona", "castellano": "Tarazona"},
+      "poblacion": 10873,
+      "puesto": 6,
+      "motivo": "es una ciudad monumental, con su catedral y su antiguo barrio judío, al pie del Moncayo"
+    },
+    {
+      "id": "50272",
+      "nombre": {"oficial": "Utebo", "castellano": "Utebo"},
+      "poblacion": 19116,
+      "puesto": 3
+    },
+    {
+      "id": "50297",
+      "nombre": {"oficial": "Zaragoza", "castellano": "Zaragoza"},
+      "poblacion": 693091,
+      "puesto": 1
+    },
+    {
+      "id": "51001",
+      "nombre": {"oficial": "Ceuta", "castellano": "Ceuta"},
+      "poblacion": 83595,
+      "puesto": 1
+    },
+    {
+      "id": "52001",
+      "nombre": {"oficial": "Melilla", "castellano": "Melilla"},
+      "poblacion": 86780,
+      "puesto": 1
+    }
+  ]
+}

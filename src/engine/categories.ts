@@ -1,5 +1,5 @@
 import type { Category } from "./types";
-import { regionalCapitalQuestions, provincialCapitalQuestions, flagQuestions, provincialFlagQuestions, divisionQuestions } from "./questions";
+import { regionalCapitalQuestions, provincialCapitalQuestions, flagQuestions, provincialFlagQuestions, divisionQuestions, municipioQuestions } from "./questions";
 
 /**
  * Categorías del juego, en el orden en que se muestran.
@@ -14,10 +14,10 @@ export const CATEGORIES: Category[] = [
   { id: "banderas", name: "Banderas",
     labels: { comunidad: "Banderas autonómicas", provincia: "Banderas de provincia" },
     questions: (style) => [...flagQuestions(style), ...provincialFlagQuestions(style)] },
-  // Comunidades: qué provincias tiene cada comunidad. Provincias (más adelante): qué ciudades tiene cada provincia.
+  // Comunidades: qué provincias tiene cada comunidad. Provincias: de qué provincia es cada municipio.
   { id: "divisiones", name: "Divisiones",
-    labels: { comunidad: "Provincias de cada comunidad", provincia: "Ciudades de cada provincia" },
-    questions: divisionQuestions }
+    labels: { comunidad: "Provincias de cada comunidad", provincia: "Municipios de cada provincia" },
+    questions: (style) => [...divisionQuestions(style), ...municipioQuestions(style)] }
 ];
 
 export const CATEGORY_IDS = CATEGORIES.map((c) => c.id);

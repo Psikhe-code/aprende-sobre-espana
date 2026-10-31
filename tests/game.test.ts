@@ -104,8 +104,9 @@ describe("partidas: elección de preguntas", () => {
     expect(roundSize(CATEGORY_IDS)).toBe(ROUND_LENGTH);
     expect(roundSize(["capitales"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, CAPITALES_PROVINCIA));
     expect(roundSize(["banderas"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, Object.keys(BANDERAS_PROVINCIAS).length));
-    expect(roundSize(["divisiones"], ["provincia"])).toBe(0);
-    expect(buildRound({ categories: ["divisiones"], territorios: ["provincia"] })).toHaveLength(0);
+    // Municipios: la respuesta es la provincia, y hay más de diez provincias distintas.
+    expect(roundSize(["divisiones"], ["provincia"])).toBe(ROUND_LENGTH);
+    expect(buildRound({ categories: ["divisiones"], territorios: ["provincia"] })).toHaveLength(ROUND_LENGTH);
   });
 
   it("con comunidades y provincias, no repite la misma ciudad como respuesta (Oviedo de Asturias, provincia y comunidad)", () => {

@@ -4,3 +4,6 @@ dev-dist/
 coverage/
 *.log
 .DS_Store
+
+# Caché de Python (scripts/)
+__pycache__/

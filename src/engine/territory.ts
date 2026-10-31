@@ -1,5 +1,6 @@
 import territorio from "../data/territorio.json";
 import banderas from "../data/banderas.json";
+import municipios from "../data/municipios.json";
 import type { NameStyle, Pools } from "./types";
 
 // El formato de territorio.json está descrito en src/data/schema/territorio.schema.json
@@ -75,6 +76,30 @@ export function autonomia(id: string): Comunidad {
 
 export const provinciasDe = (id: string) => PROVINCIAS.filter((p) => p.comunidad === id);
 
+// ---------- Municipios (municipios.json) ----------
+
+export interface Municipio {
+  /** Código INE del municipio: cinco cifras, las dos primeras son las de su provincia ("36057", Vigo). */
+  id: string;
+  nombre: Formas;
+  /** Habitantes según el INE, en el año de AÑO_POBLACION. */
+  poblacion: number;
+  /** Puesto entre los municipios de su provincia, de más a menos habitantes (1 = el más poblado). */
+  puesto: number;
+  /** Solo en los que no están entre los tres más poblados: por qué es conocido. */
+  motivo?: string;
+  /** Curiosidad opcional sobre el municipio. */
+  curiosidad?: string;
+}
+/** Municipios que salen en el juego, en orden de código INE. */
+export const MUNICIPIOS: Municipio[] = municipios.municipios;
+/** Año de las cifras de población (a 1 de enero), según el INE. */
+export const AÑO_POBLACION: number = municipios.datosPoblacion.año;
+/** Código de la provincia de un municipio: las dos primeras cifras de su código. */
+export const provinciaDeMunicipio = (m: Municipio) => m.id.slice(0, 2);
+/** Si el municipio es la capital de su provincia (se llama igual que la capital en territorio.json). */
+export const esCapital = (m: Municipio) => provincia(provinciaDeMunicipio(m)).capital.oficial === m.nombre.oficial;
+
 const provinciaPorId = new Map(PROVINCIAS.map((p) => [p.id, p]));
 export function provincia(id: string): Provincia {
   const p = provinciaPorId.get(id);
@@ -110,6 +135,8 @@ export function poolsFor(style: NameStyle): Pools {
       ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
       ...PROVINCIAS.map((p) => p.capital[style])
     ])],
+    /** Las 52 provincias. */
+    provincia: PROVINCIAS.map((p) => p.nombre[style]),
     /** Provincias que tienen bandera (ver banderas.json, «provincias»). */
     provinciaConBandera: banderas.provincias.map((b) => provincia(b.id).nombre[style]),
     /** Todas las capitales, más las ciudades de las provincias y las ciudades trampa de las comunidades. */

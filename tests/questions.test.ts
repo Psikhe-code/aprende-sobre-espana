@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../src/engine/categories";
 import { makeOptions, prepare } from "../src/engine/options";
-import { BANDERAS, BANDERAS_PROVINCIAS, notaAutomatica, notaCapitalProvincia, prepararTexto } from "../src/engine/questions";
-import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, autonomia, capitalesDe, deAutonomia, poolsFor, provincia, provinciasDe } from "../src/engine/territory";
+import { BANDERAS, BANDERAS_PROVINCIAS, notaAutomatica, notaCapitalProvincia, prepararTexto, provinciasTrampa } from "../src/engine/questions";
+import { AUTONOMIAS, AÑO_POBLACION, COMUNIDADES, MUNICIPIOS, PROVINCIAS, autonomia, capitalesDe, deAutonomia, poolsFor, provincia, provinciasDe } from "../src/engine/territory";
 import { questionsIn } from "../src/engine/round";
 import { NAME_STYLES, type NameStyle, type Question } from "../src/engine/types";
 
@@ -116,7 +116,7 @@ for (const style of NAME_STYLES) {
     it("divisiones: las provincias de comunidades con varias provincias, con nota que las nombra todas", () => {
       const conVarias = PROVINCIAS.filter((p) => provinciasDe(p.comunidad).length > 1);
       expect(questionsIn("divisiones", ["comunidad"]).map((q) => q.id)).toEqual(conVarias.map((p) => `provincia-ccaa:${p.id}`));
-      expect(questionsIn("divisiones", ["provincia"])).toHaveLength(0);
+      expect(questionsIn("divisiones", ["provincia"]).map((q) => q.id)).toEqual(MUNICIPIOS.map((m) => `municipio-provincia:${m.id}`));
       for (const p of conVarias) {
         const q = find(style, `provincia-ccaa:${p.id}`);
         const c = autonomia(p.comunidad);
@@ -139,13 +139,53 @@ for (const style of NAME_STYLES) {
 
     it("divisiones: Ceuta y Melilla nunca salen como opción (la pregunta dice «comunidad autónoma»)", () => {
       const ciudades = AUTONOMIAS.filter((c) => c.tipo === "ciudad").map((c) => c.nombre[style]);
-      for (const q0 of all.filter((q) => q.category === "divisiones")) {
+      for (const q0 of all.filter((q) => q.category === "divisiones" && q.territorio === "comunidad")) {
         for (let r = 0; r < 10; r++) for (const c of ciudades) expect(prepare(q0, 8, pools).options, q0.id).not.toContain(c);
       }
     });
 
-    it("cada pregunta dice su territorio: las de provincia son las de capital y bandera de provincia", () => {
-      for (const q of all) expect(q.territorio, q.id).toBe(/^(capital|bandera)-provincia:/.test(q.id) ? "provincia" : "comunidad");
+    it("municipios: uno por municipio de municipios.json, con su provincia como respuesta", () => {
+      for (const m of MUNICIPIOS) {
+        const q = find(style, `municipio-provincia:${m.id}`);
+        const p = provincia(m.id.slice(0, 2));
+        expect(q.text, m.id).toBe(`¿De qué provincia es el municipio de ${m.nombre[style]}?`);
+        expect(q.answer, m.id).toBe(p.nombre[style]);
+        expect(q.answerKey, m.id).toBe("provincia:" + p.id);
+      }
+    });
+
+    it("municipios: las trampas son las provincias vecinas, o las otras provincias sin vecinas (islas, Ceuta y Melilla)", () => {
+      const sinVecinas = PROVINCIAS.filter((p) => !p.vecinas.length).map((p) => p.id);
+      for (const m of MUNICIPIOS) {
+        const p = provincia(m.id.slice(0, 2));
+        const esperadas = p.vecinas.length ? p.vecinas : sinVecinas.filter((id) => id !== p.id);
+        expect(provinciasTrampa(p), m.id).toEqual(esperadas);
+        expect([...find(style, `municipio-provincia:${m.id}`).traps].sort(), m.id).toEqual(esperadas.map(nombreProv).sort());
+      }
+    });
+
+    it("municipios: la nota dice su puesto (si está entre los tres más poblados) o su motivo, con la población del INE y el año", () => {
+      const ordinal: Record<number, string> = { 2: "segundo", 3: "tercer" };
+      for (const m of MUNICIPIOS) {
+        const p = provincia(m.id.slice(0, 2));
+        const n = m.nombre[style];
+        const hab = `${m.poblacion.toLocaleString("es-ES")} habitantes (INE, ${AÑO_POBLACION})`;
+        const dePr = `de la provincia de ${p.nombre[style]}`;
+        const capital = p.capital.oficial === m.nombre.oficial;
+        const esperada = autonomia(p.comunidad).tipo === "ciudad" ? `${n} es a la vez municipio, provincia y ciudad autónoma: ${hab}.`
+          : m.puesto === 1 && capital ? `${n} es la capital y el municipio más poblado ${dePr}: ${hab}.`
+          : m.puesto === 1 ? `${n} es el municipio más poblado ${dePr}, más incluso que la capital, ${p.capital[style]}: ${hab}.`
+          : m.puesto <= 3 && capital ? `${n} es la capital ${dePr} y su ${ordinal[m.puesto]} municipio más poblado: ${hab}.`
+          : m.puesto <= 3 ? `${n} es el ${ordinal[m.puesto]} municipio más poblado ${dePr}: ${hab}.`
+          : `${n} tiene ${hab} y no está entre los tres municipios más poblados ${dePr}, pero es muy conocido: ${prepararTexto(m.motivo!, style)}.`;
+        expect(find(style, `municipio-provincia:${m.id}`).why, m.id).toBe(esperada);
+      }
+      // Los miles se separan con punto, como se escribe en español.
+      expect((293837).toLocaleString("es-ES")).toBe("293.837");
+    });
+
+    it("cada pregunta dice su territorio: las de provincia son las de capital, bandera y municipios de provincia", () => {
+      for (const q of all) expect(q.territorio, q.id).toBe(/^((capital|bandera)-provincia|municipio-provincia):/.test(q.id) ? "provincia" : "comunidad");
     });
 
     it("los identificadores son únicos", () => {

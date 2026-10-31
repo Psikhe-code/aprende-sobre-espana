@@ -39,7 +39,7 @@ const NAME_LABELS: Record<NameStyle, { name: string; example: string; short: str
 /** Cómo se presenta cada territorio en Opciones, y qué se añade al nombre de la categoría en la partida. */
 const TERRITORIO_LABELS: Record<Territorio, { name: string; example: string; short: string }> = {
   comunidad: { name: "Comunidades", example: "Las 17 comunidades y las ciudades autónomas de Ceuta y Melilla, y de qué comunidad es cada provincia", short: "comunidades" },
-  provincia: { name: "Provincias", example: "Capitales que no se llaman como su provincia, y banderas de las provincias que tienen una oficial", short: "provincias" }
+  provincia: { name: "Provincias", example: "Capitales que no se llaman como su provincia, banderas de las provincias que tienen una oficial y municipios de cada provincia", short: "provincias" }
 };
 
 /** Explicación de cada dificultad en Opciones. */
