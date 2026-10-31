@@ -1,0 +1,29 @@
+# Descarga páginas web (y, si se pide, sus imágenes y PDF) para poder leerlas desde el entorno de Claude.
+# Solo se ejecuta al subir cambios a la rama temporal paginas-descarga (no se mezcla con main).
+name: Descargar páginas
+
+on:
+  push:
+    branches: [paginas-descarga]
+    paths: [scripts/descargar-paginas.py, .github/workflows/descargar-paginas.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  descargar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/descargar-paginas.py
+      - name: Guardar lo descargado en la rama, aunque algo falle
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add paginas-descargadas
+          git commit -m "Páginas descargadas para leer" || echo "Nada que guardar"
+          git push
