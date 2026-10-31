@@ -50,7 +50,8 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 
 - Renombrar el juego (ahora «Geoquiz España») si el usuario lo decide.
 - Optimizar el peso de las banderas: el juego carga unos 2 MB; la de Navarra pesa más de 400 KB.
-- Dificultades (4, 6 u 8 opciones, ya admitidas por el motor; trampas más o menos parecidas; respuesta abierta).
+- Dificultad: ya se elige 4, 6 u 8 opciones en Opciones. Falta la **respuesta abierta** (está en Opciones como «próximamente», sin poder marcarse): decidir cómo comparar lo escrito (tildes, mayúsculas, formas oficial y castellana, «Vitoria» y «Vitoria-Gasteiz»).
+- **Puntuación** (idea del usuario, para más adelante; de momento no preocuparse de la puntuación): puntos aparte del récord de aciertos, con tiempo máximo por pregunta y más puntos por ir rápido, multiplicadores por racha, y más puntos por dificultad y por jugar con más categorías a la vez.
 - Guardado con estadísticas por categoría y por pregunta (usando los identificadores), y desbloqueo de categorías.
 - Recuperar las categorías del prototipo con los criterios actuales. Idea comentada: un `ciudades.json` aparte, con código INE de municipio, al que apunten las capitales.
 - App de Android con Capacitor.

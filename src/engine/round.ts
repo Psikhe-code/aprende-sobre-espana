@@ -5,8 +5,11 @@ import { pick, shuffle } from "./random";
 import { fixAnswer, prepare } from "./options";
 
 export const ROUND_LENGTH = 10;
-/** Número de opciones por pregunta. Base para las futuras dificultades (4, 6, 8). */
-export const DEFAULT_OPTIONS = 4;
+/** Número de opciones por pregunta en cada dificultad. La respuesta abierta vendrá después. */
+export const OPTION_COUNTS = [4, 6, 8] as const;
+export type OptionCount = (typeof OPTION_COUNTS)[number];
+/** Dificultad por defecto: 4 opciones. */
+export const DEFAULT_OPTIONS: OptionCount = 4;
 /** Formas de los nombres por defecto: todas, sorteadas en cada pregunta para aprenderlas. */
 export const DEFAULT_NAMES: NameStyle[] = [...NAME_STYLES];
 /** Territorios por defecto: comunidades y provincias. */

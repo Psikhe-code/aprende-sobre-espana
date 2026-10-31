@@ -132,7 +132,8 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 - Algunas preguntas tienen una trampa fija (`forcedTraps`) que sale siempre (si hay varias, una sorteada): en las capitales de provincia, el propio nombre de la provincia («Asturias» como capital de Asturias), y en las autonómicas, la de `trampasCapital` («Andalucía», «Mallorca»…). Es justo la confusión que enseña la pregunta.
 - Al menos una incorrecta es siempre aleatoria del pool, para que las partidas no se repitan.
 - Lo que está en `exclude` nunca sale como incorrecto. Por ejemplo, en Canarias ninguna de sus dos capitales aparece como incorrecta.
-- El número de opciones es un parámetro (`DEFAULT_OPTIONS` en `round.ts`): el motor ya funciona con 4, 6 u 8.
+- **Dificultad:** en Opciones se elige el número de opciones por pregunta: 4 (por defecto), 6 u 8 (`OPTION_COUNTS` en `round.ts`). Con más opciones salen más trampas a la vez; la trampa fija sigue saliendo siempre y queda al menos un hueco al azar. En el móvil, con 6 u 8 las opciones van en dos columnas. La **respuesta abierta** aparece en Opciones como «próximamente», sin poder marcarse.
+- Los récords se guardan por categorías, territorios y dificultad.
 
 **Partida.** `round.ts` elige 10 preguntas de las categorías y territorios marcados, sorteando primero la categoría para repartirlas, sin repetir pregunta ni lugar como respuesta (aunque salga con otro nombre). `game.ts` lleva el desarrollo: responder, avanzar, aciertos, racha, fallos y si la partida cuenta para el récord. La interfaz solo dibuja lo que el motor le dice.
 
@@ -164,7 +165,8 @@ La descarga desde aquí no se hace a mano: hay un proceso automático en GitHub 
 ## Próximos pasos
 
 - **Banderas más ligeras**: algunas oficiales pesan bastante (la de Navarra, más de 400 KB). Se pueden optimizar sin perder calidad visible.
-- **Dificultades**: 4, 6 u 8 opciones (ya soportado por el motor), incorrectas más o menos parecidas según el nivel, y respuesta abierta.
+- **Respuesta abierta**: el jugador escribe la respuesta. Habrá que decidir cómo compararla (sin tildes, mayúsculas, formas oficial y castellana, «Vitoria» y «Vitoria-Gasteiz»…).
+- **Puntuación**: una puntuación aparte del récord de aciertos, con tiempo máximo por pregunta y más puntos por responder rápido, multiplicadores por racha y más puntos por dificultad y por jugar con más categorías a la vez.
 - **Guardado**: estadísticas por categoría y por pregunta (usando los identificadores), en lugar de récords por combinación.
 - **Desbloqueo de categorías** y recuperar las categorías del prototipo, ya con identificadores y esquema.
 - **App de Android** con [Capacitor](https://capacitorjs.com):

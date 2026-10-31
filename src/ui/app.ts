@@ -1,5 +1,5 @@
 import { CATEGORIES, CATEGORY_IDS, categoryById } from "../engine/categories";
-import { buildRound, rebuild, questionsIn, roundSize } from "../engine/round";
+import { buildRound, rebuild, questionsIn, roundSize, OPTION_COUNTS } from "../engine/round";
 import { GameSession, applyRecord, type GameResult } from "../engine/game";
 import { loadState, saveState, comboKey, type SavedState } from "../engine/storage";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "../engine/types";
@@ -40,6 +40,13 @@ const NAME_LABELS: Record<NameStyle, { name: string; example: string; short: str
 const TERRITORIO_LABELS: Record<Territorio, { name: string; example: string; short: string }> = {
   comunidad: { name: "Comunidades", example: "Las 17 comunidades y las ciudades autónomas de Ceuta y Melilla, y de qué comunidad es cada provincia", short: "comunidades" },
   provincia: { name: "Provincias", example: "Por ahora, las capitales que no se llaman como su provincia", short: "provincias" }
+};
+
+/** Explicación de cada dificultad en Opciones. */
+const DIFICULTAD_DESC: Record<number, string> = {
+  4: "La respuesta y tres opciones más.",
+  6: "Más trampas entre las opciones.",
+  8: "Casi todas las trampas a la vez."
 };
 
 /** Botón de casilla para Opciones: marcado o no, con título y descripción. */
@@ -93,7 +100,8 @@ export function startApp(): App {
       : `Nombres: solo ${NAME_LABELS[names[0]].short}.`;
     const territorios = TERRITORIOS.filter((x) => state.territorios.includes(x));
     $("territoriosInfo").textContent = `Territorio: ${territorios.map((x) => TERRITORIO_LABELS[x].short).join(" y ")}.`;
-    const rec = state.best[comboKey(state.selected, state.territorios)];
+    $("dificultadInfo").textContent = `Dificultad: ${state.opciones} opciones por pregunta.`;
+    const rec = state.best[comboKey(state.selected, state.territorios, state.opciones)];
     const record = $("record");
     record.replaceChildren();
     if (rec != null) record.append("Récord con esta selección: ", el("b", "", `${rec}/${roundSize(state.selected, state.territorios)}`));
@@ -147,6 +155,24 @@ export function startApp(): App {
         $("terr-" + x).focus();
       });
     }));
+    // Dificultad: se marca una sola. La respuesta abierta aún no existe: se ve, pero no se puede marcar.
+    const dificultades = OPTION_COUNTS.map((n) => {
+      const card = toggleCard("dif-" + n, state.opciones === n, `${n} opciones`, [["cat-desc", DIFICULTAD_DESC[n]]], () => {
+        state.opciones = n;
+        save();
+        renderOptions();
+        $("dif-" + n).focus();
+      });
+      card.setAttribute("role", "radio");
+      card.setAttribute("aria-checked", String(state.opciones === n));
+      return card;
+    });
+    const abierta = toggleCard("dif-abierta", false, "Respuesta abierta", [["cat-desc", "Escribes la respuesta tú. Próximamente."]], () => {});
+    abierta.disabled = true;
+    abierta.setAttribute("role", "radio");
+    abierta.setAttribute("aria-checked", "false");
+    $("dificultad").replaceChildren(...dificultades, abierta);
+
     const noTerr = !state.territorios.length;
     $("noTerrWarn").hidden = !noTerr;
     // Categorías y territorios marcados, pero sin preguntas (p. ej. solo banderas y solo provincias).
@@ -160,7 +186,7 @@ export function startApp(): App {
   function start(session?: GameSession) {
     if (!session && !canPlay()) return openOptions();
     game = session ?? new GameSession(
-      buildRound({ categories: state.selected, names: state.names, territorios: state.territorios }),
+      buildRound({ categories: state.selected, names: state.names, territorios: state.territorios, options: state.opciones }),
       { expected: roundSize(state.selected, state.territorios) }
     );
     $("track").style.setProperty("--n", String(game.total));
@@ -187,6 +213,7 @@ export function startApp(): App {
 
     const box = $("opts");
     box.replaceChildren();
+    box.classList.toggle("many", q.options.length > 4);
     q.options.forEach((o, j) => {
       const b = el("button", "opt") as HTMLButtonElement;
       b.id = "opt-" + j;
@@ -251,7 +278,7 @@ export function startApp(): App {
   function finish() {
     if (!game) return;
     const r = game.result();
-    const key = comboKey(state.selected, state.territorios);
+    const key = comboKey(state.selected, state.territorios, state.opciones);
     const rec = applyRecord(state.best, key, r);
     if (rec.isNewRecord) { state = { ...state, best: rec.best }; save(); }
 
@@ -329,7 +356,7 @@ export function startApp(): App {
   $("menu").addEventListener("click", goHome);
   $("review").addEventListener("click", () => {
     const misses = game?.result().misses ?? [];
-    if (misses.length) start(new GameSession(rebuild(misses.map((m) => m.question)), { review: true }));
+    if (misses.length) start(new GameSession(rebuild(misses.map((m) => m.question), { options: state.opciones }), { review: true }));
   });
   document.addEventListener("keydown", (e) => {
     if (screen !== "play" || !game) return;

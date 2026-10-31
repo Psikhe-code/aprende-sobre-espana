@@ -1,6 +1,6 @@
 import { CATEGORY_IDS, OLD_CATEGORY_IDS } from "./categories";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "./types";
-import { DEFAULT_NAMES, DEFAULT_TERRITORIOS } from "./round";
+import { DEFAULT_NAMES, DEFAULT_OPTIONS, DEFAULT_TERRITORIOS, OPTION_COUNTS, type OptionCount } from "./round";
 
 /**
  * Progreso guardado en el dispositivo (localStorage).
@@ -18,6 +18,8 @@ export interface SavedState {
   names: NameStyle[];
   /** Territorios marcados en Opciones (al menos uno): comunidades, provincias o los dos. */
   territorios: Territorio[];
+  /** Dificultad: número de opciones por pregunta (4, 6 u 8). */
+  opciones: OptionCount;
 }
 
 const KEY = "geoquiz-es-v2";
@@ -57,7 +59,8 @@ export function loadState(): SavedState {
   const names = marcadas.length ? marcadas : [...DEFAULT_NAMES];
   const territoriosMarcados = Array.isArray(raw.territorios) ? TERRITORIOS.filter((t) => (raw.territorios as unknown[]).includes(t)) : [];
   const territorios = territoriosMarcados.length ? territoriosMarcados : [...DEFAULT_TERRITORIOS];
-  return { best: migrarRecords(raw.best ?? {}), selected, known: [...CATEGORY_IDS], names, territorios };
+  const opciones = OPTION_COUNTS.find((n) => n === raw.opciones) ?? DEFAULT_OPTIONS;
+  return { best: migrarRecords(raw.best ?? {}), selected, known: [...CATEGORY_IDS], names, territorios, opciones };
 }
 
 export function saveState(state: SavedState): void {
@@ -68,6 +71,11 @@ export function saveState(state: SavedState): void {
   }
 }
 
-/** Clave estable de una selección de categorías y territorios, en el orden oficial: "capitales+banderas/comunidad". */
-export const comboKey = (selected: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS) =>
-  CATEGORY_IDS.filter((id) => selected.includes(id)).join("+") + "/" + TERRITORIOS.filter((t) => territorios.includes(t)).join("+");
+/**
+ * Clave estable de una selección de categorías, territorios y dificultad, en el orden oficial:
+ * "capitales+banderas/comunidad" con 4 opciones, y "capitales+banderas/comunidad/8" con 8.
+ * Con 4 opciones no lleva número, así los récords anteriores a las dificultades siguen valiendo.
+ */
+export const comboKey = (selected: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, opciones: OptionCount = DEFAULT_OPTIONS) =>
+  CATEGORY_IDS.filter((id) => selected.includes(id)).join("+") + "/" + TERRITORIOS.filter((t) => territorios.includes(t)).join("+") +
+  (opciones === DEFAULT_OPTIONS ? "" : `/${opciones}`);
