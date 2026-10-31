@@ -172,6 +172,8 @@ La descarga desde aquí no se hace a mano: hay un proceso automático en GitHub 
 - **Preguntas y opciones**, en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
 - **Partidas**: en cientos de partidas al azar, 10 preguntas sin repetir lugar y bien repartidas; con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa; aciertos, racha, fallos, final y récords.
 
+Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las trampas de una capital de provincia son las capitales y ciudades de las provincias de su campo `trampas`, sin escribir cuáles son. Por eso se puede cambiar una nota, una trampa o una ciudad en los JSON (también desde github.dev) sin tocar los tests: si el cambio rompe una regla (una trampa que no existe, una marca mal escrita…), el test dice dónde.
+
 ## Próximos pasos
 
 - **Banderas más ligeras**: algunas oficiales pesan bastante (la de Navarra, más de 400 KB). Se pueden optimizar sin perder calidad visible.
