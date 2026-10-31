@@ -2,9 +2,11 @@ import { describe, expect, it } from "vitest";
 import Ajv from "ajv";
 import territorio from "../src/data/territorio.json";
 import banderas from "../src/data/banderas.json";
+import municipios from "../src/data/municipios.json";
+import municipiosSchema from "../src/data/schema/municipios.schema.json";
 import territorioSchema from "../src/data/schema/territorio.schema.json";
 import banderasSchema from "../src/data/schema/banderas.schema.json";
-import { AUTONOMIAS, COMUNIDADES, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../src/engine/territory";
+import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../src/engine/territory";
 import { NAME_STYLES } from "../src/engine/types";
 import { BANDERAS, BANDERAS_PROVINCIAS } from "../src/engine/questions";
 
@@ -30,6 +32,9 @@ describe("formato de los archivos", () => {
   });
   it("banderas.json cumple su esquema", () => {
     expect(schemaErrors(banderasSchema, banderas).join("\n")).toBe("");
+  });
+  it("municipios.json cumple su esquema", () => {
+    expect(schemaErrors(municipiosSchema, municipios).join("\n")).toBe("");
   });
   it("el esquema detecta un campo mal escrito", () => {
     // Prueba de que la validación funciona: "trampa" en vez de "trampas".
@@ -140,7 +145,8 @@ describe("textos de las notas", () => {
     ...AUTONOMIAS.flatMap((c) => [["notaCapital", c.id, c.notaCapital], ["curiosidadCapital", c.id, c.curiosidadCapital]]),
     ...PROVINCIAS.map((p) => ["notaCapital de provincia", p.id, p.notaCapital]),
     ...Object.entries(BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]]),
-    ...Object.entries(BANDERAS_PROVINCIAS).flatMap(([id, b]) => [["descripcion de bandera de provincia", id, b.descripcion], ["significado de bandera de provincia", id, b.significado]])
+    ...Object.entries(BANDERAS_PROVINCIAS).flatMap(([id, b]) => [["descripcion de bandera de provincia", id, b.descripcion], ["significado de bandera de provincia", id, b.significado]]),
+    ...MUNICIPIOS.flatMap((m) => [["motivo de municipio", m.id, m.motivo], ["curiosidad de municipio", m.id, m.curiosidad]])
   ].filter(([, , t]) => t) as [string, string, string][];
   const donde = (campo: string, id: string, t: string) => `${campo} de ${id}: «${t.slice(0, 40)}…»`;
 
@@ -237,3 +243,43 @@ describe("imágenes de las banderas", () => {
     }
   });
 });
+
+describe("municipios", () => {
+  const deProvincia = (id: string) => MUNICIPIOS.filter((m) => m.id.startsWith(id));
+
+  it("van en orden de código INE, sin repetirse, y son de provincias que existen", () => {
+    const ids = MUNICIPIOS.map((m) => m.id);
+    expect(ids).toEqual([...new Set(ids)].sort());
+    const provincias = PROVINCIAS.map((p) => p.id);
+    for (const m of MUNICIPIOS) expect(provincias, m.id).toContain(m.id.slice(0, 2));
+  });
+
+  it("están los tres más poblados de cada provincia (puestos 1, 2 y 3), y la capital", () => {
+    for (const p of PROVINCIAS) {
+      const puestos = deProvincia(p.id).map((m) => m.puesto).filter((n) => n <= 3).sort();
+      // Ceuta y Melilla tienen un solo municipio.
+      expect(puestos, p.id).toEqual(AUTONOMIAS.find((c) => c.id === p.comunidad)!.tipo === "ciudad" ? [1] : [1, 2, 3]);
+      // La capital, con las mismas formas del nombre que en territorio.json.
+      expect(deProvincia(p.id).filter((m) => m.nombre.oficial === p.capital.oficial).map((m) => m.nombre), p.id).toEqual([p.capital]);
+    }
+  });
+
+  it("los que no están entre los tres más poblados llevan un motivo, y los demás no", () => {
+    for (const m of MUNICIPIOS) expect(Boolean(m.motivo), `${m.id} ${m.nombre.oficial} (puesto ${m.puesto})`).toBe(m.puesto > 3);
+  });
+
+  it("el puesto concuerda con la población: en cada provincia, a más puesto, menos habitantes", () => {
+    for (const p of PROVINCIAS) {
+      const orden = deProvincia(p.id).sort((a, b) => a.puesto - b.puesto);
+      for (let i = 1; i < orden.length; i++) expect(orden[i].poblacion, orden[i].id).toBeLessThan(orden[i - 1].poblacion);
+    }
+  });
+
+  for (const style of NAME_STYLES) {
+    it(`[${style}] los nombres no se repiten (la pregunta sería ambigua)`, () => {
+      const nombres = MUNICIPIOS.map((m) => m.nombre[style]);
+      expect(nombres.filter((n, i) => nombres.indexOf(n) !== i)).toEqual([]);
+    });
+  }
+});
+
