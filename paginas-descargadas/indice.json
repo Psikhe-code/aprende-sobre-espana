@@ -1,0 +1,275 @@
+{
+ "wiki-almeria": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Almer%C3%ADa&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-almeria.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 255513
+ },
+ "wiki-roquetas-de-mar": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Roquetas_de_Mar&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-roquetas-de-mar.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 67921
+ },
+ "wiki-el-ejido": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=El_Ejido&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-el-ejido.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 63578
+ },
+ "wiki-jerez-de-la-frontera": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Jerez_de_la_Frontera&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-jerez-de-la-frontera.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 230095
+ },
+ "wiki-algeciras": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Algeciras&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-algeciras.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 244470
+ },
+ "wiki-cadiz": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=C%C3%A1diz&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-cadiz.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 160387
+ },
+ "wiki-sanlucar-de-barrameda": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Sanl%C3%BAcar_de_Barrameda&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-sanlucar-de-barrameda.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 202245
+ },
+ "wiki-tarifa": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Tarifa&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-tarifa.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 98178
+ },
+ "wiki-arcos-de-la-frontera": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Arcos_de_la_Frontera&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-arcos-de-la-frontera.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 37477
+ },
+ "wiki-cordoba": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=C%C3%B3rdoba_%28Espa%C3%B1a%29&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-cordoba.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 195439
+ },
+ "wiki-lucena": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Lucena_%28C%C3%B3rdoba%29&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-lucena.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 20
+ },
+ "wiki-puente-genil": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Puente_Genil&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-puente-genil.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 34533
+ },
+ "wiki-granada": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Granada&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-granada.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 252295
+ },
+ "wiki-motril": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Motril&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-motril.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 60746
+ },
+ "wiki-almunecar": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Almu%C3%B1%C3%A9car&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-almunecar.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 29267
+ },
+ "wiki-guadix": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Guadix&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-guadix.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 73860
+ },
+ "wiki-santa-fe": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Santa_Fe_%28Granada%29&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-santa-fe.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 43858
+ },
+ "wiki-huelva": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Huelva&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-huelva.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 163833
+ },
+ "wiki-lepe": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Lepe&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-lepe.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 82195
+ },
+ "wiki-almonte": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Almonte&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-almonte.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 278535
+ },
+ "wiki-palos-de-la-frontera": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Palos_de_la_Frontera&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-palos-de-la-frontera.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 88249
+ },
+ "wiki-moguer": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Moguer&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-moguer.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 117331
+ },
+ "wiki-jaen": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Ja%C3%A9n&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-jaen.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 283957
+ },
+ "wiki-linares": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Linares&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-linares.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 7409
+ },
+ "wiki-andujar": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=And%C3%BAjar&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-andujar.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 44291
+ },
+ "wiki-ubeda": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=%C3%9Abeda&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-ubeda.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 210582
+ },
+ "wiki-baeza": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Baeza&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-baeza.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 44723
+ },
+ "wiki-malaga": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=M%C3%A1laga&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-malaga.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 224421
+ },
+ "wiki-marbella": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Marbella&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-marbella.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 105899
+ },
+ "wiki-mijas": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Mijas&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-mijas.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 82924
+ },
+ "wiki-ronda": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Ronda&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-ronda.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 71262
+ },
+ "wiki-antequera": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Antequera&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-antequera.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 120406
+ },
+ "wiki-torremolinos": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Torremolinos&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-torremolinos.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 184536
+ },
+ "wiki-sevilla": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Sevilla&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-sevilla.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 319489
+ },
+ "wiki-dos-hermanas": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Dos_Hermanas&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-dos-hermanas.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 188755
+ },
+ "wiki-alcala-de-guadaira": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Alcal%C3%A1_de_Guada%C3%ADra&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-alcala-de-guadaira.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 84591
+ },
+ "wiki-ecija": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=%C3%89cija&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-ecija.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 121191
+ },
+ "wiki-carmona": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Carmona&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-carmona.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 55073
+ },
+ "wiki-osuna": {
+  "fuente": "https://es.wikipedia.org/w/index.php?title=Osuna&action=raw",
+  "enlaces": [],
+  "archivo": "wiki-osuna.bin",
+  "tipo": "text/x-wiki; charset=UTF-8",
+  "bytes": 45415
+ }
+}
