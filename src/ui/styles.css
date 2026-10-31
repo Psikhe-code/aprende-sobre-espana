@@ -218,11 +218,11 @@ h1 {
   margin: -10px 0 0;
   text-wrap: balance;
 }
-/* Banderas: cada una con su proporción real (no todas son 3:2) */
+/* Banderas: cada una con su proporción real (no todas son 3:2), al 90 % del ancho de los botones.
+   El tamaño depende del ancho de la tarjeta, no del alto de la ventana: así, con el zoom del navegador,
+   crece igual que el texto y los botones. */
 .flag { display: flex; justify-content: center; margin-top: -4px; }
-.flag img { display: block; height: 150px; width: auto; max-width: 100%; object-fit: contain; border: 1px solid var(--line); border-radius: 3px; }
-/* En pantallas anchas, más grande: en el ordenador los escudos de las provincias se quedaban diminutos. */
-@media (min-width: 700px) { .flag img { height: clamp(150px, 30vh, 240px); } } /* en portátiles bajos, algo menos */
+.flag img { display: block; width: 90%; height: auto; border: 1px solid var(--line); border-radius: 3px; }
 .miss-flag { display: flex; margin-block: 4px 2px; }
 .miss-flag img { display: block; height: 36px; width: auto; border: 1px solid var(--line); border-radius: 2px; }
 .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
