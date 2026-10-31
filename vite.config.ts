@@ -26,7 +26,7 @@ export default defineConfig({
       },
       workbox: {
         // Todo el juego (código, fuentes y banderas) queda guardado para jugar sin conexión.
-        globPatterns: ["**/*.{js,css,html,svg,png,woff2}"]
+        globPatterns: ["**/*.{js,css,html,svg,png,webp,woff2}"]
       }
     })
   ],

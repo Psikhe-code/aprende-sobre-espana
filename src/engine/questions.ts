@@ -1,6 +1,7 @@
 import { NAME_STYLES, type NameStyle, type Question } from "./types";
-import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, comunidadesVecinas, type Comunidad, type Formas, type Provincia } from "./territory";
+import { AUTONOMIAS, PROVINCIAS, autonomia, provinciasDe, deAutonomia, capitalesDe, comunidadesVecinas, provincia, type Comunidad, type Formas, type Provincia } from "./territory";
 import banderas from "../data/banderas.json";
+import banderasProvincias from "../data/banderas-provincias.json";
 
 // Preguntas generadas a partir de los datos del territorio y de las banderas.
 // Cada pregunta se genera en una forma de los nombres (oficial o castellano), toda entera en esa forma.
@@ -220,6 +221,21 @@ export interface BanderaInfo {
 }
 /** Información de cada bandera, por código INE de la comunidad o ciudad autónoma. */
 export const BANDERAS: Record<string, BanderaInfo> = banderas;
+/**
+ * Banderas de provincia, por código INE de provincia: solo las aprobadas formalmente y en uso público.
+ * Casi siempre son las de su Diputación (en el País Vasco, las del territorio histórico).
+ */
+export const BANDERAS_PROVINCIAS: Record<string, BanderaInfo> = banderasProvincias;
+
+/**
+ * Clave de la bandera que se muestra con una pregunta (campo `flag`):
+ * el código de la comunidad ("12") o, para una provincia, "p" y su código ("p48").
+ */
+export const flagKey = (territorio: "comunidad" | "provincia", id: string) => (territorio === "provincia" ? "p" + id : id);
+/** Información de una bandera por su clave ("12" o "p48"). */
+export function banderaPorClave(clave: string): BanderaInfo | undefined {
+  return clave.startsWith("p") ? BANDERAS_PROVINCIAS[clave.slice(1)] : BANDERAS[clave];
+}
 
 /** Banderas de las 17 comunidades y las 2 ciudades autónomas. */
 export function flagQuestions(style: NameStyle): Question[] {
@@ -234,8 +250,34 @@ export function flagQuestions(style: NameStyle): Question[] {
     exclude: [],
     why: prepararTexto(BANDERAS[c.id].descripcion, style),
     meaning: prepararTexto(BANDERAS[c.id].significado, style),
-    flag: c.id,
+    flag: flagKey("comunidad", c.id),
     aliases: aliases([c.nombre], style),
     territorio: "comunidad" as const
   }));
+}
+
+/**
+ * Banderas de provincia: las que tienen bandera aprobada y en uso (ver BANDERAS_PROVINCIAS).
+ * Pool: las provincias con bandera, para que todas las opciones sean banderas que se pueden aprender.
+ * Trampas: las provincias con banderas parecidas (del mismo color, o blancas con cruz roja).
+ */
+export function provincialFlagQuestions(style: NameStyle): Question[] {
+  return Object.keys(BANDERAS_PROVINCIAS).sort().map((id) => {
+    const p = provincia(id);
+    const b = BANDERAS_PROVINCIAS[id];
+    return {
+      id: `bandera-provincia:${id}`,
+      text: "¿De qué provincia es esta bandera?",
+      answer: p.nombre[style],
+      answerKey: "provincia:" + id,
+      type: "provinciaConBandera",
+      traps: b.trampas.map((t) => provincia(t).nombre[style]),
+      exclude: [],
+      why: prepararTexto(b.descripcion, style),
+      meaning: prepararTexto(b.significado, style),
+      flag: flagKey("provincia", id),
+      aliases: aliases([p.nombre], style),
+      territorio: "provincia" as const
+    };
+  });
 }

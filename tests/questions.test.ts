@@ -20,14 +20,29 @@ for (const style of NAME_STYLES) {
       expect(questionsIn("banderas", ["comunidad"])).toHaveLength(19);
     });
 
-    it("provincias: capitales solo de las 8 provincias cuya capital se llama distinto; banderas, ninguna todavía", () => {
+    it("provincias: capitales solo de las 8 provincias cuya capital se llama distinto, y 15 banderas", () => {
       const provincias = questionsIn("capitales", ["provincia"]);
       expect(provincias.map((q) => q.id)).toEqual(["01", "07", "20", "26", "31", "33", "39", "48"].map((id) => `capital-provincia:${id}`));
       for (const q of provincias) {
         const p = PROVINCIAS.find((x) => `capital-provincia:${x.id}` === q.id)!;
         expect(p.nombre.castellano, q.id).not.toBe(p.capital.castellano);
       }
-      expect(questionsIn("banderas", ["provincia"])).toHaveLength(0);
+      expect(questionsIn("banderas", ["provincia"]).map((q) => q.id.split(":")[1])).toEqual(
+        ["01", "04", "09", "11", "14", "18", "20", "21", "23", "32", "40", "41", "44", "45", "48"]);
+    });
+
+    it("banderas de provincia: enunciado, respuesta, trampas parecidas, descripción y significado", () => {
+      const teruel = find(style, "bandera-provincia:44");
+      expect(teruel.text).toBe("¿De qué provincia es esta bandera?");
+      expect(teruel.answer).toBe("Teruel");
+      expect(teruel.flag).toBe("p44");
+      expect(teruel.traps).toContain("Almería");
+      expect(teruel.why).toContain("cruz roja");
+      expect(teruel.meaning).toContain("San Jorge");
+      expect(find(style, "bandera-provincia:01").meaning).toContain(style === "oficial" ? "territorio histórico de Araba/Álava" : "territorio histórico de Álava");
+      // El pool son solo las provincias con bandera.
+      for (const q of questionsIn("banderas", ["provincia"])) expect(q.type).toBe("provinciaConBandera");
+      expect(pools.provinciaConBandera).toHaveLength(15);
     });
 
     it("capitales de provincia: enunciado, trampas (capitales que se confunden y ciudades de la provincia) y nota", () => {
@@ -128,7 +143,7 @@ for (const style of NAME_STYLES) {
     });
 
     it("cada pregunta dice su territorio: las de provincia son solo las de capital de provincia", () => {
-      for (const q of all) expect(q.territorio, q.id).toBe(q.id.startsWith("capital-provincia:") ? "provincia" : "comunidad");
+      for (const q of all) expect(q.territorio, q.id).toBe(/^(capital|bandera)-provincia:/.test(q.id) ? "provincia" : "comunidad");
     });
 
     it("los identificadores son únicos", () => {

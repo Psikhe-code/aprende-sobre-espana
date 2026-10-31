@@ -1,4 +1,5 @@
 import territorio from "../data/territorio.json";
+import banderasProvincias from "../data/banderas-provincias.json";
 import type { NameStyle, Pools } from "./types";
 
 // El formato de territorio.json está descrito en src/data/schema/territorio.schema.json
@@ -109,6 +110,8 @@ export function poolsFor(style: NameStyle): Pools {
       ...AUTONOMIAS.flatMap((c) => capitalesDe(c).map((f) => f[style])),
       ...PROVINCIAS.map((p) => p.capital[style])
     ])],
+    /** Provincias que tienen bandera (ver banderas-provincias.json). */
+    provinciaConBandera: Object.keys(banderasProvincias).sort().map((id) => provincia(id).nombre[style]),
     /** Todas las capitales, más las ciudades de las provincias y las ciudades trampa de las comunidades. */
     capitalOCiudad: [...new Set([
       ...AUTONOMIAS.flatMap((c) => [...capitalesDe(c), ...(c.ciudadesTrampa ?? [])].map((f) => f[style])),

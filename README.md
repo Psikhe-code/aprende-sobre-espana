@@ -34,7 +34,9 @@ src/
   data/                    ← CONTENIDO
     territorio.json        comunidades y provincias, con sus códigos INE
     banderas.json          bandera de cada comunidad: archivo, banderas parecidas y explicación
+    banderas-provincias.json  igual, para las provincias con bandera oficial en uso
     banderas/*.svg         una imagen por comunidad
+    banderas/provincias/*.webp  una imagen por provincia con bandera
     schema/                descripción formal del formato de los JSON (se valida en los tests)
   engine/                  ← MOTOR (sin interfaz)
     territory.ts           carga el territorio y monta los pools de respuestas
@@ -142,6 +144,14 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 ## Banderas
 
 Las de `src/data/banderas/` son las versiones **oficiales** de Wikimedia Commons, con escudo cuando la oficial lo lleva. Cada una conserva su proporción real (no todas son 3:2) y se muestra sin deformarla.
+
+### Banderas de provincia
+
+Solo están las de las provincias que tienen una bandera **aprobada formalmente y en uso público** (15): Álava, Bizkaia y Gipuzkoa; Almería, Cádiz, Córdoba, Granada, Huelva, Jaén y Sevilla; Burgos, Segovia, Teruel, Toledo y Ourense. Casi siempre son la bandera de su Diputación (en el País Vasco, la del territorio histórico). No entran las de las provincias que forman ellas solas una comunidad, porque repetirían la de la comunidad, ni las que solo se usan sin aprobación o no existen.
+
+- Los datos están en `banderas-provincias.json`, por código INE de provincia, con los mismos campos que `banderas.json`. Las trampas son provincias con banderas parecidas (del mismo color, o blancas con cruz roja).
+- Las imágenes son **WebP** de 900 px de ancho en `src/data/banderas/provincias/`, convertidas desde los SVG de Commons: los originales pesaban unos 17 MB en total (Cádiz, 5 MB) y así son unos 360 KB.
+- En Jaén se usa la versión sin la cinta con «Provincia de Jaén» bajo el escudo, porque esa cinta delataría la respuesta.
 
 En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Commons, enlace, autor y licencia. Algunas son de dominio público o CC0. Otras tienen licencia **CC BY** o **CC BY-SA**, que permiten usarlas citando al autor; por eso el juego tiene una pantalla de **Créditos** (enlace en la pantalla de inicio) que lista todas. El esquema y los tests exigen autor y enlace a la licencia cuando la licencia pide atribución.
 

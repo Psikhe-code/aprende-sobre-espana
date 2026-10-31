@@ -4,8 +4,8 @@ import { GameSession, applyRecord, type GameResult } from "../engine/game";
 import { loadState, saveState, comboKey, type SavedState } from "../engine/storage";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "../engine/types";
 import { flagImage } from "./flags";
-import { BANDERAS } from "../engine/questions";
-import { AUTONOMIAS } from "../engine/territory";
+import { BANDERAS, BANDERAS_PROVINCIAS, type BanderaInfo } from "../engine/questions";
+import { AUTONOMIAS, provincia } from "../engine/territory";
 import { drawContours } from "./contours";
 
 // Interfaz: dibuja las pantallas y traduce los toques en llamadas al motor.
@@ -39,7 +39,7 @@ const NAME_LABELS: Record<NameStyle, { name: string; example: string; short: str
 /** Cómo se presenta cada territorio en Opciones, y qué se añade al nombre de la categoría en la partida. */
 const TERRITORIO_LABELS: Record<Territorio, { name: string; example: string; short: string }> = {
   comunidad: { name: "Comunidades", example: "Las 17 comunidades y las ciudades autónomas de Ceuta y Melilla, y de qué comunidad es cada provincia", short: "comunidades" },
-  provincia: { name: "Provincias", example: "Por ahora, las capitales que no se llaman como su provincia", short: "provincias" }
+  provincia: { name: "Provincias", example: "Capitales que no se llaman como su provincia, y banderas de las provincias que tienen una oficial", short: "provincias" }
 };
 
 /** Explicación de cada dificultad en Opciones. */
@@ -320,19 +320,21 @@ export function startApp(): App {
       a.rel = "noopener";
       return a;
     };
-    $("creditList").replaceChildren(...AUTONOMIAS.map((c) => {
-      const f = BANDERAS[c.id].fuente;
+    const fila = (clave: string, nombre: string, f: BanderaInfo["fuente"]) => {
       const row = el("div", "credit");
       const text = el("div", "credit-text");
       const lic = el("span");
       if (f.autor) lic.append(`${f.autor} · `);
       lic.append(f.licenciaUrl ? link(f.licenciaUrl, f.licencia) : f.licencia, " · ", link(f.url, "ver en Wikimedia Commons"));
-      text.append(el("b", "", c.nombre[NAME_STYLES[0]]), lic);
+      text.append(el("b", "", nombre), lic);
       const thumb = el("span", "thumb");
-      thumb.append(flagImage(c.id));
+      thumb.append(flagImage(clave));
       row.append(thumb, text);
       return row;
-    }));
+    };
+    $("creditList").replaceChildren(...AUTONOMIAS.map((c) => fila(c.id, c.nombre[NAME_STYLES[0]], BANDERAS[c.id].fuente)));
+    $("creditListProvincias").replaceChildren(...Object.keys(BANDERAS_PROVINCIAS).sort().map((id) =>
+      fila("p" + id, provincia(id).nombre[NAME_STYLES[0]], BANDERAS_PROVINCIAS[id].fuente)));
   }
 
   // ---------- Navegación ----------
