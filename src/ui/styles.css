@@ -127,6 +127,8 @@ h1 {
 .cat:hover { border-color: var(--water); }
 .cat[aria-pressed="true"] { border-color: var(--water); box-shadow: inset 0 0 0 1px var(--water); }
 .cat[aria-pressed="false"] { opacity: .7; }
+.cat:disabled { opacity: .45; cursor: not-allowed; }
+.cat:disabled:hover { border-color: var(--line); }
 .check {
   flex: none; width: 22px; height: 22px; margin-top: 3px;
   border: 2px solid var(--line); border-radius: 4px;
@@ -222,7 +224,13 @@ h1 {
 .miss-flag { display: flex; margin-block: 4px 2px; }
 .miss-flag img { display: block; height: 36px; width: auto; border: 1px solid var(--line); border-radius: 2px; }
 .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-@media (max-width: 520px) { .opts { grid-template-columns: 1fr; } }
+@media (max-width: 520px) {
+  .opts { grid-template-columns: 1fr; }
+  /* Con 6 u 8 opciones, dos columnas más compactas para que quepan sin desplazarse. */
+  .opts.many { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .opts.many .opt { padding: 10px; gap: 8px; font-size: 15px; }
+  .opts.many .key { width: 22px; height: 22px; }
+}
 .opt {
   display: flex;
   align-items: center;

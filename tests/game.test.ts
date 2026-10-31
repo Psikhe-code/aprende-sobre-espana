@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORY_IDS } from "../src/engine/categories";
-import { buildRound, rebuild, roundSize, ROUND_LENGTH } from "../src/engine/round";
+import { buildRound, rebuild, roundSize, OPTION_COUNTS, ROUND_LENGTH } from "../src/engine/round";
 import { poolsFor } from "../src/engine/territory";
 import { comboKey, loadState } from "../src/engine/storage";
 import { GameSession, applyRecord } from "../src/engine/game";
@@ -72,6 +72,17 @@ describe("partidas: elección de preguntas", () => {
     for (const id of CATEGORY_IDS) {
       expect(cuenta[id] / total, id).toBeGreaterThan(1 / CATEGORY_IDS.length - 0.08);
       expect(cuenta[id] / total, id).toBeLessThan(1 / CATEGORY_IDS.length + 0.08);
+    }
+  });
+
+  it("cada dificultad da su número de opciones, y la trampa fija sigue saliendo", () => {
+    for (const n of OPTION_COUNTS) {
+      for (let r = 0; r < 30; r++) {
+        for (const q of buildRound({ categories: CATEGORY_IDS, options: n })) {
+          expect(q.options, q.id).toHaveLength(n);
+          if (q.forcedTraps) expect(q.options.filter((o) => q.forcedTraps!.includes(o)), q.id).toHaveLength(1);
+        }
+      }
     }
   });
 
@@ -197,9 +208,17 @@ describe("guardado", () => {
     expect(loadState().territorios).toEqual(["comunidad", "provincia"]);
   });
 
-  it("la clave del récord incluye las categorías y los territorios, en orden", () => {
+  it("la clave del récord incluye las categorías, los territorios y la dificultad (si no es la de 4 opciones)", () => {
     expect(comboKey(["banderas", "capitales"], ["provincia", "comunidad"])).toBe("capitales+banderas/comunidad+provincia");
     expect(comboKey(["capitales"], ["comunidad"])).toBe("capitales/comunidad");
+    expect(comboKey(["capitales"], ["comunidad"], 4)).toBe("capitales/comunidad");
+    expect(comboKey(["capitales"], ["comunidad"], 8)).toBe("capitales/comunidad/8");
+  });
+
+  it("la dificultad por defecto es 4 opciones, y se recuerda la elegida", () => {
+    expect(loadState().opciones).toBe(4);
+    conGuardado({ opciones: 8 }, () => expect(loadState().opciones).toBe(8));
+    conGuardado({ opciones: 5 }, () => expect(loadState().opciones).toBe(4));
   });
 
   it("convierte lo guardado con los nombres antiguos de categoría, sin perder selección ni récords", () => {
