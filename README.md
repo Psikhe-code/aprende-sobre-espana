@@ -171,6 +171,15 @@ Algunas webs no se pueden abrir desde el entorno donde trabaja Claude (Wikimedia
 3. Sube la rama. GitHub descarga los archivos y los guarda en `banderas-wikimedia/` de esa rama.
 4. Revisa las candidatas con su versión oficial. En una rama normal, copia la elegida a `src/data/banderas/` (las de provincia, convertidas a WebP, a `src/data/banderas/provincias/`) y actualiza su `fuente` (y su `descripcion` y `significado` si cambia el diseño) en el JSON. Después, borra la rama temporal.
 
+### Descargar páginas web
+
+1. Crea la rama `paginas-descarga` desde `main`.
+2. Pon en la lista `PAGINAS` del script un nombre para cada página, su dirección y si quieres también las imágenes y PDF que enlaza (`True`) o solo la página (`False`). En el script hay ejemplos.
+3. Sube la rama. GitHub descarga las páginas y las guarda en `paginas-descargadas/` de esa rama, con un `indice.json` que dice de dónde sale cada archivo y qué ha fallado.
+4. Cuando ya se ha leído lo descargado, borra la rama temporal.
+
+El proceso solo arranca si el commit que subes cambia el script (o el workflow). Para descargar otra tanda, basta con cambiar la lista y volver a subir.
+
 ## Tests
 
 `npm test` comprueba:

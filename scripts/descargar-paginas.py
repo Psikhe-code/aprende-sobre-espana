@@ -25,12 +25,11 @@ MAX_ENLACES = 40
 EXT = re.compile(r"\.(svg|png|jpe?g|gif|webp|pdf)(\?|$)", re.I)
 
 # Qué descargar: nombre del archivo (sin extensión) → (dirección, ¿seguir imágenes y PDF enlazados?).
-# Ejemplos de lo que se ha usado antes:
-#   "fotw-teruel": ("https://www.fotw.info/flags/es-ar-te.html", False),
+# Ejemplos (los dos primeros, probados al crear esta herramienta):
+#   "fotw-teruel": ("https://www.fotw.info/flags/es-ar-te.html", True),
 #   "wikipedia-banderas-provincias": ("https://en.wikipedia.org/w/index.php?title=List_of_provincial_flags_of_Spain&action=raw", False),
 #   "simbolos-asturias": ("https://www.asturias.es/…/simbolos-principado-asturias", True),
 PAGINAS = {
-    "ejemplo-fotw-espana": ("https://www.fotw.info/flags/es-.html", False),
 }
 
 
