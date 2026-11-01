@@ -159,7 +159,7 @@
       "nombre": {"oficial": "Calvià", "castellano": "Calvià"},
       "poblacion": 53793,
       "puesto": 3,
-      "curiosidad": "No tiene una gran ciudad, pero es el tercer municipio más poblado de Baleares gracias al turismo, que ha llenado su costa de núcleos como Magaluf, Palmanova o Santa Ponsa."
+      "curiosidad": "No tiene una gran ciudad, pero es el tercer municipio más poblado de Baleares gracias al turismo, que ha llenado la costa de Mallorca de núcleos como Magaluf, Palmanova o Santa Ponsa."
     },
     {
       "id": "07015",
@@ -167,6 +167,13 @@
       "poblacion": 32431,
       "puesto": 9,
       "curiosidad": "Es especialmente conocida por haber sido la capital de Menorca hasta el siglo XVIII, cuando los británicos, que dominaban la isla, llevaron la capital a {municipio:07032}, en el otro extremo de la isla, por su gran puerto natural.\nSus fiestas de Sant Joan, en junio, son famosas por los caballos que bailan entre la gente en las calles."
+    },
+    {
+      "id": "07024",
+      "nombre": {"oficial": "Formentera", "castellano": "Formentera"},
+      "poblacion": 11661,
+      "puesto": 24,
+      "curiosidad": "El municipio abarca toda la isla de Formentera, la más pequeña de las habitadas de Baleares.\nEstuvo despoblada durante siglos por los ataques de piratas, hasta que en 1695 la repoblaron gentes de Ibiza."
     },
     {
       "id": "07026",
@@ -1075,39 +1082,42 @@
       "nombre": {"oficial": "Arrecife", "castellano": "Arrecife"},
       "poblacion": 70811,
       "puesto": 4,
-      "curiosidad": "Es la capital de Lanzarote."
+      "curiosidad": "Es la capital de Lanzarote desde 1852, cuando su puerto ya se había convertido en el motor económico de la isla.\nHasta entonces la capital estaba en Teguise, en el interior, porque el puerto quedaba demasiado expuesto a los ataques de barcos enemigos."
     },
     {
       "id": "35016",
       "nombre": {"oficial": "Las Palmas de Gran Canaria", "castellano": "Las Palmas de Gran Canaria"},
       "poblacion": 381868,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Nació en 1478 como el campamento desde el que los castellanos conquistaron Gran Canaria, en lo que hoy es el barrio de Vegueta.\nA finales del siglo XIX se construyó su puerto de La Luz, una gran escala para los barcos que cruzan entre Europa, África y América, y con él creció hasta convertirse en la ciudad más poblada de Canarias."
     },
     {
       "id": "35017",
       "nombre": {"oficial": "Puerto del Rosario", "castellano": "Puerto del Rosario"},
       "poblacion": 46150,
       "puesto": 6,
-      "curiosidad": "Es la capital de Fuerteventura."
+      "curiosidad": "Es la capital de Fuerteventura desde que en 1860 sustituyó a Betancuria, en el interior.\nHasta 1956 se llamaba Puerto de Cabras, por los rebaños que pastaban en su costa, pero lo cambiaron porque el nombre provocaba burlas."
     },
     {
       "id": "35019",
       "nombre": {"oficial": "San Bartolomé de Tirajana", "castellano": "San Bartolomé de Tirajana"},
       "poblacion": 54291,
       "puesto": 5,
-      "curiosidad": "En su término están Maspalomas y Playa del Inglés, de los lugares más turísticos de Canarias."
+      "curiosidad": "Es especialmente conocido por tener en su término Playa del Inglés y Maspalomas, con sus dunas junto al mar, en el sur de Gran Canaria.\nDesde los años sesenta, playas como estas lo han convertido en uno de los grandes destinos turísticos de Canarias, con lo que su población se ha multiplicado por cuatro."
     },
     {
       "id": "35022",
       "nombre": {"oficial": "Santa Lucía de Tirajana", "castellano": "Santa Lucía de Tirajana"},
       "poblacion": 78584,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Casi toda su población vive en la costa, en Vecindario, y desde 1960 se ha multiplicado por siete, sobre todo con gente que trabaja en el turismo del sur de Gran Canaria.\nEn su término está la Fortaleza de Ansite, el último refugio de los antiguos canarios que resistieron la conquista castellana de la isla, en 1483."
     },
     {
       "id": "35026",
       "nombre": {"oficial": "Telde", "castellano": "Telde"},
       "poblacion": 104168,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Ya en 1351, más de un siglo antes de la conquista castellana, el papa creó aquí un obispado para los misioneros mallorquines que llegaban a Gran Canaria, aunque nunca llegó a funcionar de verdad.\nEntonces la isla se llamaba simplemente Canaria, y el «Gran» no se le añadió hasta el siglo XV."
     },
     {
       "id": "36003",
@@ -1184,40 +1194,50 @@
       "id": "38006",
       "nombre": {"oficial": "Arona", "castellano": "Arona"},
       "poblacion": 87793,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Antiguamente era un pequeño municipio agrícola en el sur de Tenerife con algunas aldeas pesqueras salpicando la costa. Sin embargo, desde los años sesenta, la explosión del turismo costero, en lugares como Los Cristianos y Playa de las Américas, ha multiplicado su población por trece."
     },
     {
       "id": "38023",
       "nombre": {"oficial": "San Cristóbal de La Laguna", "castellano": "San Cristóbal de La Laguna"},
       "poblacion": 161108,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Tras la conquista de Tenerife, a finales del siglo XV, fue la capital de la isla, y el trazado de sus calles, sin murallas, sirvió de modelo para muchas ciudades de América.\nSe fundó en fechas cercanas a la fiesta de san Cristóbal, junto a la laguna de Aguere, que después se desecó, y de ahí viene su nombre."
     },
     {
       "id": "38028",
       "nombre": {"oficial": "Puerto de la Cruz", "castellano": "Puerto de la Cruz"},
       "poblacion": 31137,
       "puesto": 8,
-      "curiosidad": "Fue uno de los primeros destinos turísticos de Canarias."
+      "curiosidad": "Es especialmente conocido por ser el lugar donde empezó el turismo en Canarias, en el norte de Tenerife, cuando en 1886 se abrió aquí el primer sanatorio de las islas para viajeros que venían a curarse con su clima."
     },
     {
       "id": "38036",
       "nombre": {"oficial": "San Sebastián de la Gomera", "castellano": "San Sebastián de la Gomera"},
       "poblacion": 9574,
       "puesto": 21,
-      "curiosidad": "Es la capital de La Gomera, y allí hizo Colón su última escala antes de cruzar el Atlántico en 1492."
+      "curiosidad": "Es la capital de La Gomera y el último lugar del que partió Colón en 1492 antes de llegar a América."
     },
     {
       "id": "38037",
       "nombre": {"oficial": "Santa Cruz de la Palma", "castellano": "Santa Cruz de la Palma"},
       "poblacion": 15690,
       "puesto": 17,
-      "curiosidad": "Es la capital de la isla de La Palma."
+      "curiosidad": "Es la capital de La Palma, y su puerto fue en el siglo XVI una de las escalas más importantes entre Europa y América.\nEn 1773 se celebraron aquí las primeras elecciones municipales por votación popular de España."
     },
     {
       "id": "38038",
       "nombre": {"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"},
       "poblacion": 211957,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Su nombre viene de la cruz que plantaron los castellanos al desembarcar aquí en 1494 para conquistar Tenerife.\nAl principio dependía de {municipio:38023}, pero su puerto ganó importancia cuando en 1706 un volcán sepultó el de Garachico, que era el principal de la isla. En 1833 se convirtió en la capital de Canarias."
+    },
+    {
+      "id": "38048",
+      "nombre": {"oficial": "Valverde", "castellano": "Valverde"},
+      "poblacion": 5338,
+      "puesto": 31,
+      "curiosidad": "Es la capital de El Hierro y la única capital de isla de Canarias que no está junto al mar, porque se fundó en el interior para protegerse de los piratas."
     },
     {
       "id": "39020",
