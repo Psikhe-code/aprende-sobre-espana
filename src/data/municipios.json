@@ -108,7 +108,8 @@
       "id": "05014",
       "nombre": {"oficial": "Arenas de San Pedro", "castellano": "Arenas de San Pedro"},
       "poblacion": 6460,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está al sur de la sierra de Gredos, en el valle del Tiétar, y tiene un clima mucho más suave que el resto de la provincia, con muchos olivares.\nEn su término están las cuevas del Águila, llenas de estalactitas y estalagmitas."
     },
     {
       "id": "05016",
