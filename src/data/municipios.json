@@ -120,7 +120,8 @@
       "id": "05019",
       "nombre": {"oficial": "Ávila", "castellano": "Ávila"},
       "poblacion": 59107,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Conserva entera su muralla medieval, del siglo XII, con casi dos kilómetros y medio de perímetro y 87 torreones, y es Patrimonio de la Humanidad."
     },
     {
       "id": "06015",
