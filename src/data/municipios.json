@@ -1011,33 +1011,36 @@
       "id": "33004",
       "nombre": {"oficial": "Avilés", "castellano": "Avilés"},
       "poblacion": 75517,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "A mediados del siglo XX se instaló en su ría ENSIDESA, una enorme fábrica de acero que atrajo a trabajadores de toda España, y en solo veinte años su población casi se cuadruplicó, pasando de ser una villa mediana a una de las ciudades más grandes de Asturias."
     },
     {
       "id": "33012",
       "nombre": {"oficial": "Cangas de Onís", "castellano": "Cangas de Onís"},
       "poblacion": 6344,
       "puesto": 25,
-      "curiosidad": "Fue la primera capital del reino de Asturias, y en su término está Covadonga."
+      "curiosidad": "Es especialmente conocido por ser la primera capital del reino de Asturias, antes de que la corte pasara a San Martín del Rey Aurelio, luego a Pravia y por último a Oviedo.\nEn su término está Covadonga, donde según la tradición empezó la Reconquista con la victoria de don Pelayo, hacia el año 722."
     },
     {
       "id": "33024",
       "nombre": {"oficial": "Gijón", "castellano": "Gijón"},
       "poblacion": 269894,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Creció mucho en los siglos XIX y XX gracias a su puerto y a la industria del acero y los astilleros, y por eso es la ciudad más poblada de Asturias.\nAun así, la capital sigue siendo Oviedo, que lo es desde los tiempos del reino de Asturias."
     },
     {
       "id": "33036",
       "nombre": {"oficial": "Llanes", "castellano": "Llanes"},
       "poblacion": 13486,
       "puesto": 12,
-      "curiosidad": "Es una villa marinera con playas y acantilados muy visitados."
+      "curiosidad": "Es especialmente conocido por su costa, llena de playas y acantilados entre el mar y los Picos de Europa, lo que lo convierte en un destino turístico muy valorado."
     },
     {
       "id": "33044",
       "nombre": {"oficial": "Oviedo", "castellano": "Oviedo"},
       "poblacion": 223968,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Desde finales del siglo VIII fue la capital del reino de Asturias, hasta que a comienzos del X la corte se trasladó a León.\nDe esa época conserva varias iglesias y palacios prerrománicos, como Santa María del Naranco, que hoy son Patrimonio de la Humanidad."
     },
     {
       "id": "34004",
