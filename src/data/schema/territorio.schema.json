@@ -170,6 +170,11 @@
             "description": "Explicación de la pregunta de su capital: por qué la provincia no se llama como su capital y algún dato de interés. Si no la tiene, el juego genera una automática que la relaciona con su comunidad. Marcas: «{capital}», la capital de esta provincia; «{provincia:NN}» y «{provincia.capital:NN}», como en las notas de las comunidades.",
             "type": "string",
             "minLength": 10
+          },
+          "curiosidad": {
+            "description": "Curiosidad opcional sobre la provincia, que se muestra al responder la pregunta «¿De qué comunidad autónoma es la provincia de…?» (por eso no sale en las provincias que forman ellas solas una comunidad). Mismos criterios que las de los municipios (ver CLAUDE.md). Admite las marcas {provincia:NN} y {provincia.capital:NN}.",
+            "type": "string",
+            "minLength": 10
           }
         }
       }

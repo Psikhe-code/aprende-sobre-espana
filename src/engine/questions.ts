@@ -198,6 +198,7 @@ export function divisionQuestions(style: NameStyle): Question[] {
       traps: comunidadesTrampa(p).map((id) => autonomia(id).nombre[style]).filter((n) => !ciudades.includes(n)),
       exclude: ciudades,
       why: `La provincia de ${p.nombre[style]} es ${deAutonomia(c, style)}, que tiene ${NUMEROS[hermanas.length]} provincias: ${lista}.`,
+      fact: p.curiosidad ? prepararTexto(p.curiosidad, style) : undefined,
       aliases: aliases([p.nombre, c.nombre], style),
       territorio: "comunidad" as const
     };
