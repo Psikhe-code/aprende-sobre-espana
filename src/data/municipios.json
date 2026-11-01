@@ -1220,7 +1220,8 @@
       "id": "38038",
       "nombre": {"oficial": "Santa Cruz de Tenerife", "castellano": "Santa Cruz de Tenerife"},
       "poblacion": 211957,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Su nombre viene de la cruz que plantaron los castellanos al desembarcar aquí en 1494 para conquistar Tenerife.\nAl principio dependía de La Laguna, pero su puerto ganó importancia cuando en 1706 un volcán sepultó el de Garachico, que era el principal de la isla. En 1833 se convirtió en la capital de Canarias."
     },
     {
       "id": "39020",
