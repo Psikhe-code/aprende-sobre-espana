@@ -1277,7 +1277,8 @@
       "id": "39087",
       "nombre": {"oficial": "Torrelavega", "castellano": "Torrelavega"},
       "poblacion": 51796,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "De ser un pueblo agrícola de 78 familias a mediados del siglo XVIII, pasó a ser la segunda ciudad de Cantabria gracias a las minas de zinc cercanas y a grandes fábricas como la química Solvay, que llegó en 1904."
     },
     {
       "id": "40063",
