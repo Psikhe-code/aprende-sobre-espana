@@ -158,12 +158,14 @@ describe("textos de las notas", () => {
     }
   });
 
-  it("las marcas entre llaves son válidas y apuntan a provincias que existen", () => {
+  it("las marcas entre llaves son válidas y apuntan a provincias y municipios que existen", () => {
     const provincias = new Set(PROVINCIAS.map((p) => p.id));
+    const municipios = new Set(MUNICIPIOS.map((m) => m.id));
     for (const [campo, id, t] of textos) {
       for (const [marca] of t.matchAll(/\{[^}]*\}/g)) {
         const m = marca.match(/^\{provincia(?:\.capital)?:(\d{2})\}$/);
-        const valida = m ? provincias.has(m[1]) : marca === "{capital}" && campo.includes("Capital");
+        const mun = marca.match(/^\{municipio:(\d{5})\}$/);
+        const valida = m ? provincias.has(m[1]) : mun ? municipios.has(mun[1]) : marca === "{capital}" && campo.includes("Capital");
         expect(valida, `${donde(campo, id, t)} → ${marca}`).toBe(true);
       }
       // Llaves sueltas, sin cerrar o sin abrir.

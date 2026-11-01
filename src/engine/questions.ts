@@ -25,6 +25,7 @@ function aliases(formas: Formas[], style: NameStyle): string[] {
  * Prepara un texto de las notas para mostrarlo en la forma de la pregunta:
  * - `{provincia:NN}` → el nombre de la provincia con código INE NN («Araba/Álava» o «Álava»).
  * - `{provincia.capital:NN}` → la capital de esa provincia («A Coruña» o «La Coruña»).
+ * - `{municipio:NNNNN}` → el municipio con código INE NNNNN, si está en municipios.json («Maó» o «Mahón»).
  * - `{capital}` → la capital de la comunidad (solo en las notas de capitales, que la pasan aparte).
  * Además quita los espacios que sobren al principio, al final y junto a los saltos de línea.
  * Una marca con un código que no existe se deja tal cual, y los tests la detectan.
@@ -34,7 +35,7 @@ export function prepararTexto(texto: string, style: NameStyle, capital?: string)
     const p = PROVINCIAS.find((x) => x.id === id);
     if (!p) return marca;
     return (esCapital ? p.capital : p.nombre)[style];
-  });
+  }).replace(/\{municipio:(\d{5})\}/g, (marca, id: string) => MUNICIPIOS.find((m) => m.id === id)?.nombre[style] ?? marca);
   const conCapital = capital === undefined ? conMarcas : conMarcas.replaceAll("{capital}", capital);
   return conCapital.replace(/[ \t]*\n[ \t]*/g, "\n").trim();
 }

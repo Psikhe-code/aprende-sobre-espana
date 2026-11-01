@@ -110,13 +110,14 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
 
 ### Marcas en los textos
 
-En las notas de las capitales y de las banderas se pueden escribir marcas entre llaves, que el juego sustituye por el nombre en la forma de la pregunta (oficial o castellano):
+En las notas de las capitales, las banderas y las curiosidades se pueden escribir marcas entre llaves, que el juego sustituye por el nombre en la forma de la pregunta (oficial o castellano):
 
 | Marca | Se sustituye por | Ejemplo |
 | --- | --- | --- |
 | `{capital}` | la capital de la comunidad (solo en las notas de capitales) | Vitoria-Gasteiz / Vitoria |
 | `{provincia:NN}` | el nombre de la provincia con código INE `NN` | `{provincia:01}` → Araba/Álava / Álava |
 | `{provincia.capital:NN}` | la capital de esa provincia | `{provincia.capital:15}` → A Coruña / La Coruña |
+| `{municipio:NNNNN}` | el municipio con código INE `NNNNN` (tiene que estar en `municipios.json`) | `{municipio:07032}` → Maó / Mahón |
 
 Los tests comprueban que cada marca está bien escrita y que el código existe. Los nombres históricos («Reino de Valencia») o los que hablan del propio nombre se escriben tal cual, sin marca.
 

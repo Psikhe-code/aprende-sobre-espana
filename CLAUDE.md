@@ -46,7 +46,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
   - Palabras sencillas: «bandera» en vez de «pendón» o «estandarte», «cuadros» en vez de «cuarteles».
   - El nombre propio de la bandera (senyera, ikurriña…) va en la última línea.
   - Antes de proponer un texto, comprobar las fuentes; si no hay respaldo, decirlo.
-- En las notas, los nombres que cambian según la forma van con marcas (`{provincia:NN}`, `{provincia.capital:NN}`); ver el README.
+- En las notas, los nombres que cambian según la forma van con marcas (`{provincia:NN}`, `{provincia.capital:NN}`, `{municipio:NNNNN}`); ver el README.
 - Desde el entorno de Claude, Wikimedia limita mucho las peticiones y muchas webs no se pueden abrir. Para descargar se usa GitHub Actions con ramas temporales que no se mezclan y se borran al terminar (ver README, «Descargas con GitHub Actions»): `banderas-descarga` ejecuta `scripts/descargar-banderas.py` (archivos de Commons: banderas, escudos…) y `paginas-descarga` ejecuta `scripts/descargar-paginas.py` (páginas web, con sus imágenes y PDF si se pide).
 
 ## Pendiente
