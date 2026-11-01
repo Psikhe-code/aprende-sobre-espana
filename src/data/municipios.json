@@ -102,7 +102,7 @@
       "nombre": {"oficial": "El Ejido", "castellano": "El Ejido"},
       "poblacion": 91440,
       "puesto": 3,
-      "curiosidad": "Está rodeado por un enorme «mar de plástico» de invernaderos, tan extenso que se ve desde el espacio, y por eso a esta zona de Almería se la conoce como «la huerta de Europa»."
+      "curiosidad": "Está rodeado de invernaderos que forman un enorme «mar de plástico», tan extenso que se ve desde el espacio.\nEn ellos se cultivan grandes cantidades de hortalizas para la exportación, por lo que esta zona de Almería se conoce como «la huerta de Europa».»."
     },
     {
       "id": "05014",
