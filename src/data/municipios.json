@@ -166,7 +166,7 @@
       "nombre": {"oficial": "Ciutadella de Menorca", "castellano": "Ciudadela de Menorca"},
       "poblacion": 32431,
       "puesto": 9,
-      "curiosidad": "Es especialmente conocida por haber sido la capital de Menorca hasta el siglo XVIII, cuando los británicos, que dominaban la isla, la trasladaron a {municipio:07032}, al otro extremo, junto a su gran puerto natural.\nSus fiestas de Sant Joan, en junio, son famosas por los caballos que bailan entre la gente en las calles."
+      "curiosidad": "Es especialmente conocida por haber sido la capital de Menorca hasta el siglo XVIII, cuando los británicos, que dominaban la isla, llevaron la capital a {municipio:07032}, en el otro extremo de la isla, por su gran puerto natural.\nSus fiestas de Sant Joan, en junio, son famosas por los caballos que bailan entre la gente en las calles."
     },
     {
       "id": "07026",
