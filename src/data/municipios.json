@@ -158,40 +158,43 @@
       "id": "07011",
       "nombre": {"oficial": "Calvià", "castellano": "Calvià"},
       "poblacion": 53793,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "No tiene una gran ciudad, pero es el tercer municipio más poblado de Baleares gracias al turismo, que ha llenado su costa de núcleos como Magaluf, Palmanova o Santa Ponsa."
     },
     {
       "id": "07015",
       "nombre": {"oficial": "Ciutadella de Menorca", "castellano": "Ciudadela de Menorca"},
       "poblacion": 32431,
       "puesto": 9,
-      "curiosidad": "Fue la capital de Menorca hasta el siglo XVIII."
+      "curiosidad": "Es especialmente conocida por haber sido la capital de Menorca hasta el siglo XVIII, cuando los británicos, que dominaban la isla, llevaron la capital a {municipio:07032}, en el otro extremo de la isla, por su gran puerto natural.\nSus fiestas de Sant Joan, en junio, son famosas por los caballos que bailan entre la gente en las calles."
     },
     {
       "id": "07026",
       "nombre": {"oficial": "Eivissa", "castellano": "Ibiza"},
       "poblacion": 55337,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "La fundaron los fenicios hacia el 654 a. C. con el nombre de Iboshim, «la ciudad de Bes», un dios protector, y de ahí viene su nombre actual.\nSu parte antigua, Dalt Vila, rodeada de murallas del siglo XVI, forma parte del Patrimonio de la Humanidad.\nHoy es un gran destino turístico, y gracias a ello su población se ha multiplicado por cinco desde 1960."
     },
     {
       "id": "07032",
       "nombre": {"oficial": "Maó", "castellano": "Mahón"},
       "poblacion": 30666,
       "puesto": 10,
-      "curiosidad": "Es la capital de Menorca."
+      "curiosidad": "Es especialmente conocida por su gran puerto natural, que ha marcado su historia desde la Antigüedad y por el que los británicos la hicieron capital de Menorca en el siglo XVIII.\nSegún la tradición, debe su nombre al cartaginés Magón, hermano de Aníbal, y de la ciudad vendría a su vez el de la salsa mahonesa o mayonesa."
     },
     {
       "id": "07033",
       "nombre": {"oficial": "Manacor", "castellano": "Manacor"},
       "poblacion": 49153,
       "puesto": 4,
-      "curiosidad": "Es la ciudad natal del tenista Rafa Nadal."
+      "curiosidad": "Es especialmente conocida por sus perlas artificiales, famosas en todo el mundo, que se fabrican allí desde 1902 y la convirtieron en el centro industrial del este de Mallorca.\nEn su término están las cuevas del Drach, con uno de los lagos subterráneos más grandes del mundo."
     },
     {
       "id": "07040",
       "nombre": {"oficial": "Palma", "castellano": "Palma"},
       "poblacion": 434786,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Ya en la época musulmana era la ciudad desde la que se gobernaban las islas, y tras la conquista de Jaime I en 1229 se convirtió en la capital del reino de Mallorca.\nSu nombre viene de la ciudad romana de Palma, fundada hacia el 123 a. C., y lo recuperó en 1715 después de siglos llamándose «Ciutat de Mallorca»."
     },
     {
       "id": "08015",

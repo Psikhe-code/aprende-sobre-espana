@@ -292,6 +292,13 @@ describe("preparación de los textos de las notas", () => {
     expect(prepararTexto(t, "oficial", "Vitoria-Gasteiz")).toBe("Gipuzkoa, Donostia/San Sebastián, Vitoria-Gasteiz y {provincia:99}");
     expect(prepararTexto(t, "castellano", "Vitoria")).toBe("Guipúzcoa, San Sebastián, Vitoria y {provincia:99}");
   });
+
+  it("sustituye los municipios según la forma, y deja tal cual uno que no está en municipios.json", () => {
+    const m = MUNICIPIOS.find((x) => x.nombre.oficial !== x.nombre.castellano)!;
+    for (const style of NAME_STYLES) {
+      expect(prepararTexto(`{municipio:${m.id}} y {municipio:99999}`, style)).toBe(`${m.nombre[style]} y {municipio:99999}`);
+    }
+  });
 });
 
 describe("formas de los nombres", () => {
