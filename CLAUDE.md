@@ -57,7 +57,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
   - Breves: casi siempre una sola línea, con lo más interesante o conocido. No añadir datos solo por añadir, porque si son largas no se leen.
   - Que se relacionen con la provincia o la comunidad cuando se pueda, porque la pregunta va de eso (Huesca: la batalla por la que san Jorge es el patrón de Aragón; Calatayud: fue capital de una cuarta provincia aragonesa).
   - En las islas, nombrar siempre la isla la primera vez (no «la isla» a secas), porque saber en qué isla está es justo lo que ayuda a responder. Después ya se puede decir «la isla».
-  - Cuando no hay una historia de reyes o capitales, contar por qué creció la ciudad, a qué se dedica o qué pasó con su población (Avilés, Ibiza). No usar como curiosidad que allí nació un deportista o un famoso si no hizo nada más allí.
+  - Cuando no hay una historia de reyes o capitales, contar por qué creció la ciudad, a qué se dedica o qué pasó con su población (Avilés, Ibiza). No usar como curiosidad que allí nació un deportista o un famoso si no hizo nada más allí. En general, nada de anécdotas circunstanciales de personajes famosos (un rey que pasó por allí, una escala de Colón…) si no tuvieron repercusión real; sí, si acabaron marcando la historia o las tradiciones del lugar.
   - Tono intermedio: contado con naturalidad para alguien que no conoce el sitio, ni de museo ni de charla. Frases que fluyen; nada de encadenar ideas con dos puntos.
   - Mismas reglas que las notas de banderas: comprobar las fuentes, marcar leyendas y tradiciones, palabras sencillas.
   - En los añadidos, la curiosidad cuenta justo el motivo por el que se añadieron (si es una ciudad monumental, lo monumental; no un apodo o un dato suelto).
@@ -73,4 +73,5 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 - **Puntuación** (idea del usuario, para más adelante; de momento no preocuparse de la puntuación): puntos aparte del récord de aciertos, con tiempo máximo por pregunta y más puntos por ir rápido, multiplicadores por racha, y más puntos por dificultad y por jugar con más categorías a la vez.
 - Guardado con estadísticas por categoría y por pregunta (usando los identificadores), y desbloqueo de categorías.
 - Recuperar las categorías del prototipo con los criterios actuales, usando `municipios.json` cuando hagan falta ciudades.
+- **Secciones futuras** (idea del usuario): además de geografía, otras como **historia**. En historia, nada de memorizar nombres y fechas, que le parece inútil: preguntas sobre lo que de verdad importa, como las causas y consecuencias según los historiadores («¿Cuál es una de las principales causas del desastre del 98?»), con respuestas de distinto tipo (la falta de modernización del ejército en las décadas anteriores, tensiones diplomáticas entre países, una crisis económica…).
 - App de Android con Capacitor.
