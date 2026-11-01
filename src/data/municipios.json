@@ -1193,7 +1193,8 @@
       "id": "38023",
       "nombre": {"oficial": "San Cristóbal de La Laguna", "castellano": "San Cristóbal de La Laguna"},
       "poblacion": 161108,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Tras la conquista de Tenerife, a finales del siglo XV, fue la capital de la isla, y el trazado de sus calles, sin murallas, sirvió de modelo para muchas ciudades de América.\nSe fundó en fechas cercanas a la fiesta de san Cristóbal, junto a la laguna de Aguere, que después se desecó, y de ahí viene su nombre."
     },
     {
       "id": "38028",
