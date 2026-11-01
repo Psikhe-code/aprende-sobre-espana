@@ -87,19 +87,22 @@
       "id": "04013",
       "nombre": {"oficial": "Almería", "castellano": "Almería"},
       "poblacion": 205468,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Su Alcazaba, levantada por los musulmanes a partir del siglo X, es la fortaleza más grande que construyeron en al-Ándalus."
     },
     {
       "id": "04079",
       "nombre": {"oficial": "Roquetas de Mar", "castellano": "Roquetas de Mar"},
       "poblacion": 111240,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Es conocida por sus playas y el turismo. Junto con Mojácar, es el municipio de la provincia de Almería con más banderas azules, un distintivo que se da cada año a las playas con el agua limpia y buenos servicios."
     },
     {
       "id": "04902",
       "nombre": {"oficial": "El Ejido", "castellano": "El Ejido"},
       "poblacion": 91440,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está rodeado por un enorme «mar de plástico» de invernaderos, tan extenso que se ve desde el espacio, y por eso a esta zona de Almería se la conoce como «la huerta de Europa»."
     },
     {
       "id": "05014",
@@ -304,40 +307,43 @@
       "id": "11004",
       "nombre": {"oficial": "Algeciras", "castellano": "Algeciras"},
       "poblacion": 126589,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Fue la primera ciudad que fundaron los musulmanes en la península ibérica, tras su llegada en el año 711, y su nombre viene del árabe y significa «la isla verde».\nAdemás, aquí nació en 1947 Paco de Lucía, uno de los guitarristas de flamenco más famosos de la historia."
     },
     {
       "id": "11006",
       "nombre": {"oficial": "Arcos de la Frontera", "castellano": "Arcos de la Frontera"},
       "poblacion": 31267,
       "puesto": 11,
-      "curiosidad": "Es uno de los pueblos blancos más famosos de Andalucía, sobre una gran peña."
+      "curiosidad": "Es especialmente conocido por ser uno de los pueblos blancos más bonitos de Andalucía, en lo alto de una peña sobre el río Guadalete.\nSu apellido, «de la Frontera», como el de Jerez y otros pueblos de la provincia de Cádiz, viene de la Edad Media, cuando estaban en la frontera con el reino musulmán de Granada."
     },
     {
       "id": "11012",
       "nombre": {"oficial": "Cádiz", "castellano": "Cádiz"},
       "poblacion": 109950,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Los fenicios la fundaron hace unos 3.000 años con el nombre de Gadir, y se considera una de las ciudades más antiguas de Europa occidental."
     },
     {
       "id": "11020",
       "nombre": {"oficial": "Jerez de la Frontera", "castellano": "Jerez de la Frontera"},
       "poblacion": 213634,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "El vino de Jerez es famoso en todo el mundo, y especialmente valorado por los ingleses, que lo compran desde la Edad Media. En inglés se llama «sherry» porque viene de «Sherish», el nombre árabe de la ciudad."
     },
     {
       "id": "11032",
       "nombre": {"oficial": "Sanlúcar de Barrameda", "castellano": "Sanlúcar de Barrameda"},
       "poblacion": 70012,
       "puesto": 7,
-      "curiosidad": "De su puerto salió en 1519 la expedición de Magallanes y Elcano, que dio la primera vuelta al mundo."
+      "curiosidad": "Es especialmente conocida porque de su puerto salió en 1519, y a él volvió, la expedición de Magallanes y Elcano, que dio la primera vuelta al mundo."
     },
     {
       "id": "11035",
       "nombre": {"oficial": "Tarifa", "castellano": "Tarifa"},
       "poblacion": 18613,
       "puesto": 17,
-      "curiosidad": "Es el punto más al sur de la península ibérica, frente a África."
+      "curiosidad": "Es especialmente conocida por ser el punto más al sur de la península ibérica, justo frente a África, al otro lado del estrecho de Gibraltar."
     },
     {
       "id": "12032",
@@ -407,19 +413,22 @@
       "id": "14021",
       "nombre": {"oficial": "Córdoba", "castellano": "Córdoba"},
       "poblacion": 323262,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue la capital de al-Ándalus y, en el siglo X, del califato de Córdoba. De esa época es su famosa Mezquita, que hoy es también catedral."
     },
     {
       "id": "14038",
       "nombre": {"oficial": "Lucena", "castellano": "Lucena"},
       "poblacion": 43408,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "En la Edad Media fue una de las comunidades judías más importantes de al-Ándalus, y durante un tiempo solo vivieron en ella judíos. Por eso la llaman «la perla de Sefarad»."
     },
     {
       "id": "14056",
       "nombre": {"oficial": "Puente Genil", "castellano": "Puente Genil"},
       "poblacion": 29963,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Es conocida por su carne de membrillo, que se fabrica aquí desde hace más de un siglo."
     },
     {
       "id": "15009",
@@ -507,33 +516,36 @@
       "id": "18017",
       "nombre": {"oficial": "Almuñécar", "castellano": "Almuñécar"},
       "poblacion": 27544,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "En el año 755 desembarcó en su puerto Abderramán I, que un año después fundó el emirato de Córdoba y dio comienzo a la gran época de al-Ándalus."
     },
     {
       "id": "18087",
       "nombre": {"oficial": "Granada", "castellano": "Granada"},
       "poblacion": 233975,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue la capital del reino nazarí, el último reino musulmán de la península, hasta que los Reyes Católicos la conquistaron en 1492. De esa época es la Alhambra, uno de los monumentos más importantes de España."
     },
     {
       "id": "18089",
       "nombre": {"oficial": "Guadix", "castellano": "Guadix"},
       "poblacion": 18881,
       "puesto": 12,
-      "curiosidad": "Tiene un barrio entero de casas cueva."
+      "curiosidad": "Es especialmente conocida por su barrio de casas cueva, excavadas en la tierra."
     },
     {
       "id": "18140",
       "nombre": {"oficial": "Motril", "castellano": "Motril"},
       "poblacion": 59862,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Durante siglos fue tierra de caña de azúcar, un cultivo que trajeron los musulmanes gracias al clima casi tropical de esta costa, que por eso se llama Costa Tropical."
     },
     {
       "id": "18175",
       "nombre": {"oficial": "Santa Fe", "castellano": "Santa Fe"},
       "poblacion": 15494,
       "puesto": 14,
-      "curiosidad": "En ella se firmaron en 1492 las Capitulaciones de Santa Fe, el acuerdo entre los Reyes Católicos y Colón."
+      "curiosidad": "Es especialmente conocida porque aquí firmaron en 1492 los Reyes Católicos y Colón las Capitulaciones de Santa Fe, el acuerdo que hizo posible su viaje a América.\nLa ciudad nació un año antes como campamento militar, durante el asedio de Granada."
     },
     {
       "id": "19024",
@@ -603,33 +615,36 @@
       "id": "21005",
       "nombre": {"oficial": "Almonte", "castellano": "Almonte"},
       "poblacion": 24864,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "En su término, el más extenso de la provincia, están la aldea de El Rocío, famosa por su romería, y gran parte del parque nacional de Doñana."
     },
     {
       "id": "21041",
       "nombre": {"oficial": "Huelva", "castellano": "Huelva"},
       "poblacion": 143215,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Aquí se fundó en 1889 el Recreativo de Huelva, considerado el club de fútbol más antiguo de España, gracias a los ingleses que trabajaban en las minas y el puerto de la provincia."
     },
     {
       "id": "21044",
       "nombre": {"oficial": "Lepe", "castellano": "Lepe"},
       "poblacion": 29677,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Es famosa en toda España por los «chistes de Lepe», bromas cortas en las que los de Lepe hacen cosas absurdas.\nPor ejemplo: «¿Por qué los de Lepe revuelven el café con un cuchillo? Para que les salga cortado»."
     },
     {
       "id": "21050",
       "nombre": {"oficial": "Moguer", "castellano": "Moguer"},
       "poblacion": 24083,
       "puesto": 4,
-      "curiosidad": "Es la ciudad natal del poeta Juan Ramón Jiménez, premio Nobel y autor de «Platero y yo»."
+      "curiosidad": "Es especialmente conocido por ser el pueblo natal de Juan Ramón Jiménez, premio Nobel de Literatura en 1956, que lo dio a conocer en todo el mundo con «Platero y yo»."
     },
     {
       "id": "21055",
       "nombre": {"oficial": "Palos de la Frontera", "castellano": "Palos de la Frontera"},
       "poblacion": 12938,
       "puesto": 12,
-      "curiosidad": "De su puerto salió Colón en 1492, en su primer viaje a América."
+      "curiosidad": "Es especialmente conocida porque de su puerto partieron las tres naves de Colón el 3 de agosto de 1492, con muchos marineros del pueblo, como los hermanos Pinzón."
     },
     {
       "id": "22048",
@@ -663,33 +678,36 @@
       "id": "23005",
       "nombre": {"oficial": "Andújar", "castellano": "Andújar"},
       "poblacion": 35610,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Cada año, miles de personas van en romería al santuario de la Virgen de la Cabeza, en plena sierra de Andújar."
     },
     {
       "id": "23009",
       "nombre": {"oficial": "Baeza", "castellano": "Baeza"},
       "poblacion": 15575,
       "puesto": 8,
-      "curiosidad": "Sus monumentos renacentistas son Patrimonio de la Humanidad, junto con los de Úbeda."
+      "curiosidad": "Es especialmente conocida, junto con Úbeda, por sus edificios renacentistas, que son Patrimonio de la Humanidad.\nAquí dio clases de francés el poeta Antonio Machado, que escribió que a la ciudad la llamaban «la Salamanca andaluza»."
     },
     {
       "id": "23050",
       "nombre": {"oficial": "Jaén", "castellano": "Jaén"},
       "poblacion": 112235,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "La llaman «la capital mundial del aceite de oliva», porque su provincia es la que más aceite de oliva produce del mundo, y su aceite tiene fama de ser de gran calidad."
     },
     {
       "id": "23055",
       "nombre": {"oficial": "Linares", "castellano": "Linares"},
       "poblacion": 55633,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "En su término están las ruinas de Cástulo, una de las mayores ciudades íberas antes de la llegada de los romanos, de donde era Himilce, la esposa del general cartaginés Aníbal."
     },
     {
       "id": "23092",
       "nombre": {"oficial": "Úbeda", "castellano": "Úbeda"},
       "poblacion": 33588,
       "puesto": 4,
-      "curiosidad": "Sus monumentos renacentistas son Patrimonio de la Humanidad, junto con los de Baeza."
+      "curiosidad": "Es especialmente conocida, junto con Baeza, por sus palacios e iglesias del Renacimiento, que son Patrimonio de la Humanidad. En el siglo XVI sus nobles la llenaron de palacios, como si fuera una pequeña corte italiana."
     },
     {
       "id": "24008",
@@ -863,39 +881,42 @@
       "nombre": {"oficial": "Antequera", "castellano": "Antequera"},
       "poblacion": 41849,
       "puesto": 11,
-      "curiosidad": "Sus dólmenes, de la Prehistoria, son Patrimonio de la Humanidad."
+      "curiosidad": "Es especialmente conocida por sus dólmenes, unos enormes sepulcros de piedra de la Prehistoria que son Patrimonio de la Humanidad."
     },
     {
       "id": "29067",
       "nombre": {"oficial": "Málaga", "castellano": "Málaga"},
       "poblacion": 599063,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "La llaman «la capital de la Costa del Sol», los más de 150 kilómetros de costa de la provincia llenos de pueblos turísticos.\nAdemás, aquí nació en 1881 Pablo Picasso, uno de los pintores más famosos del siglo XX."
     },
     {
       "id": "29069",
       "nombre": {"oficial": "Marbella", "castellano": "Marbella"},
       "poblacion": 159786,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Es el gran destino de lujo de la Costa del Sol desde que, en los años cincuenta, el príncipe Alfonso de Hohenlohe abrió aquí el Marbella Club, un hotel que atrajo a aristócratas y famosos de toda Europa."
     },
     {
       "id": "29070",
       "nombre": {"oficial": "Mijas", "castellano": "Mijas"},
       "poblacion": 95104,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Es famosa por sus burrotaxis, burros con los que los turistas pasean por el pueblo desde finales de los años cincuenta."
     },
     {
       "id": "29084",
       "nombre": {"oficial": "Ronda", "castellano": "Ronda"},
       "poblacion": 33671,
       "puesto": 12,
-      "curiosidad": "Su Puente Nuevo sobre el tajo del río Guadalevín y su plaza de toros están entre los lugares más visitados de Andalucía."
+      "curiosidad": "Es especialmente conocida por su Puente Nuevo, que cruza el profundo tajo del río Guadalevín.\nEs la capital de la Serranía de Ronda, la zona de montaña del interior de la provincia."
     },
     {
       "id": "29901",
       "nombre": {"oficial": "Torremolinos", "castellano": "Torremolinos"},
       "poblacion": 71329,
       "puesto": 8,
-      "curiosidad": "Fue uno de los primeros lugares de la Costa del Sol que se hicieron famosos por el turismo."
+      "curiosidad": "Es especialmente conocido por ser uno de los primeros lugares de España que se llenaron de turistas, en los años cincuenta. Hasta 1988 era un barrio de la ciudad de Málaga, y ese año se separó como municipio propio."
     },
     {
       "id": "30015",
@@ -1267,40 +1288,43 @@
       "id": "41004",
       "nombre": {"oficial": "Alcalá de Guadaíra", "castellano": "Alcalá de Guadaíra"},
       "poblacion": 77474,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Durante siglos, sus molinos del río Guadaíra abastecieron de harina y pan a la ciudad de Sevilla, y por eso se la conocía como «Alcalá de los Panaderos»."
     },
     {
       "id": "41024",
       "nombre": {"oficial": "Carmona", "castellano": "Carmona"},
       "poblacion": 30240,
       "puesto": 10,
-      "curiosidad": "Conserva murallas, puertas y una gran necrópolis de la época romana."
+      "curiosidad": "Es especialmente conocida por sus restos romanos, como una gran necrópolis del siglo I y tramos de la Vía Augusta, la calzada que cruzaba Hispania."
     },
     {
       "id": "41038",
       "nombre": {"oficial": "Dos Hermanas", "castellano": "Dos Hermanas"},
       "poblacion": 142519,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Según la leyenda, su nombre viene de dos hermanas, Elvira y Estefanía Nazareno, y por ellas a sus habitantes se les llama «nazarenos»."
     },
     {
       "id": "41039",
       "nombre": {"oficial": "Écija", "castellano": "Écija"},
       "poblacion": 39659,
       "puesto": 7,
-      "curiosidad": "La llaman «la ciudad de las torres» y «la sartén de Andalucía», por su calor."
+      "curiosidad": "Es especialmente conocida porque se considera uno de los conjuntos históricos más importantes de Andalucía, sobre todo por sus iglesias y palacios barrocos del siglo XVIII, su época de mayor riqueza. Por las muchas torres de sus iglesias, se la suele llamar «la ciudad de las torres»."
     },
     {
       "id": "41068",
       "nombre": {"oficial": "Osuna", "castellano": "Osuna"},
       "poblacion": 17396,
       "puesto": 22,
-      "curiosidad": "Tiene un gran conjunto monumental, con una universidad del siglo XVI."
+      "curiosidad": "Es especialmente conocida por su conjunto monumental del Renacimiento, con su colegiata y su antigua universidad, levantado en el siglo XVI por los señores de la ciudad."
     },
     {
       "id": "41091",
       "nombre": {"oficial": "Sevilla", "castellano": "Sevilla"},
       "poblacion": 689423,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Tras el descubrimiento de América, fue durante dos siglos el único puerto desde el que se podía comerciar con el Nuevo Mundo, y por eso se convirtió en el centro económico del Imperio español."
     },
     {
       "id": "42020",

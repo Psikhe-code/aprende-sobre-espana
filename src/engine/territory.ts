@@ -59,6 +59,8 @@ export interface Provincia {
   ciudades?: Formas[];
   /** Explicación propia para la pregunta de su capital. "{capital}" se sustituye por su nombre. */
   notaCapital?: string;
+  /** Curiosidad sobre la provincia, que sale en la pregunta «¿De qué comunidad autónoma es la provincia de…?». */
+  curiosidad?: string;
 }
 
 /** Comunidades y ciudades autónomas. */

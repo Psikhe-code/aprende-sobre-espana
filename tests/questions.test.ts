@@ -124,6 +124,8 @@ for (const style of NAME_STYLES) {
         expect(q.answer, p.id).toBe(c.nombre[style]);
         expect(q.why, p.id).toMatch(new RegExp(`^La provincia de ${p.nombre[style].replace(/[/()]/g, "\\$&")} es ${deAutonomia(c, style)}, que tiene `));
         for (const x of provinciasDe(c.id)) expect(q.why, `${p.id} → ${x.id}`).toContain(x.nombre[style]);
+        // La curiosidad de la provincia, si la tiene, sale en esta pregunta.
+        expect(q.fact, p.id).toBe(p.curiosidad ? prepararTexto(p.curiosidad, style) : undefined);
       }
     });
 
@@ -228,8 +230,8 @@ for (const style of NAME_STYLES) {
       }
     });
 
-    it("solo las capitales y los municipios tienen curiosidad", () => {
-      expect(all.filter((q) => q.fact).every((q) => q.category === "capitales" || q.id.startsWith("municipio-provincia:"))).toBe(true);
+    it("solo las capitales, las provincias y los municipios tienen curiosidad", () => {
+      expect(all.filter((q) => q.fact).every((q) => q.category === "capitales" || /^(municipio-provincia|provincia-ccaa):/.test(q.id))).toBe(true);
     });
   });
 
