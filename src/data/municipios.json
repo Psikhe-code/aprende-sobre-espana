@@ -1243,7 +1243,8 @@
       "id": "39020",
       "nombre": {"oficial": "Castro-Urdiales", "castellano": "Castro-Urdiales"},
       "poblacion": 33450,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Fue la colonia romana de Flaviobriga, y en el puerto destacan la iglesia gótica de Santa María y el castillo de Santa Ana, que hoy hace de faro.\nEstá junto a Vizcaya, y durante siglos quiso formar parte de ella. Perteneció al señorío de Vizcaya en el siglo XV y lo intentó varias veces después, la última en 1924."
     },
     {
       "id": "39024",
