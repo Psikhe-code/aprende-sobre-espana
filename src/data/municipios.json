@@ -159,7 +159,7 @@
       "nombre": {"oficial": "Calvià", "castellano": "Calvià"},
       "poblacion": 53793,
       "puesto": 3,
-      "curiosidad": "No tiene una gran ciudad, pero es el tercer municipio más poblado de Baleares gracias al turismo, que ha llenado su costa de núcleos como Magaluf, Palmanova o Santa Ponsa."
+      "curiosidad": "No tiene una gran ciudad, pero es el tercer municipio más poblado de Baleares gracias al turismo, que ha llenado la costa de Mallorca de núcleos como Magaluf, Palmanova o Santa Ponsa."
     },
     {
       "id": "07015",
@@ -1075,13 +1075,14 @@
       "nombre": {"oficial": "Arrecife", "castellano": "Arrecife"},
       "poblacion": 70811,
       "puesto": 4,
-      "curiosidad": "Es la capital de Lanzarote."
+      "curiosidad": "Es especialmente conocida por ser la capital de Lanzarote desde 1852, cuando su puerto ya se había convertido en el motor económico de la isla.\nHasta entonces la capital estaba en Teguise, en el interior, porque el puerto quedaba demasiado expuesto a los ataques de barcos enemigos."
     },
     {
       "id": "35016",
       "nombre": {"oficial": "Las Palmas de Gran Canaria", "castellano": "Las Palmas de Gran Canaria"},
       "poblacion": 381868,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Nació en 1478 como el campamento desde el que los castellanos conquistaron Gran Canaria, en lo que hoy es el barrio de Vegueta.\nA finales del siglo XIX se construyó su puerto de La Luz, una gran escala para los barcos que cruzan entre Europa, África y América, y con él creció hasta convertirse en la ciudad más poblada de Canarias."
     },
     {
       "id": "35017",
@@ -1095,19 +1096,21 @@
       "nombre": {"oficial": "San Bartolomé de Tirajana", "castellano": "San Bartolomé de Tirajana"},
       "poblacion": 54291,
       "puesto": 5,
-      "curiosidad": "En su término están Maspalomas y Playa del Inglés, de los lugares más turísticos de Canarias."
+      "curiosidad": "Es especialmente conocido por Playa del Inglés y Maspalomas, con sus dunas junto al mar, en el sur de Gran Canaria, que desde los años sesenta lo han convertido en uno de los grandes destinos turísticos de Canarias."
     },
     {
       "id": "35022",
       "nombre": {"oficial": "Santa Lucía de Tirajana", "castellano": "Santa Lucía de Tirajana"},
       "poblacion": 78584,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Casi toda su población vive en la costa, en Vecindario, y desde 1960 se ha multiplicado por siete, sobre todo con gente que trabaja en el turismo del sur de Gran Canaria.\nEn su término está la Fortaleza de Ansite, el último refugio de los antiguos canarios que resistieron la conquista castellana de la isla, en 1483."
     },
     {
       "id": "35026",
       "nombre": {"oficial": "Telde", "castellano": "Telde"},
       "poblacion": 104168,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Ya en 1351, más de un siglo antes de la conquista castellana, el papa creó aquí un obispado para los misioneros mallorquines que llegaban a Gran Canaria, aunque nunca llegó a funcionar de verdad.\nEntonces la isla se llamaba simplemente Canaria, y el «Gran» no se le añadió hasta el siglo XV."
     },
     {
       "id": "36003",
