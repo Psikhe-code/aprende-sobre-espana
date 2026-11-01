@@ -169,6 +169,13 @@
       "curiosidad": "Es especialmente conocida por haber sido la capital de Menorca hasta el siglo XVIII, cuando los británicos, que dominaban la isla, llevaron la capital a {municipio:07032}, en el otro extremo de la isla, por su gran puerto natural.\nSus fiestas de Sant Joan, en junio, son famosas por los caballos que bailan entre la gente en las calles."
     },
     {
+      "id": "07024",
+      "nombre": {"oficial": "Formentera", "castellano": "Formentera"},
+      "poblacion": 11661,
+      "puesto": 24,
+      "curiosidad": "Ocupa ella sola la isla de Formentera, la más pequeña de las habitadas de Baleares.\nEstuvo despoblada durante siglos por los ataques de piratas, hasta que en 1695 la repoblaron gentes de Ibiza."
+    },
+    {
       "id": "07026",
       "nombre": {"oficial": "Eivissa", "castellano": "Ibiza"},
       "poblacion": 55337,
@@ -1075,7 +1082,7 @@
       "nombre": {"oficial": "Arrecife", "castellano": "Arrecife"},
       "poblacion": 70811,
       "puesto": 4,
-      "curiosidad": "Es especialmente conocida por ser la capital de Lanzarote desde 1852, cuando su puerto ya se había convertido en el motor económico de la isla.\nHasta entonces la capital estaba en Teguise, en el interior, porque el puerto quedaba demasiado expuesto a los ataques de barcos enemigos."
+      "curiosidad": "Es la capital de Lanzarote desde 1852, cuando su puerto ya se había convertido en el motor económico de la isla.\nHasta entonces la capital estaba en Teguise, en el interior, porque el puerto quedaba demasiado expuesto a los ataques de barcos enemigos."
     },
     {
       "id": "35016",
@@ -1089,7 +1096,7 @@
       "nombre": {"oficial": "Puerto del Rosario", "castellano": "Puerto del Rosario"},
       "poblacion": 46150,
       "puesto": 6,
-      "curiosidad": "Es especialmente conocida por ser la capital de Fuerteventura, desde que en 1860 sustituyó a Betancuria, en el interior.\nHasta 1956 se llamaba Puerto de Cabras, por los rebaños que pastaban en su costa, y lo cambiaron porque el nombre provocaba burlas."
+      "curiosidad": "Es la capital de Fuerteventura desde que en 1860 sustituyó a Betancuria, en el interior.\nHasta 1956 se llamaba Puerto de Cabras, por los rebaños que pastaban en su costa, pero lo cambiaron porque el nombre provocaba burlas."
     },
     {
       "id": "35019",
@@ -1209,14 +1216,14 @@
       "nombre": {"oficial": "San Sebastián de la Gomera", "castellano": "San Sebastián de la Gomera"},
       "poblacion": 9574,
       "puesto": 21,
-      "curiosidad": "Es especialmente conocida por ser la capital de La Gomera y el último lugar del que partió Colón en 1492 antes de llegar a América."
+      "curiosidad": "Es la capital de La Gomera y el último lugar del que partió Colón en 1492 antes de llegar a América."
     },
     {
       "id": "38037",
       "nombre": {"oficial": "Santa Cruz de la Palma", "castellano": "Santa Cruz de la Palma"},
       "poblacion": 15690,
       "puesto": 17,
-      "curiosidad": "Es la capital de la isla de La Palma."
+      "curiosidad": "Es la capital de La Palma, y su puerto fue en el siglo XVI una de las escalas más importantes entre Europa y América.\nEn 1773 se celebraron aquí las primeras elecciones municipales por votación popular de España."
     },
     {
       "id": "38038",
@@ -1224,6 +1231,13 @@
       "poblacion": 211957,
       "puesto": 1,
       "curiosidad": "Su nombre viene de la cruz que plantaron los castellanos al desembarcar aquí en 1494 para conquistar Tenerife.\nAl principio dependía de {municipio:38023}, pero su puerto ganó importancia cuando en 1706 un volcán sepultó el de Garachico, que era el principal de la isla. En 1833 se convirtió en la capital de Canarias."
+    },
+    {
+      "id": "38048",
+      "nombre": {"oficial": "Valverde", "castellano": "Valverde"},
+      "poblacion": 5338,
+      "puesto": 31,
+      "curiosidad": "Es la capital de El Hierro y la única capital de isla de Canarias que no está junto al mar, porque se fundó en el interior para protegerse de los piratas."
     },
     {
       "id": "39020",

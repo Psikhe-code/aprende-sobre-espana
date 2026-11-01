@@ -88,7 +88,7 @@
             "minimum": 1
           },
           "curiosidad": {
-            "description": "Curiosidad sobre el municipio, que se muestra después de la nota. Obligatoria en los que no están entre los tres más poblados de su provincia: su primera frase dice por qué es conocido («Es especialmente conocida por…»). Breve, interesante y, si se puede, relacionada con la provincia o la comunidad (ver CLAUDE.md). Admite las marcas {provincia:NN} y {provincia.capital:NN}.",
+            "description": "Curiosidad sobre el municipio, que se muestra después de la nota. Obligatoria en los que no están entre los tres más poblados de su provincia: su primera frase dice por qué es conocido («Es especialmente conocida por…», o «Es la capital de…» en las capitales de isla). Breve, interesante y, si se puede, relacionada con la provincia o la comunidad (ver CLAUDE.md). Admite las marcas {provincia:NN}, {provincia.capital:NN} y {municipio:NNNNN}.",
             "type": "string",
             "minLength": 10
           },
