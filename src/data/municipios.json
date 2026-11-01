@@ -114,7 +114,8 @@
       "id": "05016",
       "nombre": {"oficial": "Arévalo", "castellano": "Arévalo"},
       "poblacion": 7851,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Es una de las ciudades de Castilla con más monumentos mudéjares, el estilo de iglesias y edificios de ladrillo que hacían los artesanos musulmanes que vivían en los reinos cristianos."
     },
     {
       "id": "05019",
