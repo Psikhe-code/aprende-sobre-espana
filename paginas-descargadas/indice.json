@@ -1,0 +1,464 @@
+{
+ "api-san-bartolome-de-tirajana": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=San_Bartolom%C3%A9_de_Tirajana",
+  "enlaces": [],
+  "archivo": "api-san-bartolome-de-tirajana.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 52479
+ },
+ "api-arrecife-lanzarote": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Arrecife_%28Lanzarote%29",
+  "enlaces": [],
+  "archivo": "api-arrecife-lanzarote.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 24132
+ },
+ "api-arrecife-las-palmas": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Arrecife_%28Las_Palmas%29",
+  "enlaces": [],
+  "archivo": "api-arrecife-las-palmas.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 24135
+ },
+ "api-arona": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Arona",
+  "enlaces": [],
+  "archivo": "api-arona.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 59629
+ },
+ "api-valverde-el-hierro": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Valverde_%28El_Hierro%29",
+  "enlaces": [],
+  "archivo": "api-valverde-el-hierro.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 36795
+ },
+ "api-ciudadela-baleares": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Ciudadela_%28Baleares%29",
+  "enlaces": [],
+  "archivo": "api-ciudadela-baleares.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 27206
+ },
+ "api-albacete": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Albacete",
+  "enlaces": [],
+  "archivo": "api-albacete.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 345637
+ },
+ "api-hellin": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Hell%C3%ADn",
+  "enlaces": [],
+  "archivo": "api-hellin.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 50140
+ },
+ "api-villarrobledo": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Villarrobledo",
+  "enlaces": [],
+  "archivo": "api-villarrobledo.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 170696
+ },
+ "api-arenas-de-san-pedro": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Arenas_de_San_Pedro",
+  "enlaces": [],
+  "archivo": "api-arenas-de-san-pedro.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 133060
+ },
+ "api-arevalo": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Ar%C3%A9valo",
+  "enlaces": [],
+  "archivo": "api-arevalo.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 73638
+ },
+ "api-avila": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=%C3%81vila",
+  "enlaces": [],
+  "archivo": "api-avila.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 269686
+ },
+ "api-aranda-de-duero": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Aranda_de_Duero",
+  "enlaces": [],
+  "archivo": "api-aranda-de-duero.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 140869
+ },
+ "api-atapuerca-burgos": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Atapuerca_%28Burgos%29",
+  "enlaces": [],
+  "archivo": "api-atapuerca-burgos.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 11444
+ },
+ "api-burgos": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Burgos",
+  "enlaces": [],
+  "archivo": "api-burgos.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 247657
+ },
+ "api-miranda-de-ebro": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Miranda_de_Ebro",
+  "enlaces": [],
+  "archivo": "api-miranda-de-ebro.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 144825
+ },
+ "api-santo-domingo-de-silos": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Santo_Domingo_de_Silos",
+  "enlaces": [],
+  "archivo": "api-santo-domingo-de-silos.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 910
+ },
+ "api-almagro-ciudad-real": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Almagro_%28Ciudad_Real%29",
+  "enlaces": [],
+  "archivo": "api-almagro-ciudad-real.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 59898
+ },
+ "api-ciudad-real": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Ciudad_Real",
+  "enlaces": [],
+  "archivo": "api-ciudad-real.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 89742
+ },
+ "api-puertollano": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Puertollano",
+  "enlaces": [],
+  "archivo": "api-puertollano.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 67195
+ },
+ "api-tomelloso": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Tomelloso",
+  "enlaces": [],
+  "archivo": "api-tomelloso.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 31746
+ },
+ "api-valdepenas": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Valdepe%C3%B1as",
+  "enlaces": [],
+  "archivo": "api-valdepenas.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 863
+ },
+ "api-cuenca-espana": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Cuenca_%28Espa%C3%B1a%29",
+  "enlaces": [],
+  "archivo": "api-cuenca-espana.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 100570
+ },
+ "api-quintanar-del-rey": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Quintanar_del_Rey",
+  "enlaces": [],
+  "archivo": "api-quintanar-del-rey.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 23825
+ },
+ "api-tarancon": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Taranc%C3%B3n",
+  "enlaces": [],
+  "archivo": "api-tarancon.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 42989
+ },
+ "api-alovera": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Alovera",
+  "enlaces": [],
+  "archivo": "api-alovera.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 17494
+ },
+ "api-azuqueca-de-henares": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Azuqueca_de_Henares",
+  "enlaces": [],
+  "archivo": "api-azuqueca-de-henares.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 40781
+ },
+ "api-guadalajara-espana": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Guadalajara_%28Espa%C3%B1a%29",
+  "enlaces": [],
+  "archivo": "api-guadalajara-espana.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 190774
+ },
+ "api-siguenza": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Sig%C3%BCenza",
+  "enlaces": [],
+  "archivo": "api-siguenza.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 72171
+ },
+ "api-astorga": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Astorga",
+  "enlaces": [],
+  "archivo": "api-astorga.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 230558
+ },
+ "api-leon-espana": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Le%C3%B3n_%28Espa%C3%B1a%29",
+  "enlaces": [],
+  "archivo": "api-leon-espana.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 233367
+ },
+ "api-ponferrada": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Ponferrada",
+  "enlaces": [],
+  "archivo": "api-ponferrada.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 151184
+ },
+ "api-san-andres-del-rabanedo": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=San_Andr%C3%A9s_del_Rabanedo",
+  "enlaces": [],
+  "archivo": "api-san-andres-del-rabanedo.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 26261
+ },
+ "api-aguilar-de-campoo": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Aguilar_de_Campoo",
+  "enlaces": [],
+  "archivo": "api-aguilar-de-campoo.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 32934
+ },
+ "api-fromista": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Fr%C3%B3mista",
+  "enlaces": [],
+  "archivo": "api-fromista.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 18640
+ },
+ "api-palencia": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Palencia",
+  "enlaces": [],
+  "archivo": "api-palencia.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 107619
+ },
+ "api-villamuriel-de-cerrato": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Villamuriel_de_Cerrato",
+  "enlaces": [],
+  "archivo": "api-villamuriel-de-cerrato.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 25308
+ },
+ "api-alba-de-tormes": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Alba_de_Tormes",
+  "enlaces": [],
+  "archivo": "api-alba-de-tormes.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 43971
+ },
+ "api-bejar": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=B%C3%A9jar",
+  "enlaces": [],
+  "archivo": "api-bejar.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 67195
+ },
+ "api-ciudad-rodrigo": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Ciudad_Rodrigo",
+  "enlaces": [],
+  "archivo": "api-ciudad-rodrigo.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 49060
+ },
+ "api-salamanca": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Salamanca",
+  "enlaces": [],
+  "archivo": "api-salamanca.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 182351
+ },
+ "api-santa-marta-de-tormes": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Santa_Marta_de_Tormes",
+  "enlaces": [],
+  "archivo": "api-santa-marta-de-tormes.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 26561
+ },
+ "api-cuellar": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Cu%C3%A9llar",
+  "enlaces": [],
+  "archivo": "api-cuellar.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 67923
+ },
+ "api-el-espinar": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=El_Espinar",
+  "enlaces": [],
+  "archivo": "api-el-espinar.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 99076
+ },
+ "api-real-sitio-de-san-ildefonso": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Real_Sitio_de_San_Ildefonso",
+  "enlaces": [],
+  "archivo": "api-real-sitio-de-san-ildefonso.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 38923
+ },
+ "api-segovia": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Segovia",
+  "enlaces": [],
+  "archivo": "api-segovia.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 107513
+ },
+ "api-sepulveda": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Sep%C3%BAlveda",
+  "enlaces": [],
+  "archivo": "api-sepulveda.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 33189
+ },
+ "api-almazan": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Almaz%C3%A1n",
+  "enlaces": [],
+  "archivo": "api-almazan.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 27773
+ },
+ "api-el-burgo-de-osma": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=El_Burgo_de_Osma",
+  "enlaces": [],
+  "archivo": "api-el-burgo-de-osma.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 25673
+ },
+ "api-medinaceli": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Medinaceli",
+  "enlaces": [],
+  "archivo": "api-medinaceli.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 23343
+ },
+ "api-soria": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Soria",
+  "enlaces": [],
+  "archivo": "api-soria.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 107686
+ },
+ "api-consuegra": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Consuegra",
+  "enlaces": [],
+  "archivo": "api-consuegra.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 37618
+ },
+ "api-illescas": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Illescas",
+  "enlaces": [],
+  "archivo": "api-illescas.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 1645
+ },
+ "api-talavera-de-la-reina": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Talavera_de_la_Reina",
+  "enlaces": [],
+  "archivo": "api-talavera-de-la-reina.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 241354
+ },
+ "api-toledo": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Toledo",
+  "enlaces": [],
+  "archivo": "api-toledo.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 164813
+ },
+ "api-arroyo-de-la-encomienda": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Arroyo_de_la_Encomienda",
+  "enlaces": [],
+  "archivo": "api-arroyo-de-la-encomienda.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 27187
+ },
+ "api-laguna-de-duero": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Laguna_de_Duero",
+  "enlaces": [],
+  "archivo": "api-laguna-de-duero.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 29231
+ },
+ "api-medina-del-campo": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Medina_del_Campo",
+  "enlaces": [],
+  "archivo": "api-medina-del-campo.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 48504
+ },
+ "api-penafiel": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Pe%C3%B1afiel",
+  "enlaces": [],
+  "archivo": "api-penafiel.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 49502
+ },
+ "api-simancas": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Simancas",
+  "enlaces": [],
+  "archivo": "api-simancas.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 21200
+ },
+ "api-tordesillas": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Tordesillas",
+  "enlaces": [],
+  "archivo": "api-tordesillas.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 38714
+ },
+ "api-valladolid": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Valladolid",
+  "enlaces": [],
+  "archivo": "api-valladolid.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 242323
+ },
+ "api-benavente-zamora": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Benavente_%28Zamora%29",
+  "enlaces": [],
+  "archivo": "api-benavente-zamora.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 97061
+ },
+ "api-puebla-de-sanabria": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Puebla_de_Sanabria",
+  "enlaces": [],
+  "archivo": "api-puebla-de-sanabria.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 53459
+ },
+ "api-toro-zamora": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Toro_%28Zamora%29",
+  "enlaces": [],
+  "archivo": "api-toro-zamora.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 73651
+ },
+ "api-zamora": {
+  "fuente": "https://es.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2&redirects=1&titles=Zamora",
+  "enlaces": [],
+  "archivo": "api-zamora.json",
+  "tipo": "application/json; charset=utf-8",
+  "bytes": 256671
+ }
+}
