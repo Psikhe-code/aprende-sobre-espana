@@ -730,25 +730,28 @@
       "nombre": {"oficial": "Astorga", "castellano": "Astorga"},
       "poblacion": 10305,
       "puesto": 5,
-      "curiosidad": "Es una parada importante del Camino de Santiago, con un palacio de Gaudí."
+      "curiosidad": "Es especialmente conocida por su pasado romano, cuando, con el nombre de Asturica Augusta, fue la capital de la región y se enriqueció con el oro de minas como Las Médulas.\nHoy es una parada importante del Camino de Santiago, y su palacio episcopal es una de las pocas obras de Gaudí fuera de Cataluña."
     },
     {
       "id": "24089",
       "nombre": {"oficial": "León", "castellano": "León"},
       "poblacion": 123446,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue la capital del reino de León desde el año 910 hasta 1230, cuando el reino se unió con Castilla.\nSu nombre viene de la palabra latina «legio», ya que nació hacia el año 29 a. C. como campamento de una legión romana.\nPor primera vez en la historia de Europa, en 1188 se reunieron aquí unas Cortes en las que participaron representantes de las ciudades además de los nobles y el clero. Por eso se la conoce como la «Cuna del parlamentarismo»."
     },
     {
       "id": "24115",
       "nombre": {"oficial": "Ponferrada", "castellano": "Ponferrada"},
       "poblacion": 63186,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Su nombre viene del puente reforzado con hierro, el «pons ferrata», que se construyó hacia 1082 para los peregrinos del Camino de Santiago.\nEntre 1940 y 1970 triplicó su población con la minería del carbón, como capital de El Bierzo, la comarca del oeste de la provincia."
     },
     {
       "id": "24142",
       "nombre": {"oficial": "San Andrés del Rabanedo", "castellano": "San Andrés del Rabanedo"},
       "poblacion": 29944,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está pegado a la ciudad de León, y desde los años sesenta ha crecido como zona de viviendas para la capital, hasta cuadruplicar su población."
     },
     {
       "id": "25040",
