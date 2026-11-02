@@ -256,33 +256,36 @@
       "id": "09018",
       "nombre": {"oficial": "Aranda de Duero", "castellano": "Aranda de Duero"},
       "poblacion": 33956,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Es la principal ciudad de la Ribera del Duero, una de las grandes zonas de vino de España, y bajo su casco antiguo hay más de 300 bodegas excavadas entre los siglos XII y XVIII para guardarlo.\nHoy es además una ciudad industrial, una de las que más trabajadores tiene en fábricas de Castilla y León."
     },
     {
       "id": "09029",
       "nombre": {"oficial": "Atapuerca", "castellano": "Atapuerca"},
       "poblacion": 178,
       "puesto": 128,
-      "curiosidad": "En su sierra están los yacimientos de Atapuerca, donde se han encontrado algunos de los restos humanos más antiguos de Europa."
+      "curiosidad": "Es especialmente conocido por los yacimientos de su sierra, Patrimonio de la Humanidad, con restos humanos de hasta 1,2 millones de años, de los más antiguos de Europa.\nSalieron a la luz por casualidad a finales del siglo XIX, al abrir una zanja para una línea de tren."
     },
     {
       "id": "09059",
       "nombre": {"oficial": "Burgos", "castellano": "Burgos"},
       "poblacion": 177402,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue la capital del condado de Castilla desde el año 930 y después del reino entre 1038 y 1085, y por eso su lema la llama «Cabeza de Castilla».\nSu catedral, construida a partir de 1221, es una de las grandes obras del gótico en España y es Patrimonio de la Humanidad."
     },
     {
       "id": "09219",
       "nombre": {"oficial": "Miranda de Ebro", "castellano": "Miranda de Ebro"},
       "poblacion": 36622,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Creció gracias al ferrocarril, que llegó en 1862 y la convirtió en uno de los grandes cruces de trenes del norte de España, y con él llegó la industria.\nPor eso a sus vecinos se les llama a veces «ferroviarios»."
     },
     {
       "id": "09358",
       "nombre": {"oficial": "Santo Domingo de Silos", "castellano": "Santo Domingo de Silos"},
       "poblacion": 251,
       "puesto": 104,
-      "curiosidad": "Su monasterio es famoso por su claustro románico y por el canto gregoriano de sus monjes."
+      "curiosidad": "Es especialmente conocido por su monasterio, con un claustro románico de finales del siglo XI, el patio rodeado de arcos donde paseaban los monjes, de los más famosos de España.\nSus monjes se hicieron conocidos en todo el mundo en 1994, cuando su disco de canto gregoriano fue un éxito internacional."
     },
     {
       "id": "10037",
