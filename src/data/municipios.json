@@ -1175,20 +1175,21 @@
       "nombre": {"oficial": "Alba de Tormes", "castellano": "Alba de Tormes"},
       "poblacion": 5099,
       "puesto": 10,
-      "curiosidad": "En ella murió y está enterrada Santa Teresa de Jesús."
+      "curiosidad": "Es especialmente conocida porque en su convento murió en 1582 santa Teresa de Jesús, cuyo cuerpo se conserva allí y atrae a muchos peregrinos.\nLa villa da nombre a la casa de Alba, una de las familias nobles más importantes de España, que fue su señora desde el siglo XV."
     },
     {
       "id": "37046",
       "nombre": {"oficial": "Béjar", "castellano": "Béjar"},
       "poblacion": 11993,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Durante siglos fue una ciudad de fábricas de paño, un tejido de lana. La industria creció sobre todo desde 1691, cuando los duques de Béjar trajeron artesanos de Flandes.\nCon la crisis del textil ha ido perdiendo población, y hoy tiene un tercio menos de habitantes que en 1970."
     },
     {
       "id": "37107",
       "nombre": {"oficial": "Ciudad Rodrigo", "castellano": "Ciudad Rodrigo"},
       "poblacion": 11750,
       "puesto": 4,
-      "curiosidad": "Es una ciudad amurallada cerca de Portugal, famosa por su Carnaval del Toro."
+      "curiosidad": "Es especialmente conocida por ser una ciudad fortificada de frontera, a 25 kilómetros de Portugal, rodeada por una muralla medieval de más de dos kilómetros.\nPor su posición sufrió dos asedios en la guerra de la Independencia, en 1810 y 1812, cuyas huellas aún se ven en algunos edificios."
     },
     {
       "id": "37274",
@@ -1201,7 +1202,8 @@
       "id": "37294",
       "nombre": {"oficial": "Santa Marta de Tormes", "castellano": "Santa Marta de Tormes"},
       "poblacion": 14976,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Está al otro lado del río Tormes, frente a Salamanca, y ha crecido como zona de viviendas de la capital. Desde 1960 su población se ha multiplicado casi por trece."
     },
     {
       "id": "38006",
