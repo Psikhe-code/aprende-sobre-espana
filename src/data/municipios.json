@@ -1194,7 +1194,8 @@
       "id": "37274",
       "nombre": {"oficial": "Salamanca", "castellano": "Salamanca"},
       "poblacion": 146110,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue una de las grandes ciudades del reino de León, y en 1218 su rey, Alfonso IX, fundó aquí un estudio general, lo que hoy llamaríamos una universidad. Todavía funciona, y por eso se considera la universidad más antigua de España. En el siglo XVI, sus profesores de la llamada Escuela de Salamanca sentaron las bases del derecho internacional moderno.\nSu casco antiguo, con sus dos catedrales y su plaza Mayor, es Patrimonio de la Humanidad."
     },
     {
       "id": "37294",
