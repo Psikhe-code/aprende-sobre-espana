@@ -1319,7 +1319,8 @@
       "id": "40194",
       "nombre": {"oficial": "Segovia", "castellano": "Segovia"},
       "poblacion": 52375,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Su acueducto romano, construido a comienzos del siglo II, es la obra de ingeniería civil romana más importante de España. Llevó agua a la ciudad hasta 1973, y está hecho con bloques de granito colocados sin ninguna argamasa.\nSu alcázar, en lo alto de una roca entre dos ríos, fue una de las residencias favoritas de los reyes de Castilla, y se suele decir que inspiró a Walt Disney el castillo de Blancanieves."
     },
     {
       "id": "40195",
