@@ -1065,7 +1065,8 @@
       "id": "34004",
       "nombre": {"oficial": "Aguilar de Campoo", "castellano": "Aguilar de Campoo"},
       "poblacion": 6916,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Es conocida por sus fábricas de galletas. En los años sesenta llegó a tener cinco, y de ellas salían nueve de cada diez galletas que se comían en España."
     },
     {
       "id": "34074",
@@ -1078,13 +1079,15 @@
       "id": "34120",
       "nombre": {"oficial": "Palencia", "castellano": "Palencia"},
       "poblacion": 77466,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "En la Edad Media fue una de las ciudades importantes de Castilla, sede de un obispado poderoso. El rey Alfonso VIII, que la favoreció mucho, fundó aquí entre 1208 y 1212 el primer estudio general de España, lo que hoy llamaríamos una universidad."
     },
     {
       "id": "34225",
       "nombre": {"oficial": "Villamuriel de Cerrato", "castellano": "Villamuriel de Cerrato"},
       "poblacion": 6501,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está a solo siete kilómetros de la capital, y desde 1978 tiene una gran fábrica de coches Renault. Con ella y con las nuevas urbanizaciones para gente que trabaja en Palencia, su población se ha triplicado desde los años ochenta."
     },
     {
       "id": "35004",
