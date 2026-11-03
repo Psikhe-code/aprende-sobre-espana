@@ -1306,7 +1306,8 @@
       "id": "40076",
       "nombre": {"oficial": "El Espinar", "castellano": "El Espinar"},
       "poblacion": 10409,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "En el siglo XVIII vivió su gran época con la lana. Se esquilaban allí más de 74.000 ovejas al año, y la villa llegó a tener más de 35 palacios. En el siglo XIX perdió población y pasó a vivir sobre todo de la madera de sus pinares.\nAl estar al pie de la sierra de Guadarrama, en el paso hacia Madrid, desde comienzos del siglo XX se convirtió en un lugar de veraneo, sobre todo en la zona de San Rafael."
     },
     {
       "id": "40181",
