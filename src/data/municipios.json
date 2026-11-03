@@ -1377,26 +1377,29 @@
       "id": "42020",
       "nombre": {"oficial": "Almazán", "castellano": "Almazán"},
       "poblacion": 5544,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Fue una villa fortificada en la frontera entre Castilla y Aragón, y conserva buena parte de su muralla. En 1375 se firmó aquí la paz entre los dos reinos.\nHoy es el centro de una amplia comarca agrícola del sur de la provincia."
     },
     {
       "id": "42043",
       "nombre": {"oficial": "Burgo de Osma-Ciudad de Osma", "castellano": "El Burgo de Osma"},
       "poblacion": 5283,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Nació en el siglo XII alrededor de su catedral, junto a la antigua Osma, y por eso se llama «burgo», que era como se llamaba a los núcleos nuevos que crecían junto a una ciudad.\nEl obispado de Osma, documentado ya en el año 597, existía cinco siglos antes de que se repoblara Soria, y por eso la sede del obispo de Osma-Soria se mantiene aquí y no en la capital."
     },
     {
       "id": "42113",
       "nombre": {"oficial": "Medinaceli", "castellano": "Medinaceli"},
       "poblacion": 686,
       "puesto": 17,
-      "curiosidad": "Conserva un arco romano de tres vanos, el único de este tipo en España."
+      "curiosidad": "Es especialmente conocida por su arco romano, el único de tres arcos que se conserva en España, en lo alto de un cerro que fue ciudad romana y después plaza fuerte musulmana. Su nombre viene del árabe «medina», «ciudad».\nDa nombre al ducado de Medinaceli, creado por los Reyes Católicos en 1479, una de las grandes casas nobles de España, cuyo palacio ducal del siglo XVI está en la plaza Mayor de la villa."
     },
     {
       "id": "42173",
       "nombre": {"oficial": "Soria", "castellano": "Soria"},
       "poblacion": 41025,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "En la Edad Media fue una importante ciudad de frontera entre Castilla, Navarra y Aragón. La repobló el rey aragonés Alfonso I el Batallador hacia 1110, y en 1134 pasó definitivamente a Castilla. Con la unión de los reinos, a finales del siglo XV, dejó de ser frontera, y empezó una larga decadencia.\nSiglos después inspiraría a dos grandes poetas: Gustavo Adolfo Bécquer situó aquí varias de sus Leyendas, y Antonio Machado le dedicó muchos de sus poemas."
     },
     {
       "id": "43123",
