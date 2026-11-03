@@ -1523,47 +1523,50 @@
       "id": "47010",
       "nombre": {"oficial": "Arroyo de la Encomienda", "castellano": "Arroyo de la Encomienda"},
       "poblacion": 22800,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Pegado a Valladolid, es uno de los municipios que más deprisa han crecido de España. En 1950 era un pueblo de apenas 300 habitantes. En 1991 tenía unos 1.400, y en treinta años se multiplicó por quince con las nuevas urbanizaciones. En 2012 se abrió allí el centro comercial más grande de Castilla y León."
     },
     {
       "id": "47076",
       "nombre": {"oficial": "Laguna de Duero", "castellano": "Laguna de Duero"},
       "poblacion": 22965,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Está a solo ocho kilómetros de Valladolid, y además de crecer como zona de viviendas para la capital, tiene varios polígonos industriales. Desde 1970 su población se ha multiplicado por más de seis.\nSu nombre viene de una gran laguna de agua salada, de la que se sacó sal hasta 1972 y de la que hoy solo queda una pequeña parte."
     },
     {
       "id": "47085",
       "nombre": {"oficial": "Medina del Campo", "castellano": "Medina del Campo"},
       "poblacion": 20215,
       "puesto": 4,
-      "curiosidad": "En ella murió Isabel la Católica en 1504, y tiene el castillo de la Mota."
+      "curiosidad": "Es especialmente conocida por sus ferias, que en 1491 los Reyes Católicos declararon Feria General del Reino. En el siglo XVI era una de las principales plazas comerciales y financieras de Europa, adonde llegaban comerciantes y banqueros de muchos países.\nJunto a la villa se alza el castillo de la Mota, su monumento más conocido."
     },
     {
       "id": "47114",
       "nombre": {"oficial": "Peñafiel", "castellano": "Peñafiel"},
       "poblacion": 5143,
       "puesto": 13,
-      "curiosidad": "Su castillo, largo y estrecho como un barco, domina la Ribera del Duero."
+      "curiosidad": "Es una villa en el centro de la Ribera del Duero, dominada por un castillo de casi 200 metros de largo y solo 35 de ancho, al que por su forma llaman «el Buque de Castilla». Hoy alberga el Museo Provincial del Vino.\nEn 1927 once viticultores fundaron aquí la primera bodega cooperativa de la Ribera, germen de la denominación de origen Ribera del Duero, creada en 1982."
     },
     {
       "id": "47161",
       "nombre": {"oficial": "Simancas", "castellano": "Simancas"},
       "poblacion": 5533,
       "puesto": 11,
-      "curiosidad": "En su castillo está el Archivo General de Simancas, uno de los archivos históricos más importantes de España."
+      "curiosidad": "Es especialmente conocida por el Archivo General de Simancas, que Carlos I instaló en 1540 en su castillo, una fortaleza real muy cerca de Valladolid, donde entonces solía estar la corte, para guardar a salvo los documentos de la Corona. Fue el primer archivo oficial de Castilla, y la Unesco lo incluyó en 2017 en su registro Memoria del Mundo.\nEn el año 939, junto a sus murallas, el rey Ramiro II de León venció al califa de Córdoba, Abderramán III, y tras esa batalla empezó la repoblación cristiana de las tierras al sur del Duero."
     },
     {
       "id": "47165",
       "nombre": {"oficial": "Tordesillas", "castellano": "Tordesillas"},
       "poblacion": 8773,
       "puesto": 7,
-      "curiosidad": "En ella se firmó en 1494 el Tratado de Tordesillas, que repartió el Nuevo Mundo entre Castilla y Portugal."
+      "curiosidad": "Es una villa a orillas del Duero, con un puente medieval de diez arcos, que en la Edad Media fue lugar de residencia habitual de reyes y reinas de Castilla. De esa época conserva el monasterio de Santa Clara, levantado sobre un palacio mudéjar del rey Alfonso XI.\nEs especialmente conocida por el Tratado de Tordesillas, firmado aquí en 1494, con el que Castilla y Portugal se repartieron las tierras por descubrir del océano Atlántico, incluida América. También vivió aquí encerrada durante 46 años, hasta su muerte en 1555, la reina Juana I de Castilla, conocida como Juana la Loca."
     },
     {
       "id": "47186",
       "nombre": {"oficial": "Valladolid", "castellano": "Valladolid"},
       "poblacion": 302614,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue una de las sedes habituales de la corte de Castilla, y entre 1601 y 1606 fue la capital de la monarquía, antes de que la corte se instalara definitivamente en Madrid.\nEn 1951 se abrió la fábrica de coches Renault, y con ella y otras industrias se convirtió en el gran centro industrial de Castilla y León. Entre 1950 y 1981 su población pasó de unos 120.000 habitantes a más de 320.000."
     },
     {
       "id": "48013",
