@@ -1604,26 +1604,29 @@
       "id": "49021",
       "nombre": {"oficial": "Benavente", "castellano": "Benavente"},
       "poblacion": 17309,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Es un cruce de caminos desde la Antigüedad, en un alto donde se juntan tres ríos. Hoy se cruzan allí las carreteras de Madrid, Galicia y León.\nFue la cabeza de los dominios de los condes de Benavente, una de las grandes familias nobles de Castilla. De su castillo-palacio queda la torre del Caracol, que hoy forma parte de un parador."
     },
     {
       "id": "49166",
       "nombre": {"oficial": "Puebla de Sanabria", "castellano": "Puebla de Sanabria"},
       "poblacion": 1378,
       "puesto": 9,
-      "curiosidad": "Es una villa medieval con castillo, junto al lago de Sanabria."
+      "curiosidad": "Es especialmente conocida por ser una villa medieval muy bien conservada, con murallas y el castillo de los condes de Benavente. Se fortificó por estar junto a la frontera con Portugal.\nEs la villa principal de la comarca de Sanabria, donde está el lago de Sanabria, el mayor lago de origen glaciar de la península ibérica."
     },
     {
       "id": "49219",
       "nombre": {"oficial": "Toro", "castellano": "Toro"},
       "poblacion": 8336,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "En la Edad Media fue una de las ciudades importantes de Castilla, con voto en las Cortes. Entre 1528 y 1804 fue capital de una provincia propia, la de Toro, cuyas tierras estaban sobre todo en lo que hoy es Palencia. Conserva una gran colegiata románica.\nHoy es conocida sobre todo por sus vinos tintos, con denominación de origen propia."
     },
     {
       "id": "49275",
       "nombre": {"oficial": "Zamora", "castellano": "Zamora"},
       "poblacion": 59815,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Su casco antiguo, sobre una roca junto al Duero, conserva catorce iglesias románicas, y con las de las afueras pasa de veinte, lo que la convierte en una de las ciudades con más templos románicos de Europa.\nSon famosas sus murallas, por las que recibe el apodo de «la bien cercada». En 1072 resistió el cerco del rey Sancho II de Castilla, que murió durante el asedio al intentar arrebatársela a su hermana Urraca. De ahí viene el dicho «No se ganó Zamora en una hora»."
     },
     {
       "id": "50067",
