@@ -256,33 +256,36 @@
       "id": "09018",
       "nombre": {"oficial": "Aranda de Duero", "castellano": "Aranda de Duero"},
       "poblacion": 33956,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Es la principal ciudad de la Ribera del Duero, una de las grandes zonas de vino de España, y bajo su casco antiguo hay más de 300 bodegas excavadas entre los siglos XII y XVIII para guardarlo.\nHoy es además una ciudad industrial, una de las que más trabajadores tiene en fábricas de Castilla y León."
     },
     {
       "id": "09029",
       "nombre": {"oficial": "Atapuerca", "castellano": "Atapuerca"},
       "poblacion": 178,
       "puesto": 128,
-      "curiosidad": "En su sierra están los yacimientos de Atapuerca, donde se han encontrado algunos de los restos humanos más antiguos de Europa."
+      "curiosidad": "Es especialmente conocido por los yacimientos de su sierra, Patrimonio de la Humanidad, con restos humanos de hasta 1,2 millones de años, de los más antiguos de Europa.\nSalieron a la luz por casualidad a finales del siglo XIX, al abrir una zanja para una línea de tren."
     },
     {
       "id": "09059",
       "nombre": {"oficial": "Burgos", "castellano": "Burgos"},
       "poblacion": 177402,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue la capital del condado de Castilla desde el año 930 y después del reino entre 1038 y 1085, y por eso su lema la llama «Cabeza de Castilla».\nSu catedral, construida a partir de 1221, es una de las grandes obras del gótico en España y es Patrimonio de la Humanidad."
     },
     {
       "id": "09219",
       "nombre": {"oficial": "Miranda de Ebro", "castellano": "Miranda de Ebro"},
       "poblacion": 36622,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Creció gracias al ferrocarril, que llegó en 1862 y la convirtió en uno de los grandes cruces de trenes del norte de España, y con él llegó la industria.\nPor eso a sus vecinos se les llama a veces «ferroviarios»."
     },
     {
       "id": "09358",
       "nombre": {"oficial": "Santo Domingo de Silos", "castellano": "Santo Domingo de Silos"},
       "poblacion": 251,
       "puesto": 104,
-      "curiosidad": "Su monasterio es famoso por su claustro románico y por el canto gregoriano de sus monjes."
+      "curiosidad": "Es especialmente conocido por su monasterio, con un claustro románico de finales del siglo XI, el patio rodeado de arcos donde paseaban los monjes, de los más famosos de España.\nSus monjes se hicieron conocidos en todo el mundo en 1994, cuando su disco de canto gregoriano fue un éxito internacional."
     },
     {
       "id": "10037",
@@ -727,25 +730,28 @@
       "nombre": {"oficial": "Astorga", "castellano": "Astorga"},
       "poblacion": 10305,
       "puesto": 5,
-      "curiosidad": "Es una parada importante del Camino de Santiago, con un palacio de Gaudí."
+      "curiosidad": "Es especialmente conocida por su pasado romano, cuando, con el nombre de Asturica Augusta, fue la capital de la región y se enriqueció con el oro de minas como Las Médulas.\nHoy es una parada importante del Camino de Santiago, y su palacio episcopal es una de las pocas obras de Gaudí fuera de Cataluña."
     },
     {
       "id": "24089",
       "nombre": {"oficial": "León", "castellano": "León"},
       "poblacion": 123446,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue la capital del reino de León desde el año 910 hasta 1230, cuando el reino se unió con Castilla.\nSu nombre viene de la palabra latina «legio», ya que nació hacia el año 29 a. C. como campamento de una legión romana.\nPor primera vez en la historia de Europa, en 1188 se reunieron aquí unas Cortes en las que participaron representantes de las ciudades además de los nobles y el clero. Por eso se la conoce como la «Cuna del parlamentarismo»."
     },
     {
       "id": "24115",
       "nombre": {"oficial": "Ponferrada", "castellano": "Ponferrada"},
       "poblacion": 63186,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Su nombre viene del puente reforzado con hierro, el «pons ferrata», que se construyó hacia 1082 para los peregrinos del Camino de Santiago.\nEntre 1940 y 1970 triplicó su población con la minería del carbón, como capital de El Bierzo, la comarca del oeste de la provincia."
     },
     {
       "id": "24142",
       "nombre": {"oficial": "San Andrés del Rabanedo", "castellano": "San Andrés del Rabanedo"},
       "poblacion": 29944,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está pegado a la ciudad de León, y desde los años sesenta ha crecido como zona de viviendas para la capital, hasta cuadruplicar su población."
     },
     {
       "id": "25040",
@@ -1059,26 +1065,29 @@
       "id": "34004",
       "nombre": {"oficial": "Aguilar de Campoo", "castellano": "Aguilar de Campoo"},
       "poblacion": 6916,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Es conocida por sus fábricas de galletas. En los años sesenta llegó a tener cinco, y de ellas salían nueve de cada diez galletas que se comían en España."
     },
     {
       "id": "34074",
       "nombre": {"oficial": "Frómista", "castellano": "Frómista"},
       "poblacion": 727,
       "puesto": 26,
-      "curiosidad": "Su iglesia de San Martín es uno de los ejemplos más famosos del románico en España."
+      "curiosidad": "Es especialmente conocida por su iglesia de San Martín, del siglo XI, uno de los ejemplos más puros del románico en España, en pleno Camino de Santiago.\nJunto al pueblo, el canal de Castilla salva un gran desnivel con cuatro esclusas seguidas, unas compuertas que suben y bajan el nivel del agua para que pasen las barcazas."
     },
     {
       "id": "34120",
       "nombre": {"oficial": "Palencia", "castellano": "Palencia"},
       "poblacion": 77466,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "En la Edad Media fue una de las ciudades importantes de Castilla, sede de un obispado poderoso. El rey Alfonso VIII, que la favoreció mucho, fundó aquí entre 1208 y 1212 el primer estudio general de España, lo que hoy llamaríamos una universidad."
     },
     {
       "id": "34225",
       "nombre": {"oficial": "Villamuriel de Cerrato", "castellano": "Villamuriel de Cerrato"},
       "poblacion": 6501,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está a solo siete kilómetros de la capital, y desde 1978 tiene una gran fábrica de coches Renault. Con ella y con las nuevas urbanizaciones para gente que trabaja en Palencia, su población se ha triplicado desde los años ochenta."
     },
     {
       "id": "35004",
@@ -1166,32 +1175,35 @@
       "nombre": {"oficial": "Alba de Tormes", "castellano": "Alba de Tormes"},
       "poblacion": 5099,
       "puesto": 10,
-      "curiosidad": "En ella murió y está enterrada Santa Teresa de Jesús."
+      "curiosidad": "Es especialmente conocida porque en su convento murió en 1582 santa Teresa de Jesús, cuyo cuerpo se conserva allí y atrae a muchos peregrinos.\nLa villa da nombre a la casa de Alba, una de las familias nobles más importantes de España, que fue su señora desde el siglo XV."
     },
     {
       "id": "37046",
       "nombre": {"oficial": "Béjar", "castellano": "Béjar"},
       "poblacion": 11993,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Durante siglos fue una ciudad de fábricas de paño, un tejido de lana. La industria creció sobre todo desde 1691, cuando los duques de Béjar trajeron artesanos de Flandes.\nCon la crisis del textil ha ido perdiendo población, y hoy tiene un tercio menos de habitantes que en 1970."
     },
     {
       "id": "37107",
       "nombre": {"oficial": "Ciudad Rodrigo", "castellano": "Ciudad Rodrigo"},
       "poblacion": 11750,
       "puesto": 4,
-      "curiosidad": "Es una ciudad amurallada cerca de Portugal, famosa por su Carnaval del Toro."
+      "curiosidad": "Es especialmente conocida por ser una ciudad fortificada de frontera, a 25 kilómetros de Portugal, rodeada por una muralla medieval de más de dos kilómetros.\nPor su posición sufrió dos asedios en la guerra de la Independencia, en 1810 y 1812, cuyas huellas aún se ven en algunos edificios."
     },
     {
       "id": "37274",
       "nombre": {"oficial": "Salamanca", "castellano": "Salamanca"},
       "poblacion": 146110,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue una de las grandes ciudades del reino de León, y en 1218 su rey, Alfonso IX, fundó aquí un estudio general, lo que hoy llamaríamos una universidad. Todavía funciona, y por eso se considera la universidad más antigua de España. En el siglo XVI, sus profesores de la llamada Escuela de Salamanca sentaron las bases del derecho internacional moderno.\nSu casco antiguo, con sus dos catedrales y su plaza Mayor, es Patrimonio de la Humanidad."
     },
     {
       "id": "37294",
       "nombre": {"oficial": "Santa Marta de Tormes", "castellano": "Santa Marta de Tormes"},
       "poblacion": 14976,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Está al otro lado del río Tormes, frente a Salamanca, y ha crecido como zona de viviendas de la capital. Desde 1960 su población se ha multiplicado casi por trece."
     },
     {
       "id": "38006",
@@ -1288,33 +1300,36 @@
       "id": "40063",
       "nombre": {"oficial": "Cuéllar", "castellano": "Cuéllar"},
       "poblacion": 9527,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Es una villa medieval con castillo y una triple muralla, de las mejor conservadas de Castilla y León, y tiene el mayor conjunto de arquitectura mudéjar de la comunidad, el estilo de los edificios de ladrillo que hacían los artesanos musulmanes en los reinos cristianos."
     },
     {
       "id": "40076",
       "nombre": {"oficial": "El Espinar", "castellano": "El Espinar"},
       "poblacion": 10409,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "En el siglo XVIII vivió su gran época con la lana. Se esquilaban allí más de 74.000 ovejas al año, y la villa llegó a tener más de 35 palacios. En el siglo XIX perdió población y pasó a vivir sobre todo de la madera de sus pinares.\nAl estar al pie de la sierra de Guadarrama, en el paso hacia Madrid, desde comienzos del siglo XX muchas familias construyeron allí casas para pasar el verano, sobre todo en la zona de San Rafael."
     },
     {
       "id": "40181",
       "nombre": {"oficial": "Real Sitio de San Ildefonso", "castellano": "Real Sitio de San Ildefonso"},
       "poblacion": 5217,
       "puesto": 5,
-      "curiosidad": "En él está el palacio de La Granja, con sus jardines y fuentes, que mandó construir Felipe V."
+      "curiosidad": "Es especialmente conocido por el palacio de La Granja, que Felipe V, el primer rey Borbón de España, mandó construir desde 1721. Había nacido y crecido en Versalles, y el palacio, con sus jardines y fuentes, sigue el modelo francés.\nPara abastecer el palacio de ventanas y espejos se creó allí en 1727 la Real Fábrica de Cristales, que llegó a tener el monopolio del vidrio en Madrid."
     },
     {
       "id": "40194",
       "nombre": {"oficial": "Segovia", "castellano": "Segovia"},
       "poblacion": 52375,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Su acueducto romano, construido a comienzos del siglo II, es la obra de ingeniería civil romana más importante de España. Hecho con bloques de granito colocados sin ninguna argamasa, llevó agua a la ciudad hasta 1973.\nSu alcázar, en lo alto de una roca entre dos ríos, fue una de las residencias favoritas de los reyes de Castilla, y algunos dicen que inspiró a Walt Disney el castillo de Blancanieves."
     },
     {
       "id": "40195",
       "nombre": {"oficial": "Sepúlveda", "castellano": "Sepúlveda"},
       "poblacion": 979,
       "puesto": 27,
-      "curiosidad": "Es una villa medieval junto a las hoces del río Duratón."
+      "curiosidad": "Es especialmente conocida por ser una villa medieval muy bien conservada, sobre un cerro junto a las hoces del río Duratón, unos cañones profundos que son parque natural."
     },
     {
       "id": "41004",
@@ -1362,26 +1377,29 @@
       "id": "42020",
       "nombre": {"oficial": "Almazán", "castellano": "Almazán"},
       "poblacion": 5544,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Fue una villa fortificada en la frontera entre Castilla y Aragón, y conserva buena parte de su muralla. En 1375 se firmó aquí la paz entre los dos reinos.\nHoy es el centro de una amplia comarca agrícola del sur de la provincia."
     },
     {
       "id": "42043",
       "nombre": {"oficial": "Burgo de Osma-Ciudad de Osma", "castellano": "El Burgo de Osma"},
       "poblacion": 5283,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Nació en el siglo XII alrededor de su catedral, junto a la antigua Osma, y por eso se llama «burgo», que era como se llamaba a los núcleos nuevos que crecían junto a una ciudad.\nEl obispado de Osma, documentado ya en el año 597, existía cinco siglos antes de que se repoblara Soria, y por eso la sede del obispo de Osma-Soria se mantiene aquí y no en la capital."
     },
     {
       "id": "42113",
       "nombre": {"oficial": "Medinaceli", "castellano": "Medinaceli"},
       "poblacion": 686,
       "puesto": 17,
-      "curiosidad": "Conserva un arco romano de tres vanos, el único de este tipo en España."
+      "curiosidad": "Es especialmente conocida por su arco romano, el único de tres arcos que se conserva en España, en lo alto de un cerro que fue ciudad romana y después plaza fuerte musulmana. Su nombre viene del árabe «medina», «ciudad».\nDa nombre al ducado de Medinaceli, creado por los Reyes Católicos en 1479, una de las grandes casas nobles de España, cuyo palacio ducal del siglo XVI está en la plaza Mayor de la villa."
     },
     {
       "id": "42173",
       "nombre": {"oficial": "Soria", "castellano": "Soria"},
       "poblacion": 41025,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "En la Edad Media fue una importante ciudad de frontera entre Castilla, Navarra y Aragón. La repobló el rey aragonés Alfonso I el Batallador hacia 1110, y en 1134 pasó definitivamente a Castilla. Con la unión de los reinos, a finales del siglo XV, dejó de ser frontera, y empezó una larga decadencia.\nSiglos después inspiraría a dos grandes poetas: Gustavo Adolfo Bécquer situó aquí varias de sus Leyendas, y Antonio Machado le dedicó muchos de sus poemas."
     },
     {
       "id": "43123",
@@ -1505,47 +1523,50 @@
       "id": "47010",
       "nombre": {"oficial": "Arroyo de la Encomienda", "castellano": "Arroyo de la Encomienda"},
       "poblacion": 22800,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Pegado a Valladolid, es uno de los municipios que más deprisa han crecido de España. En 1950 era un pueblo de apenas 300 habitantes. En 1991 tenía unos 1.400, y en treinta años se multiplicó por quince con las nuevas urbanizaciones. En 2012 se abrió allí el centro comercial más grande de Castilla y León."
     },
     {
       "id": "47076",
       "nombre": {"oficial": "Laguna de Duero", "castellano": "Laguna de Duero"},
       "poblacion": 22965,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Está a solo ocho kilómetros de Valladolid, y además de crecer como zona de viviendas para la capital, tiene varios polígonos industriales. Desde 1970 su población se ha multiplicado por más de seis.\nSu nombre viene de una gran laguna de agua salada, de la que se sacó sal hasta 1972 y de la que hoy solo queda una pequeña parte."
     },
     {
       "id": "47085",
       "nombre": {"oficial": "Medina del Campo", "castellano": "Medina del Campo"},
       "poblacion": 20215,
       "puesto": 4,
-      "curiosidad": "En ella murió Isabel la Católica en 1504, y tiene el castillo de la Mota."
+      "curiosidad": "Es especialmente conocida por sus ferias, que en 1491 los Reyes Católicos declararon Feria General del Reino. En el siglo XVI era una de las principales plazas comerciales y financieras de Europa, adonde llegaban comerciantes y banqueros de muchos países.\nJunto a la villa se alza el castillo de la Mota, su monumento más conocido."
     },
     {
       "id": "47114",
       "nombre": {"oficial": "Peñafiel", "castellano": "Peñafiel"},
       "poblacion": 5143,
       "puesto": 13,
-      "curiosidad": "Su castillo, largo y estrecho como un barco, domina la Ribera del Duero."
+      "curiosidad": "Es una villa en el centro de la Ribera del Duero, dominada por un castillo de casi 200 metros de largo y solo 35 de ancho, al que por su forma llaman «el Buque de Castilla». Hoy alberga el Museo Provincial del Vino.\nEn 1927 once viticultores fundaron aquí la primera bodega cooperativa de la Ribera, germen de la denominación de origen Ribera del Duero, creada en 1982."
     },
     {
       "id": "47161",
       "nombre": {"oficial": "Simancas", "castellano": "Simancas"},
       "poblacion": 5533,
       "puesto": 11,
-      "curiosidad": "En su castillo está el Archivo General de Simancas, uno de los archivos históricos más importantes de España."
+      "curiosidad": "Es especialmente conocida por el Archivo General de Simancas, que Carlos I instaló en 1540 en su castillo, una fortaleza real muy cerca de Valladolid, donde entonces solía estar la corte, para guardar a salvo los documentos de la Corona. Fue el primer archivo oficial de Castilla, y la Unesco lo incluyó en 2017 en su registro Memoria del Mundo.\nEn el año 939, junto a sus murallas, el rey Ramiro II de León venció al califa de Córdoba, Abderramán III, y tras esa batalla empezó la repoblación cristiana de las tierras al sur del Duero."
     },
     {
       "id": "47165",
       "nombre": {"oficial": "Tordesillas", "castellano": "Tordesillas"},
       "poblacion": 8773,
       "puesto": 7,
-      "curiosidad": "En ella se firmó en 1494 el Tratado de Tordesillas, que repartió el Nuevo Mundo entre Castilla y Portugal."
+      "curiosidad": "Es una villa a orillas del Duero, con un puente medieval de diez arcos, que en la Edad Media fue lugar de residencia habitual de reyes y reinas de Castilla. De esa época conserva el monasterio de Santa Clara, levantado sobre un palacio mudéjar del rey Alfonso XI.\nEs especialmente conocida por el Tratado de Tordesillas, firmado aquí en 1494, con el que Castilla y Portugal se repartieron las tierras por descubrir del océano Atlántico, incluida América. También vivió aquí encerrada durante 46 años, hasta su muerte en 1555, la reina Juana I de Castilla, conocida como Juana la Loca."
     },
     {
       "id": "47186",
       "nombre": {"oficial": "Valladolid", "castellano": "Valladolid"},
       "poblacion": 302614,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Fue una de las sedes habituales de la corte de Castilla, y entre 1601 y 1606 fue la capital de la monarquía, antes de que la corte se instalara definitivamente en Madrid.\nEn 1951 se abrió la fábrica de coches Renault, y con ella y otras industrias se convirtió en el gran centro industrial de Castilla y León. Entre 1950 y 1981 su población pasó de unos 120.000 habitantes a más de 320.000."
     },
     {
       "id": "48013",
@@ -1583,26 +1604,29 @@
       "id": "49021",
       "nombre": {"oficial": "Benavente", "castellano": "Benavente"},
       "poblacion": 17309,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Es un cruce de caminos desde la Antigüedad, en un alto donde se juntan tres ríos. Hoy se cruzan allí las carreteras de Madrid, Galicia y León.\nFue la cabeza de los dominios de los condes de Benavente, una de las grandes familias nobles de Castilla. De su castillo-palacio queda la torre del Caracol, que hoy forma parte de un parador."
     },
     {
       "id": "49166",
       "nombre": {"oficial": "Puebla de Sanabria", "castellano": "Puebla de Sanabria"},
       "poblacion": 1378,
       "puesto": 9,
-      "curiosidad": "Es una villa medieval con castillo, junto al lago de Sanabria."
+      "curiosidad": "Es especialmente conocida por ser una villa medieval muy bien conservada, con murallas y el castillo de los condes de Benavente. Se fortificó por estar junto a la frontera con Portugal.\nEs la villa principal de la comarca de Sanabria, donde está el lago de Sanabria, el mayor lago de origen glaciar de la península ibérica."
     },
     {
       "id": "49219",
       "nombre": {"oficial": "Toro", "castellano": "Toro"},
       "poblacion": 8336,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "En la Edad Media fue una de las ciudades importantes de Castilla, con voto en las Cortes. Entre 1528 y 1804 fue capital de una provincia propia, la de Toro, cuyas tierras estaban sobre todo en lo que hoy es Palencia. Conserva una gran colegiata románica.\nHoy es conocida sobre todo por sus vinos tintos, con denominación de origen propia."
     },
     {
       "id": "49275",
       "nombre": {"oficial": "Zamora", "castellano": "Zamora"},
       "poblacion": 59815,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Su casco antiguo, sobre una roca junto al Duero, conserva catorce iglesias románicas, y con las de las afueras pasa de veinte, lo que la convierte en una de las ciudades con más templos románicos de Europa.\nSon famosas sus murallas, por las que recibe el apodo de «la bien cercada». En 1072 resistió el cerco del rey Sancho II de Castilla, que murió durante el asedio al intentar arrebatársela a su hermana Urraca. De ahí viene el dicho «No se ganó Zamora en una hora»."
     },
     {
       "id": "50067",
