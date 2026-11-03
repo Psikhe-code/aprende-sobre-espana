@@ -1300,7 +1300,8 @@
       "id": "40063",
       "nombre": {"oficial": "Cuéllar", "castellano": "Cuéllar"},
       "poblacion": 9527,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Es una villa medieval con castillo y una triple muralla, de las mejor conservadas de Castilla y León, y tiene el mayor conjunto de arquitectura mudéjar de la comunidad, el estilo de los edificios de ladrillo que hacían los artesanos musulmanes en los reinos cristianos."
     },
     {
       "id": "40076",
@@ -1314,7 +1315,7 @@
       "nombre": {"oficial": "Real Sitio de San Ildefonso", "castellano": "Real Sitio de San Ildefonso"},
       "poblacion": 5217,
       "puesto": 5,
-      "curiosidad": "En él está el palacio de La Granja, con sus jardines y fuentes, que mandó construir Felipe V."
+      "curiosidad": "Es especialmente conocido por el palacio de La Granja, que Felipe V, el primer rey Borbón de España, mandó construir desde 1721. Había nacido y crecido en Versalles, y el palacio, con sus jardines y fuentes, sigue el modelo francés.\nPara abastecer el palacio de ventanas y espejos se creó allí en 1727 la Real Fábrica de Cristales, que llegó a tener el monopolio del vidrio en Madrid."
     },
     {
       "id": "40194",
@@ -1328,7 +1329,7 @@
       "nombre": {"oficial": "Sepúlveda", "castellano": "Sepúlveda"},
       "poblacion": 979,
       "puesto": 27,
-      "curiosidad": "Es una villa medieval junto a las hoces del río Duratón."
+      "curiosidad": "Es especialmente conocida por ser una villa medieval muy bien conservada, sobre un cerro junto a las hoces del río Duratón, unos cañones profundos que son parque natural."
     },
     {
       "id": "41004",
