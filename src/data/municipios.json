@@ -30,19 +30,22 @@
       "id": "02003",
       "nombre": {"oficial": "Albacete", "castellano": "Albacete"},
       "poblacion": 175400,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "En la Edad Media era una aldea que dependía de Chinchilla, una villa amurallada en lo alto de un cerro. Albacete, en cambio, estaba en el llano y en un cruce de caminos, y fue creciendo gracias a su feria y su comercio. En 1833 pasó a ser la capital de la provincia en lugar de Chinchilla.\nEn el siglo XX recibió a buena parte de la gente que dejaba los pueblos de la provincia, hasta reunir a casi uno de cada dos de sus habitantes y convertirse en la ciudad más poblada de Castilla-La Mancha.\nEs especialmente conocida por sus navajas y cuchillos, que se fabrican aquí desde el siglo XV."
     },
     {
       "id": "02037",
       "nombre": {"oficial": "Hellín", "castellano": "Hellín"},
       "poblacion": 30836,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Está en el sureste de la provincia, la zona que por historia y costumbres está más cerca de Murcia que de La Mancha. Perteneció al reino de Murcia desde el siglo XIII, y en 1980 su ayuntamiento llegó a votar en contra de que la provincia pasara a Castilla-La Mancha.\nSu Semana Santa es famosa por la tamborada, en la que más de 20.000 personas tocan el tambor por las calles durante varios días. Desde 2018 forma parte, junto con otras tamboradas de España, del Patrimonio Cultural Inmaterial de la Humanidad."
     },
     {
       "id": "02081",
       "nombre": {"oficial": "Villarrobledo", "castellano": "Villarrobledo"},
       "poblacion": 25400,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está en plena llanura manchega, rodeada de viñedos. Desde el siglo XVII fue uno de los grandes centros de fabricación de tinajas, las enormes vasijas de barro en las que se guardaba el vino, que podían medir hasta cuatro metros.\nCon el tiempo, aquellos talleres dieron paso a una industria del metal que hoy fabrica depósitos y cisternas."
     },
     {
       "id": "03009",
