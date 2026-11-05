@@ -401,32 +401,35 @@
       "nombre": {"oficial": "Almagro", "castellano": "Almagro"},
       "poblacion": 9190,
       "puesto": 14,
-      "curiosidad": "Conserva un corral de comedias del siglo XVII que todavía se usa, y celebra un festival de teatro clásico."
+      "curiosidad": "Fue la sede de los maestres de la Orden de Calatrava, que gobernaban desde aquí sus tierras. Su casco histórico, lleno de casas nobles y conventos de aquella época, está protegido desde 1972.\nEs especialmente conocida por su corral de comedias del siglo XVII, el único de su época que se conserva entero. Desde 1978, cada verano se celebra allí un festival internacional de teatro clásico.\nTambién son famosas sus berenjenas aliñadas, que tienen indicación geográfica protegida."
     },
     {
       "id": "13034",
       "nombre": {"oficial": "Ciudad Real", "castellano": "Ciudad Real"},
       "poblacion": 76217,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "La fundó el rey Alfonso X en 1255 con el nombre de Villa Real, en medio de las tierras de la Orden de Calatrava, para tener allí una villa que dependiera directamente del rey y no de la orden.\nEn 1420, la villa envió a su milicia a defender al joven rey Juan II de Castilla, al que unos nobles tenían sitiado en un castillo. En agradecimiento, el rey le dio el título de ciudad, y desde entonces se llama Ciudad Real."
     },
     {
       "id": "13071",
       "nombre": {"oficial": "Puertollano", "castellano": "Puertollano"},
       "poblacion": 45565,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Creció con las minas de carbón, que empezaron a explotarse en 1873 y atrajeron a miles de trabajadores de los pueblos de alrededor. Después llegaron una gran refinería de petróleo y otras industrias químicas, y por eso se la conoce como «la ciudad minera» y «el faro industrial de La Mancha»."
     },
     {
       "id": "13082",
       "nombre": {"oficial": "Tomelloso", "castellano": "Tomelloso"},
       "poblacion": 37060,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Es uno de los grandes centros del vino de La Mancha. Producía tanto que desde el siglo XIX empezó a destilarlo para convertirlo en alcohol, y hacia 1950 llegó a tener sesenta destilerías, de las que aún se conservan muchas chimeneas de ladrillo.\nBajo sus calles hay más de dos mil cuevas excavadas para guardar el vino, y en las aceras se ven las lumbreras, las rejillas por las que respiran."
     },
     {
       "id": "13087",
       "nombre": {"oficial": "Valdepeñas", "castellano": "Valdepeñas"},
       "poblacion": 30782,
       "puesto": 5,
-      "curiosidad": "Da nombre a un vino con denominación de origen propia."
+      "curiosidad": "Es especialmente conocida por su vino, con denominación de origen propia. Ya abastecía las tabernas de Madrid, y con la llegada del tren, en 1862, empezó a venderse también fuera de España. Gracias a ese comercio, a comienzos del siglo XX era la población más grande de la provincia.\nDespués de la guerra civil se quedó atrás. Siguió viviendo de un vino tradicional y familiar mientras otras ciudades de la provincia crecían con la industria o con la administración, y muchos de sus vecinos emigraron a las grandes ciudades."
     },
     {
       "id": "14021",
