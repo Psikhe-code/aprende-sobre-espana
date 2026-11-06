@@ -187,7 +187,7 @@ En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Common
 
 ## Descargas con GitHub Actions
 
-Algunas webs no se pueden abrir desde el entorno donde trabaja Claude (Wikimedia limita mucho las peticiones, y muchas webs oficiales las bloquean). Para eso hay dos procesos automáticos en GitHub. Los dos funcionan igual: se crea una **rama temporal** desde `main`, se edita la lista del script, se sube la rama, GitHub descarga los archivos y los guarda en esa misma rama. Cuando ya se han leído, la rama se borra. **Estas ramas no se mezclan nunca con `main`**: lo que haga falta se copia a una rama normal con su pull request.
+Antes, algunas webs no se podían abrir desde el entorno donde trabaja Claude (Wikimedia limitaba mucho las peticiones, y muchas webs oficiales las bloqueaban). Desde noviembre de 2026 casi todo se descarga directamente desde la terminal (`curl`), también la web del INE y los artículos de Wikipedia; estos dos procesos automáticos de GitHub quedan para cuando alguna web bloquee las peticiones. Los dos funcionan igual: se crea una **rama temporal** desde `main`, se edita la lista del script, se sube la rama, GitHub descarga los archivos y los guarda en esa misma rama. Cuando ya se han leído, la rama se borra. **Estas ramas no se mezclan nunca con `main`**: lo que haga falta se copia a una rama normal con su pull request.
 
 | Proceso | Rama temporal | Script | Para qué | Dónde guarda |
 | --- | --- | --- | --- | --- |
