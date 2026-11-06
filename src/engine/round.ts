@@ -4,7 +4,15 @@ import { poolsFor } from "./territory";
 import { pick, shuffle } from "./random";
 import { fixAnswer, prepare } from "./options";
 
+/** Preguntas de una partida normal: 10 (por defecto). */
 export const ROUND_LENGTH = 10;
+/**
+ * Preguntas por partida que se pueden elegir en Opciones. "sinLimite": la partida sigue hasta que el jugador
+ * pulsa «Terminar»; si se acaban las preguntas, se barajan otra vez.
+ */
+export const ROUND_LENGTHS = [10, 25, 50, 100, "sinLimite"] as const;
+export type RoundLength = (typeof ROUND_LENGTHS)[number];
+export const DEFAULT_LENGTH: RoundLength = ROUND_LENGTH;
 /** Número de opciones por pregunta en cada dificultad. La respuesta abierta vendrá después. */
 export const OPTION_COUNTS = [4, 6, 8] as const;
 export type OptionCount = (typeof OPTION_COUNTS)[number];
@@ -17,7 +25,8 @@ export const DEFAULT_TERRITORIOS: Territorio[] = [...TERRITORIOS];
 
 export interface RoundSettings {
   categories: string[];
-  length?: number;
+  /** Preguntas de la partida. Sin límite: una vuelta entera a la baraja (todas las de la selección). */
+  length?: RoundLength;
   options?: number;
   /** Formas de los nombres marcadas. Si hay varias, se sortea una en cada pregunta. */
   names?: NameStyle[];
@@ -32,14 +41,27 @@ export function questionsIn(categoryId: string, territorios: Territorio[] = DEFA
   return cat ? cat.questions(NAME_STYLES[0]).filter((q) => territorios.includes(q.territorio)) : [];
 }
 
-/**
- * Cuántas preguntas tendrá una partida con esta selección: 10, o menos si no hay tantos lugares distintos
- * (por ejemplo, solo capitales de provincia). Cero si la selección no tiene preguntas.
- */
-export function roundSize(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, length = ROUND_LENGTH): number {
-  const lugares = new Set(categories.flatMap((id) => questionsIn(id, territorios)).map((q) => JSON.stringify(q.answerKey)));
-  return Math.min(length, lugares.size);
+/** Cuántas preguntas distintas hay con esta selección de categorías y territorios. */
+export function questionCount(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS): number {
+  return new Set(categories.flatMap((id) => questionsIn(id, territorios)).map((q) => q.id)).size;
 }
+
+/**
+ * Cuántas preguntas tendrá una partida con esta selección: las elegidas, o menos si no hay tantas
+ * (por ejemplo, solo capitales de provincia). Cero si la selección no tiene preguntas.
+ * Sin límite: las que hay, que es lo que dura una vuelta a la baraja.
+ */
+export function roundSize(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, length: RoundLength = ROUND_LENGTH): number {
+  const n = questionCount(categories, territorios);
+  return length === "sinLimite" ? n : Math.min(length, n);
+}
+
+/**
+ * Si se puede elegir este número de preguntas con esta selección. Las 10 y «sin límite», siempre
+ * (si hay menos de 10, la partida tiene las que haya); 25, 50 y 100, solo si hay al menos esas.
+ */
+export const lengthFits = (length: RoundLength, categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS) =>
+  length === "sinLimite" || length === ROUND_LENGTH || questionCount(categories, territorios) >= length;
 
 type Picked = Question & { category: string; style: NameStyle; answer: string; answerKey: string };
 
@@ -49,6 +71,8 @@ type Picked = Question & { category: string; style: NameStyle; answer: string; a
  *   así una categoría con muchas preguntas no acapara la partida.
  * - La forma de los nombres (oficial o castellano) se fija para cada pregunta entera:
  *   una de las marcadas, sorteada si hay varias.
+ * - No se repite ninguna pregunta. El mismo lugar sí puede volver a ser la respuesta en otra pregunta
+ *   (Vigo y Pontevedra, de la provincia de Pontevedra; la capital de Asturias como comunidad y como provincia).
  */
 export function pickQuestions({ categories, length = ROUND_LENGTH, names = DEFAULT_NAMES, territorios = DEFAULT_TERRITORIOS, rng = Math.random }: RoundSettings): Picked[] {
   const styles = NAME_STYLES.filter((s) => names.includes(s));
@@ -70,30 +94,32 @@ export function pickQuestions({ categories, length = ROUND_LENGTH, names = DEFAU
     }
     decks[catId] = shuffle([...ids], rng);
   }
+  const max = length === "sinLimite" ? Infinity : length;
   const out: Picked[] = [];
-  while (out.length < length) {
+  while (out.length < max) {
     const live = Object.keys(decks).filter((id) => decks[id].length);
     if (!live.length) break;
     const category = pick(live, rng);
     const id = decks[category].pop()!;
     const style = pick(styles, rng);
-    const q = fixAnswer({ ...versions.get(id)![style], category, style }, rng);
-    if (!isDuplicate(q, out)) out.push(q);
+    out.push(fixAnswer({ ...versions.get(id)![style], category, style }, rng));
   }
   return out;
-}
-
-/**
- * Una partida no repite pregunta ni lugar como respuesta, aunque salga escrito de otra forma
- * (p. ej. Vitoria y Vitoria-Gasteiz son el mismo lugar).
- */
-function isDuplicate(q: Picked, chosen: Picked[]): boolean {
-  return chosen.some((o) => o.id === q.id || o.answerKey === q.answerKey);
 }
 
 export function buildRound(settings: RoundSettings): RoundQuestion[] {
   const n = settings.options ?? DEFAULT_OPTIONS;
   return pickQuestions(settings).map((q) => prepare(q, n, poolsFor(q.style), settings.rng));
+}
+
+/**
+ * Otra vuelta a la baraja en una partida sin límite: todas las preguntas de nuevo, barajadas y con opciones nuevas.
+ * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
+ */
+export function reshuffle(settings: RoundSettings, lastId?: string): RoundQuestion[] {
+  const deck = buildRound({ ...settings, length: "sinLimite" });
+  if (deck.length > 1 && deck[0].id === lastId) [deck[0], deck[1]] = [deck[1], deck[0]];
+  return deck;
 }
 
 /** Prepara de nuevo una lista de preguntas (repaso de fallos), con opciones nuevas y la misma forma. */

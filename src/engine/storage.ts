@@ -1,6 +1,8 @@
 import { CATEGORY_IDS, OLD_CATEGORY_IDS } from "./categories";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "./types";
-import { DEFAULT_NAMES, DEFAULT_OPTIONS, DEFAULT_TERRITORIOS, OPTION_COUNTS, type OptionCount } from "./round";
+import {
+  DEFAULT_LENGTH, DEFAULT_NAMES, DEFAULT_OPTIONS, DEFAULT_TERRITORIOS, OPTION_COUNTS, ROUND_LENGTHS, type OptionCount, type RoundLength
+} from "./round";
 
 /**
  * Progreso guardado en el dispositivo (localStorage).
@@ -8,7 +10,10 @@ import { DEFAULT_NAMES, DEFAULT_OPTIONS, DEFAULT_TERRITORIOS, OPTION_COUNTS, typ
  * este es el único módulo que cambia.
  */
 export interface SavedState {
-  /** Récord por combinación de categorías y territorios, p. ej. "capitales+banderas/comunidad+provincia" → 8. */
+  /**
+   * Récord por combinación de categorías, territorios, dificultad y número de preguntas (ver comboKey),
+   * p. ej. "capitales+banderas/comunidad+provincia" → 8. En las partidas sin límite, la mejor racha.
+   */
   best: Record<string, number>;
   /** Categorías marcadas en Opciones. */
   selected: string[];
@@ -20,6 +25,8 @@ export interface SavedState {
   territorios: Territorio[];
   /** Dificultad: número de opciones por pregunta (4, 6 u 8). */
   opciones: OptionCount;
+  /** Preguntas por partida: 10, 25, 50, 100 o sin límite. */
+  longitud: RoundLength;
 }
 
 /** Clave con la que se guarda todo en el dispositivo. Si se cambia, se pierde lo guardado. */
@@ -61,7 +68,8 @@ export function loadState(): SavedState {
   const territoriosMarcados = Array.isArray(raw.territorios) ? TERRITORIOS.filter((t) => (raw.territorios as unknown[]).includes(t)) : [];
   const territorios = territoriosMarcados.length ? territoriosMarcados : [...DEFAULT_TERRITORIOS];
   const opciones = OPTION_COUNTS.find((n) => n === raw.opciones) ?? DEFAULT_OPTIONS;
-  return { best: migrarRecords(raw.best ?? {}), selected, known: [...CATEGORY_IDS], names, territorios, opciones };
+  const longitud = ROUND_LENGTHS.find((n) => n === raw.longitud) ?? DEFAULT_LENGTH;
+  return { best: migrarRecords(raw.best ?? {}), selected, known: [...CATEGORY_IDS], names, territorios, opciones, longitud };
 }
 
 export function saveState(state: SavedState): void {
@@ -73,10 +81,14 @@ export function saveState(state: SavedState): void {
 }
 
 /**
- * Clave estable de una selección de categorías, territorios y dificultad, en el orden oficial:
- * "capitales+banderas/comunidad" con 4 opciones, y "capitales+banderas/comunidad/8" con 8.
- * Con 4 opciones no lleva número, así los récords anteriores a las dificultades siguen valiendo.
+ * Clave estable de una selección de categorías, territorios, dificultad y número de preguntas, en el orden oficial:
+ * "capitales+banderas/comunidad" con 4 opciones y 10 preguntas, "capitales+banderas/comunidad/8" con 8 opciones,
+ * y "capitales+banderas/comunidad/8/25preguntas" o ".../sinlimite" con otro número de preguntas.
+ * Lo que está como por defecto (4 opciones, 10 preguntas) no se escribe: así los récords anteriores siguen valiendo.
  */
-export const comboKey = (selected: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, opciones: OptionCount = DEFAULT_OPTIONS) =>
+export const comboKey = (
+  selected: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, opciones: OptionCount = DEFAULT_OPTIONS, longitud: RoundLength = DEFAULT_LENGTH
+) =>
   CATEGORY_IDS.filter((id) => selected.includes(id)).join("+") + "/" + TERRITORIOS.filter((t) => territorios.includes(t)).join("+") +
-  (opciones === DEFAULT_OPTIONS ? "" : `/${opciones}`);
+  (opciones === DEFAULT_OPTIONS ? "" : `/${opciones}`) +
+  (longitud === DEFAULT_LENGTH ? "" : longitud === "sinLimite" ? "/sinlimite" : `/${longitud}preguntas`);

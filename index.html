@@ -13,15 +13,15 @@
   <div class="app">
     <header class="masthead">
       <svg id="contours" viewBox="0 0 300 220" aria-hidden="true"></svg>
-      <div class="eyebrow">Atlas de bolsillo · 10 hojas por partida</div>
+      <div class="eyebrow">Atlas de bolsillo · Geografía de España</div>
       <h1>Aprende sobre España</h1>
-      <p class="lede">Capitales, banderas y provincias de las comunidades autónomas. Elige en Opciones qué categorías y territorios entran y responde diez preguntas.</p>
+      <p class="lede">Capitales, banderas y provincias de las comunidades autónomas. Elige en Opciones qué categorías y territorios entran y cuántas preguntas tiene cada partida.</p>
     </header>
 
     <!-- Inicio -->
     <section id="start" class="screen">
       <div class="summary">
-        <div class="label">10 preguntas al azar de</div>
+        <div class="label" id="roundLabel">10 preguntas al azar de</div>
         <div class="chips" id="chips"></div>
         <div class="record" id="namesInfo"></div>
         <div class="record" id="territoriosInfo"></div>
@@ -72,6 +72,13 @@
       <p class="warn" id="emptyWarn" hidden>Con estas opciones no hay preguntas: marca otra categoría u otro territorio.</p>
 
       <div class="stack tight section-start">
+        <div class="label">Opciones · Preguntas por partida</div>
+        <span class="hint">En una partida no se repite ninguna pregunta. Sin límite, se juega hasta que pulses «Terminar».</span>
+      </div>
+      <div class="cats" id="longitud" role="radiogroup" aria-label="Preguntas por partida"></div>
+      <p class="warn" id="lengthWarn" hidden></p>
+
+      <div class="stack tight section-start">
         <div class="label">Opciones · Dificultad</div>
         <span class="hint">Cuantas más opciones, más trampas salen a la vez.</span>
       </div>
@@ -114,7 +121,20 @@
           <div class="row"><button class="primary" id="next">Siguiente</button></div>
         </div>
       </div>
-      <div class="row"><button class="ghost" id="quit">Salir al menú</button></div>
+      <!-- Partida sin límite: se han respondido todas las preguntas de la selección -->
+      <div class="card" id="deckEnd" hidden>
+        <div class="q-cat">Fin de la baraja</div>
+        <p class="question">Has respondido todas las preguntas</p>
+        <p class="why" id="deckEndText"></p>
+        <div class="row">
+          <button class="primary" id="reshuffle">Barajar y seguir</button>
+          <button class="ghost" id="deckStop">Terminar</button>
+        </div>
+      </div>
+      <div class="row">
+        <button class="ghost" id="stop" hidden>Terminar</button>
+        <button class="ghost" id="quit">Salir al menú</button>
+      </div>
     </section>
 
     <!-- Final -->

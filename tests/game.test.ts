@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORY_IDS } from "../src/engine/categories";
-import { buildRound, rebuild, roundSize, OPTION_COUNTS, ROUND_LENGTH } from "../src/engine/round";
+import {
+  buildRound, rebuild, reshuffle, roundSize, questionCount, questionsIn, lengthFits, OPTION_COUNTS, ROUND_LENGTH, ROUND_LENGTHS
+} from "../src/engine/round";
 import { PROVINCIAS, poolsFor } from "../src/engine/territory";
 import { BANDERAS_PROVINCIAS } from "../src/engine/questions";
 import { comboKey, loadState, STORAGE_KEY } from "../src/engine/storage";
-import { GameSession, applyRecord } from "../src/engine/game";
+import { GameSession, applyRecord, recordValue } from "../src/engine/game";
 import type { RoundQuestion } from "../src/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
@@ -29,11 +31,21 @@ describe("partidas: elección de preguntas", () => {
     }
   });
 
-  it("no repiten el mismo lugar como respuesta, aunque salga con otro nombre", () => {
-    for (let r = 0; r < 300; r++) {
-      const round = buildRound({ categories: CATEGORY_IDS });
-      expect(new Set(round.map((q) => q.answerKey)).size).toBe(round.length);
+  it("en cada número de preguntas, tienen esas preguntas sin repetir ninguna", () => {
+    for (const length of ROUND_LENGTHS) {
+      for (let r = 0; r < 20; r++) {
+        const round = buildRound({ categories: CATEGORY_IDS, length });
+        expect(round, String(length)).toHaveLength(length === "sinLimite" ? questionCount(CATEGORY_IDS) : length);
+        expect(new Set(round.map((q) => q.id)).size, String(length)).toBe(round.length);
+      }
     }
+  });
+
+  it("sí pueden repetir el mismo lugar como respuesta en preguntas distintas", () => {
+    // Todas las de Divisiones de provincias: hay muchos más municipios que provincias.
+    const round = buildRound({ categories: ["divisiones"], territorios: ["provincia"], length: "sinLimite" });
+    expect(round).toHaveLength(questionsIn("divisiones", ["provincia"]).length);
+    expect(new Set(round.map((q) => q.answerKey)).size).toBeLessThan(round.length);
   });
 
   it("con las dos formas marcadas, se sortea por pregunta y cada pregunta va entera en su forma", () => {
@@ -104,15 +116,34 @@ describe("partidas: elección de preguntas", () => {
     expect(roundSize(CATEGORY_IDS)).toBe(ROUND_LENGTH);
     expect(roundSize(["capitales"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, CAPITALES_PROVINCIA));
     expect(roundSize(["banderas"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, Object.keys(BANDERAS_PROVINCIAS).length));
-    // Municipios: la respuesta es la provincia, y hay más de diez provincias distintas.
     expect(roundSize(["divisiones"], ["provincia"])).toBe(ROUND_LENGTH);
-    expect(buildRound({ categories: ["divisiones"], territorios: ["provincia"] })).toHaveLength(ROUND_LENGTH);
+    // Las preguntas que hay son las distintas de la selección; sin límite, una vuelta entera.
+    const todas = new Set(CATEGORY_IDS.flatMap((id) => questionsIn(id).map((q) => q.id))).size;
+    expect(questionCount(CATEGORY_IDS)).toBe(todas);
+    expect(roundSize(CATEGORY_IDS, undefined, "sinLimite")).toBe(todas);
+    expect(roundSize(CATEGORY_IDS, undefined, 100)).toBe(Math.min(100, todas));
   });
 
-  it("con comunidades y provincias, no repite la misma ciudad como respuesta (Oviedo de Asturias, provincia y comunidad)", () => {
-    for (let r = 0; r < 300; r++) {
-      const keys = buildRound({ categories: ["capitales"], territorios: ["comunidad", "provincia"] }).map((q) => q.answerKey);
-      expect(new Set(keys).size).toBe(keys.length);
+  it("25, 50 y 100 preguntas solo se pueden elegir si la selección tiene al menos esas; 10 y sin límite, siempre", () => {
+    for (const categorias of [["capitales"], ["banderas"], ["divisiones"], CATEGORY_IDS]) {
+      for (const territorios of [["comunidad"], ["provincia"], ["comunidad", "provincia"]] as const) {
+        const hay = questionCount(categorias, [...territorios]);
+        for (const length of ROUND_LENGTHS) {
+          const esperado = length === "sinLimite" || length === ROUND_LENGTH || hay >= length;
+          expect(lengthFits(length, categorias, [...territorios]), `${categorias} ${territorios} ${length}`).toBe(esperado);
+        }
+      }
+    }
+  });
+
+  it("otra vuelta a la baraja tiene todas las preguntas, y no empieza por la última que salió", () => {
+    const ajustes = { categories: ["capitales"], territorios: ["provincia" as const] };
+    for (let r = 0; r < 100; r++) {
+      const primera = buildRound({ ...ajustes, length: "sinLimite" });
+      const ultima = primera[primera.length - 1].id;
+      const otra = reshuffle(ajustes, ultima);
+      expect(otra.map((q) => q.id).sort()).toEqual(primera.map((q) => q.id).sort());
+      expect(otra[0].id).not.toBe(ultima);
     }
   });
 
@@ -177,8 +208,68 @@ describe("partidas: desarrollo", () => {
   });
 });
 
+describe("partidas sin límite", () => {
+  const baraja = () => [rq("a", "A"), rq("b", "B"), rq("c", "C")];
+
+  it("al acabarse la baraja se para y, para seguir, se añade otra vuelta", () => {
+    const g = new GameSession(baraja(), { unlimited: true });
+    expect(g.deckSize).toBe(3);
+    for (const respuesta of ["A", "X", "C"]) {
+      expect(g.endOfDeck).toBe(false);
+      g.answer(respuesta);
+      if (respuesta !== "C") g.next();
+    }
+    expect(g.endOfDeck).toBe(true);
+    expect(g.finished).toBe(false);
+    expect(g.next()).toBe(false);
+    g.append(baraja());
+    expect(g.endOfDeck).toBe(false);
+    expect(g.next()).toBe(true);
+    expect(g.index).toBe(3);
+    // La racha sigue de una vuelta a otra.
+    g.answer("A");
+    expect(g.streak).toBe(2);
+  });
+
+  it("termina cuando el jugador quiere, y la pregunta sin responder no cuenta", () => {
+    const g = new GameSession(baraja(), { unlimited: true });
+    g.answer("A"); g.next();
+    g.answer("B"); g.next();
+    g.stop();
+    expect(g.finished).toBe(true);
+    expect(() => g.answer("C")).toThrow();
+    expect(() => g.append(baraja())).toThrow();
+    const r = g.result();
+    expect(r).toMatchObject({ hits: 2, total: 2, bestStreak: 2, unlimited: true, counts: true });
+  });
+
+  it("solo cuenta para el récord si se ha respondido alguna pregunta, y el récord es la mejor racha", () => {
+    const vacia = new GameSession(baraja(), { unlimited: true });
+    vacia.stop();
+    expect(vacia.result().counts).toBe(false);
+
+    const g = new GameSession(baraja(), { unlimited: true });
+    g.answer("X"); g.next();
+    g.answer("B"); g.next();
+    g.answer("C");
+    g.stop();
+    const r = g.result();
+    expect(r.hits).toBe(2);
+    expect(r.bestStreak).toBe(2);
+    expect(recordValue(r)).toBe(r.bestStreak);
+    expect(applyRecord({}, "k", r).best.k).toBe(r.bestStreak);
+  });
+
+  it("una partida normal no se puede alargar ni terminar a mitad", () => {
+    const g = new GameSession(baraja());
+    expect(() => g.append(baraja())).toThrow();
+    expect(() => g.stop()).toThrow();
+    expect(g.endOfDeck).toBe(false);
+  });
+});
+
 describe("récords", () => {
-  const result = (hits: number, counts = true) => ({ hits, total: 10, bestStreak: 0, misses: [], review: false, counts });
+  const result = (hits: number, counts = true) => ({ hits, total: 10, bestStreak: 0, misses: [], review: false, unlimited: false, counts });
 
   it("guarda el primer resultado y solo lo cambia si se supera", () => {
     let best: Record<string, number> = {};
@@ -214,11 +305,22 @@ describe("guardado", () => {
     expect(loadState().territorios).toEqual(["comunidad", "provincia"]);
   });
 
-  it("la clave del récord incluye las categorías, los territorios y la dificultad (si no es la de 4 opciones)", () => {
+  it("la clave del récord incluye las categorías, los territorios, la dificultad y el número de preguntas (si no son los de por defecto)", () => {
     expect(comboKey(["banderas", "capitales"], ["provincia", "comunidad"])).toBe("capitales+banderas/comunidad+provincia");
     expect(comboKey(["capitales"], ["comunidad"])).toBe("capitales/comunidad");
     expect(comboKey(["capitales"], ["comunidad"], 4)).toBe("capitales/comunidad");
     expect(comboKey(["capitales"], ["comunidad"], 8)).toBe("capitales/comunidad/8");
+    expect(comboKey(["capitales"], ["comunidad"], 4, 10)).toBe("capitales/comunidad");
+    expect(comboKey(["capitales"], ["comunidad"], 4, 25)).toBe("capitales/comunidad/25preguntas");
+    expect(comboKey(["capitales"], ["comunidad"], 8, 100)).toBe("capitales/comunidad/8/100preguntas");
+    expect(comboKey(["capitales"], ["comunidad"], 6, "sinLimite")).toBe("capitales/comunidad/6/sinlimite");
+  });
+
+  it("por defecto, 10 preguntas por partida, y se recuerda el número elegido", () => {
+    expect(loadState().longitud).toBe(10);
+    conGuardado({ longitud: 50 }, () => expect(loadState().longitud).toBe(50));
+    conGuardado({ longitud: "sinLimite" }, () => expect(loadState().longitud).toBe("sinLimite"));
+    conGuardado({ longitud: 30 }, () => expect(loadState().longitud).toBe(10));
   });
 
   it("la dificultad por defecto es 4 opciones, y se recuerda la elegida", () => {

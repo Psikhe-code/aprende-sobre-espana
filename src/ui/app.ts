@@ -1,5 +1,7 @@
 import { CATEGORIES, CATEGORY_IDS, categoryById } from "../engine/categories";
-import { buildRound, rebuild, questionsIn, roundSize, OPTION_COUNTS } from "../engine/round";
+import {
+  buildRound, rebuild, reshuffle, questionsIn, questionCount, roundSize, lengthFits, OPTION_COUNTS, ROUND_LENGTHS, type RoundLength
+} from "../engine/round";
 import { GameSession, applyRecord, type GameResult } from "../engine/game";
 import { loadState, saveState, comboKey, type SavedState } from "../engine/storage";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "../engine/types";
@@ -49,6 +51,15 @@ const DIFICULTAD_DESC: Record<number, string> = {
   8: "Casi todas las trampas a la vez."
 };
 
+/** Cómo se presenta cada número de preguntas en Opciones. */
+const LONGITUD_LABELS: Record<RoundLength, { name: string; desc: string }> = {
+  10: { name: "10 preguntas", desc: "Una partida rápida." },
+  25: { name: "25 preguntas", desc: "Una partida media." },
+  50: { name: "50 preguntas", desc: "Una partida larga." },
+  100: { name: "100 preguntas", desc: "Para repasarlo casi todo." },
+  sinLimite: { name: "Sin límite", desc: "Hasta que pulses «Terminar». Si se acaban, se barajan otra vez." }
+};
+
 /** Botón de casilla para Opciones: marcado o no, con título y descripción. */
 function toggleCard(id: string, on: boolean, title: string, lines: string[][], onToggle: () => void): HTMLButtonElement {
   const b = el("button", "cat") as HTMLButtonElement;
@@ -64,6 +75,7 @@ function toggleCard(id: string, on: boolean, title: string, lines: string[][], o
 }
 
 function rating(r: GameResult): string {
+  if (!r.total) return "Sin respuestas";
   const pct = r.hits / r.total;
   return pct === 1 ? "Mapa completo" : pct >= 0.8 ? "Gran nivel" : pct >= 0.5 ? "Buen rumbo" : "Toca repasar el atlas";
 }
@@ -101,10 +113,13 @@ export function startApp(): App {
     const territorios = TERRITORIOS.filter((x) => state.territorios.includes(x));
     $("territoriosInfo").textContent = `Territorio: ${territorios.map((x) => TERRITORIO_LABELS[x].short).join(" y ")}.`;
     $("dificultadInfo").textContent = `Dificultad: ${state.opciones} opciones por pregunta.`;
-    const rec = state.best[comboKey(state.selected, state.territorios, state.opciones)];
+    const sinLimite = state.longitud === "sinLimite";
+    $("roundLabel").textContent = sinLimite ? "Preguntas sin límite, al azar, de" : `${roundSize(state.selected, state.territorios, state.longitud) || state.longitud} preguntas al azar de`;
+    const rec = state.best[recordKey()];
     const record = $("record");
     record.replaceChildren();
-    if (rec != null) record.append("Récord con esta selección: ", el("b", "", `${rec}/${roundSize(state.selected, state.territorios)}`));
+    if (rec != null && sinLimite) record.append("Mejor racha con esta selección: ", el("b", "", String(rec)));
+    else if (rec != null) record.append("Récord con esta selección: ", el("b", "", `${rec}/${roundSize(state.selected, state.territorios, state.longitud)}`));
     else record.textContent = "Aún no has jugado con esta selección.";
     prepararPartida();
   }
@@ -174,13 +189,35 @@ export function startApp(): App {
     abierta.setAttribute("aria-checked", "false");
     $("dificultad").replaceChildren(...dificultades, abierta);
 
+    // Preguntas por partida: se marca una sola. 25, 50 y 100, solo si la selección tiene al menos esas.
+    const hay = questionCount(state.selected, state.territorios);
+    $("longitud").replaceChildren(...ROUND_LENGTHS.map((n) => {
+      const cabe = lengthFits(n, state.selected, state.territorios);
+      const card = toggleCard("len-" + n, state.longitud === n, LONGITUD_LABELS[n].name,
+        [["cat-desc", cabe || !hay ? LONGITUD_LABELS[n].desc : `Con esta selección hay ${hay} preguntas.`]], () => {
+          state.longitud = n;
+          save();
+          renderOptions();
+          $("len-" + n).focus();
+        });
+      card.setAttribute("role", "radio");
+      card.setAttribute("aria-checked", String(state.longitud === n));
+      // La elegida no se desactiva aunque ya no quepa: se ve marcada, con el aviso de abajo.
+      card.disabled = !cabe && state.longitud !== n;
+      return card;
+    }));
+
     const noTerr = !state.territorios.length;
     $("noTerrWarn").hidden = !noTerr;
     // Categorías y territorios marcados, pero sin preguntas (p. ej. solo banderas y solo provincias).
-    const empty = !noCats && !noTerr && roundSize(state.selected, state.territorios) === 0;
+    const empty = !noCats && !noTerr && hay === 0;
     $("emptyWarn").hidden = !empty;
+    // El número de preguntas elegido ya no cabe (p. ej. 50 y se ha dejado solo Capitales).
+    const tooLong = !noCats && !noTerr && !empty && !lengthFits(state.longitud, state.selected, state.territorios);
+    $("lengthWarn").hidden = !tooLong;
+    $("lengthWarn").textContent = tooLong ? `Con esta selección hay ${hay} preguntas: elige menos preguntas por partida o «Sin límite».` : "";
 
-    $<HTMLButtonElement>("doneOptions").disabled = noCats || noNames || noTerr || empty;
+    $<HTMLButtonElement>("doneOptions").disabled = noCats || noNames || noTerr || empty || tooLong;
   }
 
   // ---------- Partida ----------
@@ -190,8 +227,11 @@ export function startApp(): App {
    * Se guarda con la selección para la que se hizo; si el jugador cambia las opciones, se prepara otra.
    */
   let preparada: { seleccion: string; preguntas: ReturnType<typeof buildRound> } | null = null;
-  const seleccionActual = () => JSON.stringify([state.selected, state.names, state.territorios, state.opciones]);
-  const nuevaPartida = () => buildRound({ categories: state.selected, names: state.names, territorios: state.territorios, options: state.opciones });
+  const seleccionActual = () => JSON.stringify([state.selected, state.names, state.territorios, state.opciones, state.longitud]);
+  const ajustesPartida = () => ({ categories: state.selected, names: state.names, territorios: state.territorios, options: state.opciones, length: state.longitud });
+  const nuevaPartida = () => buildRound(ajustesPartida());
+  /** Clave del récord de la selección actual. */
+  const recordKey = () => comboKey(state.selected, state.territorios, state.opciones, state.longitud);
   function prepararPartida() {
     if (!canPlay()) { preparada = null; return; }
     if (preparada?.seleccion !== seleccionActual()) preparada = { seleccion: seleccionActual(), preguntas: nuevaPartida() };
@@ -205,9 +245,15 @@ export function startApp(): App {
     else {
       const preguntas = preparada?.seleccion === seleccionActual() ? preparada.preguntas : nuevaPartida();
       preparada = null; // cada partida preparada se juega una sola vez
-      game = new GameSession(preguntas, { expected: roundSize(state.selected, state.territorios) });
+      game = new GameSession(preguntas, {
+        expected: roundSize(state.selected, state.territorios, state.longitud),
+        unlimited: state.longitud === "sinLimite"
+      });
     }
+    // Sin límite no hay barra de progreso (no se sabe cuándo acaba), sino el botón «Terminar».
+    $("track").hidden = game.unlimited;
     $("track").style.setProperty("--n", String(game.total));
+    $("track").classList.toggle("long", game.total > 25);
     show("play");
     renderQuestion();
   }
@@ -216,7 +262,10 @@ export function startApp(): App {
     if (!game) return;
     const g = game;
     const q = g.current;
-    $("sheet").replaceChildren(`Hoja ${pad(g.index + 1)} `, el("span", "", `/ ${pad(g.total)}`));
+    $("sheet").replaceChildren(`Hoja ${pad(g.index + 1)} `, ...(g.unlimited ? [] : [el("span", "", `/ ${pad(g.total)}`)]));
+    $("card").hidden = false;
+    $("deckEnd").hidden = true;
+    $("stop").hidden = !g.unlimited;
     $("hits").textContent = String(g.hits);
     $("streak").textContent = String(g.streak);
     $("qcat").textContent = (g.review ? "Repaso · " : "") + (categoryById(q.category)?.labels[q.territorio] ?? "");
@@ -254,7 +303,7 @@ export function startApp(): App {
   }
 
   function renderTrack() {
-    if (!game) return;
+    if (!game || game.unlimited) return;
     const g = game;
     $("track").replaceChildren(...g.questions.map((_, j) =>
       el("i", j < g.results.length ? (g.results[j] ? "ok" : "bad") : j === g.index ? "cur" : "")));
@@ -284,7 +333,7 @@ export function startApp(): App {
     $("factText").textContent = game.current.fact ?? "";
     $("fact").hidden = !game.current.fact;
     announce(r.correct ? "Correcto." : `Incorrecto. Era ${r.answer}.`);
-    $("next").textContent = game.isLast ? "Ver resultado" : "Siguiente";
+    $("next").textContent = game.isLast && !game.unlimited ? "Ver resultado" : "Siguiente";
     $("feedback").hidden = false;
     $("next").focus({ preventScroll: true });
   }
@@ -292,21 +341,52 @@ export function startApp(): App {
   function next() {
     if (!game || !game.answered) return;
     if (game.next()) renderQuestion();
+    else if (game.endOfDeck) showDeckEnd();
     else finish();
+  }
+
+  /** Sin límite: se han respondido todas las preguntas. Se sigue con otra vuelta o se termina. */
+  function showDeckEnd() {
+    if (!game) return;
+    const r = game.result();
+    $("card").hidden = true;
+    $("deckEnd").hidden = false;
+    $("stop").hidden = true; // la tarjeta ya tiene su «Terminar»
+    $("deckEndText").textContent =
+      `Ya han salido las ${game.deckSize} preguntas de esta selección, y llevas ${r.hits} ${r.hits === 1 ? "acierto" : "aciertos"} de ${r.total}. ` +
+      "Puedes barajarlas y seguir con la misma racha, o terminar y repasar tus fallos.";
+    announce("Has respondido todas las preguntas.");
+    $("reshuffle").focus({ preventScroll: true });
+  }
+
+  function keepPlaying() {
+    if (!game?.endOfDeck) return;
+    game.append(reshuffle(ajustesPartida(), game.current.id));
+    game.next();
+    renderQuestion();
+  }
+
+  /** Sin límite: termina la partida y muestra el resultado. */
+  function stop() {
+    if (!game?.unlimited || game.finished) return;
+    game.stop();
+    finish();
   }
 
   // ---------- Final ----------
   function finish() {
     if (!game) return;
     const r = game.result();
-    const key = comboKey(state.selected, state.territorios, state.opciones);
-    const rec = applyRecord(state.best, key, r);
+    const rec = applyRecord(state.best, recordKey(), r);
     if (rec.isNewRecord) { state = { ...state, best: rec.best }; save(); }
 
     $("score").replaceChildren(String(r.hits), el("small", "", `/${r.total}`));
     $("endTitle").textContent = rating(r);
-    const recText = !r.review && rec.record != null ? ` · Récord con esta selección: ${rec.record}/${game.expected}` : "";
-    $("endSub").textContent = (r.review ? "Repaso de fallos" : "Partida") + ` · Mejor racha: ${r.bestStreak}` + recText;
+    const recText = r.review || rec.record == null ? ""
+      : r.unlimited ? ` · Mejor racha con esta selección: ${rec.record}`
+      : ` · Récord con esta selección: ${rec.record}/${game.expected}`;
+    const tipo = r.review ? "Repaso de fallos" : r.unlimited ? "Partida sin límite" : "Partida";
+    $("endSub").textContent = `${tipo} · Mejor racha: ${r.bestStreak}` + recText;
 
     const misses = $("misses");
     misses.replaceChildren();
@@ -364,7 +444,7 @@ export function startApp(): App {
   /** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y alguna pregunta. */
   function canPlay() {
     return state.selected.length > 0 && state.names.length > 0 && state.territorios.length > 0 &&
-      roundSize(state.selected, state.territorios) > 0;
+      roundSize(state.selected, state.territorios) > 0 && lengthFits(state.longitud, state.selected, state.territorios);
   }
   function goHome() { renderStart(); show("start"); }
 
@@ -382,18 +462,23 @@ export function startApp(): App {
   $("doneOptions").addEventListener("click", () => { if (canPlay()) goHome(); });
   $("allCats").addEventListener("click", () => { state.selected = [...CATEGORY_IDS]; save(); renderOptions(); });
   $("quit").addEventListener("click", () => { game = null; goHome(); });
+  $("stop").addEventListener("click", stop);
+  $("deckStop").addEventListener("click", stop);
+  $("reshuffle").addEventListener("click", keepPlaying);
   $("again").addEventListener("click", () => start());
   $("menu").addEventListener("click", goHome);
   $("review").addEventListener("click", () => {
-    const misses = game?.result().misses ?? [];
-    if (misses.length) start(new GameSession(rebuild(misses.map((m) => m.question), { options: state.opciones }), { review: true }));
+    // En una partida sin límite se puede fallar dos veces la misma pregunta: en el repaso sale una vez.
+    const fallos = [...new Map((game?.result().misses ?? []).map((m) => [m.question.id, m.question])).values()];
+    if (fallos.length) start(new GameSession(rebuild(fallos, { options: state.opciones }), { review: true }));
   });
   document.addEventListener("keydown", (e) => {
     if (screen !== "play" || !game) return;
     if (!game.answered && /^[1-9]$/.test(e.key)) {
       const b = $("opts").children[Number(e.key) - 1] as HTMLButtonElement | undefined;
       if (b) answer(b);
-    } else if (game.answered && e.key === "Enter" && document.activeElement !== $("next")) {
+    } else if (game.answered && e.key === "Enter" && !(document.activeElement instanceof HTMLButtonElement)) {
+      // Si hay un botón con el foco (Siguiente, Terminar, Barajar y seguir…), Intro ya lo pulsa.
       next();
     }
   });
