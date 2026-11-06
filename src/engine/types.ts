@@ -77,11 +77,14 @@ export interface Category {
   name: string;
   /** Cómo se llama en la partida según el territorio de la pregunta: «Capitales de provincia». */
   labels: Record<Territorio, string>;
-  /** Todas sus preguntas, de todos los territorios, en una forma de los nombres. */
-  questions: (style: NameStyle) => Question[];
+  /**
+   * Todas sus preguntas, de todos los territorios, en una forma de los nombres. Se generan la primera vez
+   * y después se devuelven las mismas (los datos no cambian durante el juego): por eso son de solo lectura.
+   */
+  questions: (style: NameStyle) => readonly Question[];
 }
 
-export type Pools = Record<string, string[]>;
+export type Pools = Readonly<Record<string, readonly string[]>>;
 
 /** Generador de números aleatorios en [0, 1). Se puede sustituir en los tests. */
 export type Rng = () => number;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CATEGORY_IDS } from "../src/engine/categories";
+import { CATEGORIES, CATEGORY_IDS } from "../src/engine/categories";
 import {
   buildRound, rebuild, reshuffle, roundSize, questionCount, questionsIn, lengthFits, OPTION_COUNTS, ROUND_LENGTH, ROUND_LENGTHS
 } from "../src/engine/round";
@@ -7,7 +7,7 @@ import { PROVINCIAS, poolsFor } from "../src/engine/territory";
 import { BANDERAS_PROVINCIAS } from "../src/engine/questions";
 import { comboKey, loadState, STORAGE_KEY } from "../src/engine/storage";
 import { GameSession, applyRecord, recordValue } from "../src/engine/game";
-import type { RoundQuestion } from "../src/engine/types";
+import { NAME_STYLES, type RoundQuestion } from "../src/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
 const rq = (id: string, answer: string): RoundQuestion =>
@@ -145,6 +145,21 @@ describe("partidas: elección de preguntas", () => {
       expect(otra.map((q) => q.id).sort()).toEqual(primera.map((q) => q.id).sort());
       expect(otra[0].id).not.toBe(ultima);
     }
+  });
+
+  it("las preguntas y los pools se generan una sola vez por forma, y jugar partidas no los cambia", () => {
+    for (const c of CATEGORIES) {
+      for (const style of NAME_STYLES) expect(c.questions(style)).toBe(c.questions(style));
+    }
+    for (const style of NAME_STYLES) expect(poolsFor(style)).toBe(poolsFor(style));
+    const banco = () => JSON.stringify([CATEGORIES.map((c) => NAME_STYLES.map((s) => c.questions(s))), NAME_STYLES.map(poolsFor)]);
+    const antes = banco();
+    for (let r = 0; r < 50; r++) {
+      const round = buildRound({ categories: CATEGORY_IDS, options: 8 });
+      rebuild(round, { options: 6 });
+      reshuffle({ categories: CATEGORY_IDS }, round[0].id);
+    }
+    expect(banco()).toBe(antes);
   });
 
   it("el repaso conserva las preguntas y regenera las opciones", () => {
