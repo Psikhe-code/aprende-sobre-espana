@@ -7,3 +7,7 @@ coverage/
 
 # Caché de Python (scripts/)
 __pycache__/
+
+# Resultados de los tests de pantalla (Playwright)
+test-results/
+playwright-report/

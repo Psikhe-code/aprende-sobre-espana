@@ -1,6 +1,6 @@
 # Publica el juego en GitHub Pages cada vez que se suben cambios a la rama main.
-# Si algún test falla, no se publica: la web se queda con la última versión buena.
-# En los pull requests solo comprueba (tests y compilación), sin publicar.
+# Si algún test falla (los del motor o los de pantalla), no se publica: la web se queda con la última versión buena.
+# En los pull requests solo comprueba (tests, tests de pantalla y compilación), sin publicar.
 name: Publicar en GitHub Pages
 
 on:
@@ -37,9 +37,29 @@ jobs:
         with:
           path: dist
 
+  # Tests de pantalla: juegan al juego en un navegador (Chromium), en móvil y en escritorio.
+  # Si alguno falla, se guarda un informe con capturas en la pestaña Actions («tests-de-pantalla»).
+  pantalla:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:pantalla
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-de-pantalla
+          path: playwright-report/
+          retention-days: 7
+
   deploy:
     if: github.event_name != 'pull_request'
-    needs: build
+    needs: [build, pantalla]
     runs-on: ubuntu-latest
     environment:
       name: github-pages

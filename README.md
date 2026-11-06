@@ -18,6 +18,7 @@ npm run dev        # arranca el juego en http://localhost:5173 y se recarga al g
 | Comando | Qué hace |
 | --- | --- |
 | `npm test` | Comprueba los datos y la lógica del juego (ver [Tests](#tests)) |
+| `npm run test:pantalla` | Juega al juego en un navegador, en móvil y escritorio (ver [Tests de pantalla](#tests-de-pantalla)) |
 | `npm run build` | Comprueba los tipos y genera la versión final en `dist/` |
 | `npm run preview` | Sirve la versión de `dist/` para probarla tal cual se publicará |
 
@@ -48,11 +49,22 @@ src/
     countdown.ts           cuenta atrás de cada pregunta (arrancar, pausar, cuánto queda)
     storage.ts             ajustes y récords guardados en el dispositivo
   ui/                      ← INTERFAZ (solo dibuja y llama al motor)
-    app.ts                 pantallas y botones
+    app.ts                 arranca el juego y decide qué pantalla se ve
+    contexto.ts            lo que comparten las pantallas (opciones guardadas, cambiar de pantalla)
+    inicio.ts              pantalla de inicio
+    opciones.ts            pantalla de Opciones
+    partida.ts             pantalla de la partida (pregunta, nota, fin de la baraja)
+    reloj.ts               reloj de cada pregunta en pantalla
+    final.ts               pantalla final: resultado, récord y fallos
+    creditos.ts            pantalla de Créditos
+    seleccion.ts           lo que se deduce de las opciones (si se puede jugar, clave del récord…)
+    dom.ts                 utilidades: crear elementos, tarjetas y grupos de Opciones, avisos
+    labels.ts              textos de las opciones
     flags.ts               imágenes de las banderas, y la de la pregunta siguiente por adelantado
     styles.css             estilos (tema claro y oscuro según el sistema)
   main.ts                  punto de entrada y modo sin conexión
-tests/                     comprobaciones automáticas
+tests/                     comprobaciones automáticas del motor y los datos
+tests-pantalla/            tests de pantalla: juegan al juego en un navegador
 public/                    iconos de la app
 ```
 
@@ -157,7 +169,7 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 **Preguntas por partida.** En Opciones se elige 10 (por defecto), 25, 50, 100 o sin límite (`ROUND_LENGTHS` en `round.ts`). 25, 50 y 100 solo se pueden elegir si la selección tiene al menos esas preguntas (`lengthFits`); con 10, si hay menos, la partida tiene las que haya. **Sin límite**, la partida sigue hasta pulsar «Terminar», que lleva al resultado y al repaso de fallos. Si se acaban las preguntas, sale una tarjeta «Fin de la baraja» para barajarlas otra vez y seguir con la misma racha (`reshuffle`, que nunca empieza por la última que salió), o terminar.
 
-**Accesibilidad.** En Opciones, las tarjetas que se pueden marcar varias (categorías, nombres, territorios) son botones que se marcan y desmarcan; las de los grupos en los que solo se marca una (dificultad, tiempo, preguntas por partida) son un grupo de opciones (`radioGroup` en `app.ts`): el tabulador entra solo en la marcada y con las flechas se pasa a otra. El reloj se anuncia como reloj, y a los 5 segundos avisa. En la partida, las teclas numéricas responden e Intro pasa a la siguiente.
+**Accesibilidad.** En Opciones, las tarjetas que se pueden marcar varias (categorías, nombres, territorios) son botones que se marcan y desmarcan; las de los grupos en los que solo se marca una (dificultad, tiempo, preguntas por partida) son un grupo de opciones (`radioGroup` en `dom.ts`): el tabulador entra solo en la marcada y con las flechas se pasa a otra. El reloj se anuncia como reloj, y a los 5 segundos avisa. En la partida, las teclas numéricas responden e Intro pasa a la siguiente.
 
 **Modo sin conexión.** Al abrir el juego se guarda en el dispositivo solo lo imprescindible: código, estilos, fuentes e iconos (unos 400 KB). Las banderas no se descargan todas de golpe: cada una se guarda la primera vez que sale, así que sin conexión funcionan las que ya se han visto. Cuando sea una app de Android, irán todas dentro de la app. Se configura en `vite.config.ts`.
 
@@ -222,6 +234,17 @@ El proceso solo arranca si el commit que subes cambia el script (o el workflow).
 - **Cuenta atrás** (`countdown.test.ts`): con un reloj de mentira, que no corre hasta arrancarla, que la pausa no pierde tiempo, que no baja de cero y cómo se redondean los segundos.
 
 Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las trampas de una capital de provincia son las capitales y ciudades de las provincias de su campo `trampas`, sin escribir cuáles son. Por eso se puede cambiar una nota, una trampa o una ciudad en los JSON (también desde github.dev) sin tocar los tests: si el cambio rompe una regla (una trampa que no existe, una marca mal escrita…), el test dice dónde.
+
+### Tests de pantalla
+
+`npm run test:pantalla` abre el juego en un navegador de verdad (Chromium, con [Playwright](https://playwright.dev)), en tamaño de móvil y de escritorio, y lo juega como lo haría una persona. Están en `tests-pantalla/`, y también fallan si sale algún error en la consola del navegador:
+
+- **Partida** (`partida.pantalla.ts`): una de 10 entera y su récord en el inicio; el repaso de fallos; «Salir al menú»; que la barra de una partida de 100 cabe en el móvil.
+- **Opciones** (`opciones.pantalla.ts`): cómo se anuncian las tarjetas a un lector de pantalla; las flechas en los grupos de opciones (solo en escritorio); los números de preguntas que no caben; que las opciones se guardan.
+- **Reloj** (`reloj.pantalla.ts`): con el reloj del navegador controlado por el test (no hay que esperar de verdad), la cuenta atrás, el fallo por tiempo, la pausa con la pestaña oculta, que no vuelve a correr tras responder, la bandera lenta, el rojo de los últimos segundos y el repaso sin reloj.
+- **Sin límite** (`sin-limite.pantalla.ts`): fin de la baraja, barajar y seguir, terminar y récord de racha.
+
+Se ejecutan también en GitHub en cada PR y antes de publicar: si alguno falla, no se publica, y en la pestaña Actions queda un informe («tests-de-pantalla») con capturas de lo que se veía. Para ejecutarlos en tu ordenador hace falta, una vez, `npx playwright install chromium`.
 
 ## Próximos pasos
 
