@@ -485,6 +485,20 @@
       "puesto": 2
     },
     {
+      "id": "16003",
+      "nombre": {"oficial": "Alarcón", "castellano": "Alarcón"},
+      "poblacion": 173,
+      "puesto": 121,
+      "curiosidad": "Es especialmente conocida por ser una villa medieval amurallada, sobre un cerro rodeado casi por completo por un meandro del río Júcar. Después de que Alfonso VIII la conquistara en 1184, llegó a mandar sobre un territorio enorme, con decenas de aldeas, entre ellas las que hoy son Albacete, La Roda, Villarrobledo o Belmonte."
+    },
+    {
+      "id": "16033",
+      "nombre": {"oficial": "Belmonte", "castellano": "Belmonte"},
+      "poblacion": 1751,
+      "puesto": 18,
+      "curiosidad": "Es especialmente conocida por su castillo, que mandó levantar en el siglo XV Juan Pacheco, marqués de Villena, uno de los nobles más poderosos de Castilla. Se conserva casi como se construyó, y por eso se han rodado allí películas como El Cid."
+    },
+    {
       "id": "16078",
       "nombre": {"oficial": "Cuenca", "castellano": "Cuenca"},
       "poblacion": 53600,
@@ -504,6 +518,13 @@
       "poblacion": 16748,
       "puesto": 2,
       "curiosidad": "Está en el oeste de la provincia, junto a los límites con Toledo, Guadalajara y Madrid. Ya en el siglo XVI se consideraba un lugar estratégico, en el camino del centro de la Península hacia Levante, y hoy se cruzan allí la autovía de Madrid a Valencia y la que une Toledo con Cuenca.\nGracias a esa posición, desde los años sesenta han ido llegando industrias y empresas de transporte, y su población se ha duplicado.\nAllí nació y tiene su sede Incarlopsa, una de las mayores empresas cárnicas de España. Su nombre apenas se conoce, porque muchos de sus jamones y embutidos se venden con la marca de Mercadona."
+    },
+    {
+      "id": "16218",
+      "nombre": {"oficial": "Uclés", "castellano": "Uclés"},
+      "poblacion": 230,
+      "puesto": 101,
+      "curiosidad": "Es especialmente conocido por su monasterio, en lo alto de un cerro, que fue la casa principal de la Orden de Santiago desde 1174. Como lo construyeron discípulos de Juan de Herrera, el arquitecto de El Escorial, lo llaman «el Escorial de La Mancha»."
     },
     {
       "id": "17032",
