@@ -45,6 +45,7 @@ src/
     options.ts             genera las opciones de cada pregunta
     round.ts               elige las preguntas de una partida
     game.ts                desarrollo de la partida: respuestas, aciertos, racha, final y récords
+    countdown.ts           cuenta atrás de cada pregunta (arrancar, pausar, cuánto queda)
     storage.ts             ajustes y récords guardados en el dispositivo
   ui/                      ← INTERFAZ (solo dibuja y llama al motor)
     app.ts                 pantallas y botones
@@ -149,7 +150,8 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 - Al menos una incorrecta es siempre aleatoria del pool, para que las partidas no se repitan.
 - Lo que está en `exclude` nunca sale como incorrecto. Por ejemplo, en Canarias ninguna de sus dos capitales aparece como incorrecta.
 - **Dificultad:** en Opciones se elige el número de opciones por pregunta: 4 (por defecto), 6 u 8 (`OPTION_COUNTS` en `round.ts`). Con más opciones salen más trampas a la vez; la trampa fija sigue saliendo siempre y queda al menos un hueco al azar. En el móvil, con 6 u 8 las opciones van en dos columnas. La **respuesta abierta** aparece en Opciones como «próximamente», sin poder marcarse.
-- Los récords se guardan por categorías, territorios, dificultad y número de preguntas. En la partida sin límite, el récord es la mejor racha.
+- **Tiempo por pregunta:** en Opciones se elige 1 minuto (por defecto), 30 segundos, 10 segundos (nivel difícil) o sin tiempo (`TIME_LIMITS` en `round.ts`). Encima de la pregunta, una barra se vacía y dice los segundos que quedan; en los últimos 5, en rojo. El reloj empieza cuando la pregunta se ve (si tiene bandera, cuando está dibujada), se para al responder, para que leer la nota no gaste tiempo, y se pausa al cambiar de pestaña o bloquear el móvil. Si se acaba, cuenta como fallo: se marca la respuesta, sale la nota y se rompe la racha; en los fallos pone «se acabó el tiempo». El repaso de fallos va siempre sin tiempo. La cuenta atrás está en `countdown.ts`, sin nada de interfaz, para poder probarla.
+- Los récords se guardan por categorías, territorios, dificultad, número de preguntas y tiempo. En la partida sin límite, el récord es la mejor racha. Los récords de antes del tiempo cuentan como «sin tiempo».
 
 **Partida.** `round.ts` elige las preguntas de las categorías y territorios marcados, sorteando primero la categoría para repartirlas, sin repetir ninguna pregunta. El mismo lugar sí puede ser la respuesta de dos preguntas distintas (la capital de Asturias como comunidad y como provincia, Oviedo). `game.ts` lleva el desarrollo: responder, avanzar, aciertos, racha, fallos y si la partida cuenta para el récord. La interfaz solo dibuja lo que el motor le dice.
 
@@ -214,14 +216,15 @@ El proceso solo arranca si el commit que subes cambia el script (o el workflow).
 
 - **Datos**: que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen, que no sobran imágenes y que están limpias con SVGO; que en cada provincia están sus tres municipios más poblados y su capital, que los demás llevan curiosidad y que el puesto concuerda con la población.
 - **Preguntas y opciones**, en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
-- **Partidas**: en cientos de partidas al azar, con cada número de preguntas, sin repetir pregunta y bien repartidas; qué números se pueden elegir con cada selección; la partida sin límite (fin de la baraja, otra vuelta, terminar y su récord de racha); con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa; aciertos, racha, fallos, final y récords.
+- **Partidas**: en cientos de partidas al azar, con cada número de preguntas, sin repetir pregunta y bien repartidas; qué números se pueden elegir con cada selección; la partida sin límite (fin de la baraja, otra vuelta, terminar y su récord de racha); con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa; aciertos, racha, fallos (también por tiempo), final y récords.
+- **Cuenta atrás** (`countdown.test.ts`): con un reloj de mentira, que no corre hasta arrancarla, que la pausa no pierde tiempo, que no baja de cero y cómo se redondean los segundos.
 
 Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las trampas de una capital de provincia son las capitales y ciudades de las provincias de su campo `trampas`, sin escribir cuáles son. Por eso se puede cambiar una nota, una trampa o una ciudad en los JSON (también desde github.dev) sin tocar los tests: si el cambio rompe una regla (una trampa que no existe, una marca mal escrita…), el test dice dónde.
 
 ## Próximos pasos
 
 - **Respuesta abierta**: el jugador escribe la respuesta. Habrá que decidir cómo compararla (sin tildes, mayúsculas, formas oficial y castellana, «Vitoria» y «Vitoria-Gasteiz»…).
-- **Puntuación**: una puntuación aparte del récord de aciertos, con tiempo máximo por pregunta y más puntos por responder rápido, multiplicadores por racha y más puntos por dificultad y por jugar con más categorías a la vez.
+- **Puntuación**: una puntuación aparte del récord de aciertos, con más puntos por responder rápido (el tiempo por pregunta ya está), multiplicadores por racha y más puntos por dificultad y por jugar con más categorías a la vez.
 - **Guardado**: estadísticas por categoría y por pregunta (usando los identificadores), en lugar de récords por combinación.
 - **Desbloqueo de categorías** y recuperar las categorías del prototipo, ya con identificadores y esquema.
 - **App de Android** con [Capacitor](https://capacitorjs.com):

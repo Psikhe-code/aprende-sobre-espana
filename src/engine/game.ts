@@ -5,13 +5,15 @@ import { ROUND_LENGTH } from "./round";
 
 export interface Miss {
   question: RoundQuestion;
-  given: string;
+  /** Lo que respondió el jugador, o null si se acabó el tiempo sin responder. */
+  given: string | null;
 }
 
 export interface AnswerResult {
   correct: boolean;
   answer: string;
-  given: string;
+  /** null: se acabó el tiempo. */
+  given: string | null;
 }
 
 export interface GameResult {
@@ -80,10 +82,19 @@ export class GameSession {
 
   /** Responde la pregunta actual. Solo se puede responder una vez cada pregunta. */
   answer(given: string): AnswerResult {
+    return this.resolve(given);
+  }
+
+  /** Se acabó el tiempo de la pregunta actual sin responder: cuenta como fallo y rompe la racha. */
+  timeout(): AnswerResult {
+    return this.resolve(null);
+  }
+
+  private resolve(given: string | null): AnswerResult {
     if (this.stopped) throw new Error("La partida ya está terminada");
     if (this.answered) throw new Error("Esta pregunta ya está respondida");
     const q = this.current;
-    const correct = given === q.answer;
+    const correct = given !== null && given === q.answer;
     this.outcomes.push(correct);
     if (correct) {
       this.hitCount++;

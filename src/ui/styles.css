@@ -200,6 +200,14 @@ h1 {
 .track.long { gap: 1px; }
 .track.long i { border-radius: 0; }
 .track i.cur { background: var(--ink); }
+
+/* Tiempo que queda de la pregunta: barra que se vacía y segundos. En los últimos 5 s, en rojo. */
+.timer { display: flex; align-items: center; gap: 10px; }
+.timer-bar { flex: 1; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.timer-bar i { display: block; height: 100%; background: var(--water); transform-origin: left center; }
+.timer-text { font-family: var(--f-display); font-weight: 600; font-size: 15px; min-width: 3.2em; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+.timer.urgent .timer-bar i { background: var(--bad); }
+.timer.urgent .timer-text { color: var(--bad); }
 .track i.ok { background: var(--ok); }
 .track i.bad { background: var(--bad); }
 

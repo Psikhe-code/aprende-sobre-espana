@@ -13,6 +13,14 @@ export const ROUND_LENGTH = 10;
 export const ROUND_LENGTHS = [10, 25, 50, 100, "sinLimite"] as const;
 export type RoundLength = (typeof ROUND_LENGTHS)[number];
 export const DEFAULT_LENGTH: RoundLength = ROUND_LENGTH;
+
+/**
+ * Tiempo por pregunta que se puede elegir en Opciones, en segundos, o "sinTiempo".
+ * Por defecto, 1 minuto (decisión del usuario). El repaso de fallos va siempre sin tiempo.
+ */
+export const TIME_LIMITS = ["sinTiempo", 60, 30, 10] as const;
+export type TimeLimit = (typeof TIME_LIMITS)[number];
+export const DEFAULT_TIME: TimeLimit = 60;
 /** Número de opciones por pregunta en cada dificultad. La respuesta abierta vendrá después. */
 export const OPTION_COUNTS = [4, 6, 8] as const;
 export type OptionCount = (typeof OPTION_COUNTS)[number];

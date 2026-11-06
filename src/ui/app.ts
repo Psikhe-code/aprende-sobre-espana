@@ -1,8 +1,10 @@
 import { CATEGORIES, CATEGORY_IDS, categoryById } from "../engine/categories";
 import {
-  buildRound, rebuild, reshuffle, questionsIn, questionCount, roundSize, lengthFits, OPTION_COUNTS, ROUND_LENGTHS, type RoundLength
+  buildRound, rebuild, reshuffle, questionsIn, questionCount, roundSize, lengthFits, OPTION_COUNTS, ROUND_LENGTHS, TIME_LIMITS,
+  type RoundLength, type TimeLimit
 } from "../engine/round";
-import { GameSession, applyRecord, type GameResult } from "../engine/game";
+import { Countdown } from "../engine/countdown";
+import { GameSession, applyRecord, type AnswerResult, type GameResult } from "../engine/game";
 import { loadState, saveState, comboKey, type SavedState } from "../engine/storage";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "../engine/types";
 import { flagImage, precargarBandera } from "./flags";
@@ -60,6 +62,14 @@ const LONGITUD_LABELS: Record<RoundLength, { name: string; desc: string }> = {
   sinLimite: { name: "Sin límite", desc: "Hasta que pulses «Terminar». Si se acaban, se barajan otra vez." }
 };
 
+/** Cómo se presenta cada tiempo por pregunta en Opciones y en el inicio. */
+const TIEMPO_LABELS: Record<TimeLimit, { name: string; desc: string; info: string }> = {
+  sinTiempo: { name: "Sin tiempo", desc: "Para jugar con calma.", info: "sin tiempo" },
+  60: { name: "1 minuto", desc: "Tiempo de sobra para pensar.", info: "1 minuto por pregunta" },
+  30: { name: "30 segundos", desc: "Hay que ir con algo de prisa.", info: "30 segundos por pregunta" },
+  10: { name: "10 segundos", desc: "Nivel difícil: casi solo da para leer.", info: "10 segundos por pregunta" }
+};
+
 /** Botón de casilla para Opciones: marcado o no, con título y descripción. */
 function toggleCard(id: string, on: boolean, title: string, lines: string[][], onToggle: () => void): HTMLButtonElement {
   const b = el("button", "cat") as HTMLButtonElement;
@@ -91,6 +101,7 @@ export function startApp(): App {
   const announce = (text: string) => { $("announce").textContent = text; };
 
   function show(id: Screen) {
+    if (id !== "play") stopTimer();
     screen = id;
     (["start", "options", "play", "end", "credits"] as Screen[]).forEach((s) => { $(s).hidden = s !== id; });
     window.scrollTo({ top: 0 });
@@ -112,7 +123,7 @@ export function startApp(): App {
       : `Nombres: solo ${NAME_LABELS[names[0]].short}.`;
     const territorios = TERRITORIOS.filter((x) => state.territorios.includes(x));
     $("territoriosInfo").textContent = `Territorio: ${territorios.map((x) => TERRITORIO_LABELS[x].short).join(" y ")}.`;
-    $("dificultadInfo").textContent = `Dificultad: ${state.opciones} opciones por pregunta.`;
+    $("dificultadInfo").textContent = `Dificultad: ${state.opciones} opciones por pregunta, ${TIEMPO_LABELS[state.tiempo].info}.`;
     const sinLimite = state.longitud === "sinLimite";
     $("roundLabel").textContent = sinLimite ? "Preguntas sin límite, al azar, de" : `${roundSize(state.selected, state.territorios, state.longitud) || state.longitud} preguntas al azar de`;
     const rec = state.best[recordKey()];
@@ -189,6 +200,19 @@ export function startApp(): App {
     abierta.setAttribute("aria-checked", "false");
     $("dificultad").replaceChildren(...dificultades, abierta);
 
+    // Tiempo por pregunta: se marca uno solo.
+    $("tiempo").replaceChildren(...TIME_LIMITS.map((t) => {
+      const card = toggleCard("tiempo-" + t, state.tiempo === t, TIEMPO_LABELS[t].name, [["cat-desc", TIEMPO_LABELS[t].desc]], () => {
+        state.tiempo = t;
+        save();
+        renderOptions();
+        $("tiempo-" + t).focus();
+      });
+      card.setAttribute("role", "radio");
+      card.setAttribute("aria-checked", String(state.tiempo === t));
+      return card;
+    }));
+
     // Preguntas por partida: se marca una sola. 25, 50 y 100, solo si la selección tiene al menos esas.
     const hay = questionCount(state.selected, state.territorios);
     $("longitud").replaceChildren(...ROUND_LENGTHS.map((n) => {
@@ -231,7 +255,7 @@ export function startApp(): App {
   const ajustesPartida = () => ({ categories: state.selected, names: state.names, territorios: state.territorios, options: state.opciones, length: state.longitud });
   const nuevaPartida = () => buildRound(ajustesPartida());
   /** Clave del récord de la selección actual. */
-  const recordKey = () => comboKey(state.selected, state.territorios, state.opciones, state.longitud);
+  const recordKey = () => comboKey(state.selected, state.territorios, state.opciones, state.longitud, state.tiempo);
   function prepararPartida() {
     if (!canPlay()) { preparada = null; return; }
     if (preparada?.seleccion !== seleccionActual()) preparada = { seleccion: seleccionActual(), preguntas: nuevaPartida() };
@@ -300,7 +324,85 @@ export function startApp(): App {
     card.style.animation = "none";
     void card.offsetWidth;
     card.style.animation = "";
+
+    startTimer();
   }
+
+  // ---------- Tiempo por pregunta ----------
+  let countdown: Countdown | null = null;
+  /** Si la pregunta ya se ve entera (con su bandera dibujada) y el reloj puede correr. */
+  let timerReady = false;
+  let frame = 0;
+  let avisoFinal = false;
+
+  /** Arranca el reloj de la pregunta actual, si se juega con tiempo. El repaso de fallos va sin tiempo. */
+  function startTimer() {
+    stopTimer();
+    const limite = !game || game.review ? "sinTiempo" : state.tiempo;
+    $("timer").hidden = limite === "sinTiempo";
+    if (limite === "sinTiempo") return;
+    const c = new Countdown(limite * 1000);
+    countdown = c;
+    avisoFinal = false;
+    drawTimer(c);
+    // El reloj empieza cuando la pregunta se ve: si tiene bandera, cuando está dibujada,
+    // para que una imagen lenta no quite tiempo. Si la bandera falla o tarda más de 3 s, empieza igual.
+    const go = () => {
+      if (countdown !== c || timerReady) return;
+      timerReady = true;
+      if (!document.hidden) c.start();
+      loop();
+    };
+    const img = $("flag").querySelector("img");
+    if (img) {
+      img.decode().then(go, go);
+      setTimeout(go, 3000);
+    } else go();
+  }
+
+  /** Para el reloj donde esté (al responder, salir o terminar). */
+  function stopTimer() {
+    cancelAnimationFrame(frame);
+    frame = 0;
+    countdown?.pause();
+    countdown = null;
+    timerReady = false;
+    $("timer").classList.remove("urgent");
+  }
+
+  function loop() { if (!frame) frame = requestAnimationFrame(tick); }
+
+  function tick() {
+    frame = 0;
+    const c = countdown;
+    if (!c) return;
+    drawTimer(c);
+    if (c.expired) timeUp();
+    else if (c.running) loop();
+  }
+
+  function drawTimer(c: Countdown) {
+    const s = c.seconds();
+    $("timerFill").style.transform = `scaleX(${c.remaining() / c.ms})`;
+    $("timerText").textContent = `${s} s`;
+    const urgent = s <= 5 && c.ms > 5000;
+    $("timer").classList.toggle("urgent", urgent);
+    if (urgent && !avisoFinal) { avisoFinal = true; announce("Quedan 5 segundos."); }
+  }
+
+  /** Se acabó el tiempo: cuenta como fallo y se muestra la respuesta, como al fallar. */
+  function timeUp() {
+    if (!game || game.answered) return;
+    stopTimer();
+    showResult(game.timeout(), null);
+  }
+
+  // Al cambiar de pestaña o bloquear el móvil, el reloj se para; al volver, sigue.
+  document.addEventListener("visibilitychange", () => {
+    if (!countdown || !timerReady) return;
+    if (document.hidden) countdown.pause();
+    else { countdown.start(); loop(); }
+  });
 
   function renderTrack() {
     if (!game || game.unlimited) return;
@@ -311,7 +413,16 @@ export function startApp(): App {
 
   function answer(btn: HTMLButtonElement) {
     if (!game || game.answered) return;
-    const r = game.answer(btn.dataset.value ?? "");
+    // El reloj se para donde esté: se ve cuánto tiempo sobraba.
+    cancelAnimationFrame(frame);
+    frame = 0;
+    countdown?.pause();
+    showResult(game.answer(btn.dataset.value ?? ""), btn);
+  }
+
+  /** Muestra el resultado de la pregunta: la opción pulsada (null si se acabó el tiempo) y la nota. */
+  function showResult(r: AnswerResult, btn: HTMLButtonElement | null) {
+    if (!game) return;
     for (const b of Array.from($("opts").children) as HTMLButtonElement[]) {
       b.disabled = true;
       if (b.dataset.value === r.answer) b.classList.add("right");
@@ -323,7 +434,7 @@ export function startApp(): App {
     renderTrack();
     const v = $("verdict");
     v.className = "verdict " + (r.correct ? "ok" : "bad");
-    v.textContent = r.correct ? "Correcto" : "Era: " + r.answer;
+    v.textContent = r.correct ? "Correcto" : r.given === null ? "Se acabó el tiempo · Era: " + r.answer : "Era: " + r.answer;
     $("why").textContent = game.current.why;
     // Otras formas de los nombres: "Girona · en castellano, Gerona"
     $("aka").replaceChildren(...game.current.aliases.map((a) => el("span", "", a)));
@@ -332,7 +443,7 @@ export function startApp(): App {
     $("meaning").hidden = !game.current.meaning;
     $("factText").textContent = game.current.fact ?? "";
     $("fact").hidden = !game.current.fact;
-    announce(r.correct ? "Correcto." : `Incorrecto. Era ${r.answer}.`);
+    announce(r.correct ? "Correcto." : r.given === null ? `Se acabó el tiempo. Era ${r.answer}.` : `Incorrecto. Era ${r.answer}.`);
     $("next").textContent = game.isLast && !game.unlimited ? "Ver resultado" : "Siguiente";
     $("feedback").hidden = false;
     $("next").focus({ preventScroll: true });
@@ -352,6 +463,7 @@ export function startApp(): App {
     $("card").hidden = true;
     $("deckEnd").hidden = false;
     $("stop").hidden = true; // la tarjeta ya tiene su «Terminar»
+    $("timer").hidden = true;
     $("deckEndText").textContent =
       `Ya han salido las ${game.deckSize} preguntas de esta selección, y llevas ${r.hits} ${r.hits === 1 ? "acierto" : "aciertos"} de ${r.total}. ` +
       "Puedes barajarlas y seguir con la misma racha, o terminar y repasar tus fallos.";
@@ -369,6 +481,7 @@ export function startApp(): App {
   /** Sin límite: termina la partida y muestra el resultado. */
   function stop() {
     if (!game?.unlimited || game.finished) return;
+    stopTimer();
     game.stop();
     finish();
   }
@@ -403,7 +516,8 @@ export function startApp(): App {
           row.append(f);
         }
         const a = el("span", "miss-a");
-        a.append("Respuesta: ", el("b", "", m.question.answer), " · tú dijiste ", el("s", "", m.given));
+        a.append("Respuesta: ", el("b", "", m.question.answer),
+          ...(m.given === null ? [" · se acabó el tiempo"] : [" · tú dijiste ", el("s", "", m.given)]));
         row.append(a);
         misses.append(row);
       }

@@ -1,7 +1,8 @@
 import { CATEGORY_IDS, OLD_CATEGORY_IDS } from "./categories";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "./types";
 import {
-  DEFAULT_LENGTH, DEFAULT_NAMES, DEFAULT_OPTIONS, DEFAULT_TERRITORIOS, OPTION_COUNTS, ROUND_LENGTHS, type OptionCount, type RoundLength
+  DEFAULT_LENGTH, DEFAULT_NAMES, DEFAULT_OPTIONS, DEFAULT_TERRITORIOS, DEFAULT_TIME, OPTION_COUNTS, ROUND_LENGTHS, TIME_LIMITS,
+  type OptionCount, type RoundLength, type TimeLimit
 } from "./round";
 
 /**
@@ -27,6 +28,8 @@ export interface SavedState {
   opciones: OptionCount;
   /** Preguntas por partida: 10, 25, 50, 100 o sin límite. */
   longitud: RoundLength;
+  /** Tiempo por pregunta: 60, 30 o 10 segundos, o sin tiempo. */
+  tiempo: TimeLimit;
 }
 
 /** Clave con la que se guarda todo en el dispositivo. Si se cambia, se pierde lo guardado. */
@@ -69,7 +72,8 @@ export function loadState(): SavedState {
   const territorios = territoriosMarcados.length ? territoriosMarcados : [...DEFAULT_TERRITORIOS];
   const opciones = OPTION_COUNTS.find((n) => n === raw.opciones) ?? DEFAULT_OPTIONS;
   const longitud = ROUND_LENGTHS.find((n) => n === raw.longitud) ?? DEFAULT_LENGTH;
-  return { best: migrarRecords(raw.best ?? {}), selected, known: [...CATEGORY_IDS], names, territorios, opciones, longitud };
+  const tiempo = TIME_LIMITS.find((n) => n === raw.tiempo) ?? DEFAULT_TIME;
+  return { best: migrarRecords(raw.best ?? {}), selected, known: [...CATEGORY_IDS], names, territorios, opciones, longitud, tiempo };
 }
 
 export function saveState(state: SavedState): void {
@@ -81,14 +85,17 @@ export function saveState(state: SavedState): void {
 }
 
 /**
- * Clave estable de una selección de categorías, territorios, dificultad y número de preguntas, en el orden oficial:
- * "capitales+banderas/comunidad" con 4 opciones y 10 preguntas, "capitales+banderas/comunidad/8" con 8 opciones,
- * y "capitales+banderas/comunidad/8/25preguntas" o ".../sinlimite" con otro número de preguntas.
- * Lo que está como por defecto (4 opciones, 10 preguntas) no se escribe: así los récords anteriores siguen valiendo.
+ * Clave estable de una selección de categorías, territorios, dificultad, número de preguntas y tiempo, en el orden oficial:
+ * "capitales+banderas/comunidad" con 4 opciones, 10 preguntas y sin tiempo; "capitales+banderas/comunidad/8" con 8 opciones;
+ * ".../25preguntas" o ".../sinlimite" con otro número de preguntas, y ".../60s", ".../30s" o ".../10s" con tiempo.
+ * Lo que no cambia la partida respecto a como se jugaba antes (4 opciones, 10 preguntas, sin tiempo) no se escribe:
+ * así los récords anteriores siguen valiendo, como récords sin tiempo, aunque ahora el tiempo por defecto sea 1 minuto.
  */
 export const comboKey = (
-  selected: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, opciones: OptionCount = DEFAULT_OPTIONS, longitud: RoundLength = DEFAULT_LENGTH
+  selected: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, opciones: OptionCount = DEFAULT_OPTIONS,
+  longitud: RoundLength = DEFAULT_LENGTH, tiempo: TimeLimit = "sinTiempo"
 ) =>
   CATEGORY_IDS.filter((id) => selected.includes(id)).join("+") + "/" + TERRITORIOS.filter((t) => territorios.includes(t)).join("+") +
   (opciones === DEFAULT_OPTIONS ? "" : `/${opciones}`) +
-  (longitud === DEFAULT_LENGTH ? "" : longitud === "sinLimite" ? "/sinlimite" : `/${longitud}preguntas`);
+  (longitud === DEFAULT_LENGTH ? "" : longitud === "sinLimite" ? "/sinlimite" : `/${longitud}preguntas`) +
+  (tiempo === "sinTiempo" ? "" : `/${tiempo}s`);
