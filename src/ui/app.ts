@@ -33,6 +33,8 @@ export function startApp(): App {
       if (id !== "play") partida.alSalir();
       screen = id;
       SCREENS.forEach((s) => { $(s).hidden = s !== id; });
+      // En la partida y el resultado, la cabecera pequeña: la pregunta empieza arriba.
+      document.querySelector(".app")!.classList.toggle("compacta", id === "play" || id === "end");
       window.scrollTo({ top: 0 });
       if (tranquila(id)) idleListeners.forEach((f) => f());
     },

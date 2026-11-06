@@ -102,6 +102,13 @@ h1 {
   text-wrap: balance;
 }
 .lede { margin: 0; color: var(--muted); max-width: 46ch; position: relative; }
+/* Durante la partida y en el resultado, la cabecera se queda en una línea pequeña con el nombre del juego,
+   para que la pregunta empiece arriba (en el móvil, sin tener que bajar). La grande, en inicio, Opciones y Créditos. */
+.app.compacta .masthead { padding-block: 0 8px; }
+.app.compacta .masthead svg,
+.app.compacta .eyebrow,
+.app.compacta .lede { display: none; }
+.app.compacta h1 { font-size: 17px; line-height: 1.2; letter-spacing: 0.12em; margin: 0; }
 
 .label {
   font-family: var(--f-display);
@@ -125,11 +132,13 @@ h1 {
   gap: 12px;
   transition: border-color .15s;
 }
-.cat:hover { border-color: var(--water); }
+/* Los efectos al pasar el ratón, solo en pantallas con ratón: en el móvil se quedaban puestos tras tocar
+   (al pulsar «Siguiente», la opción que quedaba bajo el dedo en la pregunta nueva se veía resaltada). */
+@media (hover: hover) { .cat:hover { border-color: var(--water); } }
 .cat[aria-pressed="true"], .cat[aria-checked="true"] { border-color: var(--water); box-shadow: inset 0 0 0 1px var(--water); }
 .cat[aria-pressed="false"], .cat[aria-checked="false"] { opacity: .7; }
 .cat:disabled { opacity: .45; cursor: not-allowed; }
-.cat:disabled:hover { border-color: var(--line); }
+@media (hover: hover) { .cat:disabled:hover { border-color: var(--line); } }
 .check {
   flex: none; width: 22px; height: 22px; margin-top: 3px;
   border: 2px solid var(--line); border-radius: 4px;
@@ -175,9 +184,9 @@ h1 {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.primary:hover { background: var(--water); }
+@media (hover: hover) { .primary:hover { background: var(--water); } }
 .primary:disabled { opacity: .4; cursor: not-allowed; }
-.primary:disabled:hover { background: var(--ink); }
+@media (hover: hover) { .primary:disabled:hover { background: var(--ink); } }
 .ghost {
   background: transparent;
   border: 1px solid var(--line);
@@ -185,7 +194,7 @@ h1 {
   padding: 12px 18px;
   font-weight: 600;
 }
-.ghost:hover { border-color: var(--ink); }
+@media (hover: hover) { .ghost:hover { border-color: var(--ink); } }
 .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .hint { font-size: 13px; color: var(--muted); }
 
@@ -230,11 +239,12 @@ h1 {
   margin: -10px 0 0;
   text-wrap: balance;
 }
-/* Banderas: cada una con su proporción real (no todas son 3:2), al 90 % del ancho de los botones.
+/* Banderas: cada una con su proporción real (no todas son 3:2), al 90 % del ancho de los botones y como mucho
+   400 px de ancho, para que en un portátil quepan la bandera y las opciones sin bajar.
    El tamaño depende del ancho de la tarjeta, no del alto de la ventana: así, con el zoom del navegador,
    crece igual que el texto y los botones. */
 .flag { display: flex; justify-content: center; margin-top: -4px; }
-.flag img { display: block; width: 90%; height: auto; border: 1px solid var(--line); border-radius: 3px; }
+.flag img { display: block; width: min(90%, 400px); height: auto; border: 1px solid var(--line); border-radius: 3px; }
 .miss-flag { display: flex; margin-block: 4px 2px; }
 .miss-flag img { display: block; height: 36px; width: auto; border: 1px solid var(--line); border-radius: 2px; }
 .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -244,6 +254,13 @@ h1 {
   .opts.many { grid-template-columns: 1fr 1fr; gap: 8px; }
   .opts.many .opt { padding: 10px; gap: 8px; font-size: 15px; }
   .opts.many .key { width: 22px; height: 22px; }
+}
+/* Móviles bajos (o con las barras del navegador a la vista): en las preguntas de bandera, también las 4 opciones
+   en dos columnas compactas, para que quepan bajo la bandera sin bajar. */
+@media (max-width: 520px) and (max-height: 760px) {
+  .opts.con-bandera { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .opts.con-bandera .opt { padding: 10px; gap: 8px; font-size: 15px; }
+  .opts.con-bandera .key { width: 22px; height: 22px; }
 }
 .opt {
   display: flex;
@@ -259,7 +276,7 @@ h1 {
   font-weight: 500;
   transition: border-color .12s, background .12s;
 }
-.opt:hover:not(:disabled) { border-color: var(--water); }
+@media (hover: hover) { .opt:hover:not(:disabled) { border-color: var(--water); } }
 .opt:disabled { cursor: default; }
 .key {
   flex: none;
@@ -302,7 +319,7 @@ h1 {
 
 /* Créditos */
 .link { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; font-size: 14px; align-self: flex-start; }
-.link:hover { color: var(--ink); }
+@media (hover: hover) { .link:hover { color: var(--ink); } }
 .version { margin: 0; font-size: 12px; color: var(--muted); }
 .credits { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
 .credit { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
