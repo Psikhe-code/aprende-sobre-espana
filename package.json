@@ -1,7 +1,7 @@
 {
   "name": "aprende-sobre-espana",
   "private": true,
-  "version": "0.1.17",
+  "version": "0.1.19",
   "description": "Juego de preguntas sobre geografía de España",
   "type": "module",
   "scripts": {
@@ -10,10 +10,12 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:pantalla": "playwright test",
     "typecheck": "tsc --noEmit",
     "limpiar-bandera": "svgo"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
     "ajv": "8.20.0",
     "svgo": "3.3.5",
     "typescript": "5.9.3",
