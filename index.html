@@ -85,6 +85,12 @@
       <div class="cats" id="dificultad" role="radiogroup" aria-label="Dificultad"></div>
 
       <div class="stack tight section-start">
+        <div class="label">Opciones · Tiempo por pregunta</div>
+        <span class="hint">Si se acaba el tiempo, cuenta como fallo. El reloj se para al responder, y en el repaso de fallos no hay tiempo.</span>
+      </div>
+      <div class="cats" id="tiempo" role="radiogroup" aria-label="Tiempo por pregunta"></div>
+
+      <div class="stack tight section-start">
         <div class="label">Opciones · Nombres de lugar</div>
         <span class="hint">Si marcas más de una, cada pregunta sale al azar con una de ellas. Al responder verás siempre las otras formas del nombre.</span>
       </div>
@@ -106,6 +112,10 @@
         </div>
       </div>
       <div class="track" id="track"></div>
+      <div class="timer" id="timer" hidden>
+        <div class="timer-bar"><i id="timerFill"></i></div>
+        <span class="timer-text" id="timerText"></span>
+      </div>
       <div class="card" id="card">
         <div class="q-cat" id="qcat"></div>
         <p class="question" id="question"></p>

@@ -208,6 +208,23 @@ describe("partidas: desarrollo", () => {
   });
 });
 
+describe("se acaba el tiempo", () => {
+  it("cuenta como fallo sin respuesta: rompe la racha y queda entre los fallos", () => {
+    const g = new GameSession([rq("a", "A"), rq("b", "B"), rq("c", "C")], { expected: 3 });
+    g.answer("A"); g.next();
+    const r = g.timeout();
+    expect(r).toEqual({ correct: false, answer: "B", given: null });
+    expect(g.streak).toBe(0);
+    expect(() => g.timeout()).toThrow();
+    expect(() => g.answer("B")).toThrow();
+    g.next();
+    g.answer("C");
+    const res = g.result();
+    expect(res).toMatchObject({ hits: 2, total: 3, counts: true });
+    expect(res.misses).toEqual([{ question: g.questions[1], given: null }]);
+  });
+});
+
 describe("partidas sin límite", () => {
   const baraja = () => [rq("a", "A"), rq("b", "B"), rq("c", "C")];
 
@@ -314,6 +331,17 @@ describe("guardado", () => {
     expect(comboKey(["capitales"], ["comunidad"], 4, 25)).toBe("capitales/comunidad/25preguntas");
     expect(comboKey(["capitales"], ["comunidad"], 8, 100)).toBe("capitales/comunidad/8/100preguntas");
     expect(comboKey(["capitales"], ["comunidad"], 6, "sinLimite")).toBe("capitales/comunidad/6/sinlimite");
+    // El tiempo: sin tiempo no se escribe (los récords de antes eran sin tiempo); con tiempo, en segundos.
+    expect(comboKey(["capitales"], ["comunidad"], 4, 10, "sinTiempo")).toBe("capitales/comunidad");
+    expect(comboKey(["capitales"], ["comunidad"], 4, 10, 60)).toBe("capitales/comunidad/60s");
+    expect(comboKey(["capitales"], ["comunidad"], 8, 25, 10)).toBe("capitales/comunidad/8/25preguntas/10s");
+  });
+
+  it("por defecto, 1 minuto por pregunta, y se recuerda el tiempo elegido", () => {
+    expect(loadState().tiempo).toBe(60);
+    conGuardado({ tiempo: 10 }, () => expect(loadState().tiempo).toBe(10));
+    conGuardado({ tiempo: "sinTiempo" }, () => expect(loadState().tiempo).toBe("sinTiempo"));
+    conGuardado({ tiempo: 45 }, () => expect(loadState().tiempo).toBe(60));
   });
 
   it("por defecto, 10 preguntas por partida, y se recuerda el número elegido", () => {
