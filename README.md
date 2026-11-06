@@ -138,7 +138,7 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 ## Cómo funciona
 
-**Preguntas.** Se generan a partir de los datos (`questions.ts`), una vez por cada forma de los nombres. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
+**Preguntas.** Se generan a partir de los datos (`questions.ts`), una vez por cada forma de los nombres, y se guardan (`generadaUnaVez` en `categories.ts`): como los datos no cambian mientras se juega, contar preguntas en Opciones o preparar una partida usa las ya generadas. Los pools de las opciones (`poolsFor`) se guardan igual. Las listas guardadas están congeladas, para que nadie las cambie sin querer. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
 
 **Forma de los nombres.** En Opciones se marcan las formas con las que se quiere jugar: oficial, castellano o las dos (por defecto). Si hay varias marcadas, se sortea una en cada pregunta, para aprenderlas todas. Cada pregunta va **entera** en una forma (enunciado, respuesta y opciones), así que nunca se mezclan Gerona y Girona en las mismas opciones. Al responder se muestra la otra forma cuando es distinta: *«Vitoria-Gasteiz · en castellano, Vitoria»*.
 
@@ -156,6 +156,8 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 **Partida.** `round.ts` elige las preguntas de las categorías y territorios marcados, sorteando primero la categoría para repartirlas, sin repetir ninguna pregunta. El mismo lugar sí puede ser la respuesta de dos preguntas distintas (la capital de Asturias como comunidad y como provincia, Oviedo). `game.ts` lleva el desarrollo: responder, avanzar, aciertos, racha, fallos y si la partida cuenta para el récord. La interfaz solo dibuja lo que el motor le dice.
 
 **Preguntas por partida.** En Opciones se elige 10 (por defecto), 25, 50, 100 o sin límite (`ROUND_LENGTHS` en `round.ts`). 25, 50 y 100 solo se pueden elegir si la selección tiene al menos esas preguntas (`lengthFits`); con 10, si hay menos, la partida tiene las que haya. **Sin límite**, la partida sigue hasta pulsar «Terminar», que lleva al resultado y al repaso de fallos. Si se acaban las preguntas, sale una tarjeta «Fin de la baraja» para barajarlas otra vez y seguir con la misma racha (`reshuffle`, que nunca empieza por la última que salió), o terminar.
+
+**Accesibilidad.** En Opciones, las tarjetas que se pueden marcar varias (categorías, nombres, territorios) son botones que se marcan y desmarcan; las de los grupos en los que solo se marca una (dificultad, tiempo, preguntas por partida) son un grupo de opciones (`radioGroup` en `app.ts`): el tabulador entra solo en la marcada y con las flechas se pasa a otra. El reloj se anuncia como reloj, y a los 5 segundos avisa. En la partida, las teclas numéricas responden e Intro pasa a la siguiente.
 
 **Modo sin conexión.** Al abrir el juego se guarda en el dispositivo solo lo imprescindible: código, estilos, fuentes e iconos (unos 400 KB). Las banderas no se descargan todas de golpe: cada una se guarda la primera vez que sale, así que sin conexión funcionan las que ya se han visto. Cuando sea una app de Android, irán todas dentro de la app. Se configura en `vite.config.ts`.
 

@@ -127,8 +127,22 @@ export function deAutonomia(c: Comunidad, style: NameStyle): string {
   return ("de " + (c.enFrase ?? c.nombre)[style]).replace(/^de el /, "del ");
 }
 
-/** Pools de respuestas: de aquí salen las opciones incorrectas según el `type` de cada pregunta. */
+const poolsGuardados = new Map<NameStyle, Pools>();
+
+/**
+ * Pools de respuestas: de aquí salen las opciones incorrectas según el `type` de cada pregunta.
+ * Como las preguntas, se generan una vez por forma y después se devuelven los mismos (congelados).
+ */
 export function poolsFor(style: NameStyle): Pools {
+  let pools = poolsGuardados.get(style);
+  if (!pools) {
+    pools = Object.freeze(Object.fromEntries(Object.entries(generarPools(style)).map(([k, v]) => [k, Object.freeze(v)]))) as Pools;
+    poolsGuardados.set(style, pools);
+  }
+  return pools;
+}
+
+function generarPools(style: NameStyle): Record<string, string[]> {
   return {
     /** Comunidades y ciudades autónomas. */
     autonomia: AUTONOMIAS.map((c) => c.nombre[style]),

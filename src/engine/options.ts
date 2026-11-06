@@ -2,7 +2,7 @@ import type { NameStyle, Pools, Question, RoundQuestion, Rng } from "./types";
 import { pick, shuffle } from "./random";
 
 /** Valores entre los que salen las opciones incorrectas de una pregunta. */
-export function poolFor(q: Question, pools: Pools): string[] {
+export function poolFor(q: Question, pools: Pools): readonly string[] {
   if (q.type === "num") {
     const [min, max] = q.range ?? [0, -1];
     const out: string[] = [];
