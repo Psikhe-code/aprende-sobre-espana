@@ -41,6 +41,7 @@ jobs:
   # Si alguno falla, se guarda un informe con capturas en la pestaña Actions («tests-de-pantalla»).
   pantalla:
     runs-on: ubuntu-latest
+    timeout-minutes: 15 # si algo se queda colgado, que falle en vez de esperar horas
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -48,7 +49,16 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      # El navegador de los tests se guarda entre ejecuciones (cambia solo al actualizar Playwright).
+      # Las librerías del sistema que necesita ya vienen en los ordenadores de GitHub.
+      - id: version-playwright
+        run: echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.version-playwright.outputs.version }}
+      - run: npx playwright install chromium
+        timeout-minutes: 5
       - run: npm run test:pantalla
       - if: failure()
         uses: actions/upload-artifact@v4
