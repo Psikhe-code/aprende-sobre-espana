@@ -30,19 +30,22 @@
       "id": "02003",
       "nombre": {"oficial": "Albacete", "castellano": "Albacete"},
       "poblacion": 175400,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "En la Edad Media era una aldea que dependía de Chinchilla, una villa amurallada en lo alto de un cerro. Albacete, en cambio, estaba en el llano y en un cruce de caminos, y fue creciendo gracias a su feria y su comercio. En 1833 pasó a ser la capital de la provincia en lugar de Chinchilla.\nEn el siglo XX recibió a buena parte de la gente que dejaba los pueblos de la provincia, hasta reunir a casi uno de cada dos de sus habitantes y convertirse en la ciudad más poblada de Castilla-La Mancha.\nEs especialmente conocida por sus navajas y cuchillos, que se fabrican aquí desde el siglo XV."
     },
     {
       "id": "02037",
       "nombre": {"oficial": "Hellín", "castellano": "Hellín"},
       "poblacion": 30836,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Está en el sureste de la provincia, la zona que por historia y costumbres está más cerca de Murcia que de La Mancha. Perteneció al reino de Murcia desde el siglo XIII, y en 1980 su ayuntamiento llegó a votar en contra de que la provincia pasara a Castilla-La Mancha.\nSu Semana Santa es famosa por la tamborada, en la que más de 20.000 personas tocan el tambor por las calles durante varios días. Desde 2018 forma parte, junto con otras tamboradas de España, del Patrimonio Cultural Inmaterial de la Humanidad."
     },
     {
       "id": "02081",
       "nombre": {"oficial": "Villarrobledo", "castellano": "Villarrobledo"},
       "poblacion": 25400,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está en plena llanura manchega, rodeada de viñedos. Desde el siglo XVII fue uno de los grandes centros de fabricación de tinajas, las enormes vasijas de barro en las que se guardaba el vino, que podían medir hasta cuatro metros.\nCon el tiempo, aquellos talleres dieron paso a una industria del metal que hoy fabrica depósitos y cisternas."
     },
     {
       "id": "03009",
@@ -398,32 +401,35 @@
       "nombre": {"oficial": "Almagro", "castellano": "Almagro"},
       "poblacion": 9190,
       "puesto": 14,
-      "curiosidad": "Conserva un corral de comedias del siglo XVII que todavía se usa, y celebra un festival de teatro clásico."
+      "curiosidad": "Fue la sede de los maestres de la Orden de Calatrava, que gobernaban desde aquí sus tierras. Su casco histórico, lleno de casas nobles y conventos de aquella época, está protegido desde 1972.\nEs especialmente conocida por su corral de comedias del siglo XVII, el único de su época que se conserva entero. Desde 1978, cada verano se celebra allí un festival internacional de teatro clásico.\nTambién son famosas sus berenjenas aliñadas, que tienen indicación geográfica protegida."
     },
     {
       "id": "13034",
       "nombre": {"oficial": "Ciudad Real", "castellano": "Ciudad Real"},
       "poblacion": 76217,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "La fundó el rey Alfonso X en 1255 con el nombre de Villa Real, en medio de las tierras de la Orden de Calatrava, para tener allí una villa que dependiera directamente del rey y no de la orden.\nEn 1420, la villa envió a su milicia a defender al joven rey Juan II de Castilla, al que unos nobles tenían sitiado en un castillo. En agradecimiento, el rey le dio el título de ciudad, y desde entonces se llama Ciudad Real."
     },
     {
       "id": "13071",
       "nombre": {"oficial": "Puertollano", "castellano": "Puertollano"},
       "poblacion": 45565,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Creció con las minas de carbón, que empezaron a explotarse en 1873 y atrajeron a miles de trabajadores de los pueblos de alrededor. Después llegaron una gran refinería de petróleo y otras industrias químicas, y por eso se la conoce como «la ciudad minera» y «el faro industrial de La Mancha»."
     },
     {
       "id": "13082",
       "nombre": {"oficial": "Tomelloso", "castellano": "Tomelloso"},
       "poblacion": 37060,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Es uno de los grandes centros del vino de La Mancha. Producía tanto que desde el siglo XIX empezó a destilarlo para convertirlo en alcohol, y hacia 1950 llegó a tener sesenta destilerías, de las que aún se conservan muchas chimeneas de ladrillo.\nBajo sus calles hay más de dos mil cuevas excavadas para guardar el vino, y en las aceras se ven las lumbreras, las rejillas por las que respiran."
     },
     {
       "id": "13087",
       "nombre": {"oficial": "Valdepeñas", "castellano": "Valdepeñas"},
       "poblacion": 30782,
       "puesto": 5,
-      "curiosidad": "Da nombre a un vino con denominación de origen propia."
+      "curiosidad": "Es especialmente conocida por su vino, con denominación de origen propia. Ya abastecía las tabernas de Madrid, y con la llegada del tren, en 1862, empezó a venderse también fuera de España. Gracias a ese comercio, a comienzos del siglo XX era la población más grande de la provincia.\nDespués de la guerra civil se quedó atrás. Siguió viviendo de un vino tradicional y familiar mientras otras ciudades de la provincia crecían con la industria o con la administración, y muchos de sus vecinos emigraron a las grandes ciudades."
     },
     {
       "id": "14021",
@@ -479,22 +485,46 @@
       "puesto": 2
     },
     {
+      "id": "16003",
+      "nombre": {"oficial": "Alarcón", "castellano": "Alarcón"},
+      "poblacion": 173,
+      "puesto": 121,
+      "curiosidad": "Es especialmente conocida por ser una villa medieval amurallada, sobre un cerro rodeado casi por completo por un meandro del río Júcar. Después de que Alfonso VIII la conquistara en 1184, llegó a mandar sobre un territorio enorme, con decenas de aldeas, entre ellas las que hoy son Albacete, La Roda, Villarrobledo o Belmonte."
+    },
+    {
+      "id": "16033",
+      "nombre": {"oficial": "Belmonte", "castellano": "Belmonte"},
+      "poblacion": 1751,
+      "puesto": 18,
+      "curiosidad": "Es especialmente conocida por su castillo, que mandó levantar en el siglo XV Juan Pacheco, marqués de Villena, uno de los nobles más poderosos de Castilla. Se conserva casi como se construyó, y por eso se han rodado allí películas como El Cid."
+    },
+    {
       "id": "16078",
       "nombre": {"oficial": "Cuenca", "castellano": "Cuenca"},
       "poblacion": 53600,
-      "puesto": 1
+      "puesto": 1,
+      "curiosidad": "Su casco antiguo se levanta sobre un cerro de roca, entre las hoces de los ríos Júcar y Huécar, y es Patrimonio de la Humanidad desde 1996. Su imagen más conocida son las casas colgadas, asomadas al borde del precipicio, donde está desde 1966 el Museo de Arte Abstracto Español.\nEn los siglos XV y XVI se enriqueció con sus paños de lana. Cuando esa industria se hundió, en el siglo XVII, perdió buena parte de su población."
     },
     {
       "id": "16175",
       "nombre": {"oficial": "Quintanar del Rey", "castellano": "Quintanar del Rey"},
       "poblacion": 7508,
-      "puesto": 3
+      "puesto": 3,
+      "curiosidad": "Está en la Manchuela, una comarca entre Cuenca y Albacete donde se cultivan más de la mitad de los champiñones de España. En el pueblo está el centro de investigación del champiñón de Castilla-La Mancha."
     },
     {
       "id": "16203",
       "nombre": {"oficial": "Tarancón", "castellano": "Tarancón"},
       "poblacion": 16748,
-      "puesto": 2
+      "puesto": 2,
+      "curiosidad": "Está en el oeste de la provincia, junto a los límites con Toledo, Guadalajara y Madrid. Ya en el siglo XVI se consideraba un lugar estratégico, en el camino del centro de la Península hacia Levante, y hoy se cruzan allí la autovía de Madrid a Valencia y la que une Toledo con Cuenca.\nGracias a esa posición, desde los años sesenta han ido llegando industrias y empresas de transporte, y su población se ha duplicado.\nAllí nació y tiene su sede Incarlopsa, una de las mayores empresas cárnicas de España. Su nombre apenas se conoce, porque muchos de sus jamones y embutidos se venden con la marca de Mercadona."
+    },
+    {
+      "id": "16218",
+      "nombre": {"oficial": "Uclés", "castellano": "Uclés"},
+      "poblacion": 230,
+      "puesto": 101,
+      "curiosidad": "Es especialmente conocido por su monasterio, en lo alto de un cerro, que fue la casa principal de la Orden de Santiago desde 1174. Como lo construyeron discípulos de Juan de Herrera, el arquitecto de El Escorial, lo llaman «el Escorial de La Mancha»."
     },
     {
       "id": "17032",
@@ -1378,7 +1408,7 @@
       "nombre": {"oficial": "Almazán", "castellano": "Almazán"},
       "poblacion": 5544,
       "puesto": 2,
-      "curiosidad": "Fue una villa fortificada en la frontera entre Castilla y Aragón, y conserva buena parte de su muralla. En 1375 se firmó aquí la paz entre los dos reinos.\nHoy es el centro de una amplia comarca agrícola del sur de la provincia."
+      "curiosidad": "Fue una villa fortificada en la frontera entre Castilla y Aragón, y conserva buena parte de su muralla.\nHoy es el centro de una amplia comarca agrícola del sur de la provincia."
     },
     {
       "id": "42043",
