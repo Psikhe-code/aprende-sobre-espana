@@ -360,14 +360,18 @@ export function startApp(): App {
     } else go();
   }
 
-  /** Para el reloj donde esté (al responder, salir o terminar). */
-  function stopTimer() {
+  /**
+   * Para el reloj donde esté (al responder, salir o terminar) y lo da por acabado: ya no vuelve a arrancar,
+   * ni al volver a la pestaña ni cuando termina de dibujarse la bandera. Al responder se queda a la vista
+   * tal como estaba (`congelar`), para ver cuánto tiempo sobraba.
+   */
+  function stopTimer(congelar = false) {
     cancelAnimationFrame(frame);
     frame = 0;
     countdown?.pause();
     countdown = null;
     timerReady = false;
-    $("timer").classList.remove("urgent");
+    if (!congelar) $("timer").classList.remove("urgent");
   }
 
   function loop() { if (!frame) frame = requestAnimationFrame(tick); }
@@ -413,10 +417,7 @@ export function startApp(): App {
 
   function answer(btn: HTMLButtonElement) {
     if (!game || game.answered) return;
-    // El reloj se para donde esté: se ve cuánto tiempo sobraba.
-    cancelAnimationFrame(frame);
-    frame = 0;
-    countdown?.pause();
+    stopTimer(true);
     showResult(game.answer(btn.dataset.value ?? ""), btn);
   }
 

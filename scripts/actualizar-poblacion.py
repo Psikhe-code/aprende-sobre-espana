@@ -3,8 +3,9 @@ Actualiza la población y el puesto de cada municipio de src/data/municipios.jso
 
 El INE publica cada año las cifras oficiales de población de todos los municipios (a 1 de enero),
 en el archivo pobmun.zip (https://www.ine.es/pob_xls/pobmun.zip), que trae un Excel por año:
-pobmun25.xlsx, pobmun26.xlsx… Desde el entorno de Claude no se puede abrir la web del INE: se descarga
-con la herramienta de páginas (rama paginas-descarga, ver el README).
+pobmun25.xlsx, pobmun26.xlsx… Desde noviembre de 2026 se descarga
+directamente desde la terminal (curl); si algún día la web del INE no se puede abrir, queda la herramienta
+de páginas (rama paginas-descarga, ver el README).
 
 Uso:  python3 scripts/actualizar-poblacion.py pobmun26.xlsx 2026
 

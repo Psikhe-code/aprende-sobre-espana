@@ -182,7 +182,7 @@ export function comunidadesTrampa(p: Provincia): string[] {
  * un regalo (Asturias es del Principado de Asturias).
  * Pool: las comunidades autónomas, sin Ceuta y Melilla (la pregunta dice «comunidad autónoma»).
  * Trampas: las comunidades vecinas (ver comunidadesTrampa).
- * La respuesta es la comunidad, así que en una partida no salen dos provincias de la misma.
+ * La respuesta es la comunidad, así que en una partida pueden salir dos provincias de la misma: son preguntas distintas.
  */
 export function divisionQuestions(style: NameStyle): Question[] {
   const ciudades = CIUDADES.map((c) => c.nombre[style]);
@@ -257,7 +257,7 @@ export function notaMismoNombre(m: Municipio, style: NameStyle): string {
  * Divisiones de las provincias (sus municipios): «¿De qué provincia es el municipio de Vigo?».
  * Salen todos los de municipios.json: los tres más poblados de cada provincia y los añadidos por su historia o cultura.
  * Pool: las provincias. Trampas: las vecinas (ver provinciasTrampa).
- * La respuesta es la provincia, así que en una partida no salen dos municipios de la misma.
+ * La respuesta es la provincia, así que en una partida pueden salir dos municipios de la misma (Vigo y Pontevedra).
  */
 export function municipioQuestions(style: NameStyle): Question[] {
   return MUNICIPIOS.map((m) => {

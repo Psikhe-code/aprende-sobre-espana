@@ -10,7 +10,8 @@
   --muted: #566476;
   --line: #cdd5cb;
   --water: #1f5f99;
-  --ochre: #a96b12;
+  /* Ocre algo más oscuro que antes, para que los textos pequeños lleguen al contraste mínimo recomendado (4,5). */
+  --ochre: #94600f;
   --ok: #2b7445;
   --ok-bg: #e2f0e5;
   --bad: #ad372d;

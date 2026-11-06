@@ -12,7 +12,7 @@ import {
  */
 export interface SavedState {
   /**
-   * Récord por combinación de categorías, territorios, dificultad y número de preguntas (ver comboKey),
+   * Récord por combinación de categorías, territorios, dificultad, número de preguntas y tiempo (ver comboKey),
    * p. ej. "capitales+banderas/comunidad+provincia" → 8. En las partidas sin límite, la mejor racha.
    */
   best: Record<string, number>;
