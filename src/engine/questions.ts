@@ -127,8 +127,8 @@ export function notaCapitalProvincia(p: Provincia, style: NameStyle): string {
  * Pool: todas las capitales y las ciudades de las provincias.
  * Trampas: la capital y las `ciudades` de cada provincia de `trampas` (las cercanas o que se confunden),
  * y las `ciudades` de la propia provincia. Como son muchas, en cada partida se sortean cuáles salen.
- * La respuesta es el mismo lugar que en la pregunta de su comunidad (Oviedo), así que
- * en una partida no salen las dos.
+ * La respuesta es el mismo lugar que en la pregunta de su comunidad (Oviedo), y las dos
+ * pueden salir en la misma partida: son preguntas distintas.
  */
 export function provincialCapitalQuestions(style: NameStyle): Question[] {
   return PROVINCIAS.filter((p) => p.trampas?.length).map((p) => {

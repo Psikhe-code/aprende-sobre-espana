@@ -196,6 +196,9 @@ h1 {
 .stats b { font-weight: 600; }
 .track { display: grid; grid-template-columns: repeat(var(--n, 10), 1fr); gap: 4px; }
 .track i { height: 6px; border-radius: 2px; background: var(--line); }
+/* Partidas de 50 o 100 preguntas: las marcas, más juntas, para que quepan en el móvil. */
+.track.long { gap: 1px; }
+.track.long i { border-radius: 0; }
 .track i.cur { background: var(--ink); }
 .track i.ok { background: var(--ok); }
 .track i.bad { background: var(--bad); }

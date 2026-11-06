@@ -10,7 +10,8 @@ export interface Question {
   answer: string | string[];
   /**
    * Qué lugar es la respuesta, independientemente de cómo se escriba (misma forma que `answer`).
-   * Sirve para no repetir el mismo lugar en una partida aunque salga con otro nombre.
+   * Identifica el lugar aunque salga con otro nombre (Vitoria y Vitoria-Gasteiz), p. ej. para estadísticas por lugar.
+   * Una partida sí puede repetir lugar en preguntas distintas: solo no repite pregunta.
    */
   answerKey: string | string[];
   /**

@@ -64,7 +64,7 @@ for (const style of NAME_STYLES) {
         expect(q.traps, p.id).toEqual([...new Set(trampas)].filter((x) => x !== capital));
         expect(q.forcedTraps, p.id).toEqual([p.nombre[style]]);
         expect(q.why, p.id).toBe(p.notaCapital ? prepararTexto(p.notaCapital, style, capital) : notaCapitalProvincia(p, style));
-        // Mismo lugar que la capital de su comunidad, si coincide: así no salen las dos en una partida.
+        // Mismo lugar que la capital de su comunidad, si coincide (Oviedo).
         expect(q.answerKey, p.id).toBe("ciudad:" + p.capital.castellano);
       }
     });

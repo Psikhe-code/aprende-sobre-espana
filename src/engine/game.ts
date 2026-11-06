@@ -20,14 +20,26 @@ export interface GameResult {
   bestStreak: number;
   misses: Miss[];
   review: boolean;
-  /** Si cuenta para récords: partida normal y completa. */
+  /** Partida sin límite: su récord es la mejor racha, no los aciertos. */
+  unlimited: boolean;
+  /**
+   * Si cuenta para récords: partida normal y completa, o partida sin límite terminada
+   * con al menos una pregunta respondida. El repaso de fallos nunca cuenta.
+   */
   counts: boolean;
 }
 
 export class GameSession {
-  readonly questions: readonly RoundQuestion[];
+  private list: RoundQuestion[];
   /** Repaso de fallos: se juega igual pero no cuenta para récords. */
   readonly review: boolean;
+  /**
+   * Partida sin límite: sigue hasta que el jugador la termina (`stop`). Al acabarse la baraja
+   * (`endOfDeck`), la interfaz pregunta si seguir, y para seguir se añade otra vuelta con `append`.
+   */
+  readonly unlimited: boolean;
+  /** Preguntas de una vuelta a la baraja (las de la selección), para decir cuántas se han respondido. */
+  readonly deckSize: number;
   /**
    * Preguntas que debe tener una partida completa con esta selección: normalmente 10,
    * menos si la selección no da para tantas (ver roundSize). Solo cuenta para récords si las tiene.
@@ -40,14 +52,18 @@ export class GameSession {
   private best = 0;
   private outcomes: boolean[] = [];
   private missList: Miss[] = [];
+  private stopped = false;
 
-  constructor(questions: RoundQuestion[], options: { review?: boolean; expected?: number } = {}) {
+  constructor(questions: RoundQuestion[], options: { review?: boolean; expected?: number; unlimited?: boolean } = {}) {
     if (!questions.length) throw new Error("Una partida necesita al menos una pregunta");
-    this.questions = questions;
+    this.list = [...questions];
     this.review = options.review ?? false;
-    this.expected = options.expected ?? ROUND_LENGTH;
+    this.unlimited = options.unlimited ?? false;
+    this.deckSize = questions.length;
+    this.expected = options.expected ?? (this.unlimited ? questions.length : ROUND_LENGTH);
   }
 
+  get questions(): readonly RoundQuestion[] { return this.list; }
   get index() { return this.i; }
   get total() { return this.questions.length; }
   get current(): RoundQuestion { return this.questions[this.i]; }
@@ -57,10 +73,14 @@ export class GameSession {
   get results(): readonly boolean[] { return this.outcomes; }
   get answered() { return this.outcomes.length > this.i; }
   get isLast() { return this.i === this.questions.length - 1; }
-  get finished() { return this.isLast && this.answered; }
+  /** Normal: respondida la última pregunta. Sin límite: cuando el jugador la termina. */
+  get finished() { return this.unlimited ? this.stopped : this.isLast && this.answered; }
+  /** Sin límite: respondida la última pregunta de la baraja. Para seguir, hay que añadir otra vuelta. */
+  get endOfDeck() { return this.unlimited && !this.stopped && this.isLast && this.answered; }
 
   /** Responde la pregunta actual. Solo se puede responder una vez cada pregunta. */
   answer(given: string): AnswerResult {
+    if (this.stopped) throw new Error("La partida ya está terminada");
     if (this.answered) throw new Error("Esta pregunta ya está respondida");
     const q = this.current;
     const correct = given === q.answer;
@@ -84,28 +104,48 @@ export class GameSession {
     return true;
   }
 
+  /** Sin límite: añade otra vuelta a la baraja al final, para seguir jugando. */
+  append(more: RoundQuestion[]): void {
+    if (!this.unlimited) throw new Error("Solo una partida sin límite puede seguir");
+    if (this.stopped) throw new Error("La partida ya está terminada");
+    this.list.push(...more);
+  }
+
+  /** Sin límite: termina la partida. La pregunta sin responder, si la hay, no cuenta. */
+  stop(): void {
+    if (!this.unlimited) throw new Error("Solo se termina así una partida sin límite");
+    this.stopped = true;
+  }
+
   result(): GameResult {
+    const answered = this.outcomes.length;
     return {
       hits: this.hitCount,
-      total: this.total,
+      // Sin límite: las preguntas respondidas, no las que había preparadas.
+      total: this.unlimited ? answered : this.total,
       bestStreak: this.best,
       misses: [...this.missList],
       review: this.review,
-      counts: this.finished && !this.review && this.total === this.expected
+      unlimited: this.unlimited,
+      counts: !this.review && this.finished && (this.unlimited ? answered > 0 : this.total === this.expected)
     };
   }
 }
 
+/** Lo que se compara para el récord: los aciertos o, en una partida sin límite, la mejor racha. */
+export const recordValue = (r: GameResult) => (r.unlimited ? r.bestStreak : r.hits);
+
 /**
- * Actualiza los récords con el resultado de una partida.
+ * Actualiza los récords con el resultado de una partida (aciertos; mejor racha si es sin límite).
  * Devuelve los récords nuevos (sin modificar los anteriores) y si se ha batido el récord.
  */
 export function applyRecord(best: Record<string, number>, key: string, result: GameResult) {
   const previous = best[key];
-  const isNewRecord = result.counts && (previous == null || result.hits > previous);
+  const value = recordValue(result);
+  const isNewRecord = result.counts && (previous == null || value > previous);
   return {
-    best: isNewRecord ? { ...best, [key]: result.hits } : best,
+    best: isNewRecord ? { ...best, [key]: value } : best,
     isNewRecord,
-    record: isNewRecord ? result.hits : previous
+    record: isNewRecord ? value : previous
   };
 }
