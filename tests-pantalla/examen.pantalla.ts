@@ -21,9 +21,9 @@ test("la primera vez se elige sección, y el juego vuelve a la última elegida",
   await expect(page.locator("#start")).toBeVisible();
 });
 
-test("el inicio del examen avisa de que las preguntas no son las oficiales y enlaza a la prueba", async ({ page }) => {
+test("el inicio del examen dice de dónde salen las preguntas y enlaza a la prueba", async ({ page }) => {
   await abrir(page, "ccse");
-  await expect(page.locator("#ccseAviso")).toContainText("no son las preguntas oficiales");
+  await expect(page.locator("#ccseAviso")).toContainText("Manual CCSE 2026 del Instituto Cervantes");
   await expect(page.locator('#ccseAviso a[href^="https://cervantes.org/"]')).toHaveAttribute("target", "_blank");
   await expect(page.locator("#lede")).toContainText("prueba CCSE");
 });

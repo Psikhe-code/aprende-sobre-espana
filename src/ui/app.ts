@@ -35,7 +35,7 @@ const CABECERAS: Record<Seccion | "secciones", { eyebrow: string; lede: string }
   },
   ccse: {
     eyebrow: "Examen de nacionalidad · Práctica",
-    lede: "La Constitución, las instituciones, los derechos, la cultura y la sociedad españolas, sobre los temas de la prueba CCSE del Instituto Cervantes. Cada respuesta se explica."
+    lede: "La Constitución, las instituciones, los derechos, la cultura y la sociedad españolas, con las preguntas de la prueba CCSE del Instituto Cervantes."
   }
 };
 
