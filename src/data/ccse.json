@@ -26,13 +26,13 @@
       "id": "ccse-1001",
       "tarea": 1,
       "referencia": 1001,
-      "pregunta": "¿Qué forma política tiene el Estado español?",
+      "pregunta": "",
       "opciones": [
-        "La monarquía parlamentaria",
-        "La república presidencialista",
-        "La monarquía absoluta"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "La monarquía parlamentaria",
+      "respuesta": "",
       "nota": "Hay rey, pero el país lo gobierna el Gobierno, cuyo presidente elige el Congreso de los Diputados.",
       "fuentes": [
         {
@@ -46,16 +46,30 @@
       ]
     },
     {
+      "id": "ccse-1002",
+      "tarea": 1,
+      "referencia": 1002,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1003",
       "tarea": 1,
       "referencia": 1003,
-      "pregunta": "Según la Constitución, ¿de quién emanan los poderes del Estado?",
+      "pregunta": "",
       "opciones": [
-        "Del pueblo español",
-        "Del rey",
-        "De las Cortes Generales"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "Del pueblo español",
+      "respuesta": "",
       "nota": "La soberanía nacional reside en el pueblo español, y de él salen todos los poderes del Estado.",
       "fuentes": [
         {
@@ -65,16 +79,44 @@
       ]
     },
     {
+      "id": "ccse-1004",
+      "tarea": 1,
+      "referencia": 1004,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1005",
+      "tarea": 1,
+      "referencia": 1005,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1006",
       "tarea": 1,
       "referencia": 1006,
-      "pregunta": "¿Qué dice la Constitución sobre el castellano?",
+      "pregunta": "",
       "opciones": [
-        "Es la lengua oficial del Estado y todos los españoles deben conocerla",
-        "Solo es oficial donde no hay otra lengua propia",
-        "Solo es oficial en la Administración central"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "Es la lengua oficial del Estado y todos los españoles deben conocerla",
+      "respuesta": "",
       "nota": "Las demás lenguas españolas son también oficiales en sus comunidades autónomas, según sus Estatutos.",
       "fuentes": [
         {
@@ -87,13 +129,13 @@
       "id": "ccse-1007",
       "tarea": 1,
       "referencia": 1007,
-      "pregunta": "¿Qué cuerpos de seguridad actúan en todo el territorio español?",
+      "pregunta": "",
       "opciones": [
-        "La Policía Nacional y la Guardia Civil",
-        "La Ertzaintza y los Mossos d'Esquadra",
-        "La Policía Foral y la Policía Local"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "La Policía Nacional y la Guardia Civil",
+      "respuesta": "",
       "nota": "Dependen del Gobierno de España. Algunas comunidades tienen policía propia (Ertzaintza, Mossos d'Esquadra, Policía Foral de Navarra), y los ayuntamientos, policía local.",
       "fuentes": [
         {
@@ -103,16 +145,30 @@
       ]
     },
     {
+      "id": "ccse-1008",
+      "tarea": 1,
+      "referencia": 1008,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1009",
       "tarea": 1,
       "referencia": 1009,
-      "pregunta": "¿Cuáles son los tres poderes del Estado?",
+      "pregunta": "",
       "opciones": [
-        "Legislativo, ejecutivo y judicial",
-        "Legislativo, ejecutivo y militar",
-        "Político, económico y judicial"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "Legislativo, ejecutivo y judicial",
+      "respuesta": "",
       "nota": "Las Cortes Generales hacen las leyes, el Gobierno dirige la política y la Administración, y los jueces y tribunales juzgan.",
       "fuentes": [
         {
@@ -133,13 +189,13 @@
       "id": "ccse-1010",
       "tarea": 1,
       "referencia": 1010,
-      "pregunta": "En los edificios públicos de una comunidad autónoma, ¿qué bandera se pone?",
+      "pregunta": "",
       "opciones": [
-        "La de la comunidad, junto a la de España",
-        "Solo la de la comunidad",
-        "Solo la de España"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "La de la comunidad, junto a la de España",
+      "respuesta": "",
       "nota": "Los Estatutos pueden reconocer una bandera propia, que se usa siempre junto a la de España en los edificios públicos y en los actos oficiales.",
       "fuentes": [
         {
@@ -152,13 +208,13 @@
       "id": "ccse-1011",
       "tarea": 1,
       "referencia": 1011,
-      "pregunta": "¿Quién es el jefe del Estado?",
+      "pregunta": "",
       "opciones": [
-        "El rey",
-        "El presidente del Gobierno",
-        "El presidente del Congreso"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "El rey",
+      "respuesta": "",
       "nota": "Es el símbolo de la unidad del Estado y arbitra y modera el funcionamiento de las instituciones.",
       "fuentes": [
         {
@@ -168,16 +224,30 @@
       ]
     },
     {
+      "id": "ccse-1012",
+      "tarea": 1,
+      "referencia": 1012,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1013",
       "tarea": 1,
       "referencia": 1013,
-      "pregunta": "¿Quién fue el primer presidente del Gobierno de la democracia, tras las elecciones de 1977?",
+      "pregunta": "",
       "opciones": [
-        "Adolfo Suárez",
-        "Felipe González",
-        "Leopoldo Calvo-Sotelo"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "Adolfo Suárez",
+      "respuesta": "",
       "nota": "El rey lo nombró presidente en 1976, todavía sin elecciones, y su partido, la UCD, ganó las primeras elecciones libres desde 1936, el 15 de junio de 1977.",
       "fuentes": [
         {
@@ -194,13 +264,13 @@
       "id": "ccse-1014",
       "tarea": 1,
       "referencia": 1014,
-      "pregunta": "¿Qué institución es la intérprete suprema de la Constitución?",
+      "pregunta": "",
       "opciones": [
-        "El Tribunal Constitucional",
-        "El Tribunal Supremo",
-        "El Consejo General del Poder Judicial"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "El Tribunal Constitucional",
+      "respuesta": "",
       "nota": "Es independiente de los demás órganos del Estado y decide, por ejemplo, si una ley va contra la Constitución.",
       "fuentes": [
         {
@@ -214,16 +284,30 @@
       ]
     },
     {
+      "id": "ccse-1015",
+      "tarea": 1,
+      "referencia": 1015,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1016",
       "tarea": 1,
       "referencia": 1016,
-      "pregunta": "¿Cuál es la cámara de representación territorial?",
+      "pregunta": "",
       "opciones": [
-        "El Senado",
-        "El Congreso de los Diputados",
-        "La Conferencia de Presidentes"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "El Senado",
+      "respuesta": "",
       "nota": "Por eso sus senadores se eligen por provincias (cuatro en cada una, con reglas propias en las islas, Ceuta y Melilla). Además, cada comunidad autónoma designa uno más, y otro por cada millón de habitantes.",
       "fuentes": [
         {
@@ -233,16 +317,30 @@
       ]
     },
     {
+      "id": "ccse-1017",
+      "tarea": 1,
+      "referencia": 1017,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1018",
       "tarea": 1,
       "referencia": 1018,
-      "pregunta": "¿Cómo se ratificó la Constitución de 1978?",
+      "pregunta": "",
       "opciones": [
-        "En un referéndum, votando los españoles",
-        "Por decreto del rey",
-        "Por una sentencia del Tribunal Supremo"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "En un referéndum, votando los españoles",
+      "respuesta": "",
       "nota": "Las Cortes la aprobaron el 31 de octubre de 1978, los españoles la ratificaron en referéndum el 6 de diciembre y el rey la sancionó el 27 de diciembre.",
       "fuentes": [
         {
@@ -255,13 +353,13 @@
       "id": "ccse-1019",
       "tarea": 1,
       "referencia": 1019,
-      "pregunta": "¿Cuál es la norma institucional básica de cada comunidad autónoma?",
+      "pregunta": "",
       "opciones": [
-        "Su Estatuto de Autonomía",
-        "Su ley de presupuestos",
-        "El reglamento de su Gobierno"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "Su Estatuto de Autonomía",
+      "respuesta": "",
       "nota": "Fija, entre otras cosas, el nombre de la comunidad, su territorio, sus instituciones y sus competencias.",
       "fuentes": [
         {
@@ -271,16 +369,44 @@
       ]
     },
     {
+      "id": "ccse-1020",
+      "tarea": 1,
+      "referencia": 1020,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1021",
+      "tarea": 1,
+      "referencia": 1021,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1022",
       "tarea": 1,
       "referencia": 1022,
-      "pregunta": "En las Islas Baleares, ¿qué institución gobierna cada isla?",
+      "pregunta": "",
       "opciones": [
-        "El consejo insular",
-        "El cabildo",
-        "La diputación provincial"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "El consejo insular",
+      "respuesta": "",
       "nota": "En los archipiélagos, cada isla tiene administración propia: en Baleares, un consejo insular (Mallorca, Menorca, Ibiza y Formentera); en Canarias, un cabildo.",
       "fuentes": [
         {
@@ -294,16 +420,30 @@
       ]
     },
     {
+      "id": "ccse-1023",
+      "tarea": 1,
+      "referencia": 1023,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1024",
       "tarea": 1,
       "referencia": 1024,
-      "pregunta": "¿Qué dos cámaras forman las Cortes Generales?",
+      "pregunta": "",
       "opciones": [
-        "El Congreso de los Diputados y el Senado",
-        "El Congreso y el Tribunal Constitucional",
-        "El Senado y el Consejo de Estado"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "El Congreso de los Diputados y el Senado",
+      "respuesta": "",
       "nota": "Representan al pueblo español: hacen las leyes, aprueban los presupuestos y controlan al Gobierno.",
       "fuentes": [
         {
@@ -313,16 +453,30 @@
       ]
     },
     {
+      "id": "ccse-1025",
+      "tarea": 1,
+      "referencia": 1025,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1026",
       "tarea": 1,
       "referencia": 1026,
-      "pregunta": "¿Cuántas firmas hacen falta, como mínimo, para que los ciudadanos propongan una ley?",
+      "pregunta": "",
       "opciones": [
-        "500.000",
-        "50.000",
-        "5 millones"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "500.000",
+      "respuesta": "",
       "nota": "Es la iniciativa legislativa popular. No se puede usar para leyes orgánicas, impuestos, asuntos internacionales ni indultos.",
       "fuentes": [
         {
@@ -332,16 +486,30 @@
       ]
     },
     {
+      "id": "ccse-1027",
+      "tarea": 1,
+      "referencia": 1027,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1028",
       "tarea": 1,
       "referencia": 1028,
-      "pregunta": "¿Cómo es la bandera de España?",
+      "pregunta": "",
       "opciones": [
-        "Tres franjas horizontales, roja, amarilla y roja, con la amarilla el doble de ancha",
-        "Tres franjas iguales, roja, amarilla y roja",
-        "Dos franjas, roja y amarilla"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "Tres franjas horizontales, roja, amarilla y roja, con la amarilla el doble de ancha",
+      "respuesta": "",
       "nota": "Lo fija la propia Constitución.",
       "fuentes": [
         {
@@ -351,16 +519,44 @@
       ]
     },
     {
+      "id": "ccse-1029",
+      "tarea": 1,
+      "referencia": 1029,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1030",
+      "tarea": 1,
+      "referencia": 1030,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1031",
       "tarea": 1,
       "referencia": 1031,
-      "pregunta": "En las elecciones municipales, ¿a quién votan los vecinos?",
+      "pregunta": "",
       "opciones": [
-        "A las listas de concejales del ayuntamiento",
-        "Directamente al alcalde, en una papeleta aparte",
-        "A los diputados provinciales"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "A las listas de concejales del ayuntamiento",
+      "respuesta": "",
       "nota": "Después, los concejales eligen al alcalde entre los que encabezan las listas. Si ninguno logra mayoría absoluta, es alcalde el cabeza de la lista más votada. En el examen CCSE, la respuesta que se da por buena es «alcaldes y concejales».",
       "fuentes": [
         {
@@ -370,16 +566,44 @@
       ]
     },
     {
+      "id": "ccse-1032",
+      "tarea": 1,
+      "referencia": 1032,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1033",
+      "tarea": 1,
+      "referencia": 1033,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1034",
       "tarea": 1,
       "referencia": 1034,
-      "pregunta": "¿Dónde es propia el aranés, una de las lenguas oficiales de Cataluña?",
+      "pregunta": "",
       "opciones": [
-        "En el Valle de Arán, en el Pirineo de Lleida",
-        "En el Pirineo de Huesca",
-        "En los valles del norte de Navarra"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "En el Valle de Arán, en el Pirineo de Lleida",
+      "respuesta": "",
       "nota": "El aranés es la forma del occitano propia de Arán, y el Estatuto de Cataluña lo hace oficial en toda Cataluña.",
       "fuentes": [
         {
@@ -389,16 +613,30 @@
       ]
     },
     {
+      "id": "ccse-1035",
+      "tarea": 1,
+      "referencia": 1035,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
       "id": "ccse-1036",
       "tarea": 1,
       "referencia": 1036,
-      "pregunta": "¿Cuál de estas lenguas es oficial en una comunidad autónoma, junto al castellano?",
+      "pregunta": "",
       "opciones": [
-        "El gallego",
-        "El bable",
-        "El panocho"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "El gallego",
+      "respuesta": "",
       "nota": "El gallego es oficial en Galicia. El bable (asturiano) está protegido por el Estatuto de Asturias, pero no es lengua oficial.",
       "fuentes": [
         {
@@ -415,13 +653,13 @@
       "id": "ccse-1037",
       "tarea": 1,
       "referencia": 1037,
-      "pregunta": "¿Qué institución promueve la enseñanza del español y difunde la cultura en el exterior?",
+      "pregunta": "",
       "opciones": [
-        "El Instituto Cervantes",
-        "La Real Academia Española",
-        "El Instituto Nacional de Estadística"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "El Instituto Cervantes",
+      "respuesta": "",
       "nota": "Lo creó una ley de 1991. La Real Academia Española, en cambio, se ocupa de las normas del idioma: diccionario, gramática y ortografía.",
       "fuentes": [
         {
@@ -429,6 +667,3688 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-7354"
         }
       ]
+    },
+    {
+      "id": "ccse-1038",
+      "tarea": 1,
+      "referencia": 1038,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1039",
+      "tarea": 1,
+      "referencia": 1039,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1040",
+      "tarea": 1,
+      "referencia": 1040,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1041",
+      "tarea": 1,
+      "referencia": 1041,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1042",
+      "tarea": 1,
+      "referencia": 1042,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1043",
+      "tarea": 1,
+      "referencia": 1043,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1044",
+      "tarea": 1,
+      "referencia": 1044,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1045",
+      "tarea": 1,
+      "referencia": 1045,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1046",
+      "tarea": 1,
+      "referencia": 1046,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1047",
+      "tarea": 1,
+      "referencia": 1047,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1048",
+      "tarea": 1,
+      "referencia": 1048,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1049",
+      "tarea": 1,
+      "referencia": 1049,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1050",
+      "tarea": 1,
+      "referencia": 1050,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1051",
+      "tarea": 1,
+      "referencia": 1051,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1052",
+      "tarea": 1,
+      "referencia": 1052,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1053",
+      "tarea": 1,
+      "referencia": 1053,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1054",
+      "tarea": 1,
+      "referencia": 1054,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1055",
+      "tarea": 1,
+      "referencia": 1055,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1056",
+      "tarea": 1,
+      "referencia": 1056,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1057",
+      "tarea": 1,
+      "referencia": 1057,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1058",
+      "tarea": 1,
+      "referencia": 1058,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1059",
+      "tarea": 1,
+      "referencia": 1059,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1060",
+      "tarea": 1,
+      "referencia": 1060,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1061",
+      "tarea": 1,
+      "referencia": 1061,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1062",
+      "tarea": 1,
+      "referencia": 1062,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1063",
+      "tarea": 1,
+      "referencia": 1063,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1064",
+      "tarea": 1,
+      "referencia": 1064,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1065",
+      "tarea": 1,
+      "referencia": 1065,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1066",
+      "tarea": 1,
+      "referencia": 1066,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1067",
+      "tarea": 1,
+      "referencia": 1067,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1068",
+      "tarea": 1,
+      "referencia": 1068,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1069",
+      "tarea": 1,
+      "referencia": 1069,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1070",
+      "tarea": 1,
+      "referencia": 1070,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1071",
+      "tarea": 1,
+      "referencia": 1071,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1072",
+      "tarea": 1,
+      "referencia": 1072,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1073",
+      "tarea": 1,
+      "referencia": 1073,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1074",
+      "tarea": 1,
+      "referencia": 1074,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1075",
+      "tarea": 1,
+      "referencia": 1075,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1076",
+      "tarea": 1,
+      "referencia": 1076,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1077",
+      "tarea": 1,
+      "referencia": 1077,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1078",
+      "tarea": 1,
+      "referencia": 1078,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1079",
+      "tarea": 1,
+      "referencia": 1079,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1080",
+      "tarea": 1,
+      "referencia": 1080,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1081",
+      "tarea": 1,
+      "referencia": 1081,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1082",
+      "tarea": 1,
+      "referencia": 1082,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1083",
+      "tarea": 1,
+      "referencia": 1083,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1084",
+      "tarea": 1,
+      "referencia": 1084,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1085",
+      "tarea": 1,
+      "referencia": 1085,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1086",
+      "tarea": 1,
+      "referencia": 1086,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1087",
+      "tarea": 1,
+      "referencia": 1087,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1088",
+      "tarea": 1,
+      "referencia": 1088,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1089",
+      "tarea": 1,
+      "referencia": 1089,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1090",
+      "tarea": 1,
+      "referencia": 1090,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1091",
+      "tarea": 1,
+      "referencia": 1091,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1092",
+      "tarea": 1,
+      "referencia": 1092,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1093",
+      "tarea": 1,
+      "referencia": 1093,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1094",
+      "tarea": 1,
+      "referencia": 1094,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1095",
+      "tarea": 1,
+      "referencia": 1095,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1096",
+      "tarea": 1,
+      "referencia": 1096,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1097",
+      "tarea": 1,
+      "referencia": 1097,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1098",
+      "tarea": 1,
+      "referencia": 1098,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1099",
+      "tarea": 1,
+      "referencia": 1099,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1100",
+      "tarea": 1,
+      "referencia": 1100,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1101",
+      "tarea": 1,
+      "referencia": 1101,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1102",
+      "tarea": 1,
+      "referencia": 1102,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1103",
+      "tarea": 1,
+      "referencia": 1103,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1104",
+      "tarea": 1,
+      "referencia": 1104,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1105",
+      "tarea": 1,
+      "referencia": 1105,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1106",
+      "tarea": 1,
+      "referencia": 1106,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1107",
+      "tarea": 1,
+      "referencia": 1107,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1108",
+      "tarea": 1,
+      "referencia": 1108,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1109",
+      "tarea": 1,
+      "referencia": 1109,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1110",
+      "tarea": 1,
+      "referencia": 1110,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1111",
+      "tarea": 1,
+      "referencia": 1111,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1112",
+      "tarea": 1,
+      "referencia": 1112,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1113",
+      "tarea": 1,
+      "referencia": 1113,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1114",
+      "tarea": 1,
+      "referencia": 1114,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1115",
+      "tarea": 1,
+      "referencia": 1115,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1116",
+      "tarea": 1,
+      "referencia": 1116,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1117",
+      "tarea": 1,
+      "referencia": 1117,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1118",
+      "tarea": 1,
+      "referencia": 1118,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1119",
+      "tarea": 1,
+      "referencia": 1119,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-1120",
+      "tarea": 1,
+      "referencia": 1120,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2001",
+      "tarea": 2,
+      "referencia": 2001,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2002",
+      "tarea": 2,
+      "referencia": 2002,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2003",
+      "tarea": 2,
+      "referencia": 2003,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2004",
+      "tarea": 2,
+      "referencia": 2004,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2005",
+      "tarea": 2,
+      "referencia": 2005,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2006",
+      "tarea": 2,
+      "referencia": 2006,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2007",
+      "tarea": 2,
+      "referencia": 2007,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2008",
+      "tarea": 2,
+      "referencia": 2008,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2009",
+      "tarea": 2,
+      "referencia": 2009,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2010",
+      "tarea": 2,
+      "referencia": 2010,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2011",
+      "tarea": 2,
+      "referencia": 2011,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2012",
+      "tarea": 2,
+      "referencia": 2012,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2013",
+      "tarea": 2,
+      "referencia": 2013,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2014",
+      "tarea": 2,
+      "referencia": 2014,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2015",
+      "tarea": 2,
+      "referencia": 2015,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2016",
+      "tarea": 2,
+      "referencia": 2016,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2017",
+      "tarea": 2,
+      "referencia": 2017,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2018",
+      "tarea": 2,
+      "referencia": 2018,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2019",
+      "tarea": 2,
+      "referencia": 2019,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2020",
+      "tarea": 2,
+      "referencia": 2020,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2021",
+      "tarea": 2,
+      "referencia": 2021,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2022",
+      "tarea": 2,
+      "referencia": 2022,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2023",
+      "tarea": 2,
+      "referencia": 2023,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2024",
+      "tarea": 2,
+      "referencia": 2024,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2025",
+      "tarea": 2,
+      "referencia": 2025,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2026",
+      "tarea": 2,
+      "referencia": 2026,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2027",
+      "tarea": 2,
+      "referencia": 2027,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2028",
+      "tarea": 2,
+      "referencia": 2028,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2029",
+      "tarea": 2,
+      "referencia": 2029,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2030",
+      "tarea": 2,
+      "referencia": 2030,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2031",
+      "tarea": 2,
+      "referencia": 2031,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2032",
+      "tarea": 2,
+      "referencia": 2032,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2033",
+      "tarea": 2,
+      "referencia": 2033,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2034",
+      "tarea": 2,
+      "referencia": 2034,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2035",
+      "tarea": 2,
+      "referencia": 2035,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-2036",
+      "tarea": 2,
+      "referencia": 2036,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3001",
+      "tarea": 3,
+      "referencia": 3001,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3002",
+      "tarea": 3,
+      "referencia": 3002,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3003",
+      "tarea": 3,
+      "referencia": 3003,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3004",
+      "tarea": 3,
+      "referencia": 3004,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3005",
+      "tarea": 3,
+      "referencia": 3005,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3006",
+      "tarea": 3,
+      "referencia": 3006,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3007",
+      "tarea": 3,
+      "referencia": 3007,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3008",
+      "tarea": 3,
+      "referencia": 3008,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3009",
+      "tarea": 3,
+      "referencia": 3009,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3010",
+      "tarea": 3,
+      "referencia": 3010,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3011",
+      "tarea": 3,
+      "referencia": 3011,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3012",
+      "tarea": 3,
+      "referencia": 3012,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3013",
+      "tarea": 3,
+      "referencia": 3013,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3014",
+      "tarea": 3,
+      "referencia": 3014,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3015",
+      "tarea": 3,
+      "referencia": 3015,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3016",
+      "tarea": 3,
+      "referencia": 3016,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3017",
+      "tarea": 3,
+      "referencia": 3017,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3018",
+      "tarea": 3,
+      "referencia": 3018,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3019",
+      "tarea": 3,
+      "referencia": 3019,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3020",
+      "tarea": 3,
+      "referencia": 3020,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3021",
+      "tarea": 3,
+      "referencia": 3021,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3022",
+      "tarea": 3,
+      "referencia": 3022,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3023",
+      "tarea": 3,
+      "referencia": 3023,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-3024",
+      "tarea": 3,
+      "referencia": 3024,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4001",
+      "tarea": 4,
+      "referencia": 4001,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4002",
+      "tarea": 4,
+      "referencia": 4002,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4003",
+      "tarea": 4,
+      "referencia": 4003,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4004",
+      "tarea": 4,
+      "referencia": 4004,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4005",
+      "tarea": 4,
+      "referencia": 4005,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4006",
+      "tarea": 4,
+      "referencia": 4006,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4007",
+      "tarea": 4,
+      "referencia": 4007,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4008",
+      "tarea": 4,
+      "referencia": 4008,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4009",
+      "tarea": 4,
+      "referencia": 4009,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4010",
+      "tarea": 4,
+      "referencia": 4010,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4011",
+      "tarea": 4,
+      "referencia": 4011,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4012",
+      "tarea": 4,
+      "referencia": 4012,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4013",
+      "tarea": 4,
+      "referencia": 4013,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4014",
+      "tarea": 4,
+      "referencia": 4014,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4015",
+      "tarea": 4,
+      "referencia": 4015,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4016",
+      "tarea": 4,
+      "referencia": 4016,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4017",
+      "tarea": 4,
+      "referencia": 4017,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4018",
+      "tarea": 4,
+      "referencia": 4018,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4019",
+      "tarea": 4,
+      "referencia": 4019,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4020",
+      "tarea": 4,
+      "referencia": 4020,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4021",
+      "tarea": 4,
+      "referencia": 4021,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4022",
+      "tarea": 4,
+      "referencia": 4022,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4023",
+      "tarea": 4,
+      "referencia": 4023,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4024",
+      "tarea": 4,
+      "referencia": 4024,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4025",
+      "tarea": 4,
+      "referencia": 4025,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4026",
+      "tarea": 4,
+      "referencia": 4026,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4027",
+      "tarea": 4,
+      "referencia": 4027,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4028",
+      "tarea": 4,
+      "referencia": 4028,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4029",
+      "tarea": 4,
+      "referencia": 4029,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4030",
+      "tarea": 4,
+      "referencia": 4030,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4031",
+      "tarea": 4,
+      "referencia": 4031,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4032",
+      "tarea": 4,
+      "referencia": 4032,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4033",
+      "tarea": 4,
+      "referencia": 4033,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4034",
+      "tarea": 4,
+      "referencia": 4034,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4035",
+      "tarea": 4,
+      "referencia": 4035,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-4036",
+      "tarea": 4,
+      "referencia": 4036,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5001",
+      "tarea": 5,
+      "referencia": 5001,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5002",
+      "tarea": 5,
+      "referencia": 5002,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5003",
+      "tarea": 5,
+      "referencia": 5003,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5004",
+      "tarea": 5,
+      "referencia": 5004,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5005",
+      "tarea": 5,
+      "referencia": 5005,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5006",
+      "tarea": 5,
+      "referencia": 5006,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5007",
+      "tarea": 5,
+      "referencia": 5007,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5008",
+      "tarea": 5,
+      "referencia": 5008,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5009",
+      "tarea": 5,
+      "referencia": 5009,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5010",
+      "tarea": 5,
+      "referencia": 5010,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5011",
+      "tarea": 5,
+      "referencia": 5011,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5012",
+      "tarea": 5,
+      "referencia": 5012,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5013",
+      "tarea": 5,
+      "referencia": 5013,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5014",
+      "tarea": 5,
+      "referencia": 5014,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5015",
+      "tarea": 5,
+      "referencia": 5015,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5016",
+      "tarea": 5,
+      "referencia": 5016,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5017",
+      "tarea": 5,
+      "referencia": 5017,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5018",
+      "tarea": 5,
+      "referencia": 5018,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5019",
+      "tarea": 5,
+      "referencia": 5019,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5020",
+      "tarea": 5,
+      "referencia": 5020,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5021",
+      "tarea": 5,
+      "referencia": 5021,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5022",
+      "tarea": 5,
+      "referencia": 5022,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5023",
+      "tarea": 5,
+      "referencia": 5023,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5024",
+      "tarea": 5,
+      "referencia": 5024,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5025",
+      "tarea": 5,
+      "referencia": 5025,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5026",
+      "tarea": 5,
+      "referencia": 5026,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5027",
+      "tarea": 5,
+      "referencia": 5027,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5028",
+      "tarea": 5,
+      "referencia": 5028,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5029",
+      "tarea": 5,
+      "referencia": 5029,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5030",
+      "tarea": 5,
+      "referencia": 5030,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5031",
+      "tarea": 5,
+      "referencia": 5031,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5032",
+      "tarea": 5,
+      "referencia": 5032,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5033",
+      "tarea": 5,
+      "referencia": 5033,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5034",
+      "tarea": 5,
+      "referencia": 5034,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5035",
+      "tarea": 5,
+      "referencia": 5035,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5036",
+      "tarea": 5,
+      "referencia": 5036,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5037",
+      "tarea": 5,
+      "referencia": 5037,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5038",
+      "tarea": 5,
+      "referencia": 5038,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5039",
+      "tarea": 5,
+      "referencia": 5039,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5040",
+      "tarea": 5,
+      "referencia": 5040,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5041",
+      "tarea": 5,
+      "referencia": 5041,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5042",
+      "tarea": 5,
+      "referencia": 5042,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5043",
+      "tarea": 5,
+      "referencia": 5043,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5044",
+      "tarea": 5,
+      "referencia": 5044,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5045",
+      "tarea": 5,
+      "referencia": 5045,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5046",
+      "tarea": 5,
+      "referencia": 5046,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5047",
+      "tarea": 5,
+      "referencia": 5047,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5048",
+      "tarea": 5,
+      "referencia": 5048,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5049",
+      "tarea": 5,
+      "referencia": 5049,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5050",
+      "tarea": 5,
+      "referencia": 5050,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5051",
+      "tarea": 5,
+      "referencia": 5051,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5052",
+      "tarea": 5,
+      "referencia": 5052,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5053",
+      "tarea": 5,
+      "referencia": 5053,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5054",
+      "tarea": 5,
+      "referencia": 5054,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5055",
+      "tarea": 5,
+      "referencia": 5055,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5056",
+      "tarea": 5,
+      "referencia": 5056,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5057",
+      "tarea": 5,
+      "referencia": 5057,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5058",
+      "tarea": 5,
+      "referencia": 5058,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5059",
+      "tarea": 5,
+      "referencia": 5059,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5060",
+      "tarea": 5,
+      "referencia": 5060,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5061",
+      "tarea": 5,
+      "referencia": 5061,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5062",
+      "tarea": 5,
+      "referencia": 5062,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5063",
+      "tarea": 5,
+      "referencia": 5063,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5064",
+      "tarea": 5,
+      "referencia": 5064,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5065",
+      "tarea": 5,
+      "referencia": 5065,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5066",
+      "tarea": 5,
+      "referencia": 5066,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5067",
+      "tarea": 5,
+      "referencia": 5067,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5068",
+      "tarea": 5,
+      "referencia": 5068,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5069",
+      "tarea": 5,
+      "referencia": 5069,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5070",
+      "tarea": 5,
+      "referencia": 5070,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5071",
+      "tarea": 5,
+      "referencia": 5071,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5072",
+      "tarea": 5,
+      "referencia": 5072,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5073",
+      "tarea": 5,
+      "referencia": 5073,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5074",
+      "tarea": 5,
+      "referencia": 5074,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5075",
+      "tarea": 5,
+      "referencia": 5075,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5076",
+      "tarea": 5,
+      "referencia": 5076,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5077",
+      "tarea": 5,
+      "referencia": 5077,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5078",
+      "tarea": 5,
+      "referencia": 5078,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5079",
+      "tarea": 5,
+      "referencia": 5079,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5080",
+      "tarea": 5,
+      "referencia": 5080,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5081",
+      "tarea": 5,
+      "referencia": 5081,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5082",
+      "tarea": 5,
+      "referencia": 5082,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5083",
+      "tarea": 5,
+      "referencia": 5083,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
+    },
+    {
+      "id": "ccse-5084",
+      "tarea": 5,
+      "referencia": 5084,
+      "pregunta": "",
+      "opciones": [
+        "",
+        "",
+        ""
+      ],
+      "respuesta": "",
+      "nota": "",
+      "fuentes": []
     }
   ]
 }

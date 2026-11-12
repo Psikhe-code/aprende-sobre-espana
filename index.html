@@ -62,18 +62,19 @@
 
     <!-- Examen de nacionalidad: inicio -->
     <section id="ccseStart" class="screen" hidden>
-      <div class="summary">
+      <p class="prose" id="ccseVacio" hidden><b>Todavía no hay preguntas.</b> Se irán añadiendo poco a poco, tarea a tarea.</p>
+      <div class="summary" id="ccseSummary">
         <div class="label" id="ccseRoundLabel">10 preguntas al azar de</div>
         <div class="chips" id="ccseChips"></div>
         <div class="record" id="ccseTiempoInfo"></div>
         <div class="record" id="ccseRecord"></div>
       </div>
-      <div class="row">
+      <div class="row" id="ccseBotones">
         <button class="primary" id="ccseGo">Jugar</button>
         <button class="ghost" id="ccseOpenOptions">Opciones</button>
       </div>
       <p class="prose" id="ccseAviso">Las preguntas son nuestras: están escritas sobre los temas del Manual CCSE 2026 del Instituto Cervantes, pero no son las preguntas oficiales del examen. Cada una explica su respuesta y dice de dónde sale. Las oficiales están en el manual y en la app gratuita del Instituto Cervantes: <a href="https://cervantes.org/es/examenes/ccse" target="_blank" rel="noopener">prueba CCSE</a>.</p>
-      <span class="hint">Atajos: teclas numéricas para responder, Intro para seguir.</span>
+      <span class="hint" id="ccseAtajos">Atajos: teclas numéricas para responder, Intro para seguir.</span>
       <div class="links">
         <button class="link" id="ccseToSections">Cambiar de sección</button>
         <button class="link" id="ccseOpenCredits">Créditos</button>

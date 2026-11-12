@@ -1,6 +1,8 @@
-// Examen de nacionalidad (prueba CCSE del Instituto Cervantes): preguntas de práctica y partidas.
-// Las preguntas son propias, escritas sobre los mismos datos que las del Manual CCSE, con una nota
-// que explica la respuesta y sus fuentes. No son las oficiales: el manual tiene derechos reservados.
+// Examen de nacionalidad (prueba CCSE del Instituto Cervantes): preguntas y partidas.
+// ccse.json es una plantilla con una entrada por cada pregunta del Manual CCSE (las 300). El texto
+// (enunciado, opciones y letra de la respuesta) lo rellena el usuario; la nota y las fuentes son
+// propias. Solo salen en el juego las completas; las vacías se saltan, y las que están a medias
+// las señalan los tests (ver estadoPregunta).
 // A diferencia de geografía, las opciones vienen escritas en los datos (no se generan).
 
 import datos from "../data/ccse.json";
@@ -13,10 +15,26 @@ export interface Tarea {
   nombre: string;
 }
 
+/** Una entrada de ccse.json, tal como está escrita (puede estar vacía o a medias). */
+export interface EntradaCcse {
+  id: string;
+  tarea: number;
+  /** Número de la pregunta en el Manual CCSE. */
+  referencia: number;
+  pregunta: string;
+  /** Opciones en el orden del manual (a, b, c); la tercera, vacía si solo hay dos. */
+  opciones: string[];
+  /** Letra de la opción correcta, o vacía. */
+  respuesta: string;
+  ordenFijo?: boolean;
+  nota: string;
+  fuentes: Fuente[];
+}
+
+/** Pregunta completa, lista para jugar: con las opciones que tienen texto y la respuesta escrita entera. */
 export interface PreguntaCcse {
   id: string;
   tarea: number;
-  /** Número de la pregunta del manual sobre el mismo dato. */
   referencia: number;
   pregunta: string;
   opciones: string[];
@@ -27,13 +45,58 @@ export interface PreguntaCcse {
   fuentes: Fuente[];
 }
 
-/** Pregunta del examen preparada para jugar: con sus opciones en el orden de esta partida. */
-export interface PreguntaCcseJugable extends PreguntaJugable {
-  tarea: number;
+export const LETRAS = ["a", "b", "c"] as const;
+
+export type EstadoPregunta =
+  | { estado: "vacia" }
+  | { estado: "completa"; pregunta: PreguntaCcse }
+  | { estado: "aMedias"; faltan: string[] };
+
+const VERDADERO_FALSO = ["Verdadero", "Falso"];
+
+/**
+ * Si una entrada está vacía (todavía sin rellenar), completa o a medias (y entonces, qué le falta).
+ * Los espacios de más al principio o al final del texto no cuentan.
+ */
+export function estadoPregunta(e: EntradaCcse): EstadoPregunta {
+  const texto = e.pregunta.trim();
+  const opciones = e.opciones.map((o) => o.trim());
+  const llenas = opciones.filter(Boolean);
+  if (!texto && !llenas.length && !e.respuesta) return { estado: "vacia" };
+  const faltan: string[] = [];
+  if (!texto) faltan.push("el enunciado («pregunta»)");
+  if (llenas.length < 2) faltan.push("al menos dos opciones");
+  if (opciones.some((o, i) => !o && opciones.slice(i + 1).some(Boolean))) faltan.push("que las opciones vacías vayan al final");
+  if (new Set(llenas).size !== llenas.length) faltan.push("que las opciones sean distintas (hay dos iguales)");
+  const i = LETRAS.indexOf(e.respuesta as (typeof LETRAS)[number]);
+  if (i < 0) faltan.push("la letra de la respuesta («a», «b» o «c»)");
+  else if (!opciones[i]) faltan.push(`la opción ${e.respuesta}, que es la respuesta`);
+  if (faltan.length) return { estado: "aMedias", faltan };
+  const fija = e.ordenFijo || (llenas.length === 2 && llenas.every((o, j) => o === VERDADERO_FALSO[j]));
+  return {
+    estado: "completa",
+    pregunta: {
+      id: e.id,
+      tarea: e.tarea,
+      referencia: e.referencia,
+      pregunta: texto,
+      opciones: llenas,
+      ...(fija ? { ordenFijo: true } : {}),
+      respuesta: opciones[i],
+      nota: e.nota.trim(),
+      fuentes: e.fuentes
+    }
+  };
 }
 
 export const TAREAS: readonly Tarea[] = datos.tareas;
-export const PREGUNTAS_CCSE: readonly PreguntaCcse[] = datos.preguntas;
+/** Todas las entradas de la plantilla, rellenas o no. */
+export const ENTRADAS_CCSE: readonly EntradaCcse[] = datos.preguntas;
+/** Las preguntas que ya se pueden jugar. */
+export const PREGUNTAS_CCSE: readonly PreguntaCcse[] = ENTRADAS_CCSE.flatMap((e) => {
+  const r = estadoPregunta(e);
+  return r.estado === "completa" ? [r.pregunta] : [];
+});
 export const TAREA_IDS: readonly number[] = TAREAS.map((t) => t.numero);
 
 export const tarea = (numero: number) => TAREAS.find((t) => t.numero === numero);
@@ -49,6 +112,11 @@ export const tamanoCcse = (tareas: readonly number[], length: RoundLength) => si
 
 /** Si se puede elegir este número de preguntas con estas tareas (ver fitsFor). */
 export const cabeCcse = (length: RoundLength, tareas: readonly number[]) => fitsFor(length, preguntasDe(tareas).length);
+
+/** Pregunta del examen preparada para jugar: con sus opciones en el orden de esta partida. */
+export interface PreguntaCcseJugable extends PreguntaJugable {
+  tarea: number;
+}
 
 /** Prepara una pregunta para jugar: baraja las opciones (salvo las de orden fijo). */
 export function jugable(p: PreguntaCcse, rng: Rng = Math.random): PreguntaCcseJugable {
