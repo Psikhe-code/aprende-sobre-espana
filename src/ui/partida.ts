@@ -138,6 +138,7 @@ export function crearPartida(ctx: Contexto): Partida {
     v.className = "verdict " + (r.correct ? "ok" : "bad");
     v.textContent = r.correct ? "Correcto" : r.given === null ? "Se acabó el tiempo · Era: " + r.answer : "Era: " + r.answer;
     $("why").textContent = game.current.why;
+    $("why").hidden = !game.current.why; // en el examen, mientras falte la nota
     // Otras formas de los nombres: "Girona · en castellano, Gerona"
     $("aka").replaceChildren(...game.current.aliases.map((a) => el("span", "", a)));
     $("aka").hidden = !game.current.aliases.length;
