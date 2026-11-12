@@ -201,7 +201,7 @@
         "político."
       ],
       "respuesta": "a",
-      "nota": "Las Cortes Generales hacen las leyes, el Gobierno dirige la política y la Administración, y los jueces y tribunales juzgan.",
+      "nota": "El tercer poder es el judicial, que ejercen los jueces y tribunales al juzgar. El ejecutivo es el Gobierno, y el legislativo, las Cortes Generales.\n«Poder informativo» y «poder político» no son poderes del Estado. A veces se llama a la prensa «cuarto poder», pero solo es una forma de hablar.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 66",
@@ -214,6 +214,10 @@
         {
           "texto": "Constitución española, art. 117",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a117"
+        },
+        {
+          "texto": "Wikipedia, «Cuarto poder»",
+          "url": "https://es.wikipedia.org/wiki/Cuarto_poder"
         }
       ]
     },
@@ -297,7 +301,7 @@
         "José Luis Rodríguez Zapatero."
       ],
       "respuesta": "b",
-      "nota": "El rey lo nombró presidente en 1976, todavía sin elecciones, y su partido, la UCD, ganó las primeras elecciones libres desde 1936, el 15 de junio de 1977.",
+      "nota": "Adolfo Suárez fue el primer presidente del Gobierno en democracia. El rey lo nombró en 1976, todavía sin elecciones, y su partido, la UCD, ganó el 15 de junio de 1977 las primeras elecciones libres desde 1936.\nJosé Luis Rodríguez Zapatero presidió el Gobierno de 2004 a 2011, y Mariano Rajoy, de 2011 a 2018.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Adolfo Suárez»",
@@ -306,6 +310,14 @@
         {
           "texto": "Congreso de los Diputados, «Constitución de 1978»",
           "url": "https://www.congreso.es/es/cem/const1978"
+        },
+        {
+          "texto": "Wikipedia, «José Luis Rodríguez Zapatero»",
+          "url": "https://es.wikipedia.org/wiki/José_Luis_Rodríguez_Zapatero"
+        },
+        {
+          "texto": "Wikipedia, «Mariano Rajoy»",
+          "url": "https://es.wikipedia.org/wiki/Mariano_Rajoy"
         }
       ]
     },
@@ -473,7 +485,7 @@
         "Las Cortes Generales."
       ],
       "respuesta": "b",
-      "nota": "Dirigir la Administración militar y la defensa del Estado es tarea del Gobierno, a través del Ministerio de Defensa. Las Cortes hacen las leyes y controlan al Gobierno, y los ayuntamientos se ocupan de los asuntos de cada municipio.",
+      "nota": "El Gobierno dirige la Administración militar y la defensa del Estado, como dice la Constitución, a través del Ministerio de Defensa.\nLas Cortes Generales hacen las leyes y controlan al Gobierno, y los ayuntamientos se ocupan de los asuntos de cada municipio.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 97",
@@ -645,7 +657,7 @@
         "En Sevilla."
       ],
       "respuesta": "a",
-      "nota": "La Constitución dice que la capital del Estado es Madrid. Allí están el Palacio de la Moncloa, sede de la Presidencia del Gobierno, y las Cortes Generales.",
+      "nota": "La sede del Gobierno de España está en Madrid, que es la capital del Estado, como dice la Constitución. Allí están el Palacio de la Moncloa, sede de la Presidencia del Gobierno, y las Cortes Generales.\nBarcelona es la capital de Cataluña, y Sevilla, la de Andalucía. En ellas tienen su sede los gobiernos de esas comunidades.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 5",
@@ -654,6 +666,14 @@
         {
           "texto": "Wikipedia, «Palacio de la Moncloa»",
           "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Moncloa"
+        },
+        {
+          "texto": "Wikipedia, «Barcelona»",
+          "url": "https://es.wikipedia.org/wiki/Barcelona"
+        },
+        {
+          "texto": "Wikipedia, «Sevilla»",
+          "url": "https://es.wikipedia.org/wiki/Sevilla"
         }
       ]
     },
@@ -859,7 +879,7 @@
         "En el Palacio de la Moncloa."
       ],
       "respuesta": "c",
-      "nota": "El Palacio de la Moncloa, en Madrid, es la residencia oficial del presidente del Gobierno y la sede de la Presidencia desde 1977. El rey vive en el Palacio de la Zarzuela.",
+      "nota": "El presidente del Gobierno vive en el Palacio de la Moncloa, en Madrid, que es su residencia oficial y la sede de la Presidencia desde 1977.\nEl rey vive en el Palacio de la Zarzuela. El Palacio Real es la residencia oficial del rey, pero no vive allí y se usa para ceremonias y actos de Estado.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Palacio de la Moncloa»",
@@ -868,6 +888,10 @@
         {
           "texto": "Wikipedia, «Palacio de la Zarzuela»",
           "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Zarzuela"
+        },
+        {
+          "texto": "Wikipedia, «Palacio Real de Madrid»",
+          "url": "https://es.wikipedia.org/wiki/Palacio_Real_de_Madrid"
         }
       ]
     },
@@ -909,7 +933,7 @@
         "Los alcaldes."
       ],
       "respuesta": "a",
-      "nota": "El Gobierno lo forman el presidente, los vicepresidentes, si los hay, y los ministros. Los alcaldes y los concejales forman los ayuntamientos.",
+      "nota": "Los ministros forman parte del Gobierno, junto con el presidente y, si los hay, los vicepresidentes.\nLos alcaldes y los concejales forman los ayuntamientos, que gobiernan los municipios.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 98",
@@ -1308,7 +1332,7 @@
         "El presidente del Congreso de los Diputados."
       ],
       "respuesta": "c",
-      "nota": "En los actos oficiales en Madrid, después del rey y la familia real va el presidente del Gobierno, y después, el presidente del Congreso. El del Senado va justo detrás.",
+      "nota": "La tercera autoridad del Estado es el presidente del Congreso de los Diputados. En los actos oficiales en Madrid, después del rey y la familia real va el presidente del Gobierno, y después, el presidente del Congreso.\nEl presidente del Senado va justo detrás, y los ministros, varios puestos más atrás.",
       "fuentes": [
         {
           "texto": "Real Decreto 2099/1983, Ordenamiento General de Precedencias en el Estado, art. 10",
@@ -1434,7 +1458,7 @@
         "El Congreso de los Diputados."
       ],
       "respuesta": "b",
-      "nota": "La Constitución encarga al Gobierno dirigir la política interior y exterior. El rey representa a España en el extranjero, pero no decide su política, y el Congreso controla al Gobierno.",
+      "nota": "El Gobierno dirige la política interior y exterior de España, como dice la Constitución.\nEl rey representa a España en el extranjero, pero no decide su política, y el Congreso de los Diputados controla al Gobierno.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 97",
@@ -1775,7 +1799,7 @@
         "Yolanda Díaz."
       ],
       "respuesta": "b",
-      "nota": "José María Aznar presidió el Gobierno de 1996 a 2004. Manuel Fraga fue ministro y presidente de la Xunta de Galicia, y Yolanda Díaz ha sido vicepresidenta del Gobierno, pero ninguno de los dos llegó a presidirlo.",
+      "nota": "José María Aznar fue presidente del Gobierno de 1996 a 2004.\nManuel Fraga fue ministro y presidente de la Xunta de Galicia, y Yolanda Díaz ha sido vicepresidenta del Gobierno, pero ninguno de los dos llegó a presidirlo.",
       "fuentes": [
         {
           "texto": "Wikipedia, «José María Aznar»",
@@ -2092,7 +2116,7 @@
         "En el Senado."
       ],
       "respuesta": "b",
-      "nota": "El candidato presenta su programa ante el Congreso y pide su confianza en un debate que se llama sesión de investidura. Si consigue la mayoría necesaria, el rey lo nombra presidente.",
+      "nota": "La investidura del presidente del Gobierno tiene lugar en el Congreso de los Diputados. El candidato presenta allí su programa y pide la confianza de la cámara, y si consigue la mayoría necesaria, el rey lo nombra presidente.\nEl Senado no vota la investidura, y el Palacio de la Moncloa es donde vive y trabaja el presidente una vez elegido.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 99",
@@ -2199,7 +2223,7 @@
         "a los jueces y magistrados."
       ],
       "respuesta": "a",
-      "nota": "El Gobierno tiene la función ejecutiva, es decir, gobierna y hace cumplir las leyes. Las leyes las hacen el Congreso y el Senado, y los jueces y magistrados las aplican al juzgar.",
+      "nota": "El poder ejecutivo corresponde al Gobierno del Estado, que gobierna y hace cumplir las leyes.\nEl Congreso y el Senado tienen el poder legislativo, porque hacen las leyes, y los jueces y magistrados, el judicial, porque las aplican al juzgar.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 97",
@@ -2287,11 +2311,15 @@
         "Dos."
       ],
       "respuesta": "a",
-      "nota": "Hasta ahora (noviembre de 2026), todos los presidentes del Gobierno de España han sido hombres. Sí ha habido mujeres vicepresidentas y ministras.",
+      "nota": "Ninguna mujer ha sido presidenta del Gobierno de España hasta ahora (noviembre de 2026).\nSí ha habido vicepresidentas y ministras. La primera vicepresidenta fue María Teresa Fernández de la Vega, de 2004 a 2010.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Presidente del Gobierno de España»",
           "url": "https://es.wikipedia.org/wiki/Presidente_del_Gobierno_de_España"
+        },
+        {
+          "texto": "Wikipedia, «María Teresa Fernández de la Vega»",
+          "url": "https://es.wikipedia.org/wiki/María_Teresa_Fernández_de_la_Vega"
         }
       ]
     },
@@ -2417,7 +2445,7 @@
         "Las Cortes Generales."
       ],
       "respuesta": "a",
-      "nota": "El Gobierno es el órgano que dirige el poder ejecutivo, es decir, el que gobierna el país y hace cumplir las leyes. Las Cortes Generales tienen el poder legislativo.",
+      "nota": "El órgano superior del poder ejecutivo es el Gobierno, que gobierna el país y hace cumplir las leyes.\nLas Cortes Generales tienen el poder legislativo, y las Fuerzas Armadas dependen del Gobierno, que dirige la defensa.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 97",
@@ -2654,7 +2682,7 @@
         "El Tribunal Supremo."
       ],
       "respuesta": "a",
-      "nota": "Tras las elecciones, el rey propone un candidato, y el Congreso de los Diputados vota si le da su confianza. Si la consigue, el rey lo nombra presidente.",
+      "nota": "Al presidente del Gobierno lo elige el Congreso de los Diputados. Tras las elecciones, el rey propone un candidato, y el Congreso vota si le da su confianza.\nEl rey solo propone al candidato y, si el Congreso lo elige, lo nombra. El Tribunal Supremo es un tribunal y no interviene.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 99",
