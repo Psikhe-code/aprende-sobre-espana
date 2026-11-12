@@ -1,7 +1,7 @@
 // Pantallas del examen de nacionalidad (prueba CCSE): inicio y Opciones.
 // La partida y el resultado son los mismos que en geografía (partida.ts, final.ts), con el modo del examen.
 
-import { preguntasDe, tamanoCcse, cabeCcse, TAREAS, tareasConPreguntas } from "../engine/ccse";
+import { PREGUNTAS_CCSE, preguntasDe, tamanoCcse, cabeCcse, TAREAS, tareasConPreguntas } from "../engine/ccse";
 import { ROUND_LENGTHS, TIME_LIMITS } from "../engine/round";
 import { ccseKey, type SavedState } from "../engine/storage";
 import type { Contexto } from "./contexto";
@@ -10,6 +10,13 @@ import { LONGITUD_LABELS, TIEMPO_LABELS } from "./labels";
 import { puedeJugarCcse } from "./modos";
 
 export function renderStartCcse(state: SavedState): void {
+  // Mientras la plantilla esté vacía, no hay nada que jugar ni que elegir: solo el aviso.
+  const vacio = !PREGUNTAS_CCSE.length;
+  $("ccseVacio").hidden = !vacio;
+  $("ccseSummary").hidden = vacio;
+  $("ccseBotones").hidden = vacio;
+  $("ccseAtajos").hidden = vacio;
+  if (vacio) return;
   const { tareas, longitud, tiempo } = state.ccse;
   const sinLimite = longitud === "sinLimite";
   $("ccseRoundLabel").textContent = sinLimite

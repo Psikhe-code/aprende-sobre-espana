@@ -26,13 +26,13 @@
       "id": "ccse-1001",
       "tarea": 1,
       "referencia": 1001,
-      "pregunta": "¿Qué forma política tiene el Estado español?",
+      "pregunta": "",
       "opciones": [
-        "La monarquía parlamentaria",
-        "La república presidencialista",
-        "La monarquía absoluta"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Hay rey, pero el país lo gobierna el Gobierno, cuyo presidente elige el Congreso de los Diputados.",
       "fuentes": [
         {
@@ -63,13 +63,13 @@
       "id": "ccse-1003",
       "tarea": 1,
       "referencia": 1003,
-      "pregunta": "Según la Constitución, ¿de quién emanan los poderes del Estado?",
+      "pregunta": "",
       "opciones": [
-        "Del pueblo español",
-        "Del rey",
-        "De las Cortes Generales"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "La soberanía nacional reside en el pueblo español, y de él salen todos los poderes del Estado.",
       "fuentes": [
         {
@@ -110,13 +110,13 @@
       "id": "ccse-1006",
       "tarea": 1,
       "referencia": 1006,
-      "pregunta": "¿Qué dice la Constitución sobre el castellano?",
+      "pregunta": "",
       "opciones": [
-        "Es la lengua oficial del Estado y todos los españoles deben conocerla",
-        "Solo es oficial donde no hay otra lengua propia",
-        "Solo es oficial en la Administración central"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Las demás lenguas españolas son también oficiales en sus comunidades autónomas, según sus Estatutos.",
       "fuentes": [
         {
@@ -129,13 +129,13 @@
       "id": "ccse-1007",
       "tarea": 1,
       "referencia": 1007,
-      "pregunta": "¿Qué cuerpos de seguridad actúan en todo el territorio español?",
+      "pregunta": "",
       "opciones": [
-        "La Policía Nacional y la Guardia Civil",
-        "La Ertzaintza y los Mossos d'Esquadra",
-        "La Policía Foral y la Policía Local"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Dependen del Gobierno de España. Algunas comunidades tienen policía propia (Ertzaintza, Mossos d'Esquadra, Policía Foral de Navarra), y los ayuntamientos, policía local.",
       "fuentes": [
         {
@@ -162,13 +162,13 @@
       "id": "ccse-1009",
       "tarea": 1,
       "referencia": 1009,
-      "pregunta": "¿Cuáles son los tres poderes del Estado?",
+      "pregunta": "",
       "opciones": [
-        "Legislativo, ejecutivo y judicial",
-        "Legislativo, ejecutivo y militar",
-        "Político, económico y judicial"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Las Cortes Generales hacen las leyes, el Gobierno dirige la política y la Administración, y los jueces y tribunales juzgan.",
       "fuentes": [
         {
@@ -189,13 +189,13 @@
       "id": "ccse-1010",
       "tarea": 1,
       "referencia": 1010,
-      "pregunta": "En los edificios públicos de una comunidad autónoma, ¿qué bandera se pone?",
+      "pregunta": "",
       "opciones": [
-        "La de la comunidad, junto a la de España",
-        "Solo la de la comunidad",
-        "Solo la de España"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Los Estatutos pueden reconocer una bandera propia, que se usa siempre junto a la de España en los edificios públicos y en los actos oficiales.",
       "fuentes": [
         {
@@ -208,13 +208,13 @@
       "id": "ccse-1011",
       "tarea": 1,
       "referencia": 1011,
-      "pregunta": "¿Quién es el jefe del Estado?",
+      "pregunta": "",
       "opciones": [
-        "El rey",
-        "El presidente del Gobierno",
-        "El presidente del Congreso"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Es el símbolo de la unidad del Estado y arbitra y modera el funcionamiento de las instituciones.",
       "fuentes": [
         {
@@ -241,13 +241,13 @@
       "id": "ccse-1013",
       "tarea": 1,
       "referencia": 1013,
-      "pregunta": "¿Quién fue el primer presidente del Gobierno de la democracia, tras las elecciones de 1977?",
+      "pregunta": "",
       "opciones": [
-        "Adolfo Suárez",
-        "Felipe González",
-        "Leopoldo Calvo-Sotelo"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "El rey lo nombró presidente en 1976, todavía sin elecciones, y su partido, la UCD, ganó las primeras elecciones libres desde 1936, el 15 de junio de 1977.",
       "fuentes": [
         {
@@ -264,13 +264,13 @@
       "id": "ccse-1014",
       "tarea": 1,
       "referencia": 1014,
-      "pregunta": "¿Qué institución es la intérprete suprema de la Constitución?",
+      "pregunta": "",
       "opciones": [
-        "El Tribunal Constitucional",
-        "El Tribunal Supremo",
-        "El Consejo General del Poder Judicial"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Es independiente de los demás órganos del Estado y decide, por ejemplo, si una ley va contra la Constitución.",
       "fuentes": [
         {
@@ -301,13 +301,13 @@
       "id": "ccse-1016",
       "tarea": 1,
       "referencia": 1016,
-      "pregunta": "¿Cuál es la cámara de representación territorial?",
+      "pregunta": "",
       "opciones": [
-        "El Senado",
-        "El Congreso de los Diputados",
-        "La Conferencia de Presidentes"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Por eso sus senadores se eligen por provincias (cuatro en cada una, con reglas propias en las islas, Ceuta y Melilla). Además, cada comunidad autónoma designa uno más, y otro por cada millón de habitantes.",
       "fuentes": [
         {
@@ -334,13 +334,13 @@
       "id": "ccse-1018",
       "tarea": 1,
       "referencia": 1018,
-      "pregunta": "¿Cómo se ratificó la Constitución de 1978?",
+      "pregunta": "",
       "opciones": [
-        "En un referéndum, votando los españoles",
-        "Por decreto del rey",
-        "Por una sentencia del Tribunal Supremo"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Las Cortes la aprobaron el 31 de octubre de 1978, los españoles la ratificaron en referéndum el 6 de diciembre y el rey la sancionó el 27 de diciembre.",
       "fuentes": [
         {
@@ -353,13 +353,13 @@
       "id": "ccse-1019",
       "tarea": 1,
       "referencia": 1019,
-      "pregunta": "¿Cuál es la norma institucional básica de cada comunidad autónoma?",
+      "pregunta": "",
       "opciones": [
-        "Su Estatuto de Autonomía",
-        "Su ley de presupuestos",
-        "El reglamento de su Gobierno"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Fija, entre otras cosas, el nombre de la comunidad, su territorio, sus instituciones y sus competencias.",
       "fuentes": [
         {
@@ -400,13 +400,13 @@
       "id": "ccse-1022",
       "tarea": 1,
       "referencia": 1022,
-      "pregunta": "En las Islas Baleares, ¿qué institución gobierna cada isla?",
+      "pregunta": "",
       "opciones": [
-        "El consejo insular",
-        "El cabildo",
-        "La diputación provincial"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "En los archipiélagos, cada isla tiene administración propia: en Baleares, un consejo insular (Mallorca, Menorca, Ibiza y Formentera); en Canarias, un cabildo.",
       "fuentes": [
         {
@@ -437,13 +437,13 @@
       "id": "ccse-1024",
       "tarea": 1,
       "referencia": 1024,
-      "pregunta": "¿Qué dos cámaras forman las Cortes Generales?",
+      "pregunta": "",
       "opciones": [
-        "El Congreso de los Diputados y el Senado",
-        "El Congreso y el Tribunal Constitucional",
-        "El Senado y el Consejo de Estado"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Representan al pueblo español: hacen las leyes, aprueban los presupuestos y controlan al Gobierno.",
       "fuentes": [
         {
@@ -470,13 +470,13 @@
       "id": "ccse-1026",
       "tarea": 1,
       "referencia": 1026,
-      "pregunta": "¿Cuántas firmas hacen falta, como mínimo, para que los ciudadanos propongan una ley?",
+      "pregunta": "",
       "opciones": [
-        "500.000",
-        "50.000",
-        "5 millones"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Es la iniciativa legislativa popular. No se puede usar para leyes orgánicas, impuestos, asuntos internacionales ni indultos.",
       "fuentes": [
         {
@@ -503,13 +503,13 @@
       "id": "ccse-1028",
       "tarea": 1,
       "referencia": 1028,
-      "pregunta": "¿Cómo es la bandera de España?",
+      "pregunta": "",
       "opciones": [
-        "Tres franjas horizontales, roja, amarilla y roja, con la amarilla el doble de ancha",
-        "Tres franjas iguales, roja, amarilla y roja",
-        "Dos franjas, roja y amarilla"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Lo fija la propia Constitución.",
       "fuentes": [
         {
@@ -550,13 +550,13 @@
       "id": "ccse-1031",
       "tarea": 1,
       "referencia": 1031,
-      "pregunta": "En las elecciones municipales, ¿a quién votan los vecinos?",
+      "pregunta": "",
       "opciones": [
-        "A las listas de concejales del ayuntamiento",
-        "Directamente al alcalde, en una papeleta aparte",
-        "A los diputados provinciales"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Después, los concejales eligen al alcalde entre los que encabezan las listas. Si ninguno logra mayoría absoluta, es alcalde el cabeza de la lista más votada. En el examen CCSE, la respuesta que se da por buena es «alcaldes y concejales».",
       "fuentes": [
         {
@@ -597,13 +597,13 @@
       "id": "ccse-1034",
       "tarea": 1,
       "referencia": 1034,
-      "pregunta": "¿Dónde es propia el aranés, una de las lenguas oficiales de Cataluña?",
+      "pregunta": "",
       "opciones": [
-        "En el Valle de Arán, en el Pirineo de Lleida",
-        "En el Pirineo de Huesca",
-        "En los valles del norte de Navarra"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "El aranés es la forma del occitano propia de Arán, y el Estatuto de Cataluña lo hace oficial en toda Cataluña.",
       "fuentes": [
         {
@@ -630,13 +630,13 @@
       "id": "ccse-1036",
       "tarea": 1,
       "referencia": 1036,
-      "pregunta": "¿Cuál de estas lenguas es oficial en una comunidad autónoma, junto al castellano?",
+      "pregunta": "",
       "opciones": [
-        "El gallego",
-        "El bable",
-        "El panocho"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "El gallego es oficial en Galicia. El bable (asturiano) está protegido por el Estatuto de Asturias, pero no es lengua oficial.",
       "fuentes": [
         {
@@ -653,13 +653,13 @@
       "id": "ccse-1037",
       "tarea": 1,
       "referencia": 1037,
-      "pregunta": "¿Qué institución promueve la enseñanza del español y difunde la cultura en el exterior?",
+      "pregunta": "",
       "opciones": [
-        "El Instituto Cervantes",
-        "La Real Academia Española",
-        "El Instituto Nacional de Estadística"
+        "",
+        "",
+        ""
       ],
-      "respuesta": "a",
+      "respuesta": "",
       "nota": "Lo creó una ley de 1991. La Real Academia Española, en cambio, se ocupa de las normas del idioma: diccionario, gramática y ortografía.",
       "fuentes": [
         {

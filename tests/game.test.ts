@@ -8,7 +8,6 @@ import { BANDERAS_PROVINCIAS } from "../src/engine/questions";
 import { comboKey, loadState, STORAGE_KEY } from "../src/engine/storage";
 import { GameSession, applyRecord, recordValue } from "../src/engine/game";
 import { NAME_STYLES, type RoundQuestion } from "../src/engine/types";
-import { tareasConPreguntas } from "../src/engine/ccse";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
 const rq = (id: string, answer: string): RoundQuestion =>
@@ -364,18 +363,6 @@ describe("guardado", () => {
     expect(loadState().seccion).toBe(null);
     conGuardado({ seccion: "ccse" }, () => expect(loadState().seccion).toBe("ccse"));
     conGuardado({ seccion: "historia" }, () => expect(loadState().seccion).toBe(null));
-  });
-
-  it("opciones del examen: por defecto, todas las tareas con preguntas, 10 preguntas y 1 minuto; y se recuerdan", () => {
-    const porDefecto = loadState().ccse;
-    expect(porDefecto.tareas).toEqual(tareasConPreguntas());
-    expect(porDefecto.longitud).toBe(10);
-    expect(porDefecto.tiempo).toBe(60);
-    conGuardado({ ccse: { tareas: [1], conocidas: [1], longitud: "sinLimite", tiempo: 10 } }, () => {
-      expect(loadState().ccse).toMatchObject({ tareas: [1], longitud: "sinLimite", tiempo: 10 });
-    });
-    // Tareas sin preguntas o que no existen no se quedan marcadas; si no queda ninguna, vuelven las de por defecto.
-    conGuardado({ ccse: { tareas: [9], conocidas: [1] } }, () => expect(loadState().ccse.tareas).toEqual(tareasConPreguntas()));
   });
 
   it("por defecto, 10 preguntas por partida, y se recuerda el número elegido", () => {

@@ -16,12 +16,21 @@ export const test = base.extend<{ sinErrores: void }>({
 });
 export { expect };
 
+/**
+ * Hace que el juego cargue estas preguntas del examen en vez de las de ccse.json (ver tests/ccse-prueba.ts).
+ * Hay que llamarlo antes de abrir el juego.
+ */
+export async function preguntasCcse(page: Page, datos: unknown) {
+  await page.route(/\/src\/data\/ccse\.json(\?|$)/, (route) =>
+    route.fulfill({ contentType: "text/javascript", body: `export default ${JSON.stringify(datos)};` }));
+}
+
 /** Abre el juego y entra en una sección (la primera vez sale la pantalla de secciones). Por defecto, geografía. */
 export async function abrir(page: Page, seccion: "geografia" | "ccse" = "geografia") {
   await page.goto("./");
   await expect(page.locator("#sections")).toBeVisible();
   await page.locator(`#sec-${seccion}`).click();
-  await expect(page.locator(seccion === "ccse" ? "#ccseGo" : "#go")).toBeVisible();
+  await expect(page.locator(seccion === "ccse" ? "#ccseStart" : "#go")).toBeVisible();
 }
 
 /** Abre Opciones, pulsa las tarjetas indicadas por su id (p. ej. "cat-banderas", "len-25") y vuelve al inicio. */
