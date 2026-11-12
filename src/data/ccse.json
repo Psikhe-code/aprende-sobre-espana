@@ -516,7 +516,7 @@
         "Centros de diputados."
       ],
       "respuesta": "b",
-      "nota": "En los archipiélagos, cada isla tiene administración propia: en Baleares, un consejo insular (Mallorca, Menorca, Ibiza y Formentera); en Canarias, un cabildo.",
+      "nota": "En las Islas Baleares, en vez de diputaciones, hay consejos insulares, uno por cada isla (Mallorca, Menorca, Ibiza y Formentera).\nLos cabildos son los de las islas Canarias, y «centros de diputados» no existe.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 141.4",
@@ -525,6 +525,10 @@
         {
           "texto": "Estatuto de Autonomía de las Illes Balears, art. 61",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-4233"
+        },
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, art. 41",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a41"
         }
       ]
     },
@@ -731,11 +735,15 @@
         "diputados y senadores."
       ],
       "respuesta": "a",
-      "nota": "En realidad, se vota a las listas de concejales de cada partido. Después, los concejales eligen al alcalde entre los que encabezan las listas, y si ninguno logra la mayoría absoluta, es alcalde el cabeza de la lista más votada.",
+      "nota": "En las elecciones municipales se elige a los alcaldes y los concejales. Lo que se vota son listas de concejales de cada partido, y después los concejales eligen al alcalde entre los que encabezan las listas. Si ninguno logra la mayoría absoluta, es alcalde el cabeza de la lista más votada.\nLos diputados y senadores se eligen en las elecciones generales. A los ministros no se les vota, porque los nombra el rey a propuesta del presidente del Gobierno.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 196",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientonoventayseis"
+        },
+        {
+          "texto": "Constitución española, art. 100",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a100"
         }
       ]
     },
@@ -1211,7 +1219,7 @@
         "local."
       ],
       "respuesta": "c",
-      "nota": "La Administración local la forman los municipios, las provincias y, en Baleares y Canarias, las islas. Los gobiernan, respectivamente, el ayuntamiento, la diputación y el consejo insular o el cabildo.",
+      "nota": "El tercer nivel es la Administración local, que forman los municipios, las provincias y, en Baleares y Canarias, las islas. Los gobiernan, respectivamente, el ayuntamiento, la diputación y el consejo insular o el cabildo.\n«Estatal» es otra forma de llamar a la Administración central, la del Estado, y «regional» se parecería a la autonómica. Ninguna de las dos es un tercer nivel.",
       "fuentes": [
         {
           "texto": "Ley 7/1985, de Bases del Régimen Local, art. 3",
@@ -2053,7 +2061,7 @@
         "Diputaciones."
       ],
       "respuesta": "a",
-      "nota": "Cada isla canaria tiene su cabildo, que la gobierna. En Baleares ese papel lo tienen los consejos insulares, y en el resto de España, las diputaciones provinciales.",
+      "nota": "Los cabildos solo existen en Canarias, donde cada isla tiene el suyo, que la gobierna.\nEn Baleares ese papel lo tienen los consejos insulares, y en el resto de España, las diputaciones provinciales.",
       "fuentes": [
         {
           "texto": "Ley 7/1985, de Bases del Régimen Local, art. 41",
@@ -2409,7 +2417,7 @@
         "los senadores."
       ],
       "respuesta": "a",
-      "nota": "El ayuntamiento lo forman el alcalde y los concejales, a los que eligen los vecinos en las elecciones municipales. Los diputados y senadores forman las Cortes Generales.",
+      "nota": "El ayuntamiento está formado por el alcalde y los concejales, a los que eligen los vecinos en las elecciones municipales.\nLos diputados y los senadores forman las Cortes Generales, el parlamento de España.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 140",
@@ -2451,7 +2459,7 @@
         "El cabildo."
       ],
       "respuesta": "a",
-      "nota": "Cada municipio lo gobierna su ayuntamiento, formado por el alcalde y los concejales. La diputación gobierna la provincia, y el cabildo, cada isla canaria.",
+      "nota": "El órgano de gobierno de los municipios es el ayuntamiento, formado por el alcalde y los concejales.\nLa diputación gobierna la provincia, y el cabildo, cada isla canaria.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 140",
@@ -2478,7 +2486,7 @@
         "Diputaciones."
       ],
       "respuesta": "c",
-      "nota": "Las diputaciones gobiernan las provincias y ayudan sobre todo a los municipios pequeños. En las comunidades de una sola provincia, como Madrid o Murcia, no hay diputación y hace su papel la propia comunidad.",
+      "nota": "Los órganos de gobierno de las provincias son las diputaciones, que ayudan sobre todo a los municipios pequeños. En las comunidades de una sola provincia, como Madrid o Murcia, no hay diputación y hace su papel la propia comunidad.\nLos cabildos gobiernan cada isla de Canarias, y los consejos insulares, cada isla de Baleares.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 141",
@@ -2685,7 +2693,7 @@
         "central."
       ],
       "respuesta": "b",
-      "nota": "La Administración local la forman los ayuntamientos, que gobiernan los municipios, y las diputaciones, que gobiernan las provincias, además de los cabildos y consejos insulares en las islas.",
+      "nota": "Los municipios y las provincias forman parte de la Administración local. Los gobiernan los ayuntamientos y las diputaciones, y en las islas, los cabildos y consejos insulares.\nLa Administración autonómica es la de cada comunidad autónoma, y la central, la del Estado, que dirige el Gobierno de España.",
       "fuentes": [
         {
           "texto": "Ley 7/1985, de Bases del Régimen Local, art. 3",
