@@ -6,6 +6,8 @@ import municipios from "../src/data/municipios.json";
 import municipiosSchema from "../src/data/schema/municipios.schema.json";
 import territorioSchema from "../src/data/schema/territorio.schema.json";
 import banderasSchema from "../src/data/schema/banderas.schema.json";
+import ccse from "../src/data/ccse.json";
+import ccseSchema from "../src/data/schema/ccse.schema.json";
 import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../src/engine/territory";
 import { NAME_STYLES } from "../src/engine/types";
 import { BANDERAS, BANDERAS_PROVINCIAS } from "../src/engine/questions";
@@ -35,6 +37,9 @@ describe("formato de los archivos", () => {
   });
   it("municipios.json cumple su esquema", () => {
     expect(schemaErrors(municipiosSchema, municipios).join("\n")).toBe("");
+  });
+  it("ccse.json cumple su esquema", () => {
+    expect(schemaErrors(ccseSchema, ccse).join("\n")).toBe("");
   });
   it("el esquema detecta un campo mal escrito", () => {
     // Prueba de que la validación funciona: "trampa" en vez de "trampas".

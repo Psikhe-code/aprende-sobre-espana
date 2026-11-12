@@ -49,6 +49,16 @@ export function questionsIn(categoryId: string, territorios: Territorio[] = DEFA
   return cat ? cat.questions(NAME_STYLES[0]).filter((q) => territorios.includes(q.territorio)) : [];
 }
 
+/**
+ * Cuántas preguntas tendrá una partida de este número de preguntas, si hay `hay` preguntas distintas:
+ * las elegidas, o menos si no hay tantas. Sin límite: las que hay (una vuelta a la baraja).
+ * Sirve para las dos secciones.
+ */
+export const sizeFor = (length: RoundLength, hay: number) => (length === "sinLimite" ? hay : Math.min(length, hay));
+
+/** Si se puede elegir este número de preguntas habiendo `hay`: 10 y sin límite, siempre; 25, 50 y 100, si hay al menos esas. */
+export const fitsFor = (length: RoundLength, hay: number) => length === "sinLimite" || length === ROUND_LENGTH || hay >= length;
+
 /** Cuántas preguntas distintas hay con esta selección de categorías y territorios. */
 export function questionCount(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS): number {
   return new Set(categories.flatMap((id) => questionsIn(id, territorios)).map((q) => q.id)).size;
@@ -60,8 +70,7 @@ export function questionCount(categories: string[], territorios: Territorio[] = 
  * Sin límite: las que hay, que es lo que dura una vuelta a la baraja.
  */
 export function roundSize(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, length: RoundLength = ROUND_LENGTH): number {
-  const n = questionCount(categories, territorios);
-  return length === "sinLimite" ? n : Math.min(length, n);
+  return sizeFor(length, questionCount(categories, territorios));
 }
 
 /**
@@ -69,7 +78,7 @@ export function roundSize(categories: string[], territorios: Territorio[] = DEFA
  * (si hay menos de 10, la partida tiene las que haya); 25, 50 y 100, solo si hay al menos esas.
  */
 export const lengthFits = (length: RoundLength, categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS) =>
-  length === "sinLimite" || length === ROUND_LENGTH || questionCount(categories, territorios) >= length;
+  fitsFor(length, questionCount(categories, territorios));
 
 type Picked = Question & { category: string; style: NameStyle; answer: string; answerKey: string };
 

@@ -1,10 +1,10 @@
-import type { RoundQuestion } from "./types";
+import type { PreguntaJugable } from "./types";
 import { ROUND_LENGTH } from "./round";
 
 // Lógica de una partida, sin nada de interfaz: la pantalla solo pregunta y dibuja.
 
 export interface Miss {
-  question: RoundQuestion;
+  question: PreguntaJugable;
   /** Lo que respondió el jugador, o null si se acabó el tiempo sin responder. */
   given: string | null;
 }
@@ -32,7 +32,7 @@ export interface GameResult {
 }
 
 export class GameSession {
-  private list: RoundQuestion[];
+  private list: PreguntaJugable[];
   /** Repaso de fallos: se juega igual pero no cuenta para récords. */
   readonly review: boolean;
   /**
@@ -56,7 +56,7 @@ export class GameSession {
   private missList: Miss[] = [];
   private stopped = false;
 
-  constructor(questions: RoundQuestion[], options: { review?: boolean; expected?: number; unlimited?: boolean } = {}) {
+  constructor(questions: PreguntaJugable[], options: { review?: boolean; expected?: number; unlimited?: boolean } = {}) {
     if (!questions.length) throw new Error("Una partida necesita al menos una pregunta");
     this.list = [...questions];
     this.review = options.review ?? false;
@@ -65,10 +65,10 @@ export class GameSession {
     this.expected = options.expected ?? (this.unlimited ? questions.length : ROUND_LENGTH);
   }
 
-  get questions(): readonly RoundQuestion[] { return this.list; }
+  get questions(): readonly PreguntaJugable[] { return this.list; }
   get index() { return this.i; }
   get total() { return this.questions.length; }
-  get current(): RoundQuestion { return this.questions[this.i]; }
+  get current(): PreguntaJugable { return this.questions[this.i]; }
   get hits() { return this.hitCount; }
   get streak() { return this.streakCount; }
   /** Resultado de cada pregunta ya respondida (true = acierto). */
@@ -116,7 +116,7 @@ export class GameSession {
   }
 
   /** Sin límite: añade otra vuelta a la baraja al final, para seguir jugando. */
-  append(more: RoundQuestion[]): void {
+  append(more: PreguntaJugable[]): void {
     if (!this.unlimited) throw new Error("Solo una partida sin límite puede seguir");
     if (this.stopped) throw new Error("La partida ya está terminada");
     this.list.push(...more);

@@ -1,6 +1,6 @@
 # Aprende sobre España
 
-Juego de preguntas sobre geografía de España. Partidas de 10, 25, 50 o 100 preguntas, o sin límite, con opciones, explicación de cada respuesta y repaso de fallos.
+Juego de preguntas sobre España, con dos secciones: **Geografía** y **Examen de nacionalidad** (práctica de los temas de la prueba CCSE del Instituto Cervantes). Partidas de 10, 25, 50 o 100 preguntas, o sin límite, con opciones, explicación de cada respuesta y repaso de fallos. La primera vez se elige sección; después, el juego vuelve a la última, y desde el inicio se puede cambiar.
 
 Ahora mismo tiene tres categorías, **Capitales**, **Banderas** y **Divisiones** (qué provincias tiene cada comunidad y de qué provincia es cada municipio), y en Opciones se elige el **territorio**: comunidades (las 17 y las 2 ciudades autónomas, Ceuta y Melilla), provincias o las dos. De provincias hay las capitales que no se llaman como su provincia, las banderas de provincia y los municipios. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
 
@@ -36,6 +36,7 @@ src/
     territorio.json        comunidades y provincias, con sus códigos INE
     banderas.json          banderas de las comunidades y de las provincias: archivo, banderas parecidas y explicación
     municipios.json        municipios de cada provincia, con su código INE y su población
+    ccse.json              examen de nacionalidad: tareas y preguntas de práctica, con su nota y sus fuentes
     banderas/comunidades/  una imagen SVG por comunidad o ciudad autónoma
     banderas/provincias/   una imagen SVG por provincia con bandera
     schema/                descripción formal del formato de los JSON (se valida en los tests)
@@ -44,15 +45,18 @@ src/
     questions.ts           genera las preguntas a partir de los datos
     categories.ts          lista de categorías
     options.ts             genera las opciones de cada pregunta
-    round.ts               elige las preguntas de una partida
+    round.ts               elige las preguntas de una partida (geografía)
+    ccse.ts                examen de nacionalidad: preguntas y partidas
     game.ts                desarrollo de la partida: respuestas, aciertos, racha, final y récords
     countdown.ts           cuenta atrás de cada pregunta (arrancar, pausar, cuánto queda)
     storage.ts             ajustes y récords guardados en el dispositivo
   ui/                      ← INTERFAZ (solo dibuja y llama al motor)
     app.ts                 arranca el juego y decide qué pantalla se ve
-    contexto.ts            lo que comparten las pantallas (opciones guardadas, cambiar de pantalla)
-    inicio.ts              pantalla de inicio
-    opciones.ts            pantalla de Opciones
+    contexto.ts            lo que comparten las pantallas (opciones guardadas, sección, cambiar de pantalla)
+    modos.ts               lo que cambia en la partida según la sección (de dónde salen las preguntas, récords…)
+    inicio.ts              pantalla de inicio (geografía)
+    opciones.ts            pantalla de Opciones (geografía)
+    examen.ts              inicio y Opciones del examen de nacionalidad
     partida.ts             pantalla de la partida (pregunta, nota, fin de la baraja)
     reloj.ts               reloj de cada pregunta en pantalla
     final.ts               pantalla final: resultado, récord y fallos
@@ -119,6 +123,13 @@ Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una
 
   La nota de cada municipio la genera el juego con esos datos: *«Vigo es el municipio más poblado de la provincia de Pontevedra, más incluso que la capital, Pontevedra: 294.489 habitantes (INE, 2025).»* o *«Jaca tiene 14.024 habitantes (INE, 2025) y no está entre los tres municipios más poblados de la provincia de Huesca.»*, y debajo, su curiosidad: *«Es especialmente conocida por ser la primera capital del reino de Aragón…»*. Las trampas son las provincias vecinas (en las islas, Ceuta y Melilla, las otras provincias sin vecinas). Como la respuesta es la provincia, en una partida pueden salir dos municipios de la misma (Vigo y Pontevedra): son preguntas distintas.
 
+- **`ccse.json`**: el examen de nacionalidad. `tareas`: las cinco tareas (temas) de la prueba CCSE, con su número y su nombre. `preguntas`: las de práctica, ordenadas por `referencia`. Cada una lleva:
+  - `id` (`ccse-1001`) y `referencia`: el número de la pregunta del Manual CCSE sobre el mismo dato, para saber qué parte del temario está cubierta. La primera cifra es la tarea.
+  - `pregunta`, `opciones` (tres, entre ellas la `respuesta`) y, si deben salir siempre en el mismo orden (Verdadero y Falso), `ordenFijo`.
+  - `nota`: por qué esa es la respuesta, y `fuentes`: dónde se ha comprobado (texto y enlace), que se muestran debajo de la nota.
+
+  **Las preguntas son propias, no las oficiales.** El Manual CCSE tiene derechos reservados (su aviso legal solo permite verlo y copiarlo para uso personal), así que no se copian sus preguntas: se escriben otras sobre el mismo dato, con otras palabras y otras opciones, y cada nota se comprueba en la Constitución, las leyes (BOE) u otras fuentes que se enlazan. El juego lo dice en el inicio de la sección y en Créditos, y enlaza a la página oficial de la prueba. Si la respuesta que da el manual es distinta (en las elecciones municipales «se vota a alcaldes y concejales»), la nota lo cuenta.
+
   **Actualizar la población cada año.** El INE publica en diciembre las cifras a 1 de enero en [pobmun.zip](https://www.ine.es/pob_xls/pobmun.zip), con un Excel por año. Se descarga con la herramienta de páginas (más abajo) y se ejecuta `python3 scripts/actualizar-poblacion.py pobmun26.xlsx 2026` (necesita `pip install openpyxl`). Solo cambia la población, el puesto, el año y `mismoNombre`, y avisa si algún municipio entra o sale de los tres más poblados o si aparece otro municipio con el mismo nombre.
 
 ### Marcas en los textos
@@ -150,7 +161,9 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 ## Cómo funciona
 
-**Preguntas.** Se generan a partir de los datos (`questions.ts`), una vez por cada forma de los nombres, y se guardan (`generadaUnaVez` en `categories.ts`): como los datos no cambian mientras se juega, contar preguntas en Opciones o preparar una partida usa las ya generadas. Los pools de las opciones (`poolsFor`) se guardan igual. Las listas guardadas están congeladas, para que nadie las cambie sin querer. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
+**Secciones.** Geografía y examen de nacionalidad tienen cada una su inicio, sus Opciones y sus récords (los del examen, con claves que empiezan por `ccse/`), pero la partida, el reloj, el resultado y el repaso de fallos son los mismos. Lo que cambia se lo pregunta la partida al **modo** de la sección actual (`modos.ts`): de dónde salen las preguntas, cuántas son, con qué tiempo se juega y con qué clave se guarda el récord. Las preguntas de las dos secciones se juegan con el mismo formato (`PreguntaJugable`, en `types.ts`). En el examen, las opciones vienen escritas en los datos y se barajan en cada partida; al responder, debajo de la nota salen sus fuentes, con enlace. El resultado se valora con el aprobado de la prueba real como referencia (el 60 %).
+
+**Preguntas.** En geografía se generan a partir de los datos (`questions.ts`), una vez por cada forma de los nombres, y se guardan (`generadaUnaVez` en `categories.ts`): como los datos no cambian mientras se juega, contar preguntas en Opciones o preparar una partida usa las ya generadas. Los pools de las opciones (`poolsFor`) se guardan igual. Las listas guardadas están congeladas, para que nadie las cambie sin querer. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
 
 **Forma de los nombres.** En Opciones se marcan las formas con las que se quiere jugar: oficial, castellano o las dos (por defecto). Si hay varias marcadas, se sortea una en cada pregunta, para aprenderlas todas. Cada pregunta va **entera** en una forma (enunciado, respuesta y opciones), así que nunca se mezclan Gerona y Girona en las mismas opciones. Al responder se muestra la otra forma cuando es distinta: *«Vitoria-Gasteiz · en castellano, Vitoria»*.
 
@@ -233,6 +246,7 @@ El proceso solo arranca si el commit que subes cambia el script (o el workflow).
 - **Datos**: que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen, que no sobran imágenes y que están limpias con SVGO; que en cada provincia están sus tres municipios más poblados y su capital, que los demás llevan curiosidad y que el puesto concuerda con la población.
 - **Preguntas y opciones**, en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
 - **Partidas**: en cientos de partidas al azar, con cada número de preguntas, sin repetir pregunta y bien repartidas; qué números se pueden elegir con cada selección; la partida sin límite (fin de la baraja, otra vuelta, terminar y su récord de racha); con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa; aciertos, racha, fallos (también por tiempo), final y récords.
+- **Examen de nacionalidad** (`ccse.test.ts`): que las preguntas tienen identificador único ligado a su referencia, de su tarea y en orden, que la respuesta es una de las opciones y que cada nota tiene fuentes; que las partidas solo sacan preguntas de las tareas marcadas, sin repetir, con las opciones barajadas; otra vuelta, repaso y clave del récord. Y que se recuerdan la sección y las opciones del examen.
 - **Cuenta atrás** (`countdown.test.ts`): con un reloj de mentira, que no corre hasta arrancarla, que la pausa no pierde tiempo, que no baja de cero y cómo se redondean los segundos.
 
 Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las trampas de una capital de provincia son las capitales y ciudades de las provincias de su campo `trampas`, sin escribir cuáles son. Por eso se puede cambiar una nota, una trampa o una ciudad en los JSON (también desde github.dev) sin tocar los tests: si el cambio rompe una regla (una trampa que no existe, una marca mal escrita…), el test dice dónde.
@@ -245,11 +259,14 @@ Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las tr
 - **Opciones** (`opciones.pantalla.ts`): cómo se anuncian las tarjetas a un lector de pantalla; las flechas en los grupos de opciones (solo en escritorio); los números de preguntas que no caben; que las opciones se guardan.
 - **Reloj** (`reloj.pantalla.ts`): con el reloj del navegador controlado por el test (no hay que esperar de verdad), la cuenta atrás, el fallo por tiempo, la pausa con la pestaña oculta, que no vuelve a correr tras responder, la bandera lenta, el rojo de los últimos segundos y el repaso sin reloj.
 - **Sin límite** (`sin-limite.pantalla.ts`): fin de la baraja, barajar y seguir, terminar y récord de racha.
+- **Examen de nacionalidad** (`examen.pantalla.ts`): la elección de sección la primera vez y que se recuerda; el aviso de que las preguntas no son las oficiales; una partida con su nota y sus fuentes, y su récord aparte del de geografía; las tareas «próximamente» en Opciones.
 - **Diseño** (`diseno.pantalla.ts`): que en preguntas de texto y de bandera las opciones se ven enteras sin bajar y cada pregunta empieza arriba; y qué cabecera sale en cada pantalla.
 
 Se ejecutan también en GitHub en cada PR y antes de publicar: si alguno falla, no se publica, y en la pestaña Actions queda un informe («tests-de-pantalla») con capturas de lo que se veía. Para ejecutarlos en tu ordenador hace falta, una vez, `npx playwright install chromium`.
 
 ## Próximos pasos
+
+- **Examen de nacionalidad**: el resto de preguntas de la Tarea 1 y las de las tareas 2 a 5, y un simulacro como el examen real (25 preguntas repartidas por tareas, 45 minutos en total y «apto» con 15 aciertos).
 
 - **Respuesta abierta**: el jugador escribe la respuesta. Habrá que decidir cómo compararla (sin tildes, mayúsculas, formas oficial y castellana, «Vitoria» y «Vitoria-Gasteiz»…).
 - **Puntuación**: una puntuación aparte del récord de aciertos, con más puntos por responder rápido (el tiempo por pregunta ya está), multiplicadores por racha y más puntos por dificultad y por jugar con más categorías a la vez.
