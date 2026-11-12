@@ -370,11 +370,19 @@
         "Congreso de los Diputados."
       ],
       "respuesta": "a",
-      "nota": "Por eso sus senadores se eligen por provincias (cuatro en cada una, con reglas propias en las islas, Ceuta y Melilla). Además, cada comunidad autónoma designa uno más, y otro por cada millón de habitantes.",
+      "nota": "El Senado es la cámara de representación territorial, como lo define la Constitución. Por eso los senadores se eligen por provincias (cuatro en cada una, con reglas propias en las islas, Ceuta y Melilla), y cada comunidad autónoma designa uno más y otro por cada millón de habitantes.\nLos diputados del Congreso se reparten, en cambio, según la población de cada provincia. La Diputación Permanente es un pequeño grupo de diputados o senadores que se ocupa de lo urgente cuando su cámara no se reúne o está disuelta.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 69",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a69"
+        },
+        {
+          "texto": "Constitución española, art. 68",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a68"
+        },
+        {
+          "texto": "Constitución española, art. 78",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a78"
         }
       ]
     },
@@ -526,11 +534,15 @@
         "a los ministros."
       ],
       "respuesta": "a",
-      "nota": "Representan al pueblo español: hacen las leyes, aprueban los presupuestos y controlan al Gobierno.",
+      "nota": "Las Cortes Generales representan al pueblo español, como dice la Constitución. Hacen las leyes, aprueban los presupuestos y controlan al Gobierno.\nLos diputados y senadores suelen presentarse con un partido, pero no están obligados a seguir sus órdenes. Los ministros forman el Gobierno, al que las Cortes controlan.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 66",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        },
+        {
+          "texto": "Constitución española, art. 67",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a67"
         }
       ]
     },
@@ -545,7 +557,7 @@
         "judicial."
       ],
       "respuesta": "b",
-      "nota": "Juntos forman las Cortes Generales, que hacen las leyes. El poder ejecutivo es el Gobierno, y el judicial, los jueces y tribunales.",
+      "nota": "El Congreso de los Diputados y el Senado constituyen el poder legislativo, porque juntos forman las Cortes Generales, que hacen las leyes.\nEl poder ejecutivo es el Gobierno, y el judicial, los jueces y tribunales.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 66",
@@ -572,11 +584,15 @@
         "Creando una asociación."
       ],
       "respuesta": "a",
-      "nota": "Es la iniciativa legislativa popular. No se puede usar para leyes orgánicas, impuestos, asuntos internacionales ni indultos.",
+      "nota": "Los ciudadanos pueden proponer leyes al Congreso reuniendo 500 000 firmas de electores. Se llama iniciativa legislativa popular, y no se puede usar para leyes orgánicas, impuestos, asuntos internacionales ni indultos.\nEl rey no propone leyes, y crear una asociación no basta, porque la propuesta tiene que llevar esas firmas.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 87.3",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a87"
+        },
+        {
+          "texto": "Ley Orgánica 3/1984, de la iniciativa legislativa popular, arts. 2 y 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1984-7249#asegundo"
         }
       ]
     },
@@ -1089,7 +1105,7 @@
         "500 000."
       ],
       "respuesta": "c",
-      "nota": "Es la iniciativa legislativa popular, y hacen falta al menos 500 000 firmas de electores. No se puede usar para leyes orgánicas, impuestos, asuntos internacionales ni indultos.",
+      "nota": "Para presentar una proposición de ley, los ciudadanos tienen que reunir como mínimo 500 000 firmas de electores. La propuesta se presenta en el Congreso.\nCon menos firmas, como 100 000 o 250 000, no se admite.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 87",
@@ -1158,7 +1174,7 @@
         "a los diputados y senadores."
       ],
       "respuesta": "c",
-      "nota": "Los diputados y senadores forman las Cortes Generales, que hacen las leyes. El presidente y los ministros forman el Gobierno, que es el poder ejecutivo, y los jueces y magistrados, el poder judicial.",
+      "nota": "El poder legislativo corresponde a los diputados y senadores, que forman las Cortes Generales y hacen las leyes.\nEl presidente y los ministros forman el Gobierno, que es el poder ejecutivo, y los jueces y magistrados son el poder judicial.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 66",
@@ -1208,7 +1224,7 @@
         "Senado."
       ],
       "respuesta": "a",
-      "nota": "Las Cortes Generales tienen dos cámaras, el Congreso de los Diputados y el Senado.",
+      "nota": "Cortes Generales es el nombre oficial del parlamento español, el que le da la Constitución.\nEl Congreso de los Diputados y el Senado son sus dos cámaras, así que cada uno es solo una parte.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 66",
@@ -1575,11 +1591,15 @@
         "El Gobierno de España."
       ],
       "respuesta": "a",
-      "nota": "El Gobierno prepara cada año los presupuestos, y el Congreso y el Senado los debaten, los cambian si quieren y los aprueban.",
+      "nota": "Los presupuestos generales del Estado los aprueban las Cortes Generales. El Gobierno los prepara cada año, y el Congreso y el Senado los debaten, los cambian si quieren y los aprueban.\nEl Gobierno no puede aprobarlos él solo, y el Tribunal de Cuentas revisa después cómo se ha gastado el dinero.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 134",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a134"
+        },
+        {
+          "texto": "Constitución española, art. 136",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a136"
         }
       ]
     },
@@ -1617,11 +1637,19 @@
         "el Consejo de Estado."
       ],
       "respuesta": "a",
-      "nota": "Las Cortes Generales tienen dos cámaras, el Congreso de los Diputados y el Senado. Juntas hacen las leyes y controlan al Gobierno.",
+      "nota": "Las Cortes Generales están compuestas por el Senado y el Congreso de los Diputados, que juntos hacen las leyes y controlan al Gobierno.\nEl Tribunal Supremo es el tribunal más alto de España, y el Consejo de Estado, el órgano que aconseja al Gobierno. Ninguno forma parte de las Cortes.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 66",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        },
+        {
+          "texto": "Constitución española, art. 107",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a107"
+        },
+        {
+          "texto": "Constitución española, art. 123",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a123"
         }
       ]
     },
@@ -1636,7 +1664,7 @@
         "El poder judicial."
       ],
       "respuesta": "b",
-      "nota": "Las leyes las aprueban las Cortes Generales, es decir, el Congreso y el Senado, que forman el poder legislativo. El Gobierno puede proponerlas, pero no aprobarlas.",
+      "nota": "Las leyes las elabora el poder legislativo, es decir, las Cortes Generales, formadas por el Congreso y el Senado.\nEl poder ejecutivo, el Gobierno, puede proponerlas, pero no aprobarlas, y el judicial, los jueces, las aplica al juzgar.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 66",
@@ -1645,6 +1673,10 @@
         {
           "texto": "Constitución española, art. 87",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a87"
+        },
+        {
+          "texto": "Constitución española, art. 117",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a117"
         }
       ]
     },
@@ -2194,11 +2226,15 @@
         "Tres."
       ],
       "respuesta": "b",
-      "nota": "El Parlamento español, las Cortes Generales, tiene dos cámaras, el Congreso de los Diputados y el Senado.",
+      "nota": "El Parlamento español, las Cortes Generales, tiene dos cámaras, el Congreso de los Diputados y el Senado.\nNo hay ninguna tercera. Los parlamentos de las comunidades autónomas, en cambio, tienen una sola cámara.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 66",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        },
+        {
+          "texto": "Constitución española, art. 152",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a152"
         }
       ]
     },
@@ -2511,7 +2547,7 @@
         "A los concejales."
       ],
       "respuesta": "a",
-      "nota": "En las elecciones generales se eligen los diputados del Congreso y la mayoría de los senadores. Los demás senadores los designan los parlamentos de las comunidades autónomas.",
+      "nota": "En las elecciones generales se elige a los diputados del Congreso y a la mayoría de los senadores. Los demás senadores los designan los parlamentos de las comunidades autónomas.\nLos eurodiputados se eligen en las elecciones europeas, y los concejales, en las municipales.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 68",
@@ -2534,7 +2570,7 @@
         "400."
       ],
       "respuesta": "b",
-      "nota": "El Congreso tiene 350 diputados, el número que fija la ley electoral. La Constitución permite que tenga entre 300 y 400.",
+      "nota": "El Congreso de los Diputados tiene 350 miembros, el número que fija la ley electoral.\nLa Constitución permite que tenga entre 300 y 400, así que esos son el mínimo y el máximo posibles, no el número real.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 68",
