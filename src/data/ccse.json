@@ -459,7 +459,7 @@
         "Ley de la comunidad."
       ],
       "respuesta": "a",
-      "nota": "Fija, entre otras cosas, el nombre de la comunidad, su territorio, sus instituciones y sus competencias.",
+      "nota": "La ley más importante de cada comunidad autónoma es su Estatuto de Autonomía. Fija, entre otras cosas, el nombre de la comunidad, su territorio, sus instituciones y sus competencias.\n«Normativa autonómica» es el conjunto de todas las normas de una comunidad. Las leyes de cada comunidad las aprueba su parlamento, pero tienen que respetar el Estatuto.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 147",
@@ -631,7 +631,7 @@
         "25."
       ],
       "respuesta": "b",
-      "nota": "Son diecisiete comunidades autónomas. Además, Ceuta y Melilla son ciudades autónomas.",
+      "nota": "En España hay 17 comunidades autónomas.\nAdemás hay dos ciudades autónomas, Ceuta y Melilla, que no cuentan como comunidades. Las provincias son 50.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Organización territorial de España»",
@@ -815,11 +815,15 @@
         "la delegación de gobierno."
       ],
       "respuesta": "b",
-      "nota": "La asamblea legislativa es el parlamento de la comunidad. La eligen los ciudadanos, hace las leyes de la comunidad y elige al presidente.",
+      "nota": "Las instituciones de una comunidad autónoma son el consejo de gobierno, el presidente y la asamblea legislativa, que es el parlamento de la comunidad. La eligen los ciudadanos, hace las leyes de la comunidad y elige al presidente.\nEl ayuntamiento gobierna un municipio, y la Delegación del Gobierno representa en la comunidad al Gobierno de España, no a la comunidad.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 152",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a152"
+        },
+        {
+          "texto": "Constitución española, art. 154",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a154"
         }
       ]
     },
@@ -2110,7 +2114,7 @@
         "estados federales."
       ],
       "respuesta": "b",
-      "nota": "La Constitución reconoce el derecho a la autonomía de las nacionalidades y regiones. Por eso España se divide en diecisiete comunidades autónomas, cada una con su gobierno y su parlamento, además de las ciudades autónomas de Ceuta y Melilla.",
+      "nota": "España está organizada en comunidades autónomas. La Constitución reconoce el derecho a la autonomía de las nacionalidades y regiones, y por eso hay diecisiete comunidades autónomas, cada una con su gobierno y su parlamento, además de las ciudades autónomas de Ceuta y Melilla.\nLos cantones son la división de Suiza, y los estados federados, la de países federales como Alemania o Estados Unidos.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 2",
@@ -2119,6 +2123,14 @@
         {
           "texto": "Constitución española, art. 137",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a137"
+        },
+        {
+          "texto": "Wikipedia, «Cantones de Suiza»",
+          "url": "https://es.wikipedia.org/wiki/Cantones_de_Suiza"
+        },
+        {
+          "texto": "Wikipedia, «Estado federado (Alemania)»",
+          "url": "https://es.wikipedia.org/wiki/Estado_federado_(Alemania)"
         }
       ]
     },
@@ -2194,7 +2206,7 @@
         "El presidente de la Asamblea autonómica."
       ],
       "respuesta": "b",
-      "nota": "El delegado del Gobierno dirige la Administración del Estado en cada comunidad autónoma. La Constitución dice además que el presidente de la comunidad es el representante ordinario del Estado en ella, pero en el examen CCSE la respuesta que se da por buena es «el delegado del Gobierno».",
+      "nota": "El representante del Estado en una comunidad autónoma es el delegado del Gobierno. Representa allí al Gobierno de España y dirige la Administración del Estado en la comunidad.\nEl presidente de la comunidad dirige el gobierno de la comunidad. La Constitución le da también un papel de representante del Estado, que la ley llama «representación ordinaria», pero la Administración del Estado en la comunidad la dirige el delegado. El presidente de la asamblea autonómica dirige el parlamento de la comunidad.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 154",
@@ -2203,6 +2215,10 @@
         {
           "texto": "Constitución española, art. 152",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a152"
+        },
+        {
+          "texto": "Ley 40/2015, de Régimen Jurídico del Sector Público, art. 72",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10566#a72"
         }
       ]
     },
@@ -2217,7 +2233,7 @@
         "55."
       ],
       "respuesta": "b",
-      "nota": "España tiene cincuenta provincias, repartidas entre diecisiete comunidades autónomas. Ceuta y Melilla no son provincias, sino ciudades autónomas.",
+      "nota": "En España hay 50 provincias, repartidas entre las 17 comunidades autónomas.\nCeuta y Melilla no son provincias, sino ciudades autónomas, y por eso no entran en la cuenta.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Provincia (España)»",
@@ -2412,11 +2428,15 @@
         "El presidente y los consejeros."
       ],
       "respuesta": "c",
-      "nota": "El gobierno de cada comunidad lo forman su presidente y los consejeros, que se ocupan cada uno de un área, como los ministros en el Gobierno de España. Ministros solo hay en el Gobierno de España.",
+      "nota": "El gobierno de cada comunidad autónoma lo forman su presidente y los consejeros, que se ocupan cada uno de un área, como los ministros en el Gobierno de España.\nMinistros solo hay en el Gobierno de España, y el alcalde y los concejales forman el ayuntamiento de cada municipio.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 152",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a152"
+        },
+        {
+          "texto": "Constitución española, art. 140",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a140"
         }
       ]
     },
