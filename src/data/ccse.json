@@ -148,11 +148,19 @@
         "en toda la península ibérica."
       ],
       "respuesta": "a",
-      "nota": "El castellano es la lengua oficial de todo el Estado, y todos los españoles tienen el deber de conocerla. Las demás lenguas españolas son también oficiales en sus comunidades autónomas, según sus Estatutos.",
+      "nota": "El castellano o español es lengua oficial en toda España, y todos los españoles tienen el deber de conocerla. Las demás lenguas españolas son también oficiales en sus comunidades autónomas, según sus Estatutos.\nDonde hay otras lenguas, el castellano es oficial junto a ellas. En la península ibérica están también Portugal, donde la lengua oficial es el portugués, y Andorra, donde es el catalán.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 3",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a3"
+        },
+        {
+          "texto": "Wikipedia, «Portugal»",
+          "url": "https://es.wikipedia.org/wiki/Portugal"
+        },
+        {
+          "texto": "Wikipedia, «Andorra»",
+          "url": "https://es.wikipedia.org/wiki/Andorra"
         }
       ]
     },
@@ -758,7 +766,7 @@
         "El euskera."
       ],
       "respuesta": "c",
-      "nota": "El euskera es lengua oficial en el País Vasco, junto al castellano. El bable (asturiano) y el aragonés están protegidos en sus comunidades, pero no son lenguas oficiales.",
+      "nota": "El euskera es lengua oficial en el País Vasco, junto al castellano.\nEl bable, o asturiano, y el aragonés están protegidos en Asturias y en Aragón, pero no son lenguas oficiales.",
       "fuentes": [
         {
           "texto": "Estatuto de Autonomía del País Vasco, art. 6",
@@ -785,7 +793,7 @@
         "local del Estado."
       ],
       "respuesta": "b",
-      "nota": "La Constitución dice que el castellano es la lengua oficial del Estado y que todos los españoles tienen el deber de conocerla y el derecho a usarla.",
+      "nota": "Todos los españoles tienen el deber de conocer la lengua oficial del Estado, el castellano, y también el derecho a usarla, como dice la Constitución.\n«Lengua autonómica del Estado» y «lengua local del Estado» no existen. Las otras lenguas españolas son oficiales en sus comunidades, pero conocerlas no es un deber de todos los españoles.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 3",
@@ -804,11 +812,15 @@
         "Aragón."
       ],
       "respuesta": "a",
-      "nota": "El aranés es la forma del occitano propia de Arán, y el Estatuto de Cataluña lo hace oficial en toda Cataluña.",
+      "nota": "El aranés se habla en Arán, en el Pirineo catalán. Es la forma del occitano propia de Arán, y el Estatuto de Cataluña lo hace oficial en toda Cataluña.\nEn La Rioja no hay lengua cooficial. En Aragón, el aragonés y el catalán que se habla allí están protegidos, pero no son oficiales.",
       "fuentes": [
         {
           "texto": "Estatuto de Autonomía de Cataluña, art. 6.5",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-13087"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Aragón, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8444#a7"
         }
       ]
     },
@@ -846,7 +858,7 @@
         "El murciano."
       ],
       "respuesta": "a",
-      "nota": "El gallego es oficial en Galicia, junto al castellano. El aragonés está protegido por el Estatuto de Aragón, pero no es lengua oficial, y el murciano es una forma de hablar el castellano.",
+      "nota": "El gallego es lengua cooficial en Galicia, junto al castellano.\nEl aragonés está protegido por el Estatuto de Aragón, pero no es lengua oficial, y el murciano es una forma de hablar el castellano.",
       "fuentes": [
         {
           "texto": "Estatuto de Autonomía de Galicia, art. 5",
@@ -873,11 +885,19 @@
         "El Instituto Cervantes."
       ],
       "respuesta": "c",
-      "nota": "Lo creó una ley de 1991. La Real Academia Española, en cambio, se ocupa de las normas del idioma: diccionario, gramática y ortografía.",
+      "nota": "El Instituto Cervantes promueve la enseñanza del español y difunde la cultura en español por todo el mundo. Lo creó una ley de 1991.\nEl Instituto Nacional de Administración Pública forma a los funcionarios, y el Instituto Nacional de Estadística elabora las estadísticas oficiales, como las cifras de población.",
       "fuentes": [
         {
           "texto": "Ley 7/1991, por la que se crea el Instituto Cervantes, art. 3",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-7354"
+        },
+        {
+          "texto": "Wikipedia, «Instituto Nacional de Administración Pública (España)»",
+          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Administración_Pública_(España)"
+        },
+        {
+          "texto": "Wikipedia, «Instituto Nacional de Estadística (España)»",
+          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Estadística_(España)"
         }
       ]
     },
@@ -892,7 +912,7 @@
         "La Real Academia Española."
       ],
       "respuesta": "c",
-      "nota": "Aquí «normalización» quiere decir fijar la norma del idioma. Lo hace la Real Academia Española, con las demás academias del español, con el diccionario, la gramática y la ortografía. El Institut Ramon Llull y el Instituto Cervantes se dedican, en cambio, a dar a conocer fuera el catalán y el español.",
+      "nota": "La normalización lingüística es tarea de la Real Academia Española, junto con las demás academias del español. Aquí «normalización» quiere decir fijar la norma del idioma, con el diccionario, la gramática y la ortografía.\nEl Institut Ramon Llull y el Instituto Cervantes se dedican, en cambio, a dar a conocer fuera el catalán y el español.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Real Academia Española»",
@@ -1391,11 +1411,19 @@
         "Euskera."
       ],
       "respuesta": "b",
-      "nota": "El catalán es lengua oficial en las Islas Baleares, junto al castellano, y su Estatuto lo llama la lengua propia de las islas.",
+      "nota": "En las Islas Baleares, la lengua cooficial es el catalán, que su Estatuto llama la lengua propia de las islas.\nEl gallego es oficial en Galicia, y el euskera, en el País Vasco.",
       "fuentes": [
         {
           "texto": "Estatuto de Autonomía de las Illes Balears, art. 4",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-4233#a4"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Galicia, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-9564"
+        },
+        {
+          "texto": "Estatuto de Autonomía del País Vasco, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1979-30177#a6"
         }
       ]
     },
@@ -1552,7 +1580,7 @@
         "gallego y la cultura galaica."
       ],
       "respuesta": "a",
-      "nota": "Se creó en 2007 y depende del Gobierno Vasco. Da a conocer fuera la lengua y la cultura vascas, como hace el Instituto Cervantes con el español.",
+      "nota": "El Instituto Etxepare difunde por el mundo el euskera y la cultura vasca, como hace el Instituto Cervantes con el español. Se creó en 2007 y depende del Gobierno Vasco.\nEl bable es la lengua de Asturias, no de Cantabria, y el gallego se habla en Galicia.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Etxepare Euskal Institutua»",
@@ -2260,7 +2288,7 @@
         "de la provincia."
       ],
       "respuesta": "b",
-      "nota": "La Constitución permite a las comunidades autónomas fomentar la enseñanza de su lengua, y cada lengua cooficial lo es según el Estatuto de su comunidad. Por eso su enseñanza la organiza cada comunidad.",
+      "nota": "La enseñanza de las lenguas cooficiales es competencia de la comunidad autónoma. La Constitución les permite fomentar la enseñanza de su lengua, y cada lengua cooficial lo es según el Estatuto de su comunidad.\nEl Estado no la organiza, aunque sí fija las normas básicas de toda la educación. Las diputaciones provinciales se ocupan sobre todo de ayudar a los municipios.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 3",
@@ -2269,6 +2297,14 @@
         {
           "texto": "Constitución española, art. 148",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a148"
+        },
+        {
+          "texto": "Constitución española, art. 149",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a149"
+        },
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, art. 36",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a36"
         }
       ]
     },
@@ -2532,7 +2568,7 @@
         "leonés."
       ],
       "respuesta": "b",
-      "nota": "La Constitución lo llama castellano, y los dos nombres son correctos. El aragonés y el leonés son otras lenguas de la península.",
+      "nota": "El idioma español también se llama castellano, que es el nombre que usa la Constitución. Los dos nombres son correctos.\nEl aragonés y el leonés son otras lenguas nacidas del latín en la península. El aragonés se habla en el norte de Aragón, y el leonés, en zonas de León y Zamora, y en Asturias, donde se llama bable o asturiano.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 3",
@@ -2541,6 +2577,14 @@
         {
           "texto": "Wikipedia, «Idioma español»",
           "url": "https://es.wikipedia.org/wiki/Idioma_español"
+        },
+        {
+          "texto": "Wikipedia, «Idioma aragonés»",
+          "url": "https://es.wikipedia.org/wiki/Idioma_aragonés"
+        },
+        {
+          "texto": "Wikipedia, «Idioma asturleonés»",
+          "url": "https://es.wikipedia.org/wiki/Idioma_asturleonés"
         }
       ]
     },
