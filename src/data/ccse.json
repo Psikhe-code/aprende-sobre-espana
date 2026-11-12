@@ -56,8 +56,17 @@
         "Ordenamiento esencial."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Es la norma más importante del país, y todas las demás leyes tienen que respetarla. Si una ley va contra la Constitución, el Tribunal Constitucional puede anularla.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a9"
+        },
+        {
+          "texto": "Constitución española, art. 161",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a161"
+        }
+      ]
     },
     {
       "id": "ccse-1003",
@@ -89,8 +98,17 @@
         "una ONG."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Es un organismo del Gobierno de España que depende del Ministerio de Igualdad y trabaja por la igualdad entre mujeres y hombres. Hasta 2020 se llamaba Instituto de la Mujer.",
+      "fuentes": [
+        {
+          "texto": "Instituto de las Mujeres",
+          "url": "https://www.inmujeres.gob.es/"
+        },
+        {
+          "texto": "Wikipedia, «Instituto de las Mujeres»",
+          "url": "https://es.wikipedia.org/wiki/Instituto_de_las_Mujeres"
+        }
+      ]
     },
     {
       "id": "ccse-1005",
@@ -103,8 +121,13 @@
         "De lunes a viernes."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La sede electrónica es la web oficial de cada Administración para hacer trámites. Su registro está abierto todos los días del año, las 24 horas.",
+      "fuentes": [
+        {
+          "texto": "Ley 39/2015, del Procedimiento Administrativo Común, art. 31",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565#a31"
+        }
+      ]
     },
     {
       "id": "ccse-1006",
@@ -117,8 +140,13 @@
         "en toda la península ibérica."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El castellano es la lengua oficial de todo el Estado, y todos los españoles tienen el deber de conocerla. Las demás lenguas españolas son también oficiales en sus comunidades autónomas, según sus Estatutos.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a3"
+        }
+      ]
     },
     {
       "id": "ccse-1007",
@@ -131,8 +159,13 @@
         "Policía Foral de Navarra."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Es la policía propia de Navarra. Otras comunidades también tienen la suya, como el País Vasco (la Ertzaintza) o Cataluña (los Mossos d'Esquadra). La Guardia Civil y la Policía Nacional dependen del Gobierno de España, y la policía local, de cada ayuntamiento.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, arts. 2 y 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#asegundo"
+        }
+      ]
     },
     {
       "id": "ccse-1008",
@@ -145,8 +178,17 @@
         "Los Mossos d'Esquadra."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Desde 2015 se llama simplemente Policía Nacional. Ella y la Guardia Civil trabajan en toda España y dependen del Ministerio del Interior. La Policía Foral es la policía de Navarra, y los Mossos d'Esquadra, la de Cataluña.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, art. 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#anoveno"
+        },
+        {
+          "texto": "Ley Orgánica 9/2015, de Régimen de Personal de la Policía Nacional",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-8468"
+        }
+      ]
     },
     {
       "id": "ccse-1009",
@@ -186,8 +228,17 @@
         "solo en actos del Gobierno español."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La ley manda que la bandera de España ondee en el exterior de todos los edificios públicos y ocupe el lugar preferente en el interior. Si la comunidad autónoma o el ayuntamiento tienen bandera propia, se pone junto a ella.",
+      "fuentes": [
+        {
+          "texto": "Ley 39/1981, sobre el uso de la bandera de España, arts. 3 a 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-26082#atercero"
+        },
+        {
+          "texto": "Constitución española, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a4"
+        }
+      ]
     },
     {
       "id": "ccse-1011",
@@ -219,8 +270,21 @@
         "los ayuntamientos."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Estado fija las normas básicas de la sanidad y la coordina, pero los hospitales y centros de salud los gestiona cada comunidad autónoma. En Ceuta y Melilla los gestiona el Estado, a través del INGESA.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 148",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a148"
+        },
+        {
+          "texto": "Constitución española, art. 149",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a149"
+        },
+        {
+          "texto": "Wikipedia, «Instituto Nacional de Gestión Sanitaria»",
+          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Gestión_Sanitaria"
+        }
+      ]
     },
     {
       "id": "ccse-1013",
@@ -279,8 +343,17 @@
         "El director de la Real Academia Española."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución dice que el rey arbitra y modera el funcionamiento de las instituciones. No gobierna, porque eso le corresponde al Gobierno.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 56",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a56"
+        },
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        }
+      ]
     },
     {
       "id": "ccse-1016",
@@ -312,8 +385,13 @@
         "Una firma en papel."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Para hacer trámites por internet hay que identificarse, y a veces firmar, con un sistema electrónico, como el certificado digital, el DNI electrónico o Cl@ve.",
+      "fuentes": [
+        {
+          "texto": "Ley 39/2015, del Procedimiento Administrativo Común, arts. 9 y 10",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565#a9"
+        }
+      ]
     },
     {
       "id": "ccse-1018",
@@ -364,8 +442,13 @@
         "Ministerio de Igualdad."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los ayuntamientos se ocupan de las instalaciones deportivas, como polideportivos y piscinas municipales, y de los equipamientos culturales, como bibliotecas y casas de cultura.",
+      "fuentes": [
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, arts. 25 y 26",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a25"
+        }
+      ]
     },
     {
       "id": "ccse-1021",
@@ -378,8 +461,13 @@
         "Las Cortes Generales."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Dirigir la Administración militar y la defensa del Estado es tarea del Gobierno, a través del Ministerio de Defensa. Las Cortes hacen las leyes y controlan al Gobierno, y los ayuntamientos se ocupan de los asuntos de cada municipio.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        }
+      ]
     },
     {
       "id": "ccse-1022",
@@ -415,8 +503,13 @@
         "Zaragoza."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Barcelona es la segunda ciudad de España, con más de 1,7 millones de habitantes. Solo la supera Madrid. Zaragoza y Sevilla, cuarta y quinta, tienen unos 690 000 cada una.",
+      "fuentes": [
+        {
+          "texto": "INE, cifras oficiales de población de los municipios, 2025",
+          "url": "https://www.ine.es/pob_xls/pobmun.zip"
+        }
+      ]
     },
     {
       "id": "ccse-1024",
@@ -448,8 +541,21 @@
         "judicial."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Juntos forman las Cortes Generales, que hacen las leyes. El poder ejecutivo es el Gobierno, y el judicial, los jueces y tribunales.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        },
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        },
+        {
+          "texto": "Constitución española, art. 117",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a117"
+        }
+      ]
     },
     {
       "id": "ccse-1026",
@@ -481,8 +587,13 @@
         "25."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Son diecisiete comunidades autónomas. Además, Ceuta y Melilla son ciudades autónomas.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Organización territorial de España»",
+          "url": "https://es.wikipedia.org/wiki/Organización_territorial_de_España"
+        }
+      ]
     },
     {
       "id": "ccse-1028",
@@ -514,8 +625,17 @@
         "En Sevilla."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución dice que la capital del Estado es Madrid. Allí están el Palacio de la Moncloa, sede de la Presidencia del Gobierno, y las Cortes Generales.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a5"
+        },
+        {
+          "texto": "Wikipedia, «Palacio de la Moncloa»",
+          "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Moncloa"
+        }
+      ]
     },
     {
       "id": "ccse-1030",
@@ -528,8 +648,13 @@
         "la Comisión de Europa."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La creó el Consejo de Europa en 1955, y las Comunidades Europeas, hoy la Unión Europea, la adoptaron en 1985. Sus doce estrellas no son los países, sino un símbolo de unidad.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Bandera de Europa»",
+          "url": "https://es.wikipedia.org/wiki/Bandera_de_Europa"
+        }
+      ]
     },
     {
       "id": "ccse-1031",
@@ -542,8 +667,13 @@
         "diputados y senadores."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "En realidad, se vota a las listas de concejales de cada partido. Después, los concejales eligen al alcalde entre los que encabezan las listas, y si ninguno logra la mayoría absoluta, es alcalde el cabeza de la lista más votada.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 196",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientonoventayseis"
+        }
+      ]
     },
     {
       "id": "ccse-1032",
@@ -556,8 +686,21 @@
         "El euskera."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El euskera es lengua oficial en el País Vasco, junto al castellano. El bable (asturiano) y el aragonés están protegidos en sus comunidades, pero no son lenguas oficiales.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía del País Vasco, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1979-30177#a6"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Asturias, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-634"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Aragón, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8444#a7"
+        }
+      ]
     },
     {
       "id": "ccse-1033",
@@ -570,8 +713,13 @@
         "local del Estado."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución dice que el castellano es la lengua oficial del Estado y que todos los españoles tienen el deber de conocerla y el derecho a usarla.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a3"
+        }
+      ]
     },
     {
       "id": "ccse-1034",
@@ -603,8 +751,13 @@
         "la delegación de gobierno."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La asamblea legislativa es el parlamento de la comunidad. La eligen los ciudadanos, hace las leyes de la comunidad y elige al presidente.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 152",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a152"
+        }
+      ]
     },
     {
       "id": "ccse-1036",
@@ -617,8 +770,21 @@
         "El murciano."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El gallego es oficial en Galicia, junto al castellano. El aragonés está protegido por el Estatuto de Aragón, pero no es lengua oficial, y el murciano es una forma de hablar el castellano.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de Galicia, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-9564"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Aragón, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8444#a7"
+        },
+        {
+          "texto": "Wikipedia, «Dialecto murciano»",
+          "url": "https://es.wikipedia.org/wiki/Dialecto_murciano"
+        }
+      ]
     },
     {
       "id": "ccse-1037",
@@ -650,8 +816,17 @@
         "La Real Academia Española."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Aquí «normalización» quiere decir fijar la norma del idioma. Lo hace la Real Academia Española, con las demás academias del español, con el diccionario, la gramática y la ortografía. El Institut Ramon Llull y el Instituto Cervantes se dedican, en cambio, a dar a conocer fuera el catalán y el español.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Real Academia Española»",
+          "url": "https://es.wikipedia.org/wiki/Real_Academia_Española"
+        },
+        {
+          "texto": "Wikipedia, «Instituto Ramon Llull»",
+          "url": "https://es.wikipedia.org/wiki/Instituto_Ramon_Llull"
+        }
+      ]
     },
     {
       "id": "ccse-1039",
@@ -664,8 +839,17 @@
         "En el Palacio de la Moncloa."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Palacio de la Moncloa, en Madrid, es la residencia oficial del presidente del Gobierno y la sede de la Presidencia desde 1977. El rey vive en el Palacio de la Zarzuela.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Palacio de la Moncloa»",
+          "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Moncloa"
+        },
+        {
+          "texto": "Wikipedia, «Palacio de la Zarzuela»",
+          "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Zarzuela"
+        }
+      ]
     },
     {
       "id": "ccse-1040",
@@ -678,8 +862,21 @@
         "El Ejército del Aire."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las Fuerzas Armadas son el Ejército de Tierra, la Armada y el Ejército del Aire, que desde 2022 se llama Ejército del Aire y del Espacio. La Guardia Civil es un cuerpo de seguridad, aunque de naturaleza militar.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 5/2005, de la Defensa Nacional, art. 10",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2005-18933#a10"
+        },
+        {
+          "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, art. 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#anoveno"
+        },
+        {
+          "texto": "Wikipedia, «Ejército del Aire y del Espacio (España)»",
+          "url": "https://es.wikipedia.org/wiki/Ejército_del_Aire_y_del_Espacio_(España)"
+        }
+      ]
     },
     {
       "id": "ccse-1041",
@@ -692,8 +889,17 @@
         "Los alcaldes."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Gobierno lo forman el presidente, los vicepresidentes, si los hay, y los ministros. Los alcaldes y los concejales forman los ayuntamientos.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 98",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a98"
+        },
+        {
+          "texto": "Constitución española, art. 140",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a140"
+        }
+      ]
     },
     {
       "id": "ccse-1042",
@@ -706,8 +912,17 @@
         "estado confederado."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Lo dice el primer artículo de la Constitución. «Social» quiere decir que el Estado procura el bienestar de todos, y «de Derecho», que todos, también los gobernantes, tienen que cumplir las leyes.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a1"
+        },
+        {
+          "texto": "Constitución española, art. 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a9"
+        }
+      ]
     },
     {
       "id": "ccse-1043",
@@ -720,8 +935,17 @@
         "UE."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "PP son las siglas del Partido Popular. PIB es el producto interior bruto, lo que produce un país en un año, y UE, la Unión Europea.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Partido Popular»",
+          "url": "https://es.wikipedia.org/wiki/Partido_Popular"
+        },
+        {
+          "texto": "Wikipedia, «Producto interno bruto»",
+          "url": "https://es.wikipedia.org/wiki/Producto_interno_bruto"
+        }
+      ]
     },
     {
       "id": "ccse-1044",
@@ -734,8 +958,17 @@
         "Duquesa de Alba."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El heredero del trono lleva el título de príncipe o princesa de Asturias, como lo llevó antes el rey Felipe VI. Hoy es la princesa Leonor.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 57",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a57"
+        },
+        {
+          "texto": "Wikipedia, «Leonor de Borbón»",
+          "url": "https://es.wikipedia.org/wiki/Leonor_de_Borbón"
+        }
+      ]
     },
     {
       "id": "ccse-1045",
@@ -748,8 +981,13 @@
         "Con Juan Carlos I."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Juan Carlos I fue proclamado rey en noviembre de 1975, tras la muerte de Franco, y la Transición hacia la democracia se hizo durante su reinado. Reinó hasta 2014, cuando abdicó en su hijo, Felipe VI.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Juan Carlos I de España»",
+          "url": "https://es.wikipedia.org/wiki/Juan_Carlos_I_de_España"
+        }
+      ]
     },
     {
       "id": "ccse-1046",
@@ -762,8 +1000,17 @@
         "En 2001."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las Cortes la aprobaron el 31 de octubre de 1978, y los españoles la votaron en referéndum el 6 de diciembre, que hoy es el Día de la Constitución.",
+      "fuentes": [
+        {
+          "texto": "Constitución española (BOE, 29 de diciembre de 1978)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229"
+        },
+        {
+          "texto": "Wikipedia, «Día de la Constitución (España)»",
+          "url": "https://es.wikipedia.org/wiki/Día_de_la_Constitución_(España)"
+        }
+      ]
     },
     {
       "id": "ccse-1047",
@@ -776,8 +1023,13 @@
         "Las que tienen una lengua cooficial."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Todas las comunidades autónomas tienen bandera propia, que fija su Estatuto, y también Ceuta y Melilla. En los edificios públicos se ponen junto a la bandera de España.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a4"
+        }
+      ]
     },
     {
       "id": "ccse-1048",
@@ -790,8 +1042,17 @@
         "El Defensor del Pueblo."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Defensor del Pueblo defiende los derechos de las personas frente a las administraciones públicas. Lo eligen las Cortes Generales, y presentar una queja es gratis.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 54",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a54"
+        },
+        {
+          "texto": "Ley Orgánica 3/1981, del Defensor del Pueblo, art. 15",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-10325#aquince"
+        }
+      ]
     },
     {
       "id": "ccse-1049",
@@ -804,8 +1065,17 @@
         "500 000."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Es la iniciativa legislativa popular, y hacen falta al menos 500 000 firmas de electores. No se puede usar para leyes orgánicas, impuestos, asuntos internacionales ni indultos.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 87",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a87"
+        },
+        {
+          "texto": "Ley Orgánica 3/1984, de la iniciativa legislativa popular, arts. 2 y 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1984-7249#asegundo"
+        }
+      ]
     },
     {
       "id": "ccse-1050",
@@ -818,8 +1088,21 @@
         "Unión Económica Euroasiática (UEE)."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "España entró en el Fondo Monetario Internacional en 1958. Las otras dos organizaciones reúnen a países que formaron parte de la Unión Soviética.",
+      "fuentes": [
+        {
+          "texto": "Banco de España, «España en el FMI y el Banco Mundial: cincuenta años de relación» (2008)",
+          "url": "https://repositorio.bde.es/bitstream/123456789/22235/1/IIPP-2008-033.pdf"
+        },
+        {
+          "texto": "Wikipedia, «Comunidad de Estados Independientes»",
+          "url": "https://es.wikipedia.org/wiki/Comunidad_de_Estados_Independientes"
+        },
+        {
+          "texto": "Wikipedia, «Unión Económica Euroasiática»",
+          "url": "https://es.wikipedia.org/wiki/Unión_Económica_Euroasiática"
+        }
+      ]
     },
     {
       "id": "ccse-1051",
@@ -832,8 +1115,13 @@
         "local."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Administración local la forman los municipios, las provincias y, en Baleares y Canarias, las islas. Los gobiernan, respectivamente, el ayuntamiento, la diputación y el consejo insular o el cabildo.",
+      "fuentes": [
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a3"
+        }
+      ]
     },
     {
       "id": "ccse-1052",
@@ -846,8 +1134,21 @@
         "a los diputados y senadores."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los diputados y senadores forman las Cortes Generales, que hacen las leyes. El presidente y los ministros forman el Gobierno, que es el poder ejecutivo, y los jueces y magistrados, el poder judicial.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        },
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        },
+        {
+          "texto": "Constitución española, art. 117",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a117"
+        }
+      ]
     },
     {
       "id": "ccse-1053",
@@ -860,8 +1161,17 @@
         "En el Palacio de la Moncloa."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Palacio de la Zarzuela, en las afueras de Madrid, es la residencia de la familia real. El Palacio de la Moncloa es la del presidente del Gobierno, y el de La Moneda está en Chile, donde es la sede de su presidente.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Palacio de la Zarzuela»",
+          "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Zarzuela"
+        },
+        {
+          "texto": "Wikipedia, «Palacio de La Moneda»",
+          "url": "https://es.wikipedia.org/wiki/Palacio_de_La_Moneda"
+        }
+      ]
     },
     {
       "id": "ccse-1054",
@@ -874,8 +1184,13 @@
         "Senado."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las Cortes Generales tienen dos cámaras, el Congreso de los Diputados y el Senado.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        }
+      ]
     },
     {
       "id": "ccse-1055",
@@ -888,8 +1203,21 @@
         "son organismos internacionales."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los tres dependen de un ministerio. El ICEX, que ayuda a las empresas a vender en el extranjero, depende del de Economía; el Instituto de las Mujeres, del de Igualdad, y la Dirección General de Tráfico, del de Interior.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «ICEX España Exportación e Inversiones»",
+          "url": "https://es.wikipedia.org/wiki/ICEX_España_Exportación_e_Inversiones"
+        },
+        {
+          "texto": "Wikipedia, «Instituto de las Mujeres»",
+          "url": "https://es.wikipedia.org/wiki/Instituto_de_las_Mujeres"
+        },
+        {
+          "texto": "Wikipedia, «Dirección General de Tráfico»",
+          "url": "https://es.wikipedia.org/wiki/Dirección_General_de_Tráfico"
+        }
+      ]
     },
     {
       "id": "ccse-1056",
@@ -902,8 +1230,13 @@
         "Tanto los hombres como las mujeres."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución permite reinar a hombres y mujeres, aunque en la sucesión prefiere al hijo varón frente a la hija del mismo grado. La heredera es la princesa Leonor, hija mayor del rey, que no tiene hijos varones.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 57",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a57"
+        }
+      ]
     },
     {
       "id": "ccse-1057",
@@ -916,8 +1249,13 @@
         "el Ministerio de Hacienda."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Tribunal de Cuentas revisa las cuentas del Estado y de todo el sector público. Depende directamente de las Cortes Generales, a las que informa cada año.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 136",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a136"
+        }
+      ]
     },
     {
       "id": "ccse-1058",
@@ -930,8 +1268,13 @@
         "El presidente del Congreso de los Diputados."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "En los actos oficiales en Madrid, después del rey y la familia real va el presidente del Gobierno, y después, el presidente del Congreso. El del Senado va justo detrás.",
+      "fuentes": [
+        {
+          "texto": "Real Decreto 2099/1983, Ordenamiento General de Precedencias en el Estado, art. 10",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1983-21534#art10"
+        }
+      ]
     },
     {
       "id": "ccse-1059",
@@ -944,8 +1287,13 @@
         "Euskera."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El catalán es lengua oficial en las Islas Baleares, junto al castellano, y su Estatuto lo llama la lengua propia de las islas.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de las Illes Balears, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-4233#a4"
+        }
+      ]
     },
     {
       "id": "ccse-1060",
@@ -958,8 +1306,13 @@
         "la fraternidad."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El primer artículo de la Constitución nombra cuatro «valores superiores», que son la libertad, la justicia, la igualdad y el pluralismo político.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a1"
+        }
+      ]
     },
     {
       "id": "ccse-1061",
@@ -972,8 +1325,17 @@
         "Ser revisada por el Parlamento."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Muchas leyes fijan lo principal y dejan los detalles para otras normas, los reglamentos, que aprueba el Gobierno. Además, para entrar en vigor, toda ley tiene que publicarse en el Boletín Oficial del Estado.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        },
+        {
+          "texto": "Código Civil, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763#art2"
+        }
+      ]
     },
     {
       "id": "ccse-1062",
@@ -986,8 +1348,13 @@
         "67 millones."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Según el INE, a mediados de 2026 vivían en España unos 49,8 millones de personas, la cifra más alta de su historia.",
+      "fuentes": [
+        {
+          "texto": "INE, Estadística Continua de Población",
+          "url": "https://www.ine.es/htdocs/prensa/ecp_tabla.htm"
+        }
+      ]
     },
     {
       "id": "ccse-1063",
@@ -1000,8 +1367,13 @@
         "El Tribunal Constitucional."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución lo define como el supremo órgano consultivo del Gobierno, es decir, el que le da su opinión jurídica antes de algunas decisiones. El Parlamento Europeo y el Tribunal Constitucional no aconsejan al Gobierno.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 107",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a107"
+        }
+      ]
     },
     {
       "id": "ccse-1064",
@@ -1014,8 +1386,21 @@
         "El Congreso de los Diputados."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución encarga al Gobierno dirigir la política interior y exterior. El rey representa a España en el extranjero, pero no decide su política, y el Congreso controla al Gobierno.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        },
+        {
+          "texto": "Constitución española, art. 56",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a56"
+        },
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        }
+      ]
     },
     {
       "id": "ccse-1065",
@@ -1028,8 +1413,17 @@
         "las Cortes Generales."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución lo define como un alto comisionado de las Cortes Generales, que lo eligen, para defender los derechos de las personas. Trabaja con independencia y no recibe instrucciones de nadie.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 54",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a54"
+        },
+        {
+          "texto": "Ley Orgánica 3/1981, del Defensor del Pueblo, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-10325#asexto"
+        }
+      ]
     },
     {
       "id": "ccse-1066",
@@ -1042,8 +1436,13 @@
         "gallego y la cultura galaica."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Se creó en 2007 y depende del Gobierno Vasco. Da a conocer fuera la lengua y la cultura vascas, como hace el Instituto Cervantes con el español.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Etxepare Euskal Institutua»",
+          "url": "https://es.wikipedia.org/wiki/Etxepare_Euskal_Institutua"
+        }
+      ]
     },
     {
       "id": "ccse-1067",
@@ -1056,8 +1455,13 @@
         "Albacete."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Málaga es la sexta ciudad más poblada de España, con unos 600 000 habitantes. Albacete tiene unos 175 000, y Cádiz, unos 110 000.",
+      "fuentes": [
+        {
+          "texto": "INE, cifras oficiales de población de los municipios, 2025",
+          "url": "https://www.ine.es/pob_xls/pobmun.zip"
+        }
+      ]
     },
     {
       "id": "ccse-1068",
@@ -1070,8 +1474,13 @@
         "Abogados colegiados."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Cualquier persona puede elegir tratar con la Administración por internet o en persona. Algunos, como las empresas, están obligados a hacerlo por internet.",
+      "fuentes": [
+        {
+          "texto": "Ley 39/2015, del Procedimiento Administrativo Común, art. 14",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565#a14"
+        }
+      ]
     },
     {
       "id": "ccse-1069",
@@ -1084,8 +1493,17 @@
         "Alfonso XIII."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Felipe VI es rey desde 2014, cuando su padre, Juan Carlos I, abdicó. Alfonso XIII, su bisabuelo, reinó hasta 1931.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Felipe VI de España»",
+          "url": "https://es.wikipedia.org/wiki/Felipe_VI_de_España"
+        },
+        {
+          "texto": "Wikipedia, «Alfonso XIII de España»",
+          "url": "https://es.wikipedia.org/wiki/Alfonso_XIII_de_España"
+        }
+      ]
     },
     {
       "id": "ccse-1070",
@@ -1098,8 +1516,17 @@
         "Consejo de Estado."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Consejo General del Poder Judicial gobierna a los jueces y se ocupa de sus nombramientos, ascensos y sanciones. El Tribunal Supremo, en cambio, es el tribunal más alto, el que juzga en última instancia.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 122",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a122"
+        },
+        {
+          "texto": "Constitución española, art. 123",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a123"
+        }
+      ]
     },
     {
       "id": "ccse-1071",
@@ -1112,8 +1539,13 @@
         "El Gobierno de España."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Gobierno prepara cada año los presupuestos, y el Congreso y el Senado los debaten, los cambian si quieren y los aprueban.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 134",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a134"
+        }
+      ]
     },
     {
       "id": "ccse-1072",
@@ -1126,8 +1558,17 @@
         "una ley secundaria."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Está por encima de todas las demás leyes, que tienen que respetarla. Para cambiarla hace falta un procedimiento especial, más exigente que el de las leyes normales.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a9"
+        },
+        {
+          "texto": "Constitución española, art. 167",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a167"
+        }
+      ]
     },
     {
       "id": "ccse-1073",
@@ -1140,8 +1581,13 @@
         "el Consejo de Estado."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las Cortes Generales tienen dos cámaras, el Congreso de los Diputados y el Senado. Juntas hacen las leyes y controlan al Gobierno.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        }
+      ]
     },
     {
       "id": "ccse-1074",
@@ -1154,8 +1600,17 @@
         "El poder judicial."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las leyes las aprueban las Cortes Generales, es decir, el Congreso y el Senado, que forman el poder legislativo. El Gobierno puede proponerlas, pero no aprobarlas.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        },
+        {
+          "texto": "Constitución española, art. 87",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a87"
+        }
+      ]
     },
     {
       "id": "ccse-1075",
@@ -1168,8 +1623,17 @@
         "la Policía Nacional y las policías autonómicas."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución encarga a las Fuerzas Armadas defender la soberanía, la independencia, la integridad territorial y el orden constitucional de España. La seguridad dentro del país es tarea de las policías y la Guardia Civil.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 8",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a8"
+        },
+        {
+          "texto": "Constitución española, art. 104",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a104"
+        }
+      ]
     },
     {
       "id": "ccse-1076",
@@ -1182,8 +1646,17 @@
         "Organización de las Naciones Unidas (ONU)."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "En enero de 1989, siete militares españoles se unieron a una misión de observación de la ONU en Angola. Fue la primera de muchas misiones de paz con cascos azules españoles.",
+      "fuentes": [
+        {
+          "texto": "La Moncloa, Día Internacional del Personal de Paz de la ONU (2019)",
+          "url": "https://www.lamoncloa.gob.es/consejodeministros/Paginas/enlaces/240519-enlacepaz.aspx"
+        },
+        {
+          "texto": "Ministerio de Asuntos Exteriores, «Misiones de paz»",
+          "url": "https://exteriores.gob.es/RepresentacionesPermanentes/onu/es/Areas-tematicas/Paginas/Misiones-de-paz.aspx"
+        }
+      ]
     },
     {
       "id": "ccse-1077",
@@ -1196,8 +1669,13 @@
         "La Policía Nacional."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La ley encarga a la Guardia Civil vigilar costas, fronteras, puertos y aeropuertos, además del tráfico en las carreteras.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, art. 12",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#adoce"
+        }
+      ]
     },
     {
       "id": "ccse-1078",
@@ -1210,8 +1688,13 @@
         "La Policía Nacional."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Policía Nacional controla quién entra y sale de España, y también expide el DNI y el pasaporte. La Guardia Civil vigila las fronteras, pero el control de pasaportes es de la Policía Nacional.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, art. 12",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#adoce"
+        }
+      ]
     },
     {
       "id": "ccse-1079",
@@ -1224,8 +1707,21 @@
         "Yolanda Díaz."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "José María Aznar presidió el Gobierno de 1996 a 2004. Manuel Fraga fue ministro y presidente de la Xunta de Galicia, y Yolanda Díaz ha sido vicepresidenta del Gobierno, pero ninguno de los dos llegó a presidirlo.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «José María Aznar»",
+          "url": "https://es.wikipedia.org/wiki/José_María_Aznar"
+        },
+        {
+          "texto": "Wikipedia, «Manuel Fraga»",
+          "url": "https://es.wikipedia.org/wiki/Manuel_Fraga"
+        },
+        {
+          "texto": "Wikipedia, «Yolanda Díaz»",
+          "url": "https://es.wikipedia.org/wiki/Yolanda_Díaz"
+        }
+      ]
     },
     {
       "id": "ccse-1080",
@@ -1238,8 +1734,13 @@
         "Mossos d'Esquadra."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Policía de la Generalitat-Mossos d'Esquadra es la policía propia de Cataluña. La Ertzaintza es la del País Vasco, y la Guardia Civil trabaja en toda España.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de Cataluña, art. 164",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-13087#a164"
+        }
+      ]
     },
     {
       "id": "ccse-1081",
@@ -1252,8 +1753,13 @@
         "Mossos d'Esquadra."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Ertzaintza es la policía propia del País Vasco. Los Mossos d'Esquadra son la de Cataluña, y la Guardia Civil trabaja en toda España.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Ertzaintza»",
+          "url": "https://es.wikipedia.org/wiki/Ertzaintza"
+        }
+      ]
     },
     {
       "id": "ccse-1082",
@@ -1266,8 +1772,13 @@
         "Desde 2020."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Felipe VI fue proclamado rey el 19 de junio de 2014, después de que abdicara su padre, Juan Carlos I.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Felipe VI de España»",
+          "url": "https://es.wikipedia.org/wiki/Felipe_VI_de_España"
+        }
+      ]
     },
     {
       "id": "ccse-1083",
@@ -1280,8 +1791,13 @@
         "La Policía Local."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La policía local, que depende de cada ayuntamiento, ordena el tráfico dentro de los pueblos y ciudades. Fuera de ellos, en las carreteras, lo vigila la Guardia Civil.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, arts. 12 y 53",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#acincuentaytres"
+        }
+      ]
     },
     {
       "id": "ccse-1084",
@@ -1294,8 +1810,13 @@
         "Todos los ciudadanos, españoles o extranjeros."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Cualquier persona puede dirigirse al Defensor del Pueblo, sin importar su nacionalidad, dónde viva ni su edad. Es gratis y no hace falta abogado.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 3/1981, del Defensor del Pueblo, arts. 10 y 15",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-10325#adiez"
+        }
+      ]
     },
     {
       "id": "ccse-1085",
@@ -1308,8 +1829,17 @@
         "una obligación."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Votar es un derecho, no una obligación, y nadie tiene que votar si no quiere. La Constitución garantiza que el voto sea universal, libre, igual, directo y secreto.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 23",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a23"
+        },
+        {
+          "texto": "Constitución española, art. 68",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a68"
+        }
+      ]
     },
     {
       "id": "ccse-1086",
@@ -1322,8 +1852,13 @@
         "El Ejército de Tierra."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La ley encarga a la Guardia Civil vigilar el tráfico en las carreteras, fuera de los pueblos y ciudades. Dentro de ellos, lo ordena la policía local.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, arts. 12 y 53",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#adoce"
+        }
+      ]
     },
     {
       "id": "ccse-1087",
@@ -1336,8 +1871,17 @@
         "El Consejo Económico y Social."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Agencia Tributaria recauda los impuestos del Estado desde 1992. Muchos trámites con ella, como pagar impuestos, se pueden hacer por internet, en su sede electrónica.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Agencia Estatal de Administración Tributaria»",
+          "url": "https://es.wikipedia.org/wiki/Agencia_Estatal_de_Administración_Tributaria"
+        },
+        {
+          "texto": "Sede electrónica de la Agencia Tributaria",
+          "url": "https://sede.agenciatributaria.gob.es/"
+        }
+      ]
     },
     {
       "id": "ccse-1088",
@@ -1350,8 +1894,17 @@
         "En el Boletín Oficial del Estado (BOE)."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Boletín Oficial del Estado publica las leyes, y una ley no entra en vigor hasta que se publica en él. Hoy se puede consultar gratis en internet.",
+      "fuentes": [
+        {
+          "texto": "Código Civil, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763#art2"
+        },
+        {
+          "texto": "Boletín Oficial del Estado",
+          "url": "https://www.boe.es/"
+        }
+      ]
     },
     {
       "id": "ccse-1089",
@@ -1364,8 +1917,13 @@
         "Diputaciones."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Cada isla canaria tiene su cabildo, que la gobierna. En Baleares ese papel lo tienen los consejos insulares, y en el resto de España, las diputaciones provinciales.",
+      "fuentes": [
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, art. 41",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a41"
+        }
+      ]
     },
     {
       "id": "ccse-1090",
@@ -1378,8 +1936,17 @@
         "Pagar los impuestos."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los impuestos se pueden pagar por internet, en la sede electrónica de la Agencia Tributaria. El DNI y el pasaporte, en cambio, hay que tramitarlos en persona.",
+      "fuentes": [
+        {
+          "texto": "Sede electrónica de la Agencia Tributaria",
+          "url": "https://sede.agenciatributaria.gob.es/"
+        },
+        {
+          "texto": "Real Decreto 1553/2005, sobre el DNI, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2005-21163#a5"
+        }
+      ]
     },
     {
       "id": "ccse-1091",
@@ -1392,8 +1959,13 @@
         "091."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Llamando al 060 se puede pedir información sobre los servicios y trámites de la Administración General del Estado, como la cita previa del DNI y el pasaporte.",
+      "fuentes": [
+        {
+          "texto": "Punto de Acceso General, «Teléfono 060»",
+          "url": "https://administracion.gob.es/pag_Home/contacto/telefono-060.html"
+        }
+      ]
     },
     {
       "id": "ccse-1092",
@@ -1406,8 +1978,17 @@
         "estados federales."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución reconoce el derecho a la autonomía de las nacionalidades y regiones. Por eso España se divide en diecisiete comunidades autónomas, cada una con su gobierno y su parlamento, además de las ciudades autónomas de Ceuta y Melilla.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a2"
+        },
+        {
+          "texto": "Constitución española, art. 137",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a137"
+        }
+      ]
     },
     {
       "id": "ccse-1093",
@@ -1420,8 +2001,13 @@
         "Muchos."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución dice que crear un partido es libre y que los partidos expresan el pluralismo político. Por eso hay muchos, aunque solo algunos consiguen escaños.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a6"
+        }
+      ]
     },
     {
       "id": "ccse-1094",
@@ -1434,8 +2020,13 @@
         "En el Senado."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El candidato presenta su programa ante el Congreso y pide su confianza en un debate que se llama sesión de investidura. Si consigue la mayoría necesaria, el rey lo nombra presidente.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 99",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a99"
+        }
+      ]
     },
     {
       "id": "ccse-1095",
@@ -1448,8 +2039,17 @@
         "El ministro de Defensa."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución da al rey el mando supremo de las Fuerzas Armadas. Quien dirige la defensa y la Administración militar es el Gobierno.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 62",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a62"
+        },
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        }
+      ]
     },
     {
       "id": "ccse-1096",
@@ -1462,8 +2062,17 @@
         "El presidente de la Asamblea autonómica."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El delegado del Gobierno dirige la Administración del Estado en cada comunidad autónoma. La Constitución dice además que el presidente de la comunidad es el representante ordinario del Estado en ella, pero en el examen CCSE la respuesta que se da por buena es «el delegado del Gobierno».",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 154",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a154"
+        },
+        {
+          "texto": "Constitución española, art. 152",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a152"
+        }
+      ]
     },
     {
       "id": "ccse-1097",
@@ -1476,8 +2085,13 @@
         "55."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "España tiene cincuenta provincias, repartidas entre diecisiete comunidades autónomas. Ceuta y Melilla no son provincias, sino ciudades autónomas.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Provincia (España)»",
+          "url": "https://es.wikipedia.org/wiki/Provincia_(España)"
+        }
+      ]
     },
     {
       "id": "ccse-1098",
@@ -1490,8 +2104,17 @@
         "de la provincia."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución permite a las comunidades autónomas fomentar la enseñanza de su lengua, y cada lengua cooficial lo es según el Estatuto de su comunidad. Por eso su enseñanza la organiza cada comunidad.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a3"
+        },
+        {
+          "texto": "Constitución española, art. 148",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a148"
+        }
+      ]
     },
     {
       "id": "ccse-1099",
@@ -1504,8 +2127,21 @@
         "a los jueces y magistrados."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Gobierno tiene la función ejecutiva, es decir, gobierna y hace cumplir las leyes. Las leyes las hacen el Congreso y el Senado, y los jueces y magistrados las aplican al juzgar.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        },
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        },
+        {
+          "texto": "Constitución española, art. 117",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a117"
+        }
+      ]
     },
     {
       "id": "ccse-1100",
@@ -1518,8 +2154,13 @@
         "Tres."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Parlamento español, las Cortes Generales, tiene dos cámaras, el Congreso de los Diputados y el Senado.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        }
+      ]
     },
     {
       "id": "ccse-1101",
@@ -1532,8 +2173,13 @@
         "el Ministerio de Obras Públicas y Urbanismo."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Todos los ayuntamientos tienen que dar el agua potable, el alumbrado público, la recogida de basura y la limpieza de las calles, entre otros servicios.",
+      "fuentes": [
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, art. 26",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a26"
+        }
+      ]
     },
     {
       "id": "ccse-1102",
@@ -1546,8 +2192,13 @@
         "los ayuntamientos."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución reserva al Estado la nacionalidad, la inmigración, la emigración, la extranjería y el derecho de asilo. Las comunidades autónomas y los ayuntamientos no pueden regularlas.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 149",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a149"
+        }
+      ]
     },
     {
       "id": "ccse-1103",
@@ -1560,8 +2211,13 @@
         "Dos."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Hasta ahora (noviembre de 2026), todos los presidentes del Gobierno de España han sido hombres. Sí ha habido mujeres vicepresidentas y ministras.",
+      "fuentes": [
+        {
+          "texto": "Wikipedia, «Presidente del Gobierno de España»",
+          "url": "https://es.wikipedia.org/wiki/Presidente_del_Gobierno_de_España"
+        }
+      ]
     },
     {
       "id": "ccse-1104",
@@ -1574,8 +2230,17 @@
         "los ayuntamientos."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución reserva al Estado las relaciones internacionales, y la política exterior la dirige el Gobierno de España.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 149",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a149"
+        },
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        }
+      ]
     },
     {
       "id": "ccse-1105",
@@ -1588,8 +2253,13 @@
         "los senadores."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El ayuntamiento lo forman el alcalde y los concejales, a los que eligen los vecinos en las elecciones municipales. Los diputados y senadores forman las Cortes Generales.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 140",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a140"
+        }
+      ]
     },
     {
       "id": "ccse-1106",
@@ -1602,8 +2272,13 @@
         "El presidente y los consejeros."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El gobierno de cada comunidad lo forman su presidente y los consejeros, que se ocupan cada uno de un área, como los ministros en el Gobierno de España. Ministros solo hay en el Gobierno de España.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 152",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a152"
+        }
+      ]
     },
     {
       "id": "ccse-1107",
@@ -1616,8 +2291,21 @@
         "El cabildo."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Cada municipio lo gobierna su ayuntamiento, formado por el alcalde y los concejales. La diputación gobierna la provincia, y el cabildo, cada isla canaria.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 140",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a140"
+        },
+        {
+          "texto": "Constitución española, art. 141",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a141"
+        },
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, art. 41",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a41"
+        }
+      ]
     },
     {
       "id": "ccse-1108",
@@ -1630,8 +2318,17 @@
         "Diputaciones."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las diputaciones gobiernan las provincias y ayudan sobre todo a los municipios pequeños. En las comunidades de una sola provincia, como Madrid o Murcia, no hay diputación y hace su papel la propia comunidad.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 141",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a141"
+        },
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, arts. 26 y 40",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a40"
+        }
+      ]
     },
     {
       "id": "ccse-1109",
@@ -1644,8 +2341,17 @@
         "Las Cortes Generales."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Gobierno es el órgano que dirige el poder ejecutivo, es decir, el que gobierna el país y hace cumplir las leyes. Las Cortes Generales tienen el poder legislativo.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 97",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        },
+        {
+          "texto": "Constitución española, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a66"
+        }
+      ]
     },
     {
       "id": "ccse-1110",
@@ -1658,8 +2364,17 @@
         "leonés."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución lo llama castellano, y los dos nombres son correctos. El aragonés y el leonés son otras lenguas de la península.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a3"
+        },
+        {
+          "texto": "Wikipedia, «Idioma español»",
+          "url": "https://es.wikipedia.org/wiki/Idioma_español"
+        }
+      ]
     },
     {
       "id": "ccse-1111",
@@ -1672,8 +2387,17 @@
         "A los eurodiputados."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Cada cinco años, los ciudadanos de la Unión Europea eligen a los eurodiputados, que forman el Parlamento Europeo. En España votan los españoles y también los ciudadanos de otros países de la Unión que viven aquí.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 210",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#adoscientosdiez"
+        },
+        {
+          "texto": "Parlamento Europeo",
+          "url": "https://www.europarl.europa.eu/about-parliament/es"
+        }
+      ]
     },
     {
       "id": "ccse-1112",
@@ -1686,8 +2410,13 @@
         "21 años."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución fija la mayoría de edad en los 18 años, y desde entonces se puede votar en todas las elecciones.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 12",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a12"
+        }
+      ]
     },
     {
       "id": "ccse-1113",
@@ -1700,8 +2429,17 @@
         "generales."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "En las elecciones municipales pueden votar los ciudadanos de la Unión Europea que viven en España y los de algunos países que dejan votar a los españoles en sus elecciones. En las autonómicas y las generales solo votan los españoles.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 13",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a13"
+        },
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 176",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosetentayseis"
+        }
+      ]
     },
     {
       "id": "ccse-1114",
@@ -1714,8 +2452,13 @@
         "El Tribunal de Cuentas."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Tribunal de Cuentas revisa las cuentas y la gestión económica del Estado y de todo el sector público. Depende de las Cortes Generales, a las que informa cada año.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 136",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a136"
+        }
+      ]
     },
     {
       "id": "ccse-1115",
@@ -1728,8 +2471,17 @@
         "A los concejales."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "En las elecciones generales se eligen los diputados del Congreso y la mayoría de los senadores. Los demás senadores los designan los parlamentos de las comunidades autónomas.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 68",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a68"
+        },
+        {
+          "texto": "Constitución española, art. 69",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a69"
+        }
+      ]
     },
     {
       "id": "ccse-1116",
@@ -1742,8 +2494,17 @@
         "400."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Congreso tiene 350 diputados, el número que fija la ley electoral. La Constitución permite que tenga entre 300 y 400.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 68",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a68"
+        },
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 162",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosesentaydos"
+        }
+      ]
     },
     {
       "id": "ccse-1117",
@@ -1756,8 +2517,13 @@
         "central."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Administración local la forman los ayuntamientos, que gobiernan los municipios, y las diputaciones, que gobiernan las provincias, además de los cabildos y consejos insulares en las islas.",
+      "fuentes": [
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a3"
+        }
+      ]
     },
     {
       "id": "ccse-1118",
@@ -1770,8 +2536,13 @@
         "Castilla y León."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Andalucía es la comunidad con más habitantes, casi uno de cada cinco españoles, por delante de Cataluña y la Comunidad de Madrid.",
+      "fuentes": [
+        {
+          "texto": "Junta de Andalucía, presupuesto 2026 (datos del INE)",
+          "url": "https://www.juntadeandalucia.es/export/presup2026/infancia/infancia-3-1.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-1119",
@@ -1784,8 +2555,17 @@
         "Sindicato."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los sindicatos defienden los intereses de los trabajadores, y la Constitución reconoce el derecho a crearlos y a afiliarse a ellos.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a7"
+        },
+        {
+          "texto": "Constitución española, art. 28",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a28"
+        }
+      ]
     },
     {
       "id": "ccse-1120",
@@ -1798,8 +2578,13 @@
         "El Tribunal Supremo."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Tras las elecciones, el rey propone un candidato, y el Congreso de los Diputados vota si le da su confianza. Si la consigue, el rey lo nombra presidente.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 99",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a99"
+        }
+      ]
     },
     {
       "id": "ccse-2001",
