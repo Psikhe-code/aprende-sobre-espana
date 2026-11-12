@@ -56,7 +56,7 @@
         "Ordenamiento esencial."
       ],
       "respuesta": "a",
-      "nota": "Es la norma más importante del país, y todas las demás leyes tienen que respetarla. Si una ley va contra la Constitución, el Tribunal Constitucional puede anularla.",
+      "nota": "Es la norma más importante del país, y todas las demás leyes tienen que respetarla. Si una ley va contra ella, el Tribunal Constitucional puede anularla.\n«Ley básica» y «ordenamiento esencial» no son el nombre de ninguna ley fundamental española.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 9",
@@ -343,7 +343,7 @@
         "El director de la Real Academia Española."
       ],
       "respuesta": "b",
-      "nota": "La Constitución dice que el rey arbitra y modera el funcionamiento de las instituciones. No gobierna, porque eso le corresponde al Gobierno.",
+      "nota": "La Constitución dice que el rey arbitra y modera el funcionamiento de las instituciones, aunque no gobierna.\nEl presidente del Gobierno dirige el Gobierno, y el director de la Real Academia Española, la institución que fija las normas del idioma.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 56",
@@ -352,6 +352,10 @@
         {
           "texto": "Constitución española, art. 97",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        },
+        {
+          "texto": "Wikipedia, «Real Academia Española»",
+          "url": "https://es.wikipedia.org/wiki/Real_Academia_Española"
         }
       ]
     },
@@ -912,7 +916,7 @@
         "estado confederado."
       ],
       "respuesta": "a",
-      "nota": "Lo dice el primer artículo de la Constitución. «Social» quiere decir que el Estado procura el bienestar de todos, y «de Derecho», que todos, también los gobernantes, tienen que cumplir las leyes.",
+      "nota": "Lo dice el primer artículo de la Constitución. «Social» quiere decir que el Estado procura el bienestar de todos, y «de Derecho», que todos, también los gobernantes, tienen que cumplir las leyes.\n«Estado libre asociado» es el nombre oficial de Puerto Rico, unido a Estados Unidos. En una confederación, los estados que la forman siguen siendo soberanos, algo que no pasa con las comunidades autónomas.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 1",
@@ -921,6 +925,14 @@
         {
           "texto": "Constitución española, art. 9",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a9"
+        },
+        {
+          "texto": "Wikipedia, «Puerto Rico»",
+          "url": "https://es.wikipedia.org/wiki/Puerto_Rico"
+        },
+        {
+          "texto": "Wikipedia, «Confederación»",
+          "url": "https://es.wikipedia.org/wiki/Confederación"
         }
       ]
     },
@@ -958,7 +970,7 @@
         "Duquesa de Alba."
       ],
       "respuesta": "a",
-      "nota": "El heredero del trono lleva el título de príncipe o princesa de Asturias, como lo llevó antes el rey Felipe VI. Hoy es la princesa Leonor.",
+      "nota": "Es el título de quien va a heredar el trono, como lo fue antes el rey Felipe VI, y hoy lo tiene la princesa Leonor.\nLeonor es también princesa de Girona y de Viana, pero no «de Aragón». Duquesa de Alba es un título nobiliario de otra familia, la casa de Alba.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 57",
@@ -967,6 +979,10 @@
         {
           "texto": "Wikipedia, «Leonor de Borbón»",
           "url": "https://es.wikipedia.org/wiki/Leonor_de_Borbón"
+        },
+        {
+          "texto": "Wikipedia, «Ducado de Alba de Tormes»",
+          "url": "https://es.wikipedia.org/wiki/Ducado_de_Alba_de_Tormes"
         }
       ]
     },
@@ -981,11 +997,19 @@
         "Con Juan Carlos I."
       ],
       "respuesta": "c",
-      "nota": "Juan Carlos I fue proclamado rey en noviembre de 1975, tras la muerte de Franco, y la Transición hacia la democracia se hizo durante su reinado. Reinó hasta 2014, cuando abdicó en su hijo, Felipe VI.",
+      "nota": "Juan Carlos I fue proclamado rey en noviembre de 1975, tras la muerte de Franco, y la Transición a la democracia se hizo durante su reinado.\nAlfonso XIII, su abuelo, reinó antes de la dictadura, hasta 1931, y Carlos III fue rey en el siglo XVIII.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Juan Carlos I de España»",
           "url": "https://es.wikipedia.org/wiki/Juan_Carlos_I_de_España"
+        },
+        {
+          "texto": "Wikipedia, «Alfonso XIII de España»",
+          "url": "https://es.wikipedia.org/wiki/Alfonso_XIII_de_España"
+        },
+        {
+          "texto": "Wikipedia, «Carlos III de España»",
+          "url": "https://es.wikipedia.org/wiki/Carlos_III_de_España"
         }
       ]
     },
@@ -1000,7 +1024,7 @@
         "En 2001."
       ],
       "respuesta": "b",
-      "nota": "Las Cortes la aprobaron el 31 de octubre de 1978, y los españoles la votaron en referéndum el 6 de diciembre, que hoy es el Día de la Constitución.",
+      "nota": "Las Cortes la aprobaron el 31 de octubre de 1978, y los españoles la votaron en referéndum el 6 de diciembre, que hoy es el Día de la Constitución.\nEn 1957 todavía gobernaba Franco, y en 2001 la Constitución ya llevaba más de veinte años en vigor.",
       "fuentes": [
         {
           "texto": "Constitución española (BOE, 29 de diciembre de 1978)",
@@ -1161,7 +1185,7 @@
         "En el Palacio de la Moncloa."
       ],
       "respuesta": "b",
-      "nota": "El Palacio de la Zarzuela, en las afueras de Madrid, es la residencia de la familia real. El Palacio de la Moncloa es la del presidente del Gobierno, y el de La Moneda está en Chile, donde es la sede de su presidente.",
+      "nota": "El Palacio de la Zarzuela, en las afueras de Madrid, es la residencia de la familia real.\nEl Palacio de la Moncloa es la del presidente del Gobierno, y el de La Moneda está en Chile, donde es la sede de su presidente.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Palacio de la Zarzuela»",
@@ -1230,7 +1254,7 @@
         "Tanto los hombres como las mujeres."
       ],
       "respuesta": "c",
-      "nota": "La Constitución permite reinar a hombres y mujeres, aunque en la sucesión prefiere al hijo varón frente a la hija del mismo grado. La heredera es la princesa Leonor, hija mayor del rey, que no tiene hijos varones.",
+      "nota": "La Constitución permite reinar a hombres y mujeres, y reinará una mujer, la princesa Leonor, hija mayor del rey.\nLo que sí hace es preferir al hijo varón frente a la hija del mismo grado, pero el rey no tiene hijos varones.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 57",
@@ -1306,11 +1330,19 @@
         "la fraternidad."
       ],
       "respuesta": "a",
-      "nota": "El primer artículo de la Constitución nombra cuatro «valores superiores», que son la libertad, la justicia, la igualdad y el pluralismo político.",
+      "nota": "El primer artículo de la Constitución nombra cuatro «valores superiores», que son la libertad, la justicia, la igualdad y el pluralismo político.\nLa solidaridad también aparece en la Constitución, pero como la que debe haber entre las regiones de España. «Libertad, igualdad, fraternidad» es el lema de Francia.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 1",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a1"
+        },
+        {
+          "texto": "Constitución española, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a2"
+        },
+        {
+          "texto": "Wikipedia, «Liberté, Égalité, Fraternité»",
+          "url": "https://es.wikipedia.org/wiki/Liberté,_Égalité,_Fraternité"
         }
       ]
     },
@@ -1325,7 +1357,7 @@
         "Ser revisada por el Parlamento."
       ],
       "respuesta": "b",
-      "nota": "Muchas leyes fijan lo principal y dejan los detalles para otras normas, los reglamentos, que aprueba el Gobierno. Además, para entrar en vigor, toda ley tiene que publicarse en el Boletín Oficial del Estado.",
+      "nota": "Muchas leyes fijan lo principal y dejan los detalles para otras normas, los reglamentos, que aprueba el Gobierno. Además, para entrar en vigor, tiene que publicarse en el Boletín Oficial del Estado.\nPor eso «nada» no es cierto. Lo que no necesita es otra revisión del Parlamento, que ya la aprobó.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 97",
@@ -1493,7 +1525,7 @@
         "Alfonso XIII."
       ],
       "respuesta": "b",
-      "nota": "Felipe VI es rey desde 2014, cuando su padre, Juan Carlos I, abdicó. Alfonso XIII, su bisabuelo, reinó hasta 1931.",
+      "nota": "Felipe VI es rey desde 2014.\nJuan Carlos I, su padre, reinó de 1975 a 2014, y Alfonso XIII, su bisabuelo, hasta 1931.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Felipe VI de España»",
@@ -1502,6 +1534,10 @@
         {
           "texto": "Wikipedia, «Alfonso XIII de España»",
           "url": "https://es.wikipedia.org/wiki/Alfonso_XIII_de_España"
+        },
+        {
+          "texto": "Wikipedia, «Juan Carlos I de España»",
+          "url": "https://es.wikipedia.org/wiki/Juan_Carlos_I_de_España"
         }
       ]
     },
@@ -1558,7 +1594,7 @@
         "una ley secundaria."
       ],
       "respuesta": "a",
-      "nota": "Está por encima de todas las demás leyes, que tienen que respetarla. Para cambiarla hace falta un procedimiento especial, más exigente que el de las leyes normales.",
+      "nota": "Está por encima de todas las leyes, que tienen que respetarla, y para cambiarla hace falta un procedimiento especial, más exigente que el de las leyes normales.\nPor eso no es parte de otra ley ni una ley secundaria.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 9",
@@ -1772,11 +1808,15 @@
         "Desde 2020."
       ],
       "respuesta": "b",
-      "nota": "Felipe VI fue proclamado rey el 19 de junio de 2014, después de que abdicara su padre, Juan Carlos I.",
+      "nota": "Fue proclamado el 19 de junio de 2014, cuando abdicó su padre, Juan Carlos I.\nEn 1975 llegó al trono Juan Carlos I, tras la muerte de Franco.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Felipe VI de España»",
           "url": "https://es.wikipedia.org/wiki/Felipe_VI_de_España"
+        },
+        {
+          "texto": "Wikipedia, «Juan Carlos I de España»",
+          "url": "https://es.wikipedia.org/wiki/Juan_Carlos_I_de_España"
         }
       ]
     },
