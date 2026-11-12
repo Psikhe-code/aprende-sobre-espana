@@ -1,5 +1,6 @@
 import { CATEGORY_IDS, OLD_CATEGORY_IDS } from "./categories";
-import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "./types";
+import { NAME_STYLES, SECCIONES, TERRITORIOS, type NameStyle, type Seccion, type Territorio } from "./types";
+import { TAREA_IDS, tareasConPreguntas } from "./ccse";
 import {
   DEFAULT_LENGTH, DEFAULT_NAMES, DEFAULT_OPTIONS, DEFAULT_TERRITORIOS, DEFAULT_TIME, OPTION_COUNTS, ROUND_LENGTHS, TIME_LIMITS,
   type OptionCount, type RoundLength, type TimeLimit
@@ -29,6 +30,19 @@ export interface SavedState {
   /** Preguntas por partida: 10, 25, 50, 100 o sin límite. */
   longitud: RoundLength;
   /** Tiempo por pregunta: 60, 30 o 10 segundos, o sin tiempo. */
+  tiempo: TimeLimit;
+  /** Sección elegida la última vez (el juego vuelve a ella al abrirlo); null si aún no se ha elegido ninguna. */
+  seccion: Seccion | null;
+  /** Opciones del examen de nacionalidad (sus récords van en `best`, con claves que empiezan por «ccse/»). */
+  ccse: OpcionesCcse;
+}
+
+export interface OpcionesCcse {
+  /** Tareas marcadas (las que tienen preguntas). */
+  tareas: number[];
+  /** Tareas que tenían preguntas la última vez: las que reciban preguntas nuevas se marcan solas. */
+  conocidas: number[];
+  longitud: RoundLength;
   tiempo: TimeLimit;
 }
 
@@ -73,7 +87,28 @@ export function loadState(): SavedState {
   const opciones = OPTION_COUNTS.find((n) => n === raw.opciones) ?? DEFAULT_OPTIONS;
   const longitud = ROUND_LENGTHS.find((n) => n === raw.longitud) ?? DEFAULT_LENGTH;
   const tiempo = TIME_LIMITS.find((n) => n === raw.tiempo) ?? DEFAULT_TIME;
-  return { best: migrarRecords(raw.best ?? {}), selected, known: [...CATEGORY_IDS], names, territorios, opciones, longitud, tiempo };
+  const seccion = SECCIONES.find((s) => s === raw.seccion) ?? null;
+  return {
+    best: migrarRecords(raw.best ?? {}), selected, known: [...CATEGORY_IDS], names, territorios, opciones, longitud, tiempo,
+    seccion, ccse: cargarCcse(raw.ccse)
+  };
+}
+
+/** Opciones del examen guardadas, comprobadas una a una (como las de geografía). */
+function cargarCcse(raw: Partial<OpcionesCcse> | undefined): OpcionesCcse {
+  const conPreguntas = tareasConPreguntas();
+  const numeros = (x: unknown) => (Array.isArray(x) ? TAREA_IDS.filter((n) => x.includes(n)) : undefined);
+  const conocidas = numeros(raw?.conocidas) ?? [];
+  let tareas = (numeros(raw?.tareas) ?? [...conPreguntas]).filter((n) => conPreguntas.includes(n));
+  for (const n of conPreguntas) if (!conocidas.includes(n) && !tareas.includes(n)) tareas.push(n);
+  tareas.sort((a, b) => a - b);
+  if (!tareas.length) tareas = [...conPreguntas];
+  return {
+    tareas,
+    conocidas: [...conPreguntas],
+    longitud: ROUND_LENGTHS.find((n) => n === raw?.longitud) ?? DEFAULT_LENGTH,
+    tiempo: TIME_LIMITS.find((n) => n === raw?.tiempo) ?? DEFAULT_TIME
+  };
 }
 
 export function saveState(state: SavedState): void {
@@ -97,5 +132,15 @@ export const comboKey = (
 ) =>
   CATEGORY_IDS.filter((id) => selected.includes(id)).join("+") + "/" + TERRITORIOS.filter((t) => territorios.includes(t)).join("+") +
   (opciones === DEFAULT_OPTIONS ? "" : `/${opciones}`) +
+  (longitud === DEFAULT_LENGTH ? "" : longitud === "sinLimite" ? "/sinlimite" : `/${longitud}preguntas`) +
+  (tiempo === "sinTiempo" ? "" : `/${tiempo}s`);
+
+/**
+ * Clave del récord del examen de nacionalidad: «ccse/» y las tareas («ccse/1+2»), y como en comboKey,
+ * el número de preguntas y el tiempo si no son los de por defecto (10 preguntas, sin tiempo):
+ * «ccse/1/25preguntas/60s». Empieza por «ccse/» para no mezclarse con los de geografía.
+ */
+export const ccseKey = (tareas: readonly number[], longitud: RoundLength = DEFAULT_LENGTH, tiempo: TimeLimit = "sinTiempo") =>
+  "ccse/" + [...tareas].sort((a, b) => a - b).join("+") +
   (longitud === DEFAULT_LENGTH ? "" : longitud === "sinLimite" ? "/sinlimite" : `/${longitud}preguntas`) +
   (tiempo === "sinTiempo" ? "" : `/${tiempo}s`);

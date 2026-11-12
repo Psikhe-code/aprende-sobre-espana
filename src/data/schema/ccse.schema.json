@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Examen de nacionalidad (CCSE)",
+  "description": "Preguntas de práctica sobre los temas de la prueba CCSE del Instituto Cervantes. Son preguntas propias, escritas sobre los mismos datos que las del Manual CCSE, no las oficiales (el manual tiene derechos reservados). Ordenadas por referencia.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["tareas", "preguntas"],
+  "properties": {
+    "tareas": {
+      "description": "Las cinco tareas (temas) de la prueba, en orden.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["numero", "nombre"],
+        "properties": {
+          "numero": { "description": "Número de la tarea (1 … 5).", "type": "integer", "minimum": 1, "maximum": 5 },
+          "nombre": { "description": "Tema de la tarea, como se muestra en el juego.", "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "preguntas": {
+      "description": "Preguntas de práctica.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "tarea", "referencia", "pregunta", "opciones", "respuesta", "nota", "fuentes"],
+        "properties": {
+          "id": { "description": "Identificador fijo: «ccse-» y la referencia (sirve para estadísticas).", "type": "string", "pattern": "^ccse-[1-5][0-9]{3}$" },
+          "tarea": { "description": "Tarea a la que pertenece.", "type": "integer", "minimum": 1, "maximum": 5 },
+          "referencia": { "description": "Número de la pregunta del Manual CCSE sobre el mismo dato (1001 … 5999), para saber qué parte del temario está cubierta.", "type": "integer", "minimum": 1001, "maximum": 5999 },
+          "pregunta": { "description": "Enunciado, con nuestras palabras.", "type": "string", "minLength": 1 },
+          "opciones": {
+            "description": "Las tres opciones, distintas, entre ellas la respuesta. En la partida se barajan, salvo con «ordenFijo».",
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 3,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "ordenFijo": { "description": "Si las opciones salen siempre en este orden (p. ej. «Verdadero» y «Falso»).", "type": "boolean" },
+          "respuesta": { "description": "La opción correcta (tiene que estar en «opciones»).", "type": "string", "minLength": 1 },
+          "nota": { "description": "Explicación que se muestra al responder: por qué esa es la respuesta.", "type": "string", "minLength": 1 },
+          "fuentes": {
+            "description": "Dónde se ha comprobado la nota (al menos una).",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["texto"],
+              "properties": {
+                "texto": { "description": "Cómo se cita: «Constitución española, art. 1.3».", "type": "string", "minLength": 1 },
+                "url": { "description": "Enlace a la fuente.", "type": "string", "pattern": "^https://" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -303,6 +303,19 @@ h1 {
 .aka { margin: -4px 0 0; display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--muted); }
 .fact { margin: 0; max-width: 62ch; white-space: pre-line; font-size: 15px; padding-left: 12px; border-left: 3px solid var(--ochre); }
 .fact b { display: block; font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ochre); }
+/* Fuentes de la nota (examen de nacionalidad): pequeñas, con enlace a cada una. */
+.source { margin: 0; max-width: 62ch; font-size: 13px; color: var(--muted); }
+.source b { font-family: var(--f-display); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 4px; }
+.source a { color: inherit; }
+
+/* Secciones: dos tarjetas grandes, una debajo de otra. */
+.secciones { grid-template-columns: 1fr; }
+.seccion { padding: 22px 20px; text-align: left; }
+.seccion .cat-name { font-size: 26px; }
+.seccion .cat-desc { font-size: 15px; }
+
+/* Enlaces al pie del inicio (cambiar de sección, créditos), en una fila. */
+.links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 
 /* Final */
 .result { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
@@ -330,6 +343,7 @@ h1 {
 .credit-text span { color: var(--muted); overflow-wrap: anywhere; }
 .credit a { color: var(--water); }
 .prose { margin: 0; max-width: 62ch; font-size: 14px; color: var(--muted); }
+.prose a { color: var(--water); }
 
 @media (prefers-reduced-motion: no-preference) {
   .card { animation: rise .25s ease-out; }

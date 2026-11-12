@@ -1,16 +1,16 @@
 // Pantalla de la partida: pregunta, opciones, reloj, nota al responder, fin de la baraja,
 // y los botones de la pantalla final que empiezan otra partida (jugar otra vez, repasar fallos).
 // Las reglas (aciertos, racha, final) viven en src/engine/game.ts; aquí solo se dibujan.
+// Es la misma para las dos secciones: lo que cambia (de dónde salen las preguntas, el tiempo, el récord)
+// se lo pregunta al modo de la sección actual (modos.ts).
 
-import { categoryById } from "../engine/categories";
 import { GameSession, type AnswerResult } from "../engine/game";
-import { buildRound, rebuild, reshuffle, roundSize } from "../engine/round";
+import type { PreguntaJugable } from "../engine/types";
 import type { Contexto } from "./contexto";
 import { $, announce, el, pad } from "./dom";
 import { flagImage, precargarBandera } from "./flags";
 import { renderEnd } from "./final";
 import { crearReloj } from "./reloj";
-import { ajustesPartida, puedeJugar, seleccionActual } from "./seleccion";
 
 export interface Partida {
   /** Prepara de antemano la próxima partida (en el inicio y al terminar una), ver `preparada`. */
@@ -20,7 +20,6 @@ export interface Partida {
 }
 
 export function crearPartida(ctx: Contexto): Partida {
-  const { state } = ctx;
   let game: GameSession | null = null;
   const reloj = crearReloj(() => {
     // Se acabó el tiempo: cuenta como fallo y se muestra la respuesta, como al fallar.
@@ -32,26 +31,24 @@ export function crearPartida(ctx: Contexto): Partida {
    * ya la bandera de su primera pregunta: así aparece al instante al pulsar «Jugar».
    * Se guarda con la selección para la que se hizo; si el jugador cambia las opciones, se prepara otra.
    */
-  let preparada: { seleccion: string; preguntas: ReturnType<typeof buildRound> } | null = null;
-  const nuevaPartida = () => buildRound(ajustesPartida(state));
+  let preparada: { seleccion: string; preguntas: PreguntaJugable[] } | null = null;
 
   function preparar() {
-    if (!puedeJugar(state)) { preparada = null; return; }
-    if (preparada?.seleccion !== seleccionActual(state)) preparada = { seleccion: seleccionActual(state), preguntas: nuevaPartida() };
+    const modo = ctx.modo();
+    if (!modo.puedeJugar()) { preparada = null; return; }
+    if (preparada?.seleccion !== modo.seleccion()) preparada = { seleccion: modo.seleccion(), preguntas: modo.nueva() };
     const primera = preparada.preguntas[0];
     if (primera?.flag) precargarBandera(primera.flag);
   }
 
   function start(session?: GameSession) {
-    if (!session && !puedeJugar(state)) return ctx.openOptions();
+    const modo = ctx.modo();
+    if (!session && !modo.puedeJugar()) return ctx.openOptions();
     if (session) game = session;
     else {
-      const preguntas = preparada?.seleccion === seleccionActual(state) ? preparada.preguntas : nuevaPartida();
+      const preguntas = preparada?.seleccion === modo.seleccion() ? preparada.preguntas : modo.nueva();
       preparada = null; // cada partida preparada se juega una sola vez
-      game = new GameSession(preguntas, {
-        expected: roundSize(state.selected, state.territorios, state.longitud),
-        unlimited: state.longitud === "sinLimite"
-      });
+      game = new GameSession(preguntas, { expected: modo.esperadas(), unlimited: modo.sinLimite() });
     }
     // Sin límite no hay barra de progreso (no se sabe cuándo acaba), sino el botón «Terminar».
     $("track").hidden = game.unlimited;
@@ -71,7 +68,7 @@ export function crearPartida(ctx: Contexto): Partida {
     $("stop").hidden = !g.unlimited;
     $("hits").textContent = String(g.hits);
     $("streak").textContent = String(g.streak);
-    $("qcat").textContent = (g.review ? "Repaso · " : "") + (categoryById(q.category)?.labels[q.territorio] ?? "");
+    $("qcat").textContent = (g.review ? "Repaso · " : "") + ctx.modo().etiqueta(q);
     $("question").textContent = q.text;
 
     const flag = $("flag");
@@ -109,7 +106,7 @@ export function crearPartida(ctx: Contexto): Partida {
     card.style.animation = "";
 
     // El repaso de fallos va sin tiempo.
-    reloj.arrancar(g.review ? "sinTiempo" : state.tiempo);
+    reloj.arrancar(g.review ? "sinTiempo" : ctx.modo().tiempo());
   }
 
   function renderTrack() {
@@ -148,10 +145,31 @@ export function crearPartida(ctx: Contexto): Partida {
     $("meaning").hidden = !game.current.meaning;
     $("factText").textContent = game.current.fact ?? "";
     $("fact").hidden = !game.current.fact;
+    renderFuentes(game.current);
     announce(r.correct ? "Correcto." : r.given === null ? `Se acabó el tiempo. Era ${r.answer}.` : `Incorrecto. Era ${r.answer}.`);
     $("next").textContent = game.isLast && !game.unlimited ? "Ver resultado" : "Siguiente";
     $("feedback").hidden = false;
     $("next").focus({ preventScroll: true });
+  }
+
+  /** Fuentes de la nota (en el examen de nacionalidad): «Fuente: Constitución española, art. 1.3», con su enlace. */
+  function renderFuentes(q: PreguntaJugable) {
+    const fuentes = q.fuentes ?? [];
+    const p = $("source");
+    p.hidden = !fuentes.length;
+    p.replaceChildren();
+    if (!fuentes.length) return;
+    p.append(el("b", "", fuentes.length > 1 ? "Fuentes" : "Fuente"), " ");
+    fuentes.forEach((f, i) => {
+      if (i) p.append(" · ");
+      if (f.url) {
+        const a = el("a", "", f.texto) as HTMLAnchorElement;
+        a.href = f.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        p.append(a);
+      } else p.append(f.texto);
+    });
   }
 
   function next() {
@@ -178,7 +196,7 @@ export function crearPartida(ctx: Contexto): Partida {
 
   function keepPlaying() {
     if (!game?.endOfDeck) return;
-    game.append(reshuffle(ajustesPartida(state), game.current.id));
+    game.append(ctx.modo().otraVuelta(game.current.id));
     game.next();
     renderQuestion();
   }
@@ -199,6 +217,7 @@ export function crearPartida(ctx: Contexto): Partida {
   }
 
   $("go").addEventListener("click", () => start());
+  $("ccseGo").addEventListener("click", () => start());
   $("again").addEventListener("click", () => start());
   $("next").addEventListener("click", next);
   $("quit").addEventListener("click", () => { game = null; ctx.goHome(); });
@@ -208,7 +227,7 @@ export function crearPartida(ctx: Contexto): Partida {
   $("review").addEventListener("click", () => {
     // En una partida sin límite se puede fallar dos veces la misma pregunta: en el repaso sale una vez.
     const fallos = [...new Map((game?.result().misses ?? []).map((m) => [m.question.id, m.question])).values()];
-    if (fallos.length) start(new GameSession(rebuild(fallos, { options: state.opciones }), { review: true }));
+    if (fallos.length) start(new GameSession(ctx.modo().repaso(fallos), { review: true }));
   });
   document.addEventListener("keydown", (e) => {
     if (ctx.pantalla() !== "play" || !game) return;

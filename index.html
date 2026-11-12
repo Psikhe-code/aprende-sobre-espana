@@ -13,10 +13,30 @@
   <div class="app">
     <header class="masthead">
       <svg id="contours" viewBox="0 0 300 220" aria-hidden="true"></svg>
-      <div class="eyebrow">Atlas de bolsillo · Geografía de España</div>
+      <!-- El texto de estas dos líneas cambia con la sección (app.ts, CABECERAS) -->
+      <div class="eyebrow" id="eyebrow">Atlas de bolsillo</div>
       <h1>Aprende sobre España</h1>
-      <p class="lede">Capitales, banderas, provincias y municipios de las comunidades autónomas. Elige en Opciones qué categorías y territorios entran, cuántas preguntas tiene cada partida y cuánto tiempo hay para responder.</p>
+      <p class="lede" id="lede"></p>
     </header>
+
+    <!-- Secciones -->
+    <section id="sections" class="screen" hidden>
+      <div class="label">¿Qué quieres aprender?</div>
+      <div class="cats secciones">
+        <button class="cat seccion" id="sec-geografia">
+          <span class="cat-text">
+            <span class="cat-name">Geografía</span>
+            <span class="cat-desc">Capitales, banderas, provincias y municipios de España.</span>
+          </span>
+        </button>
+        <button class="cat seccion" id="sec-ccse">
+          <span class="cat-text">
+            <span class="cat-name">Examen de nacionalidad</span>
+            <span class="cat-desc">Practica los temas de la prueba CCSE: la Constitución, las instituciones, la cultura y la sociedad españolas.</span>
+          </span>
+        </button>
+      </div>
+    </section>
 
     <!-- Inicio -->
     <section id="start" class="screen">
@@ -33,8 +53,58 @@
         <button class="ghost" id="openOptions">Opciones</button>
       </div>
       <span class="hint">Atajos: teclas numéricas para responder, Intro para seguir.</span>
-      <button class="link" id="openCredits">Créditos</button>
+      <div class="links">
+        <button class="link" id="toSections">Cambiar de sección</button>
+        <button class="link" id="openCredits">Créditos</button>
+      </div>
       <p class="version" id="version"></p>
+    </section>
+
+    <!-- Examen de nacionalidad: inicio -->
+    <section id="ccseStart" class="screen" hidden>
+      <div class="summary">
+        <div class="label" id="ccseRoundLabel">10 preguntas al azar de</div>
+        <div class="chips" id="ccseChips"></div>
+        <div class="record" id="ccseTiempoInfo"></div>
+        <div class="record" id="ccseRecord"></div>
+      </div>
+      <div class="row">
+        <button class="primary" id="ccseGo">Jugar</button>
+        <button class="ghost" id="ccseOpenOptions">Opciones</button>
+      </div>
+      <p class="prose" id="ccseAviso">Las preguntas son nuestras: están escritas sobre los temas del Manual CCSE 2026 del Instituto Cervantes, pero no son las preguntas oficiales del examen. Cada una explica su respuesta y dice de dónde sale. Las oficiales están en el manual y en la app gratuita del Instituto Cervantes: <a href="https://cervantes.org/es/examenes/ccse" target="_blank" rel="noopener">prueba CCSE</a>.</p>
+      <span class="hint">Atajos: teclas numéricas para responder, Intro para seguir.</span>
+      <div class="links">
+        <button class="link" id="ccseToSections">Cambiar de sección</button>
+        <button class="link" id="ccseOpenCredits">Créditos</button>
+      </div>
+    </section>
+
+    <!-- Examen de nacionalidad: opciones -->
+    <section id="ccseOptions" class="screen" hidden>
+      <div class="stack tight">
+        <div class="label">Opciones · Tareas</div>
+        <span class="hint">Las cinco tareas (temas) de la prueba. Marca las que quieres practicar; las que aún no tienen preguntas salen como «próximamente».</span>
+      </div>
+      <div class="cats" id="ccseTareas"></div>
+      <p class="warn" id="ccseNoneWarn" hidden>Marca al menos una tarea para poder jugar.</p>
+
+      <div class="stack tight section-start">
+        <div class="label">Opciones · Preguntas por partida</div>
+        <span class="hint">En una partida no se repite ninguna pregunta. Sin límite, se juega hasta que pulses «Terminar».</span>
+      </div>
+      <div class="cats" id="ccseLongitud" role="radiogroup" aria-label="Preguntas por partida"></div>
+      <p class="warn" id="ccseLengthWarn" hidden></p>
+
+      <div class="stack tight section-start">
+        <div class="label">Opciones · Tiempo por pregunta</div>
+        <span class="hint">Si se acaba el tiempo, cuenta como fallo. El reloj se para al responder, y en el repaso de fallos no hay tiempo.</span>
+      </div>
+      <div class="cats" id="ccseTiempo" role="radiogroup" aria-label="Tiempo por pregunta"></div>
+
+      <div class="row section-start">
+        <button class="primary" id="ccseDone">Listo</button>
+      </div>
     </section>
 
     <!-- Créditos -->
@@ -49,6 +119,10 @@
       <div class="stack tight section-start">
         <div class="label">Créditos · Datos y tipografías</div>
         <p class="prose">Códigos y nombres oficiales de comunidades y provincias: Instituto Nacional de Estadística (INE). Provincias vecinas: calculadas con los mapas del Instituto Geográfico Nacional (IGN). Formas en castellano: criterio de la Real Academia Española. Tipografías Barlow, Barlow Condensed y Literata, con licencia SIL Open Font License.</p>
+      </div>
+      <div class="stack tight section-start">
+        <div class="label">Créditos · Examen de nacionalidad</div>
+        <p class="prose">Las preguntas del examen de nacionalidad son propias, escritas sobre los temas del Manual de preparación de la prueba CCSE 2026 del Instituto Cervantes; no son las preguntas oficiales. Cada nota indica su fuente: la Constitución y las leyes, en el Boletín Oficial del Estado, u otras páginas que se enlazan.</p>
       </div>
       <div class="row section-start"><button class="primary" id="closeCredits">Volver</button></div>
     </section>
@@ -128,6 +202,7 @@
           <p class="aka" id="aka" hidden></p>
           <p class="fact" id="meaning" hidden><b>Significado</b> <span id="meaningText"></span></p>
           <p class="fact" id="fact" hidden><b>Curiosidad</b> <span id="factText"></span></p>
+          <p class="source" id="source" hidden></p>
           <div class="row"><button class="primary" id="next">Siguiente</button></div>
         </div>
       </div>
