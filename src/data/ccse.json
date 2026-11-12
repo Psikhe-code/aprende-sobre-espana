@@ -33,7 +33,7 @@
         "una monarquía federal."
       ],
       "respuesta": "a",
-      "nota": "Hay rey, pero el país lo gobierna el Gobierno, cuyo presidente elige el Congreso de los Diputados.",
+      "nota": "España es una monarquía parlamentaria, como dice la Constitución. Hay rey, pero quien gobierna es el Gobierno, cuyo presidente elige el Congreso de los Diputados.\nEn una república, el jefe del Estado es un presidente elegido, no un rey. Y España no es un Estado federal, sino un Estado de comunidades autónomas.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 1.3",
@@ -42,6 +42,14 @@
         {
           "texto": "Constitución española, art. 99",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a99"
+        },
+        {
+          "texto": "Constitución española, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a2"
+        },
+        {
+          "texto": "Constitución española, art. 137",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a137"
         }
       ]
     },
@@ -79,7 +87,7 @@
         "el Congreso de los Diputados."
       ],
       "respuesta": "a",
-      "nota": "La soberanía nacional reside en el pueblo español, y de él salen todos los poderes del Estado.",
+      "nota": "La soberanía nacional reside en el pueblo español, y de él salen todos los poderes del Estado.\nEl Gobierno y el Congreso de los Diputados ejercen poderes que vienen del pueblo, pero la soberanía no es suya.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 1.2",
@@ -232,7 +240,7 @@
         "solo en actos del Gobierno español."
       ],
       "respuesta": "b",
-      "nota": "La ley manda que la bandera de España ondee en el exterior de todos los edificios públicos y ocupe el lugar preferente en el interior. Si la comunidad autónoma o el ayuntamiento tienen bandera propia, se pone junto a ella.",
+      "nota": "La bandera de España debe estar en todos los edificios públicos. La ley manda que ondee en el exterior y ocupe el lugar preferente en el interior. Si la comunidad autónoma o el ayuntamiento tienen bandera propia, se pone junto a ella.\nNo es solo para los días de fiesta ni para los actos del Gobierno, sino para los edificios de todas las administraciones, también las autonómicas y municipales.",
       "fuentes": [
         {
           "texto": "Ley 39/1981, sobre el uso de la bandera de España, arts. 3 a 5",
@@ -255,7 +263,7 @@
         "El ministro de Economía."
       ],
       "respuesta": "b",
-      "nota": "Es el símbolo de la unidad del Estado y arbitra y modera el funcionamiento de las instituciones.",
+      "nota": "El jefe del Estado es el rey. Es el símbolo de la unidad del Estado y arbitra y modera el funcionamiento de las instituciones.\nEl presidente del Gobierno dirige el Gobierno, y el ministro de Economía es uno de sus ministros.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 56.1",
@@ -428,11 +436,15 @@
         "Por el Tribunal Constitucional."
       ],
       "respuesta": "b",
-      "nota": "Las Cortes la aprobaron el 31 de octubre de 1978, los españoles la ratificaron en referéndum el 6 de diciembre y el rey la sancionó el 27 de diciembre.",
+      "nota": "La Constitución se aprobó por referéndum. Las Cortes la aprobaron el 31 de octubre de 1978, los españoles la ratificaron en referéndum el 6 de diciembre y el rey la sancionó el 27 de diciembre.\nNo se impuso por ley, y el Tribunal Constitucional ni siquiera existía todavía, porque lo creó la propia Constitución.",
       "fuentes": [
         {
           "texto": "Congreso de los Diputados, «Constitución de 1978»",
           "url": "https://www.congreso.es/es/cem/const1978"
+        },
+        {
+          "texto": "Constitución española, art. 159",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a159"
         }
       ]
     },
@@ -638,11 +650,19 @@
         "amarillo y blanco."
       ],
       "respuesta": "b",
-      "nota": "Lo fija la propia Constitución.",
+      "nota": "Los colores de la bandera española son el rojo y el amarillo, como fija la propia Constitución. Tiene tres franjas horizontales, roja, amarilla y roja, y la amarilla es el doble de ancha que cada una de las rojas.\nEl blanco no está en la bandera de España, aunque sí en las de varias comunidades, como Galicia o Andalucía.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 4.1",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a4"
+        },
+        {
+          "texto": "Wikipedia, «Bandera de Galicia»",
+          "url": "https://es.wikipedia.org/wiki/Bandera_de_Galicia"
+        },
+        {
+          "texto": "Wikipedia, «Bandera de Andalucía»",
+          "url": "https://es.wikipedia.org/wiki/Bandera_de_Andalucía"
         }
       ]
     },
@@ -688,11 +708,15 @@
         "la Comisión de Europa."
       ],
       "respuesta": "a",
-      "nota": "La creó el Consejo de Europa en 1955, y las Comunidades Europeas, hoy la Unión Europea, la adoptaron en 1985. Sus doce estrellas no son los países, sino un símbolo de unidad.",
+      "nota": "Es la bandera de la Unión Europea. La creó el Consejo de Europa en 1955, y las Comunidades Europeas, hoy la Unión Europea, la adoptaron en 1985. Sus doce estrellas no son los países, sino un símbolo de unidad.\nEl Parlamento Europeo es una de las instituciones de la Unión y usa esa misma bandera. «Comisión de Europa» no existe; la que existe es la Comisión Europea, que propone las leyes de la Unión y vigila que se cumplan.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Bandera de Europa»",
           "url": "https://es.wikipedia.org/wiki/Bandera_de_Europa"
+        },
+        {
+          "texto": "Wikipedia, «Comisión Europea»",
+          "url": "https://es.wikipedia.org/wiki/Comisión_Europea"
         }
       ]
     },
@@ -1087,7 +1111,7 @@
         "Las que tienen una lengua cooficial."
       ],
       "respuesta": "b",
-      "nota": "Todas las comunidades autónomas tienen bandera propia, que fija su Estatuto, y también Ceuta y Melilla. En los edificios públicos se ponen junto a la bandera de España.",
+      "nota": "Todas las comunidades autónomas tienen bandera propia, que fija su Estatuto, y también Ceuta y Melilla. En los edificios públicos se ponen junto a la bandera de España.\nNo depende de tener lengua cooficial. Castilla y León o la Región de Murcia, por ejemplo, tienen bandera aunque no tengan lengua cooficial.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 4",
