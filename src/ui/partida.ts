@@ -87,6 +87,7 @@ export function crearPartida(ctx: Contexto): Partida {
     const box = $("opts");
     box.replaceChildren();
     box.classList.toggle("many", q.options.length > 4);
+    box.classList.toggle("con-bandera", !!q.flag);
     q.options.forEach((o, j) => {
       const b = el("button", "opt") as HTMLButtonElement;
       b.id = "opt-" + j;
@@ -97,6 +98,9 @@ export function crearPartida(ctx: Contexto): Partida {
     });
     $("feedback").hidden = true;
     announce("");
+
+    // Cada pregunta empieza arriba del todo: tras leer la nota, la página se había quedado más abajo.
+    window.scrollTo({ top: 0 });
 
     // Reinicia la animación de entrada de la tarjeta
     const card = $("card");
