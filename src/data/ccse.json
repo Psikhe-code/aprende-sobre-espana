@@ -340,7 +340,7 @@
         "El Consejo General del Poder Judicial."
       ],
       "respuesta": "b",
-      "nota": "Es independiente de los demás órganos del Estado y decide, por ejemplo, si una ley va contra la Constitución.",
+      "nota": "El Tribunal Constitucional es el que interpreta la Constitución. Es independiente de los demás órganos del Estado y decide, por ejemplo, si una ley va contra la Constitución.\n«Poder Constitucional» no existe. El Consejo General del Poder Judicial es el órgano de gobierno de los jueces, no el que interpreta la Constitución.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 2/1979, del Tribunal Constitucional, art. 1",
@@ -1130,7 +1130,7 @@
         "El Defensor del Pueblo."
       ],
       "respuesta": "c",
-      "nota": "El Defensor del Pueblo defiende los derechos de las personas frente a las administraciones públicas. Lo eligen las Cortes Generales, y presentar una queja es gratis.",
+      "nota": "El Defensor del Pueblo atiende las quejas por el mal funcionamiento de las administraciones y defiende los derechos de las personas frente a ellas. Lo eligen las Cortes Generales, y presentar una queja es gratis.\nLas oficinas de información al consumidor, que suelen ser de los ayuntamientos, ayudan con las reclamaciones a empresas y comercios. La Policía Nacional se ocupa de la seguridad, no de las quejas contra la Administración.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 54",
@@ -1139,6 +1139,10 @@
         {
           "texto": "Ley Orgánica 3/1981, del Defensor del Pueblo, art. 15",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-10325#aquince"
+        },
+        {
+          "texto": "Ayuntamiento de Madrid, «Oficina Municipal de Información al Consumidor»",
+          "url": "https://www.madrid.es/omic"
         }
       ]
     },
@@ -1337,7 +1341,7 @@
         "el Ministerio de Hacienda."
       ],
       "respuesta": "b",
-      "nota": "El Tribunal de Cuentas revisa las cuentas del Estado y de todo el sector público. Depende directamente de las Cortes Generales, a las que informa cada año.",
+      "nota": "El Tribunal de Cuentas depende de las Cortes Generales, a las que informa cada año. Revisa las cuentas del Estado y de todo el sector público.\nNo depende de la Presidencia del Gobierno ni del Ministerio de Hacienda. Sus miembros son independientes, como los jueces, porque también revisan las cuentas del Gobierno.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 136",
@@ -1463,7 +1467,7 @@
         "El Tribunal Constitucional."
       ],
       "respuesta": "b",
-      "nota": "La Constitución lo define como el supremo órgano consultivo del Gobierno, es decir, el que le da su opinión jurídica antes de algunas decisiones. El Parlamento Europeo y el Tribunal Constitucional no aconsejan al Gobierno.",
+      "nota": "El Consejo de Estado es el supremo órgano consultivo del Gobierno, como dice la Constitución, es decir, el que le da su opinión jurídica antes de algunas decisiones.\nEl Parlamento Europeo es una institución de la Unión Europea, y el Tribunal Constitucional decide si las leyes respetan la Constitución. Ninguno de los dos aconseja al Gobierno.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 107",
@@ -1509,7 +1513,7 @@
         "las Cortes Generales."
       ],
       "respuesta": "c",
-      "nota": "La Constitución lo define como un alto comisionado de las Cortes Generales, que lo eligen, para defender los derechos de las personas. Trabaja con independencia y no recibe instrucciones de nadie.",
+      "nota": "El Defensor del Pueblo depende de las Cortes Generales, que lo eligen. La Constitución lo define como un alto comisionado suyo para defender los derechos de las personas, y trabaja con independencia, sin recibir instrucciones de nadie.\nNo depende del Consejo de Ministros, es decir, del Gobierno, cuya Administración puede investigar. El Tribunal de Cuentas también depende de las Cortes, pero lo que hace es revisar las cuentas públicas.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 54",
@@ -1518,6 +1522,10 @@
         {
           "texto": "Ley Orgánica 3/1981, del Defensor del Pueblo, art. 6",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-10325#asexto"
+        },
+        {
+          "texto": "Ley Orgánica 3/1981, del Defensor del Pueblo, art. 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-10325#anoveno"
         }
       ]
     },
@@ -1616,7 +1624,7 @@
         "Consejo de Estado."
       ],
       "respuesta": "b",
-      "nota": "El Consejo General del Poder Judicial gobierna a los jueces y se ocupa de sus nombramientos, ascensos y sanciones. El Tribunal Supremo, en cambio, es el tribunal más alto, el que juzga en última instancia.",
+      "nota": "El órgano de gobierno de los jueces y magistrados es el Consejo General del Poder Judicial, que se ocupa de sus nombramientos, ascensos y sanciones.\nEl Tribunal Supremo es el tribunal más alto, el que juzga en última instancia, y el Consejo de Estado aconseja al Gobierno.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 122",
@@ -1625,6 +1633,10 @@
         {
           "texto": "Constitución española, art. 123",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a123"
+        },
+        {
+          "texto": "Constitución española, art. 107",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a107"
         }
       ]
     },
@@ -1930,7 +1942,7 @@
         "Todos los ciudadanos, españoles o extranjeros."
       ],
       "respuesta": "c",
-      "nota": "Cualquier persona puede dirigirse al Defensor del Pueblo, sin importar su nacionalidad, dónde viva ni su edad. Es gratis y no hace falta abogado.",
+      "nota": "Todos pueden presentar una queja al Defensor del Pueblo, españoles o extranjeros, sin importar dónde vivan ni su edad. Es gratis y no hace falta abogado.\nNo hace falta tener residencia legal ni ser mayor de edad. La ley lo dice expresamente.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 3/1981, del Defensor del Pueblo, arts. 10 y 15",
@@ -2580,11 +2592,19 @@
         "El Tribunal de Cuentas."
       ],
       "respuesta": "c",
-      "nota": "El Tribunal de Cuentas revisa las cuentas y la gestión económica del Estado y de todo el sector público. Depende de las Cortes Generales, a las que informa cada año.",
+      "nota": "La gestión financiera del Estado la controla el Tribunal de Cuentas, que revisa las cuentas y la gestión económica del Estado y de todo el sector público. Depende de las Cortes Generales, a las que informa cada año.\nEl Banco de España supervisa a los bancos, y la Agencia Tributaria cobra los impuestos.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 136",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a136"
+        },
+        {
+          "texto": "Wikipedia, «Banco de España»",
+          "url": "https://es.wikipedia.org/wiki/Banco_de_España"
+        },
+        {
+          "texto": "Wikipedia, «Agencia Estatal de Administración Tributaria»",
+          "url": "https://es.wikipedia.org/wiki/Agencia_Estatal_de_Administración_Tributaria"
         }
       ]
     },
