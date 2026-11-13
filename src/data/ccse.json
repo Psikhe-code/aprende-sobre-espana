@@ -2997,8 +2997,13 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución no obliga a nadie a practicar una religión. Garantiza la libertad religiosa, así que cada persona puede practicar la religión que quiera o no practicar ninguna.\nTampoco hay una religión oficial, porque la Constitución dice que ninguna tendrá carácter estatal.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 16",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a16"
+        }
+      ]
     },
     {
       "id": "ccse-2002",
@@ -3011,8 +3016,21 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Quien obtiene la nacionalidad española por residencia puede votar como cualquier otro español, sin esperar tres años ni ningún otro plazo. Es español desde que la nacionalidad se inscribe en el Registro Civil, y para votar solo hace falta ser mayor de edad y estar en el censo electoral, que se actualiza cada mes.",
+      "fuentes": [
+        {
+          "texto": "Código Civil, art. 23",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763#art23"
+        },
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asegundo"
+        },
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 35",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#atreintaycinco"
+        }
+      ]
     },
     {
       "id": "ccse-2003",
@@ -3025,8 +3043,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución prohíbe la tortura y la pena de muerte. Nadie puede ser torturado ni sufrir penas o tratos inhumanos o degradantes.\nLa Constitución dejaba una excepción para las leyes militares en tiempo de guerra, pero una ley de 1995 la quitó. Hoy no hay pena de muerte en ningún caso.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 15",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a15"
+        },
+        {
+          "texto": "Ley Orgánica 11/1995, de abolición de la pena de muerte en tiempo de guerra, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25714#ap"
+        }
+      ]
     },
     {
       "id": "ccse-2004",
@@ -3039,8 +3066,21 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El funcionamiento de los partidos políticos tiene que ser democrático. Lo dice la Constitución, y la ley de partidos lo concreta. Cada partido debe tener una asamblea de sus afiliados, que toma las decisiones más importantes, y sus dirigentes se eligen por votación libre y secreta.\nLa Constitución exige lo mismo a los sindicatos y a las asociaciones de empresarios.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a6"
+        },
+        {
+          "texto": "Constitución española, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a7"
+        },
+        {
+          "texto": "Ley Orgánica 6/2002, de Partidos Políticos, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-12756#a7"
+        }
+      ]
     },
     {
       "id": "ccse-2005",
@@ -3053,8 +3093,13 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Nadie puede ser obligado a decir cuáles son sus ideas políticas o religiosas. La Constitución lo dice expresamente, como parte de la libertad ideológica y religiosa. Cada uno puede contarlo si quiere, pero nadie puede exigírselo.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 16",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a16"
+        }
+      ]
     },
     {
       "id": "ccse-2006",
@@ -3067,8 +3112,17 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "No se puede limitar a nadie el derecho a entrar y salir de España por motivos ideológicos. La Constitución reconoce a los españoles el derecho a entrar y salir libremente, y dice que no se puede limitar por motivos políticos o ideológicos.\nSí puede haber otros límites que fije la ley. Por ejemplo, un juez puede quitarle el pasaporte a alguien que está pendiente de juicio, para que no salga del país.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 19",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a19"
+        },
+        {
+          "texto": "Ley de Enjuiciamiento Criminal, art. 530",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1882-6036#a530"
+        }
+      ]
     },
     {
       "id": "ccse-2007",
@@ -3081,8 +3135,25 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Educación Primaria es gratuita y obligatoria. Tiene seis cursos, de los 6 a los 12 años, y es la primera parte de la enseñanza básica, que según la Constitución es obligatoria y gratuita.\nDespués viene la Educación Secundaria Obligatoria (ESO), de los 12 a los 16 años, que también es gratuita y obligatoria.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 27",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a27"
+        },
+        {
+          "texto": "Ley Orgánica 2/2006, de Educación, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a4"
+        },
+        {
+          "texto": "Ley Orgánica 2/2006, de Educación, art. 16",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a16"
+        },
+        {
+          "texto": "Ley Orgánica 2/2006, de Educación, art. 22",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a22"
+        }
+      ]
     },
     {
       "id": "ccse-2008",
@@ -3095,8 +3166,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución reconoce el derecho de los españoles a una vivienda digna y adecuada. Pide a los poderes públicos que lo hagan posible, por ejemplo regulando el uso del suelo para impedir la especulación.\nEs uno de los «principios rectores» de la Constitución. Guía las leyes y las decisiones públicas, pero no se puede reclamar directamente ante un juez, sino según lo que digan las leyes que lo desarrollan.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 47",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a47"
+        },
+        {
+          "texto": "Constitución española, art. 53",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a53"
+        }
+      ]
     },
     {
       "id": "ccse-2009",
@@ -3109,8 +3189,13 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La policía no puede entrar en cualquier casa en cualquier momento. La Constitución dice que el domicilio es inviolable, así que para entrar o registrarlo hace falta el permiso de quien vive allí o la orden de un juez.\nLa única excepción es el delito flagrante, es decir, cuando se sorprende a alguien cometiendo un delito en ese momento.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 18",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a18"
+        }
+      ]
     },
     {
       "id": "ccse-2010",
@@ -3123,8 +3208,13 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El secreto de las comunicaciones está garantizado, salvo que un juez ordene otra cosa. Nadie puede abrir las cartas ni escuchar las llamadas de otra persona sin una resolución judicial.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 18",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a18"
+        }
+      ]
     },
     {
       "id": "ccse-2011",
@@ -3137,8 +3227,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución reconoce el derecho a asociarse libremente. Cualquiera puede crear una asociación o entrar en ella sin pedir permiso, y nadie puede ser obligado a formar parte de una.\nSolo están prohibidas las asociaciones que buscan fines delictivos o usan medios delictivos, las secretas y las de tipo militar.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 22",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a22"
+        },
+        {
+          "texto": "Ley Orgánica 1/2002, reguladora del Derecho de Asociación, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-5852#a2"
+        }
+      ]
     },
     {
       "id": "ccse-2012",
@@ -3151,8 +3250,13 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los profesores pueden enseñar con libertad, dentro de los límites de la Constitución. Es la libertad de cátedra, que la Constitución reconoce junto a la libertad de expresión. Como todas estas libertades, tiene que respetar los derechos de los demás.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 20",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a20"
+        }
+      ]
     },
     {
       "id": "ccse-2013",
@@ -3165,8 +3269,25 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Constitución reconoce derechos fundamentales a todas las personas, no solo a los españoles. Muchos artículos hablan de «todos» o de «nadie», y los extranjeros tienen en España los derechos y libertades de la Constitución en los términos que fijan los tratados y las leyes.\nHay algún derecho que es solo de los españoles, como votar en las elecciones generales. En las municipales también pueden votar los extranjeros de la Unión Europea y los de países que tienen un acuerdo con España.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 13",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a13"
+        },
+        {
+          "texto": "Constitución española, art. 23",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a23"
+        },
+        {
+          "texto": "Ley Orgánica 4/2000, sobre derechos y libertades de los extranjeros en España, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#a3"
+        },
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 176",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosetentayseis"
+        }
+      ]
     },
     {
       "id": "ccse-2014",
@@ -3179,8 +3300,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los ciudadanos deben colaborar con los jueces si se lo piden. La Constitución dice que es obligatorio cumplir las sentencias y colaborar con los jueces y tribunales cuando lo requieran.\nPor ejemplo, quien es citado como testigo en un juicio penal tiene que ir a declarar, sea español o extranjero.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 118",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a118"
+        },
+        {
+          "texto": "Ley de Enjuiciamiento Criminal, art. 410",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1882-6036#a410"
+        }
+      ]
     },
     {
       "id": "ccse-2015",
@@ -3193,8 +3323,33 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La ley limita el acceso de otras personas a los datos personales. La Constitución pide limitar el uso de la informática para proteger la intimidad, y la ley de protección de datos y un reglamento europeo dicen quién puede usarlos y para qué.\nCada persona puede preguntar qué datos suyos tiene una empresa o una Administración, pedir que los corrijan o pedir que los borren.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 18",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a18"
+        },
+        {
+          "texto": "Ley Orgánica 3/2018, de Protección de Datos Personales, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673#a1"
+        },
+        {
+          "texto": "Ley Orgánica 3/2018, de Protección de Datos Personales, art. 13 (derecho de acceso)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673#a1-5"
+        },
+        {
+          "texto": "Ley Orgánica 3/2018, de Protección de Datos Personales, art. 14 (derecho de rectificación)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673#a1-6"
+        },
+        {
+          "texto": "Ley Orgánica 3/2018, de Protección de Datos Personales, art. 15 (derecho de supresión)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673#a1-7"
+        },
+        {
+          "texto": "Reglamento (UE) 2016/679, de protección de datos",
+          "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32016R0679"
+        }
+      ]
     },
     {
       "id": "ccse-2016",
@@ -3207,8 +3362,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La libertad de prensa tiene límites, y uno de ellos es el respeto al honor de las personas. La Constitución protege la libertad de expresión y de información, pero dice que deben respetar el honor, la intimidad y la propia imagen, y proteger a los niños y a los jóvenes.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 18",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a18"
+        },
+        {
+          "texto": "Constitución española, art. 20",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a20"
+        }
+      ]
     },
     {
       "id": "ccse-2017",
@@ -3221,8 +3385,29 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La separación y el divorcio están regulados por la ley, como pide la Constitución, y las normas están en el Código Civil. El divorcio es legal en España desde 1981.\nDesde 2005 no hace falta dar un motivo. Basta con que lo pida uno de los dos, o los dos, en general cuando han pasado al menos tres meses desde la boda.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 32",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a32"
+        },
+        {
+          "texto": "Código Civil, art. 81",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763#art81"
+        },
+        {
+          "texto": "Código Civil, art. 86",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763#art86"
+        },
+        {
+          "texto": "Ley 30/1981, por la que se modifica la regulación del matrimonio en el Código Civil",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-16216"
+        },
+        {
+          "texto": "Ley 15/2005, por la que se modifican el Código Civil y la Ley de Enjuiciamiento Civil en materia de separación y divorcio",
+          "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2005-11864"
+        }
+      ]
     },
     {
       "id": "ccse-2018",
@@ -3235,8 +3420,17 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La atención sanitaria pública no es solo para los mayores de 65 años. Tienen derecho a ella las personas con nacionalidad española y los extranjeros que viven en España, tengan la edad que tengan.\nLo que sí cambia según la situación es lo que se paga por las medicinas con receta. Los pensionistas suelen pagar el 10 % del precio, y los demás, entre el 40 % y el 60 %, según sus ingresos.",
+      "fuentes": [
+        {
+          "texto": "Ley 16/2003, de cohesión y calidad del Sistema Nacional de Salud, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-10715#a3"
+        },
+        {
+          "texto": "Real Decreto Legislativo 1/2015, Ley de garantías y uso racional de los medicamentos, art. 102",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-8343#a102"
+        }
+      ]
     },
     {
       "id": "ccse-2019",
@@ -3249,8 +3443,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los hombres y las mujeres tienen los mismos derechos. La Constitución dice que todos son iguales ante la ley y prohíbe la discriminación por sexo. Además, una ley de 2007 obliga a que esa igualdad se cumpla de verdad, en el trabajo, en la política y en otros ámbitos.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 14",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a14"
+        },
+        {
+          "texto": "Ley Orgánica 3/2007, para la igualdad efectiva de mujeres y hombres, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-6115#a1"
+        }
+      ]
     },
     {
       "id": "ccse-2020",
@@ -3263,8 +3466,21 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La enseñanza obligatoria tiene dos etapas, la Educación Primaria (de 6 a 12 años) y la Educación Secundaria Obligatoria o ESO (de 12 a 16). Juntas forman la enseñanza básica, que es obligatoria y gratuita.\nAlgunos alumnos pueden hacer, en vez de los últimos cursos de la ESO, un ciclo de Formación Profesional de grado básico, que también cuenta como enseñanza básica. El Bachillerato y el resto de la Formación Profesional, después, ya no son obligatorios.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 2/2006, de Educación, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a3"
+        },
+        {
+          "texto": "Ley Orgánica 2/2006, de Educación, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a4"
+        },
+        {
+          "texto": "Ley Orgánica 2/2006, de Educación, art. 30",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a30"
+        }
+      ]
     },
     {
       "id": "ccse-2021",
@@ -3277,8 +3493,33 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "En España no hay ninguna religión oficial, porque la Constitución dice que ninguna tendrá carácter estatal. Por eso se dice que el Estado es aconfesional.\nEso no quiere decir que el Estado ignore las religiones. La Constitución le pide colaborar con la Iglesia católica y con las demás, y hay acuerdos firmados con la Iglesia católica, los evangélicos, los judíos y los musulmanes.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 16",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a16"
+        },
+        {
+          "texto": "Tribunal Constitucional, sentencia 46/2001 (aconfesionalidad)",
+          "url": "https://hj.tribunalconstitucional.es/es/Resolucion/Show/4342"
+        },
+        {
+          "texto": "Acuerdo entre el Estado español y la Santa Sede sobre asuntos jurídicos (1979)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1979-29489"
+        },
+        {
+          "texto": "Ley 24/1992, Acuerdo de Cooperación con la Federación de Entidades Religiosas Evangélicas de España",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-24853"
+        },
+        {
+          "texto": "Ley 25/1992, Acuerdo de Cooperación con la Federación de Comunidades Israelitas de España",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-24854"
+        },
+        {
+          "texto": "Ley 26/1992, Acuerdo de Cooperación con la Comisión Islámica de España",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-24855"
+        }
+      ]
     },
     {
       "id": "ccse-2022",
@@ -3291,8 +3532,21 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La atención sanitaria pública es gratuita. Las consultas, las pruebas, los tratamientos en hospitales y centros de salud y el transporte sanitario urgente se pagan con dinero público, es decir, con los impuestos.\nLa excepción son las medicinas con receta que se compran en la farmacia, porque muchas personas pagan una parte, según sus ingresos.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 43",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a43"
+        },
+        {
+          "texto": "Ley 16/2003, de cohesión y calidad del Sistema Nacional de Salud, art. 8 bis",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-10715#a8bis"
+        },
+        {
+          "texto": "Real Decreto Legislativo 1/2015, Ley de garantías y uso racional de los medicamentos, art. 102",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-8343#a102"
+        }
+      ]
     },
     {
       "id": "ccse-2023",
@@ -3305,8 +3559,21 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La enseñanza básica es para todos, españoles y extranjeros. La Constitución dice que todos tienen derecho a la educación, y la ley de educación dice que la enseñanza básica es obligatoria y gratuita para todas las personas. Los niños extranjeros tienen el mismo derecho y el mismo deber de ir a la escuela.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 27",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a27"
+        },
+        {
+          "texto": "Ley Orgánica 2/2006, de Educación, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a4"
+        },
+        {
+          "texto": "Ley Orgánica 4/2000, sobre derechos y libertades de los extranjeros en España, art. 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#a9"
+        }
+      ]
     },
     {
       "id": "ccse-2024",
@@ -3319,8 +3586,13 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El derecho de asociación está reconocido en la Constitución. Las personas pueden unirse para un fin común (una asociación de vecinos, cultural o deportiva, por ejemplo) sin pedir permiso. Las asociaciones solo tienen que inscribirse en un registro para que se sepa que existen, y solo un juez puede disolverlas.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 22",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a22"
+        }
+      ]
     },
     {
       "id": "ccse-2025",
@@ -3333,8 +3605,21 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los sindicatos pueden negociar con los empresarios y con el Gobierno. La Constitución dice que defienden los intereses de los trabajadores y garantiza la negociación colectiva, de la que salen los convenios. Los sindicatos más representativos, además, representan a los trabajadores ante las Administraciones públicas.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a7"
+        },
+        {
+          "texto": "Constitución española, art. 37",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a37"
+        },
+        {
+          "texto": "Ley Orgánica 11/1985, de Libertad Sindical, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-16660#asexto"
+        }
+      ]
     },
     {
       "id": "ccse-2026",
@@ -3347,8 +3632,13 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los trabajadores tienen derecho a hacer huelga para defender sus intereses. Lo reconoce la Constitución.\nLa misma Constitución pide que, durante una huelga, sigan funcionando los servicios esenciales para la población.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 28",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a28"
+        }
+      ]
     },
     {
       "id": "ccse-2027",
@@ -3361,8 +3651,17 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La libertad ideológica está garantizada en toda España. La Constitución la garantiza a todas las personas, y además dice que todos los españoles tienen los mismos derechos en cualquier parte del territorio.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 16",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a16"
+        },
+        {
+          "texto": "Constitución española, art. 139",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a139"
+        }
+      ]
     },
     {
       "id": "ccse-2028",
@@ -3375,8 +3674,13 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Todos los ciudadanos tienen acceso a la Seguridad Social pública, también los que están en paro. La Constitución dice que debe proteger a todos ante situaciones de necesidad, «especialmente en caso de desempleo».",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 41",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a41"
+        }
+      ]
     },
     {
       "id": "ccse-2029",
@@ -3389,8 +3693,13 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Todos tienen derecho a disfrutar de un medio ambiente adecuado, y también el deber de conservarlo. Lo dice la Constitución, que además prevé sanciones y la obligación de reparar el daño para quien lo perjudique.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 45",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a45"
+        }
+      ]
     },
     {
       "id": "ccse-2030",
@@ -3403,8 +3712,13 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los poderes públicos deben proteger la salud y promover el deporte. La Constitución reconoce el derecho a la protección de la salud y les pide fomentar la educación sanitaria, la educación física y el deporte.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 43",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a43"
+        }
+      ]
     },
     {
       "id": "ccse-2031",
@@ -3417,8 +3731,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La enseñanza básica es obligatoria y gratuita, como dice la Constitución. Está formada por la Educación Primaria y la ESO, y son diez cursos, normalmente de los 6 a los 16 años.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 27",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a27"
+        },
+        {
+          "texto": "Ley Orgánica 2/2006, de Educación, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a4"
+        }
+      ]
     },
     {
       "id": "ccse-2032",
@@ -3431,8 +3754,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La ley prohíbe la discriminación por cualquier circunstancia personal o social. La Constitución nombra algunas (el nacimiento, la raza, el sexo, la religión o la opinión) y añade «cualquier otra condición o circunstancia personal o social».\nUna ley de 2022 sobre la igualdad de trato nombra más, como la edad, la discapacidad, la orientación sexual o la enfermedad.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 14",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a14"
+        },
+        {
+          "texto": "Ley 15/2022, integral para la igualdad de trato y la no discriminación, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-11589#a2"
+        }
+      ]
     },
     {
       "id": "ccse-2033",
@@ -3445,8 +3777,21 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los ciudadanos pueden desplazarse libremente por toda España. La Constitución reconoce el derecho a circular por el territorio nacional, y ninguna autoridad puede poner trabas a que las personas se muevan o se instalen en cualquier parte del país.\nSolo en situaciones excepcionales, como el estado de alarma, la ley permite limitarlo por un tiempo, en horas y lugares concretos.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 19",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a19"
+        },
+        {
+          "texto": "Constitución española, art. 139",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a139"
+        },
+        {
+          "texto": "Ley Orgánica 4/1981, de los estados de alarma, excepción y sitio, art. 11",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-12774#aonce"
+        }
+      ]
     },
     {
       "id": "ccse-2034",
@@ -3459,8 +3804,17 @@
         ""
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los jueces no siguen indicaciones del Gobierno. La Constitución dice que son independientes y que solo están sometidos a la ley.\nPara proteger esa independencia, a los jueces no los gobierna el Gobierno, sino el Consejo General del Poder Judicial, que se encarga de sus nombramientos, ascensos y sanciones.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 117",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a117"
+        },
+        {
+          "texto": "Constitución española, art. 122",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a122"
+        }
+      ]
     },
     {
       "id": "ccse-2035",
@@ -3473,8 +3827,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los españoles deben ayudar en los casos de catástrofe o calamidad pública. La Constitución permite que una ley fije estos deberes, y la ley de protección civil obliga a colaborar cuando lo pida la autoridad.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 30",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a30"
+        },
+        {
+          "texto": "Ley 17/2015, del Sistema Nacional de Protección Civil, art. 7 bis",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-7730#a7bis"
+        }
+      ]
     },
     {
       "id": "ccse-2036",
@@ -3487,8 +3850,17 @@
         ""
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los ciudadanos pueden elegir en qué ciudad quieren vivir. La Constitución reconoce el derecho a elegir libremente la residencia.\nQuien vive en un municipio tiene que inscribirse en su padrón (empadronarse). El padrón no es un permiso para vivir allí, sino el registro de quién vive en cada sitio.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 19",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a19"
+        },
+        {
+          "texto": "Ley 7/1985, reguladora de las Bases del Régimen Local, art. 15",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a15"
+        }
+      ]
     },
     {
       "id": "ccse-3001",

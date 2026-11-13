@@ -277,7 +277,7 @@ Se ejecutan también en GitHub en cada PR y antes de publicar: si alguno falla, 
 
 ## Próximos pasos
 
-- **Examen de nacionalidad**: el resto de preguntas de la Tarea 1 y las de las tareas 2 a 5, y un simulacro como el examen real (25 preguntas repartidas por tareas, 45 minutos en total y «apto» con 15 aciertos).
+- **Examen de nacionalidad**: las notas de las tareas 3 a 5 (las 300 preguntas ya están, y las tareas 1 y 2 tienen todas sus notas), y un simulacro como el examen real (25 preguntas repartidas por tareas, 45 minutos en total y «apto» con 15 aciertos).
 
 - **Respuesta abierta**: el jugador escribe la respuesta. Habrá que decidir cómo compararla (sin tildes, mayúsculas, formas oficial y castellana, «Vitoria» y «Vitoria-Gasteiz»…).
 - **Puntuación**: una puntuación aparte del récord de aciertos, con más puntos por responder rápido (el tiempo por pregunta ya está), multiplicadores por racha y más puntos por dificultad y por jugar con más categorías a la vez.
