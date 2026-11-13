@@ -290,7 +290,7 @@
         "los ayuntamientos."
       ],
       "respuesta": "b",
-      "nota": "El Estado fija las normas básicas de la sanidad y la coordina, pero los hospitales y centros de salud los gestiona cada comunidad autónoma. En Ceuta y Melilla los gestiona el Estado, a través del INGESA.",
+      "nota": "La gestión de la sanidad es competencia de las comunidades autónomas, que llevan los hospitales y centros de salud. El Estado fija las normas básicas y coordina el sistema.\nSolo en Ceuta y Melilla gestiona la sanidad el Estado, a través del INGESA. Los ayuntamientos no llevan la sanidad pública, aunque cuidan de la salubridad del municipio.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 148",
@@ -303,6 +303,10 @@
         {
           "texto": "Wikipedia, «Instituto Nacional de Gestión Sanitaria»",
           "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Gestión_Sanitaria"
+        },
+        {
+          "texto": "Ley 7/1985, de Bases del Régimen Local, art. 25",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a25"
         }
       ]
     },
@@ -486,11 +490,15 @@
         "Ministerio de Igualdad."
       ],
       "respuesta": "a",
-      "nota": "Los ayuntamientos se ocupan de las instalaciones deportivas, como polideportivos y piscinas municipales, y de los equipamientos culturales, como bibliotecas y casas de cultura.",
+      "nota": "Las instalaciones culturales y deportivas públicas son competencia del ayuntamiento, como los polideportivos, las piscinas municipales, las bibliotecas o las casas de cultura.\nEl Ministerio de Educación, Formación Profesional y Deportes se ocupa de la política deportiva de todo el país, no de las instalaciones de cada municipio. El Ministerio de Igualdad se ocupa de las políticas de igualdad.",
       "fuentes": [
         {
           "texto": "Ley 7/1985, de Bases del Régimen Local, arts. 25 y 26",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a25"
+        },
+        {
+          "texto": "Wikipedia, «Ministerio de Igualdad (España)»",
+          "url": "https://es.wikipedia.org/wiki/Ministerio_de_Igualdad_(España)"
         }
       ]
     },
@@ -2389,11 +2397,15 @@
         "el Ministerio de Obras Públicas y Urbanismo."
       ],
       "respuesta": "a",
-      "nota": "Todos los ayuntamientos tienen que dar el agua potable, el alumbrado público, la recogida de basura y la limpieza de las calles, entre otros servicios.",
+      "nota": "El suministro de agua y el alumbrado de las ciudades son competencia del ayuntamiento. Todos los ayuntamientos tienen que dar estos servicios, además de la recogida de basura y la limpieza de las calles, entre otros.\nEl gobierno autonómico no se ocupa de estos servicios de cada municipio. El Ministerio de Obras Públicas y Urbanismo ya no existe con ese nombre desde 1991.",
       "fuentes": [
         {
           "texto": "Ley 7/1985, de Bases del Régimen Local, art. 26",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a26"
+        },
+        {
+          "texto": "Wikipedia, «Ministerio de Transportes (España)»",
+          "url": "https://es.wikipedia.org/wiki/Ministerio_de_Transportes_(España)"
         }
       ]
     },
@@ -2408,7 +2420,7 @@
         "los ayuntamientos."
       ],
       "respuesta": "a",
-      "nota": "La Constitución reserva al Estado la nacionalidad, la inmigración, la emigración, la extranjería y el derecho de asilo. Las comunidades autónomas y los ayuntamientos no pueden regularlas.",
+      "nota": "En nacionalidad, inmigración, emigración y extranjería solo tiene competencia el Estado, como dice la Constitución, que le reserva también el derecho de asilo.\nLas comunidades autónomas y los ayuntamientos no pueden regular estas materias.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 149",
@@ -2450,7 +2462,7 @@
         "los ayuntamientos."
       ],
       "respuesta": "a",
-      "nota": "La Constitución reserva al Estado las relaciones internacionales, y la política exterior la dirige el Gobierno de España.",
+      "nota": "Las relaciones internacionales son competencia del Estado, como dice la Constitución, y la política exterior la dirige el Gobierno de España.\nLas comunidades autónomas y los ayuntamientos no pueden firmar tratados con otros países.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 149",
