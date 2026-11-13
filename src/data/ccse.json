@@ -563,7 +563,7 @@
         "Zaragoza."
       ],
       "respuesta": "b",
-      "nota": "Barcelona es la segunda ciudad de España, con más de 1,7 millones de habitantes. Solo la supera Madrid. Zaragoza y Sevilla, cuarta y quinta, tienen unos 690 000 cada una.",
+      "nota": "Barcelona es la que tiene más habitantes, más de 1,7 millones. Es la segunda ciudad de España, después de Madrid, y la tercera es Valencia.\nZaragoza y Sevilla son la cuarta y la quinta, con unos 690 000 habitantes cada una.",
       "fuentes": [
         {
           "texto": "INE, cifras oficiales de población de los municipios, 2025",
@@ -1224,7 +1224,7 @@
         "Unión Económica Euroasiática (UEE)."
       ],
       "respuesta": "b",
-      "nota": "España entró en el Fondo Monetario Internacional en 1958. Las otras dos organizaciones reúnen a países que formaron parte de la Unión Soviética.",
+      "nota": "España pertenece al Fondo Monetario Internacional (FMI) desde 1958. El FMI trabaja para que la economía mundial sea estable y presta dinero a los países que pasan por una crisis.\nLa Comunidad de Estados Independientes y la Unión Económica Euroasiática reúnen a países que formaron parte de la Unión Soviética, como Rusia.",
       "fuentes": [
         {
           "texto": "Banco de España, «España en el FMI y el Banco Mundial: cincuenta años de relación» (2008)",
@@ -1508,11 +1508,15 @@
         "67 millones."
       ],
       "respuesta": "b",
-      "nota": "Según el INE, a mediados de 2026 vivían en España unos 49,8 millones de personas, la cifra más alta de su historia.",
+      "nota": "En España viven casi 50 millones de personas (49,8 millones en julio de 2026), la cifra más alta de su historia. Ha crecido sobre todo por la llegada de gente de otros países, y hoy más de uno de cada cinco habitantes nació en el extranjero.\n95 y 67 millones son demasiados. España es el cuarto país más poblado de la Unión Europea, después de Alemania (unos 83 millones), Francia (69) e Italia (59).",
       "fuentes": [
         {
-          "texto": "INE, Estadística Continua de Población",
-          "url": "https://www.ine.es/htdocs/prensa/ecp_tabla.htm"
+          "texto": "INE, Estadística Continua de Población, 1 de julio de 2026",
+          "url": "https://www.ine.es/dyngs/Prensa/ECP2T26.htm"
+        },
+        {
+          "texto": "Eurostat, «Population and population change statistics»",
+          "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php/Population_and_population_change_statistics"
         }
       ]
     },
@@ -1619,7 +1623,7 @@
         "Albacete."
       ],
       "respuesta": "b",
-      "nota": "Málaga es la sexta ciudad más poblada de España, con unos 600 000 habitantes. Albacete tiene unos 175 000, y Cádiz, unos 110 000.",
+      "nota": "Málaga está entre las diez ciudades más pobladas de España. Es la sexta, con unos 600 000 habitantes.\nAlbacete tiene unos 175 000 habitantes, y Cádiz, unos 110 000. Cádiz es la capital de su provincia, pero Jerez de la Frontera y Algeciras tienen más habitantes que ella.",
       "fuentes": [
         {
           "texto": "INE, cifras oficiales de población de los municipios, 2025",
@@ -2852,11 +2856,15 @@
         "Castilla y León."
       ],
       "respuesta": "a",
-      "nota": "Andalucía es la comunidad con más habitantes, casi uno de cada cinco españoles, por delante de Cataluña y la Comunidad de Madrid.",
+      "nota": "Andalucía es la comunidad autónoma más poblada de España, con unos 8,8 millones de habitantes, casi uno de cada cinco de los que viven en el país.\nCataluña es la segunda, con unos 8,2 millones. Castilla y León es la comunidad más grande en superficie, pero tiene unos 2,4 millones de habitantes.",
       "fuentes": [
         {
-          "texto": "Junta de Andalucía, presupuesto 2026 (datos del INE)",
-          "url": "https://www.juntadeandalucia.es/export/presup2026/infancia/infancia-3-1.pdf"
+          "texto": "INE, Estadística Continua de Población, 1 de julio de 2026",
+          "url": "https://www.ine.es/dyngs/Prensa/ECP2T26.htm"
+        },
+        {
+          "texto": "Wikipedia, «Castilla y León»",
+          "url": "https://es.wikipedia.org/wiki/Castilla_y_León"
         }
       ]
     },
