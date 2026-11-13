@@ -113,10 +113,6 @@
           "url": "https://www.inmujeres.gob.es/"
         },
         {
-          "texto": "Wikipedia, «Instituto de las Mujeres»",
-          "url": "https://es.wikipedia.org/wiki/Instituto_de_las_Mujeres"
-        },
-        {
           "texto": "Ley 16/1983, de creación del Instituto de la Mujer (hoy Instituto de las Mujeres)",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1983-28126"
         }
@@ -159,12 +155,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a3"
         },
         {
-          "texto": "Wikipedia, «Portugal»",
-          "url": "https://es.wikipedia.org/wiki/Portugal"
+          "texto": "Constitución de la República Portuguesa, art. 11 (en portugués)",
+          "url": "https://www.parlamento.pt/Legislacao/Documents/constpt2005.pdf"
         },
         {
-          "texto": "Wikipedia, «Andorra»",
-          "url": "https://es.wikipedia.org/wiki/Andorra"
+          "texto": "Constitución del Principado de Andorra, art. 2 (en catalán)",
+          "url": "https://www.consellgeneral.ad/fitxers/documents/constitucio/copy_of_constitucio-dandorra-catala.pdf"
         }
       ]
     },
@@ -236,8 +232,8 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a117"
         },
         {
-          "texto": "Wikipedia, «Cuarto poder»",
-          "url": "https://es.wikipedia.org/wiki/Cuarto_poder"
+          "texto": "Carlos Soria, «El final de la metáfora del cuarto poder», Comunicación y Sociedad (1990), Universidad de Navarra",
+          "url": "https://dadun.unav.edu/handle/10171/7936"
         }
       ]
     },
@@ -305,12 +301,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a149"
         },
         {
-          "texto": "Wikipedia, «Instituto Nacional de Gestión Sanitaria»",
-          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Gestión_Sanitaria"
-        },
-        {
           "texto": "Ley 7/1985, de Bases del Régimen Local, art. 25",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a25"
+        },
+        {
+          "texto": "INGESA, «Orígenes del INGESA»",
+          "url": "https://ingesa.sanidad.gob.es/ingesa/quienes-somos/origenes.html"
         }
       ]
     },
@@ -328,20 +324,32 @@
       "nota": "Adolfo Suárez fue el primer presidente del Gobierno en democracia. El rey lo nombró en 1976, todavía sin elecciones, y su partido, la UCD, ganó el 15 de junio de 1977 las primeras elecciones libres desde 1936.\nJosé Luis Rodríguez Zapatero presidió el Gobierno de 2004 a 2011, y Mariano Rajoy, de 2011 a 2018.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Adolfo Suárez»",
-          "url": "https://es.wikipedia.org/wiki/Adolfo_Su%C3%A1rez"
-        },
-        {
           "texto": "Congreso de los Diputados, «Constitución de 1978»",
           "url": "https://www.congreso.es/es/cem/const1978"
         },
         {
-          "texto": "Wikipedia, «José Luis Rodríguez Zapatero»",
-          "url": "https://es.wikipedia.org/wiki/José_Luis_Rodríguez_Zapatero"
+          "texto": "La Moncloa, biografía de Adolfo Suárez",
+          "url": "https://www.lamoncloa.gob.es/presidente/presidentes/paginas/suarez_bio.aspx"
         },
         {
-          "texto": "Wikipedia, «Mariano Rajoy»",
-          "url": "https://es.wikipedia.org/wiki/Mariano_Rajoy"
+          "texto": "BOE, nombramiento de Adolfo Suárez como presidente del Gobierno (1976)",
+          "url": "https://www.boe.es/boe/dias/1976/07/05/pdfs/A13129-13129.pdf"
+        },
+        {
+          "texto": "Congreso de los Diputados, Legislatura Constituyente (elecciones del 15 de junio de 1977)",
+          "url": "https://www.congreso.es/es/cem/legcons"
+        },
+        {
+          "texto": "BOE, Real Decreto 552/2004, por el que se nombra presidente del Gobierno a José Luis Rodríguez Zapatero",
+          "url": "https://www.boe.es/boe/dias/2004/04/17/pdfs/A15981-15981.pdf"
+        },
+        {
+          "texto": "BOE, Real Decreto 1822/2011, por el que se nombra presidente del Gobierno a Mariano Rajoy",
+          "url": "https://www.boe.es/boe/dias/2011/12/21/pdfs/BOE-A-2011-19861.pdf"
+        },
+        {
+          "texto": "BOE, Real Decreto 354/2018, por el que se nombra presidente del Gobierno a Pedro Sánchez",
+          "url": "https://www.boe.es/boe/dias/2018/06/02/pdfs/BOE-A-2018-7400.pdf"
         }
       ]
     },
@@ -390,8 +398,8 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
         },
         {
-          "texto": "Wikipedia, «Real Academia Española»",
-          "url": "https://es.wikipedia.org/wiki/Real_Academia_Española"
+          "texto": "Real Decreto 1109/1993, Estatutos de la Real Academia Española, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1993-19893#a1"
         }
       ]
     },
@@ -501,8 +509,8 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a25"
         },
         {
-          "texto": "Wikipedia, «Ministerio de Igualdad (España)»",
-          "url": "https://es.wikipedia.org/wiki/Ministerio_de_Igualdad_(España)"
+          "texto": "Real Decreto 246/2024, estructura orgánica básica del Ministerio de Igualdad",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-4616"
         }
       ]
     },
@@ -658,8 +666,20 @@
       "nota": "En España hay 17 comunidades autónomas.\nAdemás hay dos ciudades autónomas, Ceuta y Melilla, que no cuentan como comunidades. Las provincias son 50.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Organización territorial de España»",
-          "url": "https://es.wikipedia.org/wiki/Organización_territorial_de_España"
+          "texto": "INE, «Relación de comunidades y ciudades autónomas con sus códigos»",
+          "url": "https://www.ine.es/daco/daco42/codmun/cod_ccaa.htm"
+        },
+        {
+          "texto": "Ley Orgánica 1/1995, Estatuto de Autonomía de Ceuta",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-6358"
+        },
+        {
+          "texto": "Ley Orgánica 2/1995, Estatuto de Autonomía de Melilla",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-6359"
+        },
+        {
+          "texto": "INE, «Relación de provincias con sus códigos»",
+          "url": "https://www.ine.es/daco/daco42/codmun/cod_provincia.htm"
         }
       ]
     },
@@ -681,12 +701,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a4"
         },
         {
-          "texto": "Wikipedia, «Bandera de Galicia»",
-          "url": "https://es.wikipedia.org/wiki/Bandera_de_Galicia"
+          "texto": "Estatuto de Autonomía de Galicia, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1981-9564#asexto"
         },
         {
-          "texto": "Wikipedia, «Bandera de Andalucía»",
-          "url": "https://es.wikipedia.org/wiki/Bandera_de_Andalucía"
+          "texto": "Estatuto de Autonomía de Andalucía, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-5825#a3"
         }
       ]
     },
@@ -708,16 +728,16 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a5"
         },
         {
-          "texto": "Wikipedia, «Palacio de la Moncloa»",
-          "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Moncloa"
+          "texto": "La Moncloa, «Moncloa Abierta» (2026): residencia oficial de los presidentes desde 1977",
+          "url": "https://www.lamoncloa.gob.es/presidente/actividades/Paginas/2026/230226-sanchez-moncloa-abierta.aspx"
         },
         {
-          "texto": "Wikipedia, «Barcelona»",
-          "url": "https://es.wikipedia.org/wiki/Barcelona"
+          "texto": "Estatuto de Autonomía de Cataluña, art. 10",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-13087#a10"
         },
         {
-          "texto": "Wikipedia, «Sevilla»",
-          "url": "https://es.wikipedia.org/wiki/Sevilla"
+          "texto": "Estatuto de Autonomía de Andalucía, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-5825#a4"
         }
       ]
     },
@@ -735,12 +755,12 @@
       "nota": "Es la bandera de la Unión Europea. La creó el Consejo de Europa en 1955, y las Comunidades Europeas, hoy la Unión Europea, la adoptaron en 1985. Sus doce estrellas no son los países, sino un símbolo de unidad.\nEl Parlamento Europeo es una de las instituciones de la Unión y usa esa misma bandera. «Comisión de Europa» no existe; la que existe es la Comisión Europea, que propone las leyes de la Unión y vigila que se cumplan.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Bandera de Europa»",
-          "url": "https://es.wikipedia.org/wiki/Bandera_de_Europa"
+          "texto": "Unión Europea, «La bandera europea»",
+          "url": "https://european-union.europa.eu/principles-countries-history/symbols/european-flag_es"
         },
         {
-          "texto": "Wikipedia, «Comisión Europea»",
-          "url": "https://es.wikipedia.org/wiki/Comisión_Europea"
+          "texto": "Comisión Europea, «Funciones»",
+          "url": "https://commission.europa.eu/about/role_es"
         }
       ]
     },
@@ -881,8 +901,8 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8444#a7"
         },
         {
-          "texto": "Wikipedia, «Dialecto murciano»",
-          "url": "https://es.wikipedia.org/wiki/Dialecto_murciano"
+          "texto": "RAE, Diccionario de la lengua española, «murciano»",
+          "url": "https://dle.rae.es/murciano"
         }
       ]
     },
@@ -904,12 +924,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-7354"
         },
         {
-          "texto": "Wikipedia, «Instituto Nacional de Administración Pública (España)»",
-          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Administración_Pública_(España)"
+          "texto": "Real Decreto 464/2011, Estatuto del Instituto Nacional de Administración Pública",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-6872"
         },
         {
-          "texto": "Wikipedia, «Instituto Nacional de Estadística (España)»",
-          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Estadística_(España)"
+          "texto": "Ley 12/1989, de la Función Estadística Pública, art. 26 (funciones del INE)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1989-10767#a26"
         }
       ]
     },
@@ -927,12 +947,12 @@
       "nota": "La normalización lingüística es tarea de la Real Academia Española, junto con las demás academias del español. Aquí «normalización» quiere decir fijar la norma del idioma, con el diccionario, la gramática y la ortografía.\nEl Institut Ramon Llull y el Instituto Cervantes se dedican, en cambio, a dar a conocer fuera el catalán y el español.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Real Academia Española»",
-          "url": "https://es.wikipedia.org/wiki/Real_Academia_Española"
+          "texto": "Real Decreto 1109/1993, Estatutos de la Real Academia Española, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1993-19893#a1"
         },
         {
-          "texto": "Wikipedia, «Instituto Ramon Llull»",
-          "url": "https://es.wikipedia.org/wiki/Instituto_Ramon_Llull"
+          "texto": "Institut Ramon Llull, «Quiénes somos»",
+          "url": "https://www.llull.cat/espanyol/quisom/quisom.cfm"
         }
       ]
     },
@@ -950,16 +970,12 @@
       "nota": "El presidente del Gobierno vive en el Palacio de la Moncloa, en Madrid, que es su residencia oficial y la sede de la Presidencia desde 1977.\nEl rey vive en el Palacio de la Zarzuela. El Palacio Real es la residencia oficial del rey, pero no vive allí y se usa para ceremonias y actos de Estado.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Palacio de la Moncloa»",
-          "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Moncloa"
+          "texto": "La Moncloa, «Moncloa Abierta» (2026): residencia oficial de los presidentes desde 1977",
+          "url": "https://www.lamoncloa.gob.es/presidente/actividades/Paginas/2026/230226-sanchez-moncloa-abierta.aspx"
         },
         {
-          "texto": "Wikipedia, «Palacio de la Zarzuela»",
-          "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Zarzuela"
-        },
-        {
-          "texto": "Wikipedia, «Palacio Real de Madrid»",
-          "url": "https://es.wikipedia.org/wiki/Palacio_Real_de_Madrid"
+          "texto": "Casa de S.M. el Rey, «Los Reales Sitios»",
+          "url": "https://www.casareal.es/ES/MonarquiaHistoria/Paginas/la-monarquia-en-la-historia_reales-sitios.aspx"
         }
       ]
     },
@@ -985,8 +1001,8 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#anoveno"
         },
         {
-          "texto": "Wikipedia, «Ejército del Aire y del Espacio (España)»",
-          "url": "https://es.wikipedia.org/wiki/Ejército_del_Aire_y_del_Espacio_(España)"
+          "texto": "Real Decreto 524/2022, cambio de denominación del Ejército del Aire",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-10787"
         }
       ]
     },
@@ -1035,12 +1051,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a9"
         },
         {
-          "texto": "Wikipedia, «Puerto Rico»",
-          "url": "https://es.wikipedia.org/wiki/Puerto_Rico"
+          "texto": "Constitución del Estado Libre Asociado de Puerto Rico, art. I (Gobierno de Puerto Rico)",
+          "url": "https://presupuestosanteriores.pr.gov/af2008_2009/Tomo_II/suppdocs/baselegal/015/015.pdf"
         },
         {
-          "texto": "Wikipedia, «Confederación»",
-          "url": "https://es.wikipedia.org/wiki/Confederación"
+          "texto": "RAE, Diccionario panhispánico del español jurídico, «confederación»",
+          "url": "https://dpej.rae.es/lema/confederaci%C3%B3n"
         }
       ]
     },
@@ -1058,12 +1074,12 @@
       "nota": "PP son las siglas del Partido Popular, uno de los principales partidos políticos de España.\nPIB es el producto interior bruto, el valor de todo lo que produce un país en un año, y UE son las siglas de la Unión Europea.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Partido Popular»",
-          "url": "https://es.wikipedia.org/wiki/Partido_Popular"
+          "texto": "BOE, resultados de las elecciones generales de 2023 (Junta Electoral Central)",
+          "url": "https://www.boe.es/boe/dias/2023/09/01/pdfs/BOE-A-2023-18907.pdf"
         },
         {
-          "texto": "Wikipedia, «Producto interno bruto»",
-          "url": "https://es.wikipedia.org/wiki/Producto_interno_bruto"
+          "texto": "INE, glosario de la Contabilidad Nacional (PIB)",
+          "url": "https://www.ine.es/daco/daco42/cne24/Glosario_vf_es.pdf"
         }
       ]
     },
@@ -1085,12 +1101,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a57"
         },
         {
-          "texto": "Wikipedia, «Leonor de Borbón»",
-          "url": "https://es.wikipedia.org/wiki/Leonor_de_Borbón"
+          "texto": "Casa de S.M. el Rey, biografía de la princesa de Asturias",
+          "url": "https://www.casareal.es/ES/FamiliaReal/PrincesaLeonor/Paginas/biografia.aspx"
         },
         {
-          "texto": "Wikipedia, «Ducado de Alba de Tormes»",
-          "url": "https://es.wikipedia.org/wiki/Ducado_de_Alba_de_Tormes"
+          "texto": "BOE, Orden JUS/1141/2015, sucesión en el título de duque de Alba de Tormes",
+          "url": "https://www.boe.es/boe/dias/2015/06/16/pdfs/BOE-A-2015-6672.pdf"
         }
       ]
     },
@@ -1108,16 +1124,16 @@
       "nota": "Juan Carlos I fue proclamado rey en noviembre de 1975, tras la muerte de Franco, y la Transición a la democracia se hizo durante su reinado.\nAlfonso XIII, su abuelo, reinó antes de la dictadura, hasta 1931, y Carlos III fue rey en el siglo XVIII.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Juan Carlos I de España»",
-          "url": "https://es.wikipedia.org/wiki/Juan_Carlos_I_de_España"
+          "texto": "BOE, Orden de 2 de diciembre de 1975 (proclamación de Juan Carlos I el 22 de noviembre de 1975)",
+          "url": "https://www.boe.es/boe/dias/1975/12/04/pdfs/A25309-25310.pdf"
         },
         {
-          "texto": "Wikipedia, «Alfonso XIII de España»",
-          "url": "https://es.wikipedia.org/wiki/Alfonso_XIII_de_España"
+          "texto": "Casa de S.M. el Rey, «Historia de la monarquía»",
+          "url": "https://www.casareal.es/ES/MonarquiaHistoria/Paginas/historia-monarquia.aspx"
         },
         {
-          "texto": "Wikipedia, «Carlos III de España»",
-          "url": "https://es.wikipedia.org/wiki/Carlos_III_de_España"
+          "texto": "Casa de S.M. el Rey, «Árbol genealógico»",
+          "url": "https://www.casareal.es/ES/MonarquiaHistoria/Paginas/arbol-genealogico.aspx"
         }
       ]
     },
@@ -1139,8 +1155,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229"
         },
         {
-          "texto": "Wikipedia, «Día de la Constitución (España)»",
-          "url": "https://es.wikipedia.org/wiki/Día_de_la_Constitución_(España)"
+          "texto": "La Moncloa, «Constitution» (fechas de aprobación, referéndum y sanción; en inglés)",
+          "url": "https://www.lamoncloa.gob.es/lang/en/espana/leyfundamental/Paginas/index.aspx"
+        },
+        {
+          "texto": "BOE, fiestas laborales de 2026",
+          "url": "https://www.boe.es/boe/dias/2025/10/28/pdfs/BOE-A-2025-21667.pdf"
         }
       ]
     },
@@ -1227,16 +1247,16 @@
       "nota": "España pertenece al Fondo Monetario Internacional (FMI) desde 1958. El FMI trabaja para que la economía mundial sea estable y presta dinero a los países que pasan por una crisis.\nLa Comunidad de Estados Independientes y la Unión Económica Euroasiática reúnen a países que formaron parte de la Unión Soviética, como Rusia.",
       "fuentes": [
         {
-          "texto": "Banco de España, «España en el FMI y el Banco Mundial: cincuenta años de relación» (2008)",
-          "url": "https://repositorio.bde.es/bitstream/123456789/22235/1/IIPP-2008-033.pdf"
+          "texto": "FMI, «Spain and the IMF» (fecha de ingreso; en inglés)",
+          "url": "https://www.imf.org/en/countries/esp"
         },
         {
-          "texto": "Wikipedia, «Comunidad de Estados Independientes»",
-          "url": "https://es.wikipedia.org/wiki/Comunidad_de_Estados_Independientes"
+          "texto": "Comunidad de Estados Independientes, portal oficial (en ruso)",
+          "url": "https://e-cis.info/page/3509/"
         },
         {
-          "texto": "Wikipedia, «Unión Económica Euroasiática»",
-          "url": "https://es.wikipedia.org/wiki/Unión_Económica_Euroasiática"
+          "texto": "Unión Económica Euroasiática, portal oficial (en inglés)",
+          "url": "https://www.eaeunion.org/?lang=en"
         }
       ]
     },
@@ -1300,12 +1320,12 @@
       "nota": "El Palacio de la Zarzuela, en las afueras de Madrid, es la residencia de la familia real.\nEl Palacio de la Moncloa es la del presidente del Gobierno, y el de La Moneda está en Chile, donde es la sede de su presidente.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Palacio de la Zarzuela»",
-          "url": "https://es.wikipedia.org/wiki/Palacio_de_la_Zarzuela"
+          "texto": "Casa de S.M. el Rey, «Los Reales Sitios»",
+          "url": "https://www.casareal.es/ES/MonarquiaHistoria/Paginas/la-monarquia-en-la-historia_reales-sitios.aspx"
         },
         {
-          "texto": "Wikipedia, «Palacio de La Moneda»",
-          "url": "https://es.wikipedia.org/wiki/Palacio_de_La_Moneda"
+          "texto": "Presidencia de la República de Chile, visitas al Palacio de La Moneda",
+          "url": "https://visitaspatrimonio.presidencia.cl/"
         }
       ]
     },
@@ -1342,24 +1362,16 @@
       "nota": "Los tres dependen de un ministerio. El ICEX, que ayuda a las empresas a vender en el extranjero, depende del de Economía; el Instituto de las Mujeres, del de Igualdad, y la Dirección General de Tráfico, del de Interior.\nEl Instituto de las Mujeres sí es un organismo autónomo, pero el ICEX es una entidad pública empresarial y la DGT es una parte del propio ministerio, así que esa opción no vale para los tres. Ninguno es internacional.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «ICEX España Exportación e Inversiones»",
-          "url": "https://es.wikipedia.org/wiki/ICEX_España_Exportación_e_Inversiones"
-        },
-        {
-          "texto": "Wikipedia, «Instituto de las Mujeres»",
-          "url": "https://es.wikipedia.org/wiki/Instituto_de_las_Mujeres"
-        },
-        {
-          "texto": "Wikipedia, «Dirección General de Tráfico»",
-          "url": "https://es.wikipedia.org/wiki/Dirección_General_de_Tráfico"
-        },
-        {
           "texto": "Real Decreto 1636/2011, Estatuto de ICEX España Exportación e Inversiones",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-18538"
         },
         {
           "texto": "Ley 16/1983, de creación del Instituto de la Mujer (hoy Instituto de las Mujeres)",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1983-28126"
+        },
+        {
+          "texto": "Real Decreto 207/2024, estructura orgánica básica del Ministerio del Interior, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-3793#a1"
         }
       ]
     },
@@ -1469,8 +1481,8 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a2"
         },
         {
-          "texto": "Wikipedia, «Liberté, Égalité, Fraternité»",
-          "url": "https://es.wikipedia.org/wiki/Liberté,_Égalité,_Fraternité"
+          "texto": "Constitución de Francia, art. 2 (en francés)",
+          "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur"
         }
       ]
     },
@@ -1607,8 +1619,8 @@
       "nota": "El Instituto Etxepare difunde por el mundo el euskera y la cultura vasca, como hace el Instituto Cervantes con el español. Se creó en 2007 y depende del Gobierno Vasco.\nEl bable es la lengua de Asturias, no de Cantabria, y el gallego se habla en Galicia.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Etxepare Euskal Institutua»",
-          "url": "https://es.wikipedia.org/wiki/Etxepare_Euskal_Institutua"
+          "texto": "Ley 3/2007 del Parlamento Vasco, de creación del Instituto Vasco Etxepare",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-16283"
         }
       ]
     },
@@ -1664,16 +1676,24 @@
       "nota": "Felipe VI es rey desde 2014.\nJuan Carlos I, su padre, reinó de 1975 a 2014, y Alfonso XIII, su bisabuelo, hasta 1931.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Felipe VI de España»",
-          "url": "https://es.wikipedia.org/wiki/Felipe_VI_de_España"
+          "texto": "Casa de S.M. el Rey, biografía de Felipe VI",
+          "url": "https://www.casareal.es/ES/FamiliaReal/ReyFelipe/Paginas/biografia.aspx"
         },
         {
-          "texto": "Wikipedia, «Alfonso XIII de España»",
-          "url": "https://es.wikipedia.org/wiki/Alfonso_XIII_de_España"
+          "texto": "Ley Orgánica 3/2014, por la que se hace efectiva la abdicación de Juan Carlos I",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-6476"
         },
         {
-          "texto": "Wikipedia, «Juan Carlos I de España»",
-          "url": "https://es.wikipedia.org/wiki/Juan_Carlos_I_de_España"
+          "texto": "BOE, Orden de 2 de diciembre de 1975 (proclamación de Juan Carlos I el 22 de noviembre de 1975)",
+          "url": "https://www.boe.es/boe/dias/1975/12/04/pdfs/A25309-25310.pdf"
+        },
+        {
+          "texto": "Casa de S.M. el Rey, «Historia de la monarquía»",
+          "url": "https://www.casareal.es/ES/MonarquiaHistoria/Paginas/historia-monarquia.aspx"
+        },
+        {
+          "texto": "Casa de S.M. el Rey, «Árbol genealógico»",
+          "url": "https://www.casareal.es/ES/MonarquiaHistoria/Paginas/arbol-genealogico.aspx"
         }
       ]
     },
@@ -1849,12 +1869,12 @@
           "url": "https://exteriores.gob.es/RepresentacionesPermanentes/onu/es/Areas-tematicas/Paginas/Misiones-de-paz.aspx"
         },
         {
-          "texto": "Wikipedia, «Organización de Estados Iberoamericanos para la Educación, la Ciencia y la Cultura»",
-          "url": "https://es.wikipedia.org/wiki/Organización_de_Estados_Iberoamericanos_para_la_Educación,_la_Ciencia_y_la_Cultura"
+          "texto": "OEI, Estatutos",
+          "url": "https://oei.int/wp-content/uploads/1985/12/estatutos-oei.pdf"
         },
         {
-          "texto": "Wikipedia, «Unión Europea Occidental»",
-          "url": "https://es.wikipedia.org/wiki/Unión_Europea_Occidental"
+          "texto": "Real Decreto 738/2012, supresión de la Representación Permanente de España en la UEO",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2012-6810"
         }
       ]
     },
@@ -1910,16 +1930,20 @@
       "nota": "José María Aznar fue presidente del Gobierno de 1996 a 2004.\nManuel Fraga fue ministro y presidente de la Xunta de Galicia, y Yolanda Díaz ha sido vicepresidenta del Gobierno, pero ninguno de los dos llegó a presidirlo.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «José María Aznar»",
-          "url": "https://es.wikipedia.org/wiki/José_María_Aznar"
+          "texto": "BOE, Real Decreto 757/1996, por el que se nombra presidente del Gobierno a José María Aznar",
+          "url": "https://www.boe.es/boe/dias/1996/05/05/pdfs/A15699-15699.pdf"
         },
         {
-          "texto": "Wikipedia, «Manuel Fraga»",
-          "url": "https://es.wikipedia.org/wiki/Manuel_Fraga"
+          "texto": "BOE, Real Decreto 552/2004, por el que se nombra presidente del Gobierno a José Luis Rodríguez Zapatero",
+          "url": "https://www.boe.es/boe/dias/2004/04/17/pdfs/A15981-15981.pdf"
         },
         {
-          "texto": "Wikipedia, «Yolanda Díaz»",
-          "url": "https://es.wikipedia.org/wiki/Yolanda_Díaz"
+          "texto": "Xunta de Galicia, «Todos los presidentes»",
+          "url": "https://www.xunta.gal/es/todos-os-presidentes"
+        },
+        {
+          "texto": "BOE, Real Decreto 523/2021, por el que se nombra vicepresidenta segunda a Yolanda Díaz",
+          "url": "https://www.boe.es/boe/dias/2021/07/12/pdfs/BOE-A-2021-11529.pdf"
         }
       ]
     },
@@ -1956,8 +1980,16 @@
       "nota": "La policía autonómica del País Vasco es la Ertzaintza.\nLos Mossos d'Esquadra son la policía de Cataluña, y la Guardia Civil trabaja en toda España.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Ertzaintza»",
-          "url": "https://es.wikipedia.org/wiki/Ertzaintza"
+          "texto": "Estatuto de Autonomía del País Vasco, art. 17",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1979-30177#a17"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Cataluña, art. 164",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-13087#a164"
+        },
+        {
+          "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, art. 11",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#aonce"
         }
       ]
     },
@@ -1975,12 +2007,16 @@
       "nota": "Felipe VI es rey desde 2014. Fue proclamado el 19 de junio, cuando abdicó su padre, Juan Carlos I.\nEn 1975 llegó al trono Juan Carlos I, tras la muerte de Franco.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Felipe VI de España»",
-          "url": "https://es.wikipedia.org/wiki/Felipe_VI_de_España"
+          "texto": "Casa de S.M. el Rey, biografía de Felipe VI",
+          "url": "https://www.casareal.es/ES/FamiliaReal/ReyFelipe/Paginas/biografia.aspx"
         },
         {
-          "texto": "Wikipedia, «Juan Carlos I de España»",
-          "url": "https://es.wikipedia.org/wiki/Juan_Carlos_I_de_España"
+          "texto": "Ley Orgánica 3/2014, por la que se hace efectiva la abdicación de Juan Carlos I",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-6476"
+        },
+        {
+          "texto": "BOE, Orden de 2 de diciembre de 1975 (proclamación de Juan Carlos I el 22 de noviembre de 1975)",
+          "url": "https://www.boe.es/boe/dias/1975/12/04/pdfs/A25309-25310.pdf"
         }
       ]
     },
@@ -2052,8 +2088,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#aveintisiete"
         },
         {
-          "texto": "Wikipedia, «Voto obligatorio»",
-          "url": "https://es.wikipedia.org/wiki/Voto_obligatorio"
+          "texto": "Constitución de Bélgica, art. 62 (en francés)",
+          "url": "https://www.senate.be/doc/const_fr.html"
+        },
+        {
+          "texto": "Código Electoral Nacional de Argentina, art. 12",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/19442/texact.htm"
         }
       ]
     },
@@ -2090,16 +2130,20 @@
       "nota": "Los impuestos del Estado los recauda la Agencia Tributaria, desde 1992. Muchos trámites con ella, como pagar impuestos, se pueden hacer por internet, en su sede electrónica.\nEl Tribunal de Cuentas revisa las cuentas públicas, y el Consejo Económico y Social da su opinión al Gobierno sobre asuntos económicos y laborales.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Agencia Estatal de Administración Tributaria»",
-          "url": "https://es.wikipedia.org/wiki/Agencia_Estatal_de_Administración_Tributaria"
-        },
-        {
           "texto": "Sede electrónica de la Agencia Tributaria",
           "url": "https://sede.agenciatributaria.gob.es/"
         },
         {
-          "texto": "Wikipedia, «Consejo Económico y Social (España)»",
-          "url": "https://es.wikipedia.org/wiki/Consejo_Económico_y_Social_(España)"
+          "texto": "Constitución española, art. 136",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a136"
+        },
+        {
+          "texto": "Agencia Tributaria, «Estructura y funciones»",
+          "url": "https://sede.agenciatributaria.gob.es/Sede/gobierno-abierto/transparencia/informacion-institucional-organizativa-planificacion/estructura-funciones.html"
+        },
+        {
+          "texto": "Ley 21/1991, de creación del Consejo Económico y Social, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-15528#aprimero"
         }
       ]
     },
@@ -2125,12 +2169,12 @@
           "url": "https://www.boe.es/"
         },
         {
-          "texto": "Wikipedia, «Instituto Nacional de Estadística (España)»",
-          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Estadística_(España)"
-        },
-        {
           "texto": "Portal de Administración Electrónica",
           "url": "https://administracionelectronica.gob.es/"
+        },
+        {
+          "texto": "Ley 12/1989, de la Función Estadística Pública, art. 26 (funciones del INE)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1989-10767#a26"
         }
       ]
     },
@@ -2229,12 +2273,16 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a137"
         },
         {
-          "texto": "Wikipedia, «Cantones de Suiza»",
-          "url": "https://es.wikipedia.org/wiki/Cantones_de_Suiza"
+          "texto": "Constitución de Suiza, art. 1 (Parlamento suizo; en inglés)",
+          "url": "https://www.parlament.ch/centers/documents/en/20240301_BV-en.pdf"
         },
         {
-          "texto": "Wikipedia, «Estado federado (Alemania)»",
-          "url": "https://es.wikipedia.org/wiki/Estado_federado_(Alemania)"
+          "texto": "Ley Fundamental de Alemania, art. 20 (en alemán)",
+          "url": "https://www.gesetze-im-internet.de/gg/art_20.html"
+        },
+        {
+          "texto": "Constitución de Estados Unidos (en inglés)",
+          "url": "https://www.archives.gov/founding-docs/constitution-transcript"
         }
       ]
     },
@@ -2256,8 +2304,8 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a6"
         },
         {
-          "texto": "Maldita.es, «Arqueología política: casi 2.000 partidos creados durante la democracia ya no existen» (2024)",
-          "url": "https://maldita.es/malditodato/20240229/partidos-politicos-registro-ministerio-interior/"
+          "texto": "Ministerio del Interior, Registro de Partidos Políticos",
+          "url": "https://servicio.mir.es/nfrontal/webpartido_politico.html"
         }
       ]
     },
@@ -2352,8 +2400,12 @@
       "nota": "En España hay 50 provincias, repartidas entre las 17 comunidades autónomas.\nCeuta y Melilla no son provincias, sino ciudades autónomas, y por eso no entran en la cuenta.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Provincia (España)»",
-          "url": "https://es.wikipedia.org/wiki/Provincia_(España)"
+          "texto": "INE, «Relación de provincias con sus códigos»",
+          "url": "https://www.ine.es/daco/daco42/codmun/cod_provincia.htm"
+        },
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 161",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosesentayuno"
         }
       ]
     },
@@ -2456,8 +2508,8 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a26"
         },
         {
-          "texto": "Wikipedia, «Ministerio de Transportes (España)»",
-          "url": "https://es.wikipedia.org/wiki/Ministerio_de_Transportes_(España)"
+          "texto": "Real Decreto 298/1991, de reestructuración de departamentos ministeriales",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-6787"
         }
       ]
     },
@@ -2494,12 +2546,12 @@
       "nota": "Ninguna mujer ha sido presidenta del Gobierno de España hasta ahora (noviembre de 2026).\nSí ha habido vicepresidentas y ministras. La primera vicepresidenta fue María Teresa Fernández de la Vega, de 2004 a 2010.",
       "fuentes": [
         {
-          "texto": "Wikipedia, «Presidente del Gobierno de España»",
-          "url": "https://es.wikipedia.org/wiki/Presidente_del_Gobierno_de_España"
+          "texto": "La Moncloa, «Gobiernos por legislaturas»",
+          "url": "https://www.lamoncloa.gob.es/gobierno/gobiernosporlegislaturas/Paginas/index.aspx"
         },
         {
-          "texto": "Wikipedia, «María Teresa Fernández de la Vega»",
-          "url": "https://es.wikipedia.org/wiki/María_Teresa_Fernández_de_la_Vega"
+          "texto": "BOE, Real Decreto 555/2004, por el que se nombra vicepresidenta primera a María Teresa Fernández de la Vega",
+          "url": "https://www.boe.es/boe/dias/2004/04/18/pdfs/A16007-16007.pdf"
         }
       ]
     },
@@ -2659,16 +2711,24 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a3"
         },
         {
-          "texto": "Wikipedia, «Idioma español»",
-          "url": "https://es.wikipedia.org/wiki/Idioma_español"
+          "texto": "RAE, Diccionario panhispánico de dudas, «español»",
+          "url": "https://www.rae.es/dpd/espa%C3%B1ol"
         },
         {
-          "texto": "Wikipedia, «Idioma aragonés»",
-          "url": "https://es.wikipedia.org/wiki/Idioma_aragonés"
+          "texto": "Estatuto de Autonomía de Aragón, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8444#a7"
         },
         {
-          "texto": "Wikipedia, «Idioma asturleonés»",
-          "url": "https://es.wikipedia.org/wiki/Idioma_asturleonés"
+          "texto": "Estatuto de Autonomía de Castilla y León, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-20635#a5"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Asturias, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-634#acuarto"
+        },
+        {
+          "texto": "Ramón Menéndez Pidal, «Dialectos leoneses» (escrito en 1915), reeditado en la Revista de Filoloxía Asturiana (2006)",
+          "url": "https://reunido.uniovi.es/index.php/RFA/article/view/9210"
         }
       ]
     },
@@ -2717,12 +2777,20 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asegundo"
         },
         {
-          "texto": "Wikipedia, «Mayoría de edad»",
-          "url": "https://es.wikipedia.org/wiki/Mayoría_de_edad"
+          "texto": "BOE, Real Decreto-ley 33/1978, sobre mayoría de edad",
+          "url": "https://www.boe.es/boe/dias/1978/11/17/pdfs/A26150-26152.pdf"
         },
         {
-          "texto": "Wikipedia, «Edad para votar»",
-          "url": "https://es.wikipedia.org/wiki/Edad_para_votar"
+          "texto": "BOE, Real Decreto-ley 20/1977, sobre normas electorales",
+          "url": "https://www.boe.es/boe/dias/1977/03/23/pdfs/A06584-06600.pdf"
+        },
+        {
+          "texto": "Parlamento de Austria, «Deine erste Wahl» (2024; en alemán)",
+          "url": "https://www.parlament.gv.at/dokument/unterlagen/Deine-erste-Wahl_Folder_2024.pdf"
+        },
+        {
+          "texto": "Constitución de Malta, art. 57 (en inglés)",
+          "url": "https://legislation.mt/eli/const/eng/pdf"
         }
       ]
     },
@@ -2771,12 +2839,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a136"
         },
         {
-          "texto": "Wikipedia, «Banco de España»",
-          "url": "https://es.wikipedia.org/wiki/Banco_de_España"
+          "texto": "Ley 13/1994, de Autonomía del Banco de España, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1994-12553#a7"
         },
         {
-          "texto": "Wikipedia, «Agencia Estatal de Administración Tributaria»",
-          "url": "https://es.wikipedia.org/wiki/Agencia_Estatal_de_Administración_Tributaria"
+          "texto": "Agencia Tributaria, «Estructura y funciones»",
+          "url": "https://sede.agenciatributaria.gob.es/Sede/gobierno-abierto/transparencia/informacion-institucional-organizativa-planificacion/estructura-funciones.html"
         }
       ]
     },
@@ -2863,8 +2931,8 @@
           "url": "https://www.ine.es/dyngs/Prensa/ECP2T26.htm"
         },
         {
-          "texto": "Wikipedia, «Castilla y León»",
-          "url": "https://es.wikipedia.org/wiki/Castilla_y_León"
+          "texto": "INE, «España en cifras», anexo (superficie de cada comunidad)",
+          "url": "https://www.ine.es/prodyser/espa_cifras/21_ANEXO.pdf"
         }
       ]
     },
@@ -2890,12 +2958,12 @@
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a28"
         },
         {
-          "texto": "Wikipedia, «Comisiones Obreras»",
-          "url": "https://es.wikipedia.org/wiki/Comisiones_Obreras"
+          "texto": "Ley Orgánica 11/1985, de Libertad Sindical, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-16660#asexto"
         },
         {
-          "texto": "Wikipedia, «Unión General de Trabajadores»",
-          "url": "https://es.wikipedia.org/wiki/Unión_General_de_Trabajadores"
+          "texto": "BOE, subvenciones a los sindicatos en proporción a su representatividad, año 2015",
+          "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2016-7866"
         }
       ]
     },
