@@ -19,9 +19,19 @@ export interface App {
   isIdle(): boolean;
   /** Se llama cada vez que el jugador vuelve a una pantalla tranquila. */
   onIdle(callback: () => void): void;
+  /** true si se está viendo el menú de secciones. */
+  enMenu(): boolean;
 }
 
 const tranquila = (s: Screen) => s !== "play" && s !== "end";
+/** Pantallas con la versión al pie: el menú de secciones y el inicio de cada sección. */
+const CON_VERSION: readonly Screen[] = ["sections", "start", "ccseStart"];
+
+/**
+ * Marca que la página se va a recargar para aplicar una versión nueva (main.ts). Así, al volver a abrirse,
+ * el juego sigue en la sección donde estaba el jugador en vez de saltar al menú de secciones.
+ */
+export const RECARGA_POR_ACTUALIZACION = "aprende-sobre-espana:recarga-por-actualizacion";
 
 /** Texto de la cabecera grande: en la pantalla de secciones y en cada sección. */
 const CABECERAS: Record<Seccion | "secciones", { eyebrow: string; lede: string }> = {
@@ -53,6 +63,7 @@ export function startApp(): App {
       if (id !== "play") partida.alSalir();
       screen = id;
       SCREENS.forEach((s) => { $(s).hidden = s !== id; });
+      $("version").hidden = !CON_VERSION.includes(id);
       // En la partida y el resultado, la cabecera pequeña: la pregunta empieza arriba.
       document.querySelector(".app")!.classList.toggle("compacta", id === "play" || id === "end");
       const cabecera = CABECERAS[id === "sections" ? "secciones" : seccion()];
@@ -90,12 +101,19 @@ export function startApp(): App {
 
   renderVersion();
   drawContours(document.getElementById("contours") as unknown as SVGSVGElement);
-  // La primera vez se elige sección; después, el juego vuelve a la última elegida.
-  if (state.seccion === null) ctx.show("sections");
-  else ctx.goHome();
+  // Al abrir el juego, siempre el menú de secciones. Solo si la página se ha recargado para aplicar
+  // una versión nueva, se vuelve a la sección donde estaba el jugador.
+  let trasActualizar = false;
+  try {
+    trasActualizar = sessionStorage.getItem(RECARGA_POR_ACTUALIZACION) !== null;
+    sessionStorage.removeItem(RECARGA_POR_ACTUALIZACION);
+  } catch { /* sin sessionStorage, se abre el menú */ }
+  if (trasActualizar && state.seccion !== null) ctx.goHome();
+  else ctx.show("sections");
 
   return {
     isIdle: () => tranquila(screen),
-    onIdle: (callback) => { idleListeners.push(callback); }
+    onIdle: (callback) => { idleListeners.push(callback); },
+    enMenu: () => screen === "sections"
   };
 }

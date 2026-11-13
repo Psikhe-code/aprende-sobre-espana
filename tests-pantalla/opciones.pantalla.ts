@@ -60,5 +60,6 @@ test("las opciones se guardan: al volver a abrir el juego siguen marcadas", asyn
   await page.locator('[id="dif-8"]').click();
   await page.locator("#doneOptions").click();
   await page.reload();
+  await page.locator("#sec-geografia").click();
   await expect(page.locator("#dificultadInfo")).toHaveText("Dificultad: 8 opciones por pregunta, 10 segundos por pregunta.");
 });

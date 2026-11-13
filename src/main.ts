@@ -9,7 +9,7 @@ import "@fontsource/literata/latin-600.css";
 import "./ui/styles.css";
 
 import { registerSW } from "virtual:pwa-register";
-import { startApp } from "./ui/app";
+import { RECARGA_POR_ACTUALIZACION, startApp } from "./ui/app";
 
 const app = startApp();
 
@@ -18,14 +18,21 @@ const app = startApp();
 if ("serviceWorker" in navigator) {
   try {
     let pending = false;
+    // Antes de recargar, si el jugador está dentro de una sección, se apunta para que siga en ella (app.ts).
+    const actualizar = () => {
+      try {
+        if (!app.enMenu()) sessionStorage.setItem(RECARGA_POR_ACTUALIZACION, "1");
+      } catch { /* sin sessionStorage, se abre el menú */ }
+      void updateSW(true);
+    };
     const updateSW = registerSW({
       immediate: true,
       onNeedRefresh() {
         pending = true;
-        if (app.isIdle()) void updateSW(true);
+        if (app.isIdle()) actualizar();
       }
     });
-    app.onIdle(() => { if (pending) void updateSW(true); });
+    app.onIdle(() => { if (pending) actualizar(); });
   } catch {
     // Sin service worker el juego funciona igual, solo necesita conexión.
   }
