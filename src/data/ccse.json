@@ -106,7 +106,7 @@
         "una ONG."
       ],
       "respuesta": "b",
-      "nota": "Es un organismo del Gobierno de España que depende del Ministerio de Igualdad y trabaja por la igualdad entre mujeres y hombres. Hasta 2020 se llamaba Instituto de la Mujer.",
+      "nota": "El Instituto de las Mujeres es un organismo español, que depende del Ministerio de Igualdad y trabaja por la igualdad entre mujeres y hombres. Antes se llamaba Instituto de la Mujer.\nNo es una institución de la Unión Europea, y tampoco una ONG, porque es parte de la Administración.",
       "fuentes": [
         {
           "texto": "Instituto de las Mujeres",
@@ -115,6 +115,10 @@
         {
           "texto": "Wikipedia, «Instituto de las Mujeres»",
           "url": "https://es.wikipedia.org/wiki/Instituto_de_las_Mujeres"
+        },
+        {
+          "texto": "Ley 16/1983, de creación del Instituto de la Mujer (hoy Instituto de las Mujeres)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1983-28126"
         }
       ]
     },
@@ -129,7 +133,7 @@
         "De lunes a viernes."
       ],
       "respuesta": "a",
-      "nota": "La sede electrónica es la web oficial de cada Administración para hacer trámites. Su registro está abierto todos los días del año, las 24 horas.",
+      "nota": "Los trámites en la sede electrónica se pueden hacer en cualquier horario. La sede electrónica es la web oficial de cada Administración para hacer trámites, y su registro está abierto todos los días del año, las 24 horas.\nNo cierra por las tardes ni los fines de semana, a diferencia de muchas oficinas.",
       "fuentes": [
         {
           "texto": "Ley 39/2015, del Procedimiento Administrativo Común, art. 31",
@@ -429,7 +433,7 @@
         "Una firma en papel."
       ],
       "respuesta": "b",
-      "nota": "Para hacer trámites por internet hay que identificarse, y a veces firmar, con un sistema electrónico, como el certificado digital, el DNI electrónico o Cl@ve.",
+      "nota": "Para hacer trámites por internet con la Administración se necesita una firma electrónica, o al menos una forma de identificarse por internet, como el certificado digital, el DNI electrónico o Cl@ve.\nEl pasaporte sirve para identificarse en persona, no en internet, y una firma en papel no se puede usar en un trámite por internet.",
       "fuentes": [
         {
           "texto": "Ley 39/2015, del Procedimiento Administrativo Común, arts. 9 y 10",
@@ -1335,7 +1339,7 @@
         "son organismos internacionales."
       ],
       "respuesta": "b",
-      "nota": "Los tres dependen de un ministerio. El ICEX, que ayuda a las empresas a vender en el extranjero, depende del de Economía; el Instituto de las Mujeres, del de Igualdad, y la Dirección General de Tráfico, del de Interior.",
+      "nota": "Los tres dependen de un ministerio. El ICEX, que ayuda a las empresas a vender en el extranjero, depende del de Economía; el Instituto de las Mujeres, del de Igualdad, y la Dirección General de Tráfico, del de Interior.\nEl Instituto de las Mujeres sí es un organismo autónomo, pero el ICEX es una entidad pública empresarial y la DGT es una parte del propio ministerio, así que esa opción no vale para los tres. Ninguno es internacional.",
       "fuentes": [
         {
           "texto": "Wikipedia, «ICEX España Exportación e Inversiones»",
@@ -1348,6 +1352,14 @@
         {
           "texto": "Wikipedia, «Dirección General de Tráfico»",
           "url": "https://es.wikipedia.org/wiki/Dirección_General_de_Tráfico"
+        },
+        {
+          "texto": "Real Decreto 1636/2011, Estatuto de ICEX España Exportación e Inversiones",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-18538"
+        },
+        {
+          "texto": "Ley 16/1983, de creación del Instituto de la Mujer (hoy Instituto de las Mujeres)",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1983-28126"
         }
       ]
     },
@@ -1626,7 +1638,7 @@
         "Abogados colegiados."
       ],
       "respuesta": "b",
-      "nota": "Cualquier persona puede elegir tratar con la Administración por internet o en persona. Algunos, como las empresas, están obligados a hacerlo por internet.",
+      "nota": "Cualquier ciudadano puede hacer trámites por internet con la Administración, y cada persona puede elegir hacerlo así o en persona. Algunos, como las empresas, están obligados a hacerlo por internet.\nNo hace falta ser juez ni abogado para hacerlo.",
       "fuentes": [
         {
           "texto": "Ley 39/2015, del Procedimiento Administrativo Común, art. 14",
@@ -2063,7 +2075,7 @@
         "El Consejo Económico y Social."
       ],
       "respuesta": "b",
-      "nota": "La Agencia Tributaria recauda los impuestos del Estado desde 1992. Muchos trámites con ella, como pagar impuestos, se pueden hacer por internet, en su sede electrónica.",
+      "nota": "Los impuestos del Estado los recauda la Agencia Tributaria, desde 1992. Muchos trámites con ella, como pagar impuestos, se pueden hacer por internet, en su sede electrónica.\nEl Tribunal de Cuentas revisa las cuentas públicas, y el Consejo Económico y Social da su opinión al Gobierno sobre asuntos económicos y laborales.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Agencia Estatal de Administración Tributaria»",
@@ -2072,6 +2084,10 @@
         {
           "texto": "Sede electrónica de la Agencia Tributaria",
           "url": "https://sede.agenciatributaria.gob.es/"
+        },
+        {
+          "texto": "Wikipedia, «Consejo Económico y Social (España)»",
+          "url": "https://es.wikipedia.org/wiki/Consejo_Económico_y_Social_(España)"
         }
       ]
     },
@@ -2086,7 +2102,7 @@
         "En el Boletín Oficial del Estado (BOE)."
       ],
       "respuesta": "c",
-      "nota": "El Boletín Oficial del Estado publica las leyes, y una ley no entra en vigor hasta que se publica en él. Hoy se puede consultar gratis en internet.",
+      "nota": "Las leyes nacionales se publican en el Boletín Oficial del Estado (BOE), y una ley no entra en vigor hasta que se publica en él. Hoy se puede consultar gratis en internet.\nEl INE elabora estadísticas, no publica leyes, y el Portal de la Administración Electrónica informa sobre la administración por internet.",
       "fuentes": [
         {
           "texto": "Código Civil, art. 2",
@@ -2095,6 +2111,14 @@
         {
           "texto": "Boletín Oficial del Estado",
           "url": "https://www.boe.es/"
+        },
+        {
+          "texto": "Wikipedia, «Instituto Nacional de Estadística (España)»",
+          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Estadística_(España)"
+        },
+        {
+          "texto": "Portal de Administración Electrónica",
+          "url": "https://administracionelectronica.gob.es/"
         }
       ]
     },
@@ -2128,7 +2152,7 @@
         "Pagar los impuestos."
       ],
       "respuesta": "c",
-      "nota": "Los impuestos se pueden pagar por internet, en la sede electrónica de la Agencia Tributaria. El DNI y el pasaporte, en cambio, hay que tramitarlos en persona.",
+      "nota": "En la sede electrónica se pueden pagar los impuestos, en concreto en la de la Agencia Tributaria.\nEl DNI y el pasaporte, en cambio, hay que tramitarlos y renovarlos en persona, porque la ley exige ir a la oficina.",
       "fuentes": [
         {
           "texto": "Sede electrónica de la Agencia Tributaria",
@@ -2137,6 +2161,10 @@
         {
           "texto": "Real Decreto 1553/2005, sobre el DNI, art. 5",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2005-21163#a5"
+        },
+        {
+          "texto": "Real Decreto 896/2003, sobre el pasaporte, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-13978#a4"
         }
       ]
     },
@@ -2151,11 +2179,19 @@
         "091."
       ],
       "respuesta": "b",
-      "nota": "Llamando al 060 se puede pedir información sobre los servicios y trámites de la Administración General del Estado, como la cita previa del DNI y el pasaporte.",
+      "nota": "El teléfono de información de la Administración General del Estado es el 060. Allí se informa sobre sus servicios y trámites, como la cita previa del DNI y el pasaporte.\nEl 010 es el teléfono de información de muchos ayuntamientos, y el 091, el de la Policía Nacional.",
       "fuentes": [
         {
           "texto": "Punto de Acceso General, «Teléfono 060»",
           "url": "https://administracion.gob.es/pag_Home/contacto/telefono-060.html"
+        },
+        {
+          "texto": "Ministerio del Interior, «La Policía Nacional atendió más de 4.500.000 de llamadas al teléfono 091» (2025)",
+          "url": "https://www.interior.gob.es/opencms/va/detalle/articulo/La-Policia-Nacional-atendio-mas-de-4.500.000-de-llamadas-al-telefono-091-en-las-salas-CIMACC-de-toda-Espana./"
+        },
+        {
+          "texto": "Ayuntamiento de Valencia, «Teléfonos de urgencia en la ciudad de València»",
+          "url": "https://www.valencia.es/cas/atencion-ciudadana-covid-19/-/content/tel%C3%A9fonos-de-urgencia-en-la-ciudad-de-valencia"
         }
       ]
     },
