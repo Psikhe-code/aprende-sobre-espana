@@ -1,10 +1,10 @@
 # Descarga las banderas de Wikimedia Commons (con licencia y autor) y las guarda en esta rama
-# para revisarlas. Solo se ejecuta al subir cambios a la rama banderas-descarga.
+# para revisarlas. Solo se ejecuta al subir cambios a la rama descargas-no-mezclar (no se mezcla nunca con main).
 name: Descargar banderas
 
 on:
   push:
-    branches: [banderas-descarga]
+    branches: [descargas-no-mezclar]
     paths: [scripts/descargar-banderas.py, .github/workflows/descargar-banderas.yml]
 
 permissions:

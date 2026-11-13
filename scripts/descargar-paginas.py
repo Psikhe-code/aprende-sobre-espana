@@ -3,9 +3,9 @@ Descarga páginas web (y, si se pide, las imágenes y PDF que enlazan) para pode
 el entorno de Claude, que no puede abrir muchas webs directamente: webs oficiales de gobiernos y
 diputaciones, Flags of the World, boletines oficiales, Wikipedia…
 
-Se ejecuta en GitHub Actions (workflow «Descargar páginas»), solo al subir la rama temporal
-paginas-descarga. Esa rama no se mezcla con main: se crea desde main, se edita la lista PAGINAS
-de abajo, se sube, y cuando se ha leído lo descargado se borra.
+Se ejecuta en GitHub Actions (workflow «Descargar páginas»), solo al subir la rama
+descargas-no-mezclar. Esa rama no se mezcla nunca con main: se edita la lista PAGINAS de abajo,
+se sube, y cuando se ha leído lo descargado se vacía (git push --force origin main:descargas-no-mezclar).
 
 Las peticiones se identifican solo con el nombre del proyecto y el enlace al repositorio.
 No se envía ningún dato personal.
