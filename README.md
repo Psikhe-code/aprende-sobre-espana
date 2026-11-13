@@ -1,6 +1,6 @@
 # Aprende sobre España
 
-Juego de preguntas sobre España, con dos secciones: **Geografía** y **Examen de nacionalidad** (práctica de los temas de la prueba CCSE del Instituto Cervantes). Partidas de 10, 25, 50 o 100 preguntas, o sin límite, con opciones, explicación de cada respuesta y repaso de fallos. La primera vez se elige sección; después, el juego vuelve a la última, y desde el inicio se puede cambiar.
+Juego de preguntas sobre España, con dos secciones: **Geografía** y **Examen de nacionalidad** (práctica de los temas de la prueba CCSE del Instituto Cervantes). Partidas de 10, 25, 50 o 100 preguntas, o sin límite, con opciones, explicación de cada respuesta y repaso de fallos. Al abrir el juego sale siempre el menú de secciones, y desde el inicio de cada sección se vuelve a él con «← Todas las secciones», arriba del todo.
 
 Ahora mismo tiene tres categorías, **Capitales**, **Banderas** y **Divisiones** (qué provincias tiene cada comunidad y de qué provincia es cada municipio), y en Opciones se elige el **territorio**: comunidades (las 17 y las 2 ciudades autónomas, Ceuta y Melilla), provincias o las dos. De provincias hay las capitales que no se llaman como su provincia, las banderas de provincia y los municipios. El prototipo completo, con 8 categorías (provincias, ríos, relieve, costas…), está guardado en la rama [`prototipo-v0.1`](../../tree/prototipo-v0.1).
 
@@ -192,7 +192,7 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 **Bandera siguiente por adelantado.** Mientras se responde una pregunta, el juego descarga y dibuja por adelantado la bandera de la siguiente (`flags.ts`), para que aparezca al instante aunque la conexión o el móvil sean lentos. La de la primera pregunta también: la partida se prepara ya en la pantalla de inicio (y al terminar la anterior, para «Jugar otra vez»).
 
-**Versión.** Al pie de la pantalla de inicio se ve la versión (la de `package.json`) y cuándo se publicó, para saber si ya está aplicada la última. Cada cambio sube la versión: en esta primera etapa, el último número (0.1.1, 0.1.2…); el del medio, en hitos grandes. Se escribe al construir el juego (`define` en `vite.config.ts`).
+**Versión.** Al pie del menú de secciones y del inicio de cada sección se ve la versión (la de `package.json`) y cuándo se publicó, para saber si ya está aplicada la última. Cada cambio sube la versión: en esta primera etapa, el último número (0.1.1, 0.1.2…); el del medio, en hitos grandes. Se escribe al construir el juego (`define` en `vite.config.ts`). Cuando la página se recarga sola para aplicar una versión nueva, el juego sigue en la sección donde estaba el jugador, en vez de volver al menú (`main.ts` lo apunta en `sessionStorage` antes de recargar).
 
 **Actualizaciones.** Cuando se publica una versión nueva, se descarga en segundo plano y se aplica al volver al inicio u opciones, nunca a mitad de partida (`main.ts`).
 

@@ -35,7 +35,7 @@ export function renderStart(state: SavedState): void {
   else record.textContent = "Aún no has jugado con esta selección.";
 }
 
-/** Versión al pie del inicio, para saber si ya se ve la última publicada. */
+/** Versión al pie del menú de secciones y del inicio de cada sección, para saber si ya se ve la última publicada. */
 export function renderVersion(): void {
   const publicado = new Date(__PUBLICADO__);
   $("version").textContent = import.meta.env.DEV

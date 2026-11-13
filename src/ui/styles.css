@@ -314,7 +314,14 @@ h1 {
 .seccion .cat-name { font-size: 26px; }
 .seccion .cat-desc { font-size: 15px; }
 
-/* Enlaces al pie del inicio (cambiar de sección, créditos), en una fila. */
+/* Volver al menú de secciones: arriba del inicio de cada sección, para que se vea sin bajar. */
+.volver {
+  align-self: flex-start; background: none; border: 0; padding: 6px 0; margin-top: -6px;
+  font-family: var(--f-display); font-weight: 600; font-size: 16px; letter-spacing: 0.04em; color: var(--ink);
+}
+@media (hover: hover) { .volver:hover { text-decoration: underline; } }
+
+/* Enlaces al pie del inicio (créditos), en una fila. */
 .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 
 /* Final */

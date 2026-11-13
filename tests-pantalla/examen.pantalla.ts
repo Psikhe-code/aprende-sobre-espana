@@ -4,21 +4,57 @@ import { ccsePrueba, ccseVacio } from "../tests/ccse-prueba";
 // Las partidas y Opciones se prueban con datos de prueba, porque la plantilla real se va
 // rellenando poco a poco (y al principio está vacía).
 
-test("la primera vez se elige sección, y el juego vuelve a la última elegida", async ({ page }) => {
+test("al abrir el juego sale siempre el menú de secciones, y desde cada sección se vuelve arriba del todo", async ({ page }) => {
   await page.goto("./");
   await expect(page.locator("#sections")).toBeVisible();
   await expect(page.locator("#go")).toBeHidden();
   await page.locator("#sec-ccse").click();
   await expect(page.locator("#ccseStart")).toBeVisible();
+  // Al recargar, otra vez el menú, aunque se estuviera en una sección.
+  await page.reload();
+  await expect(page.locator("#sections")).toBeVisible();
+
+  // El botón de volver es lo primero del inicio de cada sección, y lleva al menú.
+  for (const [seccion, inicio, volver] of [["ccse", "#ccseStart", "#ccseToSections"], ["geografia", "#start", "#toSections"]]) {
+    await page.locator(`#sec-${seccion}`).click();
+    await expect(page.locator(`${inicio} > :first-child`)).toHaveId(volver.slice(1));
+    await expect(page.locator(volver)).toHaveText("← Todas las secciones");
+    await expect(page.locator(volver)).toBeInViewport();
+    await page.locator(volver).click();
+    await expect(page.locator("#sections")).toBeVisible();
+  }
+});
+
+test("si la página se recarga para aplicar una versión nueva, el juego sigue en la misma sección", async ({ page }) => {
+  await abrir(page, "ccse");
+  // Lo que hace main.ts justo antes de recargar por una actualización.
+  await page.evaluate(() => sessionStorage.setItem("aprende-sobre-espana:recarga-por-actualizacion", "1"));
   await page.reload();
   await expect(page.locator("#ccseStart")).toBeVisible();
+  // Solo esa vez: la siguiente recarga vuelve al menú.
+  await page.reload();
+  await expect(page.locator("#sections")).toBeVisible();
+});
 
-  // Cambiar de sección lleva a la pantalla de secciones.
+test("la versión sale al pie del menú de secciones y del inicio de cada sección, y en ningún otro sitio", async ({ page }) => {
+  await page.goto("./");
+  const version = page.locator("#version");
+  await expect(version).toBeVisible();
+  await expect(version).toContainText(/^Versión \d+\.\d+\.\d+ · /);
+  await page.locator("#sec-ccse").click();
+  await expect(version).toBeVisible();
+  await page.locator("#ccseOpenOptions").click();
+  await expect(version).toBeHidden();
+  await page.locator("#ccseDone").click();
   await page.locator("#ccseToSections").click();
   await page.locator("#sec-geografia").click();
-  await expect(page.locator("#start")).toBeVisible();
-  await page.reload();
-  await expect(page.locator("#start")).toBeVisible();
+  await expect(version).toBeVisible();
+  await page.locator("#openCredits").click();
+  await expect(version).toBeHidden();
+  await page.locator("#closeCredits").click();
+  await page.locator("#go").click();
+  await expect(page.locator("#sheet")).toBeVisible();
+  await expect(version).toBeHidden();
 });
 
 test("el inicio del examen dice de dónde salen las preguntas y enlaza a la prueba", async ({ page }) => {

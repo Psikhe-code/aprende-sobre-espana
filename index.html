@@ -40,6 +40,7 @@
 
     <!-- Inicio -->
     <section id="start" class="screen">
+      <button class="volver" id="toSections">← Todas las secciones</button>
       <div class="summary">
         <div class="label" id="roundLabel">10 preguntas al azar de</div>
         <div class="chips" id="chips"></div>
@@ -54,14 +55,13 @@
       </div>
       <span class="hint">Atajos: teclas numéricas para responder, Intro para seguir.</span>
       <div class="links">
-        <button class="link" id="toSections">Cambiar de sección</button>
         <button class="link" id="openCredits">Créditos</button>
       </div>
-      <p class="version" id="version"></p>
     </section>
 
     <!-- Examen de nacionalidad: inicio -->
     <section id="ccseStart" class="screen" hidden>
+      <button class="volver" id="ccseToSections">← Todas las secciones</button>
       <p class="prose" id="ccseVacio" hidden><b>Todavía no hay preguntas.</b> Se irán añadiendo poco a poco, tarea a tarea.</p>
       <div class="summary" id="ccseSummary">
         <div class="label" id="ccseRoundLabel">10 preguntas al azar de</div>
@@ -76,7 +76,6 @@
       <p class="prose" id="ccseAviso">Las preguntas son las del Manual CCSE 2026 del Instituto Cervantes. Las explicaciones de las respuestas y sus fuentes son de este juego, y se irán añadiendo poco a poco. Más información sobre la prueba, el manual y la app gratuita del Instituto Cervantes: <a href="https://cervantes.org/es/examenes/ccse" target="_blank" rel="noopener">prueba CCSE</a>.</p>
       <span class="hint" id="ccseAtajos">Atajos: teclas numéricas para responder, Intro para seguir.</span>
       <div class="links">
-        <button class="link" id="ccseToSections">Cambiar de sección</button>
         <button class="link" id="ccseOpenCredits">Créditos</button>
       </div>
     </section>
@@ -242,6 +241,9 @@
         <div class="misses" id="misses"></div>
       </div>
     </section>
+
+    <!-- Versión y fecha de publicación: al pie del menú de secciones y del inicio de cada sección (app.ts) -->
+    <p class="version" id="version"></p>
   </div>
   <script type="module" src="./src/main.ts"></script>
 </body>
