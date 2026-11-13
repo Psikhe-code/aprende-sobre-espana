@@ -3873,8 +3873,25 @@
         "En Extremadura."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Cáceres y Badajoz están en Extremadura. Son sus dos provincias, y la capital de la comunidad, Mérida, está en la de Badajoz.\nAndalucía tiene ocho provincias (Almería, Cádiz, Córdoba, Granada, Huelva, Jaén, Málaga y Sevilla). Asturias es una comunidad de una sola provincia.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de Extremadura, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-1638#a2"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Extremadura, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-1638#a5"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Andalucía, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-5825#a2"
+        },
+        {
+          "texto": "Estatuto de Autonomía del Principado de Asturias, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-634#asegundo"
+        }
+      ]
     },
     {
       "id": "ccse-3002",
@@ -3887,8 +3904,21 @@
         "Valencia."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La capital de la Comunidad Valenciana es Valencia, donde tienen su sede la Generalitat (el gobierno de la comunidad) y Les Corts (su parlamento).\nAlicante y Castellón de la Plana son las capitales de las otras dos provincias de la comunidad. Alicante es la segunda ciudad más poblada, después de Valencia.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de la Comunitat Valenciana, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-17235#aquinto"
+        },
+        {
+          "texto": "Estatuto de Autonomía de la Comunitat Valenciana, art. 21",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-17235#aveintiuno"
+        },
+        {
+          "texto": "INE, cifras oficiales de población de los municipios españoles (revisión del Padrón)",
+          "url": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177011&menu=resultados&idp=1254734710990"
+        }
+      ]
     },
     {
       "id": "ccse-3003",
@@ -3901,8 +3931,13 @@
         "En el océano Atlántico."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las islas Baleares están en el mar Mediterráneo, frente a la costa este de la península. Las principales son Mallorca, Menorca, Ibiza y Formentera.\nEl mar Cantábrico baña la costa norte, la de Asturias, Cantabria, el País Vasco y parte de Galicia. En el océano Atlántico están las islas Canarias.",
+      "fuentes": [
+        {
+          "texto": "IGN, visor de mapas oficiales (Iberpix)",
+          "url": "https://www.ign.es/iberpix/visor/"
+        }
+      ]
     },
     {
       "id": "ccse-3004",
@@ -3915,8 +3950,17 @@
         "Meseta."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La llanura del centro de la península es la Meseta. Una meseta es una llanura elevada, es decir, un terreno llano o un poco inclinado, cortado por valles y a cierta altura sobre el nivel del mar. En la península es la unidad principal del relieve.\nUna marisma es un terreno bajo y pantanoso que inundan el mar o los ríos, como la de Doñana. Una cordillera es una cadena de montañas, como los Pirineos.",
+      "fuentes": [
+        {
+          "texto": "IGN, glosario de términos geográficos del Atlas Didáctico (meseta, marisma, cordillera)",
+          "url": "https://educativo.ign.es/atlas-didactico/recursos/Glosario_terminos_geograficos_IGN_AGE.pdf"
+        },
+        {
+          "texto": "Ministerio para la Transición Ecológica, Parque Nacional de Doñana",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/donana.html"
+        }
+      ]
     },
     {
       "id": "ccse-3005",
@@ -3929,8 +3973,21 @@
         "Castilla-La Mancha."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Parque Nacional de Ordesa y Monte Perdido está en Aragón, en el Pirineo de la provincia de Huesca. Es parque nacional desde 1918.\nNavarra no tiene ningún parque nacional. Castilla-La Mancha tiene dos, Cabañeros y las Tablas de Daimiel.",
+      "fuentes": [
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), ficha técnica de Ordesa y Monte Perdido",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/ordesa/ficha-tecnica.html"
+        },
+        {
+          "texto": "Ley 52/1982, de reclasificación y ampliación del Parque Nacional de Ordesa y Monte Perdido",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-19494"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), los parques nacionales",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales.html"
+        }
+      ]
     },
     {
       "id": "ccse-3006",
@@ -3943,8 +4000,21 @@
         "En Cantabria."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Guadalajara y Cuenca están en Castilla-La Mancha, junto con Albacete, Ciudad Real y Toledo.\nCastilla y León es otra comunidad, con nueve provincias, como Burgos, León o Soria. Cantabria es una comunidad de una sola provincia, en el norte.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de Castilla-La Mancha, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-20820#asegundo"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Castilla y León, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-20635#a2"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Cantabria, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-635#asegundo"
+        }
+      ]
     },
     {
       "id": "ccse-3007",
@@ -3957,8 +4027,25 @@
         "Cantabria."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Santiago de Compostela es la capital de Galicia. Desde 1982 es la sede del Parlamento y de la Xunta, el gobierno de Galicia.\nLa capital de Asturias es Oviedo, y la de Cantabria, Santander.",
+      "fuentes": [
+        {
+          "texto": "Ley 1/1982, por la que se fija la sede de las instituciones autonómicas de Galicia, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-25035#a1"
+        },
+        {
+          "texto": "Ley 4/2002, del estatuto de la capitalidad de la ciudad de Santiago de Compostela, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-18100#a2"
+        },
+        {
+          "texto": "Estatuto de Autonomía del Principado de Asturias, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-634#aquinto"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Cantabria, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-635#asegundo"
+        }
+      ]
     },
     {
       "id": "ccse-3008",
@@ -3971,8 +4058,21 @@
         "En Aragón."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Almería es una de las ocho provincias de Andalucía, en el sureste de la península.\nCanarias tiene dos provincias, Las Palmas y Santa Cruz de Tenerife, y Aragón tres, Huesca, Teruel y Zaragoza.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de Andalucía, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-5825#a2"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Aragón, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8444#a2"
+        },
+        {
+          "texto": "INE, «Relación de comunidades autónomas y provincias»",
+          "url": "https://www.ine.es/daco/daco42/codmun/cod_ccaa_provincia.htm"
+        }
+      ]
     },
     {
       "id": "ccse-3009",
@@ -3985,8 +4085,25 @@
         "Santiago de Compostela."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La capital de Galicia es Santiago de Compostela, sede del Parlamento y de la Xunta, el gobierno de Galicia, desde 1982.\nA Coruña es la capital de su provincia y la sede del Tribunal Superior de Justicia de Galicia. Vigo, en la provincia de Pontevedra, es la ciudad más poblada de Galicia. Pero ninguna de las dos es la capital de la comunidad.",
+      "fuentes": [
+        {
+          "texto": "Ley 1/1982, por la que se fija la sede de las instituciones autonómicas de Galicia, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-25035#a1"
+        },
+        {
+          "texto": "Ley 1/1982, por la que se fija la sede de las instituciones autonómicas de Galicia, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-25035#a2"
+        },
+        {
+          "texto": "Ley 4/2002, del estatuto de la capitalidad de la ciudad de Santiago de Compostela, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-18100#a2"
+        },
+        {
+          "texto": "INE, cifras oficiales de población de los municipios españoles (revisión del Padrón)",
+          "url": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177011&menu=resultados&idp=1254734710990"
+        }
+      ]
     },
     {
       "id": "ccse-3010",
@@ -3999,8 +4116,17 @@
         "El Duero."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Júcar desemboca en el mar Mediterráneo, en Cullera (Valencia). Nace en la sierra de Tragacete, en la provincia de Cuenca.\nEl Tajo y el Duero desembocan en el océano Atlántico, después de cruzar Portugal, en Lisboa y en Oporto.",
+      "fuentes": [
+        {
+          "texto": "INE, Anuario Estadístico de España 2008, «Entorno físico y medio ambiente» (datos del Instituto Geográfico Nacional)",
+          "url": "https://ine.es/prodyser/pubweb/anuario08/anu08_01entor.pdf"
+        },
+        {
+          "texto": "IGN, visor de mapas oficiales (Iberpix)",
+          "url": "https://www.ign.es/iberpix/visor/"
+        }
+      ]
     },
     {
       "id": "ccse-3011",
@@ -4013,8 +4139,17 @@
         "En Sierra Nevada."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Aneto está en los Pirineos, en la provincia de Huesca. Con 3.404 metros, es el pico más alto de los Pirineos.\nEl pico más alto del Sistema Central es el Almanzor, en la sierra de Gredos (2.591 m). En Sierra Nevada está el Mulhacén (3.479 m), el más alto de la península. El más alto de España es el Teide, en Tenerife (3.715 m).",
+      "fuentes": [
+        {
+          "texto": "INE, Anuario Estadístico de España 2008, «Entorno físico y medio ambiente» (datos del Instituto Geográfico Nacional)",
+          "url": "https://ine.es/prodyser/pubweb/anuario08/anu08_01entor.pdf"
+        },
+        {
+          "texto": "Instituto Aragonés de Estadística, «Datos básicos de Aragón»",
+          "url": "https://www.aragon.es/documents/20127/674325/DBA_2017.pdf/c891e0b9-07b9-8a2d-d476-1069f184b17e"
+        }
+      ]
     },
     {
       "id": "ccse-3012",
@@ -4027,8 +4162,29 @@
         "La Rioja."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Vitoria-Gasteiz es la sede del Parlamento y del Gobierno del País Vasco. El Estatuto vasco no nombra una capital, sino que deja que el Parlamento Vasco elija por ley la sede de sus instituciones, y en 1980 eligió Vitoria. Por eso se habla de «sede» y no de «capital».\nBilbao tiene más habitantes, pero no es la sede. La capital de Navarra es Pamplona, y la de La Rioja, Logroño.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía del País Vasco, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1979-30177#a4"
+        },
+        {
+          "texto": "Decreto Legislativo 6/2023, texto refundido de la Ley de Sede de las Instituciones de la Comunidad Autónoma del País Vasco",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-23221#au-2"
+        },
+        {
+          "texto": "Ley Orgánica de Reintegración y Amejoramiento del Régimen Foral de Navarra, art. 8",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-20824#aoctavo"
+        },
+        {
+          "texto": "Estatuto de Autonomía de La Rioja, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-15030#acuarto"
+        },
+        {
+          "texto": "INE, cifras oficiales de población de los municipios españoles (revisión del Padrón)",
+          "url": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177011&menu=resultados&idp=1254734710990"
+        }
+      ]
     },
     {
       "id": "ccse-3013",
@@ -4041,8 +4197,25 @@
         "regiones autónomas y distritos."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "España se divide en 17 comunidades autónomas y dos ciudades autónomas, Ceuta y Melilla. La Constitución organiza el territorio en municipios, provincias y comunidades autónomas.\n«Departamentos y regiones» es la división de Francia. «Regiones autónomas y distritos» es la de Portugal, que tiene dos regiones autónomas, las Azores y Madeira.",
+      "fuentes": [
+        {
+          "texto": "Constitución española, art. 137",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a137"
+        },
+        {
+          "texto": "INE, «Relación de comunidades y ciudades autónomas con sus códigos»",
+          "url": "https://www.ine.es/daco/daco42/codmun/cod_ccaa.htm"
+        },
+        {
+          "texto": "Constitución de Francia, art. 72 (en francés)",
+          "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur"
+        },
+        {
+          "texto": "Constitución de Portugal, arts. 6 y 291 (en portugués)",
+          "url": "https://www.parlamento.pt/Legislacao/Documents/constpt2005.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-3014",
@@ -4055,8 +4228,33 @@
         "Castilla y León."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Parque Nacional de Aigüestortes i Estany de Sant Maurici está en Cataluña, en el Pirineo de la provincia de Lleida. Se creó en 1955 y es el único parque nacional de Cataluña.\nEn el Pirineo de Aragón está el de Ordesa y Monte Perdido. Castilla y León comparte dos parques nacionales: Picos de Europa, con Asturias y Cantabria, y Sierra de Guadarrama, con Madrid.",
+      "fuentes": [
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), ficha técnica de Aigüestortes i Estany de Sant Maurici",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/aiguestortes/ficha-tecnica.html"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), historia de Aigüestortes i Estany de Sant Maurici",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/aiguestortes/historia.html"
+        },
+        {
+          "texto": "Ley 7/1988, de reclasificación del Parque Nacional de Aigüestortes y Lago de Sant Maurici",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1988-10914"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), ficha técnica de Picos de Europa",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/picos-europa/ficha-tecnica.html"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), ficha técnica de Sierra de Guadarrama",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/guadarrama/ficha-tecnica.html"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), los parques nacionales",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales.html"
+        }
+      ]
     },
     {
       "id": "ccse-3015",
@@ -4069,8 +4267,21 @@
         "Cádiz."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "En el norte de África están Ceuta y Melilla, las dos ciudades autónomas de España. Cada una tiene su propio Estatuto de Autonomía desde 1995.\nAlmería y Cádiz son provincias de Andalucía, en la península.",
+      "fuentes": [
+        {
+          "texto": "Ley Orgánica 1/1995, Estatuto de Autonomía de Ceuta",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-6358"
+        },
+        {
+          "texto": "Ley Orgánica 2/1995, Estatuto de Autonomía de Melilla",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-6359"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Andalucía, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-5825#a2"
+        }
+      ]
     },
     {
       "id": "ccse-3016",
@@ -4083,8 +4294,21 @@
         "Madrid."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Madrid tiene inviernos fríos y veranos muy calurosos. En el Retiro, la temperatura mínima media de enero es de unos 3 °C, y la máxima media de julio pasa de 32 °C.\nEn Valencia, junto al mar, el invierno es más suave, con unos 7 °C de mínima media en enero. En Canarias la temperatura es agradable todo el año. En Santa Cruz de Tenerife, la media va de unos 18 °C en enero a unos 25 °C en agosto.",
+      "fuentes": [
+        {
+          "texto": "AEMET, valores climatológicos normales (1981-2010): Madrid, Retiro",
+          "url": "https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=3195&k=mad"
+        },
+        {
+          "texto": "AEMET, valores climatológicos normales (1981-2010): València",
+          "url": "https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=8416&k=val"
+        },
+        {
+          "texto": "AEMET, valores climatológicos normales (1981-2010): Santa Cruz de Tenerife",
+          "url": "https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=C449C&k=coo"
+        }
+      ]
     },
     {
       "id": "ccse-3017",
@@ -4097,8 +4321,17 @@
         "El Júcar."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Guadalquivir desemboca en el océano Atlántico, en Sanlúcar de Barrameda (Cádiz), después de cruzar Andalucía desde las sierras de Cazorla y del Pozo, en Jaén.\nEl Manzanares, el río de Madrid, desemboca en el Jarama, que lleva sus aguas al Tajo. Sus aguas acaban en el Atlántico, pero el río no llega al mar. El Júcar desemboca en el Mediterráneo.",
+      "fuentes": [
+        {
+          "texto": "INE, Anuario Estadístico de España 2008, «Entorno físico y medio ambiente» (datos del Instituto Geográfico Nacional)",
+          "url": "https://ine.es/prodyser/pubweb/anuario08/anu08_01entor.pdf"
+        },
+        {
+          "texto": "IGN, visor de mapas oficiales (Iberpix)",
+          "url": "https://www.ign.es/iberpix/visor/"
+        }
+      ]
     },
     {
       "id": "ccse-3018",
@@ -4111,8 +4344,21 @@
         "Guadalajara."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Burgos es una de las nueve provincias de Castilla y León, junto con Ávila, León, Palencia, Salamanca, Segovia, Soria, Valladolid y Zamora.\nHuesca está en Aragón, y Guadalajara, en Castilla-La Mancha.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de Castilla y León, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-20635#a2"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Aragón, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8444#a2"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Castilla-La Mancha, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-20820#asegundo"
+        }
+      ]
     },
     {
       "id": "ccse-3019",
@@ -4125,8 +4371,21 @@
         "Extremadura."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Huesca está en Aragón. Es la capital de una de sus tres provincias, junto con Teruel y Zaragoza.\nCastilla-La Mancha tiene cinco provincias (Albacete, Ciudad Real, Cuenca, Guadalajara y Toledo), y Extremadura, dos (Badajoz y Cáceres).",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de Aragón, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8444#a2"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Castilla-La Mancha, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-20820#asegundo"
+        },
+        {
+          "texto": "Estatuto de Autonomía de Extremadura, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-1638#a2"
+        }
+      ]
     },
     {
       "id": "ccse-3020",
@@ -4139,8 +4398,21 @@
         "subtropical."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Canarias tiene un clima subtropical, porque está en una latitud entre la zona templada y la tropical. Por eso las temperaturas son suaves todo el año y cambian poco de una estación a otra. En Santa Cruz de Tenerife, la media va de unos 18 °C en enero a unos 25 °C en agosto.\nEl clima mediterráneo, con veranos secos y calurosos, es el de la mayor parte de la península y de Baleares. El oceánico, con lluvia todo el año y veranos suaves, es el del norte, de Galicia al País Vasco.",
+      "fuentes": [
+        {
+          "texto": "Gobierno de Canarias, «Factores del clima en las Islas Canarias»",
+          "url": "https://www3.gobiernodecanarias.org/medusa/wiki/index.php/Factores_del_clima_en_las_Islas_Canarias"
+        },
+        {
+          "texto": "AEMET, valores climatológicos normales (1981-2010): Santa Cruz de Tenerife",
+          "url": "https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=C449C&k=coo"
+        },
+        {
+          "texto": "AEMET, clasificación climática de Köppen en la península y Baleares",
+          "url": "https://www.aemet.es/es/idi/clima/productos_climaticos"
+        }
+      ]
     },
     {
       "id": "ccse-3021",
@@ -4153,8 +4425,17 @@
         "Tajo."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Ebro es el principal río que desemboca en el Mediterráneo. Con 910 kilómetros, es el más largo de los que van a ese mar. Nace en Cantabria y desemboca en Amposta (Tarragona).\nEl Duero y el Tajo desembocan en el océano Atlántico, en Portugal. El Tajo, con 1.007 kilómetros, es el río más largo de la península.",
+      "fuentes": [
+        {
+          "texto": "INE, Anuario Estadístico de España 2008, «Entorno físico y medio ambiente» (datos del Instituto Geográfico Nacional)",
+          "url": "https://ine.es/prodyser/pubweb/anuario08/anu08_01entor.pdf"
+        },
+        {
+          "texto": "IGN, visor de mapas oficiales (Iberpix)",
+          "url": "https://www.ign.es/iberpix/visor/"
+        }
+      ]
     },
     {
       "id": "ccse-3022",
@@ -4167,8 +4448,17 @@
         "fríos."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "España es uno de los países más montañosos de Europa. Más de la mitad de su territorio es de montaña, y en un estudio de 2010 de la Agencia Europea de Medio Ambiente solo cinco países de la Unión Europea tenían una parte mayor.\nTiene además cumbres de más de 3.000 metros en los Pirineos, en Sierra Nevada y en Canarias, donde está el Teide, el pico más alto de España.",
+      "fuentes": [
+        {
+          "texto": "Agencia Europea de Medio Ambiente, «Europe's ecological backbone» (2010), parte de montaña de cada país (en inglés)",
+          "url": "https://www.eea.europa.eu/en/analysis/maps-and-charts/percentage-of-area-covered-by/percentage-of-area-covered-by-2"
+        },
+        {
+          "texto": "INE, Anuario Estadístico de España 2008, «Entorno físico y medio ambiente» (datos del Instituto Geográfico Nacional)",
+          "url": "https://ine.es/prodyser/pubweb/anuario08/anu08_01entor.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-3023",
@@ -4181,8 +4471,33 @@
         "En Ciudad Real."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Parque Nacional de Monfragüe está en el centro de la provincia de Cáceres, entre Plasencia, Trujillo y Cáceres, a orillas del Tajo. Es parque nacional desde 2007 y es uno de los mejores lugares para ver aves.\nEn la provincia de Ciudad Real están las Tablas de Daimiel y parte de Cabañeros. La Región de Murcia no tiene ningún parque nacional.",
+      "fuentes": [
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), Monfragüe",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/monfrague.html"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), ficha técnica de Monfragüe",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/monfrague/ficha-tecnica.html"
+        },
+        {
+          "texto": "Ley 1/2007, de declaración del Parque Nacional de Monfragüe",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-4461"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), ficha técnica de las Tablas de Daimiel",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/daimiel/ficha-tecnica.html"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), Cabañeros",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales/cabaneros.html"
+        },
+        {
+          "texto": "Parques Nacionales (Ministerio para la Transición Ecológica), los parques nacionales",
+          "url": "https://www.miteco.gob.es/es/parques-nacionales-oapn/red-parques-nacionales/parques-nacionales.html"
+        }
+      ]
     },
     {
       "id": "ccse-3024",
@@ -4195,8 +4510,17 @@
         "Mérida."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La capital de Extremadura es Mérida, donde tienen su sede la Asamblea, la Presidencia y la Junta de Extremadura, como dice su Estatuto.\nCáceres y Badajoz son las capitales de las dos provincias extremeñas, y Badajoz es la ciudad más poblada de la comunidad. Mérida está en la provincia de Badajoz.",
+      "fuentes": [
+        {
+          "texto": "Estatuto de Autonomía de Extremadura, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-1638#a5"
+        },
+        {
+          "texto": "INE, cifras oficiales de población de los municipios españoles (revisión del Padrón)",
+          "url": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177011&menu=resultados&idp=1254734710990"
+        }
+      ]
     },
     {
       "id": "ccse-4001",
