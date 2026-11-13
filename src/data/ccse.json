@@ -1055,7 +1055,7 @@
         "UE."
       ],
       "respuesta": "a",
-      "nota": "PP son las siglas del Partido Popular. PIB es el producto interior bruto, lo que produce un país en un año, y UE, la Unión Europea.",
+      "nota": "PP son las siglas del Partido Popular, uno de los principales partidos políticos de España.\nPIB es el producto interior bruto, el valor de todo lo que produce un país en un año, y UE son las siglas de la Unión Europea.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Partido Popular»",
@@ -2033,7 +2033,7 @@
         "una obligación."
       ],
       "respuesta": "a",
-      "nota": "Votar es un derecho, no una obligación, y nadie tiene que votar si no quiere. La Constitución garantiza que el voto sea universal, libre, igual, directo y secreto.",
+      "nota": "El voto es un derecho: cada persona decide si vota o no, y no hay ninguna multa por no votar. La Constitución dice que el voto es universal, libre, igual, directo y secreto.\nNo es un deber ni una obligación, a diferencia de algunos países, como Bélgica o Argentina, donde votar es obligatorio. Lo que sí es obligatorio es formar parte de una mesa electoral si a uno le toca en el sorteo.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 23",
@@ -2042,6 +2042,14 @@
         {
           "texto": "Constitución española, art. 68",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a68"
+        },
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 27",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#aveintisiete"
+        },
+        {
+          "texto": "Wikipedia, «Voto obligatorio»",
+          "url": "https://es.wikipedia.org/wiki/Voto_obligatorio"
         }
       ]
     },
@@ -2237,11 +2245,15 @@
         "Muchos."
       ],
       "respuesta": "c",
-      "nota": "La Constitución dice que crear un partido es libre y que los partidos expresan el pluralismo político. Por eso hay muchos, aunque solo algunos consiguen escaños.",
+      "nota": "En España hay muchos partidos políticos, porque la Constitución dice que crearlos es libre y que expresan el pluralismo político. Hay miles inscritos en el Registro de Partidos Políticos del Ministerio del Interior, aunque solo algunos consiguen escaños.\nQue no haya ninguno o solo uno pasa en las dictaduras. Durante el franquismo estaban prohibidos todos los partidos menos el del régimen.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 6",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a6"
+        },
+        {
+          "texto": "Maldita.es, «Arqueología política: casi 2.000 partidos creados durante la democracia ya no existen» (2024)",
+          "url": "https://maldita.es/malditodato/20240229/partidos-politicos-registro-ministerio-interior/"
         }
       ]
     },
@@ -2667,7 +2679,7 @@
         "A los eurodiputados."
       ],
       "respuesta": "c",
-      "nota": "Cada cinco años, los ciudadanos de la Unión Europea eligen a los eurodiputados, que forman el Parlamento Europeo. En España votan los españoles y también los ciudadanos de otros países de la Unión que viven aquí.",
+      "nota": "En las elecciones al Parlamento Europeo se elige a los eurodiputados, que representan a los ciudadanos de la Unión Europea. Son cada cinco años, y en las de 2024 España eligió a 61. En España votan los españoles y también los ciudadanos de otros países de la Unión que viven aquí.\nLos ministros de cada país se reúnen en el Consejo de la Unión Europea, pero no se eligen en estas elecciones, porque son los ministros de cada Gobierno nacional. Un consejero delegado es quien dirige una empresa.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 210",
@@ -2690,11 +2702,23 @@
         "21 años."
       ],
       "respuesta": "b",
-      "nota": "La Constitución fija la mayoría de edad en los 18 años, y desde entonces se puede votar en todas las elecciones.",
+      "nota": "Los españoles pueden votar a partir de los 18 años, la mayoría de edad que fija la Constitución.\nHasta 1978 la mayoría de edad era a los 21 años, y en las primeras elecciones democráticas, las de 1977, solo votaron los mayores de 21. A los 16 años se puede votar en algunos países, como Austria o Malta, pero no en España.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 12",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a12"
+        },
+        {
+          "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asegundo"
+        },
+        {
+          "texto": "Wikipedia, «Mayoría de edad»",
+          "url": "https://es.wikipedia.org/wiki/Mayoría_de_edad"
+        },
+        {
+          "texto": "Wikipedia, «Edad para votar»",
+          "url": "https://es.wikipedia.org/wiki/Edad_para_votar"
         }
       ]
     },
@@ -2709,7 +2733,7 @@
         "generales."
       ],
       "respuesta": "a",
-      "nota": "En las elecciones municipales pueden votar los ciudadanos de la Unión Europea que viven en España y los de algunos países que dejan votar a los españoles en sus elecciones. En las autonómicas y las generales solo votan los españoles.",
+      "nota": "Algunos extranjeros pueden votar en las elecciones municipales: los ciudadanos de la Unión Europea que viven en España y los de países que dejan votar a los españoles en sus elecciones municipales, como Reino Unido, Noruega, Colombia o Perú.\nEn las elecciones autonómicas y en las generales solo pueden votar los españoles.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 13",
@@ -2718,6 +2742,10 @@
         {
           "texto": "Ley Orgánica 5/1985, del Régimen Electoral General, art. 176",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosetentayseis"
+        },
+        {
+          "texto": "INE, «Elecciones municipales de 28 de mayo de 2023» (nota de prensa)",
+          "url": "https://www.ine.es/prensa/elecmun23_1.pdf"
         }
       ]
     },
@@ -2843,7 +2871,7 @@
         "Sindicato."
       ],
       "respuesta": "c",
-      "nota": "Los sindicatos defienden los intereses de los trabajadores, y la Constitución reconoce el derecho a crearlos y a afiliarse a ellos.",
+      "nota": "La organización que defiende los intereses de los trabajadores es el sindicato, y la Constitución reconoce el derecho a crearlos y a afiliarse a ellos. Los más grandes de España son Comisiones Obreras (CCOO) y la Unión General de Trabajadores (UGT).\nUn partido político se presenta a las elecciones para gobernar. Asociación es una palabra más general, para cualquier grupo de personas que se une con un fin común, como una asociación de vecinos.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 7",
@@ -2852,6 +2880,14 @@
         {
           "texto": "Constitución española, art. 28",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a28"
+        },
+        {
+          "texto": "Wikipedia, «Comisiones Obreras»",
+          "url": "https://es.wikipedia.org/wiki/Comisiones_Obreras"
+        },
+        {
+          "texto": "Wikipedia, «Unión General de Trabajadores»",
+          "url": "https://es.wikipedia.org/wiki/Unión_General_de_Trabajadores"
         }
       ]
     },
