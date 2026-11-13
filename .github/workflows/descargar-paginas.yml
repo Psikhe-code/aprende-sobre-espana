@@ -1,10 +1,10 @@
 # Descarga páginas web (y, si se pide, sus imágenes y PDF) para poder leerlas desde el entorno de Claude.
-# Solo se ejecuta al subir cambios a la rama temporal paginas-descarga (no se mezcla con main).
+# Solo se ejecuta al subir cambios a la rama descargas-no-mezclar (no se mezcla nunca con main).
 name: Descargar páginas
 
 on:
   push:
-    branches: [paginas-descarga]
+    branches: [descargas-no-mezclar]
     paths: [scripts/descargar-paginas.py, .github/workflows/descargar-paginas.yml]
 
 permissions:

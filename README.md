@@ -218,28 +218,37 @@ En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Common
 
 ## Descargas con GitHub Actions
 
-Antes, algunas webs no se podían abrir desde el entorno donde trabaja Claude (Wikimedia limitaba mucho las peticiones, y muchas webs oficiales las bloqueaban). Desde noviembre de 2026 casi todo se descarga directamente desde la terminal (`curl`), también la web del INE y los artículos de Wikipedia; estos dos procesos automáticos de GitHub quedan para cuando alguna web bloquee las peticiones. Los dos funcionan igual: se crea una **rama temporal** desde `main`, se edita la lista del script, se sube la rama, GitHub descarga los archivos y los guarda en esa misma rama. Cuando ya se han leído, la rama se borra. **Estas ramas no se mezclan nunca con `main`**: lo que haga falta se copia a una rama normal con su pull request.
+Antes, algunas webs no se podían abrir desde el entorno donde trabaja Claude (Wikimedia limitaba mucho las peticiones, y muchas webs oficiales las bloqueaban). Desde noviembre de 2026 casi todo se descarga directamente desde la terminal (`curl`), también la web del INE y los artículos de Wikipedia. Estos dos procesos automáticos de GitHub quedan solo para cuando alguna web bloquee las peticiones (la RAE, por ejemplo); si se puede, mejor buscar otra fuente que se abra directamente.
 
-| Proceso | Rama temporal | Script | Para qué | Dónde guarda |
-| --- | --- | --- | --- | --- |
-| Descargar banderas | `banderas-descarga` | `scripts/descargar-banderas.py` | Archivos de Wikimedia Commons, con su ficha, autor y licencia: banderas, escudos o cualquier otra imagen | `banderas-wikimedia/` |
-| Descargar páginas | `paginas-descarga` | `scripts/descargar-paginas.py` | Páginas web (webs oficiales, Flags of the World, boletines, Wikipedia…) y, si se pide, las imágenes y PDF que enlazan | `paginas-descargadas/` |
+Los dos usan la misma rama, **`descargas-no-mezclar`**, que existe siempre. Se edita la lista del script, se sube la rama, GitHub descarga los archivos y los guarda en esa misma rama. **Esta rama no se mezcla nunca con `main`**: lo que haga falta se copia a una rama normal con su pull request.
+
+**Después de cada uso, se vacía.** El repositorio es público y lo descargado es de otros (páginas, PDF, imágenes), así que no se deja guardado. Vaciarla es volver a ponerla igual que `main`, reescribiendo su historial para que no quede rastro de lo descargado:
+
+```
+git push --force origin main:descargas-no-mezclar
+```
+
+| Proceso | Script | Para qué | Dónde guarda |
+| --- | --- | --- | --- |
+| Descargar banderas | `scripts/descargar-banderas.py` | Archivos de Wikimedia Commons, con su ficha, autor y licencia: banderas, escudos o cualquier otra imagen | `banderas-wikimedia/` |
+| Descargar páginas | `scripts/descargar-paginas.py` | Páginas web (webs oficiales, Flags of the World, boletines, Wikipedia…) y, si se pide, las imágenes y PDF que enlazan | `paginas-descargadas/` |
+
+Cada proceso solo arranca si el commit que subes cambia su script (o su workflow). Cambia solo uno de los dos scripts en cada subida: si cambian los dos a la vez, los dos procesos intentan guardar en la rama al mismo tiempo y uno puede fallar. Para descargar otra tanda, basta con cambiar la lista y volver a subir.
 
 ### Actualizar, cambiar o añadir una bandera
 
-1. Crea la rama `banderas-descarga` desde `main`.
+1. Cámbiate a la rama `descargas-no-mezclar` (si no está vacía, vacíala antes).
 2. Pon en la lista `CANDIDATOS` del script los nombres de los archivos de Commons que quieras (también escudos, como «Coat of Arms of Teruel Province.svg»). La clave de cada grupo es libre: el código de la comunidad («12»), «p» y el código de la provincia («p44»)…
 3. Sube la rama. GitHub descarga los archivos y los guarda en `banderas-wikimedia/` de esa rama.
-4. Revisa las candidatas con su versión oficial. En una rama normal, copia la elegida a `src/data/banderas/comunidades/` o `src/data/banderas/provincias/`, límpiala (`npm run limpiar-bandera -- <archivo>`) y actualiza en `banderas.json` su `fuente` (y su `descripcion` y `significado` si cambia el diseño). Después, borra la rama temporal.
+4. Revisa las candidatas con su versión oficial. En una rama normal, copia la elegida a `src/data/banderas/comunidades/` o `src/data/banderas/provincias/`, límpiala (`npm run limpiar-bandera -- <archivo>`) y actualiza en `banderas.json` su `fuente` (y su `descripcion` y `significado` si cambia el diseño).
+5. Vacía la rama.
 
 ### Descargar páginas web
 
-1. Crea la rama `paginas-descarga` desde `main`.
+1. Cámbiate a la rama `descargas-no-mezclar` (si no está vacía, vacíala antes).
 2. Pon en la lista `PAGINAS` del script un nombre para cada página, su dirección y si quieres también las imágenes y PDF que enlaza (`True`) o solo la página (`False`). En el script hay ejemplos.
 3. Sube la rama. GitHub descarga las páginas y las guarda en `paginas-descargadas/` de esa rama, con un `indice.json` que dice de dónde sale cada archivo y qué ha fallado.
-4. Cuando ya se ha leído lo descargado, borra la rama temporal.
-
-El proceso solo arranca si el commit que subes cambia el script (o el workflow). Para descargar otra tanda, basta con cambiar la lista y volver a subir.
+4. Cuando ya se ha leído lo descargado, vacía la rama.
 
 ## Tests
 
