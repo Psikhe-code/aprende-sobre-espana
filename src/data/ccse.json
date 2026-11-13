@@ -175,7 +175,7 @@
         "Policía Foral de Navarra."
       ],
       "respuesta": "c",
-      "nota": "Es la policía propia de Navarra. Otras comunidades también tienen la suya, como el País Vasco (la Ertzaintza) o Cataluña (los Mossos d'Esquadra). La Guardia Civil y la Policía Nacional dependen del Gobierno de España, y la policía local, de cada ayuntamiento.",
+      "nota": "La Policía Foral de Navarra es una policía autonómica, la propia de Navarra. Otras comunidades también tienen la suya, como el País Vasco (la Ertzaintza) o Cataluña (los Mossos d'Esquadra).\nLa Guardia Civil depende del Gobierno de España y trabaja en todo el país, y la policía local depende de cada ayuntamiento.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, arts. 2 y 9",
@@ -194,7 +194,7 @@
         "Los Mossos d'Esquadra."
       ],
       "respuesta": "b",
-      "nota": "Desde 2015 se llama simplemente Policía Nacional. Ella y la Guardia Civil trabajan en toda España y dependen del Ministerio del Interior. La Policía Foral es la policía de Navarra, y los Mossos d'Esquadra, la de Cataluña.",
+      "nota": "El Cuerpo Nacional de Policía está en toda España, igual que la Guardia Civil, y los dos dependen del Ministerio del Interior. Desde 2015 se llama oficialmente Policía Nacional, el nombre que ya usaba todo el mundo.\nLa Policía Foral es la policía de Navarra, y los Mossos d'Esquadra, la de Cataluña.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, art. 9",
@@ -962,7 +962,7 @@
         "El Ejército del Aire."
       ],
       "respuesta": "c",
-      "nota": "Las Fuerzas Armadas son el Ejército de Tierra, la Armada y el Ejército del Aire, que desde 2022 se llama Ejército del Aire y del Espacio. La Guardia Civil es un cuerpo de seguridad, aunque de naturaleza militar.",
+      "nota": "El Ejército del Aire forma parte de las Fuerzas Armadas, junto con el Ejército de Tierra y la Armada. Desde 2022 se llama Ejército del Aire y del Espacio.\nLa Guardia Civil es de naturaleza militar, pero no forma parte de las Fuerzas Armadas, sino de los cuerpos de seguridad, igual que la Policía Foral, que es la policía de Navarra.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 5/2005, de la Defensa Nacional, art. 10",
@@ -1791,7 +1791,7 @@
         "la Policía Nacional y las policías autonómicas."
       ],
       "respuesta": "b",
-      "nota": "La Constitución encarga a las Fuerzas Armadas defender la soberanía, la independencia, la integridad territorial y el orden constitucional de España. La seguridad dentro del país es tarea de las policías y la Guardia Civil.",
+      "nota": "La defensa de la integridad territorial de España corresponde a las Fuerzas Armadas, como dice la Constitución, junto con la de su soberanía, su independencia y el orden constitucional.\nLa Policía Nacional, la Guardia Civil y las policías autonómicas se ocupan de la seguridad de las personas dentro del país, no de su defensa.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 8",
@@ -1814,7 +1814,7 @@
         "Organización de las Naciones Unidas (ONU)."
       ],
       "respuesta": "c",
-      "nota": "En enero de 1989, siete militares españoles se unieron a una misión de observación de la ONU en Angola. Fue la primera de muchas misiones de paz con cascos azules españoles.",
+      "nota": "El Ejército español participa desde 1989 en misiones de paz de la ONU. Ese año, siete militares españoles se unieron a una misión de observación en Angola, la primera de muchas con cascos azules españoles.\nLa OEI se dedica a la educación, la ciencia y la cultura en los países iberoamericanos, y la UEO era una alianza de defensa europea que desapareció en 2011.",
       "fuentes": [
         {
           "texto": "La Moncloa, Día Internacional del Personal de Paz de la ONU (2019)",
@@ -1823,6 +1823,14 @@
         {
           "texto": "Ministerio de Asuntos Exteriores, «Misiones de paz»",
           "url": "https://exteriores.gob.es/RepresentacionesPermanentes/onu/es/Areas-tematicas/Paginas/Misiones-de-paz.aspx"
+        },
+        {
+          "texto": "Wikipedia, «Organización de Estados Iberoamericanos para la Educación, la Ciencia y la Cultura»",
+          "url": "https://es.wikipedia.org/wiki/Organización_de_Estados_Iberoamericanos_para_la_Educación,_la_Ciencia_y_la_Cultura"
+        },
+        {
+          "texto": "Wikipedia, «Unión Europea Occidental»",
+          "url": "https://es.wikipedia.org/wiki/Unión_Europea_Occidental"
         }
       ]
     },
@@ -1837,7 +1845,7 @@
         "La Policía Nacional."
       ],
       "respuesta": "a",
-      "nota": "La ley encarga a la Guardia Civil vigilar costas, fronteras, puertos y aeropuertos, además del tráfico en las carreteras.",
+      "nota": "La Guardia Civil vigila los puertos y aeropuertos, las fronteras y las costas, como le encarga la ley, además del tráfico en las carreteras.\nLa Policía Nacional se ocupa en las fronteras del control de pasaportes, de quién entra y sale de España, y la policía local trabaja dentro de cada municipio.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, art. 12",
@@ -1856,7 +1864,7 @@
         "La Policía Nacional."
       ],
       "respuesta": "c",
-      "nota": "La Policía Nacional controla quién entra y sale de España, y también expide el DNI y el pasaporte. La Guardia Civil vigila las fronteras, pero el control de pasaportes es de la Policía Nacional.",
+      "nota": "El control de pasaportes en las fronteras lo hace la Policía Nacional, que controla quién entra y sale de España y también expide el DNI y el pasaporte.\nLa Guardia Civil vigila las fronteras, los puertos y las costas, pero no controla los pasaportes. La policía local trabaja dentro de cada municipio.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, art. 12",
@@ -1902,7 +1910,7 @@
         "Mossos d'Esquadra."
       ],
       "respuesta": "c",
-      "nota": "La Policía de la Generalitat-Mossos d'Esquadra es la policía propia de Cataluña. La Ertzaintza es la del País Vasco, y la Guardia Civil trabaja en toda España.",
+      "nota": "La policía autonómica de Cataluña son los Mossos d'Esquadra, cuyo nombre oficial es Policía de la Generalitat-Mossos d'Esquadra.\nLa Ertzaintza es la policía del País Vasco, y la Guardia Civil trabaja en toda España.",
       "fuentes": [
         {
           "texto": "Estatuto de Autonomía de Cataluña, art. 164",
@@ -1921,7 +1929,7 @@
         "Mossos d'Esquadra."
       ],
       "respuesta": "a",
-      "nota": "La Ertzaintza es la policía propia del País Vasco. Los Mossos d'Esquadra son la de Cataluña, y la Guardia Civil trabaja en toda España.",
+      "nota": "La policía autonómica del País Vasco es la Ertzaintza.\nLos Mossos d'Esquadra son la policía de Cataluña, y la Guardia Civil trabaja en toda España.",
       "fuentes": [
         {
           "texto": "Wikipedia, «Ertzaintza»",
@@ -1963,11 +1971,15 @@
         "La Policía Local."
       ],
       "respuesta": "c",
-      "nota": "La policía local, que depende de cada ayuntamiento, ordena el tráfico dentro de los pueblos y ciudades. Fuera de ellos, en las carreteras, lo vigila la Guardia Civil.",
+      "nota": "El tráfico en los pueblos y ciudades lo regula la policía local, que depende de cada ayuntamiento.\nFuera de ellos, en las carreteras, lo vigila la Guardia Civil. Protección Civil se ocupa de las emergencias y las catástrofes, no del tráfico.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, arts. 12 y 53",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859#acincuentaytres"
+        },
+        {
+          "texto": "Ley 17/2015, del Sistema Nacional de Protección Civil",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-7730"
         }
       ]
     },
@@ -2024,7 +2036,7 @@
         "El Ejército de Tierra."
       ],
       "respuesta": "a",
-      "nota": "La ley encarga a la Guardia Civil vigilar el tráfico en las carreteras, fuera de los pueblos y ciudades. Dentro de ellos, lo ordena la policía local.",
+      "nota": "El tráfico en las carreteras lo vigila la Guardia Civil, fuera de los pueblos y ciudades, como le encarga la ley. Dentro de ellos, lo ordena la policía local.\nLa Policía Nacional no se ocupa del tráfico, y el Ejército de Tierra es parte de las Fuerzas Armadas, que defienden el país.",
       "fuentes": [
         {
           "texto": "Ley Orgánica 2/1986, de Fuerzas y Cuerpos de Seguridad, arts. 12 y 53",
@@ -2219,7 +2231,7 @@
         "El ministro de Defensa."
       ],
       "respuesta": "a",
-      "nota": "La Constitución da al rey el mando supremo de las Fuerzas Armadas. Quien dirige la defensa y la Administración militar es el Gobierno.",
+      "nota": "El mando supremo de las Fuerzas Armadas lo tiene el rey, como dice la Constitución.\nSin embargo, no es un mando que permita decidir solo, sino que todos los actos del rey tienen que ir firmados también por el Gobierno.\nAunque el presidente del Gobierno y el ministro de Defensa no tienen el mando supremo, son ellos quienes dirigen la defensa y la Administración militar.",
       "fuentes": [
         {
           "texto": "Constitución española, art. 62",
@@ -2228,6 +2240,14 @@
         {
           "texto": "Constitución española, art. 97",
           "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a97"
+        },
+        {
+          "texto": "Constitución española, art. 56",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a56"
+        },
+        {
+          "texto": "Constitución española, art. 64",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a64"
         }
       ]
     },
