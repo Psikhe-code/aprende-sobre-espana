@@ -19,6 +19,9 @@ test("partida sin límite: fin de la baraja, barajar y seguir, terminar y récor
   }
   await expect(page.locator("#deckEndText")).toContainText(`Ya han salido las ${n} preguntas de esta selección`);
   await expect(page.locator("#stop")).toBeHidden(); // la tarjeta ya tiene su «Terminar»
+  // El aviso para el lector de pantalla está fuera de la tarjeta de la pregunta, que ahora se esconde: así se lee.
+  await expect(page.locator("#announce")).toHaveText("Has respondido todas las preguntas.");
+  await expect(page.locator("#announce")).toBeVisible();
 
   await page.locator("#reshuffle").click();
   await expect(page.locator("#sheet")).toHaveText(`Hoja ${String(n + 1).padStart(2, "0")}`);

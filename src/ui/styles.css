@@ -71,6 +71,9 @@ body {
 }
 button { font: inherit; color: inherit; cursor: pointer; }
 button:focus-visible { outline: 3px solid var(--water); outline-offset: 2px; }
+/* Textos a los que se lleva el foco desde el código (el enunciado, el resultado) para que el lector de pantalla
+   los lea: no se pueden pulsar, así que no llevan el marco de los botones. */
+.question:focus, .result:focus { outline: none; }
 
 /* Cabecera */
 .masthead {
