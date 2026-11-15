@@ -5426,8 +5426,21 @@
         "El certificado de empadronamiento."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los extranjeros que residen legalmente en España deben pedir la Tarjeta de Identidad de Extranjero (TIE). La tienen que solicitar quienes tengan un visado o una autorización para estar en España más de seis meses, en persona y en el plazo de un mes.\nEl DNI es solo para los españoles, porque acredita la nacionalidad española. El empadronamiento prueba dónde vive alguien, pero en un extranjero no prueba que su residencia sea legal ni le da ningún derecho.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 4/2000, sobre derechos y libertades de los extranjeros en España, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#a4"
+        },
+        {
+          "texto": "BOE, Real Decreto 1553/2005, que regula el DNI, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2005-21163#a1"
+        },
+        {
+          "texto": "BOE, Ley 7/1985, Reguladora de las Bases del Régimen Local, art. 18",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a18"
+        }
+      ]
     },
     {
       "id": "ccse-5002",
@@ -5440,8 +5453,25 @@
         "El carné de conducir."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El certificado de empadronamiento certifica dónde vive una persona. Lo da el Ayuntamiento con los datos del padrón municipal, que prueban la residencia y el domicilio habitual. Toda persona que vive en España tiene que inscribirse en el padrón de su municipio.\nLa partida de nacimiento prueba la fecha, la hora y el lugar del nacimiento y quiénes son los padres, y el carné de conducir es el permiso que hace falta para conducir.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 7/1985, Reguladora de las Bases del Régimen Local, art. 15",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a15"
+        },
+        {
+          "texto": "BOE, Ley 7/1985, Reguladora de las Bases del Régimen Local, art. 16",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a16"
+        },
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, art. 44",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a44"
+        },
+        {
+          "texto": "BOE, Real Decreto 818/2009, Reglamento General de Conductores, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2009-9481#a1"
+        }
+      ]
     },
     {
       "id": "ccse-5003",
@@ -5454,8 +5484,21 @@
         "Al libro de familia."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El registro electrónico individual sustituye al libro de familia. Desde el 30 de abril de 2021, cada persona tiene en el Registro Civil un registro individual con un código personal, donde se anotan su nacimiento, su matrimonio y los demás hechos de su vida civil.\nDesde esa fecha no se expiden libros de familia nuevos, pero los que ya existían siguen valiendo.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a5"
+        },
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a6"
+        },
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, disposición transitoria tercera",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#dttercera"
+        }
+      ]
     },
     {
       "id": "ccse-5004",
@@ -5468,8 +5511,13 @@
         "20 años."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Para conducir un coche hay que tener al menos 18 años, que es la edad mínima para sacar el permiso de la clase B.\nCon 16 años se puede sacar el permiso A1, para motos pequeñas, y con 15, el AM, para ciclomotores.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 818/2009, Reglamento General de Conductores, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2009-9481#a4"
+        }
+      ]
     },
     {
       "id": "ccse-5005",
@@ -5482,8 +5530,25 @@
         "el Registro Civil."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El carné de conducir se hace en la Dirección General de Tráfico (DGT). Lo expiden las Jefaturas Provinciales de Tráfico, a través de las que el Ministerio del Interior gestiona el tráfico.\nLa Policía Nacional hace el DNI y el pasaporte, y el Registro Civil inscribe los nacimientos, los matrimonios y las defunciones.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 818/2009, Reglamento General de Conductores, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2009-9481#a2"
+        },
+        {
+          "texto": "BOE, Real Decreto Legislativo 6/2015, Ley sobre Tráfico, Circulación de Vehículos a Motor y Seguridad Vial, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11722#a6"
+        },
+        {
+          "texto": "BOE, Real Decreto 896/2003, que regula la expedición del pasaporte ordinario, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-13978#a3"
+        },
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a4"
+        }
+      ]
     },
     {
       "id": "ccse-5006",
@@ -5496,8 +5561,13 @@
         "un examen teórico y otro práctico."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Para sacar el carné de conducir hay que aprobar un examen teórico y otro práctico. El teórico comprueba que se conocen las normas, y el práctico, que se sabe conducir en calles y carreteras con tráfico.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 818/2009, Reglamento General de Conductores, art. 43",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2009-9481#a43"
+        }
+      ]
     },
     {
       "id": "ccse-5007",
@@ -5510,8 +5580,17 @@
         "En las comisarías de policía."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El libro de familia se tramitaba en el Registro Civil, que es donde se inscriben los nacimientos, los matrimonios y las defunciones.\nDesde el 30 de abril de 2021 no se expiden libros nuevos, aunque los que ya existían siguen valiendo. En su lugar, cada persona tiene un registro individual electrónico en el Registro Civil.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a4"
+        },
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, disposición transitoria tercera",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#dttercera"
+        }
+      ]
     },
     {
       "id": "ccse-5008",
@@ -5524,8 +5603,25 @@
         "Canal Sur."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Canal Sur es la televisión pública de Andalucía, que gestiona la Junta de Andalucía.\nTelecinco y Nova son cadenas privadas que emiten en toda España: Telecinco es de Mediaset España, y Nova, de Atresmedia.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 18/2007, de la radio y televisión de titularidad autonómica gestionada por la Agencia Pública Empresarial de la Radio y Televisión de Andalucía, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2008-1185#a1"
+        },
+        {
+          "texto": "BOE, Ley 18/2007, de la radio y televisión de titularidad autonómica gestionada por la Agencia Pública Empresarial de la Radio y Televisión de Andalucía, preámbulo",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2008-1185#pr"
+        },
+        {
+          "texto": "BOE, Acuerdo del Consejo de Ministros de 20 de mayo de 2025, que renueva las licencias de televisión de ámbito estatal de Atresmedia, Mediaset y otras sociedades",
+          "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2025-11000"
+        },
+        {
+          "texto": "Atresmedia, web corporativa (canales del grupo)",
+          "url": "https://www.atresmediacorporacion.com/"
+        }
+      ]
     },
     {
       "id": "ccse-5009",
@@ -5538,8 +5634,13 @@
         "22 semanas."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El permiso por nacimiento dura 19 semanas para cada progenitor, para la madre y también para el otro progenitor. Las seis semanas siguientes al parto son obligatorias, y las dos últimas se pueden tomar hasta que el niño cumpla ocho años.\nSi solo hay una persona progenitora, el permiso es de 32 semanas.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto Legislativo 2/2015, Estatuto de los Trabajadores, art. 48",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a48"
+        }
+      ]
     },
     {
       "id": "ccse-5010",
@@ -5552,8 +5653,13 @@
         "0,9."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La tasa máxima de alcohol es de 0,5 gramos por litro en sangre, o de 0,25 miligramos por litro en el aire que se expulsa al soplar.\nPara los conductores con menos de dos años de carné y para los profesionales, como los de camiones, autobuses o taxis, el límite es más bajo: 0,3 g/l.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 1428/2003, Reglamento General de Circulación, art. 20",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a20"
+        }
+      ]
     },
     {
       "id": "ccse-5011",
@@ -5566,8 +5672,13 @@
         "Chalé independiente."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Lo más habitual en España es vivir en un piso: en 2025, el 64,7 % de la población vivía en un piso, y casi todo el resto, en una casa. Solo el 17,7 % vivía en una casa independiente, como un chalé.",
+      "fuentes": [
+        {
+          "texto": "Eurostat, «Distribution of population by degree of urbanisation, dwelling type and income group» (ilc_lvho01, datos de 2025)",
+          "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_lvho01/default/table?lang=es"
+        }
+      ]
     },
     {
       "id": "ccse-5012",
@@ -5580,8 +5691,13 @@
         "La Rioja."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Andalucía es conocida por su aceite de oliva, y es la comunidad que más produce: en la campaña 2024/2025, el 80,7 % del aceite de oliva de España se hizo en Andalucía.\nEl aceite de oliva se saca prensando las aceitunas, el fruto del olivo.",
+      "fuentes": [
+        {
+          "texto": "Mercasa, «Alimentación en España 2025», capítulo «Aceite de oliva»",
+          "url": "https://www.mercasa.es/wp-content/uploads/2026/02/aceite-oliva.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5013",
@@ -5594,8 +5710,21 @@
         "ITE (Inspección Técnica de Edificios)."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La revisión obligatoria de los coches es la ITV (Inspección Técnica de Vehículos). Un coche la pasa por primera vez cuando cumple cuatro años, después cada dos años y, desde los diez años, cada año.\nEl IBI es el impuesto que se paga por el valor de las casas y otros inmuebles, y la ITE es la revisión del estado de los edificios con cierta antigüedad, que piden las comunidades autónomas y los ayuntamientos.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 920/2017, que regula la inspección técnica de vehículos, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2017-12841#a6"
+        },
+        {
+          "texto": "BOE, Real Decreto Legislativo 2/2004, Ley Reguladora de las Haciendas Locales, art. 60",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214#a60"
+        },
+        {
+          "texto": "BOE, Real Decreto Legislativo 7/2015, Ley de Suelo y Rehabilitación Urbana, art. 29",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11723#a29"
+        }
+      ]
     },
     {
       "id": "ccse-5014",
@@ -5608,8 +5737,13 @@
         "primer plato."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El aperitivo que acompaña a la bebida en bares y restaurantes se llama tapa: es una ración pequeña de comida que se sirve con la bebida, y puede ser fría o caliente. Ir de bar en bar tomando tapas se llama «ir de tapas». En el País Vasco, las tapas se llaman pintxos.",
+      "fuentes": [
+        {
+          "texto": "Turespaña, «Tapas en España»",
+          "url": "https://www.spain.info/es/descubrir-espana/tapas-espana/"
+        }
+      ]
     },
     {
       "id": "ccse-5015",
@@ -5622,8 +5756,25 @@
         "En el Ministerio de Sanidad."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La tarjeta sanitaria se pide en el centro de salud que le corresponde a cada uno por su domicilio. La da el servicio de salud de cada comunidad autónoma, y vale en toda España.\nEn la comisaría de policía se hacen el DNI y el pasaporte.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 183/2004, que regula la tarjeta sanitaria individual, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-2591#a2"
+        },
+        {
+          "texto": "Servicio Murciano de Salud, «Tarjeta sanitaria: preguntas frecuentes»",
+          "url": "https://www.murciasalud.es/web/atencion-usuarios-de-servicios-sanitario/tarjeta-sanitaria"
+        },
+        {
+          "texto": "BOE, Real Decreto 1553/2005, que regula la expedición del documento nacional de identidad, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2005-21163#a1"
+        },
+        {
+          "texto": "BOE, Real Decreto 896/2003, que regula la expedición del pasaporte ordinario, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-13978#a3"
+        }
+      ]
     },
     {
       "id": "ccse-5016",
@@ -5636,8 +5787,13 @@
         "Con 3 hijos."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Una familia es numerosa con tres hijos o más.\nCon dos hijos también lo es en algunos casos, por ejemplo cuando uno de los hijos tiene una discapacidad o cuando solo hay un progenitor.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 40/2003, de Protección a las Familias Numerosas, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-21052#a2"
+        }
+      ]
     },
     {
       "id": "ccse-5017",
@@ -5650,8 +5806,13 @@
         "solo entre personas de diferente sexo."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "En España se pueden casar personas del mismo sexo y de diferente sexo. Desde 2005, el Código Civil dice que el matrimonio tiene los mismos requisitos y efectos en los dos casos.",
+      "fuentes": [
+        {
+          "texto": "BOE, Código Civil, art. 44",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763#art44"
+        }
+      ]
     },
     {
       "id": "ccse-5018",
@@ -5664,8 +5825,17 @@
         "el Ayuntamiento."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los perros se registran en el censo municipal de animales, en los ayuntamientos que lo tienen, como Barcelona.\nAdemás, por ley, todos los perros tienen que llevar un microchip e inscribirse en el Registro de Animales de Compañía de su comunidad autónoma.",
+      "fuentes": [
+        {
+          "texto": "Ayuntamiento de Barcelona, «Tenencia responsable»",
+          "url": "https://ajuntament.barcelona.cat/benestaranimal/es/tenencia-responsable"
+        },
+        {
+          "texto": "BOE, Ley 7/2023, de protección de los derechos y el bienestar de los animales, art. 51",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7936#a5-3"
+        }
+      ]
     },
     {
       "id": "ccse-5019",
@@ -5678,8 +5848,13 @@
         "tomates."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los principales ingredientes de la tortilla española, o tortilla de patata, son los huevos y las patatas. Se hace con huevos batidos y patatas fritas en aceite de oliva, y a veces también con cebolla.",
+      "fuentes": [
+        {
+          "texto": "Turespaña, «Receta: Tortilla de patata»",
+          "url": "https://www.spain.info/es/receta/tortilla-patata/"
+        }
+      ]
     },
     {
       "id": "ccse-5020",
@@ -5692,8 +5867,17 @@
         "Pasta."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El gazpacho es un plato español. Es una sopa fría de tomate, pimiento, ajo, pan, aceite y vinagre, típica de Andalucía, y se toma sobre todo en primavera y verano.",
+      "fuentes": [
+        {
+          "texto": "Real Academia Española, «Diccionario de la lengua española», «gazpacho»",
+          "url": "https://dle.rae.es/gazpacho"
+        },
+        {
+          "texto": "Turespaña, «Receta: Gazpacho»",
+          "url": "https://www.spain.info/es/receta/gazpacho/"
+        }
+      ]
     },
     {
       "id": "ccse-5021",
@@ -5706,8 +5890,21 @@
         "Antena 3."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La 1 es un canal público. Es de RTVE (Corporación de Radio y Televisión Española), que presta el servicio público de radio y televisión del Estado.\nTelecinco y Antena 3 son cadenas privadas, de Mediaset España y de Atresmedia.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 17/2006, de la radio y la televisión de titularidad estatal, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-9958#a3"
+        },
+        {
+          "texto": "RTVE, «La 1»",
+          "url": "https://www.rtve.es/play/la-1/"
+        },
+        {
+          "texto": "BOE, Acuerdo del Consejo de Ministros de 20 de mayo de 2025, que renueva las licencias de televisión de ámbito estatal de Atresmedia, Mediaset y otras sociedades",
+          "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2025-11000"
+        }
+      ]
     },
     {
       "id": "ccse-5022",
@@ -5720,8 +5917,17 @@
         "limpiar los espacios comunes."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "En una comunidad de vecinos no se puede molestar a los demás con ruido: la ley no permite hacer en el piso actividades molestas.\nLos vecinos tienen que cuidar los espacios comunes y usarlos bien, pero limpiarlos no les toca a ellos: los gastos de la comunidad, como la limpieza, se pagan entre todos con la cuota de cada propietario.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 49/1960, sobre propiedad horizontal, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906#aseptimo"
+        },
+        {
+          "texto": "BOE, Ley 49/1960, sobre propiedad horizontal, art. 9",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906#anoveno"
+        }
+      ]
     },
     {
       "id": "ccse-5023",
@@ -5734,8 +5940,17 @@
         "Garbanzos."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El arroz es el ingrediente principal de la paella valenciana. Además del arroz, lleva carne, como pollo y conejo, verduras, legumbres como el garrofón y aceite de oliva. Se cocina en una sartén ancha y plana que también se llama paella.\nEl plato nació en la Albufera de Valencia, una zona de arrozales, como comida de los campesinos. En 2021, la Generalitat Valenciana lo declaró Bien de Interés Cultural.",
+      "fuentes": [
+        {
+          "texto": "BOE, Decreto 176/2021, del Consell, de declaración de bien de interés cultural, con categoría de bien inmaterial, de la paella valenciana, «el arte de unir y compartir»",
+          "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2022-4133"
+        },
+        {
+          "texto": "Real Academia Española, «Diccionario de la lengua española», «paella»",
+          "url": "https://dle.rae.es/paella"
+        }
+      ]
     },
     {
       "id": "ccse-5024",
@@ -5748,8 +5963,21 @@
         "Canarias."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La sidra es una bebida típica de Asturias. Es una bebida con alcohol que se hace fermentando el zumo de manzana. La sidra natural se escancia: se levanta la botella por encima de la cabeza y se deja caer la sidra en el vaso, y lo tradicional es beberla de un trago.\nEn 2024, la UNESCO declaró la cultura sidrera asturiana Patrimonio Cultural Inmaterial de la Humanidad. Desde 2002, la Denominación de Origen Protegida «Sidra de Asturias» garantiza que la manzana es asturiana.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 72/2017, que aprueba la norma de calidad de las diferentes categorías de la sidra natural y de la sidra, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2017-1749#a4"
+        },
+        {
+          "texto": "Turespaña, «Cultura sidrera de Asturias»",
+          "url": "https://www.spain.info/es/descubrir-espana/cultura-sidrera-asturias/"
+        },
+        {
+          "texto": "Ministerio de Asuntos Exteriores, Representación Permanente de España ante la UNESCO, «La UNESCO declara la \"Cultura sidrera asturiana\" como Patrimonio Cultural Inmaterial de la Humanidad»",
+          "url": "https://www.exteriores.gob.es/RepresentacionesPermanentes/unesco/es/Comunicacion/Noticias/Paginas/Articulos/--La-UNESCO-declara-la-%e2%80%98Cultura-sidrera-asturiana%e2%80%99-como-Patrimonio-Cultural-Inmaterial-de-la-Humanidad.aspx"
+        }
+      ]
     },
     {
       "id": "ccse-5025",
@@ -5762,8 +5990,13 @@
         "puede ser el de la madre o el del padre."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El primer apellido puede ser el de la madre o el del padre. Los padres deciden el orden antes de inscribir al bebé en el Registro Civil. Si no se ponen de acuerdo, decide el encargado del Registro, pensando en lo mejor para el niño.\nEl orden que se elige para el primer hijo vale también para los hermanos que tengan los mismos padres.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, art. 49",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a49"
+        }
+      ]
     },
     {
       "id": "ccse-5026",
@@ -5776,8 +6009,21 @@
         "12 de octubre."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Fiesta Nacional de España es el 12 de octubre. Según la ley, esa fecha simboliza el momento en que España empezó a extender su lengua y su cultura más allá de Europa.\nEl 6 de diciembre es el Día de la Constitución, y el 15 de agosto, la Asunción de la Virgen. Las dos también son fiesta en toda España.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 18/1987, que establece el día de la Fiesta Nacional de España en el 12 de octubre, artículo único",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1987-22831#aunico"
+        },
+        {
+          "texto": "BOE, Ley 18/1987, que establece el día de la Fiesta Nacional de España en el 12 de octubre, preámbulo",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1987-22831#preambulo"
+        },
+        {
+          "texto": "BOE, Real Decreto 2001/1983, sobre regulación de la jornada de trabajo, jornadas especiales y descansos, art. 45",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1983-20906#art45"
+        }
+      ]
     },
     {
       "id": "ccse-5027",
@@ -5790,8 +6036,17 @@
         "Los sábados por la tarde."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Lo habitual en España es que las tiendas cierren los domingos. Solo pueden abrir algunos domingos y festivos al año, que decide cada comunidad autónoma: por ley, al menos diez.",
+      "fuentes": [
+        {
+          "texto": "Turespaña, «Horarios y días festivos en España»",
+          "url": "https://www.spain.info/es/consejos-viaje/horarios-dias-festivos-espana/"
+        },
+        {
+          "texto": "BOE, Ley 1/2004, de Horarios Comerciales, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-21421#a4"
+        }
+      ]
     },
     {
       "id": "ccse-5028",
@@ -5804,8 +6059,21 @@
         "En el Ayuntamiento."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El pasaporte se hace en una comisaría de la Policía Nacional, que depende del Ministerio del Interior. Fuera de España, se hace en las embajadas y los consulados.\nEl Registro Civil inscribe los nacimientos, los matrimonios y las defunciones, y el Ayuntamiento lleva el padrón.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 896/2003, que regula la expedición del pasaporte ordinario, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-13978#a3"
+        },
+        {
+          "texto": "BOE, Ley 20/2011, del Registro Civil, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a4"
+        },
+        {
+          "texto": "BOE, Ley 7/1985, Reguladora de las Bases del Régimen Local, art. 16",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a16"
+        }
+      ]
     },
     {
       "id": "ccse-5029",
@@ -5818,8 +6086,13 @@
         "solidaridad."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Ministerio de Igualdad se encarga de luchar contra la violencia de género y contra la discriminación, por ejemplo por razón de sexo, origen racial o étnico, religión, orientación sexual, edad o discapacidad. También trabaja para que la igualdad entre mujeres y hombres sea real.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 246/2024, que desarrolla la estructura orgánica básica del Ministerio de Igualdad, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-4616#a1"
+        }
+      ]
     },
     {
       "id": "ccse-5030",
@@ -5832,8 +6105,13 @@
         "Castilla-La Mancha."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Cataluña es conocida por sus cavas. El cava es un vino espumoso: se embotella con azúcar y levaduras, y dentro de la botella se forman las burbujas al fermentar por segunda vez. Después reposa en la bodega entre nueve meses y dos años.\nEl cava con denominación de origen solo se puede hacer en 159 municipios, y 132 de ellos son catalanes, casi todos de las provincias de Barcelona y Tarragona. Los demás están en La Rioja, Aragón, el País Vasco, Navarra, la Comunidad Valenciana y Extremadura. En Galicia y en Castilla-La Mancha no hay ninguno.",
+      "fuentes": [
+        {
+          "texto": "Mercasa, «Alimentación en España 2025», capítulo «Cava»",
+          "url": "https://www.mercasa.es/wp-content/uploads/2026/02/Cava.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5031",
@@ -5846,8 +6124,17 @@
         "El certificado de nacimiento."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Para recibir atención médica en la sanidad pública se usa la tarjeta sanitaria individual, que identifica a cada persona. Vale en todo el Sistema Nacional de Salud, y también puede llevarse en el móvil, como tarjeta virtual.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 16/2003, de cohesión y calidad del Sistema Nacional de Salud, art. 57",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-10715#a57"
+        },
+        {
+          "texto": "BOE, Real Decreto 183/2004, que regula la tarjeta sanitaria individual, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-2591#a2"
+        }
+      ]
     },
     {
       "id": "ccse-5032",
@@ -5860,8 +6147,13 @@
         "una hora más."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Canarias tiene una hora menos que la Península y Baleares: cuando en Madrid son las 12, en Canarias son las 11. Por eso, en Canarias los cambios de hora de marzo y octubre se hacen una hora antes, para que ocurran en el mismo momento en toda España.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 236/2002, por el que se establece la hora de verano, preámbulo y arts. 2 y 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-4221"
+        }
+      ]
     },
     {
       "id": "ccse-5033",
@@ -5874,8 +6166,17 @@
         "Prueba de Acceso a la Universidad."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Para entrar en la universidad hay que aprobar la Prueba de Acceso a la Universidad (PAU). Su nota, junto con la del Bachillerato, es la que cuenta para entrar.\nMucha gente la sigue llamando «selectividad», que es el nombre popular de estas pruebas desde las primeras, en 1975.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 38",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a38"
+        },
+        {
+          "texto": "Ministerio de Educación, Formación Profesional y Deportes, Biblioteca Central, «La nueva prueba de acceso a la universidad» (2024)",
+          "url": "https://www.educacionfpydeportes.gob.es/biblioteca-central/blog/2024/julio/nueva-prueba-acceso-universidad.html"
+        }
+      ]
     },
     {
       "id": "ccse-5034",
@@ -5888,8 +6189,21 @@
         "Medicamentos."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "España tiene que importar casi todo el petróleo que usa. En 2025 compró fuera unos 61 millones de toneladas de crudo y produjo solo unas mil toneladas.\nEl aceite de oliva lo produce y lo vende fuera: España da cerca de la mitad del aceite de oliva del mundo y es el país que más exporta. Los medicamentos también se fabrican aquí, y son uno de los productos que más exporta España.",
+      "fuentes": [
+        {
+          "texto": "CORES, «Balance de producción y consumo de productos petrolíferos en España. Año 2025»",
+          "url": "https://www.cores.es/sites/default/files/archivos/estadisticas/est-petroliferos-balance-2025.pdf"
+        },
+        {
+          "texto": "Ministerio de Agricultura, Pesca y Alimentación, «Aceite de oliva»",
+          "url": "https://www.mapa.gob.es/es/agricultura/temas/producciones-agricolas/aceite-oliva-y-aceituna-mesa/aceite.aspx"
+        },
+        {
+          "texto": "INE, «España en cifras», capítulo «Sector exterior» (datos de 2025)",
+          "url": "https://www.ine.es/prodyser/espa_cifras/08_SECTOR_EXTERIOR.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5035",
@@ -5902,8 +6216,21 @@
         "Impuestos directos e indirectos."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "En España se pagan impuestos directos e indirectos. Los directos, como el IRPF, gravan la renta de cada persona, y los indirectos, como el IVA, gravan el consumo.\nLa Constitución dice que todos tienen que contribuir a los gastos públicos según su capacidad económica.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 35/2006, del Impuesto sobre la Renta de las Personas Físicas, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a1"
+        },
+        {
+          "texto": "BOE, Ley 37/1992, del Impuesto sobre el Valor Añadido, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740#a1"
+        },
+        {
+          "texto": "BOE, Constitución Española, art. 31",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a31"
+        }
+      ]
     },
     {
       "id": "ccse-5036",
@@ -5916,8 +6243,13 @@
         "25 años."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los mayores de 25 años pueden entrar en la universidad sin el título de Bachiller si aprueban una prueba de acceso especial para ellos.\nHay otras dos vías para adultos: la de los mayores de 40 años con experiencia laboral relacionada con lo que quieren estudiar, y la de los mayores de 45, con otra prueba.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 534/2024, sobre los requisitos de acceso a las enseñanzas universitarias oficiales de grado, art. 8",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-11858#a8"
+        }
+      ]
     },
     {
       "id": "ccse-5037",
@@ -5930,8 +6262,13 @@
         "En los estadios de fútbol."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La norma «No pisar el césped, ni arrancar flores» se encuentra en zonas de recreo, como los parques y jardines. La pone cada ayuntamiento en sus ordenanzas; por ejemplo, la de Zaragoza prohíbe pisar el césped ornamental y cortar flores.",
+      "fuentes": [
+        {
+          "texto": "Ayuntamiento de Zaragoza, «Ordenanza Municipal de Uso de Zonas Verdes»",
+          "url": "https://www.zaragoza.es/sede/servicio/normativa/102"
+        }
+      ]
     },
     {
       "id": "ccse-5038",
@@ -5944,8 +6281,21 @@
         "es la enseñanza a alumnos de 14 a 16 años."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Bachillerato tiene dos cursos. No es obligatorio: se puede hacer después de terminar la ESO, con su título.\nLa enseñanza obligatoria dura diez años, de los 6 a los 16. Los cuatro últimos, de los 12 a los 16, son la ESO (Educación Secundaria Obligatoria).",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 32",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a32"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a4"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 22",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a22"
+        }
+      ]
     },
     {
       "id": "ccse-5039",
@@ -5958,8 +6308,21 @@
         "Impuestos sobre sociedades."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El IVA es un impuesto indirecto, porque grava el consumo: se paga al comprar productos o servicios.\nEl IRPF, que es el impuesto sobre la renta de las personas, y el impuesto sobre sociedades, que pagan las empresas por sus ganancias, son impuestos directos.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 37/1992, del Impuesto sobre el Valor Añadido, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740#a1"
+        },
+        {
+          "texto": "BOE, Ley 35/2006, del Impuesto sobre la Renta de las Personas Físicas, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a1"
+        },
+        {
+          "texto": "BOE, Ley 27/2014, del Impuesto sobre Sociedades, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328#a1"
+        }
+      ]
     },
     {
       "id": "ccse-5040",
@@ -5972,8 +6335,17 @@
         "El número de servicio."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Al empezar su primer empleo, el trabajador recibe el número de la Seguridad Social, que le asigna la Tesorería General de la Seguridad Social. Este número se da una sola vez y vale para toda la vida, aunque se cambie de trabajo.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 84/1996, Reglamento General sobre inscripción de empresas y afiliación, altas, bajas y variaciones de datos de trabajadores en la Seguridad Social, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1996-4447#a6"
+        },
+        {
+          "texto": "BOE, Real Decreto 84/1996, Reglamento General sobre inscripción de empresas y afiliación, altas, bajas y variaciones de datos de trabajadores en la Seguridad Social, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1996-4447#a3"
+        }
+      ]
     },
     {
       "id": "ccse-5041",
@@ -5986,8 +6358,25 @@
         "son gratuitos."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los colegios públicos son gratuitos. La enseñanza básica, de los 6 a los 16 años, es obligatoria y gratuita, y ni los colegios públicos ni los concertados pueden cobrar a las familias por las enseñanzas gratuitas.\nLas plazas de los colegios públicos las programa la Administración educativa, y los profesores son funcionarios que entran por concurso-oposición.",
+      "fuentes": [
+        {
+          "texto": "BOE, Constitución Española, art. 27",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a27"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 88",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a88"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 109",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a109"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, disposición adicional duodécima",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#daduodecima"
+        }
+      ]
     },
     {
       "id": "ccse-5042",
@@ -6000,8 +6389,13 @@
         "Algeciras."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El puerto de la bahía de Algeciras es uno de los principales de España. En 2025 movió unos 100 millones de toneladas de mercancías, casi una quinta parte de todo lo que movieron los puertos del Estado.\nEl de Santa Cruz de Tenerife movió unos 14 millones de toneladas.",
+      "fuentes": [
+        {
+          "texto": "Puertos del Estado, «Resumen del tráfico portuario. Diciembre de 2025. Datos de cierre provisionales»",
+          "url": "https://www.puertos.es/file-download/download/public/5466"
+        }
+      ]
     },
     {
       "id": "ccse-5043",
@@ -6014,8 +6408,21 @@
         "recibe dinero de los bancos."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Un colegio concertado es un colegio privado que recibe dinero de la Administración. Para eso firma con ella un acuerdo, llamado concierto, y con ese dinero da gratis las enseñanzas que la ley declara gratuitas.\nPor eso, igual que en los colegios públicos, las familias no pagan por esas enseñanzas.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 116",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a116"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 117",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a117"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 88",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a88"
+        }
+      ]
     },
     {
       "id": "ccse-5044",
@@ -6028,8 +6435,13 @@
         "del norte de África."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "España exporta sobre todo a países de la Unión Europea, y los que más compran son Francia y Alemania. En 2025, el 61,8 % de lo que España vendió fuera fue a la UE.\nA toda América fue el 9,9 %, y a toda África, el 5,8 %.",
+      "fuentes": [
+        {
+          "texto": "INE, «España en cifras», capítulo «Sector exterior» (datos de 2025)",
+          "url": "https://www.ine.es/prodyser/espa_cifras/08_SECTOR_EXTERIOR.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5045",
@@ -6042,8 +6454,13 @@
         "los niños."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las bibliotecas públicas son gratuitas para todos: la ley dice que cualquier persona puede usar sus servicios básicos de forma libre y gratuita.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 10/2007, de la lectura, del libro y de las bibliotecas, art. 13",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-12351#a13"
+        }
+      ]
     },
     {
       "id": "ccse-5046",
@@ -6056,8 +6473,13 @@
         "Calzado."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "En el examen CCSE, la respuesta que se da por buena es el calzado. Fue así durante muchos años, por última vez en 2014. Desde 2015, España compra fuera más calzado del que vende: en 2025 exportó por unos 3.600 millones de euros e importó por unos 5.400 millones.\nEl gas y la ropa se importan más de lo que se exportan todos los años, al menos desde 1995. En 2025, España importó gas por unos 11.600 millones de euros y lo exportó por unos 700, y la ropa la importó por unos 22.400 millones y la exportó por unos 14.700.",
+      "fuentes": [
+        {
+          "texto": "Secretaría de Estado de Comercio, DataComex, sectores «82 Calzado», «230 Gas» y «814 Vestuario»: exportaciones e importaciones de España con todo el mundo (millones de euros)",
+          "url": "https://datacomex.comercio.es/"
+        }
+      ]
     },
     {
       "id": "ccse-5047",
@@ -6070,8 +6492,29 @@
         "una universidad."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Una persona mayor de 18 años puede sacar el título de Graduado en ESO en un centro de educación de personas adultas, con clases adaptadas a su vida y a su experiencia. También puede presentarse a unas pruebas para obtenerlo directamente.\nLos centros de primaria son para los niños de 6 a 12 años.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 66",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a66"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 67",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a67"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 68",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a68"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 70",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a70"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 16",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a16"
+        }
+      ]
     },
     {
       "id": "ccse-5048",
@@ -6084,8 +6527,21 @@
         "es obligatoria."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Formación Profesional (FP) tiene ciclos de grado básico, de grado medio y de grado superior.\nNo es obligatoria, porque la enseñanza obligatoria es la de los 6 a los 16 años. Y no es solo para mayores de 25: a un ciclo de grado medio se puede entrar, por ejemplo, con el título de Graduado en ESO.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 44",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a44"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a4"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 41",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a41"
+        }
+      ]
     },
     {
       "id": "ccse-5049",
@@ -6098,8 +6554,25 @@
         "A la farmacia."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Para ver al médico de familia o al pediatra se va al centro de salud. Allí se da la atención primaria, la primera a la que se acude.\nEl hospital da la atención especializada, y en la farmacia se compran las medicinas.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 137/1984, sobre estructuras básicas de salud, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1984-2574#a3"
+        },
+        {
+          "texto": "BOE, Ley 16/2003, de cohesión y calidad del Sistema Nacional de Salud, art. 12",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-10715#a12"
+        },
+        {
+          "texto": "BOE, Ley 16/2003, de cohesión y calidad del Sistema Nacional de Salud, art. 13",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-10715#a13"
+        },
+        {
+          "texto": "BOE, Ley 16/1997, de Regulación de Servicios de las Oficinas de Farmacia, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1997-9022#a1"
+        }
+      ]
     },
     {
       "id": "ccse-5050",
@@ -6112,8 +6585,13 @@
         "Para 10 años."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La tarjeta sanitaria europea vale, en general, para dos años. A algunas personas, como los jubilados, les puede durar hasta cinco.\nEs gratuita y sirve para recibir la atención médica necesaria en una estancia temporal en otro país de la Unión Europea, o en el Reino Unido, Noruega, Liechtenstein, Islandia y Suiza.",
+      "fuentes": [
+        {
+          "texto": "Seguridad Social, revista «Seguridad Social Activa», «Cómo obtener la Tarjeta Sanitaria Europea»",
+          "url": "https://revista.seg-social.es/-/como-obtener-la-tarjeta-sanitaria-europea"
+        }
+      ]
     },
     {
       "id": "ccse-5051",
@@ -6126,8 +6604,13 @@
         "A las 21 o 22 h."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "En España se suele cenar a las 21 o las 22 horas. Los restaurantes suelen dar cenas entre las 20:00 y las 22:30, y en verano y en las grandes ciudades, hasta las 23:30.",
+      "fuentes": [
+        {
+          "texto": "Turespaña, «Horarios y días festivos en España»",
+          "url": "https://www.spain.info/es/consejos-viaje/horarios-dias-festivos-espana/"
+        }
+      ]
     },
     {
       "id": "ccse-5052",
@@ -6140,8 +6623,25 @@
         "911."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El 112 es el número de teléfono para cualquier emergencia, en España y en el resto de Europa. La llamada es gratuita, desde cualquier teléfono.\nEl 060 es el teléfono de información de la Administración General del Estado, para preguntar por trámites y servicios públicos. El 911 es el número de emergencias de Estados Unidos y Canadá.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 11/2022, General de Telecomunicaciones, art. 74",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-10757#a7-6"
+        },
+        {
+          "texto": "BOE, Ley 11/2022, General de Telecomunicaciones, preámbulo",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-10757#pr"
+        },
+        {
+          "texto": "Punto de Acceso General, «Teléfono 060»",
+          "url": "https://administracion.gob.es/pag_Home/contacto/telefono-060.html"
+        },
+        {
+          "texto": "Comisión Federal de Comunicaciones de Estados Unidos (FCC), «The Nation's 911 System»",
+          "url": "https://www.fcc.gov/node/25869"
+        }
+      ]
     },
     {
       "id": "ccse-5053",
@@ -6154,8 +6654,21 @@
         "La Voz de Galicia."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El País es un periódico de información general que se publica en toda España.\nEl Diario Vasco es un periódico de Gipuzkoa, y La Voz de Galicia, de Galicia.",
+      "fuentes": [
+        {
+          "texto": "El País",
+          "url": "https://elpais.com/"
+        },
+        {
+          "texto": "El Diario Vasco",
+          "url": "https://www.diariovasco.com/"
+        },
+        {
+          "texto": "La Voz de Galicia",
+          "url": "https://www.lavozdegalicia.es/"
+        }
+      ]
     },
     {
       "id": "ccse-5054",
@@ -6168,8 +6681,21 @@
         "En el estanco."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los sellos y el tabaco se venden en el estanco, que oficialmente se llama expendeduría de tabaco y timbre. Fuera de Canarias, solo los estancos pueden vender tabaco al público, porque esa venta es un monopolio del Estado.\nEn la farmacia se venden medicinas.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 13/1998, de Ordenación del Mercado de Tabacos y Normativa Tributaria, art. 4",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1998-10407#a4"
+        },
+        {
+          "texto": "BOE, Real Decreto 1199/1999, que desarrolla la Ley 13/1998 y regula el estatuto concesional de la Red de Expendedurías de Tabaco y Timbre, art. 24",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1999-15353#a24"
+        },
+        {
+          "texto": "BOE, Ley 16/1997, de Regulación de Servicios de las Oficinas de Farmacia, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1997-9022#a1"
+        }
+      ]
     },
     {
       "id": "ccse-5055",
@@ -6182,8 +6708,17 @@
         "De lunes a viernes."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Al 016 se puede llamar las 24 horas del día, todos los días. Es gratuito, confidencial y atiende en 53 idiomas.\nLa llamada no aparece en la factura del teléfono. Sí puede quedar en la lista de llamadas del móvil, de donde se puede borrar.",
+      "fuentes": [
+        {
+          "texto": "Ministerio de Igualdad, Delegación del Gobierno contra la Violencia de Género, «Servicio 016»",
+          "url": "https://violenciagenero.igualdad.gob.es/informacion-3/recursos/telefono016/"
+        },
+        {
+          "texto": "La Moncloa, «Teléfono 016: ¿qué es y cómo funciona?» (2026)",
+          "url": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/igualdad/Paginas/2026/telefono-016-que-es.aspx"
+        }
+      ]
     },
     {
       "id": "ccse-5056",
@@ -6196,8 +6731,21 @@
         "Cáritas."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La ONCE (Organización Nacional de Ciegos Españoles) trabaja para que las personas ciegas o con una discapacidad visual grave tengan autonomía y se integren plenamente. Para pagar su labor, el Estado le permite organizar juegos de lotería.\nUnicef es la agencia de las Naciones Unidas para la infancia, y Cáritas es la organización de la Iglesia católica para la acción caritativa y social, sobre todo con los más pobres.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 358/1991, por el que se reordena la Organización Nacional de Ciegos Españoles, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-7271#art1"
+        },
+        {
+          "texto": "Unicef, «Qué hacemos»",
+          "url": "https://www.unicef.org/es/que-hacemos"
+        },
+        {
+          "texto": "Cáritas Española, «Quiénes somos»",
+          "url": "https://www.caritas.es/quienes-somos/"
+        }
+      ]
     },
     {
       "id": "ccse-5057",
@@ -6210,8 +6758,17 @@
         "una ruta para excursionistas."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Camino de Santiago es Patrimonio de la Humanidad. La UNESCO lo inscribió en 1993 y amplió la inscripción en 2015. Es una ruta de peregrinación a Santiago de Compostela que pasa por Navarra, Aragón, La Rioja, Castilla y León y Galicia.",
+      "fuentes": [
+        {
+          "texto": "UNESCO, «Caminos de Santiago de Compostela: Camino francés y Caminos del Norte de España»",
+          "url": "https://whc.unesco.org/es/list/669"
+        },
+        {
+          "texto": "Ministerio de Asuntos Exteriores, Representación Permanente de España ante la UNESCO, «Patrimonio Mundial»",
+          "url": "https://www.exteriores.gob.es/RepresentacionesPermanentes/unesco/es/UNESCO%20en%20Espana/Paginas/Inscripciones%20Unesco/Patrimonio-Mundial.aspx"
+        }
+      ]
     },
     {
       "id": "ccse-5058",
@@ -6224,8 +6781,21 @@
         "Canal 24 horas."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Canal 24 Horas es el canal de noticias de RTVE: da noticias de España y del mundo durante todo el día.\nLa 1 es el canal generalista de RTVE, con todo tipo de programas, y Teledeporte es su canal de deportes.",
+      "fuentes": [
+        {
+          "texto": "RTVE, «Canal 24 horas» (directo)",
+          "url": "https://www.rtve.es/play/videos/directo/canales-lineales/24h/"
+        },
+        {
+          "texto": "RTVE, «La 1»",
+          "url": "https://www.rtve.es/play/la-1/"
+        },
+        {
+          "texto": "RTVE, «Teledeporte»",
+          "url": "https://www.rtve.es/play/teledeporte/"
+        }
+      ]
     },
     {
       "id": "ccse-5059",
@@ -6238,8 +6808,21 @@
         "016."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El teléfono gratuito para las víctimas de violencia de género es el 016. También atiende a las víctimas de cualquier otra forma de violencia contra las mujeres y a las personas de su entorno.\nSi hay una emergencia, el 016 pasa la llamada al 112, que es el número para cualquier emergencia. El 091 es el teléfono de emergencias de la Policía Nacional.",
+      "fuentes": [
+        {
+          "texto": "Ministerio de Igualdad, Delegación del Gobierno contra la Violencia de Género, «Servicio 016»",
+          "url": "https://violenciagenero.igualdad.gob.es/informacion-3/recursos/telefono016/"
+        },
+        {
+          "texto": "BOE, Ley 11/2022, General de Telecomunicaciones, art. 74",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-10757#a7-6"
+        },
+        {
+          "texto": "BOE, Resolución de 21 de noviembre de 2008, de la Secretaría de Estado de Telecomunicaciones, que identifica los servicios de atención de llamadas de emergencia",
+          "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2008-19663"
+        }
+      ]
     },
     {
       "id": "ccse-5060",
@@ -6252,8 +6835,13 @@
         "transnacional."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los trenes de pasajeros en España se dividen en cercanías, media distancia y larga distancia. Las cercanías son los trenes de los alrededores de las grandes ciudades, como Madrid o Barcelona, y son los que más gente usa: en 2025 llevaron al 82 % de los viajeros.",
+      "fuentes": [
+        {
+          "texto": "CNMC, «Informe anual del sector ferroviario 2025»",
+          "url": "https://www.cnmc.es/sites/default/files/6703004.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5061",
@@ -6266,8 +6854,21 @@
         "Vender refrescos."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "En un colegio está prohibido fumar, en todo el recinto, también en los patios y en los espacios al aire libre. Tampoco se puede vender tabaco.\nUna reforma de la ley, que todavía está en el Congreso, quiere prohibir también fumar a menos de 15 metros de las entradas de los colegios.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 28/2005, de medidas sanitarias frente al tabaquismo, art. 7",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2005-21261#a7"
+        },
+        {
+          "texto": "BOE, Ley 28/2005, de medidas sanitarias frente al tabaquismo, art. 5",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2005-21261#a5"
+        },
+        {
+          "texto": "Ministerio de Sanidad, nota de prensa sobre el proyecto de ley del tabaco (21 de julio de 2026)",
+          "url": "https://www.sanidad.gob.es/gabinete/notasPrensa.do?id=6968"
+        }
+      ]
     },
     {
       "id": "ccse-5062",
@@ -6280,8 +6881,21 @@
         "Graduado en ESO."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Al terminar un ciclo de grado medio de Formación Profesional se obtiene el título de Técnico. Con el de grado superior se obtiene el de Técnico Superior.\nEl título de Bachiller se obtiene al aprobar los dos cursos de Bachillerato, y el de Graduado en ESO, al terminar la ESO o un ciclo de grado básico de FP.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 44",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a44"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 37",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a37"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 31",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a31"
+        }
+      ]
     },
     {
       "id": "ccse-5063",
@@ -6294,8 +6908,21 @@
         "Doctor."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Al aprobar una tesis doctoral se obtiene el título de Doctor o Doctora. La tesis es un trabajo de investigación original.\nLos estudios universitarios tienen tres ciclos: Grado, Máster y Doctorado. Para hacer el doctorado, normalmente hay que tener antes un título de Grado y otro de Máster.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 99/2011, que regula las enseñanzas oficiales de doctorado, art. 13",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-2541#a13"
+        },
+        {
+          "texto": "BOE, Real Decreto 99/2011, que regula las enseñanzas oficiales de doctorado, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-2541#a6"
+        },
+        {
+          "texto": "BOE, Real Decreto 822/2021, sobre la organización de las enseñanzas universitarias, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2021-15781#a3"
+        }
+      ]
     },
     {
       "id": "ccse-5064",
@@ -6308,8 +6935,17 @@
         "En la farmacia."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las medicinas con receta se compran en la farmacia, que es donde se venden al público.\nLos hospitales y los centros de salud también tienen servicio de farmacia, pero sus medicinas son para usarlas allí mismo o para algunos tratamientos que necesitan un control especial.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto Legislativo 1/2015, Ley de garantías y uso racional de los medicamentos y productos sanitarios, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-8343#a3"
+        },
+        {
+          "texto": "BOE, Ley 16/1997, de Regulación de Servicios de las Oficinas de Farmacia, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1997-9022#a1"
+        }
+      ]
     },
     {
       "id": "ccse-5065",
@@ -6322,8 +6958,13 @@
         "Respetar las normas sobre equipaje."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "En un parque se puede encontrar la recomendación de no pisar el césped. La recogen las ordenanzas de parques y jardines de los ayuntamientos, como la de Zaragoza.\nPagar el billete con el dinero justo es una recomendación del autobús, y las normas sobre el equipaje son de los viajes en avión, tren o autobús.",
+      "fuentes": [
+        {
+          "texto": "Ayuntamiento de Zaragoza, «Ordenanza Municipal de Uso de Zonas Verdes»",
+          "url": "https://www.zaragoza.es/sede/servicio/normativa/102"
+        }
+      ]
     },
     {
       "id": "ccse-5066",
@@ -6336,8 +6977,13 @@
         "La alarma."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El propietario de un coche está obligado a tenerlo asegurado. El seguro obligatorio cubre los daños que el coche pueda causar a otras personas o a sus cosas.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto Legislativo 8/2004, Ley sobre responsabilidad civil y seguro en la circulación de vehículos a motor, art. 2",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-18911#a2"
+        }
+      ]
     },
     {
       "id": "ccse-5067",
@@ -6350,8 +6996,13 @@
         "Bilbao."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El aeropuerto Adolfo Suárez Madrid-Barajas está en Madrid. Desde 2014 lleva el nombre de Adolfo Suárez, el primer presidente del Gobierno de la democracia, por su papel en la Transición y en la Constitución de 1978.",
+      "fuentes": [
+        {
+          "texto": "BOE, Orden FOM/480/2014, que modifica la denominación oficial del aeropuerto de Madrid-Barajas",
+          "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2014-3275"
+        }
+      ]
     },
     {
       "id": "ccse-5068",
@@ -6364,8 +7015,13 @@
         "en todos los asientos."
       ],
       "respuesta": "c",
-      "nota": "",
-      "fuentes": []
+      "nota": "El cinturón de seguridad es obligatorio en todos los asientos, para el conductor y para todos los pasajeros, en ciudad y en carretera.\nLos niños que miden 135 centímetros o menos tienen que ir, además, en una silla infantil o en otro sistema de retención homologado.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 1428/2003, Reglamento General de Circulación, art. 117",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a117"
+        }
+      ]
     },
     {
       "id": "ccse-5069",
@@ -6378,8 +7034,13 @@
         "150 km/h."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El límite de velocidad en autopista y autovía es de 120 km/h para los coches y las motos.\nEl de 90 km/h es el que tienen los coches en las carreteras convencionales, y también los camiones y las furgonetas en autopista.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 1428/2003, Reglamento General de Circulación, art. 48",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a48"
+        }
+      ]
     },
     {
       "id": "ccse-5070",
@@ -6392,8 +7053,13 @@
         "los museos."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "En el transporte público hay asientos reservados para las personas con movilidad reducida, señalados con un dibujo. En los autobuses urbanos tiene que haber al menos cuatro, cerca de la puerta.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 1544/2007, sobre las condiciones básicas de accesibilidad para el acceso y utilización de los modos de transporte para personas con discapacidad, anexo V",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-20785#anv"
+        }
+      ]
     },
     {
       "id": "ccse-5071",
@@ -6406,8 +7072,13 @@
         "El tranvía."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El taxi lleva una luz verde encendida cuando está libre. Cuando lleva pasajeros, la luz verde se apaga y se enciende el indicador de la tarifa.\nLas normas del taxi las pone cada ciudad. Por ejemplo, el reglamento de Melilla dice que la luz verde solo se enciende cuando el taxi está en servicio y libre.",
+      "fuentes": [
+        {
+          "texto": "BOME (Boletín Oficial de la Ciudad de Melilla), Reglamento Regulador del Servicio de Taxi en la Ciudad Autónoma de Melilla (2023), art. 31",
+          "url": "https://bomemelilla.es/bome/descargar/BOME-P-2023-374.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5072",
@@ -6420,8 +7091,17 @@
         "No recoger sus excrementos."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Si tienes un perro, tienes que ponerle un microchip e inscribirlo en el registro de animales de compañía, y llevarlo al veterinario para los controles y tratamientos obligatorios, como las vacunas.\nTambién hay que recoger sus excrementos, y cuidar de que no moleste ni ponga en peligro a nadie.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 7/2023, de protección de los derechos y el bienestar de los animales, art. 51",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7936#a5-3"
+        },
+        {
+          "texto": "BOE, Ley 7/2023, de protección de los derechos y el bienestar de los animales, art. 26",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7936#a2-8"
+        }
+      ]
     },
     {
       "id": "ccse-5073",
@@ -6434,8 +7114,25 @@
         "Alemania."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Para viajar a China, los españoles necesitan el pasaporte, que es el documento que les identifica fuera de España. Para quedarse más de 30 días, además, hace falta un visado.\nPara ir a países de la Unión Europea, como Italia o Alemania, basta con el DNI en vigor.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto 896/2003, que regula la expedición del pasaporte ordinario, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-13978#a1"
+        },
+        {
+          "texto": "Ministerio de Asuntos Exteriores, «Recomendaciones de viaje: China»",
+          "url": "https://www.exteriores.gob.es/es/ServiciosAlCiudadano/Paginas/Detalle-recomendaciones-de-viaje.aspx?trc=China"
+        },
+        {
+          "texto": "Ministerio de Asuntos Exteriores, «Recomendaciones de viaje: Italia»",
+          "url": "https://www.exteriores.gob.es/es/ServiciosAlCiudadano/Paginas/Detalle-recomendaciones-de-viaje.aspx?trc=Italia"
+        },
+        {
+          "texto": "Ministerio de Asuntos Exteriores, «Recomendaciones de viaje: Alemania»",
+          "url": "https://www.exteriores.gob.es/es/ServiciosAlCiudadano/Paginas/Detalle-recomendaciones-de-viaje.aspx?trc=Alemania"
+        }
+      ]
     },
     {
       "id": "ccse-5074",
@@ -6448,8 +7145,13 @@
         "21 años."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "La edad mínima para trabajar es de 16 años.\nHasta los 18 hay límites: no se puede trabajar de noche, ni hacer horas extraordinarias, ni hacer trabajos peligrosos para la salud.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto Legislativo 2/2015, Estatuto de los Trabajadores, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a6"
+        }
+      ]
     },
     {
       "id": "ccse-5075",
@@ -6462,8 +7164,13 @@
         "Construcción."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El sector de mayor peso en la economía española es el de los servicios, como el comercio, el turismo, el transporte o la sanidad. En 2025 supuso el 68,4 % del PIB.\nLa industria fue el 14,2 %, la construcción, el 5,3 %, y la agricultura, la ganadería, la silvicultura y la pesca, el 2,7 %.",
+      "fuentes": [
+        {
+          "texto": "INE, «España en cifras», capítulo «Cuentas nacionales» (datos de 2025)",
+          "url": "https://www.ine.es/prodyser/espa_cifras/07_CUENTAS_NACIONALES.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5076",
@@ -6476,8 +7183,13 @@
         "la energía nuclear."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "España destaca en las energías renovables. En 2025, el 55,5 % de la electricidad se produjo con fuentes renovables, sobre todo eólica, solar e hidráulica. Entre los países de la red eléctrica europea, solo Alemania tiene más potencia solar y eólica instalada.\nLa energía nuclear produjo el 19 % de la electricidad.",
+      "fuentes": [
+        {
+          "texto": "Red Eléctrica, nota de prensa «Informe del sistema eléctrico español 2025» (marzo de 2026)",
+          "url": "https://www.ree.es/sites/default/files/2026-03/1103_NP_ISE_2025.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5077",
@@ -6490,8 +7202,21 @@
         "El Servicio Público de Empleo Estatal."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El Estatuto de los Trabajadores es la ley que recoge los derechos y deberes básicos de los trabajadores con contrato. La propia Constitución dice que tiene que haber una ley con ese nombre.\nLa Constitución reconoce el derecho al trabajo, pero no regula el trabajo en detalle. El SEPE (Servicio Público de Empleo Estatal) no es una ley, sino el organismo del Estado que gestiona las prestaciones por desempleo, lo que se suele llamar «el paro».",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto Legislativo 2/2015, Estatuto de los Trabajadores, art. 1",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a1"
+        },
+        {
+          "texto": "BOE, Constitución Española, art. 35",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a35"
+        },
+        {
+          "texto": "BOE, Real Decreto Legislativo 8/2015, Ley General de la Seguridad Social, art. 294",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#a294"
+        }
+      ]
     },
     {
       "id": "ccse-5078",
@@ -6504,8 +7229,13 @@
         "Librería."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las farmacias hacen turnos de guardia para que siempre haya alguna abierta, también fuera del horario normal. Los horarios y las guardias los fija cada comunidad autónoma.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley 16/1997, de Regulación de Servicios de las Oficinas de Farmacia, art. 6",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1997-9022#a6"
+        }
+      ]
     },
     {
       "id": "ccse-5079",
@@ -6518,8 +7248,21 @@
         "empieza a los 4 años."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "La Educación Infantil tiene dos ciclos. El primero va hasta los 3 años, y el segundo, de los 3 a los 6.\nEmpieza desde el nacimiento y no es obligatoria, aunque el segundo ciclo es gratuito.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 14",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a14"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 12",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a12"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 15",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a15"
+        }
+      ]
     },
     {
       "id": "ccse-5080",
@@ -6532,8 +7275,17 @@
         "En octubre."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "El curso escolar empieza en septiembre y las clases terminan en junio. Cada comunidad autónoma fija cada año sus fechas, con al menos 175 días de clase en las enseñanzas obligatorias. En Ceuta y Melilla las fija el Ministerio de Educación.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, disposición adicional quinta",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#daquinta"
+        },
+        {
+          "texto": "Ministerio de Educación, Formación Profesional y Deportes, calendario escolar del curso 2026-2027 en Melilla",
+          "url": "https://www.educacionfpydeportes.gob.es/dam/jcr:97a96fff-bae7-4388-a5ec-bb6b7e564abc/resolucion-calendario-escolar-26-27.pdf"
+        }
+      ]
     },
     {
       "id": "ccse-5081",
@@ -6546,8 +7298,25 @@
         "dependen del Instituto Cervantes."
       ],
       "respuesta": "b",
-      "nota": "",
-      "fuentes": []
+      "nota": "Las Escuelas Oficiales de Idiomas son para mayores de 16 años, que hay que cumplir en el año en que se empieza a estudiar. Con 14 años también se puede entrar, para estudiar un idioma distinto del que se estudia en la ESO.\nSon centros públicos, que organiza cada comunidad autónoma, y sus profesores son funcionarios. No dependen del Instituto Cervantes, la institución pública que promueve la enseñanza del español en todo el mundo.",
+      "fuentes": [
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 59",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a59"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, art. 60",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a60"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 2/2006, de Educación, disposición adicional séptima",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#daseptima"
+        },
+        {
+          "texto": "BOE, Ley 7/1991, por la que se crea el Instituto Cervantes, art. 3",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-7354#a3"
+        }
+      ]
     },
     {
       "id": "ccse-5082",
@@ -6560,8 +7329,25 @@
         "Certificado de profesionalidad."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "El informe de vida laboral recoge todas las veces que una persona ha estado dada de alta y de baja en la Seguridad Social, y cuántos días ha estado de alta. Lo da gratis la Tesorería General de la Seguridad Social.\nEl finiquito es el documento con lo que la empresa le debe al trabajador cuando se acaba el contrato. El certificado de profesionalidad, que ahora se llama certificado profesional, acredita que se ha aprobado una formación para un oficio.",
+      "fuentes": [
+        {
+          "texto": "Seguridad Social, revista «Seguridad Social Activa», «Guía para entender tu informe de vida laboral» (2026)",
+          "url": "https://revista.seg-social.es/-/guia-para-entender-tu-informe-de-vida-laboral"
+        },
+        {
+          "texto": "Seguridad Social, revista «Seguridad Social Activa», «¿Entiende su informe de vida laboral?»",
+          "url": "https://revista.seg-social.es/-/%C2%BFentiende-su-informe-de-vida-laboral-"
+        },
+        {
+          "texto": "BOE, Real Decreto Legislativo 2/2015, Estatuto de los Trabajadores, art. 49",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a49"
+        },
+        {
+          "texto": "BOE, Ley Orgánica 3/2022, de ordenación e integración de la Formación Profesional, art. 38",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-5139#a3-10"
+        }
+      ]
     },
     {
       "id": "ccse-5083",
@@ -6574,8 +7360,17 @@
         "la relación con los clientes."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "Los convenios colectivos son acuerdos sobre las condiciones de trabajo, como el sueldo o la jornada. Los firman los representantes de los trabajadores y los de los empresarios.\nObligan a todas las empresas y trabajadores a los que se aplican, y la Constitución garantiza el derecho a negociarlos.",
+      "fuentes": [
+        {
+          "texto": "BOE, Real Decreto Legislativo 2/2015, Estatuto de los Trabajadores, art. 82",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a82"
+        },
+        {
+          "texto": "BOE, Constitución Española, art. 37",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a37"
+        }
+      ]
     },
     {
       "id": "ccse-5084",
@@ -6588,8 +7383,21 @@
         "En tecnología digital."
       ],
       "respuesta": "a",
-      "nota": "",
-      "fuentes": []
+      "nota": "España destaca en el turismo. En 2025 la visitaron 96,8 millones de turistas internacionales, la cifra más alta registrada. El turismo supone el 12,6 % del PIB y el 12,3 % del empleo (datos de 2024).\nLa industria del automóvil también es importante: los automóviles y las motos son lo que más exporta España, el 9,4 % del total.",
+      "fuentes": [
+        {
+          "texto": "INE, «Estadística de Movimientos Turísticos en Fronteras (FRONTUR). Diciembre 2025 y año 2025»",
+          "url": "https://www.ine.es/dyngs/Prensa/FRONTUR1225.htm"
+        },
+        {
+          "texto": "INE, «Cuenta Satélite del Turismo de España. Serie 2021-2024»",
+          "url": "https://www.ine.es/dyngs/Prensa/CSTE2024.htm"
+        },
+        {
+          "texto": "INE, «España en cifras», capítulo «Sector exterior» (datos de 2025)",
+          "url": "https://www.ine.es/prodyser/espa_cifras/08_SECTOR_EXTERIOR.pdf"
+        }
+      ]
     }
   ]
 }
