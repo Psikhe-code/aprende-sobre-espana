@@ -37,3 +37,12 @@ export function ccseVacio() {
   const d = ccsePrueba();
   return { ...d, preguntas: d.preguntas.map((p) => vacia(p.tarea, p.referencia % 1000)) };
 }
+
+/**
+ * Datos de prueba con preguntas en las cinco tareas, algunas más de las que pide el simulacro
+ * (tareas 1 a 5: 14, 5, 4, 5 y 9), para probar el simulacro de examen.
+ */
+export function ccseSimulacroPrueba() {
+  const d = ccsePrueba();
+  return { ...d, preguntas: [...tarea(1, 14, 14), ...tarea(2, 5, 5), ...tarea(3, 4, 4), ...tarea(4, 5, 5), ...tarea(5, 9, 9)] };
+}

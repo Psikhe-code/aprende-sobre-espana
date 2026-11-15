@@ -1,5 +1,7 @@
 // Utilidades de pantalla que usan todas las demás: buscar y crear elementos, tarjetas de Opciones,
-// grupos de opciones y avisos para lectores de pantalla.
+// grupos de opciones, fuentes de las notas y avisos para lectores de pantalla.
+
+import type { Fuente } from "../engine/types";
 
 export const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
@@ -15,6 +17,27 @@ export const pad = (n: number) => String(n).padStart(2, "0");
 
 /** Avisos para lectores de pantalla (en la zona `announce`, que leen sin mover el foco). */
 export const announce = (text: string) => { $("announce").textContent = text; };
+
+/**
+ * Fuentes de una nota (en el examen de nacionalidad): «Fuente: Constitución española, art. 1.3», con su enlace,
+ * que se abre en otra pestaña. Se dibujan dentro de `p`, que se esconde si no hay ninguna.
+ */
+export function pintarFuentes(p: HTMLElement, fuentes: readonly Fuente[] = []): void {
+  p.hidden = !fuentes.length;
+  p.replaceChildren();
+  if (!fuentes.length) return;
+  p.append(el("b", "", fuentes.length > 1 ? "Fuentes" : "Fuente"), " ");
+  fuentes.forEach((f, i) => {
+    if (i) p.append(" · ");
+    if (f.url) {
+      const a = el("a", "", f.texto) as HTMLAnchorElement;
+      a.href = f.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      p.append(a);
+    } else p.append(f.texto);
+  });
+}
 
 const TICK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
 

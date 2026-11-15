@@ -308,6 +308,27 @@ h1 {
 .source b { font-family: var(--f-display); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 4px; }
 .source a { color: inherit; }
 
+/* Simulacro de examen: la opción elegida (sin decir si es correcta), los pasos y el mapa de preguntas. */
+.opt.elegida { border-color: var(--water); box-shadow: inset 0 0 0 1px var(--water); }
+.opt.elegida .key { background: var(--water); border-color: var(--water); color: var(--surface); }
+.sim-pasos { justify-content: space-between; }
+.sim-mapa { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 6px; }
+.sim-n {
+  min-height: 44px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink);
+  font-family: var(--f-display); font-weight: 700; font-size: 17px; font-variant-numeric: tabular-nums;
+}
+.sim-n.hecha { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.sim-n[aria-current="true"] { outline: 3px solid var(--water); outline-offset: 2px; }
+@media (hover: hover) { .sim-n:hover { border-color: var(--water); } }
+.sim-confirmar { border-left: 4px solid var(--ochre); gap: 14px; }
+.verdict-title.apto { color: var(--ok); }
+.verdict-title.no-apto { color: var(--bad); }
+.sim-tareas { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip.llena { border-color: var(--ok); color: var(--ok); }
+.miss-cat { font-family: var(--f-display); font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--water); }
+.miss .why { font-size: 15px; margin-top: 6px; }
+.miss .source { margin-top: 4px; }
+
 /* Secciones: dos tarjetas grandes, una debajo de otra. */
 .secciones { grid-template-columns: 1fr; }
 .seccion { padding: 22px 20px; text-align: left; }

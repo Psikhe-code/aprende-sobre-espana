@@ -7,7 +7,7 @@
 import { GameSession, type AnswerResult } from "../engine/game";
 import type { PreguntaJugable } from "../engine/types";
 import type { Contexto } from "./contexto";
-import { $, announce, el, pad } from "./dom";
+import { $, announce, el, pad, pintarFuentes } from "./dom";
 import { flagImage, precargarBandera } from "./flags";
 import { renderEnd } from "./final";
 import { crearReloj } from "./reloj";
@@ -17,6 +17,8 @@ export interface Partida {
   preparar(): void;
   /** Para el reloj al salir de la pantalla de la partida. */
   alSalir(): void;
+  /** Empieza un repaso de estos fallos (lo usa también el simulacro de examen, al terminar). */
+  repasar(fallos: PreguntaJugable[]): void;
 }
 
 export function crearPartida(ctx: Contexto): Partida {
@@ -146,31 +148,11 @@ export function crearPartida(ctx: Contexto): Partida {
     $("meaning").hidden = !game.current.meaning;
     $("factText").textContent = game.current.fact ?? "";
     $("fact").hidden = !game.current.fact;
-    renderFuentes(game.current);
+    pintarFuentes($("source"), game.current.fuentes);
     announce(r.correct ? "Correcto." : r.given === null ? `Se acabó el tiempo. Era ${r.answer}.` : `Incorrecto. Era ${r.answer}.`);
     $("next").textContent = game.isLast && !game.unlimited ? "Ver resultado" : "Siguiente";
     $("feedback").hidden = false;
     $("next").focus({ preventScroll: true });
-  }
-
-  /** Fuentes de la nota (en el examen de nacionalidad): «Fuente: Constitución española, art. 1.3», con su enlace. */
-  function renderFuentes(q: PreguntaJugable) {
-    const fuentes = q.fuentes ?? [];
-    const p = $("source");
-    p.hidden = !fuentes.length;
-    p.replaceChildren();
-    if (!fuentes.length) return;
-    p.append(el("b", "", fuentes.length > 1 ? "Fuentes" : "Fuente"), " ");
-    fuentes.forEach((f, i) => {
-      if (i) p.append(" · ");
-      if (f.url) {
-        const a = el("a", "", f.texto) as HTMLAnchorElement;
-        a.href = f.url;
-        a.target = "_blank";
-        a.rel = "noopener";
-        p.append(a);
-      } else p.append(f.texto);
-    });
   }
 
   function next() {
@@ -225,10 +207,12 @@ export function crearPartida(ctx: Contexto): Partida {
   $("stop").addEventListener("click", stop);
   $("deckStop").addEventListener("click", stop);
   $("reshuffle").addEventListener("click", keepPlaying);
+  function repasar(fallos: PreguntaJugable[]) {
+    if (fallos.length) start(new GameSession(ctx.modo().repaso(fallos), { review: true }));
+  }
   $("review").addEventListener("click", () => {
     // En una partida sin límite se puede fallar dos veces la misma pregunta: en el repaso sale una vez.
-    const fallos = [...new Map((game?.result().misses ?? []).map((m) => [m.question.id, m.question])).values()];
-    if (fallos.length) start(new GameSession(ctx.modo().repaso(fallos), { review: true }));
+    repasar([...new Map((game?.result().misses ?? []).map((m) => [m.question.id, m.question])).values()]);
   });
   document.addEventListener("keydown", (e) => {
     if (ctx.pantalla() !== "play" || !game) return;
@@ -241,5 +225,5 @@ export function crearPartida(ctx: Contexto): Partida {
     }
   });
 
-  return { preparar, alSalir: () => reloj.parar() };
+  return { preparar, alSalir: () => reloj.parar(), repasar };
 }
