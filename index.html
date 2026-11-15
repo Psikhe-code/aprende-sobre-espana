@@ -20,8 +20,8 @@
     </header>
 
     <!-- Secciones -->
-    <section id="sections" class="screen" hidden>
-      <div class="label">¿Qué quieres aprender?</div>
+    <section id="sections" class="screen" tabindex="-1" aria-label="Secciones" hidden>
+      <h2 class="label">¿Qué quieres aprender?</h2>
       <div class="cats secciones">
         <button class="cat seccion" id="sec-geografia">
           <span class="cat-text">
@@ -39,7 +39,7 @@
     </section>
 
     <!-- Inicio -->
-    <section id="start" class="screen">
+    <section id="start" class="screen" tabindex="-1" aria-label="Geografía">
       <button class="volver" id="toSections">← Todas las secciones</button>
       <div class="summary">
         <div class="label" id="roundLabel">10 preguntas al azar de</div>
@@ -53,14 +53,14 @@
         <button class="primary" id="go">Jugar</button>
         <button class="ghost" id="openOptions">Opciones</button>
       </div>
-      <span class="hint">Atajos: teclas numéricas para responder, Intro para seguir.</span>
+      <span class="hint atajos">Atajos: teclas numéricas para responder, Intro para seguir.</span>
       <div class="links">
         <button class="link" id="openCredits">Créditos</button>
       </div>
     </section>
 
     <!-- Examen de nacionalidad: inicio -->
-    <section id="ccseStart" class="screen" hidden>
+    <section id="ccseStart" class="screen" tabindex="-1" aria-label="Examen de nacionalidad" hidden>
       <button class="volver" id="ccseToSections">← Todas las secciones</button>
       <p class="prose" id="ccseVacio" hidden><b>Todavía no hay preguntas.</b> Se irán añadiendo poco a poco, tarea a tarea.</p>
       <div class="summary" id="ccseSummary">
@@ -74,36 +74,36 @@
         <button class="ghost" id="ccseOpenOptions">Opciones</button>
       </div>
       <div class="summary" id="simResumen">
-        <div class="label">Simulacro de examen</div>
+        <h2 class="label">Simulacro de examen</h2>
         <p class="prose" id="simInfo"></p>
         <div class="record" id="simRecord"></div>
         <div class="row"><button class="ghost" id="simGo">Hacer un simulacro</button></div>
       </div>
       <p class="prose" id="ccseAviso">Las preguntas son las del Manual CCSE 2026 del Instituto Cervantes. Las explicaciones de las respuestas y sus fuentes son de este juego. Más información sobre la prueba, el manual y la app gratuita del Instituto Cervantes: <a href="https://cervantes.org/es/examenes/ccse" target="_blank" rel="noopener">prueba CCSE</a>.</p>
-      <span class="hint" id="ccseAtajos">Atajos: teclas numéricas para responder, Intro para seguir.</span>
+      <span class="hint atajos" id="ccseAtajos">Atajos: teclas numéricas para responder, Intro para seguir.</span>
       <div class="links">
         <button class="link" id="ccseOpenCredits">Créditos</button>
       </div>
     </section>
 
     <!-- Examen de nacionalidad: opciones -->
-    <section id="ccseOptions" class="screen" hidden>
+    <section id="ccseOptions" class="screen" tabindex="-1" aria-label="Opciones del examen" hidden>
       <div class="stack tight">
-        <div class="label">Opciones · Tareas</div>
+        <h2 class="label">Opciones · Tareas</h2>
         <span class="hint">Las cinco tareas (temas) de la prueba. Marca las que quieres practicar; las que aún no tienen preguntas salen como «próximamente».</span>
       </div>
       <div class="cats" id="ccseTareas"></div>
       <p class="warn" id="ccseNoneWarn" hidden>Marca al menos una tarea para poder jugar.</p>
 
       <div class="stack tight section-start">
-        <div class="label">Opciones · Preguntas por partida</div>
+        <h2 class="label">Opciones · Preguntas por partida</h2>
         <span class="hint">En una partida no se repite ninguna pregunta. Sin límite, se juega hasta que pulses «Terminar».</span>
       </div>
       <div class="cats" id="ccseLongitud" role="radiogroup" aria-label="Preguntas por partida"></div>
       <p class="warn" id="ccseLengthWarn" hidden></p>
 
       <div class="stack tight section-start">
-        <div class="label">Opciones · Tiempo por pregunta</div>
+        <h2 class="label">Opciones · Tiempo por pregunta</h2>
         <span class="hint">Si se acaba el tiempo, cuenta como fallo. El reloj se para al responder, y en el repaso de fallos no hay tiempo.</span>
       </div>
       <div class="cats" id="ccseTiempo" role="radiogroup" aria-label="Tiempo por pregunta"></div>
@@ -114,29 +114,29 @@
     </section>
 
     <!-- Créditos -->
-    <section id="credits" class="screen" hidden>
+    <section id="credits" class="screen" tabindex="-1" aria-label="Créditos" hidden>
       <div class="stack tight">
-        <div class="label">Créditos · Banderas</div>
+        <h2 class="label">Créditos · Banderas</h2>
         <p class="prose">Las banderas proceden de Wikimedia Commons. Las que tienen licencia Creative Commons se usan citando a su autor, como pide la licencia.</p>
       </div>
       <div class="credits" id="creditList"></div>
       <p class="prose">Banderas de provincia: son las de su Diputación (en el País Vasco, del territorio histórico).</p>
       <div class="credits" id="creditListProvincias"></div>
       <div class="stack tight section-start">
-        <div class="label">Créditos · Datos y tipografías</div>
+        <h2 class="label">Créditos · Datos y tipografías</h2>
         <p class="prose">Códigos y nombres oficiales de comunidades y provincias: Instituto Nacional de Estadística (INE). Provincias vecinas: calculadas con los mapas del Instituto Geográfico Nacional (IGN). Formas en castellano: criterio de la Real Academia Española. Tipografías Barlow, Barlow Condensed y Literata, con licencia SIL Open Font License.</p>
       </div>
       <div class="stack tight section-start">
-        <div class="label">Créditos · Examen de nacionalidad</div>
+        <h2 class="label">Créditos · Examen de nacionalidad</h2>
         <p class="prose">Las preguntas del examen de nacionalidad son las del Manual de preparación de la prueba CCSE 2026 (© Instituto Cervantes). Las explicaciones de las respuestas son de este juego, y cada una indica su fuente: la Constitución y las leyes, en el Boletín Oficial del Estado, u otras páginas que se enlazan.</p>
       </div>
       <div class="row section-start"><button class="primary" id="closeCredits">Volver</button></div>
     </section>
 
     <!-- Opciones -->
-    <section id="options" class="screen" hidden>
+    <section id="options" class="screen" tabindex="-1" aria-label="Opciones de geografía" hidden>
       <div class="stack tight">
-        <div class="label">Opciones · Categorías</div>
+        <h2 class="label">Opciones · Categorías</h2>
         <span class="hint">Marca las categorías que quieres incluir. Las preguntas se mezclan al azar entre ellas.</span>
       </div>
       <div class="cats" id="cats"></div>
@@ -144,7 +144,7 @@
       <div class="row" id="allCatsRow"><button class="ghost" id="allCats">Marcar todas</button></div>
 
       <div class="stack tight section-start">
-        <div class="label">Opciones · Territorio</div>
+        <h2 class="label">Opciones · Territorio</h2>
         <span class="hint">Elige si las preguntas son de comunidades, de provincias o de las dos. Cada categoría incluye las de los territorios que marques.</span>
       </div>
       <div class="cats" id="territorios"></div>
@@ -152,26 +152,26 @@
       <p class="warn" id="emptyWarn" hidden>Con estas opciones no hay preguntas: marca otra categoría u otro territorio.</p>
 
       <div class="stack tight section-start">
-        <div class="label">Opciones · Preguntas por partida</div>
+        <h2 class="label">Opciones · Preguntas por partida</h2>
         <span class="hint">En una partida no se repite ninguna pregunta. Sin límite, se juega hasta que pulses «Terminar».</span>
       </div>
       <div class="cats" id="longitud" role="radiogroup" aria-label="Preguntas por partida"></div>
       <p class="warn" id="lengthWarn" hidden></p>
 
       <div class="stack tight section-start">
-        <div class="label">Opciones · Dificultad</div>
+        <h2 class="label">Opciones · Dificultad</h2>
         <span class="hint">Cuantas más opciones, más trampas salen a la vez.</span>
       </div>
       <div class="cats" id="dificultad" role="radiogroup" aria-label="Dificultad"></div>
 
       <div class="stack tight section-start">
-        <div class="label">Opciones · Tiempo por pregunta</div>
+        <h2 class="label">Opciones · Tiempo por pregunta</h2>
         <span class="hint">Si se acaba el tiempo, cuenta como fallo. El reloj se para al responder, y en el repaso de fallos no hay tiempo.</span>
       </div>
       <div class="cats" id="tiempo" role="radiogroup" aria-label="Tiempo por pregunta"></div>
 
       <div class="stack tight section-start">
-        <div class="label">Opciones · Nombres de lugar</div>
+        <h2 class="label">Opciones · Nombres de lugar</h2>
         <span class="hint">Si marcas más de una, cada pregunta sale al azar con una de ellas. Al responder verás siempre las otras formas del nombre.</span>
       </div>
       <div class="cats" id="names"></div>
@@ -183,7 +183,7 @@
     </section>
 
     <!-- Partida -->
-    <section id="play" class="screen play" hidden>
+    <section id="play" class="screen play" tabindex="-1" aria-label="Partida" hidden>
       <div class="hud">
         <div class="sheet" id="sheet">Hoja 01 <span>/ 10</span></div>
         <div class="stats">
@@ -231,7 +231,7 @@
     </section>
 
     <!-- Simulacro de examen: 25 preguntas, sin decir si se acierta hasta entregar (simulacro.ts) -->
-    <section id="sim" class="screen play" hidden>
+    <section id="sim" class="screen play" tabindex="-1" aria-label="Simulacro de examen" hidden>
       <div class="hud">
         <div class="sheet" id="simSheet"></div>
         <div class="stats"><span>Respondidas <b id="simRespondidas">0</b></span></div>
@@ -251,11 +251,12 @@
       </div>
       <p class="sr-only" id="simAnnounce" aria-live="polite"></p>
       <div class="stack tight">
-        <div class="label">Preguntas</div>
+        <h2 class="label">Preguntas</h2>
         <span class="hint">Puedes ir a cualquiera y cambiar tus respuestas hasta entregar; las respondidas salen rellenas. Con teclado: números para elegir y flechas para moverte.</span>
       </div>
       <nav class="sim-mapa" id="simMapa" aria-label="Ir a una pregunta"></nav>
-      <div class="card sim-confirmar" id="simConfirmar" hidden>
+      <!-- role="alertdialog": al llevar el foco a sus botones, el lector de pantalla lee también el texto del aviso -->
+      <div class="card sim-confirmar" id="simConfirmar" role="alertdialog" aria-labelledby="simConfirmarTexto" hidden>
         <p class="why" id="simConfirmarTexto"></p>
         <div class="row">
           <button class="primary" id="simConfirmarSi"></button>
@@ -269,7 +270,7 @@
     </section>
 
     <!-- Resultado del simulacro: apto o no apto, aciertos por tarea y los fallos con su nota -->
-    <section id="simEnd" class="screen end" hidden>
+    <section id="simEnd" class="screen end" tabindex="-1" aria-label="Resultado del simulacro" hidden>
       <div class="result">
         <div class="big" id="simScore"></div>
         <div class="result-text">
@@ -284,13 +285,13 @@
         <button class="ghost" id="simMenu">Menú</button>
       </div>
       <div class="stack">
-        <div class="label" id="simMissLabel">Tus fallos</div>
+        <h2 class="label" id="simMissLabel">Tus fallos</h2>
         <div class="misses" id="simMisses"></div>
       </div>
     </section>
 
     <!-- Final -->
-    <section id="end" class="screen end" hidden>
+    <section id="end" class="screen end" tabindex="-1" aria-label="Resultado" hidden>
       <div class="result" id="endResult" tabindex="-1">
         <div class="big" id="score">0<small>/10</small></div>
         <div class="result-text">
@@ -304,7 +305,7 @@
         <button class="ghost" id="menu">Menú</button>
       </div>
       <div class="stack">
-        <div class="label" id="missLabel">Tus fallos</div>
+        <h2 class="label" id="missLabel">Tus fallos</h2>
         <div class="misses" id="misses"></div>
       </div>
     </section>

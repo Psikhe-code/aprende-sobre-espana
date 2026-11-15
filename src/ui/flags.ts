@@ -12,11 +12,15 @@ export function flagUrl(clave: string): string | undefined {
   return files[`../data/banderas/${clave.startsWith("p") ? "provincias" : "comunidades"}/${info.archivo}`];
 }
 
-export function flagImage(clave: string): HTMLImageElement {
+/**
+ * Imagen de una bandera. Sin `alt`, el texto alternativo (lo que lee el lector de pantalla) es neutro,
+ * para que no delate la respuesta en la pregunta. Donde ya se sabe de quién es, se pasa: «Bandera: Cantabria»,
+ * o "" si el nombre ya está escrito al lado (así el lector no lo dice dos veces).
+ */
+export function flagImage(clave: string, alt?: string): HTMLImageElement {
   const img = document.createElement("img");
   img.src = flagUrl(clave) ?? "";
-  // Texto alternativo neutro: no puede delatar la respuesta.
-  img.alt = clave.startsWith("p") ? "Bandera de una provincia" : "Bandera de una comunidad o ciudad autónoma";
+  img.alt = alt ?? (clave.startsWith("p") ? "Bandera de una provincia" : "Bandera de una comunidad o ciudad autónoma");
   img.decoding = "async";
   return img;
 }
