@@ -19,6 +19,23 @@ export const pad = (n: number) => String(n).padStart(2, "0");
 export const announce = (text: string) => { $("announce").textContent = text; };
 
 /**
+ * Número (1 a 9) de una tecla de atajo para elegir una opción, o null si no lo es.
+ * - Con Ctrl, Alt o Cmd no cuenta: son atajos del navegador o del sistema (Ctrl+1 cambia de pestaña).
+ * - Vale la fila de números aunque haga falta Mayúsculas para escribir la cifra (teclados franceses:
+ *   sin Mayúsculas, la tecla del 1 escribe «&»), y el teclado numérico con el bloqueo numérico activado.
+ */
+export function teclaNumero(e: KeyboardEvent): number | null {
+  if (e.ctrlKey || e.altKey || e.metaKey) return null;
+  if (/^[1-9]$/.test(e.key)) return Number(e.key);
+  const fila = /^Digit([1-9])$/.exec(e.code);
+  return fila ? Number(fila[1]) : null;
+}
+
+/** Si el elemento es un enlace, un botón o un campo: ahí Intro ya hace lo suyo (abrir, pulsar…). */
+export const esInteractivo = (t: EventTarget | null) =>
+  t instanceof Element && t.closest("a, button, input, select, textarea") !== null;
+
+/**
  * Fuentes de una nota (en el examen de nacionalidad): «Fuente: Constitución española, art. 1.3», con su enlace,
  * que se abre en otra pestaña. Se dibujan dentro de `p`, que se esconde si no hay ninguna.
  */

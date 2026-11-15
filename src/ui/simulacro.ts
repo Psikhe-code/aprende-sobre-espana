@@ -12,7 +12,7 @@ import {
 } from "../engine/simulacro";
 import type { SavedState } from "../engine/storage";
 import type { Contexto } from "./contexto";
-import { $, el, pad, pintarFuentes } from "./dom";
+import { $, el, pad, pintarFuentes, teclaNumero } from "./dom";
 
 export interface PantallaSimulacro {
   /** Para el reloj al salir de la pantalla del examen. */
@@ -245,8 +245,9 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PreguntaJugable[
       return;
     }
     if (e.ctrlKey || e.metaKey || e.altKey) return;
-    if (/^[1-9]$/.test(e.key)) {
-      const o = sim.actual.options[Number(e.key) - 1];
+    const numero = teclaNumero(e);
+    if (numero !== null) {
+      const o = sim.actual.options[numero - 1];
       if (o !== undefined) { e.preventDefault(); elegir(o); }
     } else if (e.key === "ArrowRight") { e.preventDefault(); ir(sim.indice + 1, "simNext"); }
     else if (e.key === "ArrowLeft") { e.preventDefault(); ir(sim.indice - 1, "simPrev"); }

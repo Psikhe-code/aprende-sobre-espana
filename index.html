@@ -198,10 +198,10 @@
       </div>
       <div class="card" id="card">
         <div class="q-cat" id="qcat"></div>
-        <p class="question" id="question"></p>
+        <!-- tabindex="-1": se le puede llevar el foco desde el código (al pasar de pregunta), pero el tabulador no se para en él -->
+        <p class="question" id="question" tabindex="-1"></p>
         <div class="flag" id="flag" hidden></div>
         <div class="opts" id="opts"></div>
-        <p class="sr-only" id="announce" aria-live="polite"></p>
         <div class="feedback" id="feedback" hidden>
           <span class="verdict" id="verdict"></span>
           <p class="why" id="why"></p>
@@ -222,6 +222,8 @@
           <button class="ghost" id="deckStop">Terminar</button>
         </div>
       </div>
+      <!-- Avisos para lectores de pantalla. Fuera de las tarjetas: si una se esconde (fin de la baraja), su aviso se sigue leyendo. -->
+      <p class="sr-only" id="announce" aria-live="polite"></p>
       <div class="row">
         <button class="ghost" id="stop" hidden>Terminar</button>
         <button class="ghost" id="quit">Salir al menú</button>
@@ -289,7 +291,7 @@
 
     <!-- Final -->
     <section id="end" class="screen end" hidden>
-      <div class="result">
+      <div class="result" id="endResult" tabindex="-1">
         <div class="big" id="score">0<small>/10</small></div>
         <div class="result-text">
           <div class="verdict-title" id="endTitle"></div>

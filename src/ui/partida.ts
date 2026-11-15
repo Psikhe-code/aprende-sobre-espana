@@ -7,7 +7,7 @@
 import { GameSession, type AnswerResult } from "../engine/game";
 import type { PreguntaJugable } from "../engine/types";
 import type { Contexto } from "./contexto";
-import { $, announce, el, pad, pintarFuentes } from "./dom";
+import { $, announce, el, esInteractivo, pad, pintarFuentes, teclaNumero } from "./dom";
 import { flagImage, precargarBandera } from "./flags";
 import { renderEnd } from "./final";
 import { crearReloj } from "./reloj";
@@ -100,6 +100,9 @@ export function crearPartida(ctx: Contexto): Partida {
 
     // Cada pregunta empieza arriba del todo: tras leer la nota, la página se había quedado más abajo.
     window.scrollTo({ top: 0 });
+    // El foco pasa al enunciado: el botón pulsado («Jugar», «Siguiente»…) ya no se ve, y así el lector de pantalla
+    // lee la pregunta nueva y con el tabulador se llega a la primera opción.
+    $("question").focus({ preventScroll: true });
 
     // Reinicia la animación de entrada de la tarjeta
     const card = $("card");
@@ -196,6 +199,8 @@ export function crearPartida(ctx: Contexto): Partida {
     if (!game) return;
     renderEnd(ctx, game);
     ctx.show("end");
+    // El foco, al resultado: el botón pulsado («Ver resultado», «Terminar») ya no se ve.
+    $("endResult").focus({ preventScroll: true });
     preparar(); // para «Jugar otra vez»
   }
 
@@ -216,11 +221,13 @@ export function crearPartida(ctx: Contexto): Partida {
   });
   document.addEventListener("keydown", (e) => {
     if (ctx.pantalla() !== "play" || !game) return;
-    if (!game.answered && /^[1-9]$/.test(e.key)) {
-      const b = $("opts").children[Number(e.key) - 1] as HTMLButtonElement | undefined;
+    const numero = teclaNumero(e);
+    if (!game.answered && numero !== null) {
+      const b = $("opts").children[numero - 1] as HTMLButtonElement | undefined;
       if (b) answer(b);
-    } else if (game.answered && e.key === "Enter" && !(document.activeElement instanceof HTMLButtonElement)) {
-      // Si hay un botón con el foco (Siguiente, Terminar, Barajar y seguir…), Intro ya lo pulsa.
+    } else if (game.answered && e.key === "Enter" && !e.ctrlKey && !e.altKey && !e.metaKey && !esInteractivo(e.target)) {
+      // Si el foco está en un botón (Siguiente, Terminar…) o en un enlace (las fuentes), Intro ya lo pulsa o lo abre:
+      // no se pasa además a la siguiente pregunta.
       next();
     }
   });
