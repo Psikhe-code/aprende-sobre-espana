@@ -13,9 +13,10 @@ import { renderStart, renderVersion } from "./inicio";
 import { modoCcse, modoGeografia } from "./modos";
 import { crearOpciones } from "./opciones";
 import { crearPartida } from "./partida";
+import { crearSimulacro } from "./simulacro";
 
 export interface App {
-  /** true en las pantallas donde se puede recargar sin perder nada (todas menos la partida y el resultado). */
+  /** true en las pantallas donde se puede recargar sin perder nada (todas menos la partida, el simulacro y sus resultados). */
   isIdle(): boolean;
   /** Se llama cada vez que el jugador vuelve a una pantalla tranquila. */
   onIdle(callback: () => void): void;
@@ -23,7 +24,7 @@ export interface App {
   enMenu(): boolean;
 }
 
-const tranquila = (s: Screen) => s !== "play" && s !== "end";
+const tranquila = (s: Screen) => !(["play", "end", "sim", "simEnd"] as Screen[]).includes(s);
 /** Pantallas con la versión al pie: el menú de secciones y el inicio de cada sección. */
 const CON_VERSION: readonly Screen[] = ["sections", "start", "ccseStart"];
 
@@ -61,11 +62,12 @@ export function startApp(): App {
     pantalla: () => screen,
     show(id) {
       if (id !== "play") partida.alSalir();
+      if (id !== "sim") simulacro.alSalir();
       screen = id;
       SCREENS.forEach((s) => { $(s).hidden = s !== id; });
       $("version").hidden = !CON_VERSION.includes(id);
-      // En la partida y el resultado, la cabecera pequeña: la pregunta empieza arriba.
-      document.querySelector(".app")!.classList.toggle("compacta", id === "play" || id === "end");
+      // En la partida, el simulacro y sus resultados, la cabecera pequeña: la pregunta empieza arriba.
+      document.querySelector(".app")!.classList.toggle("compacta", !tranquila(id));
       const cabecera = CABECERAS[id === "sections" ? "secciones" : seccion()];
       $("eyebrow").textContent = cabecera.eyebrow;
       $("lede").textContent = cabecera.lede;
@@ -88,6 +90,7 @@ export function startApp(): App {
   const opciones = crearOpciones(ctx);
   const opcionesCcse = crearOpcionesCcse(ctx);
   const partida = crearPartida(ctx);
+  const simulacro = crearSimulacro(ctx, partida.repasar);
 
   const elegirSeccion = (s: Seccion) => () => { state.seccion = s; ctx.save(); ctx.goHome(); };
   $("sec-geografia").addEventListener("click", elegirSeccion("geografia"));

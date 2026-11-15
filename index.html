@@ -73,7 +73,13 @@
         <button class="primary" id="ccseGo">Jugar</button>
         <button class="ghost" id="ccseOpenOptions">Opciones</button>
       </div>
-      <p class="prose" id="ccseAviso">Las preguntas son las del Manual CCSE 2026 del Instituto Cervantes. Las explicaciones de las respuestas y sus fuentes son de este juego, y se irán añadiendo poco a poco. Más información sobre la prueba, el manual y la app gratuita del Instituto Cervantes: <a href="https://cervantes.org/es/examenes/ccse" target="_blank" rel="noopener">prueba CCSE</a>.</p>
+      <div class="summary" id="simResumen">
+        <div class="label">Simulacro de examen</div>
+        <p class="prose" id="simInfo"></p>
+        <div class="record" id="simRecord"></div>
+        <div class="row"><button class="ghost" id="simGo">Hacer un simulacro</button></div>
+      </div>
+      <p class="prose" id="ccseAviso">Las preguntas son las del Manual CCSE 2026 del Instituto Cervantes. Las explicaciones de las respuestas y sus fuentes son de este juego. Más información sobre la prueba, el manual y la app gratuita del Instituto Cervantes: <a href="https://cervantes.org/es/examenes/ccse" target="_blank" rel="noopener">prueba CCSE</a>.</p>
       <span class="hint" id="ccseAtajos">Atajos: teclas numéricas para responder, Intro para seguir.</span>
       <div class="links">
         <button class="link" id="ccseOpenCredits">Créditos</button>
@@ -219,6 +225,65 @@
       <div class="row">
         <button class="ghost" id="stop" hidden>Terminar</button>
         <button class="ghost" id="quit">Salir al menú</button>
+      </div>
+    </section>
+
+    <!-- Simulacro de examen: 25 preguntas, sin decir si se acierta hasta entregar (simulacro.ts) -->
+    <section id="sim" class="screen play" hidden>
+      <div class="hud">
+        <div class="sheet" id="simSheet"></div>
+        <div class="stats"><span>Respondidas <b id="simRespondidas">0</b></span></div>
+      </div>
+      <div class="timer" id="simTimer" role="timer" aria-label="Tiempo del simulacro">
+        <div class="timer-bar"><i id="simTimerFill"></i></div>
+        <span class="timer-text" id="simTimerText"></span>
+      </div>
+      <div class="card" id="simCard">
+        <div class="q-cat" id="simCat"></div>
+        <p class="question" id="simQuestion"></p>
+        <div class="opts" id="simOpts"></div>
+        <div class="row sim-pasos">
+          <button class="ghost" id="simPrev">← Anterior</button>
+          <button class="primary" id="simNext">Siguiente →</button>
+        </div>
+      </div>
+      <p class="sr-only" id="simAnnounce" aria-live="polite"></p>
+      <div class="stack tight">
+        <div class="label">Preguntas</div>
+        <span class="hint">Puedes ir a cualquiera y cambiar tus respuestas hasta entregar; las respondidas salen rellenas. Con teclado: números para elegir y flechas para moverte.</span>
+      </div>
+      <nav class="sim-mapa" id="simMapa" aria-label="Ir a una pregunta"></nav>
+      <div class="card sim-confirmar" id="simConfirmar" hidden>
+        <p class="why" id="simConfirmarTexto"></p>
+        <div class="row">
+          <button class="primary" id="simConfirmarSi"></button>
+          <button class="ghost" id="simConfirmarNo">Seguir con el examen</button>
+        </div>
+      </div>
+      <div class="row" id="simBotones">
+        <button class="primary" id="simEntregar">Entregar</button>
+        <button class="ghost" id="simSalir">Salir al menú</button>
+      </div>
+    </section>
+
+    <!-- Resultado del simulacro: apto o no apto, aciertos por tarea y los fallos con su nota -->
+    <section id="simEnd" class="screen end" hidden>
+      <div class="result">
+        <div class="big" id="simScore"></div>
+        <div class="result-text">
+          <div class="verdict-title" id="simTitle"></div>
+          <div class="hint" id="simSub"></div>
+        </div>
+      </div>
+      <div class="sim-tareas" id="simPorTarea"></div>
+      <div class="row">
+        <button class="primary" id="simReview">Repasar fallos</button>
+        <button class="ghost" id="simAgain">Otro simulacro</button>
+        <button class="ghost" id="simMenu">Menú</button>
+      </div>
+      <div class="stack">
+        <div class="label" id="simMissLabel">Tus fallos</div>
+        <div class="misses" id="simMisses"></div>
       </div>
     </section>
 

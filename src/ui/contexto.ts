@@ -4,8 +4,8 @@
 import type { SavedState } from "../engine/storage";
 import type { Modo } from "./modos";
 
-export type Screen = "sections" | "start" | "options" | "ccseStart" | "ccseOptions" | "play" | "end" | "credits";
-export const SCREENS: readonly Screen[] = ["sections", "start", "options", "ccseStart", "ccseOptions", "play", "end", "credits"];
+export type Screen = "sections" | "start" | "options" | "ccseStart" | "ccseOptions" | "play" | "end" | "sim" | "simEnd" | "credits";
+export const SCREENS: readonly Screen[] = ["sections", "start", "options", "ccseStart", "ccseOptions", "play", "end", "sim", "simEnd", "credits"];
 
 export interface Contexto {
   /** Opciones y récords del jugador. Se cambian aquí y se guardan con `save`. */

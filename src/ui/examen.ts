@@ -8,6 +8,7 @@ import type { Contexto } from "./contexto";
 import { $, el, radioGroup, tabuladorEnLaMarcada, toggleCard } from "./dom";
 import { LONGITUD_LABELS, TIEMPO_LABELS } from "./labels";
 import { puedeJugarCcse } from "./modos";
+import { renderInicioSimulacro } from "./simulacro";
 
 export function renderStartCcse(state: SavedState): void {
   // Mientras la plantilla esté vacía, no hay nada que jugar ni que elegir: solo el aviso.
@@ -16,6 +17,7 @@ export function renderStartCcse(state: SavedState): void {
   $("ccseSummary").hidden = vacio;
   $("ccseBotones").hidden = vacio;
   $("ccseAtajos").hidden = vacio;
+  renderInicioSimulacro(state);
   if (vacio) return;
   const { tareas, longitud, tiempo } = state.ccse;
   const sinLimite = longitud === "sinLimite";

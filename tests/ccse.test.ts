@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { ENTRADAS_CCSE, PREGUNTAS_CCSE, TAREA_IDS, estadoPregunta, type EntradaCcse } from "../src/engine/ccse";
+import { REPARTO_SIMULACRO, simulacroPosible } from "../src/engine/simulacro";
 
 // Examen de nacionalidad: reglas de los datos reales (las partidas, en ccse-partidas.test.ts). Como en el resto de tests,
 // las expectativas salen de los datos, así que añadir o corregir preguntas no obliga a tocarlos.
@@ -7,6 +8,13 @@ import { ENTRADAS_CCSE, PREGUNTAS_CCSE, TAREA_IDS, estadoPregunta, type EntradaC
 describe("examen de nacionalidad: datos", () => {
   it("hay cinco tareas, numeradas del 1 al 5 y en orden", () => {
     expect(TAREA_IDS).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  it("con las preguntas que hay se puede hacer el simulacro: cada tarea tiene al menos las que pide el reparto", () => {
+    for (const r of REPARTO_SIMULACRO) {
+      expect(PREGUNTAS_CCSE.filter((p) => p.tarea === r.tarea).length, `Tarea ${r.tarea}`).toBeGreaterThanOrEqual(r.preguntas);
+    }
+    expect(simulacroPosible()).toBe(true);
   });
 
   it("cada entrada tiene identificador único, ligado a su referencia, y van ordenadas por referencia", () => {
