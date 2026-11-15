@@ -65,6 +65,11 @@ export function startApp(): App {
       if (id !== "sim") simulacro.alSalir();
       screen = id;
       SCREENS.forEach((s) => { $(s).hidden = s !== id; });
+      // Si el foco estaba en la pantalla que se acaba de esconder (en el botón pulsado), pasa a la nueva:
+      // el lector de pantalla dice cuál es, y el tabulador sigue desde ahí. La partida y el resultado
+      // lo llevan después a la pregunta o al resultado. Al abrir el juego no se mueve.
+      const activo = document.activeElement;
+      if (activo instanceof HTMLElement && activo.closest<HTMLElement>(".screen")?.hidden) $(id).focus({ preventScroll: true });
       $("version").hidden = !CON_VERSION.includes(id);
       // En la partida, el simulacro y sus resultados, la cabecera pequeña: la pregunta empieza arriba.
       document.querySelector(".app")!.classList.toggle("compacta", !tranquila(id));

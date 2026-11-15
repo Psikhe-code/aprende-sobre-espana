@@ -22,7 +22,7 @@ export function renderCredits(): void {
     lic.append(f.licenciaUrl ? link(f.licenciaUrl, f.licencia) : f.licencia, " · ", link(f.url, "ver en Wikimedia Commons"));
     text.append(el("b", "", nombre), lic);
     const thumb = el("span", "thumb");
-    thumb.append(flagImage(clave));
+    thumb.append(flagImage(clave, "")); // el nombre está escrito al lado
     row.append(thumb, text);
     return row;
   };

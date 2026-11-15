@@ -84,6 +84,9 @@ test("al entregar se avisa de las que faltan; el resultado dice apto o no apto y
   await page.locator("#simEntregar").click();
   await expect(page.locator("#simConfirmar")).toBeVisible();
   await expect(page.locator("#simConfirmarTexto")).toContainText("Te quedan 2 preguntas sin responder");
+  // Es un cuadro de aviso con su texto como nombre: el lector de pantalla lo lee al pasar el foco a sus botones.
+  await expect(page.getByRole("alertdialog")).toHaveAccessibleName(/Te quedan 2 preguntas sin responder/);
+  await expect(page.locator("#simConfirmarNo")).toBeFocused();
   // Se puede seguir con el examen…
   await page.locator("#simConfirmarNo").click();
   await expect(page.locator("#simConfirmar")).toBeHidden();

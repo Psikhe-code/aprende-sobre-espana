@@ -74,6 +74,8 @@ button:focus-visible { outline: 3px solid var(--water); outline-offset: 2px; }
 /* Textos a los que se lleva el foco desde el código (el enunciado, el resultado) para que el lector de pantalla
    los lea: no se pueden pulsar, así que no llevan el marco de los botones. */
 .question:focus, .result:focus { outline: none; }
+/* Lo mismo con cada pantalla, a la que pasa el foco al cambiar de pantalla (app.ts). */
+.screen:focus { outline: none; }
 
 /* Cabecera */
 .masthead {
@@ -113,7 +115,9 @@ h1 {
 .app.compacta .lede { display: none; }
 .app.compacta h1 { font-size: 17px; line-height: 1.2; letter-spacing: 0.12em; margin: 0; }
 
+/* Títulos de cada grupo (h2, para que el lector de pantalla pueda saltar de uno a otro). */
 .label {
+  margin: 0;
   font-family: var(--f-display);
   font-weight: 600;
   font-size: 14px;
@@ -139,7 +143,9 @@ h1 {
    (al pulsar «Siguiente», la opción que quedaba bajo el dedo en la pregunta nueva se veía resaltada). */
 @media (hover: hover) { .cat:hover { border-color: var(--water); } }
 .cat[aria-pressed="true"], .cat[aria-checked="true"] { border-color: var(--water); box-shadow: inset 0 0 0 1px var(--water); }
-.cat[aria-pressed="false"], .cat[aria-checked="false"] { opacity: .7; }
+/* Sin marcar: el nombre en gris, pero sin transparencia, que dejaba la descripción y el número por debajo
+   del contraste mínimo para leer (4,5 a 1). */
+.cat[aria-pressed="false"] .cat-name, .cat[aria-checked="false"] .cat-name { color: var(--muted); }
 .cat:disabled { opacity: .45; cursor: not-allowed; }
 @media (hover: hover) { .cat:disabled:hover { border-color: var(--line); } }
 .check {
@@ -340,7 +346,9 @@ h1 {
 
 /* Volver al menú de secciones: arriba del inicio de cada sección, para que se vea sin bajar. */
 .volver {
-  align-self: flex-start; background: none; border: 0; padding: 6px 0; margin-top: -6px;
+  /* 12 px por arriba y por abajo, para que mida 44 px de alto y se pulse bien con el dedo; los márgenes
+     negativos lo dejan en el mismo sitio que antes. */
+  align-self: flex-start; background: none; border: 0; padding: 12px 0; margin-block: -12px -6px;
   font-family: var(--f-display); font-weight: 600; font-size: 16px; letter-spacing: 0.04em; color: var(--ink);
 }
 @media (hover: hover) { .volver:hover { text-decoration: underline; } }
@@ -362,7 +370,8 @@ h1 {
 .allright { color: var(--ok); font-weight: 600; margin: 0; }
 
 /* Créditos */
-.link { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; font-size: 14px; align-self: flex-start; }
+/* Con 12 px por arriba y por abajo (44 px de alto) para pulsarlo bien con el dedo; los márgenes negativos lo dejan donde estaba. */
+.link { background: none; border: 0; padding: 12px 0; margin-block: -12px; color: var(--muted); text-decoration: underline; font-size: 14px; align-self: flex-start; }
 @media (hover: hover) { .link:hover { color: var(--ink); } }
 .version { margin: 0; font-size: 12px; color: var(--muted); }
 .credits { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
@@ -380,3 +389,6 @@ h1 {
   .card { animation: rise .25s ease-out; }
   @keyframes rise { from { transform: translateY(6px); opacity: .6; } to { transform: none; opacity: 1; } }
 }
+
+/* Los atajos de teclado, solo en pantallas con ratón: en el móvil no hay teclado físico. */
+@media (hover: none) { .atajos { display: none; } }

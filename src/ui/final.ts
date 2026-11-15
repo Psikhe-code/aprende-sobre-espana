@@ -43,7 +43,7 @@ export function renderEnd(ctx: Contexto, game: GameSession): void {
       row.append(el("span", "miss-q", m.question.text));
       if (m.question.flag) {
         const f = el("div", "miss-flag");
-        f.append(flagImage(m.question.flag));
+        f.append(flagImage(m.question.flag, `Bandera: ${m.question.answer}`)); // aquí ya se sabe de quién es
         row.append(f);
       }
       const a = el("span", "miss-a");
