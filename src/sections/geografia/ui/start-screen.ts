@@ -10,7 +10,7 @@ import { TIME_LIMIT_LABELS } from "../../../common/ui/labels";
 import { NAME_LABELS, TERRITORIO_LABELS } from "./labels";
 import { recordKey } from "../engine/selection";
 
-export function renderStart(state: SavedState): void {
+export function renderGeografiaStart(state: SavedState): void {
   const chips = $("chips");
   chips.replaceChildren();
   if (state.selected.length === CATEGORY_IDS.length) {
@@ -24,8 +24,8 @@ export function renderStart(state: SavedState): void {
     : `Nombres: solo ${NAME_LABELS[names[0]].short}.`;
   const territorios = TERRITORIOS.filter((x) => state.territorios.includes(x));
   $("territoriosInfo").textContent = `Territorio: ${territorios.map((x) => TERRITORIO_LABELS[x].short).join(" y ")}.`;
-  $("dificultadInfo").textContent = `Dificultad: ${state.opciones} opciones por pregunta, ${TIME_LIMIT_LABELS[state.tiempo].info}.`;
-  const tamano = roundSize(state.selected, state.territorios, state.longitud);
-  $("roundLabel").textContent = roundText(state.longitud, tamano);
-  renderRecord($("record"), state.best[recordKey(state)], state.longitud, tamano);
+  $("optionCountInfo").textContent = `Dificultad: ${state.opciones} opciones por pregunta, ${TIME_LIMIT_LABELS[state.tiempo].info}.`;
+  const size = roundSize(state.selected, state.territorios, state.longitud);
+  $("roundLabel").textContent = roundText(state.longitud, size);
+  renderRecord($("record"), state.best[recordKey(state)], state.longitud, size);
 }

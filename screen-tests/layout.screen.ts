@@ -14,7 +14,7 @@ async function ultimaOpcion(page: Page) {
 for (const [tipo, quitar] of [["de texto", SOLO_CAPITALES], ["de bandera", SOLO_BANDERAS]] as const) {
   test(`en las preguntas ${tipo}, las opciones se ven enteras sin bajar`, async ({ page }) => {
     await abrir(page);
-    await opciones(page, [...quitar, "tiempo-sinTiempo"]);
+    await opciones(page, [...quitar, "time-sinTiempo"]);
     await page.locator("#go").click();
     for (let i = 0; i < 10; i++) {
       // Cada pregunta empieza arriba del todo, aunque para leer la nota se haya bajado.

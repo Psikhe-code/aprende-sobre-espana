@@ -6,11 +6,11 @@ import { ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "..
 import { el, tabToChecked, toggleCard, type Change } from "./dom";
 import { ROUND_LENGTH_LABELS, TIME_LIMIT_LABELS } from "./labels";
 
-/** Inicio: lo que se va a jugar. `tamano`, las preguntas que tendrá la partida (0 si aún no se sabe). */
+/** Inicio: lo que se va a jugar. `size`, las preguntas que tendrá la partida (0 si aún no se sabe). */
 export const roundText = (roundLength: RoundLength, size: number) =>
   roundLength === "sinLimite" ? "Preguntas sin límite, al azar, de" : `${size || roundLength} preguntas al azar de`;
 
-/** Inicio: el récord de la selección. Sin límite, la mejor racha; si no, los aciertos sobre `tamano`. */
+/** Inicio: el récord de la selección. Sin límite, la mejor racha; si no, los aciertos sobre `size`. */
 export function renderRecord(target: HTMLElement, record: number | undefined, roundLength: RoundLength, size: number): void {
   target.replaceChildren();
   if (record == null) target.textContent = "Aún no has jugado con esta selección.";

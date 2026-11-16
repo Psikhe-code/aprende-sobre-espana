@@ -7,14 +7,14 @@ import { SCREENS, type AppContext, type Screen } from "./context";
 import { drawContours } from "./contours";
 import { renderCredits } from "./credits-screen";
 import { $ } from "./dom";
-import { renderStartCcse } from "../../sections/ccse/ui/start-screen";
-import { crearOpcionesCcse } from "../../sections/ccse/ui/settings-screen";
-import { renderStart } from "../../sections/geografia/ui/start-screen";
-import { modoCcse } from "../../sections/ccse/ui/mode";
-import { modoGeografia } from "../../sections/geografia/ui/mode";
-import { crearOpciones } from "../../sections/geografia/ui/settings-screen";
+import { renderCcseStart } from "../../sections/ccse/ui/start-screen";
+import { createCcseSettings } from "../../sections/ccse/ui/settings-screen";
+import { renderGeografiaStart } from "../../sections/geografia/ui/start-screen";
+import { ccseMode } from "../../sections/ccse/ui/mode";
+import { geografiaMode } from "../../sections/geografia/ui/mode";
+import { createGeografiaSettings } from "../../sections/geografia/ui/settings-screen";
 import { createRoundScreen } from "./round-screen";
-import { crearSimulacro } from "../../sections/ccse/ui/simulacro-screen";
+import { createSimulacroScreen } from "../../sections/ccse/ui/simulacro-screen";
 
 export interface App {
   /** true en las pantallas donde se puede recargar sin perder nada (todas menos la partida, el simulacro y sus resultados). */
@@ -65,7 +65,7 @@ export function startApp(): App {
     screen: () => screen,
     show(id) {
       if (id !== "play") roundScreen.onLeave();
-      if (id !== "sim") simulacroScreen.alSalir();
+      if (id !== "sim") simulacroScreen.onLeave();
       screen = id;
       SCREENS.forEach((s) => { $(s).hidden = s !== id; });
       // Si el foco estaba en la pantalla que se acaba de esconder (en el botón pulsado), pasa a la nueva:
@@ -83,8 +83,8 @@ export function startApp(): App {
       if (isIdleScreen(id)) idleListeners.forEach((f) => f());
     },
     goHome() {
-      if (section() === "ccse") renderStartCcse(state);
-      else renderStart(state);
+      if (section() === "ccse") renderCcseStart(state);
+      else renderGeografiaStart(state);
       roundScreen.prepare();
       ctx.show(section() === "ccse" ? "ccseStart" : "start");
     },
@@ -92,13 +92,13 @@ export function startApp(): App {
       if (section() === "ccse") { ccseSettings.render(); ctx.show("ccseSettings"); }
       else { settings.render(); ctx.show("settings"); }
     },
-    mode: () => (section() === "ccse" ? modoCcse(state) : modoGeografia(state))
+    mode: () => (section() === "ccse" ? ccseMode(state) : geografiaMode(state))
   };
 
-  const settings = crearOpciones(ctx);
-  const ccseSettings = crearOpcionesCcse(ctx);
+  const settings = createGeografiaSettings(ctx);
+  const ccseSettings = createCcseSettings(ctx);
   const roundScreen = createRoundScreen(ctx);
-  const simulacroScreen = crearSimulacro(ctx, roundScreen.startReview);
+  const simulacroScreen = createSimulacroScreen(ctx, roundScreen.startReview);
 
   const chooseSection = (s: Section) => () => { state.seccion = s; ctx.save(); ctx.goHome(); };
   $("sec-geografia").addEventListener("click", chooseSection("geografia"));

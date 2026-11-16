@@ -8,15 +8,15 @@ import { roundSettings, recordKey, canPlay, selectionKey } from "../engine/selec
 import type { RoundQuestion } from "../engine/types";
 
 /** Si una pregunta es de geografía (RoundQuestion): solo esas tienen categoría. */
-const esDeGeografia = (q: PlayableQuestion): q is RoundQuestion => "category" in q;
+const isGeografiaQuestion = (q: PlayableQuestion): q is RoundQuestion => "category" in q;
 
-export function modoGeografia(state: SavedState): SectionMode {
+export function geografiaMode(state: SavedState): SectionMode {
   return {
     section: "geografia",
     canPlay: () => canPlay(state),
     buildRound: () => buildRound(roundSettings(state)),
-    reshuffleRound: (ultimaId) => reshuffleRound(roundSettings(state), ultimaId),
-    buildReviewRound: (fallos) => buildReviewRound(fallos.filter(esDeGeografia), { optionCount: state.opciones }),
+    reshuffleRound: (lastId) => reshuffleRound(roundSettings(state), lastId),
+    buildReviewRound: (misses) => buildReviewRound(misses.filter(isGeografiaQuestion), { optionCount: state.opciones }),
     roundSize: () => roundSize(state.selected, state.territorios, state.longitud),
     isUnlimited: () => state.longitud === "sinLimite",
     timeLimit: () => state.tiempo,

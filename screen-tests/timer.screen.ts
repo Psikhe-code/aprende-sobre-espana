@@ -65,7 +65,7 @@ test("con una bandera lenta, el reloj espera a que se dibuje, y no arranca si ya
 
 test("con 10 segundos se pone en rojo al final, y el repaso de fallos va sin reloj", async ({ page }) => {
   await abrir(page);
-  await opciones(page, [...SOLO_CAPITALES, "tiempo-10"]);
+  await opciones(page, [...SOLO_CAPITALES, "time-10"]);
   await page.locator("#go").click();
   await pasa(page, 6000);
   await expect(page.locator("#timerText")).toHaveText("4 s");
@@ -88,8 +88,8 @@ test("con 10 segundos se pone en rojo al final, y el repaso de fallos va sin rel
 
 test("sin tiempo no hay reloj", async ({ page }) => {
   await abrir(page);
-  await opciones(page, ["tiempo-sinTiempo"]);
-  await expect(page.locator("#dificultadInfo")).toHaveText("Dificultad: 4 opciones por pregunta, sin tiempo.");
+  await opciones(page, ["time-sinTiempo"]);
+  await expect(page.locator("#optionCountInfo")).toHaveText("Dificultad: 4 opciones por pregunta, sin tiempo.");
   await page.locator("#go").click();
   await expect(page.locator("#timer")).toBeHidden();
 });

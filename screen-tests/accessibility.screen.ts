@@ -56,7 +56,7 @@ test("los botones pequeños miden al menos 44 px de alto, para pulsarlos con el 
 
 test("los atajos de teclado solo se explican donde hay teclado", async ({ page, isMobile }) => {
   await abrir(page);
-  const atajos = page.locator("#start .atajos");
+  const atajos = page.locator("#start .shortcuts");
   if (isMobile) await expect(atajos).toBeHidden();
   else await expect(atajos).toBeVisible();
 });

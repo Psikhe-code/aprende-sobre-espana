@@ -6,28 +6,28 @@ import { NAME_FORMS, TERRITORIOS } from "../engine/types";
 import type { AppContext } from "../../../common/ui/context";
 import { roundLengthWarning, renderRoundLengthGroup, renderTimeLimitGroup } from "../../../common/ui/widgets";
 import { $, changeWith, radioGroup, tabToChecked, toggleCard } from "../../../common/ui/dom";
-import { DIFICULTAD_DESC, NAME_LABELS, TERRITORIO_LABELS } from "./labels";
+import { OPTION_COUNT_DESCRIPTIONS, NAME_LABELS, TERRITORIO_LABELS } from "./labels";
 import { canPlay } from "../engine/selection";
 
 /** Prepara la pantalla de Opciones (sus botones) y devuelve cómo dibujarla. */
-export function crearOpciones(ctx: AppContext): { render: () => void } {
+export function createGeografiaSettings(ctx: AppContext): { render: () => void } {
   const { state } = ctx;
 
-  const cambiar = changeWith(() => ctx.save(), () => render());
+  const change = changeWith(() => ctx.save(), () => render());
 
   function render() {
     // Categorías
     $("cats").replaceChildren(...CATEGORIES.map((c) => {
       const on = state.selected.includes(c.id);
       // Preguntas de cada territorio, y cuántas salen con los territorios marcados.
-      const porTerritorio = TERRITORIOS.map((x) => {
+      const byTerritorio = TERRITORIOS.map((x) => {
         const n = questionsIn(c.id, [x]).length;
         return `${TERRITORIO_LABELS[x].name}: ${n || "próximamente"}`;
       }).join(" · ");
       const n = questionsIn(c.id, state.territorios).length;
       return toggleCard("cat-" + c.id, on, c.name,
-        [["cat-desc", porTerritorio], ["cat-count", n ? `${n} preguntas con los territorios marcados` : "Sin preguntas con los territorios marcados"]],
-        cambiar("cat-" + c.id, () => {
+        [["cat-desc", byTerritorio], ["cat-count", n ? `${n} preguntas con los territorios marcados` : "Sin preguntas con los territorios marcados"]],
+        change("cat-" + c.id, () => {
           state.selected = on ? state.selected.filter((x) => x !== c.id) : [...state.selected, c.id];
         }));
     }));
@@ -38,7 +38,7 @@ export function crearOpciones(ctx: AppContext): { render: () => void } {
     // Formas de los nombres (se puede marcar más de una)
     $("names").replaceChildren(...NAME_FORMS.map((s) => {
       const on = state.names.includes(s);
-      return toggleCard("names-" + s, on, NAME_LABELS[s].name, [["cat-desc", NAME_LABELS[s].example]], cambiar("names-" + s, () => {
+      return toggleCard("names-" + s, on, NAME_LABELS[s].name, [["cat-desc", NAME_LABELS[s].example]], change("names-" + s, () => {
         state.names = on ? state.names.filter((x) => x !== s) : NAME_FORMS.filter((x) => x === s || state.names.includes(x));
       }));
     }));
@@ -48,25 +48,25 @@ export function crearOpciones(ctx: AppContext): { render: () => void } {
     // Territorios (se puede marcar más de uno)
     $("territorios").replaceChildren(...TERRITORIOS.map((x) => {
       const on = state.territorios.includes(x);
-      return toggleCard("terr-" + x, on, TERRITORIO_LABELS[x].name, [["cat-desc", TERRITORIO_LABELS[x].example]], cambiar("terr-" + x, () => {
+      return toggleCard("terr-" + x, on, TERRITORIO_LABELS[x].name, [["cat-desc", TERRITORIO_LABELS[x].example]], change("terr-" + x, () => {
         state.territorios = on ? state.territorios.filter((y) => y !== x) : TERRITORIOS.filter((y) => y === x || state.territorios.includes(y));
       }));
     }));
 
     // Dificultad: se marca una sola. La respuesta abierta aún no existe: se ve, pero no se puede marcar.
-    const dificultades = OPTION_COUNTS.map((n) =>
-      toggleCard("dif-" + n, state.opciones === n, `${n} opciones`, [["cat-desc", DIFICULTAD_DESC[n]]],
-        cambiar("dif-" + n, () => { state.opciones = n; }), true));
-    const abierta = toggleCard("dif-abierta", false, "Respuesta abierta", [["cat-desc", "Escribes la respuesta tú. Próximamente."]], () => {}, true);
-    abierta.disabled = true;
-    $("dificultad").replaceChildren(...dificultades, abierta);
-    tabToChecked($("dificultad"));
+    const optionCountCards = OPTION_COUNTS.map((n) =>
+      toggleCard("option-count-" + n, state.opciones === n, `${n} opciones`, [["cat-desc", OPTION_COUNT_DESCRIPTIONS[n]]],
+        change("option-count-" + n, () => { state.opciones = n; }), true));
+    const openAnswerCard = toggleCard("option-count-open", false, "Respuesta abierta", [["cat-desc", "Escribes la respuesta tú. Próximamente."]], () => {}, true);
+    openAnswerCard.disabled = true;
+    $("optionCount").replaceChildren(...optionCountCards, openAnswerCard);
+    tabToChecked($("optionCount"));
 
-    renderTimeLimitGroup($("tiempo"), { prefix: "tiempo-", current: state.tiempo, choose: (t) => { state.tiempo = t; }, change: cambiar });
+    renderTimeLimitGroup($("timeLimit"), { prefix: "time-", current: state.tiempo, choose: (t) => { state.tiempo = t; }, change: change });
 
-    const hay = questionCount(state.selected, state.territorios);
-    renderRoundLengthGroup($("longitud"), {
-      prefix: "len-", current: state.longitud, available: hay, change: cambiar,
+    const available = questionCount(state.selected, state.territorios);
+    renderRoundLengthGroup($("roundLength"), {
+      prefix: "len-", current: state.longitud, available: available, change: change,
       fits: (n) => lengthFits(n, state.selected, state.territorios),
       choose: (n) => { state.longitud = n; }
     });
@@ -74,17 +74,17 @@ export function crearOpciones(ctx: AppContext): { render: () => void } {
     const noTerr = !state.territorios.length;
     $("noTerrWarn").hidden = !noTerr;
     // Categorías y territorios marcados, pero sin preguntas (p. ej. solo banderas y solo provincias).
-    const empty = !noCats && !noTerr && hay === 0;
+    const empty = !noCats && !noTerr && available === 0;
     $("emptyWarn").hidden = !empty;
     // El número de preguntas elegido ya no cabe (p. ej. 50 y se ha dejado solo Capitales).
     const tooLong = !noCats && !noTerr && !empty && !lengthFits(state.longitud, state.selected, state.territorios);
     $("lengthWarn").hidden = !tooLong;
-    $("lengthWarn").textContent = tooLong ? roundLengthWarning(hay) : "";
+    $("lengthWarn").textContent = tooLong ? roundLengthWarning(available) : "";
 
     $<HTMLButtonElement>("doneOptions").disabled = noCats || noNames || noTerr || empty || tooLong;
   }
 
-  for (const id of ["dificultad", "tiempo", "longitud"]) radioGroup($(id));
+  for (const id of ["optionCount", "timeLimit", "roundLength"]) radioGroup($(id));
   $("doneOptions").addEventListener("click", () => { if (canPlay(state)) ctx.goHome(); });
   $("allCats").addEventListener("click", () => { state.selected = [...CATEGORY_IDS]; ctx.save(); render(); });
 

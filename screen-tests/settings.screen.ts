@@ -18,21 +18,21 @@ test("en los grupos de opciones, las flechas pasan a otra y saltan las desactiva
   await page.locator("#openOptions").click();
 
   // El tabulador entra en la marcada.
-  await page.locator('[id="dif-4"]').focus();
+  await page.locator('[id="option-count-4"]').focus();
   await page.keyboard.press("Tab");
-  await expect(page.locator('[id="tiempo-60"]')).toBeFocused();
+  await expect(page.locator('[id="time-60"]')).toBeFocused();
   await page.keyboard.press("ArrowDown");
-  await expect(page.locator('[id="tiempo-30"]')).toBeFocused();
-  await expect(page.locator('[id="tiempo-30"]')).toHaveAttribute("aria-checked", "true");
+  await expect(page.locator('[id="time-30"]')).toBeFocused();
+  await expect(page.locator('[id="time-30"]')).toHaveAttribute("aria-checked", "true");
   await page.keyboard.press("End");
-  await expect(page.locator('[id="tiempo-10"]')).toBeFocused();
+  await expect(page.locator('[id="time-10"]')).toBeFocused();
   await page.keyboard.press("ArrowDown"); // desde la última, vuelve a la primera
-  await expect(page.locator('[id="tiempo-sinTiempo"]')).toBeFocused();
+  await expect(page.locator('[id="time-sinTiempo"]')).toBeFocused();
 
   // «Respuesta abierta» está desactivada: desde «8 opciones» se vuelve a «4 opciones».
-  await page.locator('[id="dif-8"]').click();
+  await page.locator('[id="option-count-8"]').click();
   await page.keyboard.press("ArrowDown");
-  await expect(page.locator('[id="dif-4"]')).toBeFocused();
+  await expect(page.locator('[id="option-count-4"]')).toBeFocused();
 });
 
 test("si la selección no llega a un número de preguntas, sale desactivado y lo dice", async ({ page }) => {
@@ -58,10 +58,10 @@ test("si la selección no llega a un número de preguntas, sale desactivado y lo
 test("las opciones se guardan: al volver a abrir el juego siguen marcadas", async ({ page }) => {
   await abrir(page);
   await page.locator("#openOptions").click();
-  await page.locator('[id="tiempo-10"]').click();
-  await page.locator('[id="dif-8"]').click();
+  await page.locator('[id="time-10"]').click();
+  await page.locator('[id="option-count-8"]').click();
   await page.locator("#doneOptions").click();
   await page.reload();
   await page.locator("#sec-geografia").click();
-  await expect(page.locator("#dificultadInfo")).toHaveText("Dificultad: 8 opciones por pregunta, 10 segundos por pregunta.");
+  await expect(page.locator("#optionCountInfo")).toHaveText("Dificultad: 8 opciones por pregunta, 10 segundos por pregunta.");
 });

@@ -5,7 +5,7 @@ import { test, expect, abrir, opciones, responder, SOLO_CAPITALES } from "./help
 test("partida sin límite: fin de la baraja, barajar y seguir, terminar y récord de racha", async ({ page }) => {
   await abrir(page);
   // Solo capitales de provincia: pocas preguntas, para llegar pronto al fin de la baraja.
-  await opciones(page, [...SOLO_CAPITALES, "terr-comunidad", "len-sinLimite", "tiempo-sinTiempo"]);
+  await opciones(page, [...SOLO_CAPITALES, "terr-comunidad", "len-sinLimite", "time-sinTiempo"]);
   await expect(page.locator("#roundLabel")).toHaveText("Preguntas sin límite, al azar, de");
   await page.locator("#go").click();
   await expect(page.locator("#track")).toBeHidden();
