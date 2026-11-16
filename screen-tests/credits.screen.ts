@@ -1,5 +1,5 @@
 import type { Page } from "@playwright/test";
-import { test, expect } from "./ayuda";
+import { test, expect } from "./helpers";
 import type { Seccion } from "../src/common/engine/types";
 
 // Cada sección tiene sus créditos: los bloques con data-seccion salen solo en los de esa sección,

@@ -1,5 +1,5 @@
-import { test, expect, abrir, preguntasCcse } from "./ayuda";
-import { ccsePrueba, ccseVacio } from "../tests/ccse-prueba";
+import { test, expect, abrir, preguntasCcse } from "./helpers";
+import { ccsePrueba, ccseVacio } from "../tests/ccse/test-data";
 
 // Las partidas y Opciones se prueban con datos de prueba, porque la plantilla real se va
 // rellenando poco a poco (y al principio está vacía).

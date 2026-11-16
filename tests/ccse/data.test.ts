@@ -1,9 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { ENTRADAS_CCSE, PREGUNTAS_CCSE, TAREA_IDS, estadoPregunta, type EntradaCcse } from "../src/sections/ccse/engine/questions";
-import { REPARTO_SIMULACRO, simulacroPosible } from "../src/sections/ccse/engine/simulacro";
+import { ENTRADAS_CCSE, PREGUNTAS_CCSE, TAREA_IDS, estadoPregunta, type EntradaCcse } from "../../src/sections/ccse/engine/questions";
+import { REPARTO_SIMULACRO, simulacroPosible } from "../../src/sections/ccse/engine/simulacro";
+import ccse from "../../src/sections/ccse/data/ccse.json";
+import ccseSchema from "../../src/sections/ccse/data/schema/ccse.schema.json";
+import { schemaErrors } from "../common/schema-errors";
 
-// Examen de nacionalidad: reglas de los datos reales (las partidas, en ccse-partidas.test.ts). Como en el resto de tests,
+// Examen de nacionalidad: reglas de los datos reales (las partidas, en rounds.test.ts). Como en el resto de tests,
 // las expectativas salen de los datos, así que añadir o corregir preguntas no obliga a tocarlos.
+
+describe("examen de nacionalidad: formato del archivo", () => {
+  it("ccse.json cumple su esquema", () => {
+    expect(schemaErrors(ccseSchema, ccse).join("\n")).toBe("");
+  });
+});
 
 describe("examen de nacionalidad: datos", () => {
   it("hay cinco tareas, numeradas del 1 al 5 y en orden", () => {

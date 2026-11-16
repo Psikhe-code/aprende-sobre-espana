@@ -1,7 +1,7 @@
 {
   "name": "aprende-sobre-espana",
   "private": true,
-  "version": "0.2.21",
+  "version": "0.2.22",
   "description": "Juego de preguntas sobre España: geografía y preparación del examen de nacionalidad",
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:pantalla": "playwright test",
+    "test:screen": "playwright test",
     "typecheck": "tsc --noEmit",
     "limpiar-bandera": "svgo"
   },

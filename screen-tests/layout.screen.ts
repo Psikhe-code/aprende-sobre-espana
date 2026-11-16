@@ -1,4 +1,6 @@
-import { test, expect, abrir, opciones, responder, SOLO_BANDERAS, SOLO_CAPITALES } from "./ayuda";
+// Que las preguntas y sus opciones se ven sin bajar, y qué cabecera sale en cada pantalla.
+
+import { test, expect, abrir, opciones, responder, SOLO_BANDERAS, SOLO_CAPITALES } from "./helpers";
 import type { Page } from "@playwright/test";
 
 /** Dónde acaba la última opción respecto al alto de la pantalla, sin bajar. */

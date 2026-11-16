@@ -1,32 +1,22 @@
 import { describe, expect, it } from "vitest";
-import Ajv from "ajv";
-import territorio from "../src/sections/geografia/data/territorio.json";
-import banderas from "../src/sections/geografia/data/banderas.json";
-import municipios from "../src/sections/geografia/data/municipios.json";
-import municipiosSchema from "../src/sections/geografia/data/schema/municipios.schema.json";
-import territorioSchema from "../src/sections/geografia/data/schema/territorio.schema.json";
-import banderasSchema from "../src/sections/geografia/data/schema/banderas.schema.json";
-import ccse from "../src/sections/ccse/data/ccse.json";
-import ccseSchema from "../src/sections/ccse/data/schema/ccse.schema.json";
-import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../src/sections/geografia/engine/territorio";
-import { NAME_STYLES } from "../src/sections/geografia/engine/types";
-import { BANDERAS, BANDERAS_PROVINCIAS } from "../src/sections/geografia/engine/questions";
+import { schemaErrors } from "../common/schema-errors";
+import territorio from "../../src/sections/geografia/data/territorio.json";
+import banderas from "../../src/sections/geografia/data/banderas.json";
+import municipios from "../../src/sections/geografia/data/municipios.json";
+import municipiosSchema from "../../src/sections/geografia/data/schema/municipios.schema.json";
+import territorioSchema from "../../src/sections/geografia/data/schema/territorio.schema.json";
+import banderasSchema from "../../src/sections/geografia/data/schema/banderas.schema.json";
+import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../../src/sections/geografia/engine/territorio";
+import { NAME_STYLES } from "../../src/sections/geografia/engine/types";
+import { BANDERAS, BANDERAS_PROVINCIAS } from "../../src/sections/geografia/engine/questions";
 
 // Comprobaciones del contenido: si alguien edita un JSON y se equivoca, el test dice dónde.
 
 const svgs = (carpeta: string, todos: Record<string, string>) =>
   Object.fromEntries(Object.entries(todos).filter(([f]) => f.includes(`/${carpeta}/`)).map(([f, texto]) => [f.split("/").pop()!, texto]));
-const TODOS_LOS_SVG = import.meta.glob("../src/sections/geografia/data/banderas/*/*.svg", { eager: true, query: "?raw", import: "default" }) as Record<string, string>;
+const TODOS_LOS_SVG = import.meta.glob("../../src/sections/geografia/data/banderas/*/*.svg", { eager: true, query: "?raw", import: "default" }) as Record<string, string>;
 const FLAG_FILES = svgs("comunidades", TODOS_LOS_SVG);
 const PROVINCE_FLAG_FILES = svgs("provincias", TODOS_LOS_SVG);
-
-/** Valida un archivo contra su esquema y devuelve los errores en forma legible. */
-function schemaErrors(schema: object, data: unknown): string[] {
-  const ajv = new Ajv({ allErrors: true });
-  const validate = ajv.compile(schema);
-  if (validate(data)) return [];
-  return (validate.errors ?? []).map((e) => `${e.instancePath || "(raíz)"}: ${e.message}${e.params ? " " + JSON.stringify(e.params) : ""}`);
-}
 
 describe("formato de los archivos", () => {
   it("territorio.json cumple su esquema", () => {
@@ -37,9 +27,6 @@ describe("formato de los archivos", () => {
   });
   it("municipios.json cumple su esquema", () => {
     expect(schemaErrors(municipiosSchema, municipios).join("\n")).toBe("");
-  });
-  it("ccse.json cumple su esquema", () => {
-    expect(schemaErrors(ccseSchema, ccse).join("\n")).toBe("");
   });
   it("el esquema detecta un campo mal escrito", () => {
     // Prueba de que la validación funciona: "trampa" en vez de "trampas".

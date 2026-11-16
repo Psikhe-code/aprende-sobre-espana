@@ -1,4 +1,6 @@
-import { test, expect, abrir, SOLO_CAPITALES } from "./ayuda";
+// La pantalla de Opciones: cómo se eligen, se anuncian y se guardan.
+
+import { test, expect, abrir, SOLO_CAPITALES } from "./helpers";
 
 test("las tarjetas se anuncian bien: categorías como botones, tiempo como grupo de opciones", async ({ page }) => {
   await abrir(page);

@@ -1,15 +1,15 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   PREGUNTAS_CCSE, TAREAS, cabeCcse, nombreTarea, otraVueltaCcse, partidaCcse, preguntasDe, repasoCcse, tamanoCcse, tarea, tareasConPreguntas
-} from "../src/sections/ccse/engine/questions";
-import { ROUND_LENGTH, ROUND_LENGTHS } from "../src/common/engine/round-settings";
-import { puedeJugarCcse } from "../src/sections/ccse/engine/selection";
-import { ccseKey, loadState, STORAGE_KEY } from "../src/common/engine/storage";
+} from "../../src/sections/ccse/engine/questions";
+import { ROUND_LENGTH, ROUND_LENGTHS } from "../../src/common/engine/round-settings";
+import { puedeJugarCcse } from "../../src/sections/ccse/engine/selection";
+import { ccseKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
 
-// Examen de nacionalidad: partidas y guardado, con datos de prueba (ccse-prueba.ts) en vez de la
-// plantilla real, que se va rellenando poco a poco. Las reglas de los datos reales, en ccse.test.ts.
+// Examen de nacionalidad: partidas y guardado, con datos de prueba (test-data.ts) en vez de la
+// plantilla real, que se va rellenando poco a poco. Las reglas de los datos reales, en data.test.ts.
 
-vi.mock("../src/sections/ccse/data/ccse.json", async () => ({ default: (await import("./ccse-prueba")).ccsePrueba() }));
+vi.mock("../../src/sections/ccse/data/ccse.json", async () => ({ default: (await import("./test-data")).ccsePrueba() }));
 
 const TODAS = TAREAS.map((t) => t.numero);
 

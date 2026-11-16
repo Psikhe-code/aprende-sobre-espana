@@ -1,5 +1,7 @@
-import { test, expect, abrir, opciones, preguntasCcse, responder } from "./ayuda";
-import { ccsePrueba } from "../tests/ccse-prueba";
+// Una partida de principio a fin: responder, el repaso de fallos, salir y el teclado.
+
+import { test, expect, abrir, opciones, preguntasCcse, responder } from "./helpers";
+import { ccsePrueba } from "../tests/ccse/test-data";
 
 test("una partida de 10 se juega entera y deja el récord en el inicio", async ({ page }) => {
   await abrir(page);

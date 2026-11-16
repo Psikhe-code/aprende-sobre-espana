@@ -1,7 +1,7 @@
-import { test, expect, abrir, opciones, responder, SOLO_BANDERAS } from "./ayuda";
+import { test, expect, abrir, opciones, responder, SOLO_BANDERAS } from "./helpers";
 
 // Lo que necesita quien juega con teclado, con lector de pantalla (programa que lee la pantalla en voz alta)
-// o con el dedo en el móvil. Lo propio de la partida (atajos, foco en cada pregunta) está en partida.pantalla.ts.
+// o con el dedo en el móvil. Lo propio de la partida (atajos, foco en cada pregunta) está en round.screen.ts.
 
 test("al cambiar de pantalla con el teclado, el foco pasa a la pantalla nueva", async ({ page, isMobile }) => {
   test.skip(isMobile, "con teclado, solo en escritorio");
