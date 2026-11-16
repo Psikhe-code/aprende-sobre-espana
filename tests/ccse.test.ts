@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { ENTRADAS_CCSE, PREGUNTAS_CCSE, TAREA_IDS, estadoPregunta, type EntradaCcse } from "../src/engine/ccse";
-import { REPARTO_SIMULACRO, simulacroPosible } from "../src/engine/simulacro";
+import { ENTRADAS_CCSE, PREGUNTAS_CCSE, TAREA_IDS, estadoPregunta, type EntradaCcse } from "../src/sections/ccse/engine/questions";
+import { REPARTO_SIMULACRO, simulacroPosible } from "../src/sections/ccse/engine/simulacro";
 
 // Examen de nacionalidad: reglas de los datos reales (las partidas, en ccse-partidas.test.ts). Como en el resto de tests,
 // las expectativas salen de los datos, así que añadir o corregir preguntas no obliga a tocarlos.

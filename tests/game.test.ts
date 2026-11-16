@@ -1,14 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { CATEGORIES, CATEGORY_IDS, categoryById } from "../src/engine/categories";
-import {
-  buildRound, rebuild, reshuffle, roundSize, questionCount, questionsIn, lengthFits, OPTION_COUNTS, ROUND_LENGTH, ROUND_LENGTHS
-} from "../src/engine/round";
-import { PROVINCIAS, poolsFor } from "../src/engine/territory";
-import { BANDERAS_PROVINCIAS } from "../src/engine/questions";
-import { comboKey, loadState, STORAGE_KEY } from "../src/engine/storage";
-import { APROBADO_CCSE, GameSession, applyRecord, recordValue, valoracion } from "../src/engine/game";
-import { APROBADO_SIMULACRO, PREGUNTAS_SIMULACRO } from "../src/engine/simulacro";
-import { NAME_STYLES, type RoundQuestion } from "../src/engine/types";
+import { CATEGORIES, CATEGORY_IDS, categoryById } from "../src/sections/geografia/engine/categories";
+import { buildRound, rebuild, reshuffle, roundSize, questionCount, questionsIn, lengthFits, OPTION_COUNTS } from "../src/sections/geografia/engine/round-questions";
+import { ROUND_LENGTH, ROUND_LENGTHS } from "../src/common/engine/round-settings";
+import { PROVINCIAS, poolsFor } from "../src/sections/geografia/engine/territorio";
+import { BANDERAS_PROVINCIAS } from "../src/sections/geografia/engine/questions";
+import { comboKey, loadState, STORAGE_KEY } from "../src/common/engine/storage";
+import { APROBADO_CCSE, GameSession, applyRecord, recordValue, valoracion } from "../src/common/engine/round";
+import { APROBADO_SIMULACRO, PREGUNTAS_SIMULACRO } from "../src/sections/ccse/engine/simulacro";
+import { NAME_STYLES, type RoundQuestion } from "../src/sections/geografia/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
 const rq = (id: string, answer: string): RoundQuestion =>

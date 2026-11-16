@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { avisoLongitud, textoRonda } from "../src/ui/comun";
-import { minutos, usado } from "../src/ui/labels";
+import { avisoLongitud, textoRonda } from "../src/common/ui/widgets";
+import { minutos, usado } from "../src/common/ui/labels";
 
 // Textos que genera el código: se comprueban palabra por palabra.
 

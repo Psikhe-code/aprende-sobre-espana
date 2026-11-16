@@ -1,6 +1,6 @@
 import type { Page } from "@playwright/test";
 import { test, expect } from "./ayuda";
-import type { Seccion } from "../src/engine/types";
+import type { Seccion } from "../src/common/engine/types";
 
 // Cada sección tiene sus créditos: los bloques con data-seccion salen solo en los de esa sección,
 // y los demás (las tipografías, el botón de volver), en todas.

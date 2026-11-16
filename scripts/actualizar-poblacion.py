@@ -1,5 +1,5 @@
 """
-Actualiza la población y el puesto de cada municipio de src/data/municipios.json con un archivo del INE.
+Actualiza la población y el puesto de cada municipio de src/sections/geografia/data/municipios.json con un archivo del INE.
 
 El INE publica cada año las cifras oficiales de población de todos los municipios (a 1 de enero),
 en el archivo pobmun.zip (https://www.ine.es/pob_xls/pobmun.zip), que trae un Excel por año:
@@ -17,7 +17,7 @@ avisa si algún municipio entra o sale de los tres más poblados de su provincia
 import json, re, sys, unicodedata
 import openpyxl
 
-ARCHIVO = "src/data/municipios.json"
+ARCHIVO = "src/sections/geografia/data/municipios.json"
 
 
 def leer_ine(ruta):

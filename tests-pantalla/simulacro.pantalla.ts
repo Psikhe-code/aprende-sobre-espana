@@ -1,6 +1,6 @@
 import { test, expect, abrir, preguntasCcse, pestañaOculta } from "./ayuda";
 import { ccsePrueba, ccseSimulacroPrueba } from "../tests/ccse-prueba";
-import { MINUTOS_SIMULACRO, PREGUNTAS_SIMULACRO, REPARTO_SIMULACRO, APROBADO_SIMULACRO } from "../src/engine/simulacro-reglas";
+import { MINUTOS_SIMULACRO, PREGUNTAS_SIMULACRO, REPARTO_SIMULACRO, APROBADO_SIMULACRO } from "../src/sections/ccse/engine/simulacro-rules";
 
 // Simulacro de examen, con datos de prueba que tienen preguntas en las cinco tareas.
 // Las reglas (reparto, aprobado) salen del motor, así que si cambian, los tests siguen valiendo.

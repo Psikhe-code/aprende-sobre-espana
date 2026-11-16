@@ -21,7 +21,7 @@ export { expect };
  * Hay que llamarlo antes de abrir el juego.
  */
 export async function preguntasCcse(page: Page, datos: unknown) {
-  await page.route(/\/src\/data\/ccse\.json(\?|$)/, (route) =>
+  await page.route(/\/src\/sections\/ccse\/data\/ccse\.json(\?|$)/, (route) =>
     route.fulfill({ contentType: "text/javascript", body: `export default ${JSON.stringify(datos)};` }));
 }
 

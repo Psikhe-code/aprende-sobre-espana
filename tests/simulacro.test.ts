@@ -1,14 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
-import { PREGUNTAS_CCSE } from "../src/engine/ccse";
+import { PREGUNTAS_CCSE } from "../src/sections/ccse/engine/questions";
 import {
   APROBADO_SIMULACRO, CLAVE_SIMULACRO, PREGUNTAS_SIMULACRO, REPARTO_SIMULACRO, Simulacro, apuntarSimulacro,
   preguntasSimulacro, simulacroPosible
-} from "../src/engine/simulacro";
+} from "../src/sections/ccse/engine/simulacro";
 
 // Simulacro del examen, con datos de prueba que tienen preguntas en las cinco tareas (ccse-prueba.ts).
 // Que los datos reales permiten hacerlo se comprueba en ccse.test.ts.
 
-vi.mock("../src/data/ccse.json", async () => ({ default: (await import("./ccse-prueba")).ccseSimulacroPrueba() }));
+vi.mock("../src/sections/ccse/data/ccse.json", async () => ({ default: (await import("./ccse-prueba")).ccseSimulacroPrueba() }));
 
 /** Un simulacro respondido: en las preguntas de `bien`, la respuesta correcta; en `sinResponder`, nada; en las demás, una equivocada. */
 function respondido(bien: number, sinResponder = 0) {
