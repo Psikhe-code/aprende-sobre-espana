@@ -54,6 +54,7 @@ src/
       widgets.ts             piezas iguales en todas las secciones: número de preguntas y récord del inicio, grupos de Opciones de preguntas y tiempo, respuesta de cada fallo
       dom.ts                 utilidades: crear elementos y enlaces externos, tarjetas y grupos de Opciones, fuentes de las notas, avisos
       labels.ts              textos de las preguntas por partida, los tiempos y el reloj del simulacro
+      images.ts              imagen de la pregunta: dibujarla y descargar por adelantado la de la siguiente
       contours.ts            curvas de nivel decorativas de la cabecera
       styles.css             estilos (tema claro y oscuro según el sistema)
   sections/
@@ -77,7 +78,7 @@ src/
         start-screen.ts      pantalla de inicio
         settings-screen.ts   pantalla de Opciones
         labels.ts            textos de sus opciones
-        banderas.ts          imágenes de las banderas, y la de la pregunta siguiente por adelantado
+        banderas.ts          imágenes de las banderas: la de cada pregunta y las de Créditos
     ccse/                    ← EXAMEN DE NACIONALIDAD
       data/
         ccse.json            tareas y plantilla de las 300 preguntas, con su nota y sus fuentes
@@ -195,7 +196,7 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 **Simulacro de examen.** Desde el inicio del examen, «Hacer un simulacro» abre una prueba como la real: 25 preguntas repartidas por tareas (10 de la Tarea 1, 3 de la 2, 2 de la 3, 3 de la 4 y 7 de la 5, en ese orden), 45 minutos para todo y «apto» con 15 aciertos. Las reglas están en `simulacro-rules.ts` y el reparto se comprobó con la Universitat de València y un examen real de 2015. No usa las Opciones del examen. Mientras se hace no se dice si una respuesta es correcta: se elige una opción (se puede cambiar), se va y se vuelve con «Anterior» y «Siguiente» o con el mapa de las 25 preguntas, y al final se entrega; si faltan respuestas, el aviso dice cuántas, y contarán como fallos. Salir también pide confirmación, porque se pierde el simulacro. El reloj es uno para todo el examen, se pausa al cambiar de pestaña (como en las partidas), se pone en rojo en los últimos 5 minutos y, al acabarse, entrega solo. El resultado dice apto o no apto, los aciertos de cada tarea, el tiempo usado y los fallos (también los no respondidos) con la respuesta, la nota y sus fuentes; desde ahí se puede repasar los fallos en una partida normal. Se guarda el mejor resultado (`ccse/simulacro`), que sale en el inicio. Solo se ofrece si cada tarea tiene al menos las preguntas que pide el reparto.
 
-**Preguntas.** En geografía se generan a partir de los datos (`questions.ts`), una vez por cada forma de los nombres, y se guardan (`generadaUnaVez` en `categories.ts`): como los datos no cambian mientras se juega, contar preguntas en Opciones o preparar una partida usa las ya generadas. Los pools de las opciones (`poolsFor`) se guardan igual. Las listas guardadas están congeladas, para que nadie las cambie sin querer. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
+**Preguntas.** En geografía se generan a partir de los datos (`questions.ts`), una vez por cada forma de los nombres, y se guardan (`generatedOnce` en `categories.ts`): como los datos no cambian mientras se juega, contar preguntas en Opciones o preparar una partida usa las ya generadas. Los pools de las opciones (`poolsFor`) se guardan igual. Las listas guardadas están congeladas, para que nadie las cambie sin querer. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
 
 **Forma de los nombres.** En Opciones se marcan las formas con las que se quiere jugar: oficial, castellano o las dos (por defecto). Si hay varias marcadas, se sortea una en cada pregunta, para aprenderlas todas. Cada pregunta va **entera** en una forma (enunciado, respuesta y opciones), así que nunca se mezclan Gerona y Girona en las mismas opciones. Al responder se muestra la otra forma cuando es distinta: *«Vitoria-Gasteiz · en castellano, Vitoria»*.
 
@@ -220,7 +221,7 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 **Modo sin conexión.** Al abrir el juego se guarda en el dispositivo solo lo imprescindible: código, estilos, fuentes e iconos: unos 770 KB, que son unos 420 KB al descargarse, porque van comprimidos (medido en noviembre de 2026; de ellos, unos 260 KB son las preguntas del examen, que van dentro del código). Las banderas no se descargan todas de golpe: cada una se guarda la primera vez que sale, así que sin conexión funcionan las que ya se han visto. Cuando sea una app de Android, irán todas dentro de la app. Se configura en `vite.config.ts`.
 
-**Bandera siguiente por adelantado.** Mientras se responde una pregunta, el juego descarga y dibuja por adelantado la bandera de la siguiente (`banderas.ts`), para que aparezca al instante aunque la conexión o el móvil sean lentos. La de la primera pregunta también: la partida se prepara ya en la pantalla de inicio (y al terminar la anterior, para «Jugar otra vez»).
+**Imagen de la pregunta.** Una pregunta puede llevar una imagen (`image`, en `common/engine/types.ts`): la dirección del archivo y dos textos alternativos, uno neutro mientras se responde, para no delatar la respuesta, y otro para la lista de fallos («Bandera: Cantabria»). La pone cada sección (en Geografía, su modo pone la bandera, con `banderas.ts`), y la partida solo la dibuja, sin saber de qué es (`common/ui/images.ts`). Mientras se responde una pregunta, el juego descarga y dibuja por adelantado la imagen de la siguiente, para que aparezca al instante aunque la conexión o el móvil sean lentos. La de la primera pregunta también: la partida se prepara ya en la pantalla de inicio (y al terminar la anterior, para «Jugar otra vez»).
 
 **Versión.** Al pie del menú de secciones y del inicio de cada sección se ve la versión (la de `package.json`) y cuándo se publicó, para saber si ya está aplicada la última. Cada cambio sube la versión: en esta primera etapa, el último número (0.1.1, 0.1.2…); el del medio, en hitos grandes. Se escribe al construir el juego (`define` en `vite.config.ts`). Cuando la página se recarga sola para aplicar una versión nueva, el juego sigue en la sección donde estaba el jugador, en vez de volver al menú (`main.ts` lo apunta en `sessionStorage` antes de recargar).
 

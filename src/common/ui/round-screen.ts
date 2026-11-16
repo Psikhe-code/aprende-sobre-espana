@@ -8,7 +8,7 @@ import { Round, type AnswerResult } from "../engine/round";
 import type { PlayableQuestion } from "../engine/types";
 import type { AppContext } from "./context";
 import { $, announce, el, isInteractive, pad, renderSources, numberKey } from "./dom";
-import { flagImage, preloadFlag } from "../../sections/geografia/ui/banderas";
+import { imageElement, preloadImage } from "./images";
 import { renderEnd } from "./end-screen";
 import { createTimer } from "./timer";
 
@@ -30,7 +30,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
 
   /**
    * Partida preparada de antemano (en el inicio y al terminar una partida), para descargar y dibujar
-   * ya la bandera de su primera pregunta: así aparece al instante al pulsar «Jugar».
+   * ya la imagen de su primera pregunta (en Geografía, la bandera): así aparece al instante al pulsar «Jugar».
    * Se guarda con la selección para la que se hizo; si el jugador cambia las opciones, se prepara otra.
    */
   let prepared: { selectionKey: string; questions: PlayableQuestion[] } | null = null;
@@ -40,7 +40,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     if (!mode.canPlay()) { prepared = null; return; }
     if (prepared?.selectionKey !== mode.selectionKey()) prepared = { selectionKey: mode.selectionKey(), questions: mode.buildRound() };
     const first = prepared.questions[0];
-    if (first?.flag) preloadFlag(first.flag);
+    if (first?.image) preloadImage(first.image.src);
   }
 
   function start(givenRound?: Round) {
@@ -73,20 +73,20 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     $("qcat").textContent = (g.review ? "Repaso · " : "") + q.label;
     $("question").textContent = q.text;
 
-    const flag = $("flag");
-    flag.replaceChildren();
-    if (q.flag) flag.append(flagImage(q.flag));
-    flag.hidden = !q.flag;
-    // Mientras se responde esta, se va descargando la bandera de la siguiente.
+    const image = $("questionImage");
+    image.replaceChildren();
+    if (q.image) image.append(imageElement(q.image.src, q.image.alt));
+    image.hidden = !q.image;
+    // Mientras se responde esta, se va descargando la imagen de la siguiente.
     const nextQuestion = g.questions[g.index + 1];
-    if (nextQuestion?.flag) preloadFlag(nextQuestion.flag);
+    if (nextQuestion?.image) preloadImage(nextQuestion.image.src);
 
     renderTrack();
 
     const box = $("opts");
     box.replaceChildren();
     box.classList.toggle("many", q.options.length > 4);
-    box.classList.toggle("with-bandera", !!q.flag);
+    box.classList.toggle("with-image", !!q.image);
     q.options.forEach((o, j) => {
       const b = el("button", "opt");
       b.id = "opt-" + j;

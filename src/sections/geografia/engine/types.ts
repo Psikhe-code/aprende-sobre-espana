@@ -43,7 +43,7 @@ export interface Question {
   /** Solo para el pool "num": [mínimo, máximo]. */
   range?: [number, number];
   /** Bandera que se muestra con la pregunta: código de la comunidad ("12") o "p" y código de provincia ("p48"). */
-  flag?: string;
+  banderaKey?: string;
   /** Otras formas de los nombres de la pregunta, para mostrarlas al responder: "Girona · en castellano, Gerona". */
   aliases: string[];
   /** Si la pregunta es sobre comunidades (y ciudades autónomas) o sobre provincias. Se elige en Opciones. */

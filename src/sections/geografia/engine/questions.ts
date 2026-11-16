@@ -65,7 +65,7 @@ export function autonomiaCapitalWhy(c: Comunidad, nameForm: NameForm): string {
  * Trampa fija: `trampasCapital`, el nombre de la comunidad o algo parecido (Andalucía, Mallorca).
  */
 export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
-  return AUTONOMIAS.map((c) => {
+  return AUTONOMIAS.map((c): Question => {
     const capitales = capitalesOf(c);
     const answers = capitales.map((f) => f[nameForm]);
     const deText = deAutonomiaText(c, nameForm);
@@ -133,7 +133,7 @@ export function provinciaCapitalWhy(p: Provincia, nameForm: NameForm): string {
  * pueden salir en la misma partida: son preguntas distintas.
  */
 export function provinciaCapitalQuestions(nameForm: NameForm): Question[] {
-  return PROVINCIAS.filter((p) => p.trampas?.length).map((p) => {
+  return PROVINCIAS.filter((p) => p.trampas?.length).map((p): Question => {
     const capital = p.capital[nameForm];
     // Capital y ciudades de cada provincia cercana, y ciudades de la propia provincia.
     // `provincia` falla con un mensaje claro si un código de `trampas` no existe (los tests de datos lo comprueban).
@@ -189,7 +189,7 @@ export function trapComunidadIds(p: Provincia): string[] {
  */
 export function provinciaComunidadQuestions(nameForm: NameForm): Question[] {
   const ciudades = CIUDADES.map((c) => c.nombre[nameForm]);
-  return PROVINCIAS.filter((p) => provinciasOf(p.comunidad).length > 1).map((p) => {
+  return PROVINCIAS.filter((p) => provinciasOf(p.comunidad).length > 1).map((p): Question => {
     const c = autonomia(p.comunidad);
     const provinciaNames = provinciasOf(c.id).map((x) => x.nombre[nameForm]).sort((a, b) => a.localeCompare(b, "es"));
     const listText = `${provinciaNames.slice(0, -1).join(", ")} y ${provinciaNames[provinciaNames.length - 1]}`;
@@ -263,7 +263,7 @@ export function sameNameWhy(m: Municipio, nameForm: NameForm): string {
  * La respuesta es la provincia, así que en una partida pueden salir dos municipios de la misma (Vigo y Pontevedra).
  */
 export function municipioProvinciaQuestions(nameForm: NameForm): Question[] {
-  return MUNICIPIOS.map((m) => {
+  return MUNICIPIOS.map((m): Question => {
     const p = provincia(municipioProvinciaId(m));
     return {
       id: `municipio-provincia:${m.id}`,
@@ -308,10 +308,10 @@ export const AUTONOMIA_BANDERAS: Record<string, Bandera> = byId(banderas.comunid
 export const PROVINCIA_BANDERAS: Record<string, Bandera> = byId(banderas.provincias);
 
 /**
- * Clave de la bandera que se muestra con una pregunta (campo `flag`):
+ * Clave de la bandera que se muestra con una pregunta (campo `banderaKey`):
  * el código de la comunidad ("12") o, para una provincia, "p" y su código ("p48").
  */
-export const flagKey = (territorio: "comunidad" | "provincia", id: string) => (territorio === "provincia" ? "p" + id : id);
+export const toBanderaKey = (territorio: "comunidad" | "provincia", id: string) => (territorio === "provincia" ? "p" + id : id);
 /** Información de una bandera por su clave ("12" o "p48"). */
 export function banderaByKey(key: string): Bandera | undefined {
   return key.startsWith("p") ? PROVINCIA_BANDERAS[key.slice(1)] : AUTONOMIA_BANDERAS[key];
@@ -338,7 +338,7 @@ interface BanderaQuestionsSpec {
  * y después su significado. Trampas: las de banderas parecidas (`trampas` en banderas.json).
  */
 function banderaQuestions(spec: BanderaQuestionsSpec, nameForm: NameForm): Question[] {
-  return spec.ids.map((id) => {
+  return spec.ids.map((id): Question => {
     const b = spec.banderas[id];
     const name = spec.name(id);
     return {
@@ -351,7 +351,7 @@ function banderaQuestions(spec: BanderaQuestionsSpec, nameForm: NameForm): Quest
       exclude: [],
       why: prepareText(b.descripcion, nameForm),
       meaning: prepareText(b.significado, nameForm),
-      flag: flagKey(spec.territorio, id),
+      banderaKey: toBanderaKey(spec.territorio, id),
       aliases: aliases([name], nameForm),
       territorio: spec.territorio
     };
