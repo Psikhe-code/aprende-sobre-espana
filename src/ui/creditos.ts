@@ -4,7 +4,7 @@
 import { BANDERAS, BANDERAS_PROVINCIAS, type BanderaInfo } from "../engine/questions";
 import { AUTONOMIAS, provincia } from "../engine/territory";
 import { NAME_STYLES, type Seccion } from "../engine/types";
-import { $, el } from "./dom";
+import { $, el, enlaceExterno } from "./dom";
 import { flagImage } from "./flags";
 
 /** Nombre de cada sección en el nombre de la pantalla, para el lector de pantalla. */
@@ -21,19 +21,12 @@ export function renderCredits(seccion: Seccion): void {
 }
 
 function pintarBanderas(): void {
-  const link = (href: string, text: string) => {
-    const a = el("a", "", text);
-    a.href = href;
-    a.target = "_blank";
-    a.rel = "noopener";
-    return a;
-  };
   const fila = (clave: string, nombre: string, f: BanderaInfo["fuente"]) => {
     const row = el("div", "credit");
     const text = el("div", "credit-text");
     const lic = el("span");
     if (f.autor) lic.append(`${f.autor} · `);
-    lic.append(f.licenciaUrl ? link(f.licenciaUrl, f.licencia) : f.licencia, " · ", link(f.url, "ver en Wikimedia Commons"));
+    lic.append(f.licenciaUrl ? enlaceExterno(f.licenciaUrl, f.licencia) : f.licencia, " · ", enlaceExterno(f.url, "ver en Wikimedia Commons"));
     text.append(el("b", "", nombre), lic);
     const thumb = el("span", "thumb");
     thumb.append(flagImage(clave, "")); // el nombre está escrito al lado

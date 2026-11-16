@@ -7,7 +7,7 @@
 
 import datos from "../data/ccse.json";
 import { fitsFor, sizeFor, type RoundLength } from "./round";
-import { shuffle } from "./random";
+import { shuffle, sinEmpezarPor } from "./random";
 import type { Fuente, PreguntaJugable, Rng } from "./types";
 
 export interface Tarea {
@@ -155,9 +155,7 @@ export function partidaCcse({ tareas, length = 10, rng = Math.random }: AjustesC
  * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
  */
 export function otraVueltaCcse(ajustes: AjustesCcse, ultimaId?: string): PreguntaCcseJugable[] {
-  const vuelta = partidaCcse({ ...ajustes, length: "sinLimite" });
-  if (vuelta.length > 1 && vuelta[0].id === ultimaId) [vuelta[0], vuelta[1]] = [vuelta[1], vuelta[0]];
-  return vuelta;
+  return sinEmpezarPor(partidaCcse({ ...ajustes, length: "sinLimite" }), ultimaId);
 }
 
 /** Repaso de fallos: las mismas preguntas, con las opciones barajadas de nuevo. */

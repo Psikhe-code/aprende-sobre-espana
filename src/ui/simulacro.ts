@@ -13,6 +13,7 @@ import {
 import type { SavedState } from "../engine/storage";
 import type { Contexto } from "./contexto";
 import { $, el, pad, pintarFuentes, teclaNumero } from "./dom";
+import { lineaRespuesta } from "./comun";
 import { minutos, usado } from "./labels";
 
 export interface PantallaSimulacro {
@@ -202,10 +203,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PreguntaJugable[
       const row = el("div", "miss");
       row.append(el("span", "miss-cat", `Pregunta ${preguntas.indexOf(f.question) + 1} · Tarea ${f.question.tarea}`));
       row.append(el("span", "miss-q", f.question.text));
-      const a = el("span", "miss-a");
-      a.append("Respuesta: ", el("b", "", f.question.answer),
-        ...(f.given === null ? [" · sin responder"] : [" · tú dijiste ", el("s", "", f.given)]));
-      row.append(a);
+      row.append(lineaRespuesta(f.question.answer, f.given, "sin responder"));
       if (f.question.why) row.append(el("p", "why miss-why", f.question.why));
       const fuentes = el("p", "source");
       pintarFuentes(fuentes, f.question.fuentes);

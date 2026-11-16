@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { avisoLongitud, textoRonda } from "../src/ui/comun";
 import { minutos, usado } from "../src/ui/labels";
 
 // Textos que genera el código: se comprueban palabra por palabra.
@@ -18,3 +19,17 @@ describe("tiempo del simulacro", () => {
     expect(usado(59_600)).toBe("1 min"); // se redondea al segundo más cercano
   });
 });
+
+describe("inicio y Opciones de cada sección", () => {
+  it("lo que se va a jugar: el número de preguntas, el elegido si aún no se sabe, o sin límite", () => {
+    expect(textoRonda(10, 10)).toBe("10 preguntas al azar de");
+    expect(textoRonda(10, 8)).toBe("8 preguntas al azar de"); // con 10, si hay menos, las que haya
+    expect(textoRonda(25, 0)).toBe("25 preguntas al azar de");
+    expect(textoRonda("sinLimite", 300)).toBe("Preguntas sin límite, al azar, de");
+  });
+
+  it("el aviso cuando ya no caben las preguntas elegidas", () => {
+    expect(avisoLongitud(19)).toBe("Con esta selección hay 19 preguntas: elige menos preguntas por partida o «Sin límite».");
+  });
+});
+

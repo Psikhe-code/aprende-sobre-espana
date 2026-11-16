@@ -45,6 +45,29 @@ export const esInteractivo = (t: EventTarget | null) =>
   t instanceof Element && t.closest("a, button, input, select, textarea") !== null;
 
 /**
+ * Enlace a otra web, que se abre en otra pestaña. Todos los enlaces externos se crean aquí: cuando llegue la
+ * app de Android, se cambiará en este sitio para que se abran en el navegador del móvil.
+ */
+export function enlaceExterno(href: string, texto: string): HTMLAnchorElement {
+  const a = el("a", "", texto);
+  a.href = href;
+  a.target = "_blank";
+  a.rel = "noopener";
+  return a;
+}
+
+/** Lo que hace una tarjeta de Opciones al pulsarla: `cambiar("id-de-la-tarjeta", () => { …el cambio… })`. */
+export type Cambiar = (idTarjeta: string, cambio: () => void) => () => void;
+
+/** Para las tarjetas de Opciones: hace el cambio, lo guarda, dibuja de nuevo la pantalla y deja el foco en la tarjeta tocada. */
+export const cambiarCon = (guardar: () => void, dibujar: () => void): Cambiar => (idTarjeta, cambio) => () => {
+  cambio();
+  guardar();
+  dibujar();
+  $(idTarjeta).focus();
+};
+
+/**
  * Fuentes de una nota (en el examen de nacionalidad): «Fuente: Constitución española, art. 1.3», con su enlace,
  * que se abre en otra pestaña. Se dibujan dentro de `p`, que se esconde si no hay ninguna.
  */
@@ -55,13 +78,7 @@ export function pintarFuentes(p: HTMLElement, fuentes: readonly Fuente[] = []): 
   p.append(el("b", "", fuentes.length > 1 ? "Fuentes" : "Fuente"), " ");
   fuentes.forEach((f, i) => {
     if (i) p.append(" · ");
-    if (f.url) {
-      const a = el("a", "", f.texto);
-      a.href = f.url;
-      a.target = "_blank";
-      a.rel = "noopener";
-      p.append(a);
-    } else p.append(f.texto);
+    p.append(f.url ? enlaceExterno(f.url, f.texto) : f.texto);
   });
 }
 
