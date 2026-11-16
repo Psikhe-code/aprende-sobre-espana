@@ -101,7 +101,7 @@ export function createSimulacroScreen(ctx: AppContext, startReview: (misses: Pla
     $("simAnswered").textContent = `${s.answeredCount}/${s.total}`;
     $("simCat").textContent = q.label;
     $("simQuestion").textContent = q.text;
-    const chosen = s.answers[s.index];
+    const chosen = s.givenAnswers[s.index];
     $("simOpts").replaceChildren(...q.options.map((o, j) => {
       const b = el("button", "opt" + (o === chosen ? " chosen" : ""));
       b.id = "sim-opt-" + j;
@@ -114,7 +114,7 @@ export function createSimulacroScreen(ctx: AppContext, startReview: (misses: Pla
     $<HTMLButtonElement>("simPrev").disabled = s.index === 0;
     $("simNext").hidden = s.index === s.total - 1;
     $("simMap").replaceChildren(...s.questions.map((_, j) => {
-      const answered = s.answers[j] !== null;
+      const answered = s.givenAnswers[j] !== null;
       const b = el("button", "sim-n" + (answered ? " answered" : ""), String(j + 1));
       b.id = "sim-n-" + (j + 1);
       b.setAttribute("aria-label", `Pregunta ${j + 1}, ${answered ? "respondida" : "sin responder"}`);
@@ -205,7 +205,7 @@ export function createSimulacroScreen(ctx: AppContext, startReview: (misses: Pla
       const row = el("div", "miss");
       row.append(el("span", "miss-cat", `Pregunta ${questions.indexOf(f.question) + 1} · Tarea ${f.question.tarea}`));
       row.append(el("span", "miss-q", f.question.text));
-      row.append(answerLine(f.question.answer, f.given, "sin responder"));
+      row.append(answerLine(f.question.correctAnswer, f.givenAnswer, "sin responder"));
       if (f.question.explanation) row.append(el("p", "explanation", f.question.explanation));
       const sourcesLine = el("p", "source");
       renderSources(sourcesLine, f.question.sources);

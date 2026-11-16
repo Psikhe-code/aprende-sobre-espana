@@ -136,7 +136,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     if (!round) return;
     for (const b of $("opts").querySelectorAll<HTMLButtonElement>(".opt")) {
       b.disabled = true;
-      if (b.dataset.value === r.answer) b.classList.add("right");
+      if (b.dataset.value === r.correctAnswer) b.classList.add("right");
       else if (b === btn) b.classList.add("wrong");
       else b.classList.add("dim");
     }
@@ -145,7 +145,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     renderTrack();
     const v = $("verdict");
     v.className = "verdict " + (r.correct ? "ok" : "bad");
-    v.textContent = r.correct ? "Correcto" : r.given === null ? "Se acabó el tiempo · Era: " + r.answer : "Era: " + r.answer;
+    v.textContent = r.correct ? "Correcto" : r.givenAnswer === null ? "Se acabó el tiempo · Era: " + r.correctAnswer : "Era: " + r.correctAnswer;
     $("explanation").textContent = round.current.explanation;
     $("explanation").hidden = !round.current.explanation; // en el examen, mientras falte la nota
     // Otras formas de los nombres: "Girona · en castellano, Gerona"
@@ -159,7 +159,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
       return p;
     }));
     renderSources($("source"), round.current.sources);
-    announce(r.correct ? "Correcto." : r.given === null ? `Se acabó el tiempo. Era ${r.answer}.` : `Incorrecto. Era ${r.answer}.`);
+    announce(r.correct ? "Correcto." : r.givenAnswer === null ? `Se acabó el tiempo. Era ${r.correctAnswer}.` : `Incorrecto. Era ${r.correctAnswer}.`);
     $("next").textContent = round.isLast && !round.unlimited ? "Ver resultado" : "Siguiente";
     $("feedback").hidden = false;
     $("next").focus({ preventScroll: true });

@@ -13,13 +13,13 @@ export interface Question {
   readonly id: string;
   readonly text: string;
   /** Respuesta correcta. Si hay varias válidas, en cada partida se elige una. */
-  readonly answer: string | readonly string[];
+  readonly correctAnswer: string | readonly string[];
   /**
-   * Qué lugar es la respuesta, independientemente de cómo se escriba (misma forma que `answer`).
+   * Qué lugar es la respuesta, independientemente de cómo se escriba (misma forma que `correctAnswer`).
    * Identifica el lugar aunque salga con otro nombre (Vitoria y Vitoria-Gasteiz), p. ej. para estadísticas por lugar.
    * Una partida sí puede repetir lugar en preguntas distintas: solo no repite pregunta.
    */
-  readonly answerKey: string | readonly string[];
+  readonly correctAnswerKey: string | readonly string[];
   /**
    * Pool del que salen las opciones incorrectas (una clave de los pools: ver poolsFor).
    * "num" genera números dentro de `range`. null = solo `trapOptions`.
@@ -62,8 +62,8 @@ export const TERRITORIOS: Territorio[] = ["comunidad", "provincia"];
  * Es también una PlayableQuestion: TypeScript comprueba que tiene todo lo que necesita la partida.
  */
 export interface RoundQuestion extends Question, PlayableQuestion {
-  readonly answer: string;
-  readonly answerKey: string;
+  readonly correctAnswer: string;
+  readonly correctAnswerKey: string;
   readonly category: string;
   readonly nameForm: NameForm;
   readonly options: readonly string[];

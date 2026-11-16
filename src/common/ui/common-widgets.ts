@@ -55,10 +55,10 @@ export function renderTimeLimitGroup(group: HTMLElement, o: {
 
 /**
  * Resultado: la línea de la respuesta de un fallo, «Respuesta: Oviedo · tú dijiste Gijón». Si no se respondió,
- * en vez de lo que dijo el jugador va `sinRespuesta` («se acabó el tiempo», «sin responder»).
+ * en vez de lo que dijo el jugador va `noAnswerText` («se acabó el tiempo», «sin responder»).
  */
-export function answerLine(answer: string, given: string | null, noAnswerText: string): HTMLElement {
+export function answerLine(correctAnswer: string, givenAnswer: string | null, noAnswerText: string): HTMLElement {
   const a = el("span", "miss-a");
-  a.append("Respuesta: ", el("b", "", answer), ...(given === null ? [` · ${noAnswerText}`] : [" · tú dijiste ", el("s", "", given)]));
+  a.append("Respuesta: ", el("b", "", correctAnswer), ...(givenAnswer === null ? [` · ${noAnswerText}`] : [" · tú dijiste ", el("s", "", givenAnswer)]));
   return a;
 }

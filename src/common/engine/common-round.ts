@@ -10,15 +10,15 @@ export interface Miss {
   question: PlayableQuestion;
 
   /** Respuesta del jugador, o null si se agotó el tiempo. */
-  given: string | null;
+  givenAnswer: string | null;
 }
 
 /** Resultado de una pregunta respondida o agotada por tiempo. */
 export interface AnswerResult {
   correct: boolean;
-  answer: string;
+  correctAnswer: string;
   /** Respuesta del jugador, o null si se agotó el tiempo. */
-  given: string | null;
+  givenAnswer: string | null;
 }
 
 export interface RoundResult {
@@ -86,8 +86,8 @@ export class Round {
   get endOfDeck() { return this.unlimited && !this.stopped && this.isLast && this.answered; }
 
   /** Responde la pregunta actual. Solo se puede responder una vez cada pregunta. */
-  answer(given: string): AnswerResult {
-    return this.resolve(given);
+  answer(givenAnswer: string): AnswerResult {
+    return this.resolve(givenAnswer);
   }
 
   /** Se acabó el tiempo de la pregunta actual sin responder: cuenta como fallo y rompe la racha. */
@@ -95,11 +95,11 @@ export class Round {
     return this.resolve(null);
   }
 
-  private resolve(given: string | null): AnswerResult {
+  private resolve(givenAnswer: string | null): AnswerResult {
     if (this.stopped) throw new Error("La partida ya está terminada");
     if (this.answered) throw new Error("Esta pregunta ya está respondida");
     const q = this.current;
-    const correct = given !== null && given === q.answer;
+    const correct = givenAnswer !== null && givenAnswer === q.correctAnswer;
     this.outcomes.push(correct);
     if (correct) {
       this.hitCount++;
@@ -107,9 +107,9 @@ export class Round {
       this.best = Math.max(this.best, this.streakCount);
     } else {
       this.streakCount = 0;
-      this.missList.push({ question: q, given });
+      this.missList.push({ question: q, givenAnswer });
     }
-    return { correct, answer: q.answer, given };
+    return { correct, correctAnswer: q.correctAnswer, givenAnswer };
   }
 
   /** Pasa a la siguiente pregunta. Devuelve false si ya no quedan. */

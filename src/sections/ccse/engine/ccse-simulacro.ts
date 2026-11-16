@@ -30,8 +30,8 @@ export interface SimulacroResult {
   hits: number;
   total: number;
   apto: boolean;
-  /** Preguntas falladas o sin responder (`given` es null), en el orden del examen. */
-  misses: { question: CcseRoundQuestion; given: string | null }[];
+  /** Preguntas falladas o sin responder (`givenAnswer` es null), en el orden del examen. */
+  misses: { question: CcseRoundQuestion; givenAnswer: string | null }[];
   /** Aciertos de cada tarea, en el orden del reparto. */
   byTarea: { tarea: number; hits: number; total: number }[];
 }
@@ -49,11 +49,11 @@ export class Simulacro {
 
   get index(): number { return this.i; }
   /** Respuesta elegida en cada pregunta, o null si aún no se ha respondido. Desde fuera, solo para leerla. */
-  get answers(): readonly (string | null)[] { return this.chosen; }
+  get givenAnswers(): readonly (string | null)[] { return this.chosen; }
   get current(): CcseRoundQuestion { return this.questions[this.i]; }
   get total(): number { return this.questions.length; }
   get submitted(): boolean { return this.result !== null; }
-  get answeredCount(): number { return this.answers.filter((r) => r !== null).length; }
+  get answeredCount(): number { return this.givenAnswers.filter((r) => r !== null).length; }
   get unansweredCount(): number { return this.total - this.answeredCount; }
 
   /** Va a otra pregunta (si existe). */
@@ -70,14 +70,14 @@ export class Simulacro {
   /** Entrega el examen (también cuando se acaba el tiempo): lo que no se ha respondido cuenta como fallo. */
   submit(): SimulacroResult {
     if (this.result) return this.result;
-    const correct = this.questions.map((q, j) => this.answers[j] === q.answer);
+    const correct = this.questions.map((q, j) => this.givenAnswers[j] === q.correctAnswer);
     const hits = correct.filter(Boolean).length;
     const tareas = [...new Set(this.questions.map((q) => q.tarea))];
     this.result = {
       hits: hits,
       total: this.total,
       apto: hits >= SIMULACRO_APTO_HITS,
-      misses: this.questions.flatMap((q, j) => (correct[j] ? [] : [{ question: q, given: this.answers[j] }])),
+      misses: this.questions.flatMap((q, j) => (correct[j] ? [] : [{ question: q, givenAnswer: this.givenAnswers[j] }])),
       byTarea: tareas.map((t) => {
         const js = this.questions.flatMap((q, j) => (q.tarea === t ? [j] : []));
         return { tarea: t, hits: js.filter((j) => correct[j]).length, total: js.length };

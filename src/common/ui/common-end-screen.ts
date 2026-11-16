@@ -37,7 +37,7 @@ export function renderEnd(ctx: AppContext, round: Round): void {
         f.append(imageElement(m.question.image.src, m.question.image.answerAlt)); // aquí ya se sabe la respuesta
         row.append(f);
       }
-      row.append(answerLine(m.question.answer, m.given, "se acabó el tiempo"));
+      row.append(answerLine(m.question.correctAnswer, m.givenAnswer, "se acabó el tiempo"));
       misses.append(row);
     }
   }

@@ -55,7 +55,7 @@ describe("examen de nacionalidad: partidas", () => {
         const p = CCSE_QUESTIONS.find((x) => x.id === q.id)!;
         expect([...q.options].sort()).toEqual([...p.options].sort());
         if (p.fixedOrder) expect(q.options).toEqual(p.options);
-        expect(q.answer).toBe(p.answer);
+        expect(q.correctAnswer).toBe(p.correctAnswer);
         expect(q.text).toBe(p.text);
         expect(q.explanation).toBe(p.explanation);
         expect(q.sources).toEqual(p.sources);
@@ -65,7 +65,7 @@ describe("examen de nacionalidad: partidas", () => {
 
   it("las opciones se barajan: la respuesta no sale siempre en el mismo sitio", () => {
     const positions = new Set<number>();
-    for (let r = 0; r < 50; r++) for (const q of buildRound({ tareas: ALL_TAREAS })) positions.add(q.options.indexOf(q.answer));
+    for (let r = 0; r < 50; r++) for (const q of buildRound({ tareas: ALL_TAREAS })) positions.add(q.options.indexOf(q.correctAnswer));
     expect(positions.size).toBeGreaterThan(1);
   });
 

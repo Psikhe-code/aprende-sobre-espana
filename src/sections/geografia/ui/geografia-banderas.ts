@@ -33,6 +33,6 @@ export function banderaQuestionImage(q: RoundQuestion): QuestionImage | undefine
   return {
     src: banderaUrl(q.banderaKey) ?? "",
     alt: q.banderaKey.startsWith("p") ? "Bandera de una provincia" : "Bandera de una comunidad o ciudad autónoma",
-    answerAlt: `Bandera: ${q.answer}`
+    answerAlt: `Bandera: ${q.correctAnswer}`
   };
 }

@@ -51,7 +51,7 @@ describe("partidas: elección de preguntas", () => {
     // Todas las de Divisiones de provincias: hay muchos más municipios que provincias.
     const round = buildRound({ categories: ["divisiones"], territorios: ["provincia"], roundLength: "sinLimite" });
     expect(round).toHaveLength(questionsIn("divisiones", ["provincia"]).length);
-    expect(new Set(round.map((q) => q.answerKey)).size).toBeLessThan(round.length);
+    expect(new Set(round.map((q) => q.correctAnswerKey)).size).toBeLessThan(round.length);
   });
 
   it("con las dos formas marcadas, se sortea por pregunta y cada pregunta va entera en su forma", () => {
@@ -172,7 +172,7 @@ describe("partidas: elección de preguntas", () => {
     const round = buildRound({ categories: CATEGORY_IDS });
     const again = buildReviewRound(round.slice(0, 3));
     expect(again.map((q) => q.id).sort()).toEqual(round.slice(0, 3).map((q) => q.id).sort());
-    for (const q of again) expect(q.options).toContain(q.answer);
+    for (const q of again) expect(q.options).toContain(q.correctAnswer);
     expect(again.map((q) => q.nameForm).sort()).toEqual(round.slice(0, 3).map((q) => q.nameForm).sort());
   });
 });

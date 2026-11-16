@@ -15,8 +15,8 @@ function answeredSimulacro(correctCount: number, unansweredCount = 0) {
   const s = new Simulacro(simulacroQuestions());
   s.questions.forEach((q, j) => {
     s.goTo(j);
-    if (j < correctCount) s.answer(q.answer);
-    else if (j < s.total - unansweredCount) s.answer(q.options.find((o) => o !== q.answer)!);
+    if (j < correctCount) s.answer(q.correctAnswer);
+    else if (j < s.total - unansweredCount) s.answer(q.options.find((o) => o !== q.correctAnswer)!);
   });
   return s;
 }
@@ -42,7 +42,7 @@ describe("simulacro: preguntas", () => {
     for (const q of simulacroQuestions()) {
       const p = CCSE_QUESTIONS.find((x) => x.id === q.id)!;
       expect([...q.options].sort()).toEqual([...p.options].sort());
-      expect(q.answer).toBe(p.answer);
+      expect(q.correctAnswer).toBe(p.correctAnswer);
       expect(q.explanation).toBe(p.explanation);
     }
   });
@@ -69,16 +69,16 @@ describe("simulacro: respuestas y entrega", () => {
     s.goTo(5);
     expect(s.index).toBe(5);
     s.goTo(0);
-    expect(s.answers[0]).toBe(a);
+    expect(s.givenAnswers[0]).toBe(a);
     s.answer(b);
-    expect(s.answers[0]).toBe(b);
+    expect(s.givenAnswers[0]).toBe(b);
     expect(s.answeredCount).toBe(1);
     // Fuera de las preguntas no se va a ningún sitio, y una opción que no es de la pregunta no vale.
     s.goTo(-1);
     s.goTo(s.total);
     expect(s.index).toBe(0);
     s.answer("No es una opción");
-    expect(s.answers[0]).toBe(b);
+    expect(s.givenAnswers[0]).toBe(b);
   });
 
   it("al entregar cuenta los aciertos, y lo que no se ha respondido es un fallo", () => {
@@ -87,8 +87,8 @@ describe("simulacro: respuestas y entrega", () => {
     expect(r.hits).toBe(12);
     expect(r.total).toBe(SIMULACRO_QUESTION_COUNT);
     expect(r.misses).toHaveLength(SIMULACRO_QUESTION_COUNT - 12);
-    expect(r.misses.filter((f) => f.given === null)).toHaveLength(3);
-    for (const f of r.misses) expect(f.given).not.toBe(f.question.answer);
+    expect(r.misses.filter((f) => f.givenAnswer === null)).toHaveLength(3);
+    for (const f of r.misses) expect(f.givenAnswer).not.toBe(f.question.correctAnswer);
     // Los fallos, en el orden del examen.
     expect(r.misses.map((f) => f.question.id)).toEqual(s.questions.slice(12).map((q) => q.id));
   });
@@ -114,8 +114,8 @@ describe("simulacro: respuestas y entrega", () => {
     const s = answeredSimulacro(20);
     const r = s.submit();
     s.goTo(0);
-    s.answer(s.current.options.find((o) => o !== s.current.answer)!);
-    expect(s.answers[0]).toBe(s.current.answer);
+    s.answer(s.current.options.find((o) => o !== s.current.correctAnswer)!);
+    expect(s.givenAnswers[0]).toBe(s.current.correctAnswer);
     expect(s.submit()).toBe(r);
     expect(s.submitted).toBe(true);
   });

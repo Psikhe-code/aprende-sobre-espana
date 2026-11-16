@@ -76,9 +76,9 @@ export function autonomiaCapitalExplanation(c: Comunidad, nameForm: NameForm): s
 export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
   return AUTONOMIAS.map((c): Question => {
     const capitales = capitalesOf(c);
-    const answers = capitales.map((f) => f[nameForm]);
+    const correctAnswers = capitales.map((f) => f[nameForm]);
     const deText = deAutonomiaText(c, nameForm);
-    const prepareNote = (text?: string) => (text ? prepareText(text, nameForm, answers.join(" y ")) : undefined);
+    const prepareNote = (text?: string) => (text ? prepareText(text, nameForm, correctAnswers.join(" y ")) : undefined);
     const ownExplanation = prepareNote(c.notaCapital);
     const curiosidad = prepareNote(c.curiosidadCapital);
     const base = {
@@ -89,7 +89,7 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
           ? CIUDADES.filter((x) => x.id !== c.id).flatMap((x) => capitalesOf(x).map((f) => f[nameForm]))
           : provinciasOf(c.id).map((p) => p.capital[nameForm])),
         ...(c.ciudadesTrampa ?? []).map((f) => f[nameForm])
-      ].filter((cap) => !answers.includes(cap)),
+      ].filter((cap) => !correctAnswers.includes(cap)),
       aliases: aliases([c.nombre, ...capitales], nameForm),
       territorio: "comunidad" as const,
       // Trampa fija: el nombre de la comunidad o algo parecido (Andalucía, La Mancha, Mallorca…).
@@ -101,17 +101,17 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
       return {
         ...base,
         text: `¿Cuál de estas ciudades es una de las ${capitales.length === 2 ? "dos " : ""}capitales ${deText}?`,
-        answer: answers,
-        answerKey: capitales.map((f) => "ciudad:" + f.castellano),
-        exclude: answers,
-        explanation: ownExplanation ?? `La capitalidad ${deText} es compartida entre ${answers.join(" y ")}.`
+        correctAnswer: correctAnswers,
+        correctAnswerKey: capitales.map((f) => "ciudad:" + f.castellano),
+        exclude: correctAnswers,
+        explanation: ownExplanation ?? `La capitalidad ${deText} es compartida entre ${correctAnswers.join(" y ")}.`
       };
     }
     return {
       ...base,
       text: `¿Cuál es la capital ${deText}?`,
-      answer: answers[0],
-      answerKey: "ciudad:" + capitales[0].castellano,
+      correctAnswer: correctAnswers[0],
+      correctAnswerKey: "ciudad:" + capitales[0].castellano,
       exclude: [],
       explanation: ownExplanation ?? autonomiaCapitalExplanation(c, nameForm)
     };
@@ -154,8 +154,8 @@ export function provinciaCapitalQuestions(nameForm: NameForm): Question[] {
     return {
       id: `capital-provincia:${p.id}`,
       text: `¿Cuál es la capital de la provincia de ${p.nombre[nameForm]}?`,
-      answer: capital,
-      answerKey: "ciudad:" + p.capital.castellano,
+      correctAnswer: capital,
+      correctAnswerKey: "ciudad:" + p.capital.castellano,
       pool: "capitalOrCiudad",
       trapOptions: [...new Set(trapOptions)].filter((x) => x !== capital),
       // Siempre sale el propio nombre de la provincia, que no es una ciudad: es justo la confusión
@@ -205,8 +205,8 @@ export function provinciaComunidadQuestions(nameForm: NameForm): Question[] {
     return {
       id: `provincia-ccaa:${p.id}`,
       text: `¿De qué comunidad autónoma es la provincia de ${p.nombre[nameForm]}?`,
-      answer: c.nombre[nameForm],
-      answerKey: "autonomia:" + c.id,
+      correctAnswer: c.nombre[nameForm],
+      correctAnswerKey: "autonomia:" + c.id,
       pool: "autonomia",
       trapOptions: trapComunidadIds(p).map((id) => autonomia(id).nombre[nameForm]).filter((n) => !ciudades.includes(n)),
       exclude: ciudades,
@@ -277,8 +277,8 @@ export function municipioProvinciaQuestions(nameForm: NameForm): Question[] {
     return {
       id: `municipio-provincia:${m.id}`,
       text: `¿De qué provincia es el municipio de ${m.nombre[nameForm]}?`,
-      answer: p.nombre[nameForm],
-      answerKey: "provincia:" + p.id,
+      correctAnswer: p.nombre[nameForm],
+      correctAnswerKey: "provincia:" + p.id,
       pool: "provincia",
       trapOptions: trapProvinciaIds(p).map((id) => provincia(id).nombre[nameForm]),
       // Si en otra provincia hay un municipio que se llama igual, esa provincia también sería correcta.
@@ -336,7 +336,7 @@ interface BanderaQuestionsSpec {
   name: (id: string) => NameForms;
   /** Principio del identificador de la pregunta («bandera-ccaa») y del lugar de la respuesta («autonomia»). */
   idPrefix: string;
-  answerKeyPrefix: string;
+  correctAnswerKeyPrefix: string;
   text: string;
   /** Pool del que salen las opciones equivocadas que no son trampas. */
   pool: string;
@@ -353,8 +353,8 @@ function banderaQuestions(spec: BanderaQuestionsSpec, nameForm: NameForm): Quest
     return {
       id: `${spec.idPrefix}:${id}`,
       text: spec.text,
-      answer: name[nameForm],
-      answerKey: `${spec.answerKeyPrefix}:${id}`,
+      correctAnswer: name[nameForm],
+      correctAnswerKey: `${spec.correctAnswerKeyPrefix}:${id}`,
       pool: spec.pool,
       trapOptions: b.trampas.map((t) => spec.name(t)[nameForm]),
       exclude: [],
@@ -374,7 +374,7 @@ export const autonomiaBanderaQuestions = (nameForm: NameForm): Question[] => ban
   ids: AUTONOMIAS.map((c) => c.id),
   name: (id) => autonomia(id).nombre,
   idPrefix: "bandera-ccaa",
-  answerKeyPrefix: "autonomia",
+  correctAnswerKeyPrefix: "autonomia",
   // Mismo enunciado para todas: si dijera "ciudad" solo en Ceuta y Melilla, delataría la respuesta.
   text: "¿De qué comunidad o ciudad autónoma es esta bandera?",
   pool: "autonomia"
@@ -391,7 +391,7 @@ export const provinciaBanderaQuestions = (nameForm: NameForm): Question[] => ban
   ids: Object.keys(PROVINCIA_BANDERAS).sort(),
   name: (id) => provincia(id).nombre,
   idPrefix: "bandera-provincia",
-  answerKeyPrefix: "provincia",
+  correctAnswerKeyPrefix: "provincia",
   text: "¿De qué provincia es esta bandera?",
   pool: "provinciaWithBandera"
 }, nameForm);

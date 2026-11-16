@@ -8,7 +8,7 @@ import { NAME_FORMS, TERRITORIOS, type NameForm, type Question, type RoundQuesti
 import { categoryById } from "./geografia-categories";
 import { poolsFor } from "./geografia-territorio";
 import { pick, shuffle, notStartingWith } from "../../../common/engine/common-random";
-import { fixAnswer, prepare } from "./geografia-options";
+import { selectCorrectAnswer, prepare } from "./geografia-options";
 
 /** Número de opciones por pregunta en cada dificultad. La respuesta abierta vendrá después. */
 export const OPTION_COUNTS = [4, 6, 8] as const;
@@ -60,7 +60,7 @@ export function roundSize(categories: string[], territorios: Territorio[] = DEFA
 export const lengthFits = (length: RoundLength, categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS) =>
   fitsFor(length, questionCount(categories, territorios));
 
-type Picked = Question & { category: string; nameForm: NameForm; answer: string; answerKey: string };
+type Picked = Question & { category: string; nameForm: NameForm; correctAnswer: string; correctAnswerKey: string };
 
 /**
  * Elige las preguntas de una partida entre las categorías marcadas.
@@ -99,7 +99,7 @@ export function pickQuestions({ categories, roundLength = ROUND_LENGTH, nameForm
     const category = pick(live, rng);
     const id = decks[category].pop()!;
     const nameForm = pick(nameForms, rng);
-    out.push(fixAnswer({ ...versions.get(id)![nameForm], category, nameForm }, rng));
+    out.push(selectCorrectAnswer({ ...versions.get(id)![nameForm], category, nameForm }, rng));
   }
   return out;
 }
