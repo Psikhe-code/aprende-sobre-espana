@@ -35,7 +35,7 @@ export function renderSimulacroStart(state: SavedState): void {
   $("simSummary").hidden = !canDo;
   if (!canDo) return;
   $("simInfo").textContent = simulacroText();
-  const best = state.best[SIMULACRO_RECORD_KEY];
+  const best = state.records[SIMULACRO_RECORD_KEY];
   const record = $("simRecord");
   record.replaceChildren();
   if (best == null) record.textContent = "Aún no has hecho ningún simulacro.";
@@ -175,8 +175,8 @@ export function createSimulacroScreen(ctx: AppContext, startReview: (misses: Pla
     closeConfirmation();
     const r = sim.submit();
     const timeText = countdown.ms - countdown.remaining();
-    const rec = applySimulacroRecord(ctx.state.best, r.hits);
-    if (rec.isNewRecord) { ctx.state.best = rec.best; ctx.save(); }
+    const rec = applySimulacroRecord(ctx.state.records, r.hits);
+    if (rec.isNewRecord) { ctx.state.records = rec.records; ctx.save(); }
     misses = r.misses.map((f) => f.question);
     renderResult(sim.questions, r, timeUp ? "Se acabó el tiempo" : `Tiempo: ${timeUsed(timeText)}`, rec.record);
     ctx.show("simEnd");

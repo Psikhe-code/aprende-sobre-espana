@@ -9,23 +9,25 @@ import { $, el } from "../../../common/ui/dom";
 import { TIME_LIMIT_LABELS } from "../../../common/ui/labels";
 import { NAME_LABELS, TERRITORIO_LABELS } from "./labels";
 import { recordKey } from "../engine/selection";
+import { geografiaSettings } from "../engine/settings";
 
 export function renderGeografiaStart(state: SavedState): void {
+  const g = geografiaSettings(state);
   const chips = $("chips");
   chips.replaceChildren();
-  if (state.selected.length === CATEGORY_IDS.length) {
+  if (g.categories.length === CATEGORY_IDS.length) {
     chips.append(el("span", "chip", "Todas las categorías"));
   } else {
-    CATEGORIES.filter((c) => state.selected.includes(c.id)).forEach((c) => chips.append(el("span", "chip", c.name)));
+    CATEGORIES.filter((c) => g.categories.includes(c.id)).forEach((c) => chips.append(el("span", "chip", c.name)));
   }
-  const names = NAME_FORMS.filter((s) => state.names.includes(s));
+  const names = NAME_FORMS.filter((s) => g.nameForms.includes(s));
   $("namesInfo").textContent = names.length > 1
     ? `Nombres: ${names.map((s) => NAME_LABELS[s].short).join(" y ")}, al azar en cada pregunta.`
     : `Nombres: solo ${NAME_LABELS[names[0]].short}.`;
-  const territorios = TERRITORIOS.filter((x) => state.territorios.includes(x));
+  const territorios = TERRITORIOS.filter((x) => g.territorios.includes(x));
   $("territoriosInfo").textContent = `Territorio: ${territorios.map((x) => TERRITORIO_LABELS[x].short).join(" y ")}.`;
-  $("optionCountInfo").textContent = `Dificultad: ${state.opciones} opciones por pregunta, ${TIME_LIMIT_LABELS[state.tiempo].info}.`;
-  const size = roundSize(state.selected, state.territorios, state.longitud);
-  $("roundLabel").textContent = roundText(state.longitud, size);
-  renderRecord($("record"), state.best[recordKey(state)], state.longitud, size);
+  $("optionCountInfo").textContent = `Dificultad: ${g.optionCount} opciones por pregunta, ${TIME_LIMIT_LABELS[g.timeLimit].info}.`;
+  const size = roundSize(g.categories, g.territorios, g.roundLength);
+  $("roundLabel").textContent = roundText(g.roundLength, size);
+  renderRecord($("record"), state.records[recordKey(g)], g.roundLength, size);
 }

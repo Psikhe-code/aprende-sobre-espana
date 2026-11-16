@@ -123,13 +123,13 @@ describe("simulacro: respuestas y entrega", () => {
 
 describe("simulacro: mejor resultado", () => {
   it("se apunta solo si mejora el anterior, con su propia clave", () => {
-    let best: Record<string, number> = { "ccse/1": 9 };
-    let a = applySimulacroRecord(best, 16);
+    let records: Record<string, number> = { "ccse/1": 9 };
+    let a = applySimulacroRecord(records, 16);
     expect(a).toMatchObject({ isNewRecord: true, record: 16 });
-    best = a.best;
-    expect(best).toEqual({ "ccse/1": 9, [SIMULACRO_RECORD_KEY]: 16 });
-    a = applySimulacroRecord(best, 14);
-    expect(a).toMatchObject({ isNewRecord: false, record: 16, best });
-    expect(applySimulacroRecord(best, 18).best[SIMULACRO_RECORD_KEY]).toBe(18);
+    records = a.records;
+    expect(records).toEqual({ "ccse/1": 9, [SIMULACRO_RECORD_KEY]: 16 });
+    a = applySimulacroRecord(records, 14);
+    expect(a).toMatchObject({ isNewRecord: false, record: 16, records });
+    expect(applySimulacroRecord(records, 18).records[SIMULACRO_RECORD_KEY]).toBe(18);
   });
 });

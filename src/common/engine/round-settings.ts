@@ -27,3 +27,10 @@ export const sizeFor = (length: RoundLength, available: number) => (length === "
 
 /** Si se puede elegir este número de preguntas habiendo `available`: 10 y sin límite, siempre; 25, 50 y 100, si hay al menos esas. */
 export const fitsFor = (length: RoundLength, available: number) => length === "sinLimite" || length === ROUND_LENGTH || available >= length;
+
+/**
+ * Final de la clave de un récord, igual en todas las secciones: el número de preguntas y el tiempo,
+ * «/10preguntas/60s», «/sinlimite/sintiempo». Los récords van aparte por número de preguntas y por tiempo.
+ */
+export const recordKeyEnding = (roundLength: RoundLength, timeLimit: TimeLimit) =>
+  `/${roundLength === "sinLimite" ? "sinlimite" : roundLength + "preguntas"}/${timeLimit === "sinTiempo" ? "sintiempo" : timeLimit + "s"}`;

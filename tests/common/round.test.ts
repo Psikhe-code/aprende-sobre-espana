@@ -128,7 +128,7 @@ describe("partidas sin límite", () => {
     expect(r.hits).toBe(2);
     expect(r.bestStreak).toBe(2);
     expect(recordValue(r)).toBe(r.bestStreak);
-    expect(applyRecord({}, "k", r).best.k).toBe(r.bestStreak);
+    expect(applyRecord({}, "k", r).records.k).toBe(r.bestStreak);
   });
 
   it("una partida normal no se puede alargar ni terminar a mitad", () => {
@@ -143,21 +143,21 @@ describe("récords", () => {
   const result = (hits: number, counts = true) => ({ hits, total: 10, bestStreak: 0, misses: [], review: false, unlimited: false, counts });
 
   it("guarda el primer resultado y solo lo cambia si se supera", () => {
-    let best: Record<string, number> = {};
-    let r = applyRecord(best, "k", result(6));
+    let records: Record<string, number> = {};
+    let r = applyRecord(records, "k", result(6));
     expect(r.isNewRecord).toBe(true);
-    best = r.best;
-    expect(applyRecord(best, "k", result(6)).isNewRecord).toBe(false);
-    expect(applyRecord(best, "k", result(5)).record).toBe(6);
-    r = applyRecord(best, "k", result(9));
-    expect(r.best.k).toBe(9);
+    records = r.records;
+    expect(applyRecord(records, "k", result(6)).isNewRecord).toBe(false);
+    expect(applyRecord(records, "k", result(5)).record).toBe(6);
+    r = applyRecord(records, "k", result(9));
+    expect(r.records.k).toBe(9);
   });
 
   it("no modifica los récords anteriores ni cuenta partidas que no cuentan", () => {
-    const best = { k: 4 };
-    const r = applyRecord(best, "k", result(10, false));
+    const records = { k: 4 };
+    const r = applyRecord(records, "k", result(10, false));
     expect(r.isNewRecord).toBe(false);
-    expect(best).toEqual({ k: 4 });
+    expect(records).toEqual({ k: 4 });
   });
 });
 

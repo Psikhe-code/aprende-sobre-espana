@@ -42,9 +42,3 @@ export const CATEGORIES: Category[] = [
 
 export const CATEGORY_IDS = CATEGORIES.map((c) => c.id);
 export const categoryById = (id: string) => CATEGORIES.find((c) => c.id === id);
-
-/**
- * Identificadores que tenían las categorías antes de separar comunidades y provincias.
- * Sirven para no perder la selección ni los récords guardados en el dispositivo.
- */
-export const OLD_CATEGORY_IDS: Record<string, string> = { capitalesCCAA: "capitales", banderasCCAA: "banderas" };

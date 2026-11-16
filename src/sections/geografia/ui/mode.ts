@@ -6,6 +6,7 @@ import type { SectionMode } from "../../../common/ui/mode";
 import { buildRound, buildReviewRound, reshuffleRound, roundSize } from "../engine/round-questions";
 import { roundSettings, recordKey, canPlay, selectionKey } from "../engine/selection";
 import type { RoundQuestion } from "../engine/types";
+import { geografiaSettings } from "../engine/settings";
 import { banderaQuestionImage } from "./banderas";
 import { geografiaRating } from "../engine/rating";
 
@@ -20,17 +21,18 @@ const withImages = (questions: RoundQuestion[]): RoundQuestion[] =>
   });
 
 export function geografiaMode(state: SavedState): SectionMode {
+  const g = geografiaSettings(state);
   return {
     section: "geografia",
-    canPlay: () => canPlay(state),
-    buildRound: () => withImages(buildRound(roundSettings(state))),
-    reshuffleRound: (lastId) => withImages(reshuffleRound(roundSettings(state), lastId)),
-    buildReviewRound: (misses) => withImages(buildReviewRound(misses.filter(isGeografiaQuestion), { optionCount: state.opciones })),
-    roundSize: () => roundSize(state.selected, state.territorios, state.longitud),
-    isUnlimited: () => state.longitud === "sinLimite",
-    timeLimit: () => state.tiempo,
-    selectionKey: () => "geografia:" + selectionKey(state),
-    recordKey: () => recordKey(state),
+    canPlay: () => canPlay(g),
+    buildRound: () => withImages(buildRound(roundSettings(g))),
+    reshuffleRound: (lastId) => withImages(reshuffleRound(roundSettings(g), lastId)),
+    buildReviewRound: (misses) => withImages(buildReviewRound(misses.filter(isGeografiaQuestion), { optionCount: g.optionCount })),
+    roundSize: () => roundSize(g.categories, g.territorios, g.roundLength),
+    isUnlimited: () => g.roundLength === "sinLimite",
+    timeLimit: () => g.timeLimit,
+    selectionKey: () => "geografia:" + selectionKey(g),
+    recordKey: () => recordKey(g),
     rating: geografiaRating
   };
 }
