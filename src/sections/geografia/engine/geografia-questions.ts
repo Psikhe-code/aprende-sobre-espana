@@ -102,7 +102,6 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
         ...base,
         text: `¿Cuál de estas ciudades es una de las ${capitales.length === 2 ? "dos " : ""}capitales ${deText}?`,
         correctAnswer: correctAnswers,
-        correctAnswerKey: capitales.map((f) => "ciudad:" + f.castellano),
         exclude: correctAnswers,
         explanation: ownExplanation ?? `La capitalidad ${deText} es compartida entre ${correctAnswers.join(" y ")}.`
       };
@@ -111,7 +110,6 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
       ...base,
       text: `¿Cuál es la capital ${deText}?`,
       correctAnswer: correctAnswers[0],
-      correctAnswerKey: "ciudad:" + capitales[0].castellano,
       exclude: [],
       explanation: ownExplanation ?? autonomiaCapitalExplanation(c, nameForm)
     };
@@ -155,7 +153,6 @@ export function provinciaCapitalQuestions(nameForm: NameForm): Question[] {
       id: `capital-provincia:${p.id}`,
       text: `¿Cuál es la capital de la provincia de ${p.nombre[nameForm]}?`,
       correctAnswer: capital,
-      correctAnswerKey: "ciudad:" + p.capital.castellano,
       pool: "capitalOrCiudad",
       trapOptions: [...new Set(trapOptions)].filter((x) => x !== capital),
       // Siempre sale el propio nombre de la provincia, que no es una ciudad: es justo la confusión
@@ -206,7 +203,6 @@ export function provinciaComunidadQuestions(nameForm: NameForm): Question[] {
       id: `provincia-ccaa:${p.id}`,
       text: `¿De qué comunidad autónoma es la provincia de ${p.nombre[nameForm]}?`,
       correctAnswer: c.nombre[nameForm],
-      correctAnswerKey: "autonomia:" + c.id,
       pool: "autonomia",
       trapOptions: trapComunidadIds(p).map((id) => autonomia(id).nombre[nameForm]).filter((n) => !ciudades.includes(n)),
       exclude: ciudades,
@@ -278,7 +274,6 @@ export function municipioProvinciaQuestions(nameForm: NameForm): Question[] {
       id: `municipio-provincia:${m.id}`,
       text: `¿De qué provincia es el municipio de ${m.nombre[nameForm]}?`,
       correctAnswer: p.nombre[nameForm],
-      correctAnswerKey: "provincia:" + p.id,
       pool: "provincia",
       trapOptions: trapProvinciaIds(p).map((id) => provincia(id).nombre[nameForm]),
       // Si en otra provincia hay un municipio que se llama igual, esa provincia también sería correcta.
@@ -334,9 +329,8 @@ interface BanderaQuestionsSpec {
   ids: string[];
   /** Nombre, en todas sus formas, de la comunidad o provincia con este código (también de las trampas). */
   name: (id: string) => NameForms;
-  /** Principio del identificador de la pregunta («bandera-ccaa») y del lugar de la respuesta («autonomia»). */
+  /** Principio del identificador de la pregunta («bandera-ccaa»). */
   idPrefix: string;
-  correctAnswerKeyPrefix: string;
   text: string;
   /** Pool del que salen las opciones equivocadas que no son trampas. */
   pool: string;
@@ -354,7 +348,6 @@ function banderaQuestions(spec: BanderaQuestionsSpec, nameForm: NameForm): Quest
       id: `${spec.idPrefix}:${id}`,
       text: spec.text,
       correctAnswer: name[nameForm],
-      correctAnswerKey: `${spec.correctAnswerKeyPrefix}:${id}`,
       pool: spec.pool,
       trapOptions: b.trampas.map((t) => spec.name(t)[nameForm]),
       exclude: [],
@@ -374,7 +367,6 @@ export const autonomiaBanderaQuestions = (nameForm: NameForm): Question[] => ban
   ids: AUTONOMIAS.map((c) => c.id),
   name: (id) => autonomia(id).nombre,
   idPrefix: "bandera-ccaa",
-  correctAnswerKeyPrefix: "autonomia",
   // Mismo enunciado para todas: si dijera "ciudad" solo en Ceuta y Melilla, delataría la respuesta.
   text: "¿De qué comunidad o ciudad autónoma es esta bandera?",
   pool: "autonomia"
@@ -391,7 +383,6 @@ export const provinciaBanderaQuestions = (nameForm: NameForm): Question[] => ban
   ids: Object.keys(PROVINCIA_BANDERAS).sort(),
   name: (id) => provincia(id).nombre,
   idPrefix: "bandera-provincia",
-  correctAnswerKeyPrefix: "provincia",
   text: "¿De qué provincia es esta bandera?",
   pool: "provinciaWithBandera"
 }, nameForm);

@@ -60,7 +60,7 @@ export function roundSize(categories: string[], territorios: Territorio[] = DEFA
 export const lengthFits = (length: RoundLength, categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS) =>
   fitsFor(length, questionCount(categories, territorios));
 
-type Picked = Question & { category: string; nameForm: NameForm; correctAnswer: string; correctAnswerKey: string };
+type Picked = Question & { category: string; nameForm: NameForm; correctAnswer: string };
 
 /**
  * Elige las preguntas de una partida entre las categorías marcadas.

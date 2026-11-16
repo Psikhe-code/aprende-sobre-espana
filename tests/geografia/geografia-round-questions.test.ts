@@ -48,10 +48,10 @@ describe("partidas: elección de preguntas", () => {
   });
 
   it("sí pueden repetir el mismo lugar como respuesta en preguntas distintas", () => {
-    // Todas las de Divisiones de provincias: hay muchos más municipios que provincias.
+    // Todas las de Divisiones de provincias: hay muchos más municipios que provincias, así que se repiten respuestas.
     const round = buildRound({ categories: ["divisiones"], territorios: ["provincia"], roundLength: "sinLimite" });
     expect(round).toHaveLength(questionsIn("divisiones", ["provincia"]).length);
-    expect(new Set(round.map((q) => q.correctAnswerKey)).size).toBeLessThan(round.length);
+    expect(new Set(round.map((q) => q.correctAnswer)).size).toBeLessThan(round.length);
   });
 
   it("con las dos formas marcadas, se sortea por pregunta y cada pregunta va entera en su forma", () => {
