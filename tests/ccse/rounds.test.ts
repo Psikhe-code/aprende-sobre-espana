@@ -2,8 +2,9 @@ import { describe, expect, it, vi } from "vitest";
 import {
   CCSE_QUESTIONS, TAREAS, lengthFits, tareaName, reshuffleRound, buildRound, tareaQuestions, buildReviewRound, roundSize, tarea, tareasWithQuestions
 } from "../../src/sections/ccse/engine/questions";
-import { ROUND_LENGTH, ROUND_LENGTHS } from "../../src/common/engine/round-settings";
+import { ROUND_LENGTH, ROUND_LENGTHS, type RoundLength } from "../../src/common/engine/round-settings";
 import { canPlay } from "../../src/sections/ccse/engine/selection";
+import { modoCcse } from "../../src/sections/ccse/ui/mode";
 import { ccseRecordKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
 
 // Examen de nacionalidad: partidas y guardado, con datos de prueba (test-data.ts) en vez de la
@@ -90,6 +91,23 @@ describe("examen de nacionalidad: partidas", () => {
     expect(ccseRecordKey([2, 1])).toBe("ccse/1+2");
     expect(ccseRecordKey([1], 25, 60)).toBe("ccse/1/25preguntas/60s");
     expect(ccseRecordKey([1, 3], "sinLimite", "sinTiempo")).toBe("ccse/1+3/sinlimite");
+  });
+});
+
+describe("examen de nacionalidad: lo que da a la partida común", () => {
+  it("cada partida tiene el número de preguntas elegido (sin límite, todas), así que cuenta para el récord", () => {
+    const probadas: RoundLength[] = [];
+    for (const n of ROUND_LENGTHS) {
+      const s = loadState();
+      s.ccse.longitud = n;
+      if (!canPlay(s)) continue;
+      const modo = modoCcse(s);
+      expect(modo.nueva(), String(n)).toHaveLength(modo.esperadas());
+      expect(modo.esperadas(), String(n)).toBe(n === "sinLimite" ? tareaQuestions(s.ccse.tareas).length : n);
+      probadas.push(n);
+    }
+    // Que no pase sin comprobar nada: con los datos de prueba caben al menos 10, 25 y sin límite.
+    expect(probadas).toEqual(expect.arrayContaining([10, 25, "sinLimite"]));
   });
 });
 
