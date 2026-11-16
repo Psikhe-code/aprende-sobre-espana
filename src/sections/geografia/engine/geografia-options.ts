@@ -9,12 +9,6 @@ import { pick, shuffle } from "../../../common/engine/common-random";
 
 /** Valores entre los que salen las opciones incorrectas de una pregunta. */
 export function poolFor(q: Question, pools: Pools): readonly string[] {
-  if (q.pool === "num") {
-    const [min, max] = q.range ?? [0, -1];
-    const out: string[] = [];
-    for (let v = min; v <= max; v++) out.push(String(v));
-    return out;
-  }
   return q.pool ? pools[q.pool] ?? [] : [];
 }
 
@@ -44,11 +38,10 @@ export function makeOptions(q: Question & { correctAnswer: string }, n: number, 
   return shuffle([q.correctAnswer, ...wrong], rng);
 }
 
-/** Si hay varias respuestas válidas, fija una (con su lugar correspondiente). */
-export function selectCorrectAnswer<T extends Question>(q: T, rng: Rng = Math.random): T & { correctAnswer: string; correctAnswerKey: string } {
-  if (!Array.isArray(q.correctAnswer)) return q as T & { correctAnswer: string; correctAnswerKey: string };
-  const i = pick(q.correctAnswer.map((_, j) => j), rng);
-  return { ...q, correctAnswer: q.correctAnswer[i], correctAnswerKey: (q.correctAnswerKey as readonly string[])[i] };
+/** Si hay varias respuestas válidas, elige una. */
+export function selectCorrectAnswer<T extends Question>(q: T, rng: Rng = Math.random): T & { correctAnswer: string } {
+  if (!Array.isArray(q.correctAnswer)) return q as T & { correctAnswer: string };
+  return { ...q, correctAnswer: pick(q.correctAnswer, rng) };
 }
 
 /**

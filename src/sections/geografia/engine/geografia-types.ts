@@ -14,16 +14,7 @@ export interface Question {
   readonly text: string;
   /** Respuesta correcta. Si hay varias válidas, en cada partida se elige una. */
   readonly correctAnswer: string | readonly string[];
-  /**
-   * Qué lugar es la respuesta, independientemente de cómo se escriba (misma forma que `correctAnswer`).
-   * Identifica el lugar aunque salga con otro nombre (Vitoria y Vitoria-Gasteiz), p. ej. para estadísticas por lugar.
-   * Una partida sí puede repetir lugar en preguntas distintas: solo no repite pregunta.
-   */
-  readonly correctAnswerKey: string | readonly string[];
-  /**
-   * Pool del que salen las opciones incorrectas (una clave de los pools: ver poolsFor).
-   * "num" genera números dentro de `range`. null = solo `trapOptions`.
-   */
+  /** Pool del que salen las opciones incorrectas (una clave de los pools: ver poolsFor). null = solo `trapOptions`. */
   readonly pool: string | null;
   /** Incorrectas "trampa": las confusiones típicas. Si hay más de las que caben, se sortean. */
   readonly trapOptions: readonly string[];
@@ -40,8 +31,6 @@ export interface Question {
   readonly extraInfo?: readonly ExtraInfoItem[];
   /** Valores del pool que nunca deben salir como incorrectos (porque también serían válidos). */
   readonly exclude: readonly string[];
-  /** Solo para el pool "num": [mínimo, máximo]. */
-  readonly range?: readonly [number, number];
   /** Bandera que se muestra con la pregunta: código de la comunidad ("12") o "p" y código de provincia ("p48"). */
   readonly banderaKey?: string;
   /** Otras formas de los nombres de la pregunta, para mostrarlas al responder: "Girona · en castellano, Gerona". */
@@ -63,7 +52,6 @@ export const TERRITORIOS: Territorio[] = ["comunidad", "provincia"];
  */
 export interface RoundQuestion extends Question, PlayableQuestion {
   readonly correctAnswer: string;
-  readonly correctAnswerKey: string;
   readonly category: string;
   readonly nameForm: NameForm;
   readonly options: readonly string[];

@@ -68,8 +68,6 @@ for (const nameForm of NAME_FORMS) {
         expect(q.trapOptions, p.id).toEqual([...new Set(trapOptions)].filter((x) => x !== capital));
         expect(q.fixedTrapOptions, p.id).toEqual([p.nombre[nameForm]]);
         expect(q.explanation, p.id).toBe(p.notaCapital ? prepareText(p.notaCapital, nameForm, capital) : provinciaCapitalExplanation(p, nameForm));
-        // Mismo lugar que la capital de su comunidad, si coincide (Oviedo).
-        expect(q.correctAnswerKey, p.id).toBe("ciudad:" + p.capital.castellano);
       }
     });
 
@@ -157,7 +155,6 @@ for (const nameForm of NAME_FORMS) {
         const p = provincia(m.id.slice(0, 2));
         expect(q.text, m.id).toBe(`¿De qué provincia es el municipio de ${m.nombre[nameForm]}?`);
         expect(q.correctAnswer, m.id).toBe(p.nombre[nameForm]);
-        expect(q.correctAnswerKey, m.id).toBe("provincia:" + p.id);
       }
     });
 
@@ -217,7 +214,6 @@ for (const nameForm of NAME_FORMS) {
     it("cada pregunta es coherente: tipo existente, respuesta y trampas en su pool, en la misma forma", () => {
       for (const q of all) {
         const correctAnswers = ([] as string[]).concat(q.correctAnswer);
-        expect(([] as string[]).concat(q.correctAnswerKey), q.id).toHaveLength(correctAnswers.length);
         if (q.pool) {
           expect(pools[q.pool], `${q.id} → tipo ${q.pool}`).toBeDefined();
           for (const a of correctAnswers) expect(pools[q.pool], `${q.id} → ${a}`).toContain(a);
@@ -323,10 +319,9 @@ describe("formas de los nombres", () => {
     expect(find("oficial", "capital-ccaa:03").text).toBe("¿Cuál es la capital del Principado de Asturias?");
   });
 
-  it("la misma pregunta tiene el mismo identificador y el mismo lugar como respuesta en todas las formas", () => {
+  it("la misma pregunta tiene el mismo identificador en todas las formas", () => {
     const [a, b] = NAME_FORMS.map(bank);
     expect(a.map((q) => q.id)).toEqual(b.map((q) => q.id));
-    expect(a.map((q) => q.correctAnswerKey)).toEqual(b.map((q) => q.correctAnswerKey));
   });
 
   it("al responder se muestra la otra forma, solo si es distinta", () => {
@@ -343,7 +338,7 @@ describe("formas de los nombres", () => {
 
 describe("reglas de las opciones (con datos de prueba)", () => {
   const synthetic = (over: Partial<Question>): Question & { correctAnswer: string } =>
-    ({ id: "x", text: "", correctAnswer: "A", correctAnswerKey: "a", pool: "t", trapOptions: [], explanation: "", exclude: [], aliases: [], ...over }) as Question & { correctAnswer: string };
+    ({ id: "x", text: "", correctAnswer: "A", pool: "t", trapOptions: [], explanation: "", exclude: [], aliases: [], ...over }) as Question & { correctAnswer: string };
 
   it("con pool, como mucho n-2 trampas: siempre queda una opción aleatoria", () => {
     const q = synthetic({ trapOptions: ["B", "C", "D", "E"] });
@@ -382,13 +377,4 @@ describe("reglas de las opciones (con datos de prueba)", () => {
     }
   });
 
-  it("tipo numérico: las incorrectas son números del rango", () => {
-    const q = synthetic({ correctAnswer: "17", pool: "num", range: [12, 22] });
-    for (let r = 0; r < 20; r++) {
-      for (const o of makeOptions(q, 6, {})) {
-        expect(Number(o)).toBeGreaterThanOrEqual(12);
-        expect(Number(o)).toBeLessThanOrEqual(22);
-      }
-    }
-  });
 });
