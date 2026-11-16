@@ -1,4 +1,6 @@
-// Punto de entrada: carga lo necesario y arranca el juego.
+/**
+ * @fileoverview Punto de entrada: carga lo necesario y arranca el juego.
+ */
 
 // Fuentes incluidas en el proyecto (solo alfabeto latino): el juego no depende de internet.
 import "@fontsource/barlow/latin-400.css";

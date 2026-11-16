@@ -1,5 +1,7 @@
-// Lo que se guarda en el dispositivo: la sección elegida, los récords y las opciones de cada sección.
-// No sabe nada de las secciones: cada una guarda sus opciones a su manera y las comprueba al cargarlas.
+/**
+ * @fileoverview Lo que se guarda en el dispositivo: la sección elegida, los récords y las opciones de cada sección.
+ * No sabe nada de las secciones: cada una guarda sus opciones a su manera y las comprueba al cargarlas.
+ */
 
 /**
  * Lo guardado en el dispositivo (localStorage). Si algún día hace falta otro almacenamiento

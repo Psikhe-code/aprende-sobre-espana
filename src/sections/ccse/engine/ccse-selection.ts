@@ -1,4 +1,6 @@
-// Examen de nacionalidad: lo que se deduce de las opciones marcadas.
+/**
+ * @fileoverview Examen de nacionalidad: lo que se deduce de las opciones marcadas.
+ */
 
 import { lengthFits, roundSize } from "./ccse-questions";
 import { recordKeyEnding } from "../../../common/engine/common-round-settings";

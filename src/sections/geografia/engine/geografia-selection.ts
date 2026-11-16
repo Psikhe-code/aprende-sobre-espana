@@ -1,4 +1,6 @@
-// Geografía: lo que se deduce de las opciones marcadas (la selección actual).
+/**
+ * @fileoverview Geografía: lo que se deduce de las opciones marcadas (la selección actual).
+ */
 
 import { lengthFits, roundSize, type RoundSettings } from "./geografia-round-questions";
 import { recordKeyEnding } from "../../../common/engine/common-round-settings";

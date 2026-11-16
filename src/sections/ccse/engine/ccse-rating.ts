@@ -1,4 +1,6 @@
-// Examen de nacionalidad: cómo se valora el resultado de una partida.
+/**
+ * @fileoverview Examen de nacionalidad: cómo se valora el resultado de una partida.
+ */
 
 import type { Rating } from "../../../common/engine/common-round";
 

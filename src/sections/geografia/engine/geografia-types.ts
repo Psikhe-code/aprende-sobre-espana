@@ -1,4 +1,6 @@
-// Geografía: las formas de sus datos (qué campos tiene cada cosa).
+/**
+ * @fileoverview Geografía: las formas de sus datos (qué campos tiene cada cosa).
+ */
 
 import type { PlayableQuestion } from "../../../common/engine/common-types";
 

@@ -1,5 +1,7 @@
-// Las secciones que vendrán: salen al final del menú como «Próximamente», sin poder elegirse. Van aparte de la lista
-// de secciones (sections.ts), sin datos, para que también puedan usarlas los tests de pantalla.
+/**
+ * @fileoverview Las secciones que vendrán: salen al final del menú como «Próximamente», sin poder elegirse. Van aparte
+ * de la lista de secciones (sections.ts), sin datos, para que también puedan usarlas los tests de pantalla.
+ */
 
 import type { UpcomingSection } from "../common/ui/common-section";
 

@@ -1,4 +1,6 @@
-// La partida en marcha, sin nada de pantalla.
+/**
+ * @fileoverview La partida en marcha, sin nada de pantalla.
+ */
 
 import type { PlayableQuestion } from "./common-types";
 import { ROUND_LENGTH } from "./common-round-settings";

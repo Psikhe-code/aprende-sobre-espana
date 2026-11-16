@@ -1,5 +1,7 @@
-// Lo que se elige igual en todas las secciones para una partida: cuántas preguntas tiene y cuánto tiempo hay
-// para cada una.
+/**
+ * @fileoverview Lo que se elige igual en todas las secciones para una partida: cuántas preguntas tiene y cuánto tiempo
+ * hay para cada una.
+ */
 
 /** Preguntas de una partida normal: 10 (por defecto). */
 export const ROUND_LENGTH = 10;

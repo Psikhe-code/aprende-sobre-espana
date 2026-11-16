@@ -1,4 +1,6 @@
-// La partida en marcha (aciertos, racha, tiempo, sin límite), los récords y la valoración del resultado.
+/**
+ * @fileoverview La partida en marcha (aciertos, racha, tiempo, sin límite), los récords y la valoración del resultado.
+ */
 
 import { describe, expect, it } from "vitest";
 import { ROUND_LENGTH } from "../../src/common/engine/common-round-settings";

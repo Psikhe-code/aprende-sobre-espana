@@ -1,4 +1,7 @@
-// Lo que se guarda en el dispositivo: lo de por defecto, lo que se descarta al cargar y las opciones de cada sección.
+/**
+ * @fileoverview Lo que se guarda en el dispositivo: lo de por defecto, lo que se descarta al cargar y las opciones de
+ * cada sección.
+ */
 
 import { describe, expect, it } from "vitest";
 import { loadState, saveState, sectionSettings, STORAGE_KEY } from "../../src/common/engine/common-storage";

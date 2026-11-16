@@ -1,5 +1,8 @@
-// El reloj se prueba con el reloj del navegador controlado por el test: el tiempo solo pasa
-// cuando el test lo dice (`pasa`), así no hay que esperar de verdad.
+/**
+ * @fileoverview El reloj se prueba con el reloj del navegador controlado por el test: el tiempo solo pasa
+ * cuando el test lo dice (`advanceClock`), así no hay que esperar de verdad.
+ */
+
 import { test, expect, openSection, changeSettings, advanceClock, answerQuestions, setTabHidden, timerSeconds, ONLY_BANDERAS, ONLY_CAPITALES } from "./helpers";
 
 test.beforeEach(async ({ page }) => {

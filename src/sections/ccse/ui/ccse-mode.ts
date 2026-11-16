@@ -1,4 +1,6 @@
-// Examen de nacionalidad: lo que da a la partida común (ver common/ui/common-mode.ts).
+/**
+ * @fileoverview Examen de nacionalidad: lo que da a la partida común (ver common/ui/common-mode.ts).
+ */
 
 import type { SavedState } from "../../../common/engine/common-storage";
 import type { SectionMode } from "../../../common/ui/common-mode";

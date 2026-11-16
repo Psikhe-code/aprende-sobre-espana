@@ -1,4 +1,6 @@
-// Cómo se eligen y se preparan las preguntas de una partida de Geografía.
+/**
+ * @fileoverview Cómo se eligen y se preparan las preguntas de una partida de Geografía.
+ */
 
 import { describe, expect, it } from "vitest";
 import { CATEGORIES, CATEGORY_IDS, categoryById } from "../../src/sections/geografia/engine/geografia-categories";

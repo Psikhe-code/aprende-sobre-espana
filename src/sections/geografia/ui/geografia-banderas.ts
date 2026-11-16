@@ -1,4 +1,6 @@
-// Geografía: las imágenes de las banderas.
+/**
+ * @fileoverview Geografía: las imágenes de las banderas.
+ */
 
 import { banderaByKey } from "../engine/geografia-questions";
 import type { RoundQuestion } from "../engine/geografia-types";

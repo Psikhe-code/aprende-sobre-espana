@@ -1,5 +1,7 @@
-// Las formas de los datos comunes a todas las secciones (qué campos tiene cada cosa). No hace nada al jugar:
-// sirve para que TypeScript compruebe el resto del código.
+/**
+ * @fileoverview Las formas de los datos comunes a todas las secciones (qué campos tiene cada cosa). No hace nada al
+ * jugar: sirve para que TypeScript compruebe el resto del código.
+ */
 
 /**
  * El id de una sección del juego («geografia», «ccse»). Las que hay están en la lista de secciones

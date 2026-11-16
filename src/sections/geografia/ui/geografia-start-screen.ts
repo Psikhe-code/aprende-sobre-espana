@@ -1,4 +1,6 @@
-// Geografía: pantalla de inicio.
+/**
+ * @fileoverview Geografía: pantalla de inicio.
+ */
 
 import { CATEGORIES, CATEGORY_IDS } from "../engine/geografia-categories";
 import { roundSize } from "../engine/geografia-round-questions";

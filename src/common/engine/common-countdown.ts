@@ -1,5 +1,7 @@
-// Cuenta atrás de una pregunta, sin nada de interfaz: la pantalla la arranca, la pausa
-// (al cambiar de pestaña o bloquear el móvil) y le pregunta cuánto queda para dibujarlo.
+/**
+ * @fileoverview Cuenta atrás de una pregunta, sin nada de interfaz: la pantalla la arranca, la pausa
+ * (al cambiar de pestaña o bloquear el móvil) y le pregunta cuánto queda para dibujarlo.
+ */
 
 export class Countdown {
   private left: number;

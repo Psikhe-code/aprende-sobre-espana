@@ -1,4 +1,6 @@
-// La partida sin límite: fin de la baraja, barajar y seguir, terminar y récord de racha.
+/**
+ * @fileoverview La partida sin límite: fin de la baraja, barajar y seguir, terminar y récord de racha.
+ */
 
 import { test, expect, openSection, changeSettings, answerQuestions, ONLY_CAPITALES } from "./helpers";
 

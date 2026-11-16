@@ -1,4 +1,6 @@
-// Examen de nacionalidad: pantalla de Opciones.
+/**
+ * @fileoverview Examen de nacionalidad: pantalla de Opciones.
+ */
 
 import type { AppContext } from "../../../common/ui/common-context";
 import { $, changeWith, radioGroup, toggleCard } from "../../../common/ui/common-dom";

@@ -1,5 +1,8 @@
-// Tests de pantalla: abren el juego en un navegador de verdad (Chromium), en móvil y en escritorio,
-// y lo juegan como lo haría una persona. Se ejecutan con `npm run test:screen` y en cada PR.
+/**
+ * @fileoverview Tests de pantalla: abren el juego en un navegador de verdad (Chromium), en móvil y en escritorio,
+ * y lo juegan como lo haría una persona. Se ejecutan con `npm run test:screen` y en cada PR.
+ */
+
 import { defineConfig, devices } from "@playwright/test";
 
 // Este archivo lo lee Node (no el navegador): `process.env.CI` dice si se ejecuta en GitHub.

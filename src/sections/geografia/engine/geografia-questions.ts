@@ -1,4 +1,6 @@
-// Geografía: sus preguntas, generadas a partir de los datos.
+/**
+ * @fileoverview Geografía: sus preguntas, generadas a partir de los datos.
+ */
 
 import { NAME_FORMS, type NameForm, type Question, type Territorio } from "./geografia-types";
 import { AUTONOMIAS, PROVINCIAS, MUNICIPIOS, POPULATION_YEAR, autonomia, provinciasOf, deAutonomiaText, capitalesOf, neighborAutonomias, provincia, municipioProvinciaId, isCapital, type Comunidad, type NameForms, type Municipio, type Provincia } from "./geografia-territorio";

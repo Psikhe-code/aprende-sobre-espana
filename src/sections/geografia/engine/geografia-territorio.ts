@@ -1,4 +1,6 @@
-// Geografía: los datos del territorio (comunidades, provincias y municipios), cargados de los JSON.
+/**
+ * @fileoverview Geografía: los datos del territorio (comunidades, provincias y municipios), cargados de los JSON.
+ */
 
 import territorio from "../data/territorio.json";
 import banderas from "../data/banderas.json";

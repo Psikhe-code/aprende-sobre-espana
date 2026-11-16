@@ -1,5 +1,7 @@
-// Reglas del simulacro de examen, como las de la prueba CCSE real. Van aparte, sin datos, para que
-// también puedan usarlas los tests de pantalla (que no cargan ccse.json). El simulacro, en ccse-simulacro.ts.
+/**
+ * @fileoverview Reglas del simulacro de examen, como las de la prueba CCSE real. Van aparte, sin datos, para que
+ * también puedan usarlas los tests de pantalla (que no cargan ccse.json). El simulacro, en ccse-simulacro.ts.
+ */
 
 /** Cuántas preguntas salen de cada tarea, como en la prueba real. */
 export const SIMULACRO_DISTRIBUTION: readonly { tarea: number; questionCount: number }[] = [

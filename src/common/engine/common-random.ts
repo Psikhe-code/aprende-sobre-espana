@@ -1,4 +1,6 @@
-// El azar del juego.
+/**
+ * @fileoverview El azar del juego.
+ */
 
 import type { Rng } from "./common-types";
 

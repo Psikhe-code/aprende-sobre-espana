@@ -1,4 +1,6 @@
-// Geografía: textos con los que se presentan sus opciones en el inicio y en Opciones.
+/**
+ * @fileoverview Geografía: textos con los que se presentan sus opciones en el inicio y en Opciones.
+ */
 
 import type { OptionCount } from "../engine/geografia-round-questions";
 import type { NameForm, Territorio } from "../engine/geografia-types";

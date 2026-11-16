@@ -1,4 +1,7 @@
-// Examen de nacionalidad: lo que da al juego para salir en el menú y tener sus pantallas (ver common/ui/common-section.ts).
+/**
+ * @fileoverview Examen de nacionalidad: lo que da al juego para salir en el menú y tener sus pantallas (ver
+ * common/ui/common-section.ts).
+ */
 
 import type { SectionDefinition } from "../../../common/ui/common-section";
 import { ccseMode } from "./ccse-mode";

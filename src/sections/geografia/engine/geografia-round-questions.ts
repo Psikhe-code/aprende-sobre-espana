@@ -1,4 +1,6 @@
-// Geografía: qué preguntas salen en cada partida.
+/**
+ * @fileoverview Geografía: qué preguntas salen en cada partida.
+ */
 
 import { ROUND_LENGTH, fitsFor, sizeFor, type RoundLength } from "../../../common/engine/common-round-settings";
 import { type Rng } from "../../../common/engine/common-types";
