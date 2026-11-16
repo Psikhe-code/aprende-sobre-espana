@@ -10,44 +10,44 @@ export interface Question {
    * Identificador fijo, p. ej. "capital-ccaa:12". No cambia aunque se corrija la redacción,
    * así que sirve para guardar estadísticas por pregunta.
    */
-  id: string;
-  text: string;
+  readonly id: string;
+  readonly text: string;
   /** Respuesta correcta. Si hay varias válidas, en cada partida se elige una. */
-  answer: string | string[];
+  readonly answer: string | readonly string[];
   /**
    * Qué lugar es la respuesta, independientemente de cómo se escriba (misma forma que `answer`).
    * Identifica el lugar aunque salga con otro nombre (Vitoria y Vitoria-Gasteiz), p. ej. para estadísticas por lugar.
    * Una partida sí puede repetir lugar en preguntas distintas: solo no repite pregunta.
    */
-  answerKey: string | string[];
+  readonly answerKey: string | readonly string[];
   /**
    * Pool del que salen las opciones incorrectas (una clave de los pools: ver poolsFor).
    * "num" genera números dentro de `range`. null = solo `trapOptions`.
    */
-  pool: string | null;
+  readonly pool: string | null;
   /** Incorrectas "trampa": las confusiones típicas. Si hay más de las que caben, se sortean. */
-  trapOptions: string[];
+  readonly trapOptions: readonly string[];
   /**
    * Trampa fija: siempre sale una de estas como incorrecta (sorteada si hay varias). Es la confusión
    * que la pregunta quiere enseñar: el nombre del propio territorio («Asturias» como capital de Asturias),
    * o algo que se le parece («Mallorca» como capital de las Islas Baleares).
    * Cuenta dentro del máximo de trampas, así que sigue quedando un hueco al azar.
    */
-  fixedTrapOptions?: string[];
+  readonly fixedTrapOptions?: readonly string[];
   /** Explicación que se muestra al responder. */
-  explanation: string;
+  readonly explanation: string;
   /** Información complementaria que se muestra al responder, después de la explicación: el significado de la bandera o la curiosidad. */
-  extraInfo?: ExtraInfoItem[];
+  readonly extraInfo?: readonly ExtraInfoItem[];
   /** Valores del pool que nunca deben salir como incorrectos (porque también serían válidos). */
-  exclude: string[];
+  readonly exclude: readonly string[];
   /** Solo para el pool "num": [mínimo, máximo]. */
-  range?: [number, number];
+  readonly range?: readonly [number, number];
   /** Bandera que se muestra con la pregunta: código de la comunidad ("12") o "p" y código de provincia ("p48"). */
-  banderaKey?: string;
+  readonly banderaKey?: string;
   /** Otras formas de los nombres de la pregunta, para mostrarlas al responder: "Girona · en castellano, Gerona". */
-  aliases: string[];
+  readonly aliases: readonly string[];
   /** Si la pregunta es sobre comunidades (y ciudades autónomas) o sobre provincias. Se elige en Opciones. */
-  territorio: Territorio;
+  readonly territorio: Territorio;
 }
 
 /**
@@ -62,13 +62,13 @@ export const TERRITORIOS: Territorio[] = ["comunidad", "provincia"];
  * Es también una PlayableQuestion: TypeScript comprueba que tiene todo lo que necesita la partida.
  */
 export interface RoundQuestion extends Question, PlayableQuestion {
-  answer: string;
-  answerKey: string;
-  category: string;
-  nameForm: NameForm;
-  options: string[];
+  readonly answer: string;
+  readonly answerKey: string;
+  readonly category: string;
+  readonly nameForm: NameForm;
+  readonly options: readonly string[];
   /** En Geografía siempre hay (aunque esté vacía); en la partida común es opcional. */
-  aliases: string[];
+  readonly aliases: readonly string[];
 }
 
 /**
