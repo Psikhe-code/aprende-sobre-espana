@@ -48,7 +48,7 @@ export function makeOptions(q: Question & { answer: string }, n: number, pools: 
 export function fixAnswer<T extends Question>(q: T, rng: Rng = Math.random): T & { answer: string; answerKey: string } {
   if (!Array.isArray(q.answer)) return q as T & { answer: string; answerKey: string };
   const i = pick(q.answer.map((_, j) => j), rng);
-  return { ...q, answer: q.answer[i], answerKey: (q.answerKey as string[])[i] };
+  return { ...q, answer: q.answer[i], answerKey: (q.answerKey as readonly string[])[i] };
 }
 
 /**
