@@ -13,6 +13,8 @@ import { renderEnd } from "./end-screen";
 import { createTimer } from "./timer";
 
 export interface RoundScreen {
+  /** Empieza una partida nueva de la sección actual (el botón «Jugar» de su inicio). */
+  start(): void;
   /** Prepara de antemano la próxima partida (en el inicio y al terminar una), ver `prepared`. */
   prepare(): void;
   /** Para el reloj al salir de la pantalla de la partida. */
@@ -204,8 +206,6 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     prepare(); // para «Jugar otra vez»
   }
 
-  $("go").addEventListener("click", () => start());
-  $("ccseGo").addEventListener("click", () => start());
   $("again").addEventListener("click", () => start());
   $("next").addEventListener("click", next);
   $("quit").addEventListener("click", () => { round = null; ctx.goHome(); });
@@ -232,5 +232,5 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     }
   });
 
-  return { prepare, onLeave: () => timer.stop(), startReview };
+  return { start: () => start(), prepare, onLeave: () => timer.stop(), startReview };
 }

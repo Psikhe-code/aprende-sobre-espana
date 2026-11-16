@@ -1,23 +1,17 @@
-// Arranca el juego y decide qué pantalla se ve. Cada pantalla tiene su archivo: las comunes, en common/ui,
-// y las de cada sección, en sections/<sección>/ui.
+// Arranca el juego y decide qué pantalla se ve. Conoce las secciones por su lista (src/sections/sections.ts):
+// las pantallas comunes están en common/ui, y las de cada sección, en sections/<sección>/ui.
 
 import { loadState, saveState } from "../engine/storage";
-import type { Section } from "../engine/types";
-import { SCREENS, type AppContext, type Screen } from "./context";
+import type { AppContext, Screen } from "./context";
 import { drawContours } from "./contours";
 import { renderCredits } from "./credits-screen";
-import { $ } from "./dom";
-import { renderCcseStart } from "../../sections/ccse/ui/start-screen";
-import { createCcseSettings } from "../../sections/ccse/ui/settings-screen";
-import { renderGeografiaStart } from "../../sections/geografia/ui/start-screen";
-import { ccseMode } from "../../sections/ccse/ui/mode";
-import { geografiaMode } from "../../sections/geografia/ui/mode";
-import { createGeografiaSettings } from "../../sections/geografia/ui/settings-screen";
+import { $, el } from "./dom";
 import { createRoundScreen } from "./round-screen";
-import { createSimulacroScreen } from "../../sections/ccse/ui/simulacro-screen";
+import type { SectionDefinition } from "./section";
+import { SECTION_LIST } from "../../sections/sections";
 
 export interface App {
-  /** true en las pantallas donde se puede recargar sin perder nada (todas menos la partida, el simulacro y sus resultados). */
+  /** true en las pantallas donde se puede recargar sin perder nada (todas menos las de juego, ver isIdleScreen). */
   isIdle(): boolean;
   /** Se llama cada vez que el jugador vuelve a una pantalla tranquila. */
   onIdle(callback: () => void): void;
@@ -25,11 +19,18 @@ export interface App {
   inMenu(): boolean;
 }
 
-/** Pantallas de juego: sin la cabecera grande. */
-const PLAY_SCREENS: readonly Screen[] = ["play", "end", "sim", "simEnd"];
+/** Pantallas comunes a todas las secciones: el menú, la partida, su resultado y Créditos. */
+const COMMON_SCREENS: readonly Screen[] = ["sections", "play", "end", "credits"];
+/** Todas las pantallas: las comunes y las de cada sección. */
+const SCREENS: readonly Screen[] = [
+  ...COMMON_SCREENS,
+  ...SECTION_LIST.flatMap((s) => [s.screens.start, s.screens.settings, ...(s.screens.play ?? [])])
+];
+/** Pantallas de juego: sin la cabecera grande. La partida y su resultado, y las de juego de cada sección (el simulacro). */
+const PLAY_SCREENS: readonly Screen[] = ["play", "end", ...SECTION_LIST.flatMap((s) => s.screens.play ?? [])];
 const isIdleScreen = (s: Screen) => !PLAY_SCREENS.includes(s);
 /** Pantallas con la versión al pie: el menú de secciones y el inicio de cada sección. */
-const VERSION_SCREENS: readonly Screen[] = ["sections", "start", "ccseStart"];
+const VERSION_SCREENS: readonly Screen[] = ["sections", ...SECTION_LIST.map((s) => s.screens.start)];
 
 /**
  * Marca que la página se va a recargar para aplicar una versión nueva (main.ts). Así, al volver a abrirse,
@@ -37,27 +38,28 @@ const VERSION_SCREENS: readonly Screen[] = ["sections", "start", "ccseStart"];
  */
 export const UPDATE_RELOAD_KEY = "aprende-sobre-espana:recarga-por-actualizacion";
 
-/** Texto de la cabecera grande: en la pantalla de secciones y en cada sección. */
-const HEADERS: Record<Section | "sections", { eyebrow: string; lede: string }> = {
-  sections: {
-    eyebrow: "Atlas de bolsillo",
-    lede: "Geografía de España y preparación del examen de nacionalidad. Elige por dónde empezar; luego puedes cambiar de sección cuando quieras."
-  },
-  geografia: {
-    eyebrow: "Atlas de bolsillo · Geografía de España",
-    lede: "Capitales, banderas, provincias y municipios de las comunidades autónomas. Elige en Opciones qué categorías y territorios entran, cuántas preguntas tiene cada partida y cuánto tiempo hay para responder."
-  },
-  ccse: {
-    eyebrow: "Examen de nacionalidad · Práctica",
-    lede: "La Constitución, las instituciones, los derechos, la cultura y la sociedad españolas, con las preguntas de la prueba CCSE del Instituto Cervantes."
-  }
+/** Texto de la cabecera grande en el menú de secciones (en cada sección, el de su definición). */
+const MENU_HEADER = {
+  eyebrow: "Atlas de bolsillo",
+  lede: "Geografía de España y preparación del examen de nacionalidad. Elige por dónde empezar; luego puedes cambiar de sección cuando quieras."
 };
+
+/** Tarjeta de una sección en el menú: `sec-` y su id («sec-geografia»). */
+function sectionCard(s: SectionDefinition): HTMLButtonElement {
+  const card = el("button", "cat section-card");
+  card.id = "sec-" + s.id;
+  const text = el("span", "cat-text");
+  text.append(el("span", "cat-name", s.name), el("span", "cat-desc", s.description));
+  card.append(text);
+  return card;
+}
 
 export function startApp(): App {
   const state = loadState();
-  let screen: Screen = "start";
+  let screen: Screen = "sections";
   const idleListeners: (() => void)[] = [];
-  const section = (): Section => state.seccion ?? "geografia";
+  /** La sección actual: la elegida la última vez o, si no hay ninguna, la primera de la lista. */
+  const section = (): SectionDefinition => SECTION_LIST.find((s) => s.id === state.seccion) ?? SECTION_LIST[0];
 
   const ctx: AppContext = {
     state,
@@ -65,7 +67,7 @@ export function startApp(): App {
     screen: () => screen,
     show(id) {
       if (id !== "play") roundScreen.onLeave();
-      if (id !== "sim") simulacroScreen.onLeave();
+      for (const [s, extra] of extraScreens) if (!(s.screens.play ?? []).includes(id)) extra.onLeave();
       screen = id;
       SCREENS.forEach((s) => { $(s).hidden = s !== id; });
       // Si el foco estaba en la pantalla que se acaba de esconder (en el botón pulsado), pasa a la nueva:
@@ -74,39 +76,45 @@ export function startApp(): App {
       const active = document.activeElement;
       if (active instanceof HTMLElement && active.closest<HTMLElement>(".screen")?.hidden) $(id).focus({ preventScroll: true });
       $("version").hidden = !VERSION_SCREENS.includes(id);
-      // En la partida, el simulacro y sus resultados, la cabecera pequeña: la pregunta empieza arriba.
+      // En las pantallas de juego, la cabecera pequeña: la pregunta empieza arriba.
       document.querySelector(".app")!.classList.toggle("compact", !isIdleScreen(id));
-      const header = HEADERS[id === "sections" ? "sections" : section()];
+      const header = id === "sections" ? MENU_HEADER : section().header;
       $("eyebrow").textContent = header.eyebrow;
       $("lede").textContent = header.lede;
       window.scrollTo({ top: 0 });
       if (isIdleScreen(id)) idleListeners.forEach((f) => f());
     },
     goHome() {
-      if (section() === "ccse") renderCcseStart(state);
-      else renderGeografiaStart(state);
+      const s = section();
+      s.renderStart(state);
       roundScreen.prepare();
-      ctx.show(section() === "ccse" ? "ccseStart" : "start");
+      ctx.show(s.screens.start);
     },
     openOptions() {
-      if (section() === "ccse") { ccseSettings.render(); ctx.show("ccseSettings"); }
-      else { settings.render(); ctx.show("settings"); }
+      const s = section();
+      settings.get(s)!.render();
+      ctx.show(s.screens.settings);
     },
-    mode: () => (section() === "ccse" ? ccseMode(state) : geografiaMode(state))
+    mode: () => section().mode(state)
   };
 
-  const settings = createGeografiaSettings(ctx);
-  const ccseSettings = createCcseSettings(ctx);
   const roundScreen = createRoundScreen(ctx);
-  const simulacroScreen = createSimulacroScreen(ctx, roundScreen.startReview);
+  // Las Opciones y las pantallas propias de cada sección se preparan una vez, al arrancar.
+  const settings = new Map(SECTION_LIST.map((s) => [s, s.createSettings(ctx)]));
+  const extraScreens = SECTION_LIST.flatMap((s) => (s.createExtraScreens ? [[s, s.createExtraScreens(ctx, roundScreen)] as const] : []));
 
-  const chooseSection = (s: Section) => () => { state.seccion = s; ctx.save(); ctx.goHome(); };
-  $("sec-geografia").addEventListener("click", chooseSection("geografia"));
-  $("sec-ccse").addEventListener("click", chooseSection("ccse"));
-  for (const id of ["toSections", "ccseToSections"]) $(id).addEventListener("click", () => ctx.show("sections"));
-
-  for (const id of ["openOptions", "ccseOpenOptions"]) $(id).addEventListener("click", ctx.openOptions);
-  for (const id of ["openCredits", "ccseOpenCredits"]) $(id).addEventListener("click", () => { renderCredits(section()); ctx.show("credits"); });
+  // El menú de secciones, con una tarjeta por sección, y los botones del inicio de cada una.
+  $("sectionList").replaceChildren(...SECTION_LIST.map((s) => {
+    const card = sectionCard(s);
+    card.addEventListener("click", () => { state.seccion = s.id; ctx.save(); ctx.goHome(); });
+    return card;
+  }));
+  for (const s of SECTION_LIST) {
+    $(s.buttons.back).addEventListener("click", () => ctx.show("sections"));
+    $(s.buttons.play).addEventListener("click", roundScreen.start);
+    $(s.buttons.settings).addEventListener("click", ctx.openOptions);
+    $(s.buttons.credits).addEventListener("click", () => { renderCredits(s); ctx.show("credits"); });
+  }
   $("closeCredits").addEventListener("click", ctx.goHome);
   $("menu").addEventListener("click", ctx.goHome);
 

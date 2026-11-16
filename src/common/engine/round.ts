@@ -1,6 +1,6 @@
 // La partida en marcha, sin nada de pantalla.
 
-import type { PlayableQuestion, Section } from "./types";
+import type { PlayableQuestion } from "./types";
 import { ROUND_LENGTH } from "./round-settings";
 
 
@@ -162,16 +162,9 @@ export function applyRecord(best: Record<string, number>, key: string, result: R
   };
 }
 
-/**
- * Aprobado de la prueba real del examen de nacionalidad: 15 aciertos de 25, el 60 %. Las partidas del examen se
- * valoran con él como referencia (el simulacro usa el número exacto de aciertos, en simulacro.ts).
- */
-export const CCSE_APTO_RATIO = 0.6;
+/** Valoración de una partida con alguna respuesta: cada sección tiene las suyas («Gran nivel», «Toca repasar»…). */
+export type Rating = (r: Pick<RoundResult, "hits" | "total">) => string;
 
-/** Valoración del resultado de una partida: en el examen, con el aprobado como referencia; en geografía, las del atlas. */
-export function rating(r: Pick<RoundResult, "hits" | "total">, section: Section): string {
-  if (!r.total) return "Sin respuestas";
-  const pct = r.hits / r.total;
-  if (section === "ccse") return pct === 1 ? "Pleno" : pct >= 0.8 ? "Gran nivel" : pct >= CCSE_APTO_RATIO ? "Por encima del aprobado" : "Toca repasar";
-  return pct === 1 ? "Mapa completo" : pct >= 0.8 ? "Gran nivel" : pct >= 0.5 ? "Buen rumbo" : "Toca repasar el atlas";
-}
+/** Valoración del resultado: la de la sección o, si no se respondió nada (sin límite, terminada enseguida), «Sin respuestas». */
+export const ratingText = (r: Pick<RoundResult, "hits" | "total">, sectionRating: Rating): string =>
+  r.total ? sectionRating(r) : "Sin respuestas";

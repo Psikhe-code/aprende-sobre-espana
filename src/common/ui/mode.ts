@@ -4,7 +4,7 @@
 
 import type { TimeLimit } from "../engine/round-settings";
 import type { PlayableQuestion, Section } from "../engine/types";
-
+import type { Rating } from "../engine/round";
 
 export interface SectionMode {
   section: Section;
@@ -13,9 +13,9 @@ export interface SectionMode {
   /** Preguntas de una partida nueva. */
   buildRound(): PlayableQuestion[];
   /** Sin límite: otra vuelta a la baraja, sin empezar por la última que salió. */
-  reshuffleRound(ultimaId: string): PlayableQuestion[];
+  reshuffleRound(lastId: string): PlayableQuestion[];
   /** Repaso de fallos: las mismas preguntas, con las opciones preparadas de nuevo. */
-  buildReviewRound(fallos: PlayableQuestion[]): PlayableQuestion[];
+  buildReviewRound(misses: PlayableQuestion[]): PlayableQuestion[];
   /** Cuántas preguntas tiene una partida completa (para saber si cuenta para el récord). */
   roundSize(): number;
   isUnlimited(): boolean;
@@ -23,4 +23,6 @@ export interface SectionMode {
   /** Lo que decide qué preguntas salen, como texto: si cambia, la partida preparada ya no vale. */
   selectionKey(): string;
   recordKey(): string;
+  /** Valoración del resultado de una partida con alguna respuesta. */
+  rating: Rating;
 }

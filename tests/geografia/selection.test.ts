@@ -7,6 +7,7 @@ import { loadState, type SavedState } from "../../src/common/engine/storage";
 import { NAME_FORMS, TERRITORIOS } from "../../src/sections/geografia/engine/types";
 import { geografiaMode } from "../../src/sections/geografia/ui/mode";
 import { questionCount } from "../../src/sections/geografia/engine/round-questions";
+import { geografiaRating } from "../../src/sections/geografia/engine/rating";
 
 // Lo que se deduce de las opciones marcadas en Geografía (la selección): si se puede jugar, con qué ajustes
 // y con qué clave se guarda el récord. Las reglas, como están en CLAUDE.md.
@@ -66,6 +67,14 @@ describe("selección de geografía", () => {
     }
     const others = geografiaMode({ ...base(), selected: ["capitales", "divisiones"], longitud: "sinLimite" }).buildRound();
     expect(others.filter((q) => q.image).map((q) => q.id)).toEqual([]);
+  });
+
+  it("valoración del resultado: las del atlas", () => {
+    const v = (hits: number) => geografiaRating({ hits, total: 10 });
+    expect(v(10)).toBe("Mapa completo");
+    expect(v(8)).toBe("Gran nivel");
+    expect(v(5)).toBe("Buen rumbo");
+    expect(v(4)).toBe("Toca repasar el atlas");
   });
 
   it("la partida preparada deja de valer si cambia algo que decide las preguntas, pero no si cambia el tiempo", () => {

@@ -7,6 +7,7 @@ import { buildRound, buildReviewRound, reshuffleRound, roundSize } from "../engi
 import { roundSettings, recordKey, canPlay, selectionKey } from "../engine/selection";
 import type { RoundQuestion } from "../engine/types";
 import { banderaQuestionImage } from "./banderas";
+import { geografiaRating } from "../engine/rating";
 
 /** Si una pregunta es de geografía (RoundQuestion): solo esas tienen categoría. */
 const isGeografiaQuestion = (q: PlayableQuestion): q is RoundQuestion => "category" in q;
@@ -29,6 +30,7 @@ export function geografiaMode(state: SavedState): SectionMode {
     isUnlimited: () => state.longitud === "sinLimite",
     timeLimit: () => state.tiempo,
     selectionKey: () => "geografia:" + selectionKey(state),
-    recordKey: () => recordKey(state)
+    recordKey: () => recordKey(state),
+    rating: geografiaRating
   };
 }
