@@ -82,21 +82,21 @@ describe("se acaba el tiempo", () => {
 });
 
 describe("partidas sin límite", () => {
-  const deck = () => [rq("a", "A"), rq("b", "B"), rq("c", "C")];
+  const cycleQuestions = () => [rq("a", "A"), rq("b", "B"), rq("c", "C")];
 
-  it("al acabarse la baraja se para y, para seguir, se añade otra vuelta", () => {
-    const g = new Round(deck(), { unlimited: true });
-    expect(g.deckSize).toBe(3);
+  it("al completar una vuelta se para y, para seguir, se añade otra", () => {
+    const g = new Round(cycleQuestions(), { unlimited: true });
+    expect(g.questionsPerCycle).toBe(3);
     for (const givenAnswer of ["A", "X", "C"]) {
-      expect(g.endOfDeck).toBe(false);
+      expect(g.endOfCycle).toBe(false);
       g.answer(givenAnswer);
       if (givenAnswer !== "C") g.next();
     }
-    expect(g.endOfDeck).toBe(true);
+    expect(g.endOfCycle).toBe(true);
     expect(g.finished).toBe(false);
     expect(g.next()).toBe(false);
-    g.append(deck());
-    expect(g.endOfDeck).toBe(false);
+    g.append(cycleQuestions());
+    expect(g.endOfCycle).toBe(false);
     expect(g.next()).toBe(true);
     expect(g.index).toBe(3);
     // La racha sigue de una vuelta a otra.
@@ -105,23 +105,23 @@ describe("partidas sin límite", () => {
   });
 
   it("termina cuando el jugador quiere, y la pregunta sin responder no cuenta", () => {
-    const g = new Round(deck(), { unlimited: true });
+    const g = new Round(cycleQuestions(), { unlimited: true });
     g.answer("A"); g.next();
     g.answer("B"); g.next();
     g.stop();
     expect(g.finished).toBe(true);
     expect(() => g.answer("C")).toThrow();
-    expect(() => g.append(deck())).toThrow();
+    expect(() => g.append(cycleQuestions())).toThrow();
     const r = g.result();
     expect(r).toMatchObject({ hits: 2, total: 2, bestStreak: 2, unlimited: true, counts: true });
   });
 
   it("solo cuenta para el récord si se ha respondido alguna pregunta, y el récord es la mejor racha", () => {
-    const empty = new Round(deck(), { unlimited: true });
+    const empty = new Round(cycleQuestions(), { unlimited: true });
     empty.stop();
     expect(empty.result().counts).toBe(false);
 
-    const g = new Round(deck(), { unlimited: true });
+    const g = new Round(cycleQuestions(), { unlimited: true });
     g.answer("X"); g.next();
     g.answer("B"); g.next();
     g.answer("C");
@@ -134,10 +134,10 @@ describe("partidas sin límite", () => {
   });
 
   it("una partida normal no se puede alargar ni terminar a mitad", () => {
-    const g = new Round(deck());
-    expect(() => g.append(deck())).toThrow();
+    const g = new Round(cycleQuestions());
+    expect(() => g.append(cycleQuestions())).toThrow();
     expect(() => g.stop()).toThrow();
-    expect(g.endOfDeck).toBe(false);
+    expect(g.endOfCycle).toBe(false);
   });
 });
 

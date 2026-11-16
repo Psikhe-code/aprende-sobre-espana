@@ -23,7 +23,7 @@ export const DEFAULT_TIME_LIMIT: TimeLimit = 60;
 
 /**
  * Cuántas preguntas tendrá una partida de este número de preguntas, si hay `available` preguntas distintas:
- * las elegidas, o menos si no hay tantas. Sin límite: las que hay (una vuelta a la baraja).
+ * las elegidas, o menos si no hay tantas. Sin límite: las que hay (una vuelta).
  */
 export const sizeFor = (length: RoundLength, available: number) => (length === "sinLimite" ? available : Math.min(length, available));
 

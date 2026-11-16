@@ -152,7 +152,7 @@ export function buildRound({ tareas, roundLength: length = 10, rng = Math.random
 }
 
 /**
- * Otra vuelta a la baraja en una partida sin límite: todas las preguntas de nuevo, barajadas.
+ * Otra vuelta en una partida sin límite: todas las preguntas de nuevo, barajadas.
  * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
  */
 export function reshuffleRound(settings: CcseRoundSettings, lastId?: string): CcseRoundQuestion[] {

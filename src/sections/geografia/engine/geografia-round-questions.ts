@@ -22,7 +22,7 @@ export const DEFAULT_TERRITORIOS: Territorio[] = [...TERRITORIOS];
 
 export interface RoundSettings {
   categories: string[];
-  /** Preguntas de la partida. Sin límite: una vuelta entera a la baraja (todas las de la selección). */
+  /** Preguntas de la partida. Sin límite: una vuelta entera (todas las de la selección). */
   roundLength?: RoundLength;
   /** Opciones por pregunta (la dificultad). */
   optionCount?: OptionCount;
@@ -47,7 +47,7 @@ export function questionCount(categories: string[], territorios: Territorio[] = 
 /**
  * Cuántas preguntas tendrá una partida con esta selección: las elegidas, o menos si no hay tantas
  * (por ejemplo, solo capitales de provincia). Cero si la selección no tiene preguntas.
- * Sin límite: las que hay, que es lo que dura una vuelta a la baraja.
+ * Sin límite: las que hay, que es lo que dura una vuelta.
  */
 export function roundSize(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, length: RoundLength = ROUND_LENGTH): number {
   return sizeFor(length, questionCount(categories, territorios));
@@ -110,7 +110,7 @@ export function buildRound(settings: RoundSettings): RoundQuestion[] {
 }
 
 /**
- * Otra vuelta a la baraja en una partida sin límite: todas las preguntas de nuevo, barajadas y con opciones nuevas.
+ * Otra vuelta en una partida sin límite: todas las preguntas de nuevo, barajadas y con opciones nuevas.
  * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
  */
 export function reshuffleRound(settings: RoundSettings, lastId?: string): RoundQuestion[] {

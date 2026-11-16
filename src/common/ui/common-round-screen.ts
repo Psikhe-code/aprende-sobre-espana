@@ -1,5 +1,5 @@
 /**
- * @fileoverview Pantalla de la partida: pregunta, opciones, reloj, nota al responder, fin de la baraja,
+ * @fileoverview Pantalla de la partida: pregunta, opciones, reloj, nota al responder, fin de una vuelta,
  * y los botones de la pantalla final que empiezan otra partida (jugar otra vez, repasar fallos).
  * Las reglas (aciertos, racha, final) viven en common/engine/common-round.ts; aquí solo se dibujan.
  * Es la misma para las dos secciones: lo que cambia (de dónde salen las preguntas, el tiempo, el récord)
@@ -13,6 +13,7 @@ import { $, announce, el, isInteractive, pad, renderSources, numberKey } from ".
 import { imageElement, preloadImage } from "./common-images";
 import { renderEnd } from "./common-end-screen";
 import { createTimer } from "./common-timer";
+import { cycleEndText } from "./common-labels";
 
 export interface RoundScreen {
   /** Empieza una partida nueva de la sección actual (el botón «Jugar» de su inicio). */
@@ -70,7 +71,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     const q = g.current;
     $("sheet").replaceChildren(`Hoja ${pad(g.index + 1)} `, ...(g.unlimited ? [] : [el("span", "", `/ ${pad(g.total)}`)]));
     $("card").hidden = false;
-    $("deckEnd").hidden = true;
+    $("cycleEnd").hidden = true;
     $("stop").hidden = !g.unlimited;
     $("hits").textContent = String(g.hits);
     $("streak").textContent = String(g.streak);
@@ -168,27 +169,25 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
   function next() {
     if (!round || !round.answered) return;
     if (round.next()) renderQuestion();
-    else if (round.endOfDeck) showDeckEnd();
+    else if (round.endOfCycle) showCycleEnd();
     else finish();
   }
 
-  /** Sin límite: se han respondido todas las preguntas. Se sigue con otra vuelta o se termina. */
-  function showDeckEnd() {
+  /** Sin límite: se ha completado una vuelta (han salido todas las preguntas). Se sigue con otra o se termina. */
+  function showCycleEnd() {
     if (!round) return;
     const r = round.result();
     $("card").hidden = true;
-    $("deckEnd").hidden = false;
+    $("cycleEnd").hidden = false;
     $("stop").hidden = true; // la tarjeta ya tiene su «Terminar»
     timer.hide();
-    $("deckEndText").textContent =
-      `Ya han salido las ${round.deckSize} preguntas de esta selección, y llevas ${r.hits} ${r.hits === 1 ? "acierto" : "aciertos"} de ${r.total}. ` +
-      "Puedes barajarlas y seguir con la misma racha, o terminar y repasar tus fallos.";
-    announce("Has respondido todas las preguntas.");
-    $("reshuffle").focus({ preventScroll: true });
+    $("cycleEndText").textContent = cycleEndText(round.questionsPerCycle, r.hits, r.total, round.streak);
+    announce("Has completado una vuelta.");
+    $("keepPlaying").focus({ preventScroll: true });
   }
 
   function keepPlaying() {
-    if (!round?.endOfDeck) return;
+    if (!round?.endOfCycle) return;
     round.append(ctx.mode().reshuffleRound(round.current.id));
     round.next();
     renderQuestion();
@@ -215,8 +214,8 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
   $("next").addEventListener("click", next);
   $("quit").addEventListener("click", () => { round = null; ctx.goHome(); });
   $("stop").addEventListener("click", stop);
-  $("deckStop").addEventListener("click", stop);
-  $("reshuffle").addEventListener("click", keepPlaying);
+  $("cycleStop").addEventListener("click", stop);
+  $("keepPlaying").addEventListener("click", keepPlaying);
   function startReview(misses: PlayableQuestion[]) {
     if (misses.length) start(new Round(ctx.mode().buildReviewRound(misses), { review: true }));
   }

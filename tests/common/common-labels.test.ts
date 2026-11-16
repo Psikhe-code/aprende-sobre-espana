@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { roundLengthWarning, roundText } from "../../src/common/ui/common-widgets";
-import { clockTime, timeUsed } from "../../src/common/ui/common-labels";
+import { clockTime, cycleEndText, timeUsed } from "../../src/common/ui/common-labels";
 
 // Textos que genera el código: se comprueban palabra por palabra.
 
@@ -33,3 +33,18 @@ describe("inicio y Opciones de cada sección", () => {
   });
 });
 
+describe("fin de una vuelta (partida sin límite)", () => {
+  it("dice las preguntas de la vuelta, cómo va la partida y qué pasa si se sigue", () => {
+    expect(cycleEndText(43, 62, 86, 5)).toBe(
+      "Has respondido las 43 preguntas de esta selección. Llevas 62 aciertos de 86 y una racha de 5. " +
+        "Si sigues, vuelven a salir en orden aleatorio, sin perder tus aciertos ni tu racha."
+    );
+  });
+
+  it("un solo acierto, en singular; y sin racha, no la nombra", () => {
+    expect(cycleEndText(8, 1, 8, 0)).toBe(
+      "Has respondido las 8 preguntas de esta selección. Llevas 1 acierto de 8. " +
+        "Si sigues, vuelven a salir en orden aleatorio, sin perder tus aciertos ni tu racha."
+    );
+  });
+});
