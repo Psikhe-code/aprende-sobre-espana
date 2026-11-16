@@ -34,9 +34,20 @@ export interface PlayableQuestion {
   meaning?: string;
   /** Otras formas de los nombres («Girona · en castellano, Gerona»). */
   aliases: string[];
-  flag?: string;
+  /** Imagen que acompaña a la pregunta (en Geografía, la bandera). La pone la sección; la partida solo la dibuja. */
+  image?: QuestionImage;
   /** Dónde se ha comprobado la explicación (en el examen de nacionalidad). */
   sources?: Fuente[];
+}
+
+/** Imagen de una pregunta. */
+export interface QuestionImage {
+  /** Dirección del archivo. */
+  src: string;
+  /** Texto alternativo (lo que lee el lector de pantalla) mientras se responde: no puede delatar la respuesta. */
+  alt: string;
+  /** Texto alternativo cuando ya se sabe la respuesta, en la lista de fallos: «Bandera: Cantabria». */
+  answerAlt: string;
 }
 
 /** Generador de números aleatorios en [0, 1). Se puede sustituir en los tests. */

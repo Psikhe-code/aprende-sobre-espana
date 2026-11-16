@@ -6,7 +6,7 @@ import { AUTONOMIAS, provincia } from "../../sections/geografia/engine/territori
 import { type Section } from "../engine/types";
 import { NAME_FORMS } from "../../sections/geografia/engine/types";
 import { $, el, externalLink } from "./dom";
-import { flagImage } from "../../sections/geografia/ui/banderas";
+import { banderaImage } from "../../sections/geografia/ui/banderas";
 
 /** Nombre de cada sección en el nombre de la pantalla, para el lector de pantalla. */
 const SCREEN_NAMES: Record<Section, string> = { geografia: "Créditos de Geografía", ccse: "Créditos del Examen de nacionalidad" };
@@ -30,7 +30,7 @@ function renderBanderaCredits(): void {
     lic.append(f.licenciaUrl ? externalLink(f.licenciaUrl, f.licencia) : f.licencia, " · ", externalLink(f.url, "ver en Wikimedia Commons"));
     text.append(el("b", "", name), lic);
     const thumb = el("span", "thumb");
-    thumb.append(flagImage(key, "")); // el nombre está escrito al lado
+    thumb.append(banderaImage(key, "")); // el nombre está escrito al lado
     row.append(thumb, text);
     return row;
   };

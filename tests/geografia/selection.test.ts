@@ -54,6 +54,20 @@ describe("selección de geografía", () => {
     expect(tested).toEqual([...ROUND_LENGTHS]);
   });
 
+  it("lo que da a la partida común: cada pregunta de bandera lleva su imagen, sin delatar la respuesta; las demás, ninguna", () => {
+    const flags = { ...base(), selected: ["banderas"], longitud: "sinLimite" as const };
+    const mode = geografiaMode(flags);
+    const round = mode.buildRound();
+    expect(round).toHaveLength(questionCount(["banderas"], flags.territorios));
+    for (const q of [...round, ...mode.buildReviewRound(round.slice(0, 3)), ...mode.reshuffleRound(round[0].id)]) {
+      expect(q.image?.src, q.id).toMatch(/\.svg|^data:image\/svg/);
+      expect(q.image?.alt, q.id).toMatch(/^Bandera de una (provincia|comunidad o ciudad autónoma)$/);
+      expect(q.image?.answerAlt, q.id).toBe(`Bandera: ${q.answer}`);
+    }
+    const others = geografiaMode({ ...base(), selected: ["capitales", "divisiones"], longitud: "sinLimite" }).buildRound();
+    expect(others.filter((q) => q.image).map((q) => q.id)).toEqual([]);
+  });
+
   it("la partida preparada deja de valer si cambia algo que decide las preguntas, pero no si cambia el tiempo", () => {
     const s = base();
     const changes: Partial<SavedState>[] = [

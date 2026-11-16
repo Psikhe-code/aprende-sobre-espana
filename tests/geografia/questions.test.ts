@@ -98,7 +98,7 @@ for (const nameForm of NAME_FORMS) {
         const q = find(nameForm, `bandera-ccaa:${c.id}`);
         expect(q.why, c.id).toBe(prepareText(AUTONOMIA_BANDERAS[c.id].descripcion, nameForm));
         expect(q.meaning, c.id).toBe(prepareText(AUTONOMIA_BANDERAS[c.id].significado, nameForm));
-        expect(q.flag, c.id).toBe(c.id);
+        expect(q.banderaKey, c.id).toBe(c.id);
       }
       for (const [id, b] of Object.entries(PROVINCIA_BANDERAS)) {
         const q = find(nameForm, `bandera-provincia:${id}`);
@@ -107,7 +107,7 @@ for (const nameForm of NAME_FORMS) {
         expect(q.trapOptions, id).toEqual(b.trampas.map(provinciaName));
         expect(q.why, id).toBe(prepareText(b.descripcion, nameForm));
         expect(q.meaning, id).toBe(prepareText(b.significado, nameForm));
-        expect(q.flag, id).toBe("p" + id);
+        expect(q.banderaKey, id).toBe("p" + id);
         expect(q.pool, id).toBe("provinciaWithBandera");
       }
       expect(pools.provinciaWithBandera).toHaveLength(Object.keys(PROVINCIA_BANDERAS).length);

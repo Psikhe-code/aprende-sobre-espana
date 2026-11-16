@@ -248,14 +248,14 @@ h1 {
   margin: -10px 0 0;
   text-wrap: balance;
 }
-/* Banderas: cada una con su proporción real (no todas son 3:2), al 90 % del ancho de los botones y como mucho
-   400 px de ancho, para que en un portátil quepan la bandera y las opciones sin bajar.
+/* Imagen de la pregunta (en Geografía, las banderas): cada una con su proporción real (no todas las banderas son 3:2),
+   al 90 % del ancho de los botones y como mucho 400 px de ancho, para que en un portátil quepan la imagen y las opciones sin bajar.
    El tamaño depende del ancho de la tarjeta, no del alto de la ventana: así, con el zoom del navegador,
    crece igual que el texto y los botones. */
-.flag { display: flex; justify-content: center; margin-top: -4px; }
-.flag img { display: block; width: min(90%, 400px); height: auto; border: 1px solid var(--line); border-radius: 3px; }
-.miss-flag { display: flex; margin-block: 4px 2px; }
-.miss-flag img { display: block; height: 36px; width: auto; border: 1px solid var(--line); border-radius: 2px; }
+.question-image { display: flex; justify-content: center; margin-top: -4px; }
+.question-image img { display: block; width: min(90%, 400px); height: auto; border: 1px solid var(--line); border-radius: 3px; }
+.miss-image { display: flex; margin-block: 4px 2px; }
+.miss-image img { display: block; height: 36px; width: auto; border: 1px solid var(--line); border-radius: 2px; }
 .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 520px) {
   .opts { grid-template-columns: 1fr; }
@@ -264,12 +264,12 @@ h1 {
   .opts.many .opt { padding: 10px; gap: 8px; font-size: 15px; }
   .opts.many .key { width: 22px; height: 22px; }
 }
-/* Móviles bajos (o con las barras del navegador a la vista): en las preguntas de bandera, también las 4 opciones
-   en dos columnas compactas, para que quepan bajo la bandera sin bajar. */
+/* Móviles bajos (o con las barras del navegador a la vista): en las preguntas con imagen, también las 4 opciones
+   en dos columnas compactas, para que quepan bajo la imagen sin bajar. */
 @media (max-width: 520px) and (max-height: 760px) {
-  .opts.with-bandera { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .opts.with-bandera .opt { padding: 10px; gap: 8px; font-size: 15px; }
-  .opts.with-bandera .key { width: 22px; height: 22px; }
+  .opts.with-image { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .opts.with-image .opt { padding: 10px; gap: 8px; font-size: 15px; }
+  .opts.with-image .key { width: 22px; height: 22px; }
 }
 .opt {
   display: flex;

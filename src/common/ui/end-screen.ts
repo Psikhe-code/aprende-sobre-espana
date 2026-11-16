@@ -4,7 +4,7 @@ import { applyRecord, rating, type Round } from "../engine/round";
 import type { AppContext } from "./context";
 import { answerLine } from "./widgets";
 import { $, el } from "./dom";
-import { flagImage } from "../../sections/geografia/ui/banderas";
+import { imageElement } from "./images";
 
 /** Apunta el récord, si lo hay, y dibuja el resultado de la partida. */
 export function renderEnd(ctx: AppContext, round: Round): void {
@@ -30,9 +30,9 @@ export function renderEnd(ctx: AppContext, round: Round): void {
     for (const m of r.misses) {
       const row = el("div", "miss");
       row.append(el("span", "miss-q", m.question.text));
-      if (m.question.flag) {
-        const f = el("div", "miss-flag");
-        f.append(flagImage(m.question.flag, `Bandera: ${m.question.answer}`)); // aquí ya se sabe de quién es
+      if (m.question.image) {
+        const f = el("div", "miss-image");
+        f.append(imageElement(m.question.image.src, m.question.image.answerAlt)); // aquí ya se sabe la respuesta
         row.append(f);
       }
       row.append(answerLine(m.question.answer, m.given, "se acabó el tiempo"));

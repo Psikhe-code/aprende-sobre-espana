@@ -8,13 +8,13 @@ import { $, announce } from "./dom";
 export interface Timer {
   /**
    * Arranca el reloj de la pregunta que se acaba de dibujar (o lo esconde, si es sin tiempo).
-   * Empieza cuando la pregunta se ve: si tiene bandera, cuando está dibujada, para que una imagen
-   * lenta no quite tiempo. Si la bandera falla o tarda más de 3 s, empieza igual.
+   * Empieza cuando la pregunta se ve: si tiene imagen, cuando está dibujada, para que una imagen
+   * lenta no quite tiempo. Si la imagen falla o tarda más de 3 s, empieza igual.
    */
   start(timeLimit: TimeLimit): void;
   /**
    * Lo para donde esté (al responder, salir o terminar) y lo da por acabado: ya no vuelve a arrancar,
-   * ni al volver a la pestaña ni cuando termina de dibujarse la bandera. Al responder se queda a la vista
+   * ni al volver a la pestaña ni cuando termina de dibujarse la imagen. Al responder se queda a la vista
    * tal como estaba (`congelar`), para ver cuánto tiempo sobraba.
    */
   stop(freeze?: boolean): void;
@@ -24,7 +24,7 @@ export interface Timer {
 /** @param onExpire se llama cuando el tiempo llega a cero sin que se haya parado antes */
 export function createTimer(onExpire: () => void): Timer {
   let countdown: Countdown | null = null;
-  /** Si la pregunta ya se ve entera (con su bandera dibujada) y el reloj puede correr. */
+  /** Si la pregunta ya se ve entera (con su imagen dibujada) y el reloj puede correr. */
   let ready = false;
   let frame = 0;
   let finalWarningGiven = false;
@@ -52,7 +52,7 @@ export function createTimer(onExpire: () => void): Timer {
       if (!document.hidden) c.start();
       keepTicking();
     };
-    const img = $("flag").querySelector("img");
+    const img = $("questionImage").querySelector("img");
     if (img) {
       img.decode().then(go, go);
       setTimeout(go, 3000);
