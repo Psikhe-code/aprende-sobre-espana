@@ -38,3 +38,15 @@ export const TIEMPO_LABELS: Record<TimeLimit, { name: string; desc: string; info
   30: { name: "30 segundos", desc: "Hay que ir con algo de prisa.", info: "30 segundos por pregunta" },
   10: { name: "10 segundos", desc: "Nivel difícil: casi solo da para leer.", info: "10 segundos por pregunta" }
 };
+
+/** Tiempo como en un reloj, redondeando hacia arriba (lo que queda): 45:00, 4:07. */
+export const minutos = (ms: number) => {
+  const s = Math.ceil(ms / 1000);
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+};
+
+/** Tiempo usado, en palabras: «23 min 10 s», «45 s», «2 min». */
+export const usado = (ms: number) => {
+  const s = Math.round(ms / 1000);
+  return s < 60 ? `${s} s` : `${Math.floor(s / 60)} min` + (s % 60 ? ` ${s % 60} s` : "");
+};

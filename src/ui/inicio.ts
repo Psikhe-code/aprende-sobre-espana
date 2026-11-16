@@ -6,7 +6,7 @@ import type { SavedState } from "../engine/storage";
 import { NAME_STYLES, TERRITORIOS } from "../engine/types";
 import { $, el } from "./dom";
 import { NAME_LABELS, TERRITORIO_LABELS, TIEMPO_LABELS } from "./labels";
-import { claveRecord } from "./seleccion";
+import { claveRecord } from "../engine/seleccion";
 
 export function renderStart(state: SavedState): void {
   const chips = $("chips");

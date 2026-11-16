@@ -1,21 +1,9 @@
 // Pantalla final: aciertos, valoración, récord y lista de fallos.
 
-import { applyRecord, type GameResult, type GameSession } from "../engine/game";
-import type { Seccion } from "../engine/types";
+import { applyRecord, valoracion, type GameSession } from "../engine/game";
 import type { Contexto } from "./contexto";
 import { $, el } from "./dom";
 import { flagImage } from "./flags";
-
-/**
- * Valoración del resultado. En el examen de nacionalidad toma como referencia el aprobado de la prueba
- * real (15 aciertos de 25, el 60 %); en geografía, las del atlas.
- */
-function rating(r: GameResult, seccion: Seccion): string {
-  if (!r.total) return "Sin respuestas";
-  const pct = r.hits / r.total;
-  if (seccion === "ccse") return pct === 1 ? "Pleno" : pct >= 0.8 ? "Gran nivel" : pct >= 0.6 ? "Por encima del aprobado" : "Toca repasar";
-  return pct === 1 ? "Mapa completo" : pct >= 0.8 ? "Gran nivel" : pct >= 0.5 ? "Buen rumbo" : "Toca repasar el atlas";
-}
 
 /** Apunta el récord, si lo hay, y dibuja el resultado de la partida. */
 export function renderEnd(ctx: Contexto, game: GameSession): void {
@@ -25,7 +13,7 @@ export function renderEnd(ctx: Contexto, game: GameSession): void {
   if (rec.isNewRecord) { state.best = rec.best; ctx.save(); }
 
   $("score").replaceChildren(String(r.hits), el("small", "", `/${r.total}`));
-  $("endTitle").textContent = rating(r, ctx.modo().seccion);
+  $("endTitle").textContent = valoracion(r, ctx.modo().seccion);
   const recText = r.review || rec.record == null ? ""
     : r.unlimited ? ` · Mejor racha con esta selección: ${rec.record}`
     : ` · Récord con esta selección: ${rec.record}/${game.expected}`;

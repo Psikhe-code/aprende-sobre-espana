@@ -1,4 +1,4 @@
-import type { PreguntaJugable } from "./types";
+import type { PreguntaJugable, Seccion } from "./types";
 import { ROUND_LENGTH } from "./round";
 
 // Lógica de una partida, sin nada de interfaz: la pantalla solo pregunta y dibuja.
@@ -159,4 +159,18 @@ export function applyRecord(best: Record<string, number>, key: string, result: G
     isNewRecord,
     record: isNewRecord ? value : previous
   };
+}
+
+/**
+ * Aprobado de la prueba real del examen de nacionalidad: 15 aciertos de 25, el 60 %. Las partidas del examen se
+ * valoran con él como referencia (el simulacro usa el número exacto de aciertos, en simulacro.ts).
+ */
+export const APROBADO_CCSE = 0.6;
+
+/** Valoración del resultado de una partida: en el examen, con el aprobado como referencia; en geografía, las del atlas. */
+export function valoracion(r: Pick<GameResult, "hits" | "total">, seccion: Seccion): string {
+  if (!r.total) return "Sin respuestas";
+  const pct = r.hits / r.total;
+  if (seccion === "ccse") return pct === 1 ? "Pleno" : pct >= 0.8 ? "Gran nivel" : pct >= APROBADO_CCSE ? "Por encima del aprobado" : "Toca repasar";
+  return pct === 1 ? "Mapa completo" : pct >= 0.8 ? "Gran nivel" : pct >= 0.5 ? "Buen rumbo" : "Toca repasar el atlas";
 }

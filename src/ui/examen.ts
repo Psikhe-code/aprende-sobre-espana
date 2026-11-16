@@ -7,7 +7,7 @@ import { ccseKey, type SavedState } from "../engine/storage";
 import type { Contexto } from "./contexto";
 import { $, el, radioGroup, tabuladorEnLaMarcada, toggleCard } from "./dom";
 import { LONGITUD_LABELS, TIEMPO_LABELS } from "./labels";
-import { puedeJugarCcse } from "./modos";
+import { puedeJugarCcse } from "../engine/seleccion";
 import { renderInicioSimulacro } from "./simulacro";
 
 export function renderStartCcse(state: SavedState): void {

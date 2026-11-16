@@ -13,23 +13,12 @@ import {
 import type { SavedState } from "../engine/storage";
 import type { Contexto } from "./contexto";
 import { $, el, pad, pintarFuentes, teclaNumero } from "./dom";
+import { minutos, usado } from "./labels";
 
 export interface PantallaSimulacro {
   /** Para el reloj al salir de la pantalla del examen. */
   alSalir(): void;
 }
-
-/** Tiempo como en un reloj: 45:00, 4:07. */
-const minutos = (ms: number) => {
-  const s = Math.ceil(ms / 1000);
-  return `${Math.floor(s / 60)}:${pad(s % 60)}`;
-};
-
-/** Tiempo usado, en palabras: «23 min 10 s». */
-const usado = (ms: number) => {
-  const s = Math.round(ms / 1000);
-  return s < 60 ? `${s} s` : `${Math.floor(s / 60)} min` + (s % 60 ? ` ${s % 60} s` : "");
-};
 
 /** Qué es el simulacro, para el inicio del examen: sale de las reglas, así que si cambian, cambia solo. */
 export function textoSimulacro(): string {

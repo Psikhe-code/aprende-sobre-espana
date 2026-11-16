@@ -6,7 +6,8 @@ import {
 import { PROVINCIAS, poolsFor } from "../src/engine/territory";
 import { BANDERAS_PROVINCIAS } from "../src/engine/questions";
 import { comboKey, loadState, STORAGE_KEY } from "../src/engine/storage";
-import { GameSession, applyRecord, recordValue } from "../src/engine/game";
+import { APROBADO_CCSE, GameSession, applyRecord, recordValue, valoracion } from "../src/engine/game";
+import { APROBADO_SIMULACRO, PREGUNTAS_SIMULACRO } from "../src/engine/simulacro";
 import { NAME_STYLES, type RoundQuestion } from "../src/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
@@ -399,3 +400,27 @@ describe("guardado", () => {
     });
   });
 });
+
+describe("valoración del resultado", () => {
+  it("en el examen, con el aprobado de la prueba real como referencia (el mismo que el simulacro)", () => {
+    expect(APROBADO_CCSE).toBe(APROBADO_SIMULACRO / PREGUNTAS_SIMULACRO);
+    const v = (hits: number) => valoracion({ hits, total: 25 }, "ccse");
+    expect(v(25)).toBe("Pleno");
+    expect(v(20)).toBe("Gran nivel");
+    expect(v(15)).toBe("Por encima del aprobado");
+    expect(v(14)).toBe("Toca repasar");
+  });
+
+  it("en geografía, las del atlas", () => {
+    const v = (hits: number) => valoracion({ hits, total: 10 }, "geografia");
+    expect(v(10)).toBe("Mapa completo");
+    expect(v(8)).toBe("Gran nivel");
+    expect(v(5)).toBe("Buen rumbo");
+    expect(v(4)).toBe("Toca repasar el atlas");
+  });
+
+  it("sin ninguna respuesta (una partida sin límite terminada enseguida)", () => {
+    for (const s of ["ccse", "geografia"] as const) expect(valoracion({ hits: 0, total: 0 }, s)).toBe("Sin respuestas");
+  });
+});
+

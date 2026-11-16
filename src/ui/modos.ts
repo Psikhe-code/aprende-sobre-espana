@@ -2,11 +2,11 @@
 // con qué tiempo se juega y con qué clave se guarda el récord. La pantalla de la partida (partida.ts)
 // y la final (final.ts) son las mismas para las dos secciones y le preguntan todo esto al modo.
 
-import { cabeCcse, otraVueltaCcse, partidaCcse, repasoCcse, tamanoCcse } from "../engine/ccse";
+import { otraVueltaCcse, partidaCcse, repasoCcse, tamanoCcse } from "../engine/ccse";
 import { buildRound, rebuild, reshuffle, roundSize, type TimeLimit } from "../engine/round";
 import { ccseKey, type SavedState } from "../engine/storage";
 import type { PreguntaJugable, RoundQuestion, Seccion } from "../engine/types";
-import { ajustesPartida, claveRecord, puedeJugar, seleccionActual } from "./seleccion";
+import { ajustesPartida, claveRecord, puedeJugar, puedeJugarCcse, seleccionActual } from "../engine/seleccion";
 
 export interface Modo {
   seccion: Seccion;
@@ -44,10 +44,6 @@ export function modoGeografia(state: SavedState): Modo {
     claveRecord: () => claveRecord(state)
   };
 }
-
-/** Si con las opciones del examen se puede jugar: alguna tarea con preguntas y que quepa el número elegido. */
-export const puedeJugarCcse = (s: SavedState) =>
-  tamanoCcse(s.ccse.tareas, s.ccse.longitud) > 0 && cabeCcse(s.ccse.longitud, s.ccse.tareas);
 
 export function modoCcse(state: SavedState): Modo {
   const ajustes = () => ({ tareas: state.ccse.tareas, length: state.ccse.longitud });

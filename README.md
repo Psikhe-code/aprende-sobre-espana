@@ -49,7 +49,8 @@ src/
     ccse.ts                examen de nacionalidad: preguntas y partidas
     simulacro.ts           simulacro del examen: preguntas por tareas, respuestas, entrega y resultado
     simulacro-reglas.ts    reglas del simulacro (reparto por tareas, 45 minutos, aprobado con 15)
-    game.ts                desarrollo de la partida: respuestas, aciertos, racha, final y récords
+    game.ts                desarrollo de la partida: respuestas, aciertos, racha, final, récords y valoración
+    seleccion.ts           lo que se deduce de las opciones de cada sección (si se puede jugar, clave del récord…)
     countdown.ts           cuenta atrás de cada pregunta (arrancar, pausar, cuánto queda)
     storage.ts             ajustes y récords guardados en el dispositivo
   ui/                      ← INTERFAZ (solo dibuja y llama al motor)
@@ -64,9 +65,8 @@ src/
     reloj.ts               reloj de cada pregunta en pantalla
     final.ts               pantalla final: resultado, récord y fallos
     creditos.ts            Créditos de cada sección
-    seleccion.ts           lo que se deduce de las opciones (si se puede jugar, clave del récord…)
     dom.ts                 utilidades: crear elementos, tarjetas y grupos de Opciones, fuentes de las notas, avisos
-    labels.ts              textos de las opciones
+    labels.ts              textos de las opciones y del tiempo del simulacro
     flags.ts               imágenes de las banderas, y la de la pregunta siguiente por adelantado
     styles.css             estilos (tema claro y oscuro según el sistema)
   main.ts                  punto de entrada y modo sin conexión
@@ -264,6 +264,8 @@ Cada proceso solo arranca si el commit que subes cambia su script (o su workflow
 - **Partidas**: en cientos de partidas al azar, con cada número de preguntas, sin repetir pregunta y bien repartidas; qué números se pueden elegir con cada selección; la partida sin límite (fin de la baraja, otra vuelta, terminar y su récord de racha); con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa; aciertos, racha, fallos (también por tiempo), final y récords.
 - **Examen de nacionalidad** (`ccse.test.ts`): que las entradas tienen identificador único ligado a su referencia, de su tarea, en orden y sin huecos; que ninguna está a medias (y, si lo está, qué le falta); que la letra elige bien la respuesta, que «Verdadero» y «Falso» no se barajan y que las vacías no salen; que cada nota tiene fuentes. Las partidas y el guardado del examen se prueban aparte (`ccse-partidas.test.ts`) con datos de prueba (`tests/ccse-prueba.ts`), porque la plantilla real se va rellenando poco a poco: que las partidas solo sacan preguntas de las tareas marcadas, sin repetir, con las opciones barajadas; otra vuelta, repaso y clave del récord. Y que se recuerdan la sección y las opciones del examen, y que una tarea que recibe sus primeras preguntas se marca sola. Con los datos reales, que cada tarea tiene preguntas de sobra para el simulacro.
 - **Simulacro** (`simulacro.test.ts`, con datos de prueba en las cinco tareas): que salen las preguntas de cada tarea según el reparto, en orden y sin repetir; que no se ofrece si una tarea tiene menos de las necesarias; que se puede ir, volver y cambiar la respuesta hasta entregar, y ya no después; que al entregar cuenta los aciertos (lo no respondido es fallo), los de cada tarea y el apto desde 15; y el mejor resultado.
+- **Selección** (`seleccion.test.ts`): en Geografía, cuándo se puede jugar (con alguna categoría, forma y territorio, y si caben las preguntas elegidas: 25, 50 y 100 solo si hay al menos esas), con qué ajustes se prepara la partida, cuándo deja de valer la preparada (no al cambiar el tiempo) y qué separa los récords (no la forma de los nombres). En el examen, lo mismo, en `ccse-partidas.test.ts`.
+- **Valoración** (en `game.test.ts`): los textos del resultado según los aciertos, y que el aprobado del examen es el mismo que el del simulacro. **Tiempo del simulacro** (`textos.test.ts`): cómo se escribe en el reloj y al terminar.
 - **Cuenta atrás** (`countdown.test.ts`): con un reloj de mentira, que no corre hasta arrancarla, que la pausa no pierde tiempo, que no baja de cero y cómo se redondean los segundos.
 
 Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las trampas de una capital de provincia son las capitales y ciudades de las provincias de su campo `trampas`, sin escribir cuáles son. Por eso se puede cambiar una nota, una trampa o una ciudad en los JSON (también desde github.dev) sin tocar los tests: si el cambio rompe una regla (una trampa que no existe, una marca mal escrita…), el test dice dónde.
