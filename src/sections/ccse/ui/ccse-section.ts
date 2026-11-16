@@ -8,9 +8,10 @@ import { ccseMode } from "./ccse-mode";
 import { renderCcseStart } from "./ccse-start-screen";
 import { createCcseSettings } from "./ccse-settings-screen";
 import { createSimulacroScreen } from "./ccse-simulacro-screen";
+import { CCSE_ID } from "../engine/ccse-id";
 
 export const ccseSection: SectionDefinition = {
-  id: "ccse",
+  id: CCSE_ID,
   name: "Examen de nacionalidad",
   description: "Practica los temas de la prueba CCSE: la Constitución, las instituciones, la cultura y la sociedad españolas.",
   header: {

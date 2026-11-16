@@ -7,6 +7,7 @@ import { DEFAULT_ROUND_LENGTH, DEFAULT_TIME_LIMIT, ROUND_LENGTHS, TIME_LIMITS, t
 import { CATEGORY_IDS } from "./geografia-categories";
 import { DEFAULT_NAME_FORMS, DEFAULT_OPTION_COUNT, DEFAULT_TERRITORIOS, OPTION_COUNTS, type OptionCount } from "./geografia-round-questions";
 import { NAME_FORMS, TERRITORIOS, type NameForm, type Territorio } from "./geografia-types";
+import { GEOGRAFIA_ID } from "./geografia-id";
 
 export interface GeografiaSettings {
   /** Categorías marcadas (al menos una para poder jugar). */
@@ -53,4 +54,4 @@ export function loadGeografiaSettings(raw: unknown): GeografiaSettings {
 }
 
 /** Las opciones de Geografía, comprobadas (ver sectionSettings). */
-export const geografiaSettings = (state: SavedState): GeografiaSettings => sectionSettings(state, "geografia", loadGeografiaSettings);
+export const geografiaSettings = (state: SavedState): GeografiaSettings => sectionSettings(state, GEOGRAFIA_ID, loadGeografiaSettings);

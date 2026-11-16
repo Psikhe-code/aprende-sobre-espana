@@ -5,11 +5,10 @@
  */
 
 import type { TimeLimit } from "../engine/common-round-settings";
-import type { PlayableQuestion, Section } from "../engine/common-types";
+import type { PlayableQuestion } from "../engine/common-types";
 import type { Rating } from "../engine/common-round";
 
 export interface SectionMode {
-  section: Section;
   /** Si con las opciones marcadas se puede jugar. */
   canPlay(): boolean;
   /** Preguntas de una partida nueva. */

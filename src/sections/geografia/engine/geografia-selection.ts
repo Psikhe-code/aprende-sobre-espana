@@ -7,6 +7,7 @@ import { recordKeyEnding } from "../../../common/engine/common-round-settings";
 import { CATEGORY_IDS } from "./geografia-categories";
 import { TERRITORIOS } from "./geografia-types";
 import type { GeografiaSettings } from "./geografia-settings";
+import { GEOGRAFIA_ID } from "./geografia-id";
 
 /** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y preguntas suficientes. */
 export const canPlay = (g: GeografiaSettings) =>
@@ -29,6 +30,6 @@ export const selectionKey = (g: GeografiaSettings) => JSON.stringify([g.categori
  * La forma de los nombres no está: no cambia lo que se pregunta.
  */
 export const recordKey = (g: GeografiaSettings) =>
-  "geografia/" + CATEGORY_IDS.filter((id) => g.categories.includes(id)).join("+") +
+  GEOGRAFIA_ID + "/" + CATEGORY_IDS.filter((id) => g.categories.includes(id)).join("+") +
   "/" + TERRITORIOS.filter((t) => g.territorios.includes(t)).join("+") +
   `/${g.optionCount}opciones` + recordKeyEnding(g.roundLength, g.timeLimit);
