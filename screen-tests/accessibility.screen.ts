@@ -17,7 +17,7 @@ test("al cambiar de pantalla con el teclado, el foco pasa a la pantalla nueva", 
 
   await page.locator("#openOptions").focus();
   await page.keyboard.press("Enter");
-  await expect(page.locator("#options")).toBeFocused();
+  await expect(page.locator("#settings")).toBeFocused();
   await page.locator("#doneOptions").focus();
   await page.keyboard.press("Enter");
   await expect(page.locator("#start")).toBeFocused();

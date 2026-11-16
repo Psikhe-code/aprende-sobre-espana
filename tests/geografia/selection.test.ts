@@ -44,11 +44,11 @@ describe("selección de geografía", () => {
     for (const longitud of ROUND_LENGTHS) {
       const s = { ...base(), longitud, opciones: OPTION_COUNTS[1] };
       if (!canPlay(s)) continue;
-      const modo = modoGeografia(s);
-      const preguntas = modo.nueva();
-      expect(preguntas, String(longitud)).toHaveLength(modo.esperadas());
-      expect(modo.esperadas(), String(longitud)).toBe(longitud === "sinLimite" ? questionCount(s.selected, s.territorios) : longitud);
-      expect(preguntas.every((q) => q.options.length === OPTION_COUNTS[1]), String(longitud)).toBe(true);
+      const mode = modoGeografia(s);
+      const questions = mode.buildRound();
+      expect(questions, String(longitud)).toHaveLength(mode.roundSize());
+      expect(mode.roundSize(), String(longitud)).toBe(longitud === "sinLimite" ? questionCount(s.selected, s.territorios) : longitud);
+      expect(questions.every((q) => q.options.length === OPTION_COUNTS[1]), String(longitud)).toBe(true);
       probadas.push(longitud);
     }
     expect(probadas).toEqual([...ROUND_LENGTHS]);

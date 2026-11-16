@@ -1,16 +1,16 @@
 // Examen de nacionalidad: pantalla de Opciones.
 
-import type { Contexto } from "../../../common/ui/context";
-import { $, cambiarCon, radioGroup, toggleCard } from "../../../common/ui/dom";
-import { avisoLongitud, grupoLongitud, grupoTiempo } from "../../../common/ui/widgets";
+import type { AppContext } from "../../../common/ui/context";
+import { $, changeWith, radioGroup, toggleCard } from "../../../common/ui/dom";
+import { roundLengthWarning, renderRoundLengthGroup, renderTimeLimitGroup } from "../../../common/ui/widgets";
 import { TAREAS, lengthFits, tareaQuestions, tareasWithQuestions } from "../engine/questions";
 import { canPlay } from "../engine/selection";
 
 /** Prepara las Opciones del examen (sus botones) y devuelve cómo dibujarlas. */
-export function crearOpcionesCcse(ctx: Contexto): { render: () => void } {
+export function crearOpcionesCcse(ctx: AppContext): { render: () => void } {
   const ccse = ctx.state.ccse;
 
-  const cambiar = cambiarCon(() => ctx.save(), () => render());
+  const cambiar = changeWith(() => ctx.save(), () => render());
 
   function render() {
     // Tareas: se pueden marcar varias. Las que aún no tienen preguntas se ven, pero no se pueden marcar.
@@ -31,16 +31,16 @@ export function crearOpcionesCcse(ctx: Contexto): { render: () => void } {
 
     // Preguntas por partida: como en geografía, 25, 50 y 100 solo si hay al menos esas.
     const hay = tareaQuestions(ccse.tareas).length;
-    grupoLongitud($("ccseLongitud"), {
-      prefijo: "ccse-len-", actual: ccse.longitud, hay, cambiar,
-      cabe: (n) => lengthFits(n, ccse.tareas),
-      elegir: (n) => { ccse.longitud = n; }
+    renderRoundLengthGroup($("ccseLongitud"), {
+      prefix: "ccse-len-", current: ccse.longitud, available: hay, change: cambiar,
+      fits: (n) => lengthFits(n, ccse.tareas),
+      choose: (n) => { ccse.longitud = n; }
     });
     const tooLong = !ninguna && !lengthFits(ccse.longitud, ccse.tareas);
     $("ccseLengthWarn").hidden = !tooLong;
-    $("ccseLengthWarn").textContent = tooLong ? avisoLongitud(hay) : "";
+    $("ccseLengthWarn").textContent = tooLong ? roundLengthWarning(hay) : "";
 
-    grupoTiempo($("ccseTiempo"), { prefijo: "ccse-tiempo-", actual: ccse.tiempo, elegir: (t) => { ccse.tiempo = t; }, cambiar });
+    renderTimeLimitGroup($("ccseTiempo"), { prefix: "ccse-tiempo-", current: ccse.tiempo, choose: (t) => { ccse.tiempo = t; }, change: cambiar });
 
     $<HTMLButtonElement>("ccseDone").disabled = !canPlay(ctx.state);
   }

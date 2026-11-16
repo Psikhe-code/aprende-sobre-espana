@@ -6,26 +6,26 @@
 
 import { Round, type AnswerResult } from "../engine/round";
 import type { PlayableQuestion } from "../engine/types";
-import type { Contexto } from "./context";
-import { $, announce, el, esInteractivo, pad, pintarFuentes, teclaNumero } from "./dom";
+import type { AppContext } from "./context";
+import { $, announce, el, isInteractive, pad, renderSources, numberKey } from "./dom";
 import { flagImage, precargarBandera } from "../../sections/geografia/ui/banderas";
 import { renderEnd } from "./end-screen";
-import { crearReloj } from "./timer";
+import { createTimer } from "./timer";
 
-export interface Partida {
-  /** Prepara de antemano la próxima partida (en el inicio y al terminar una), ver `preparada`. */
-  preparar(): void;
+export interface RoundScreen {
+  /** Prepara de antemano la próxima partida (en el inicio y al terminar una), ver `prepared`. */
+  prepare(): void;
   /** Para el reloj al salir de la pantalla de la partida. */
-  alSalir(): void;
+  onLeave(): void;
   /** Empieza un repaso de estos fallos (lo usa también el simulacro de examen, al terminar). */
-  repasar(fallos: PlayableQuestion[]): void;
+  startReview(misses: PlayableQuestion[]): void;
 }
 
-export function crearPartida(ctx: Contexto): Partida {
-  let game: Round | null = null;
-  const reloj = crearReloj(() => {
+export function createRoundScreen(ctx: AppContext): RoundScreen {
+  let round: Round | null = null;
+  const timer = createTimer(() => {
     // Se acabó el tiempo: cuenta como fallo y se muestra la respuesta, como al fallar.
-    if (game && !game.answered) showResult(game.timeout(), null);
+    if (round && !round.answered) showResult(round.timeout(), null);
   });
 
   /**
@@ -33,36 +33,36 @@ export function crearPartida(ctx: Contexto): Partida {
    * ya la bandera de su primera pregunta: así aparece al instante al pulsar «Jugar».
    * Se guarda con la selección para la que se hizo; si el jugador cambia las opciones, se prepara otra.
    */
-  let preparada: { seleccion: string; preguntas: PlayableQuestion[] } | null = null;
+  let prepared: { selectionKey: string; questions: PlayableQuestion[] } | null = null;
 
-  function preparar() {
-    const modo = ctx.modo();
-    if (!modo.puedeJugar()) { preparada = null; return; }
-    if (preparada?.seleccion !== modo.seleccion()) preparada = { seleccion: modo.seleccion(), preguntas: modo.nueva() };
-    const primera = preparada.preguntas[0];
-    if (primera?.flag) precargarBandera(primera.flag);
+  function prepare() {
+    const mode = ctx.mode();
+    if (!mode.canPlay()) { prepared = null; return; }
+    if (prepared?.selectionKey !== mode.selectionKey()) prepared = { selectionKey: mode.selectionKey(), questions: mode.buildRound() };
+    const first = prepared.questions[0];
+    if (first?.flag) precargarBandera(first.flag);
   }
 
-  function start(session?: Round) {
-    const modo = ctx.modo();
-    if (!session && !modo.puedeJugar()) return ctx.openOptions();
-    if (session) game = session;
+  function start(givenRound?: Round) {
+    const mode = ctx.mode();
+    if (!givenRound && !mode.canPlay()) return ctx.openOptions();
+    if (givenRound) round = givenRound;
     else {
-      const preguntas = preparada?.seleccion === modo.seleccion() ? preparada.preguntas : modo.nueva();
-      preparada = null; // cada partida preparada se juega una sola vez
-      game = new Round(preguntas, { expected: modo.esperadas(), unlimited: modo.sinLimite() });
+      const questions = prepared?.selectionKey === mode.selectionKey() ? prepared.questions : mode.buildRound();
+      prepared = null; // cada partida preparada se juega una sola vez
+      round = new Round(questions, { expected: mode.roundSize(), unlimited: mode.isUnlimited() });
     }
     // Sin límite no hay barra de progreso (no se sabe cuándo acaba), sino el botón «Terminar».
-    $("track").hidden = game.unlimited;
-    $("track").style.setProperty("--n", String(game.total));
-    $("track").classList.toggle("long", game.total > 25);
+    $("track").hidden = round.unlimited;
+    $("track").style.setProperty("--n", String(round.total));
+    $("track").classList.toggle("long", round.total > 25);
     ctx.show("play");
     renderQuestion();
   }
 
   function renderQuestion() {
-    if (!game) return;
-    const g = game;
+    if (!round) return;
+    const g = round;
     const q = g.current;
     $("sheet").replaceChildren(`Hoja ${pad(g.index + 1)} `, ...(g.unlimited ? [] : [el("span", "", `/ ${pad(g.total)}`)]));
     $("card").hidden = false;
@@ -78,15 +78,15 @@ export function crearPartida(ctx: Contexto): Partida {
     if (q.flag) flag.append(flagImage(q.flag));
     flag.hidden = !q.flag;
     // Mientras se responde esta, se va descargando la bandera de la siguiente.
-    const siguiente = g.questions[g.index + 1];
-    if (siguiente?.flag) precargarBandera(siguiente.flag);
+    const nextQuestion = g.questions[g.index + 1];
+    if (nextQuestion?.flag) precargarBandera(nextQuestion.flag);
 
     renderTrack();
 
     const box = $("opts");
     box.replaceChildren();
     box.classList.toggle("many", q.options.length > 4);
-    box.classList.toggle("con-bandera", !!q.flag);
+    box.classList.toggle("with-bandera", !!q.flag);
     q.options.forEach((o, j) => {
       const b = el("button", "opt");
       b.id = "opt-" + j;
@@ -111,126 +111,126 @@ export function crearPartida(ctx: Contexto): Partida {
     card.style.animation = "";
 
     // El repaso de fallos va sin tiempo.
-    reloj.arrancar(g.review ? "sinTiempo" : ctx.modo().tiempo());
+    timer.start(g.review ? "sinTiempo" : ctx.mode().timeLimit());
   }
 
   function renderTrack() {
-    if (!game || game.unlimited) return;
-    const g = game;
+    if (!round || round.unlimited) return;
+    const g = round;
     $("track").replaceChildren(...g.questions.map((_, j) =>
       el("i", j < g.results.length ? (g.results[j] ? "ok" : "bad") : j === g.index ? "cur" : "")));
   }
 
   function answer(btn: HTMLButtonElement) {
-    if (!game || game.answered) return;
-    reloj.parar(true);
-    showResult(game.answer(btn.dataset.value ?? ""), btn);
+    if (!round || round.answered) return;
+    timer.stop(true);
+    showResult(round.answer(btn.dataset.value ?? ""), btn);
   }
 
   /** Muestra el resultado de la pregunta: la opción pulsada (null si se acabó el tiempo) y la nota. */
   function showResult(r: AnswerResult, btn: HTMLButtonElement | null) {
-    if (!game) return;
+    if (!round) return;
     for (const b of $("opts").querySelectorAll<HTMLButtonElement>(".opt")) {
       b.disabled = true;
       if (b.dataset.value === r.answer) b.classList.add("right");
       else if (b === btn) b.classList.add("wrong");
       else b.classList.add("dim");
     }
-    $("hits").textContent = String(game.hits);
-    $("streak").textContent = String(game.streak);
+    $("hits").textContent = String(round.hits);
+    $("streak").textContent = String(round.streak);
     renderTrack();
     const v = $("verdict");
     v.className = "verdict " + (r.correct ? "ok" : "bad");
     v.textContent = r.correct ? "Correcto" : r.given === null ? "Se acabó el tiempo · Era: " + r.answer : "Era: " + r.answer;
-    $("why").textContent = game.current.why;
-    $("why").hidden = !game.current.why; // en el examen, mientras falte la nota
+    $("why").textContent = round.current.why;
+    $("why").hidden = !round.current.why; // en el examen, mientras falte la nota
     // Otras formas de los nombres: "Girona · en castellano, Gerona"
-    $("aka").replaceChildren(...game.current.aliases.map((a) => el("span", "", a)));
-    $("aka").hidden = !game.current.aliases.length;
-    $("meaningText").textContent = game.current.meaning ?? "";
-    $("meaning").hidden = !game.current.meaning;
-    $("factText").textContent = game.current.fact ?? "";
-    $("fact").hidden = !game.current.fact;
-    pintarFuentes($("source"), game.current.sources);
+    $("aka").replaceChildren(...round.current.aliases.map((a) => el("span", "", a)));
+    $("aka").hidden = !round.current.aliases.length;
+    $("meaningText").textContent = round.current.meaning ?? "";
+    $("meaning").hidden = !round.current.meaning;
+    $("factText").textContent = round.current.fact ?? "";
+    $("fact").hidden = !round.current.fact;
+    renderSources($("source"), round.current.sources);
     announce(r.correct ? "Correcto." : r.given === null ? `Se acabó el tiempo. Era ${r.answer}.` : `Incorrecto. Era ${r.answer}.`);
-    $("next").textContent = game.isLast && !game.unlimited ? "Ver resultado" : "Siguiente";
+    $("next").textContent = round.isLast && !round.unlimited ? "Ver resultado" : "Siguiente";
     $("feedback").hidden = false;
     $("next").focus({ preventScroll: true });
   }
 
   function next() {
-    if (!game || !game.answered) return;
-    if (game.next()) renderQuestion();
-    else if (game.endOfDeck) showDeckEnd();
+    if (!round || !round.answered) return;
+    if (round.next()) renderQuestion();
+    else if (round.endOfDeck) showDeckEnd();
     else finish();
   }
 
   /** Sin límite: se han respondido todas las preguntas. Se sigue con otra vuelta o se termina. */
   function showDeckEnd() {
-    if (!game) return;
-    const r = game.result();
+    if (!round) return;
+    const r = round.result();
     $("card").hidden = true;
     $("deckEnd").hidden = false;
     $("stop").hidden = true; // la tarjeta ya tiene su «Terminar»
-    reloj.esconder();
+    timer.hide();
     $("deckEndText").textContent =
-      `Ya han salido las ${game.deckSize} preguntas de esta selección, y llevas ${r.hits} ${r.hits === 1 ? "acierto" : "aciertos"} de ${r.total}. ` +
+      `Ya han salido las ${round.deckSize} preguntas de esta selección, y llevas ${r.hits} ${r.hits === 1 ? "acierto" : "aciertos"} de ${r.total}. ` +
       "Puedes barajarlas y seguir con la misma racha, o terminar y repasar tus fallos.";
     announce("Has respondido todas las preguntas.");
     $("reshuffle").focus({ preventScroll: true });
   }
 
   function keepPlaying() {
-    if (!game?.endOfDeck) return;
-    game.append(ctx.modo().otraVuelta(game.current.id));
-    game.next();
+    if (!round?.endOfDeck) return;
+    round.append(ctx.mode().reshuffleRound(round.current.id));
+    round.next();
     renderQuestion();
   }
 
   /** Sin límite: termina la partida y muestra el resultado. */
   function stop() {
-    if (!game?.unlimited || game.finished) return;
-    reloj.parar();
-    game.stop();
+    if (!round?.unlimited || round.finished) return;
+    timer.stop();
+    round.stop();
     finish();
   }
 
   function finish() {
-    if (!game) return;
-    renderEnd(ctx, game);
+    if (!round) return;
+    renderEnd(ctx, round);
     ctx.show("end");
     // El foco, al resultado: el botón pulsado («Ver resultado», «Terminar») ya no se ve.
     $("endResult").focus({ preventScroll: true });
-    preparar(); // para «Jugar otra vez»
+    prepare(); // para «Jugar otra vez»
   }
 
   $("go").addEventListener("click", () => start());
   $("ccseGo").addEventListener("click", () => start());
   $("again").addEventListener("click", () => start());
   $("next").addEventListener("click", next);
-  $("quit").addEventListener("click", () => { game = null; ctx.goHome(); });
+  $("quit").addEventListener("click", () => { round = null; ctx.goHome(); });
   $("stop").addEventListener("click", stop);
   $("deckStop").addEventListener("click", stop);
   $("reshuffle").addEventListener("click", keepPlaying);
-  function repasar(fallos: PlayableQuestion[]) {
-    if (fallos.length) start(new Round(ctx.modo().repaso(fallos), { review: true }));
+  function startReview(misses: PlayableQuestion[]) {
+    if (misses.length) start(new Round(ctx.mode().buildReviewRound(misses), { review: true }));
   }
   $("review").addEventListener("click", () => {
     // En una partida sin límite se puede fallar dos veces la misma pregunta: en el repaso sale una vez.
-    repasar([...new Map((game?.result().misses ?? []).map((m) => [m.question.id, m.question])).values()]);
+    startReview([...new Map((round?.result().misses ?? []).map((m) => [m.question.id, m.question])).values()]);
   });
   document.addEventListener("keydown", (e) => {
-    if (ctx.pantalla() !== "play" || !game) return;
-    const numero = teclaNumero(e);
-    if (!game.answered && numero !== null) {
-      const b = $("opts").querySelectorAll<HTMLButtonElement>(".opt")[numero - 1];
+    if (ctx.screen() !== "play" || !round) return;
+    const number = numberKey(e);
+    if (!round.answered && number !== null) {
+      const b = $("opts").querySelectorAll<HTMLButtonElement>(".opt")[number - 1];
       if (b) answer(b);
-    } else if (game.answered && e.key === "Enter" && !e.ctrlKey && !e.altKey && !e.metaKey && !esInteractivo(e.target)) {
+    } else if (round.answered && e.key === "Enter" && !e.ctrlKey && !e.altKey && !e.metaKey && !isInteractive(e.target)) {
       // Si el foco está en un botón (Siguiente, Terminar…) o en un enlace (las fuentes), Intro ya lo pulsa o lo abre:
       // no se pasa además a la siguiente pregunta.
       next();
     }
   });
 
-  return { preparar, alSalir: () => reloj.parar(), repasar };
+  return { prepare, onLeave: () => timer.stop(), startReview };
 }

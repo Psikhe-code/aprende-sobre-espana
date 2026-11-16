@@ -3,17 +3,17 @@
 import { CATEGORIES, CATEGORY_IDS } from "../engine/categories";
 import { questionsIn, questionCount, lengthFits, OPTION_COUNTS } from "../engine/round-questions";
 import { NAME_FORMS, TERRITORIOS } from "../engine/types";
-import type { Contexto } from "../../../common/ui/context";
-import { avisoLongitud, grupoLongitud, grupoTiempo } from "../../../common/ui/widgets";
-import { $, cambiarCon, radioGroup, tabuladorEnLaMarcada, toggleCard } from "../../../common/ui/dom";
+import type { AppContext } from "../../../common/ui/context";
+import { roundLengthWarning, renderRoundLengthGroup, renderTimeLimitGroup } from "../../../common/ui/widgets";
+import { $, changeWith, radioGroup, tabToChecked, toggleCard } from "../../../common/ui/dom";
 import { DIFICULTAD_DESC, NAME_LABELS, TERRITORIO_LABELS } from "./labels";
 import { canPlay } from "../engine/selection";
 
 /** Prepara la pantalla de Opciones (sus botones) y devuelve cómo dibujarla. */
-export function crearOpciones(ctx: Contexto): { render: () => void } {
+export function crearOpciones(ctx: AppContext): { render: () => void } {
   const { state } = ctx;
 
-  const cambiar = cambiarCon(() => ctx.save(), () => render());
+  const cambiar = changeWith(() => ctx.save(), () => render());
 
   function render() {
     // Categorías
@@ -60,15 +60,15 @@ export function crearOpciones(ctx: Contexto): { render: () => void } {
     const abierta = toggleCard("dif-abierta", false, "Respuesta abierta", [["cat-desc", "Escribes la respuesta tú. Próximamente."]], () => {}, true);
     abierta.disabled = true;
     $("dificultad").replaceChildren(...dificultades, abierta);
-    tabuladorEnLaMarcada($("dificultad"));
+    tabToChecked($("dificultad"));
 
-    grupoTiempo($("tiempo"), { prefijo: "tiempo-", actual: state.tiempo, elegir: (t) => { state.tiempo = t; }, cambiar });
+    renderTimeLimitGroup($("tiempo"), { prefix: "tiempo-", current: state.tiempo, choose: (t) => { state.tiempo = t; }, change: cambiar });
 
     const hay = questionCount(state.selected, state.territorios);
-    grupoLongitud($("longitud"), {
-      prefijo: "len-", actual: state.longitud, hay, cambiar,
-      cabe: (n) => lengthFits(n, state.selected, state.territorios),
-      elegir: (n) => { state.longitud = n; }
+    renderRoundLengthGroup($("longitud"), {
+      prefix: "len-", current: state.longitud, available: hay, change: cambiar,
+      fits: (n) => lengthFits(n, state.selected, state.territorios),
+      choose: (n) => { state.longitud = n; }
     });
 
     const noTerr = !state.territorios.length;
@@ -79,7 +79,7 @@ export function crearOpciones(ctx: Contexto): { render: () => void } {
     // El número de preguntas elegido ya no cabe (p. ej. 50 y se ha dejado solo Capitales).
     const tooLong = !noCats && !noTerr && !empty && !lengthFits(state.longitud, state.selected, state.territorios);
     $("lengthWarn").hidden = !tooLong;
-    $("lengthWarn").textContent = tooLong ? avisoLongitud(hay) : "";
+    $("lengthWarn").textContent = tooLong ? roundLengthWarning(hay) : "";
 
     $<HTMLButtonElement>("doneOptions").disabled = noCats || noNames || noTerr || empty || tooLong;
   }

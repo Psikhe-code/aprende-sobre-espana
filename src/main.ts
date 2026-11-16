@@ -11,7 +11,7 @@ import "@fontsource/literata/latin-600.css";
 import "./common/ui/styles.css";
 
 import { registerSW } from "virtual:pwa-register";
-import { RECARGA_POR_ACTUALIZACION, startApp } from "./common/ui/app";
+import { UPDATE_RELOAD_KEY, startApp } from "./common/ui/app";
 
 const app = startApp();
 
@@ -23,7 +23,7 @@ if ("serviceWorker" in navigator) {
     // Antes de recargar, si el jugador está dentro de una sección, se apunta para que siga en ella (app.ts).
     const actualizar = () => {
       try {
-        if (!app.enMenu()) sessionStorage.setItem(RECARGA_POR_ACTUALIZACION, "1");
+        if (!app.inMenu()) sessionStorage.setItem(UPDATE_RELOAD_KEY, "1");
       } catch { /* sin sessionStorage, se abre el menú */ }
       void updateSW(true);
     };

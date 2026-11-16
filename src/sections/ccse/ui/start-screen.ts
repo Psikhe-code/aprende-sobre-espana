@@ -2,8 +2,8 @@
 
 import { ccseRecordKey, type SavedState } from "../../../common/engine/storage";
 import { $, el } from "../../../common/ui/dom";
-import { TIEMPO_LABELS } from "../../../common/ui/labels";
-import { pintarRecord, textoRonda } from "../../../common/ui/widgets";
+import { TIME_LIMIT_LABELS } from "../../../common/ui/labels";
+import { renderRecord, roundText } from "../../../common/ui/widgets";
 import { CCSE_QUESTIONS, TAREAS, tareaName, roundSize } from "../engine/questions";
 import { renderInicioSimulacro } from "./simulacro-screen";
 
@@ -17,9 +17,9 @@ export function renderStartCcse(state: SavedState): void {
   renderInicioSimulacro(state);
   if (vacio) return;
   const { tareas, longitud, tiempo } = state.ccse;
-  $("ccseRoundLabel").textContent = textoRonda(longitud, roundSize(tareas, longitud));
+  $("ccseRoundLabel").textContent = roundText(longitud, roundSize(tareas, longitud));
   $("ccseChips").replaceChildren(...TAREAS.filter((t) => tareas.includes(t.numero))
     .map((t) => el("span", "chip", tareaName(t))));
-  $("ccseTiempoInfo").textContent = `Tiempo: ${TIEMPO_LABELS[tiempo].info}.`;
-  pintarRecord($("ccseRecord"), state.best[ccseRecordKey(tareas, longitud, tiempo)], longitud, roundSize(tareas, longitud));
+  $("ccseTiempoInfo").textContent = `Tiempo: ${TIME_LIMIT_LABELS[tiempo].info}.`;
+  renderRecord($("ccseRecord"), state.best[ccseRecordKey(tareas, longitud, tiempo)], longitud, roundSize(tareas, longitud));
 }
