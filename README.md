@@ -272,6 +272,7 @@ Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las tr
 
 `npm run test:pantalla` abre el juego en un navegador de verdad (Chromium, con [Playwright](https://playwright.dev)), en tamaño de móvil y de escritorio, y lo juega como lo haría una persona. Están en `tests-pantalla/`, y también fallan si sale algún error en la consola del navegador:
 
+- **Carga** (`carga.pantalla.ts`): que, antes de que cargue el código, no se ve ninguna pantalla a medias (se abre el juego sin JavaScript).
 - **Accesibilidad** (`accesibilidad.pantalla.ts`): que el foco pasa a la pantalla nueva (solo en escritorio); que cada pantalla tiene nombre y los títulos son `h2`; que las tarjetas sin marcar no son transparentes; que los botones pequeños miden 44 px; que los atajos solo salen con teclado; y el texto alternativo de las banderas en la pregunta, en los fallos y en Créditos.
 - **Partida** (`partida.pantalla.ts`): una de 10 entera y su récord en el inicio; el repaso de fallos; «Salir al menú»; que la barra de una partida de 100 cabe en el móvil; y con el teclado (solo en escritorio), que los números responden y con Ctrl o Alt no, que Intro pasa, a dónde va el foco y que Intro sobre una fuente la abre sin pasar de pregunta.
 - **Opciones** (`opciones.pantalla.ts`): cómo se anuncian las tarjetas a un lector de pantalla; las flechas en los grupos de opciones (solo en escritorio); los números de preguntas que no caben; que las opciones se guardan.
