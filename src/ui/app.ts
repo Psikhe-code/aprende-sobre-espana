@@ -103,7 +103,7 @@ export function startApp(): App {
   for (const id of ["toSections", "ccseToSections"]) $(id).addEventListener("click", () => ctx.show("sections"));
 
   for (const id of ["openOptions", "ccseOpenOptions"]) $(id).addEventListener("click", ctx.openOptions);
-  for (const id of ["openCredits", "ccseOpenCredits"]) $(id).addEventListener("click", () => { renderCredits(); ctx.show("credits"); });
+  for (const id of ["openCredits", "ccseOpenCredits"]) $(id).addEventListener("click", () => { renderCredits(seccion()); ctx.show("credits"); });
   $("closeCredits").addEventListener("click", ctx.goHome);
   $("menu").addEventListener("click", ctx.goHome);
 
