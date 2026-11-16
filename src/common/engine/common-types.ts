@@ -1,55 +1,66 @@
 /**
- * @fileoverview Las formas de los datos comunes a todas las secciones (qué campos tiene cada cosa). No hace nada al
- * jugar: sirve para que TypeScript compruebe el resto del código.
+ * @fileoverview Describe los tipos que comparten todas las secciones.
  */
 
 /**
- * El id de una sección del juego («geografia», «ccse»). Las que hay están en la lista de secciones
- * (src/sections/sections.ts). Cada una tiene sus preguntas, sus opciones y sus récords; la partida es la misma.
+ * Identificador de una sección del juego.
+ * Las secciones disponibles se registran en `src/sections/sections.ts`.
  */
 export type Section = string;
 
-/** Una fuente que respalda la nota de una pregunta. */
+/** Fuente utilizada para respaldar la explicación de una pregunta. */
 export interface Fuente {
-  /** Cómo se cita: «Constitución española, art. 1.3». */
+  /** Referencia de la fuente que se muestra al jugador. */
   texto: string;
+  /** Enlace al documento o recurso original, si está disponible. */
   url?: string;
 }
 
 /**
- * Lo que una partida necesita de cada pregunta, venga de geografía (RoundQuestion) o del examen de
- * nacionalidad. El desarrollo de la partida (common-round.ts) y su pantalla solo usan esto.
+ * Estructura común de las preguntas, venga de la sección que venga: lo único que la partida
+ * (common-round.ts) y su pantalla saben de una pregunta.
  */
 export interface PlayableQuestion {
-  /** Identificador fijo (no se repite en una partida; sirve para estadísticas). */
+  /** Identificador estable y único de la pregunta dentro de su sección. */
   id: string;
   text: string;
-  /** Respuesta correcta: una de `options`. */
+
+  /** Respuesta correcta, que debe coincidir con una de las opciones. */
   answer: string;
   options: string[];
-  /** Lo que se escribe encima de la pregunta: su categoría («Capitales de provincia») o su tarea («Tarea 1 · …»). */
+
+  /** Texto que se muestra sobre el enunciado de la pregunta. */
   label: string;
-  /** Explicación que se muestra al responder. */
+
+  /** Explicaciones que se muestran después de responder. */
   why: string;
   fact?: string;
   meaning?: string;
-  /** Otras formas de los nombres («Girona · en castellano, Gerona»). */
+
+  /** Denominaciones alternativas, en textos preparados para mostrarse al jugador. */
   aliases: string[];
-  /** Imagen que acompaña a la pregunta (en Geografía, la bandera). La pone la sección; la partida solo la dibuja. */
+
+  /** Imagen opcional que acompaña a la pregunta. */
   image?: QuestionImage;
-  /** Dónde se ha comprobado la explicación (en el examen de nacionalidad). */
+
+  /** Fuentes que respaldan la explicación de la pregunta. */
   sources?: Fuente[];
 }
 
-/** Imagen de una pregunta. */
+/** Imagen asociada a una pregunta. */
 export interface QuestionImage {
-  /** Dirección del archivo. */
+  /** Ruta o URL de la imagen. */
   src: string;
-  /** Texto alternativo (lo que lee el lector de pantalla) mientras se responde: no puede delatar la respuesta. */
+
+  /** Texto alternativo durante la pregunta. No debe revelar la respuesta. */
   alt: string;
-  /** Texto alternativo cuando ya se sabe la respuesta, en la lista de fallos: «Bandera: Cantabria». */
+
+  /** Texto alternativo en la lista de fallos, cuando ya se sabe la respuesta. */
   answerAlt: string;
 }
 
-/** Generador de números aleatorios en [0, 1). Se puede sustituir en los tests. */
+/**
+ * Generador de números aleatorios en el intervalo [0, 1).
+ * Permite utilizar generadores deterministas en las pruebas.
+ */
 export type Rng = () => number;
