@@ -63,7 +63,7 @@ src/
     simulacro.ts           pantallas del simulacro de examen y de su resultado
     reloj.ts               reloj de cada pregunta en pantalla
     final.ts               pantalla final: resultado, récord y fallos
-    creditos.ts            pantalla de Créditos
+    creditos.ts            Créditos de cada sección
     seleccion.ts           lo que se deduce de las opciones (si se puede jugar, clave del récord…)
     dom.ts                 utilidades: crear elementos, tarjetas y grupos de Opciones, fuentes de las notas, avisos
     labels.ts              textos de las opciones
@@ -219,7 +219,7 @@ Solo están las de las provincias que tienen una bandera **aprobada formalmente 
 - Sus escudos son muy detallados: Cádiz pesaba 5 MB y, limpia, 1,7 MB (unos 400 KB al descargarse).
 - En Jaén se usa la versión sin la cinta con «Provincia de Jaén» bajo el escudo, porque esa cinta delataría la respuesta.
 
-En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Commons, enlace, autor y licencia. Algunas son de dominio público o CC0. Otras tienen licencia **CC BY** o **CC BY-SA**, que permiten usarlas citando al autor; por eso el juego tiene una pantalla de **Créditos** (enlace en la pantalla de inicio) que lista todas. El esquema y los tests exigen autor y enlace a la licencia cuando la licencia pide atribución.
+En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Commons, enlace, autor y licencia. Algunas son de dominio público o CC0. Otras tienen licencia **CC BY** o **CC BY-SA**, que permiten usarlas citando al autor; por eso el juego tiene **Créditos** (enlace en el inicio de cada sección), y los de Geografía las listan todas. Cada sección enseña solo sus créditos: en `index.html`, los bloques de la pantalla de Créditos llevan `data-seccion` con la sección a la que pertenecen, y `renderCredits` (en `creditos.ts`) esconde los de las demás; los que no lo llevan (las tipografías) salen en todas. La lista de banderas solo se pinta en Geografía, así que en los créditos del examen no se descarga ninguna. El esquema y los tests exigen autor y enlace a la licencia cuando la licencia pide atribución.
 
 ## Descargas con GitHub Actions
 
@@ -272,6 +272,7 @@ Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las tr
 
 `npm run test:pantalla` abre el juego en un navegador de verdad (Chromium, con [Playwright](https://playwright.dev)), en tamaño de móvil y de escritorio, y lo juega como lo haría una persona. Están en `tests-pantalla/`, y también fallan si sale algún error en la consola del navegador:
 
+- **Créditos** (`creditos.pantalla.ts`): que cada sección enseña sus bloques y los comunes, también al pasar de una sección a otra, y que los del examen no descargan banderas.
 - **Carga** (`carga.pantalla.ts`): que, antes de que cargue el código, no se ve ninguna pantalla a medias (se abre el juego sin JavaScript).
 - **Accesibilidad** (`accesibilidad.pantalla.ts`): que el foco pasa a la pantalla nueva (solo en escritorio); que cada pantalla tiene nombre y los títulos son `h2`; que las tarjetas sin marcar no son transparentes; que los botones pequeños miden 44 px; que los atajos solo salen con teclado; y el texto alternativo de las banderas en la pregunta, en los fallos y en Créditos.
 - **Partida** (`partida.pantalla.ts`): una de 10 entera y su récord en el inicio; el repaso de fallos; «Salir al menú»; que la barra de una partida de 100 cabe en el móvil; y con el teclado (solo en escritorio), que los números responden y con Ctrl o Alt no, que Intro pasa, a dónde va el foco y que Intro sobre una fuente la abre sin pasar de pregunta.

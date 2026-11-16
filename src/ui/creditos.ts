@@ -1,12 +1,26 @@
-// Pantalla de Créditos: autor y licencia de cada bandera.
+// Pantalla de Créditos, una por sección: cada una enseña lo suyo (en Geografía, el autor y la licencia
+// de cada bandera; en el Examen, de dónde salen las preguntas) y lo que es de todo el juego (las tipografías).
 
 import { BANDERAS, BANDERAS_PROVINCIAS, type BanderaInfo } from "../engine/questions";
 import { AUTONOMIAS, provincia } from "../engine/territory";
-import { NAME_STYLES } from "../engine/types";
+import { NAME_STYLES, type Seccion } from "../engine/types";
 import { $, el } from "./dom";
 import { flagImage } from "./flags";
 
-export function renderCredits(): void {
+/** Nombre de cada sección en el nombre de la pantalla, para el lector de pantalla. */
+const NOMBRE: Record<Seccion, string> = { geografia: "Créditos de Geografía", ccse: "Créditos del Examen de nacionalidad" };
+
+export function renderCredits(seccion: Seccion): void {
+  // Los bloques con data-seccion son de una sección; los demás, de todas.
+  for (const bloque of document.querySelectorAll<HTMLElement>("#credits [data-seccion]")) {
+    bloque.hidden = bloque.dataset.seccion !== seccion;
+  }
+  $("credits").setAttribute("aria-label", NOMBRE[seccion]);
+  // La lista de banderas, solo en Geografía: así, en los créditos del examen no se descarga ninguna.
+  if (seccion === "geografia") pintarBanderas();
+}
+
+function pintarBanderas(): void {
   const link = (href: string, text: string) => {
     const a = el("a", "", text) as HTMLAnchorElement;
     a.href = href;

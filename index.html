@@ -114,21 +114,27 @@
     </section>
 
     <!-- Créditos -->
+    <!-- Créditos: cada bloque con data-seccion sale solo en los créditos de esa sección (creditos.ts);
+         los que no lo llevan (las tipografías) salen en todas. -->
     <section id="credits" class="screen" tabindex="-1" aria-label="Créditos" hidden>
-      <div class="stack tight">
+      <div class="stack tight" data-seccion="ccse">
+        <h2 class="label">Créditos · Examen de nacionalidad</h2>
+        <p class="prose">Las preguntas del examen de nacionalidad son las del Manual de preparación de la prueba CCSE 2026 (© Instituto Cervantes). Las explicaciones de las respuestas son de este juego, y cada una indica su fuente: la Constitución y las leyes, en el Boletín Oficial del Estado, u otras páginas que se enlazan.</p>
+      </div>
+      <div class="stack tight" data-seccion="geografia">
         <h2 class="label">Créditos · Banderas</h2>
         <p class="prose">Las banderas proceden de Wikimedia Commons. Las que tienen licencia Creative Commons se usan citando a su autor, como pide la licencia.</p>
       </div>
-      <div class="credits" id="creditList"></div>
-      <p class="prose">Banderas de provincia: son las de su Diputación (en el País Vasco, del territorio histórico).</p>
-      <div class="credits" id="creditListProvincias"></div>
-      <div class="stack tight section-start">
-        <h2 class="label">Créditos · Datos y tipografías</h2>
-        <p class="prose">Códigos y nombres oficiales de comunidades y provincias: Instituto Nacional de Estadística (INE). Provincias vecinas: calculadas con los mapas del Instituto Geográfico Nacional (IGN). Formas en castellano: criterio de la Real Academia Española. Tipografías Barlow, Barlow Condensed y Literata, con licencia SIL Open Font License.</p>
+      <div class="credits" id="creditList" data-seccion="geografia"></div>
+      <p class="prose" data-seccion="geografia">Banderas de provincia: son las de su Diputación (en el País Vasco, del territorio histórico).</p>
+      <div class="credits" id="creditListProvincias" data-seccion="geografia"></div>
+      <div class="stack tight section-start" data-seccion="geografia">
+        <h2 class="label">Créditos · Datos</h2>
+        <p class="prose">Códigos y nombres oficiales de comunidades y provincias: Instituto Nacional de Estadística (INE). Provincias vecinas: calculadas con los mapas del Instituto Geográfico Nacional (IGN). Formas en castellano: criterio de la Real Academia Española.</p>
       </div>
       <div class="stack tight section-start">
-        <h2 class="label">Créditos · Examen de nacionalidad</h2>
-        <p class="prose">Las preguntas del examen de nacionalidad son las del Manual de preparación de la prueba CCSE 2026 (© Instituto Cervantes). Las explicaciones de las respuestas son de este juego, y cada una indica su fuente: la Constitución y las leyes, en el Boletín Oficial del Estado, u otras páginas que se enlazan.</p>
+        <h2 class="label">Créditos · Tipografías</h2>
+        <p class="prose">Tipografías Barlow, Barlow Condensed y Literata, con licencia SIL Open Font License.</p>
       </div>
       <div class="row section-start"><button class="primary" id="closeCredits">Volver</button></div>
     </section>
