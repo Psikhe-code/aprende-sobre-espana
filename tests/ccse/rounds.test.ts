@@ -4,7 +4,7 @@ import {
 } from "../../src/sections/ccse/engine/questions";
 import { ROUND_LENGTH, ROUND_LENGTHS } from "../../src/common/engine/round-settings";
 import { puedeJugarCcse } from "../../src/sections/ccse/engine/selection";
-import { ccseKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
+import { ccseRecordKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
 
 // Examen de nacionalidad: partidas y guardado, con datos de prueba (test-data.ts) en vez de la
 // plantilla real, que se va rellenando poco a poco. Las reglas de los datos reales, en data.test.ts.
@@ -24,7 +24,7 @@ describe("examen de nacionalidad: datos de prueba", () => {
 describe("examen de nacionalidad: partidas", () => {
   it("cada pregunta lleva encima el nombre de su tarea, también en el repaso", () => {
     const partida = partidaCcse({ tareas: TODAS, length: "sinLimite" });
-    for (const q of [...partida, ...repasoCcse(partida)]) expect(q.etiqueta, q.id).toBe(nombreTarea(tarea(q.tarea)!));
+    for (const q of [...partida, ...repasoCcse(partida)]) expect(q.label, q.id).toBe(nombreTarea(tarea(q.tarea)!));
     expect(nombreTarea(TAREAS[0])).toBe(`Tarea ${TAREAS[0].numero} · ${TAREAS[0].nombre}`);
   });
 
@@ -50,7 +50,7 @@ describe("examen de nacionalidad: partidas", () => {
         expect(q.answer).toBe(p.respuesta);
         expect(q.text).toBe(p.pregunta);
         expect(q.why).toBe(p.nota);
-        expect(q.fuentes).toEqual(p.fuentes);
+        expect(q.sources).toEqual(p.fuentes);
       }
     }
   });
@@ -86,10 +86,10 @@ describe("examen de nacionalidad: partidas", () => {
   });
 
   it("la clave del récord empieza por «ccse/», con las tareas, y el número de preguntas y el tiempo si no son los de por defecto", () => {
-    expect(ccseKey([1])).toBe("ccse/1");
-    expect(ccseKey([2, 1])).toBe("ccse/1+2");
-    expect(ccseKey([1], 25, 60)).toBe("ccse/1/25preguntas/60s");
-    expect(ccseKey([1, 3], "sinLimite", "sinTiempo")).toBe("ccse/1+3/sinlimite");
+    expect(ccseRecordKey([1])).toBe("ccse/1");
+    expect(ccseRecordKey([2, 1])).toBe("ccse/1+2");
+    expect(ccseRecordKey([1], 25, 60)).toBe("ccse/1/25preguntas/60s");
+    expect(ccseRecordKey([1, 3], "sinLimite", "sinTiempo")).toBe("ccse/1+3/sinlimite");
   });
 });
 

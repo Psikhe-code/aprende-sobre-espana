@@ -1,7 +1,7 @@
 // Geografía: lo que se deduce de las opciones marcadas (la selección actual).
 
 import { lengthFits, roundSize, type RoundSettings } from "./round-questions";
-import { comboKey, type SavedState } from "../../../common/engine/storage";
+import { geografiaRecordKey, type SavedState } from "../../../common/engine/storage";
 
 /** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y preguntas suficientes. */
 export const puedeJugar = (s: SavedState) =>
@@ -19,5 +19,5 @@ export const ajustesPartida = (s: SavedState): RoundSettings =>
 export const seleccionActual = (s: SavedState) => JSON.stringify([s.selected, s.names, s.territorios, s.opciones, s.longitud]);
 
 /** Clave del récord de la selección actual. */
-export const claveRecord = (s: SavedState) => comboKey(s.selected, s.territorios, s.opciones, s.longitud, s.tiempo);
+export const claveRecord = (s: SavedState) => geografiaRecordKey(s.selected, s.territorios, s.opciones, s.longitud, s.tiempo);
 

@@ -16,8 +16,8 @@ describe("partidas: elección de preguntas", () => {
   it("cada pregunta lleva encima la etiqueta de su categoría y su territorio, también en el repaso y al barajar otra vez", () => {
     const todas = buildRound({ categories: CATEGORY_IDS, length: "sinLimite" });
     for (const q of [...todas, ...rebuild(todas), ...reshuffle({ categories: CATEGORY_IDS }, todas[0].id)]) {
-      expect(q.etiqueta, q.id).toBe(categoryById(q.category)!.labels[q.territorio]);
-      expect(q.etiqueta, q.id).not.toBe("");
+      expect(q.label, q.id).toBe(categoryById(q.category)!.labels[q.territorio]);
+      expect(q.label, q.id).not.toBe("");
     }
   });
 

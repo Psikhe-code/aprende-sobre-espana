@@ -1,6 +1,6 @@
 // Examen de nacionalidad: pantalla de inicio.
 
-import { ccseKey, type SavedState } from "../../../common/engine/storage";
+import { ccseRecordKey, type SavedState } from "../../../common/engine/storage";
 import { $, el } from "../../../common/ui/dom";
 import { TIEMPO_LABELS } from "../../../common/ui/labels";
 import { pintarRecord, textoRonda } from "../../../common/ui/widgets";
@@ -21,5 +21,5 @@ export function renderStartCcse(state: SavedState): void {
   $("ccseChips").replaceChildren(...TAREAS.filter((t) => tareas.includes(t.numero))
     .map((t) => el("span", "chip", nombreTarea(t))));
   $("ccseTiempoInfo").textContent = `Tiempo: ${TIEMPO_LABELS[tiempo].info}.`;
-  pintarRecord($("ccseRecord"), state.best[ccseKey(tareas, longitud, tiempo)], longitud, tamanoCcse(tareas, longitud));
+  pintarRecord($("ccseRecord"), state.best[ccseRecordKey(tareas, longitud, tiempo)], longitud, tamanoCcse(tareas, longitud));
 }

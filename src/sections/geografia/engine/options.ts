@@ -55,5 +55,5 @@ export function fixAnswer<T extends Question>(q: T, rng: Rng = Math.random): T &
  */
 export function prepare(q: Question & { category: string; style: NameStyle }, n: number, pools: Pools, rng: Rng = Math.random): RoundQuestion {
   const fixed = fixAnswer(q, rng);
-  return { ...fixed, options: makeOptions(fixed, n, pools, rng), etiqueta: categoryById(q.category)?.labels[q.territorio] ?? "" };
+  return { ...fixed, options: makeOptions(fixed, n, pools, rng), label: categoryById(q.category)?.labels[q.territorio] ?? "" };
 }

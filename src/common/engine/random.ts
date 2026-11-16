@@ -16,9 +16,9 @@ export function shuffle<T>(items: readonly T[], rng: Rng = Math.random): T[] {
  * Partida sin límite, al empezar otra vuelta a la baraja: si la nueva empieza por la última pregunta de la
  * anterior (`ultimaId`), la cambia por la segunda, para que no salga dos veces seguidas.
  */
-export function sinEmpezarPor<T extends { id: string }>(baraja: T[], ultimaId?: string): T[] {
-  if (baraja.length > 1 && baraja[0].id === ultimaId) [baraja[0], baraja[1]] = [baraja[1], baraja[0]];
-  return baraja;
+export function notStartingWith<T extends { id: string }>(questions: T[], lastId?: string): T[] {
+  if (questions.length > 1 && questions[0].id === lastId) [questions[0], questions[1]] = [questions[1], questions[0]];
+  return questions;
 }
 
 export function pick<T>(items: readonly T[], rng: Rng = Math.random): T {

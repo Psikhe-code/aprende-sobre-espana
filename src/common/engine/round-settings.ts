@@ -9,7 +9,7 @@ export const ROUND_LENGTH = 10;
  */
 export const ROUND_LENGTHS = [10, 25, 50, 100, "sinLimite"] as const;
 export type RoundLength = (typeof ROUND_LENGTHS)[number];
-export const DEFAULT_LENGTH: RoundLength = ROUND_LENGTH;
+export const DEFAULT_ROUND_LENGTH: RoundLength = ROUND_LENGTH;
 
 /**
  * Tiempo por pregunta que se puede elegir en Opciones, en segundos, o "sinTiempo".
@@ -17,13 +17,13 @@ export const DEFAULT_LENGTH: RoundLength = ROUND_LENGTH;
  */
 export const TIME_LIMITS = ["sinTiempo", 60, 30, 10] as const;
 export type TimeLimit = (typeof TIME_LIMITS)[number];
-export const DEFAULT_TIME: TimeLimit = 60;
+export const DEFAULT_TIME_LIMIT: TimeLimit = 60;
 
 /**
- * Cuántas preguntas tendrá una partida de este número de preguntas, si hay `hay` preguntas distintas:
+ * Cuántas preguntas tendrá una partida de este número de preguntas, si hay `available` preguntas distintas:
  * las elegidas, o menos si no hay tantas. Sin límite: las que hay (una vuelta a la baraja).
  */
-export const sizeFor = (length: RoundLength, hay: number) => (length === "sinLimite" ? hay : Math.min(length, hay));
+export const sizeFor = (length: RoundLength, available: number) => (length === "sinLimite" ? available : Math.min(length, available));
 
-/** Si se puede elegir este número de preguntas habiendo `hay`: 10 y sin límite, siempre; 25, 50 y 100, si hay al menos esas. */
-export const fitsFor = (length: RoundLength, hay: number) => length === "sinLimite" || length === ROUND_LENGTH || hay >= length;
+/** Si se puede elegir este número de preguntas habiendo `available`: 10 y sin límite, siempre; 25, 50 y 100, si hay al menos esas. */
+export const fitsFor = (length: RoundLength, available: number) => length === "sinLimite" || length === ROUND_LENGTH || available >= length;

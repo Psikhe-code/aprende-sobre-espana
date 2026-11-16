@@ -5,7 +5,7 @@ import { type Rng } from "../../../common/engine/types";
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Question, type RoundQuestion, type Territorio } from "./types";
 import { categoryById } from "./categories";
 import { poolsFor } from "./territorio";
-import { pick, shuffle, sinEmpezarPor } from "../../../common/engine/random";
+import { pick, shuffle, notStartingWith } from "../../../common/engine/random";
 import { fixAnswer, prepare } from "./options";
 
 /** Número de opciones por pregunta en cada dificultad. La respuesta abierta vendrá después. */
@@ -112,7 +112,7 @@ export function buildRound(settings: RoundSettings): RoundQuestion[] {
  * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
  */
 export function reshuffle(settings: RoundSettings, lastId?: string): RoundQuestion[] {
-  return sinEmpezarPor(buildRound({ ...settings, length: "sinLimite" }), lastId);
+  return notStartingWith(buildRound({ ...settings, length: "sinLimite" }), lastId);
 }
 
 /** Prepara de nuevo una lista de preguntas (repaso de fallos), con opciones nuevas y la misma forma. */

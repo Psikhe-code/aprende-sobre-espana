@@ -4,8 +4,8 @@
 // Es la misma para las dos secciones: lo que cambia (de dónde salen las preguntas, el tiempo, el récord)
 // se lo pregunta al modo de la sección actual (mode.ts).
 
-import { GameSession, type AnswerResult } from "../engine/round";
-import type { PreguntaJugable } from "../engine/types";
+import { Round, type AnswerResult } from "../engine/round";
+import type { PlayableQuestion } from "../engine/types";
 import type { Contexto } from "./context";
 import { $, announce, el, esInteractivo, pad, pintarFuentes, teclaNumero } from "./dom";
 import { flagImage, precargarBandera } from "../../sections/geografia/ui/banderas";
@@ -18,11 +18,11 @@ export interface Partida {
   /** Para el reloj al salir de la pantalla de la partida. */
   alSalir(): void;
   /** Empieza un repaso de estos fallos (lo usa también el simulacro de examen, al terminar). */
-  repasar(fallos: PreguntaJugable[]): void;
+  repasar(fallos: PlayableQuestion[]): void;
 }
 
 export function crearPartida(ctx: Contexto): Partida {
-  let game: GameSession | null = null;
+  let game: Round | null = null;
   const reloj = crearReloj(() => {
     // Se acabó el tiempo: cuenta como fallo y se muestra la respuesta, como al fallar.
     if (game && !game.answered) showResult(game.timeout(), null);
@@ -33,7 +33,7 @@ export function crearPartida(ctx: Contexto): Partida {
    * ya la bandera de su primera pregunta: así aparece al instante al pulsar «Jugar».
    * Se guarda con la selección para la que se hizo; si el jugador cambia las opciones, se prepara otra.
    */
-  let preparada: { seleccion: string; preguntas: PreguntaJugable[] } | null = null;
+  let preparada: { seleccion: string; preguntas: PlayableQuestion[] } | null = null;
 
   function preparar() {
     const modo = ctx.modo();
@@ -43,14 +43,14 @@ export function crearPartida(ctx: Contexto): Partida {
     if (primera?.flag) precargarBandera(primera.flag);
   }
 
-  function start(session?: GameSession) {
+  function start(session?: Round) {
     const modo = ctx.modo();
     if (!session && !modo.puedeJugar()) return ctx.openOptions();
     if (session) game = session;
     else {
       const preguntas = preparada?.seleccion === modo.seleccion() ? preparada.preguntas : modo.nueva();
       preparada = null; // cada partida preparada se juega una sola vez
-      game = new GameSession(preguntas, { expected: modo.esperadas(), unlimited: modo.sinLimite() });
+      game = new Round(preguntas, { expected: modo.esperadas(), unlimited: modo.sinLimite() });
     }
     // Sin límite no hay barra de progreso (no se sabe cuándo acaba), sino el botón «Terminar».
     $("track").hidden = game.unlimited;
@@ -70,7 +70,7 @@ export function crearPartida(ctx: Contexto): Partida {
     $("stop").hidden = !g.unlimited;
     $("hits").textContent = String(g.hits);
     $("streak").textContent = String(g.streak);
-    $("qcat").textContent = (g.review ? "Repaso · " : "") + q.etiqueta;
+    $("qcat").textContent = (g.review ? "Repaso · " : "") + q.label;
     $("question").textContent = q.text;
 
     const flag = $("flag");
@@ -151,7 +151,7 @@ export function crearPartida(ctx: Contexto): Partida {
     $("meaning").hidden = !game.current.meaning;
     $("factText").textContent = game.current.fact ?? "";
     $("fact").hidden = !game.current.fact;
-    pintarFuentes($("source"), game.current.fuentes);
+    pintarFuentes($("source"), game.current.sources);
     announce(r.correct ? "Correcto." : r.given === null ? `Se acabó el tiempo. Era ${r.answer}.` : `Incorrecto. Era ${r.answer}.`);
     $("next").textContent = game.isLast && !game.unlimited ? "Ver resultado" : "Siguiente";
     $("feedback").hidden = false;
@@ -212,8 +212,8 @@ export function crearPartida(ctx: Contexto): Partida {
   $("stop").addEventListener("click", stop);
   $("deckStop").addEventListener("click", stop);
   $("reshuffle").addEventListener("click", keepPlaying);
-  function repasar(fallos: PreguntaJugable[]) {
-    if (fallos.length) start(new GameSession(ctx.modo().repaso(fallos), { review: true }));
+  function repasar(fallos: PlayableQuestion[]) {
+    if (fallos.length) start(new Round(ctx.modo().repaso(fallos), { review: true }));
   }
   $("review").addEventListener("click", () => {
     // En una partida sin límite se puede fallar dos veces la misma pregunta: en el repaso sale una vez.

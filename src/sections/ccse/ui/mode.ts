@@ -1,6 +1,6 @@
 // Examen de nacionalidad: lo que da a la partida común (ver common/ui/mode.ts).
 
-import { ccseKey, type SavedState } from "../../../common/engine/storage";
+import { ccseRecordKey, type SavedState } from "../../../common/engine/storage";
 import type { Modo } from "../../../common/ui/mode";
 import { otraVueltaCcse, partidaCcse, repasoCcse, tamanoCcse } from "../engine/questions";
 import { puedeJugarCcse } from "../engine/selection";
@@ -17,6 +17,6 @@ export function modoCcse(state: SavedState): Modo {
     sinLimite: () => state.ccse.longitud === "sinLimite",
     tiempo: () => state.ccse.tiempo,
     seleccion: () => "ccse:" + JSON.stringify([state.ccse.tareas, state.ccse.longitud]),
-    claveRecord: () => ccseKey(state.ccse.tareas, state.ccse.longitud, state.ccse.tiempo)
+    claveRecord: () => ccseRecordKey(state.ccse.tareas, state.ccse.longitud, state.ccse.tiempo)
   };
 }
