@@ -4,6 +4,7 @@ import { CATEGORIES, CATEGORY_IDS } from "../engine/categories";
 import { roundSize } from "../engine/round";
 import type { SavedState } from "../engine/storage";
 import { NAME_STYLES, TERRITORIOS } from "../engine/types";
+import { pintarRecord, textoRonda } from "./comun";
 import { $, el } from "./dom";
 import { NAME_LABELS, TERRITORIO_LABELS, TIEMPO_LABELS } from "./labels";
 import { claveRecord } from "../engine/seleccion";
@@ -23,16 +24,9 @@ export function renderStart(state: SavedState): void {
   const territorios = TERRITORIOS.filter((x) => state.territorios.includes(x));
   $("territoriosInfo").textContent = `Territorio: ${territorios.map((x) => TERRITORIO_LABELS[x].short).join(" y ")}.`;
   $("dificultadInfo").textContent = `Dificultad: ${state.opciones} opciones por pregunta, ${TIEMPO_LABELS[state.tiempo].info}.`;
-  const sinLimite = state.longitud === "sinLimite";
-  $("roundLabel").textContent = sinLimite
-    ? "Preguntas sin límite, al azar, de"
-    : `${roundSize(state.selected, state.territorios, state.longitud) || state.longitud} preguntas al azar de`;
-  const rec = state.best[claveRecord(state)];
-  const record = $("record");
-  record.replaceChildren();
-  if (rec != null && sinLimite) record.append("Mejor racha con esta selección: ", el("b", "", String(rec)));
-  else if (rec != null) record.append("Récord con esta selección: ", el("b", "", `${rec}/${roundSize(state.selected, state.territorios, state.longitud)}`));
-  else record.textContent = "Aún no has jugado con esta selección.";
+  const tamano = roundSize(state.selected, state.territorios, state.longitud);
+  $("roundLabel").textContent = textoRonda(state.longitud, tamano);
+  pintarRecord($("record"), state.best[claveRecord(state)], state.longitud, tamano);
 }
 
 /** Versión al pie del menú de secciones y del inicio de cada sección, para saber si ya se ve la última publicada. */

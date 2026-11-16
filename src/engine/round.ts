@@ -1,7 +1,7 @@
 import { NAME_STYLES, TERRITORIOS, type NameStyle, type Question, type RoundQuestion, type Rng, type Territorio } from "./types";
 import { categoryById } from "./categories";
 import { poolsFor } from "./territory";
-import { pick, shuffle } from "./random";
+import { pick, shuffle, sinEmpezarPor } from "./random";
 import { fixAnswer, prepare } from "./options";
 
 /** Preguntas de una partida normal: 10 (por defecto). */
@@ -135,9 +135,7 @@ export function buildRound(settings: RoundSettings): RoundQuestion[] {
  * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
  */
 export function reshuffle(settings: RoundSettings, lastId?: string): RoundQuestion[] {
-  const deck = buildRound({ ...settings, length: "sinLimite" });
-  if (deck.length > 1 && deck[0].id === lastId) [deck[0], deck[1]] = [deck[1], deck[0]];
-  return deck;
+  return sinEmpezarPor(buildRound({ ...settings, length: "sinLimite" }), lastId);
 }
 
 /** Prepara de nuevo una lista de preguntas (repaso de fallos), con opciones nuevas y la misma forma. */

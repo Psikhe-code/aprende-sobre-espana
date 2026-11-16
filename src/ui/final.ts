@@ -2,6 +2,7 @@
 
 import { applyRecord, valoracion, type GameSession } from "../engine/game";
 import type { Contexto } from "./contexto";
+import { lineaRespuesta } from "./comun";
 import { $, el } from "./dom";
 import { flagImage } from "./flags";
 
@@ -34,10 +35,7 @@ export function renderEnd(ctx: Contexto, game: GameSession): void {
         f.append(flagImage(m.question.flag, `Bandera: ${m.question.answer}`)); // aquí ya se sabe de quién es
         row.append(f);
       }
-      const a = el("span", "miss-a");
-      a.append("Respuesta: ", el("b", "", m.question.answer),
-        ...(m.given === null ? [" · se acabó el tiempo"] : [" · tú dijiste ", el("s", "", m.given)]));
-      row.append(a);
+      row.append(lineaRespuesta(m.question.answer, m.given, "se acabó el tiempo"));
       misses.append(row);
     }
   }

@@ -2,11 +2,11 @@
 // La partida y el resultado son los mismos que en geografía (partida.ts, final.ts), con el modo del examen.
 
 import { PREGUNTAS_CCSE, preguntasDe, tamanoCcse, cabeCcse, TAREAS, tareasConPreguntas, nombreTarea } from "../engine/ccse";
-import { ROUND_LENGTHS, TIME_LIMITS } from "../engine/round";
 import { ccseKey, type SavedState } from "../engine/storage";
 import type { Contexto } from "./contexto";
-import { $, el, radioGroup, tabuladorEnLaMarcada, toggleCard } from "./dom";
-import { LONGITUD_LABELS, TIEMPO_LABELS } from "./labels";
+import { avisoLongitud, grupoLongitud, grupoTiempo, pintarRecord, textoRonda } from "./comun";
+import { $, cambiarCon, el, radioGroup, toggleCard } from "./dom";
+import { TIEMPO_LABELS } from "./labels";
 import { puedeJugarCcse } from "../engine/seleccion";
 import { renderInicioSimulacro } from "./simulacro";
 
@@ -20,31 +20,18 @@ export function renderStartCcse(state: SavedState): void {
   renderInicioSimulacro(state);
   if (vacio) return;
   const { tareas, longitud, tiempo } = state.ccse;
-  const sinLimite = longitud === "sinLimite";
-  $("ccseRoundLabel").textContent = sinLimite
-    ? "Preguntas sin límite, al azar, de"
-    : `${tamanoCcse(tareas, longitud) || longitud} preguntas al azar de`;
+  $("ccseRoundLabel").textContent = textoRonda(longitud, tamanoCcse(tareas, longitud));
   $("ccseChips").replaceChildren(...TAREAS.filter((t) => tareas.includes(t.numero))
     .map((t) => el("span", "chip", nombreTarea(t))));
   $("ccseTiempoInfo").textContent = `Tiempo: ${TIEMPO_LABELS[tiempo].info}.`;
-  const rec = state.best[ccseKey(tareas, longitud, tiempo)];
-  const record = $("ccseRecord");
-  record.replaceChildren();
-  if (rec != null && sinLimite) record.append("Mejor racha con esta selección: ", el("b", "", String(rec)));
-  else if (rec != null) record.append("Récord con esta selección: ", el("b", "", `${rec}/${tamanoCcse(tareas, longitud)}`));
-  else record.textContent = "Aún no has jugado con esta selección.";
+  pintarRecord($("ccseRecord"), state.best[ccseKey(tareas, longitud, tiempo)], longitud, tamanoCcse(tareas, longitud));
 }
 
 /** Prepara las Opciones del examen (sus botones) y devuelve cómo dibujarlas. */
 export function crearOpcionesCcse(ctx: Contexto): { render: () => void } {
   const ccse = ctx.state.ccse;
 
-  const cambiar = (idTarjeta: string, cambio: () => void) => () => {
-    cambio();
-    ctx.save();
-    render();
-    $(idTarjeta).focus();
-  };
+  const cambiar = cambiarCon(() => ctx.save(), () => render());
 
   function render() {
     // Tareas: se pueden marcar varias. Las que aún no tienen preguntas se ven, pero no se pueden marcar.
@@ -65,24 +52,16 @@ export function crearOpcionesCcse(ctx: Contexto): { render: () => void } {
 
     // Preguntas por partida: como en geografía, 25, 50 y 100 solo si hay al menos esas.
     const hay = preguntasDe(ccse.tareas).length;
-    $("ccseLongitud").replaceChildren(...ROUND_LENGTHS.map((n) => {
-      const cabe = cabeCcse(n, ccse.tareas);
-      const card = toggleCard("ccse-len-" + n, ccse.longitud === n, LONGITUD_LABELS[n].name,
-        [["cat-desc", cabe || !hay ? LONGITUD_LABELS[n].desc : `Con esta selección hay ${hay} preguntas.`]],
-        cambiar("ccse-len-" + n, () => { ccse.longitud = n; }), true);
-      card.disabled = !cabe && ccse.longitud !== n;
-      return card;
-    }));
-    tabuladorEnLaMarcada($("ccseLongitud"));
+    grupoLongitud($("ccseLongitud"), {
+      prefijo: "ccse-len-", actual: ccse.longitud, hay, cambiar,
+      cabe: (n) => cabeCcse(n, ccse.tareas),
+      elegir: (n) => { ccse.longitud = n; }
+    });
     const tooLong = !ninguna && !cabeCcse(ccse.longitud, ccse.tareas);
     $("ccseLengthWarn").hidden = !tooLong;
-    $("ccseLengthWarn").textContent = tooLong ? `Con esta selección hay ${hay} preguntas: elige menos preguntas por partida o «Sin límite».` : "";
+    $("ccseLengthWarn").textContent = tooLong ? avisoLongitud(hay) : "";
 
-    // Tiempo por pregunta.
-    $("ccseTiempo").replaceChildren(...TIME_LIMITS.map((t) =>
-      toggleCard("ccse-tiempo-" + t, ccse.tiempo === t, TIEMPO_LABELS[t].name, [["cat-desc", TIEMPO_LABELS[t].desc]],
-        cambiar("ccse-tiempo-" + t, () => { ccse.tiempo = t; }), true)));
-    tabuladorEnLaMarcada($("ccseTiempo"));
+    grupoTiempo($("ccseTiempo"), { prefijo: "ccse-tiempo-", actual: ccse.tiempo, elegir: (t) => { ccse.tiempo = t; }, cambiar });
 
     $<HTMLButtonElement>("ccseDone").disabled = !puedeJugarCcse(ctx.state);
   }

@@ -131,7 +131,13 @@ export const comboKey = (
   longitud: RoundLength = DEFAULT_LENGTH, tiempo: TimeLimit = "sinTiempo"
 ) =>
   CATEGORY_IDS.filter((id) => selected.includes(id)).join("+") + "/" + TERRITORIOS.filter((t) => territorios.includes(t)).join("+") +
-  (opciones === DEFAULT_OPTIONS ? "" : `/${opciones}`) +
+  (opciones === DEFAULT_OPTIONS ? "" : `/${opciones}`) + finDeClave(longitud, tiempo);
+
+/**
+ * Final de la clave de un récord, igual en las dos secciones: el número de preguntas y el tiempo, si no son
+ * los de por defecto. Las claves ya guardadas dependen de esto: no se puede cambiar sin convertir los récords.
+ */
+const finDeClave = (longitud: RoundLength, tiempo: TimeLimit) =>
   (longitud === DEFAULT_LENGTH ? "" : longitud === "sinLimite" ? "/sinlimite" : `/${longitud}preguntas`) +
   (tiempo === "sinTiempo" ? "" : `/${tiempo}s`);
 
@@ -141,6 +147,4 @@ export const comboKey = (
  * «ccse/1/25preguntas/60s». Empieza por «ccse/» para no mezclarse con los de geografía.
  */
 export const ccseKey = (tareas: readonly number[], longitud: RoundLength = DEFAULT_LENGTH, tiempo: TimeLimit = "sinTiempo") =>
-  "ccse/" + [...tareas].sort((a, b) => a - b).join("+") +
-  (longitud === DEFAULT_LENGTH ? "" : longitud === "sinLimite" ? "/sinlimite" : `/${longitud}preguntas`) +
-  (tiempo === "sinTiempo" ? "" : `/${tiempo}s`);
+  "ccse/" + [...tareas].sort((a, b) => a - b).join("+") + finDeClave(longitud, tiempo);
