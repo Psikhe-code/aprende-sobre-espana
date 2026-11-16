@@ -18,7 +18,7 @@ export default defineConfig({
       manifest: {
         name: "Aprende sobre España",
         short_name: "Aprende España",
-        description: "Juego de preguntas sobre geografía de España",
+        description: "Juego de preguntas sobre España: geografía y preparación del examen de nacionalidad",
         lang: "es",
         start_url: "./",
         display: "standalone",
@@ -35,7 +35,9 @@ export default defineConfig({
         // Las banderas no se descargan todas de golpe: cada una se guarda la primera vez que sale en una partida
         // (runtimeCaching, abajo), así que sin conexión funcionan las que ya se han visto.
         // Cuando sea una app de Android, todas las banderas irán dentro de la app.
-        globPatterns: ["**/*.{js,css,html,png,woff2}", "icon.svg"],
+        // Los iconos no hacen falta aquí: los PNG entran por el manifiesto (icons) e icon.svg por includeAssets.
+        // Si se pusieran también aquí, saldrían dos veces en la lista.
+        globPatterns: ["**/*.{js,css,html,woff2}"],
         runtimeCaching: [
           {
             // Las imágenes de assets/ llevan en el nombre una huella de su contenido (navarra-DPTmvb2U.svg):

@@ -1,5 +1,6 @@
 // Interfaz: arranca el juego y une las pantallas. Cada pantalla tiene su archivo
-// (inicio.ts, opciones.ts, examen.ts, partida.ts, final.ts, creditos.ts); aquí solo se decide cuál se ve.
+// (inicio.ts, opciones.ts, examen.ts, partida.ts, simulacro.ts, final.ts, creditos.ts), y las piezas que comparten
+// las secciones están en comun.ts; aquí solo se decide cuál se ve.
 // Las reglas del juego (aciertos, racha, final, récords) viven en src/engine.
 
 import { loadState, saveState } from "../engine/storage";
