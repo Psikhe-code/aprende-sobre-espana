@@ -109,11 +109,11 @@ h1 {
 .lede { margin: 0; color: var(--muted); max-width: 46ch; position: relative; }
 /* Durante la partida y en el resultado, la cabecera se queda en una línea pequeña con el nombre del juego,
    para que la pregunta empiece arriba (en el móvil, sin tener que bajar). La grande, en inicio, Opciones y Créditos. */
-.app.compacta .masthead { padding-block: 0 8px; }
-.app.compacta .masthead svg,
-.app.compacta .eyebrow,
-.app.compacta .lede { display: none; }
-.app.compacta h1 { font-size: 17px; line-height: 1.2; letter-spacing: 0.12em; margin: 0; }
+.app.compact .masthead { padding-block: 0 8px; }
+.app.compact .masthead svg,
+.app.compact .eyebrow,
+.app.compact .lede { display: none; }
+.app.compact h1 { font-size: 17px; line-height: 1.2; letter-spacing: 0.12em; margin: 0; }
 
 /* Títulos de cada grupo (h2, para que el lector de pantalla pueda saltar de uno a otro). */
 .label {
@@ -267,9 +267,9 @@ h1 {
 /* Móviles bajos (o con las barras del navegador a la vista): en las preguntas de bandera, también las 4 opciones
    en dos columnas compactas, para que quepan bajo la bandera sin bajar. */
 @media (max-width: 520px) and (max-height: 760px) {
-  .opts.con-bandera { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .opts.con-bandera .opt { padding: 10px; gap: 8px; font-size: 15px; }
-  .opts.con-bandera .key { width: 22px; height: 22px; }
+  .opts.with-bandera { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .opts.with-bandera .opt { padding: 10px; gap: 8px; font-size: 15px; }
+  .opts.with-bandera .key { width: 22px; height: 22px; }
 }
 .opt {
   display: flex;
@@ -339,19 +339,19 @@ h1 {
 .miss .source { margin-top: 4px; }
 
 /* Secciones: dos tarjetas grandes, una debajo de otra. */
-.secciones { grid-template-columns: 1fr; }
-.seccion { padding: 22px 20px; text-align: left; }
-.seccion .cat-name { font-size: 26px; }
-.seccion .cat-desc { font-size: 15px; }
+.section-list { grid-template-columns: 1fr; }
+.section-card { padding: 22px 20px; text-align: left; }
+.section-card .cat-name { font-size: 26px; }
+.section-card .cat-desc { font-size: 15px; }
 
 /* Volver al menú de secciones: arriba del inicio de cada sección, para que se vea sin bajar. */
-.volver {
+.back {
   /* 12 px por arriba y por abajo, para que mida 44 px de alto y se pulse bien con el dedo; los márgenes
      negativos lo dejan en el mismo sitio que antes. */
   align-self: flex-start; background: none; border: 0; padding: 12px 0; margin-block: -12px -6px;
   font-family: var(--f-display); font-weight: 600; font-size: 16px; letter-spacing: 0.04em; color: var(--ink);
 }
-@media (hover: hover) { .volver:hover { text-decoration: underline; } }
+@media (hover: hover) { .back:hover { text-decoration: underline; } }
 
 /* Enlaces al pie del inicio (créditos), en una fila. */
 .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }

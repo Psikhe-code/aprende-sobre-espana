@@ -2,7 +2,7 @@ import type { Page } from "@playwright/test";
 import { test, expect } from "./helpers";
 import type { Section } from "../src/common/engine/types";
 
-// Cada sección tiene sus créditos: los bloques con data-seccion salen solo en los de esa sección,
+// Cada sección tiene sus créditos: los bloques con data-section salen solo en los de esa sección,
 // y los demás (las tipografías, el botón de volver), en todas.
 
 async function abrirCreditos(page: Page, seccion: Section) {
@@ -12,11 +12,11 @@ async function abrirCreditos(page: Page, seccion: Section) {
 }
 
 async function comprobar(page: Page, seccion: Section) {
-  for (const bloque of await page.locator("#credits [data-seccion]").all()) {
-    if ((await bloque.getAttribute("data-seccion")) === seccion) await expect(bloque).toBeVisible();
+  for (const bloque of await page.locator("#credits [data-section]").all()) {
+    if ((await bloque.getAttribute("data-section")) === seccion) await expect(bloque).toBeVisible();
     else await expect(bloque).toBeHidden();
   }
-  for (const comun of await page.locator("#credits > :not([data-seccion])").all()) await expect(comun).toBeVisible();
+  for (const comun of await page.locator("#credits > :not([data-section])").all()) await expect(comun).toBeVisible();
 }
 
 async function volverAlMenu(page: Page, seccion: Section) {

@@ -11,10 +11,10 @@ import {
   applySimulacroRecord, simulacroQuestions, canDoSimulacro, type SimulacroResult
 } from "../engine/simulacro";
 import type { SavedState } from "../../../common/engine/storage";
-import type { Contexto } from "../../../common/ui/context";
-import { $, el, pad, pintarFuentes, teclaNumero } from "../../../common/ui/dom";
-import { lineaRespuesta } from "../../../common/ui/widgets";
-import { minutos, usado } from "../../../common/ui/labels";
+import type { AppContext } from "../../../common/ui/context";
+import { $, el, pad, renderSources, numberKey } from "../../../common/ui/dom";
+import { answerLine } from "../../../common/ui/widgets";
+import { clockTime, timeUsed } from "../../../common/ui/labels";
 
 export interface PantallaSimulacro {
   /** Para el reloj al salir de la pantalla del examen. */
@@ -43,7 +43,7 @@ export function renderInicioSimulacro(state: SavedState): void {
 }
 
 /** Prepara las pantallas del simulacro (sus botones y teclas). `repasar` empieza el repaso de los fallos. */
-export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion[]) => void): PantallaSimulacro {
+export function crearSimulacro(ctx: AppContext, repasar: (fallos: PlayableQuestion[]) => void): PantallaSimulacro {
   let sim: Simulacro | null = null;
   let reloj: Countdown | null = null;
   let intervalo = 0;
@@ -73,7 +73,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
     if (!reloj || !sim) return;
     const queda = reloj.remaining();
     $("simTimerFill").style.transform = `scaleX(${queda / reloj.ms})`;
-    $("simTimerText").textContent = minutos(queda);
+    $("simTimerText").textContent = clockTime(queda);
     $("simTimer").classList.toggle("urgent", queda <= 5 * 60 * 1000);
     for (const m of [5, 1]) {
       if (queda <= m * 60 * 1000 && !avisos.has(m) && queda > 0) {
@@ -178,7 +178,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
     const rec = applySimulacroRecord(ctx.state.best, r.hits);
     if (rec.isNewRecord) { ctx.state.best = rec.best; ctx.save(); }
     fallos = r.misses.map((f) => f.question);
-    dibujarResultado(sim.questions, r, porTiempo ? "Se acabó el tiempo" : `Tiempo: ${usado(tiempo)}`, rec.record);
+    dibujarResultado(sim.questions, r, porTiempo ? "Se acabó el tiempo" : `Tiempo: ${timeUsed(tiempo)}`, rec.record);
     ctx.show("simEnd");
   }
 
@@ -203,10 +203,10 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
       const row = el("div", "miss");
       row.append(el("span", "miss-cat", `Pregunta ${preguntas.indexOf(f.question) + 1} · Tarea ${f.question.tarea}`));
       row.append(el("span", "miss-q", f.question.text));
-      row.append(lineaRespuesta(f.question.answer, f.given, "sin responder"));
+      row.append(answerLine(f.question.answer, f.given, "sin responder"));
       if (f.question.why) row.append(el("p", "why miss-why", f.question.why));
       const fuentes = el("p", "source");
-      pintarFuentes(fuentes, f.question.sources);
+      renderSources(fuentes, f.question.sources);
       if (!fuentes.hidden) row.append(fuentes);
       lista.append(row);
     }
@@ -225,13 +225,13 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
 
   // Teclas: números para elegir, flechas para ir a la anterior o la siguiente, Escape para cerrar el aviso.
   document.addEventListener("keydown", (e) => {
-    if (ctx.pantalla() !== "sim" || !sim) return;
+    if (ctx.screen() !== "sim" || !sim) return;
     if (confirmando) {
       if (e.key === "Escape") { cerrarAviso(); $("simEntregar").focus({ preventScroll: true }); }
       return;
     }
     if (e.ctrlKey || e.metaKey || e.altKey) return;
-    const numero = teclaNumero(e);
+    const numero = numberKey(e);
     if (numero !== null) {
       const o = sim.current.options[numero - 1];
       if (o !== undefined) { e.preventDefault(); elegir(o); }
@@ -241,7 +241,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
 
   // Al cambiar de pestaña o bloquear el móvil, el reloj se para; al volver, sigue (como en las partidas).
   document.addEventListener("visibilitychange", () => {
-    if (!reloj || !sim || sim.submitted || ctx.pantalla() !== "sim") return;
+    if (!reloj || !sim || sim.submitted || ctx.screen() !== "sim") return;
     if (document.hidden) reloj.pause();
     else { reloj.start(); tic(); }
   });

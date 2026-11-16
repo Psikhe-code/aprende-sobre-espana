@@ -22,14 +22,14 @@
     <!-- Secciones -->
     <section id="sections" class="screen" tabindex="-1" aria-label="Secciones" hidden>
       <h2 class="label">¿Qué quieres aprender?</h2>
-      <div class="cats secciones">
-        <button class="cat seccion" id="sec-geografia">
+      <div class="cats section-list">
+        <button class="cat section-card" id="sec-geografia">
           <span class="cat-text">
             <span class="cat-name">Geografía</span>
             <span class="cat-desc">Capitales, banderas, provincias y municipios de España.</span>
           </span>
         </button>
-        <button class="cat seccion" id="sec-ccse">
+        <button class="cat section-card" id="sec-ccse">
           <span class="cat-text">
             <span class="cat-name">Examen de nacionalidad</span>
             <span class="cat-desc">Practica los temas de la prueba CCSE: la Constitución, las instituciones, la cultura y la sociedad españolas.</span>
@@ -40,7 +40,7 @@
 
     <!-- Inicio -->
     <section id="start" class="screen" tabindex="-1" aria-label="Geografía" hidden>
-      <button class="volver" id="toSections">← Todas las secciones</button>
+      <button class="back" id="toSections">← Todas las secciones</button>
       <div class="summary">
         <div class="label" id="roundLabel">10 preguntas al azar de</div>
         <div class="chips" id="chips"></div>
@@ -61,7 +61,7 @@
 
     <!-- Examen de nacionalidad: inicio -->
     <section id="ccseStart" class="screen" tabindex="-1" aria-label="Examen de nacionalidad" hidden>
-      <button class="volver" id="ccseToSections">← Todas las secciones</button>
+      <button class="back" id="ccseToSections">← Todas las secciones</button>
       <p class="prose" id="ccseVacio" hidden><b>Todavía no hay preguntas.</b> Se irán añadiendo poco a poco, tarea a tarea.</p>
       <div class="summary" id="ccseSummary">
         <div class="label" id="ccseRoundLabel">10 preguntas al azar de</div>
@@ -87,7 +87,7 @@
     </section>
 
     <!-- Examen de nacionalidad: opciones -->
-    <section id="ccseOptions" class="screen" tabindex="-1" aria-label="Opciones del examen" hidden>
+    <section id="ccseSettings" class="screen" tabindex="-1" aria-label="Opciones del examen" hidden>
       <div class="stack tight">
         <h2 class="label">Opciones · Tareas</h2>
         <span class="hint">Las cinco tareas (temas) de la prueba. Marca las que quieres practicar; las que aún no tienen preguntas salen como «próximamente».</span>
@@ -114,21 +114,21 @@
     </section>
 
     <!-- Créditos -->
-    <!-- Créditos: cada bloque con data-seccion sale solo en los créditos de esa sección (creditos.ts);
+    <!-- Créditos: cada bloque con data-section sale solo en los créditos de esa sección (credits-screen.ts);
          los que no lo llevan (las tipografías) salen en todas. -->
     <section id="credits" class="screen" tabindex="-1" aria-label="Créditos" hidden>
-      <div class="stack tight" data-seccion="ccse">
+      <div class="stack tight" data-section="ccse">
         <h2 class="label">Créditos · Examen de nacionalidad</h2>
         <p class="prose">Las preguntas del examen de nacionalidad son las del Manual de preparación de la prueba CCSE 2026 (© Instituto Cervantes). Las explicaciones de las respuestas son de este juego, y cada una indica su fuente: la Constitución y las leyes, en el Boletín Oficial del Estado, u otras páginas que se enlazan.</p>
       </div>
-      <div class="stack tight" data-seccion="geografia">
+      <div class="stack tight" data-section="geografia">
         <h2 class="label">Créditos · Banderas</h2>
         <p class="prose">Las banderas proceden de Wikimedia Commons. Las que tienen licencia Creative Commons se usan citando a su autor, como pide la licencia.</p>
       </div>
-      <div class="credits" id="creditList" data-seccion="geografia"></div>
-      <p class="prose" data-seccion="geografia">Banderas de provincia: son las de su Diputación (en el País Vasco, del territorio histórico).</p>
-      <div class="credits" id="creditListProvincias" data-seccion="geografia"></div>
-      <div class="stack tight section-start" data-seccion="geografia">
+      <div class="credits" id="autonomiaCreditList" data-section="geografia"></div>
+      <p class="prose" data-section="geografia">Banderas de provincia: son las de su Diputación (en el País Vasco, del territorio histórico).</p>
+      <div class="credits" id="provinciaCreditList" data-section="geografia"></div>
+      <div class="stack tight section-start" data-section="geografia">
         <h2 class="label">Créditos · Datos</h2>
         <p class="prose">Códigos y nombres oficiales de comunidades y provincias: Instituto Nacional de Estadística (INE). Provincias vecinas: calculadas con los mapas del Instituto Geográfico Nacional (IGN). Formas en castellano: criterio de la Real Academia Española.</p>
       </div>
@@ -140,7 +140,7 @@
     </section>
 
     <!-- Opciones -->
-    <section id="options" class="screen" tabindex="-1" aria-label="Opciones de geografía" hidden>
+    <section id="settings" class="screen" tabindex="-1" aria-label="Opciones de geografía" hidden>
       <div class="stack tight">
         <h2 class="label">Opciones · Categorías</h2>
         <span class="hint">Marca las categorías que quieres incluir. Las preguntas se mezclan al azar entre ellas.</span>

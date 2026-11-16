@@ -1,25 +1,25 @@
 // Pantalla final: aciertos, valoración, récord y lista de fallos.
 
 import { applyRecord, rating, type Round } from "../engine/round";
-import type { Contexto } from "./context";
-import { lineaRespuesta } from "./widgets";
+import type { AppContext } from "./context";
+import { answerLine } from "./widgets";
 import { $, el } from "./dom";
 import { flagImage } from "../../sections/geografia/ui/banderas";
 
 /** Apunta el récord, si lo hay, y dibuja el resultado de la partida. */
-export function renderEnd(ctx: Contexto, game: Round): void {
+export function renderEnd(ctx: AppContext, round: Round): void {
   const { state } = ctx;
-  const r = game.result();
-  const rec = applyRecord(state.best, ctx.modo().claveRecord(), r);
+  const r = round.result();
+  const rec = applyRecord(state.best, ctx.mode().recordKey(), r);
   if (rec.isNewRecord) { state.best = rec.best; ctx.save(); }
 
   $("score").replaceChildren(String(r.hits), el("small", "", `/${r.total}`));
-  $("endTitle").textContent = rating(r, ctx.modo().seccion);
+  $("endTitle").textContent = rating(r, ctx.mode().section);
   const recText = r.review || rec.record == null ? ""
     : r.unlimited ? ` · Mejor racha con esta selección: ${rec.record}`
-    : ` · Récord con esta selección: ${rec.record}/${game.expected}`;
-  const tipo = r.review ? "Repaso de fallos" : r.unlimited ? "Partida sin límite" : "Partida";
-  $("endSub").textContent = `${tipo} · Mejor racha: ${r.bestStreak}` + recText;
+    : ` · Récord con esta selección: ${rec.record}/${round.expected}`;
+  const kind = r.review ? "Repaso de fallos" : r.unlimited ? "Partida sin límite" : "Partida";
+  $("endSub").textContent = `${kind} · Mejor racha: ${r.bestStreak}` + recText;
 
   const misses = $("misses");
   misses.replaceChildren();
@@ -35,7 +35,7 @@ export function renderEnd(ctx: Contexto, game: Round): void {
         f.append(flagImage(m.question.flag, `Bandera: ${m.question.answer}`)); // aquí ya se sabe de quién es
         row.append(f);
       }
-      row.append(lineaRespuesta(m.question.answer, m.given, "se acabó el tiempo"));
+      row.append(answerLine(m.question.answer, m.given, "se acabó el tiempo"));
       misses.append(row);
     }
   }

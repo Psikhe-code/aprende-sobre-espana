@@ -3,60 +3,60 @@
 // resultado, la línea de la respuesta de cada fallo.
 
 import { ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "../engine/round-settings";
-import { el, tabuladorEnLaMarcada, toggleCard, type Cambiar } from "./dom";
-import { LONGITUD_LABELS, TIEMPO_LABELS } from "./labels";
+import { el, tabToChecked, toggleCard, type Change } from "./dom";
+import { ROUND_LENGTH_LABELS, TIME_LIMIT_LABELS } from "./labels";
 
 /** Inicio: lo que se va a jugar. `tamano`, las preguntas que tendrá la partida (0 si aún no se sabe). */
-export const textoRonda = (longitud: RoundLength, tamano: number) =>
-  longitud === "sinLimite" ? "Preguntas sin límite, al azar, de" : `${tamano || longitud} preguntas al azar de`;
+export const roundText = (roundLength: RoundLength, size: number) =>
+  roundLength === "sinLimite" ? "Preguntas sin límite, al azar, de" : `${size || roundLength} preguntas al azar de`;
 
 /** Inicio: el récord de la selección. Sin límite, la mejor racha; si no, los aciertos sobre `tamano`. */
-export function pintarRecord(donde: HTMLElement, record: number | undefined, longitud: RoundLength, tamano: number): void {
-  donde.replaceChildren();
-  if (record == null) donde.textContent = "Aún no has jugado con esta selección.";
-  else if (longitud === "sinLimite") donde.append("Mejor racha con esta selección: ", el("b", "", String(record)));
-  else donde.append("Récord con esta selección: ", el("b", "", `${record}/${tamano}`));
+export function renderRecord(target: HTMLElement, record: number | undefined, roundLength: RoundLength, size: number): void {
+  target.replaceChildren();
+  if (record == null) target.textContent = "Aún no has jugado con esta selección.";
+  else if (roundLength === "sinLimite") target.append("Mejor racha con esta selección: ", el("b", "", String(record)));
+  else target.append("Récord con esta selección: ", el("b", "", `${record}/${size}`));
 }
 
 /**
  * Opciones: grupo «Preguntas por partida» (se marca una). 25, 50 y 100 solo si la selección tiene al menos esas
- * (`cabe`); si no, salen desactivadas y dicen cuántas hay. Los ids de las tarjetas son `prefijo` y el número.
+ * (`fits`); si no, salen desactivadas y dicen cuántas hay. Los ids de las tarjetas son `prefix` y el número.
  */
-export function grupoLongitud(grupo: HTMLElement, o: {
-  prefijo: string; actual: RoundLength; hay: number; cabe: (n: RoundLength) => boolean; elegir: (n: RoundLength) => void; cambiar: Cambiar;
+export function renderRoundLengthGroup(group: HTMLElement, o: {
+  prefix: string; current: RoundLength; available: number; fits: (n: RoundLength) => boolean; choose: (n: RoundLength) => void; change: Change;
 }): void {
-  grupo.replaceChildren(...ROUND_LENGTHS.map((n) => {
-    const cabe = o.cabe(n);
-    const card = toggleCard(o.prefijo + n, o.actual === n, LONGITUD_LABELS[n].name,
-      [["cat-desc", cabe || !o.hay ? LONGITUD_LABELS[n].desc : `Con esta selección hay ${o.hay} preguntas.`]],
-      o.cambiar(o.prefijo + n, () => o.elegir(n)), true);
-    // La elegida no se desactiva aunque ya no quepa: se ve marcada, con el aviso de debajo (avisoLongitud).
-    card.disabled = !cabe && o.actual !== n;
+  group.replaceChildren(...ROUND_LENGTHS.map((n) => {
+    const fits = o.fits(n);
+    const card = toggleCard(o.prefix + n, o.current === n, ROUND_LENGTH_LABELS[n].name,
+      [["cat-desc", fits || !o.available ? ROUND_LENGTH_LABELS[n].desc : `Con esta selección hay ${o.available} preguntas.`]],
+      o.change(o.prefix + n, () => o.choose(n)), true);
+    // La elegida no se desactiva aunque ya no quepa: se ve marcada, con el aviso de debajo (roundLengthWarning).
+    card.disabled = !fits && o.current !== n;
     return card;
   }));
-  tabuladorEnLaMarcada(grupo);
+  tabToChecked(group);
 }
 
 /** Opciones: aviso cuando el número de preguntas elegido ya no cabe en la selección. */
-export const avisoLongitud = (hay: number) =>
-  `Con esta selección hay ${hay} preguntas: elige menos preguntas por partida o «Sin límite».`;
+export const roundLengthWarning = (available: number) =>
+  `Con esta selección hay ${available} preguntas: elige menos preguntas por partida o «Sin límite».`;
 
-/** Opciones: grupo «Tiempo por pregunta» (se marca uno). Los ids de las tarjetas son `prefijo` y el tiempo. */
-export function grupoTiempo(grupo: HTMLElement, o: {
-  prefijo: string; actual: TimeLimit; elegir: (t: TimeLimit) => void; cambiar: Cambiar;
+/** Opciones: grupo «Tiempo por pregunta» (se marca uno). Los ids de las tarjetas son `prefix` y el tiempo. */
+export function renderTimeLimitGroup(group: HTMLElement, o: {
+  prefix: string; current: TimeLimit; choose: (t: TimeLimit) => void; change: Change;
 }): void {
-  grupo.replaceChildren(...TIME_LIMITS.map((t) =>
-    toggleCard(o.prefijo + t, o.actual === t, TIEMPO_LABELS[t].name, [["cat-desc", TIEMPO_LABELS[t].desc]],
-      o.cambiar(o.prefijo + t, () => o.elegir(t)), true)));
-  tabuladorEnLaMarcada(grupo);
+  group.replaceChildren(...TIME_LIMITS.map((t) =>
+    toggleCard(o.prefix + t, o.current === t, TIME_LIMIT_LABELS[t].name, [["cat-desc", TIME_LIMIT_LABELS[t].desc]],
+      o.change(o.prefix + t, () => o.choose(t)), true)));
+  tabToChecked(group);
 }
 
 /**
  * Resultado: la línea de la respuesta de un fallo, «Respuesta: Oviedo · tú dijiste Gijón». Si no se respondió,
  * en vez de lo que dijo el jugador va `sinRespuesta` («se acabó el tiempo», «sin responder»).
  */
-export function lineaRespuesta(respuesta: string, dada: string | null, sinRespuesta: string): HTMLElement {
+export function answerLine(answer: string, given: string | null, noAnswerText: string): HTMLElement {
   const a = el("span", "miss-a");
-  a.append("Respuesta: ", el("b", "", respuesta), ...(dada === null ? [` · ${sinRespuesta}`] : [" · tú dijiste ", el("s", "", dada)]));
+  a.append("Respuesta: ", el("b", "", answer), ...(given === null ? [` · ${noAnswerText}`] : [" · tú dijiste ", el("s", "", given)]));
   return a;
 }

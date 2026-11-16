@@ -33,23 +33,23 @@ export const announce = (text: string) => { $("announce").textContent = text; };
  * - Vale la fila de números aunque haga falta Mayúsculas para escribir la cifra (teclados franceses:
  *   sin Mayúsculas, la tecla del 1 escribe «&»), y el teclado numérico con el bloqueo numérico activado.
  */
-export function teclaNumero(e: KeyboardEvent): number | null {
+export function numberKey(e: KeyboardEvent): number | null {
   if (e.ctrlKey || e.altKey || e.metaKey) return null;
   if (/^[1-9]$/.test(e.key)) return Number(e.key);
-  const fila = /^Digit([1-9])$/.exec(e.code);
-  return fila ? Number(fila[1]) : null;
+  const digitRow = /^Digit([1-9])$/.exec(e.code);
+  return digitRow ? Number(digitRow[1]) : null;
 }
 
 /** Si el elemento es un enlace, un botón o un campo: ahí Intro ya hace lo suyo (abrir, pulsar…). */
-export const esInteractivo = (t: EventTarget | null) =>
+export const isInteractive = (t: EventTarget | null) =>
   t instanceof Element && t.closest("a, button, input, select, textarea") !== null;
 
 /**
  * Enlace a otra web, que se abre en otra pestaña. Todos los enlaces externos se crean aquí: cuando llegue la
  * app de Android, se cambiará en este sitio para que se abran en el navegador del móvil.
  */
-export function enlaceExterno(href: string, texto: string): HTMLAnchorElement {
-  const a = el("a", "", texto);
+export function externalLink(href: string, text: string): HTMLAnchorElement {
+  const a = el("a", "", text);
   a.href = href;
   a.target = "_blank";
   a.rel = "noopener";
@@ -57,28 +57,28 @@ export function enlaceExterno(href: string, texto: string): HTMLAnchorElement {
 }
 
 /** Lo que hace una tarjeta de Opciones al pulsarla: `cambiar("id-de-la-tarjeta", () => { …el cambio… })`. */
-export type Cambiar = (idTarjeta: string, cambio: () => void) => () => void;
+export type Change = (cardId: string, change: () => void) => () => void;
 
 /** Para las tarjetas de Opciones: hace el cambio, lo guarda, dibuja de nuevo la pantalla y deja el foco en la tarjeta tocada. */
-export const cambiarCon = (guardar: () => void, dibujar: () => void): Cambiar => (idTarjeta, cambio) => () => {
-  cambio();
-  guardar();
-  dibujar();
-  $(idTarjeta).focus();
+export const changeWith = (save: () => void, render: () => void): Change => (cardId, change) => () => {
+  change();
+  save();
+  render();
+  $(cardId).focus();
 };
 
 /**
  * Fuentes de una nota (en el examen de nacionalidad): «Fuente: Constitución española, art. 1.3», con su enlace,
  * que se abre en otra pestaña. Se dibujan dentro de `p`, que se esconde si no hay ninguna.
  */
-export function pintarFuentes(p: HTMLElement, fuentes: readonly Fuente[] = []): void {
-  p.hidden = !fuentes.length;
+export function renderSources(p: HTMLElement, sources: readonly Fuente[] = []): void {
+  p.hidden = !sources.length;
   p.replaceChildren();
-  if (!fuentes.length) return;
-  p.append(el("b", "", fuentes.length > 1 ? "Fuentes" : "Fuente"), " ");
-  fuentes.forEach((f, i) => {
+  if (!sources.length) return;
+  p.append(el("b", "", sources.length > 1 ? "Fuentes" : "Fuente"), " ");
+  sources.forEach((f, i) => {
     if (i) p.append(" · ");
-    p.append(f.url ? enlaceExterno(f.url, f.texto) : f.texto);
+    p.append(f.url ? externalLink(f.url, f.texto) : f.texto);
   });
 }
 
@@ -116,25 +116,25 @@ export function toggleCard(id: string, on: boolean, title: string, lines: string
  */
 export function radioGroup(group: HTMLElement): void {
   group.addEventListener("keydown", (e) => {
-    const paso = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
-    if (paso === undefined && e.key !== "Home" && e.key !== "End") return;
-    const radios = radiosDe(group);
+    const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+    if (step === undefined && e.key !== "Home" && e.key !== "End") return;
+    const radios = radiosIn(group);
     if (!radios.length) return;
     const i = radios.findIndex((b) => b === document.activeElement);
-    const destino = e.key === "Home" ? radios[0]
+    const target = e.key === "Home" ? radios[0]
       : e.key === "End" ? radios[radios.length - 1]
-      : radios[(Math.max(i, 0) + paso! + radios.length) % radios.length];
+      : radios[(Math.max(i, 0) + step! + radios.length) % radios.length];
     e.preventDefault();
-    destino.click(); // al marcarla se dibuja de nuevo Opciones y el foco vuelve a ella
+    target.click(); // al marcarla se dibuja de nuevo Opciones y el foco vuelve a ella
   });
 }
 
-const radiosDe = (group: HTMLElement) =>
+const radiosIn = (group: HTMLElement) =>
   Array.from(group.querySelectorAll<HTMLButtonElement>('[role="radio"]')).filter((b) => !b.disabled);
 
 /** Tras dibujar un grupo de opciones: el tabulador entra solo en la marcada (o en la primera, si no la hay). */
-export function tabuladorEnLaMarcada(group: HTMLElement): void {
-  const radios = radiosDe(group);
-  const marcada = radios.find((b) => b.getAttribute("aria-checked") === "true") ?? radios[0];
-  for (const b of group.querySelectorAll<HTMLButtonElement>('[role="radio"]')) b.tabIndex = b === marcada ? 0 : -1;
+export function tabToChecked(group: HTMLElement): void {
+  const radios = radiosIn(group);
+  const checked = radios.find((b) => b.getAttribute("aria-checked") === "true") ?? radios[0];
+  for (const b of group.querySelectorAll<HTMLButtonElement>('[role="radio"]')) b.tabIndex = b === checked ? 0 : -1;
 }
