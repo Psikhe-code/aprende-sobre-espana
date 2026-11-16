@@ -1,5 +1,6 @@
 import { test, expect, openSection, useCcseData } from "./helpers";
 import { ccseTestData, ccseEmptyTestData } from "../tests/ccse/test-data";
+import { UPCOMING_SECTIONS } from "../src/sections/upcoming";
 
 // Las partidas y Opciones se prueban con datos de prueba, porque la plantilla real se va
 // rellenando poco a poco (y al principio está vacía).
@@ -21,6 +22,31 @@ test("al abrir el juego sale siempre el menú de secciones, y desde cada secció
     await expect(page.locator(backId)).toHaveText("← Todas las secciones");
     await expect(page.locator(backId)).toBeInViewport();
     await page.locator(backId).click();
+    await expect(page.locator("#sections")).toBeVisible();
+  }
+});
+
+test("el menú tiene una tarjeta por sección, y después las que vendrán como «Próximamente», sin poder elegirse", async ({ page }) => {
+  await page.goto("./");
+  const cards = page.locator("#sectionList > button");
+  // Primero, las que se juegan (las dos de hoy, como mínimo), sin «Próximamente».
+  const playable = (await cards.count()) - UPCOMING_SECTIONS.length;
+  expect(playable).toBeGreaterThanOrEqual(2);
+  await expect(cards.nth(0)).toHaveId("sec-geografia");
+  await expect(cards.nth(1)).toHaveId("sec-ccse");
+  for (let i = 0; i < playable; i++) {
+    await expect(cards.nth(i)).toBeEnabled();
+    await expect(cards.nth(i)).not.toContainText("Próximamente");
+  }
+  // Después, las que vendrán, en su orden.
+  for (const [i, s] of UPCOMING_SECTIONS.entries()) {
+    const card = cards.nth(playable + i);
+    await expect(card).toHaveId(`sec-${s.id}`);
+    await expect(card).toContainText(s.name);
+    await expect(card).toContainText("Próximamente");
+    await expect(card).toBeDisabled();
+    // Aunque se intente pulsar, no lleva a ningún sitio.
+    await card.click({ force: true });
     await expect(page.locator("#sections")).toBeVisible();
   }
 });

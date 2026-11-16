@@ -7,8 +7,8 @@ import { drawContours } from "./contours";
 import { renderCredits } from "./credits-screen";
 import { $, el } from "./dom";
 import { createRoundScreen } from "./round-screen";
-import type { SectionDefinition } from "./section";
-import { SECTION_LIST } from "../../sections/sections";
+import type { SectionDefinition, UpcomingSection } from "./section";
+import { SECTION_LIST, UPCOMING_SECTIONS } from "../../sections/sections";
 
 export interface App {
   /** true en las pantallas donde se puede recargar sin perder nada (todas menos las de juego, ver isIdleScreen). */
@@ -44,13 +44,18 @@ const MENU_HEADER = {
   lede: "Geografía de España y preparación del examen de nacionalidad. Elige por dónde empezar; luego puedes cambiar de sección cuando quieras."
 };
 
-/** Tarjeta de una sección en el menú: `sec-` y su id («sec-geografia»). */
-function sectionCard(s: SectionDefinition): HTMLButtonElement {
+/**
+ * Tarjeta de una sección en el menú: `sec-` y su id («sec-geografia»). Las que vendrán llevan debajo
+ * «Próximamente» y están desactivadas, como las tareas del examen sin preguntas.
+ */
+function sectionCard(s: SectionDefinition | UpcomingSection, upcoming = false): HTMLButtonElement {
   const card = el("button", "cat section-card");
   card.id = "sec-" + s.id;
   const text = el("span", "cat-text");
   text.append(el("span", "cat-name", s.name), el("span", "cat-desc", s.description));
+  if (upcoming) text.append(el("span", "cat-count", "Próximamente"));
   card.append(text);
+  card.disabled = upcoming;
   return card;
 }
 
@@ -108,7 +113,7 @@ export function startApp(): App {
     const card = sectionCard(s);
     card.addEventListener("click", () => { state.section = s.id; ctx.save(); ctx.goHome(); });
     return card;
-  }));
+  }), ...UPCOMING_SECTIONS.map((s) => sectionCard(s, true)));
   for (const s of SECTION_LIST) {
     $(s.buttons.back).addEventListener("click", () => ctx.show("sections"));
     $(s.buttons.play).addEventListener("click", roundScreen.start);
