@@ -8,9 +8,10 @@ import { geografiaMode } from "./geografia-mode";
 import { renderGeografiaStart } from "./geografia-start-screen";
 import { createGeografiaSettings } from "./geografia-settings-screen";
 import { renderBanderaCredits } from "./geografia-credits";
+import { GEOGRAFIA_ID } from "../engine/geografia-id";
 
 export const geografiaSection: SectionDefinition = {
-  id: "geografia",
+  id: GEOGRAFIA_ID,
   name: "Geografía",
   description: "Capitales, banderas, provincias y municipios de España.",
   header: {

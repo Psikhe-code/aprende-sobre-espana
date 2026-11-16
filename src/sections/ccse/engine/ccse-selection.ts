@@ -5,6 +5,7 @@
 import { lengthFits, roundSize } from "./ccse-questions";
 import { recordKeyEnding } from "../../../common/engine/common-round-settings";
 import type { CcseSettings } from "./ccse-settings";
+import { CCSE_ID } from "./ccse-id";
 
 /** Si se puede jugar: alguna tarea con preguntas y que quepa el número elegido. */
 export const canPlay = (c: CcseSettings) => roundSize(c.tareas, c.roundLength) > 0 && lengthFits(c.roundLength, c.tareas);
@@ -17,4 +18,4 @@ export const selectionKey = (c: CcseSettings) => JSON.stringify([c.tareas, c.rou
  * El del simulacro va aparte («ccse/simulacro», en ccse-simulacro-rules.ts).
  */
 export const recordKey = (c: CcseSettings) =>
-  "ccse/" + [...c.tareas].sort((a, b) => a - b).join("+") + recordKeyEnding(c.roundLength, c.timeLimit);
+  CCSE_ID + "/" + [...c.tareas].sort((a, b) => a - b).join("+") + recordKeyEnding(c.roundLength, c.timeLimit);

@@ -5,6 +5,7 @@
 import { sectionSettings, type SavedState } from "../../../common/engine/common-storage";
 import { DEFAULT_ROUND_LENGTH, DEFAULT_TIME_LIMIT, ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "../../../common/engine/common-round-settings";
 import { TAREA_IDS, tareasWithQuestions } from "./ccse-questions";
+import { CCSE_ID } from "./ccse-id";
 
 export interface CcseSettings {
   /** Tareas marcadas (solo las que tienen preguntas). */
@@ -38,4 +39,4 @@ export function loadCcseSettings(raw: unknown): CcseSettings {
 }
 
 /** Las opciones del examen, comprobadas (ver sectionSettings). */
-export const ccseSettings = (state: SavedState): CcseSettings => sectionSettings(state, "ccse", loadCcseSettings);
+export const ccseSettings = (state: SavedState): CcseSettings => sectionSettings(state, CCSE_ID, loadCcseSettings);

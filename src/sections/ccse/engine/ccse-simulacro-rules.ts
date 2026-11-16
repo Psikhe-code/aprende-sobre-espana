@@ -3,6 +3,8 @@
  * también puedan usarlas los tests de pantalla (que no cargan ccse.json). El simulacro, en ccse-simulacro.ts.
  */
 
+import { CCSE_ID } from "./ccse-id";
+
 /** Cuántas preguntas salen de cada tarea, como en la prueba real. */
 export const SIMULACRO_DISTRIBUTION: readonly { tarea: number; questionCount: number }[] = [
   { tarea: 1, questionCount: 10 },
@@ -16,4 +18,4 @@ export const SIMULACRO_MINUTES = 45;
 /** Aciertos que hacen falta para el «apto». */
 export const SIMULACRO_APTO_HITS = 15;
 /** Clave del mejor resultado del simulacro entre los récords (empieza por «ccse/», como los del examen). */
-export const SIMULACRO_RECORD_KEY = "ccse/simulacro";
+export const SIMULACRO_RECORD_KEY = CCSE_ID + "/simulacro";

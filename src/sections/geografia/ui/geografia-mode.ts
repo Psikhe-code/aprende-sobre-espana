@@ -11,6 +11,7 @@ import type { RoundQuestion } from "../engine/geografia-types";
 import { geografiaSettings } from "../engine/geografia-settings";
 import { banderaQuestionImage } from "./geografia-banderas";
 import { geografiaRating } from "../engine/geografia-rating";
+import { GEOGRAFIA_ID } from "../engine/geografia-id";
 
 /** Si una pregunta es de geografía (RoundQuestion): solo esas tienen categoría. */
 const isGeografiaQuestion = (q: PlayableQuestion): q is RoundQuestion => "category" in q;
@@ -25,7 +26,6 @@ const withImages = (questions: RoundQuestion[]): RoundQuestion[] =>
 export function geografiaMode(state: SavedState): SectionMode {
   const g = geografiaSettings(state);
   return {
-    section: "geografia",
     canPlay: () => canPlay(g),
     buildRound: () => withImages(buildRound(roundSettings(g))),
     reshuffleRound: (lastId) => withImages(reshuffleRound(roundSettings(g), lastId)),
@@ -33,7 +33,7 @@ export function geografiaMode(state: SavedState): SectionMode {
     roundSize: () => roundSize(g.categories, g.territorios, g.roundLength),
     isUnlimited: () => g.roundLength === "sinLimite",
     timeLimit: () => g.timeLimit,
-    selectionKey: () => "geografia:" + selectionKey(g),
+    selectionKey: () => GEOGRAFIA_ID + ":" + selectionKey(g),
     recordKey: () => recordKey(g),
     rating: geografiaRating
   };

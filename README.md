@@ -69,6 +69,7 @@ src/
         banderas/                     una imagen SVG por comunidad o ciudad autónoma (comunidades/) y por provincia con bandera (provincias/)
         schema/                       descripción formal del formato de sus JSON (se valida en los tests)
       engine/
+        geografia-id.ts               su id («geografia»), escrito una sola vez
         geografia-types.ts            sus tipos: pregunta del banco y preparada, categoría, territorio, formas del nombre
         geografia-territorio.ts       carga el territorio y monta los pools de respuestas
         geografia-questions.ts        genera las preguntas a partir de los datos
@@ -91,6 +92,7 @@ src/
         ccse.json                     tareas y plantilla de las 300 preguntas, con su nota y sus fuentes
         schema/                       descripción formal del formato de ccse.json
       engine/
+        ccse-id.ts                    su id («ccse»), escrito una sola vez
         ccse-questions.ts             preguntas y partidas
         ccse-selection.ts             lo que se deduce de sus opciones (si se puede jugar, clave del récord…)
         ccse-settings.ts              sus opciones guardadas, comprobadas al cargarlas
@@ -294,6 +296,8 @@ Cada proceso solo arranca si el commit que subes cambia su script (o su workflow
 ## Tests
 
 `npm test` comprueba lo que hay en `tests/`, una carpeta por sección y otra (`common/`) para lo de todas:
+
+- **Lista de secciones** (`sections.test.ts`): que no hay dos secciones con el mismo id, contando las que vendrán, y que las pantallas y los botones que declara cada sección existen en `index.html`.
 
 - **Datos de Geografía** (`geografia/geografia-data.test.ts`): que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen, que no sobran imágenes y que están limpias con SVGO; que en cada provincia están sus tres municipios más poblados y su capital, que los demás llevan curiosidad y que el puesto concuerda con la población.
 - **Preguntas y opciones de Geografía** (`geografia/geografia-questions.test.ts`), en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
