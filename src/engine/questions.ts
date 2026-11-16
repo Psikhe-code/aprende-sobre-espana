@@ -134,7 +134,8 @@ export function provincialCapitalQuestions(style: NameStyle): Question[] {
   return PROVINCIAS.filter((p) => p.trampas?.length).map((p) => {
     const capital = p.capital[style];
     // Capital y ciudades de cada provincia cercana, y ciudades de la propia provincia.
-    const cercanas = p.trampas!.map((id) => PROVINCIAS.find((x) => x.id === id)!);
+    // `provincia` falla con un mensaje claro si un código de `trampas` no existe (los tests de datos lo comprueban).
+    const cercanas = (p.trampas ?? []).map(provincia);
     const trampas = [
       ...cercanas.flatMap((x) => [x.capital, ...(x.ciudades ?? [])]),
       ...(p.ciudades ?? [])

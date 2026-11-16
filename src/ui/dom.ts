@@ -3,9 +3,18 @@
 
 import type { Fuente } from "../engine/types";
 
-export const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+/**
+ * Busca un elemento por su id. Si no existe (un id mal escrito, o que se quitó de index.html), falla
+ * enseguida con un mensaje que dice cuál, en vez de un error confuso más adelante.
+ */
+export function $<T extends HTMLElement = HTMLElement>(id: string): T {
+  const e = document.getElementById(id);
+  if (!e) throw new Error(`No hay ningún elemento con id "${id}" en index.html`);
+  return e as T;
+}
 
-export const el = (tag: string, cls?: string, text?: string) => {
+/** Crea un elemento. TypeScript sabe de qué tipo es por la etiqueta: el("button") es un botón, el("a"), un enlace. */
+export const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string): HTMLElementTagNameMap[K] => {
   const e = document.createElement(tag);
   if (cls) e.className = cls;
   if (text != null) e.textContent = text;
@@ -47,7 +56,7 @@ export function pintarFuentes(p: HTMLElement, fuentes: readonly Fuente[] = []): 
   fuentes.forEach((f, i) => {
     if (i) p.append(" · ");
     if (f.url) {
-      const a = el("a", "", f.texto) as HTMLAnchorElement;
+      const a = el("a", "", f.texto);
       a.href = f.url;
       a.target = "_blank";
       a.rel = "noopener";
@@ -66,7 +75,7 @@ const TICK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L
  *   El lector dice «botón de opción, seleccionado, 2 de 4». Se recorre con las flechas (ver radioGroup).
  */
 export function toggleCard(id: string, on: boolean, title: string, lines: string[][], onToggle: () => void, radio = false): HTMLButtonElement {
-  const b = el("button", "cat") as HTMLButtonElement;
+  const b = el("button", "cat");
   b.id = id;
   if (radio) {
     b.setAttribute("role", "radio");
@@ -94,7 +103,7 @@ export function radioGroup(group: HTMLElement): void {
     if (paso === undefined && e.key !== "Home" && e.key !== "End") return;
     const radios = radiosDe(group);
     if (!radios.length) return;
-    const i = radios.indexOf(document.activeElement as HTMLButtonElement);
+    const i = radios.findIndex((b) => b === document.activeElement);
     const destino = e.key === "Home" ? radios[0]
       : e.key === "End" ? radios[radios.length - 1]
       : radios[(Math.max(i, 0) + paso! + radios.length) % radios.length];
@@ -104,11 +113,11 @@ export function radioGroup(group: HTMLElement): void {
 }
 
 const radiosDe = (group: HTMLElement) =>
-  (Array.from(group.querySelectorAll('[role="radio"]')) as HTMLButtonElement[]).filter((b) => !b.disabled);
+  Array.from(group.querySelectorAll<HTMLButtonElement>('[role="radio"]')).filter((b) => !b.disabled);
 
 /** Tras dibujar un grupo de opciones: el tabulador entra solo en la marcada (o en la primera, si no la hay). */
 export function tabuladorEnLaMarcada(group: HTMLElement): void {
   const radios = radiosDe(group);
   const marcada = radios.find((b) => b.getAttribute("aria-checked") === "true") ?? radios[0];
-  for (const b of group.querySelectorAll('[role="radio"]')) (b as HTMLElement).tabIndex = b === marcada ? 0 : -1;
+  for (const b of group.querySelectorAll<HTMLButtonElement>('[role="radio"]')) b.tabIndex = b === marcada ? 0 : -1;
 }

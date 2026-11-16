@@ -22,7 +22,7 @@ export function renderCredits(seccion: Seccion): void {
 
 function pintarBanderas(): void {
   const link = (href: string, text: string) => {
-    const a = el("a", "", text) as HTMLAnchorElement;
+    const a = el("a", "", text);
     a.href = href;
     a.target = "_blank";
     a.rel = "noopener";

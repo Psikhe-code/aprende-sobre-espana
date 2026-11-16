@@ -35,7 +35,8 @@ export interface RoundSettings {
   categories: string[];
   /** Preguntas de la partida. Sin límite: una vuelta entera a la baraja (todas las de la selección). */
   length?: RoundLength;
-  options?: number;
+  /** Opciones por pregunta (la dificultad). */
+  options?: OptionCount;
   /** Formas de los nombres marcadas. Si hay varias, se sortea una en cada pregunta. */
   names?: NameStyle[];
   /** Territorios marcados: solo salen preguntas de estos. */
@@ -142,7 +143,7 @@ export function reshuffle(settings: RoundSettings, lastId?: string): RoundQuesti
 /** Prepara de nuevo una lista de preguntas (repaso de fallos), con opciones nuevas y la misma forma. */
 export function rebuild(
   questions: RoundQuestion[],
-  { options = DEFAULT_OPTIONS, rng = Math.random }: { options?: number; rng?: Rng } = {}
+  { options = DEFAULT_OPTIONS, rng = Math.random }: { options?: OptionCount; rng?: Rng } = {}
 ): RoundQuestion[] {
   return shuffle(questions, rng).map((q) => prepare(q, options, poolsFor(q.style), rng));
 }

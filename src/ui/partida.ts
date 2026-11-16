@@ -70,7 +70,7 @@ export function crearPartida(ctx: Contexto): Partida {
     $("stop").hidden = !g.unlimited;
     $("hits").textContent = String(g.hits);
     $("streak").textContent = String(g.streak);
-    $("qcat").textContent = (g.review ? "Repaso · " : "") + ctx.modo().etiqueta(q);
+    $("qcat").textContent = (g.review ? "Repaso · " : "") + q.etiqueta;
     $("question").textContent = q.text;
 
     const flag = $("flag");
@@ -88,7 +88,7 @@ export function crearPartida(ctx: Contexto): Partida {
     box.classList.toggle("many", q.options.length > 4);
     box.classList.toggle("con-bandera", !!q.flag);
     q.options.forEach((o, j) => {
-      const b = el("button", "opt") as HTMLButtonElement;
+      const b = el("button", "opt");
       b.id = "opt-" + j;
       b.dataset.value = o;
       b.append(el("span", "key", String(j + 1)), el("span", "", o));
@@ -130,7 +130,7 @@ export function crearPartida(ctx: Contexto): Partida {
   /** Muestra el resultado de la pregunta: la opción pulsada (null si se acabó el tiempo) y la nota. */
   function showResult(r: AnswerResult, btn: HTMLButtonElement | null) {
     if (!game) return;
-    for (const b of Array.from($("opts").children) as HTMLButtonElement[]) {
+    for (const b of $("opts").querySelectorAll<HTMLButtonElement>(".opt")) {
       b.disabled = true;
       if (b.dataset.value === r.answer) b.classList.add("right");
       else if (b === btn) b.classList.add("wrong");
@@ -223,7 +223,7 @@ export function crearPartida(ctx: Contexto): Partida {
     if (ctx.pantalla() !== "play" || !game) return;
     const numero = teclaNumero(e);
     if (!game.answered && numero !== null) {
-      const b = $("opts").children[numero - 1] as HTMLButtonElement | undefined;
+      const b = $("opts").querySelectorAll<HTMLButtonElement>(".opt")[numero - 1];
       if (b) answer(b);
     } else if (game.answered && e.key === "Enter" && !e.ctrlKey && !e.altKey && !e.metaKey && !esInteractivo(e.target)) {
       // Si el foco está en un botón (Siguiente, Terminar…) o en un enlace (las fuentes), Intro ya lo pulsa o lo abre:

@@ -1,4 +1,3 @@
-/** Una pregunta del banco, independiente de la partida en la que salga. */
 /**
  * Sección del juego: geografía o examen de nacionalidad (CCSE). Cada una tiene sus preguntas, sus opciones
  * y sus récords; la partida (game.ts) y su pantalla son las mismas.
@@ -24,6 +23,8 @@ export interface PreguntaJugable {
   /** Respuesta correcta: una de `options`. */
   answer: string;
   options: string[];
+  /** Lo que se escribe encima de la pregunta: su categoría («Capitales de provincia») o su tarea («Tarea 1 · …»). */
+  etiqueta: string;
   /** Explicación que se muestra al responder. */
   why: string;
   fact?: string;
@@ -35,6 +36,7 @@ export interface PreguntaJugable {
   fuentes?: Fuente[];
 }
 
+/** Una pregunta del banco de geografía, independiente de la partida en la que salga. */
 export interface Question {
   /**
    * Identificador fijo, p. ej. "capital-ccaa:12". No cambia aunque se corrija la redacción,
@@ -89,8 +91,11 @@ export interface Question {
 export type Territorio = "comunidad" | "provincia";
 export const TERRITORIOS: Territorio[] = ["comunidad", "provincia"];
 
-/** Pregunta lista para jugar: respuesta y forma de los nombres fijadas, y opciones ya generadas. */
-export interface RoundQuestion extends Question {
+/**
+ * Pregunta de geografía lista para jugar: respuesta y forma de los nombres fijadas, y opciones ya generadas.
+ * Es también una PreguntaJugable: TypeScript comprueba que tiene todo lo que necesita la partida.
+ */
+export interface RoundQuestion extends Question, PreguntaJugable {
   answer: string;
   answerKey: string;
   category: string;

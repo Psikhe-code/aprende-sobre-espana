@@ -36,16 +36,18 @@ export interface ResultadoSimulacro {
 
 /** Un simulacro en marcha: qué pregunta se ve, qué se ha respondido en cada una y la entrega. */
 export class Simulacro {
-  /** Respuesta elegida en cada pregunta, o null si aún no se ha respondido. */
-  readonly respuestas: (string | null)[];
+  /** Respuesta elegida en cada pregunta, o null si aún no se ha respondido. Solo se cambia con `elegir`. */
+  private readonly elegidas: (string | null)[];
   private i = 0;
   private resultado: ResultadoSimulacro | null = null;
 
   constructor(readonly preguntas: readonly PreguntaCcseJugable[]) {
-    this.respuestas = preguntas.map(() => null);
+    this.elegidas = preguntas.map(() => null);
   }
 
   get indice(): number { return this.i; }
+  /** Respuesta elegida en cada pregunta, o null si aún no se ha respondido. Desde fuera, solo para leerla. */
+  get respuestas(): readonly (string | null)[] { return this.elegidas; }
   get actual(): PreguntaCcseJugable { return this.preguntas[this.i]; }
   get total(): number { return this.preguntas.length; }
   get entregado(): boolean { return this.resultado !== null; }
@@ -60,7 +62,7 @@ export class Simulacro {
   /** Elige una opción en la pregunta que se ve; se puede cambiar cuantas veces se quiera hasta entregar. */
   responder(opcion: string): void {
     if (this.entregado || !this.actual.options.includes(opcion)) return;
-    this.respuestas[this.i] = opcion;
+    this.elegidas[this.i] = opcion;
   }
 
   /** Entrega el examen (también cuando se acaba el tiempo): lo que no se ha respondido cuenta como fallo. */

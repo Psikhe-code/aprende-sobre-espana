@@ -1,6 +1,6 @@
 // Textos con los que se presentan las opciones en el inicio y en Opciones.
 
-import type { RoundLength, TimeLimit } from "../engine/round";
+import type { OptionCount, RoundLength, TimeLimit } from "../engine/round";
 import type { NameStyle, Territorio } from "../engine/types";
 
 /** Cómo se presenta cada forma de los nombres en Opciones. */
@@ -16,7 +16,7 @@ export const TERRITORIO_LABELS: Record<Territorio, { name: string; example: stri
 };
 
 /** Explicación de cada dificultad en Opciones. */
-export const DIFICULTAD_DESC: Record<number, string> = {
+export const DIFICULTAD_DESC: Record<OptionCount, string> = {
   4: "La respuesta y tres opciones más.",
   6: "Más trampas entre las opciones.",
   8: "Casi todas las trampas a la vez."

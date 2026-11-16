@@ -101,6 +101,9 @@ export const TAREA_IDS: readonly number[] = TAREAS.map((t) => t.numero);
 
 export const tarea = (numero: number) => TAREAS.find((t) => t.numero === numero);
 
+/** Cómo se nombra una tarea encima de sus preguntas y en el inicio de la sección: «Tarea 1 · Gobierno, legislación…». */
+export const nombreTarea = (t: Tarea) => `Tarea ${t.numero} · ${t.nombre}`;
+
 /** Preguntas de las tareas marcadas. */
 export const preguntasDe = (tareas: readonly number[]) => PREGUNTAS_CCSE.filter((p) => tareas.includes(p.tarea));
 
@@ -118,6 +121,8 @@ export interface PreguntaCcseJugable extends PreguntaJugable {
   tarea: number;
 }
 
+const etiquetaTarea = (numero: number) => { const t = tarea(numero); return t ? nombreTarea(t) : ""; };
+
 /** Prepara una pregunta para jugar: baraja las opciones (salvo las de orden fijo). */
 export function jugable(p: PreguntaCcse, rng: Rng = Math.random): PreguntaCcseJugable {
   return {
@@ -126,6 +131,7 @@ export function jugable(p: PreguntaCcse, rng: Rng = Math.random): PreguntaCcseJu
     text: p.pregunta,
     answer: p.respuesta,
     options: p.ordenFijo ? [...p.opciones] : shuffle([...p.opciones], rng),
+    etiqueta: etiquetaTarea(p.tarea),
     why: p.nota,
     aliases: [],
     fuentes: p.fuentes

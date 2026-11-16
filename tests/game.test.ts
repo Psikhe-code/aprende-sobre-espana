@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CATEGORIES, CATEGORY_IDS } from "../src/engine/categories";
+import { CATEGORIES, CATEGORY_IDS, categoryById } from "../src/engine/categories";
 import {
   buildRound, rebuild, reshuffle, roundSize, questionCount, questionsIn, lengthFits, OPTION_COUNTS, ROUND_LENGTH, ROUND_LENGTHS
 } from "../src/engine/round";
@@ -11,12 +11,20 @@ import { NAME_STYLES, type RoundQuestion } from "../src/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
 const rq = (id: string, answer: string): RoundQuestion =>
-  ({ id, text: id, answer, answerKey: id, type: null, traps: [], why: "", exclude: [], aliases: [], territorio: "comunidad", category: "c", style: "castellano", options: [answer, "X"] });
+  ({ id, text: id, answer, answerKey: id, type: null, traps: [], why: "", exclude: [], aliases: [], territorio: "comunidad", category: "c", style: "castellano", options: [answer, "X"], etiqueta: "" });
 /** Preguntas de capital de provincia que hay en los datos (las provincias con trampas). */
 const CAPITALES_PROVINCIA = PROVINCIAS.filter((p) => p.trampas).length;
 const tenQuestions = () => Array.from({ length: ROUND_LENGTH }, (_, i) => rq("q" + i, "A"));
 
 describe("partidas: elección de preguntas", () => {
+  it("cada pregunta lleva encima la etiqueta de su categoría y su territorio, también en el repaso y al barajar otra vez", () => {
+    const todas = buildRound({ categories: CATEGORY_IDS, length: "sinLimite" });
+    for (const q of [...todas, ...rebuild(todas), ...reshuffle({ categories: CATEGORY_IDS }, todas[0].id)]) {
+      expect(q.etiqueta, q.id).toBe(categoryById(q.category)!.labels[q.territorio]);
+      expect(q.etiqueta, q.id).not.toBe("");
+    }
+  });
+
   it(`tienen ${ROUND_LENGTH} preguntas sin repetir`, () => {
     for (let r = 0; r < 300; r++) {
       const round = buildRound({ categories: CATEGORY_IDS });

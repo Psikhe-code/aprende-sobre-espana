@@ -2,8 +2,7 @@
 // con qué tiempo se juega y con qué clave se guarda el récord. La pantalla de la partida (partida.ts)
 // y la final (final.ts) son las mismas para las dos secciones y le preguntan todo esto al modo.
 
-import { categoryById } from "../engine/categories";
-import { cabeCcse, otraVueltaCcse, partidaCcse, repasoCcse, tamanoCcse, tarea, type PreguntaCcseJugable } from "../engine/ccse";
+import { cabeCcse, otraVueltaCcse, partidaCcse, repasoCcse, tamanoCcse } from "../engine/ccse";
 import { buildRound, rebuild, reshuffle, roundSize, type TimeLimit } from "../engine/round";
 import { ccseKey, type SavedState } from "../engine/storage";
 import type { PreguntaJugable, RoundQuestion, Seccion } from "../engine/types";
@@ -26,9 +25,10 @@ export interface Modo {
   /** Lo que decide qué preguntas salen, como texto: si cambia, la partida preparada ya no vale. */
   seleccion(): string;
   claveRecord(): string;
-  /** Etiqueta encima de la pregunta («Capitales autonómicas», «Tarea 1 · Gobierno…»). */
-  etiqueta(q: PreguntaJugable): string;
 }
+
+/** Si una pregunta es de geografía (RoundQuestion): solo esas tienen categoría. */
+const esDeGeografia = (q: PreguntaJugable): q is RoundQuestion => "category" in q;
 
 export function modoGeografia(state: SavedState): Modo {
   return {
@@ -36,17 +36,12 @@ export function modoGeografia(state: SavedState): Modo {
     puedeJugar: () => puedeJugar(state),
     nueva: () => buildRound(ajustesPartida(state)),
     otraVuelta: (ultimaId) => reshuffle(ajustesPartida(state), ultimaId),
-    // Las preguntas de geografía son siempre RoundQuestion: las prepara buildRound.
-    repaso: (fallos) => rebuild(fallos as RoundQuestion[], { options: state.opciones }),
+    repaso: (fallos) => rebuild(fallos.filter(esDeGeografia), { options: state.opciones }),
     esperadas: () => roundSize(state.selected, state.territorios, state.longitud),
     sinLimite: () => state.longitud === "sinLimite",
     tiempo: () => state.tiempo,
     seleccion: () => "geografia:" + seleccionActual(state),
-    claveRecord: () => claveRecord(state),
-    etiqueta: (q) => {
-      const g = q as RoundQuestion;
-      return categoryById(g.category)?.labels[g.territorio] ?? "";
-    }
+    claveRecord: () => claveRecord(state)
   };
 }
 
@@ -66,10 +61,6 @@ export function modoCcse(state: SavedState): Modo {
     sinLimite: () => state.ccse.longitud === "sinLimite",
     tiempo: () => state.ccse.tiempo,
     seleccion: () => "ccse:" + JSON.stringify([state.ccse.tareas, state.ccse.longitud]),
-    claveRecord: () => ccseKey(state.ccse.tareas, state.ccse.longitud, state.ccse.tiempo),
-    etiqueta: (q) => {
-      const t = tarea((q as PreguntaCcseJugable).tarea);
-      return t ? `Tarea ${t.numero} · ${t.nombre}` : "";
-    }
+    claveRecord: () => ccseKey(state.ccse.tareas, state.ccse.longitud, state.ccse.tiempo)
   };
 }

@@ -1,4 +1,5 @@
 import type { NameStyle, Pools, Question, RoundQuestion, Rng } from "./types";
+import { categoryById } from "./categories";
 import { pick, shuffle } from "./random";
 
 /** Valores entre los que salen las opciones incorrectas de una pregunta. */
@@ -45,8 +46,11 @@ export function fixAnswer<T extends Question>(q: T, rng: Rng = Math.random): T &
   return { ...q, answer: q.answer[i], answerKey: (q.answerKey as string[])[i] };
 }
 
-/** Fija la respuesta y genera las opciones para esta partida, con los pools de la forma de la pregunta. */
+/**
+ * Fija la respuesta y genera las opciones para esta partida, con los pools de la forma de la pregunta.
+ * También pone la etiqueta que sale encima («Capitales de provincia»): la de su categoría y su territorio.
+ */
 export function prepare(q: Question & { category: string; style: NameStyle }, n: number, pools: Pools, rng: Rng = Math.random): RoundQuestion {
   const fixed = fixAnswer(q, rng);
-  return { ...fixed, options: makeOptions(fixed, n, pools, rng) };
+  return { ...fixed, options: makeOptions(fixed, n, pools, rng), etiqueta: categoryById(q.category)?.labels[q.territorio] ?? "" };
 }
