@@ -7,6 +7,17 @@ import type { AppContext } from "./context";
 import type { SectionMode } from "./mode";
 import type { RoundScreen } from "./round-screen";
 
+/**
+ * Una sección que vendrá: sale en el menú como «Próximamente», pero no se puede elegir.
+ * No lleva código propio hasta que tenga preguntas; entonces pasa a ser una SectionDefinition.
+ */
+export interface UpcomingSection {
+  /** Su id, el mismo que tendrá cuando exista («historia»): su tarjeta del menú es `sec-` y el id. */
+  id: string;
+  name: string;
+  description: string;
+}
+
 export interface SectionDefinition {
   id: Section;
   /** Su tarjeta en el menú de secciones. */
