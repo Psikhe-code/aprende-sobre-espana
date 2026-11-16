@@ -8,7 +8,7 @@ import { type RoundQuestion } from "../../src/sections/geografia/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
 const rq = (id: string, answer: string): RoundQuestion =>
-  ({ id, text: id, answer, answerKey: id, type: null, traps: [], why: "", exclude: [], aliases: [], territorio: "comunidad", category: "c", style: "castellano", options: [answer, "X"], label: "" });
+  ({ id, text: id, answer, answerKey: id, pool: null, trapOptions: [], why: "", exclude: [], aliases: [], territorio: "comunidad", category: "c", nameForm: "castellano", options: [answer, "X"], label: "" });
 const tenQuestions = () => Array.from({ length: ROUND_LENGTH }, (_, i) => rq("q" + i, "A"));
 
 describe("partidas: desarrollo", () => {

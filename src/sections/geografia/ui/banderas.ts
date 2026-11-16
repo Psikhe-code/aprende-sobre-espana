@@ -1,6 +1,6 @@
 // Geografía: las imágenes de las banderas.
 
-import { banderaPorClave } from "../engine/questions";
+import { banderaByKey } from "../engine/questions";
 
 // Vite convierte cada imagen de src/sections/geografia/data/banderas en un archivo con su URL (no la descarga todavía:
 // el navegador la pide cuando se muestra). Para sustituir una bandera basta con reemplazar su archivo.
@@ -9,7 +9,7 @@ const files = import.meta.glob<string>("../data/banderas/*/*.svg", { eager: true
 
 /** URL de una bandera por su clave: código de comunidad ("12") o "p" y código de provincia ("p48"). */
 export function flagUrl(clave: string): string | undefined {
-  const info = banderaPorClave(clave);
+  const info = banderaByKey(clave);
   if (!info) return undefined;
   return files[`../data/banderas/${clave.startsWith("p") ? "provincias" : "comunidades"}/${info.archivo}`];
 }

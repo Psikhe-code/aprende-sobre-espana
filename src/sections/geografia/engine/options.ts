@@ -1,25 +1,25 @@
 // Geografía: las opciones de cada pregunta, la respuesta y las equivocadas.
 
 import type { Rng } from "../../../common/engine/types";
-import type { NameStyle, Pools, Question, RoundQuestion } from "./types";
+import type { NameForm, Pools, Question, RoundQuestion } from "./types";
 import { categoryById } from "./categories";
 import { pick, shuffle } from "../../../common/engine/random";
 
 /** Valores entre los que salen las opciones incorrectas de una pregunta. */
 export function poolFor(q: Question, pools: Pools): readonly string[] {
-  if (q.type === "num") {
+  if (q.pool === "num") {
     const [min, max] = q.range ?? [0, -1];
     const out: string[] = [];
     for (let v = min; v <= max; v++) out.push(String(v));
     return out;
   }
-  return q.type ? pools[q.type] ?? [] : [];
+  return q.pool ? pools[q.pool] ?? [] : [];
 }
 
 /**
  * Devuelve `n` opciones mezcladas: la correcta, algunas trampas y el resto del pool.
  *
- * - Siempre sale una trampa fija (`forcedTraps`), sorteada si hay varias.
+ * - Siempre sale una trampa fija (`fixedTrapOptions`), sorteada si hay varias.
  * - Si hay pool, como mucho n-2 incorrectas son trampas (contando las fijas): siempre queda
  *   al menos un hueco aleatorio, para que las partidas no se repitan.
  * - Nunca aparecen valores de `exclude` ni duplicados.
@@ -27,17 +27,17 @@ export function poolFor(q: Question, pools: Pools): readonly string[] {
  */
 export function makeOptions(q: Question & { answer: string }, n: number, pools: Pools, rng: Rng = Math.random): string[] {
   const banned = new Set([q.answer, ...q.exclude]);
-  const fijas = [...new Set(q.forcedTraps ?? [])].filter((v) => !banned.has(v));
-  const forced = fijas.length && n > 1 ? [pick(fijas, rng)] : [];
-  forced.forEach((v) => banned.add(v));
-  const traps = shuffle(q.traps.filter((v) => !banned.has(v)), rng);
+  const fixedCandidates = [...new Set(q.fixedTrapOptions ?? [])].filter((v) => !banned.has(v));
+  const fixed = fixedCandidates.length && n > 1 ? [pick(fixedCandidates, rng)] : [];
+  fixed.forEach((v) => banned.add(v));
+  const trapOptions = shuffle(q.trapOptions.filter((v) => !banned.has(v)), rng);
   const pool = poolFor(q, pools);
-  const k = Math.max(0, (pool.length ? Math.min(traps.length + forced.length, n - 2) : n - 1) - forced.length);
-  const wrong = [...forced, ...traps.slice(0, k)];
+  const k = Math.max(0, (pool.length ? Math.min(trapOptions.length + fixed.length, n - 2) : n - 1) - fixed.length);
+  const wrong = [...fixed, ...trapOptions.slice(0, k)];
   wrong.forEach((v) => banned.add(v));
   const fill = shuffle(pool.filter((v) => !banned.has(v)), rng);
   while (wrong.length < n - 1 && fill.length) wrong.push(fill.pop()!);
-  const rest = traps.slice(k);
+  const rest = trapOptions.slice(k);
   while (wrong.length < n - 1 && rest.length) wrong.push(rest.pop()!);
   return shuffle([q.answer, ...wrong], rng);
 }
@@ -53,7 +53,7 @@ export function fixAnswer<T extends Question>(q: T, rng: Rng = Math.random): T &
  * Fija la respuesta y genera las opciones para esta partida, con los pools de la forma de la pregunta.
  * También pone la etiqueta que sale encima («Capitales de provincia»): la de su categoría y su territorio.
  */
-export function prepare(q: Question & { category: string; style: NameStyle }, n: number, pools: Pools, rng: Rng = Math.random): RoundQuestion {
+export function prepare(q: Question & { category: string; nameForm: NameForm }, n: number, pools: Pools, rng: Rng = Math.random): RoundQuestion {
   const fixed = fixAnswer(q, rng);
   return { ...fixed, options: makeOptions(fixed, n, pools, rng), label: categoryById(q.category)?.labels[q.territorio] ?? "" };
 }

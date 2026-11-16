@@ -4,20 +4,20 @@ import { lengthFits, roundSize, type RoundSettings } from "./round-questions";
 import { geografiaRecordKey, type SavedState } from "../../../common/engine/storage";
 
 /** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y preguntas suficientes. */
-export const puedeJugar = (s: SavedState) =>
+export const canPlay = (s: SavedState) =>
   s.selected.length > 0 && s.names.length > 0 && s.territorios.length > 0 &&
   roundSize(s.selected, s.territorios) > 0 && lengthFits(s.longitud, s.selected, s.territorios);
 
 /** Ajustes con los que se prepara una partida (o otra vuelta a la baraja). */
-export const ajustesPartida = (s: SavedState): RoundSettings =>
-  ({ categories: s.selected, names: s.names, territorios: s.territorios, options: s.opciones, length: s.longitud });
+export const roundSettings = (s: SavedState): RoundSettings =>
+  ({ categories: s.selected, nameForms: s.names, territorios: s.territorios, optionCount: s.opciones, roundLength: s.longitud });
 
 /**
  * Lo que decide qué preguntas salen, como texto: si cambia, la partida preparada ya no vale.
  * El tiempo no está, porque no cambia las preguntas.
  */
-export const seleccionActual = (s: SavedState) => JSON.stringify([s.selected, s.names, s.territorios, s.opciones, s.longitud]);
+export const selectionKey = (s: SavedState) => JSON.stringify([s.selected, s.names, s.territorios, s.opciones, s.longitud]);
 
 /** Clave del récord de la selección actual. */
-export const claveRecord = (s: SavedState) => geografiaRecordKey(s.selected, s.territorios, s.opciones, s.longitud, s.tiempo);
+export const recordKey = (s: SavedState) => geografiaRecordKey(s.selected, s.territorios, s.opciones, s.longitud, s.tiempo);
 

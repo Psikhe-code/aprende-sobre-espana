@@ -2,12 +2,12 @@
 
 import { CATEGORIES, CATEGORY_IDS } from "../engine/categories";
 import { questionsIn, questionCount, lengthFits, OPTION_COUNTS } from "../engine/round-questions";
-import { NAME_STYLES, TERRITORIOS } from "../engine/types";
+import { NAME_FORMS, TERRITORIOS } from "../engine/types";
 import type { Contexto } from "../../../common/ui/context";
 import { avisoLongitud, grupoLongitud, grupoTiempo } from "../../../common/ui/widgets";
 import { $, cambiarCon, radioGroup, tabuladorEnLaMarcada, toggleCard } from "../../../common/ui/dom";
 import { DIFICULTAD_DESC, NAME_LABELS, TERRITORIO_LABELS } from "./labels";
-import { puedeJugar } from "../engine/selection";
+import { canPlay } from "../engine/selection";
 
 /** Prepara la pantalla de Opciones (sus botones) y devuelve cómo dibujarla. */
 export function crearOpciones(ctx: Contexto): { render: () => void } {
@@ -36,10 +36,10 @@ export function crearOpciones(ctx: Contexto): { render: () => void } {
     $("allCatsRow").hidden = state.selected.length === CATEGORY_IDS.length;
 
     // Formas de los nombres (se puede marcar más de una)
-    $("names").replaceChildren(...NAME_STYLES.map((s) => {
+    $("names").replaceChildren(...NAME_FORMS.map((s) => {
       const on = state.names.includes(s);
       return toggleCard("names-" + s, on, NAME_LABELS[s].name, [["cat-desc", NAME_LABELS[s].example]], cambiar("names-" + s, () => {
-        state.names = on ? state.names.filter((x) => x !== s) : NAME_STYLES.filter((x) => x === s || state.names.includes(x));
+        state.names = on ? state.names.filter((x) => x !== s) : NAME_FORMS.filter((x) => x === s || state.names.includes(x));
       }));
     }));
     const noNames = !state.names.length;
@@ -85,7 +85,7 @@ export function crearOpciones(ctx: Contexto): { render: () => void } {
   }
 
   for (const id of ["dificultad", "tiempo", "longitud"]) radioGroup($(id));
-  $("doneOptions").addEventListener("click", () => { if (puedeJugar(state)) ctx.goHome(); });
+  $("doneOptions").addEventListener("click", () => { if (canPlay(state)) ctx.goHome(); });
   $("allCats").addEventListener("click", () => { state.selected = [...CATEGORY_IDS]; ctx.save(); render(); });
 
   return { render };

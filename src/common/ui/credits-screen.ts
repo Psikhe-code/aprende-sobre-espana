@@ -1,10 +1,10 @@
 // Pantalla de Créditos, una por sección: cada una enseña lo suyo (en Geografía, el autor y la licencia
 // de cada bandera; en el Examen, de dónde salen las preguntas) y lo que es de todo el juego (las tipografías).
 
-import { BANDERAS, BANDERAS_PROVINCIAS, type BanderaInfo } from "../../sections/geografia/engine/questions";
+import { AUTONOMIA_BANDERAS, PROVINCIA_BANDERAS, type Bandera } from "../../sections/geografia/engine/questions";
 import { AUTONOMIAS, provincia } from "../../sections/geografia/engine/territorio";
 import { type Section } from "../engine/types";
-import { NAME_STYLES } from "../../sections/geografia/engine/types";
+import { NAME_FORMS } from "../../sections/geografia/engine/types";
 import { $, el, enlaceExterno } from "./dom";
 import { flagImage } from "../../sections/geografia/ui/banderas";
 
@@ -22,7 +22,7 @@ export function renderCredits(seccion: Section): void {
 }
 
 function pintarBanderas(): void {
-  const fila = (clave: string, nombre: string, f: BanderaInfo["fuente"]) => {
+  const fila = (clave: string, nombre: string, f: Bandera["fuente"]) => {
     const row = el("div", "credit");
     const text = el("div", "credit-text");
     const lic = el("span");
@@ -34,7 +34,7 @@ function pintarBanderas(): void {
     row.append(thumb, text);
     return row;
   };
-  $("creditList").replaceChildren(...AUTONOMIAS.map((c) => fila(c.id, c.nombre[NAME_STYLES[0]], BANDERAS[c.id].fuente)));
-  $("creditListProvincias").replaceChildren(...Object.keys(BANDERAS_PROVINCIAS).sort().map((id) =>
-    fila("p" + id, provincia(id).nombre[NAME_STYLES[0]], BANDERAS_PROVINCIAS[id].fuente)));
+  $("creditList").replaceChildren(...AUTONOMIAS.map((c) => fila(c.id, c.nombre[NAME_FORMS[0]], AUTONOMIA_BANDERAS[c.id].fuente)));
+  $("creditListProvincias").replaceChildren(...Object.keys(PROVINCIA_BANDERAS).sort().map((id) =>
+    fila("p" + id, provincia(id).nombre[NAME_FORMS[0]], PROVINCIA_BANDERAS[id].fuente)));
 }

@@ -6,9 +6,9 @@ import municipios from "../../src/sections/geografia/data/municipios.json";
 import municipiosSchema from "../../src/sections/geografia/data/schema/municipios.schema.json";
 import territorioSchema from "../../src/sections/geografia/data/schema/territorio.schema.json";
 import banderasSchema from "../../src/sections/geografia/data/schema/banderas.schema.json";
-import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../../src/sections/geografia/engine/territorio";
-import { NAME_STYLES } from "../../src/sections/geografia/engine/types";
-import { BANDERAS, BANDERAS_PROVINCIAS } from "../../src/sections/geografia/engine/questions";
+import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasOf, capitalesOf, poolsFor } from "../../src/sections/geografia/engine/territorio";
+import { NAME_FORMS } from "../../src/sections/geografia/engine/types";
+import { AUTONOMIA_BANDERAS, PROVINCIA_BANDERAS } from "../../src/sections/geografia/engine/questions";
 
 // Comprobaciones del contenido: si alguien edita un JSON y se equivoca, el test dice dónde.
 
@@ -45,22 +45,22 @@ describe("territorio", () => {
     expect(PROVINCIAS.map((p) => p.id)).toEqual(codigos(52));
   });
 
-  for (const style of NAME_STYLES) {
-    it(`[${style}] los nombres no se repiten`, () => {
-      expect(new Set(AUTONOMIAS.map((c) => c.nombre[style])).size).toBe(19);
-      expect(new Set(PROVINCIAS.map((p) => p.nombre[style])).size).toBe(52);
+  for (const nameForm of NAME_FORMS) {
+    it(`[${nameForm}] los nombres no se repiten`, () => {
+      expect(new Set(AUTONOMIAS.map((c) => c.nombre[nameForm])).size).toBe(19);
+      expect(new Set(PROVINCIAS.map((p) => p.nombre[nameForm])).size).toBe(52);
     });
 
-    it(`[${style}] las capitales autonómicas están en el pool de capitales`, () => {
-      const pool = poolsFor(style).capitalCualquiera;
-      for (const c of COMUNIDADES) for (const cap of capitalesDe(c)) expect(pool, `${c.id} → ${cap[style]}`).toContain(cap[style]);
+    it(`[${nameForm}] las capitales autonómicas están en el pool de capitales`, () => {
+      const pool = poolsFor(nameForm).anyCapital;
+      for (const c of COMUNIDADES) for (const cap of capitalesOf(c)) expect(pool, `${c.id} → ${cap[nameForm]}`).toContain(cap[nameForm]);
     });
   }
 
   it("cada provincia apunta a una comunidad o ciudad que existe, y todas tienen provincias", () => {
     const ids = AUTONOMIAS.map((c) => c.id);
     for (const p of PROVINCIAS) expect(ids, `${p.id} → ${p.comunidad}`).toContain(p.comunidad);
-    for (const c of AUTONOMIAS) expect(provinciasDe(c.id).length, c.id).toBeGreaterThan(0);
+    for (const c of AUTONOMIAS) expect(provinciasOf(c.id).length, c.id).toBeGreaterThan(0);
   });
 
   it("las provincias vecinas existen, son recíprocas y no hay ninguna en las islas, Ceuta ni Melilla", () => {
@@ -90,23 +90,23 @@ describe("territorio", () => {
   });
 
   it("las ciudades de las provincias no son capitales ni se repiten", () => {
-    for (const style of NAME_STYLES) {
-      const capitales = new Set(poolsFor(style).capitalCualquiera);
+    for (const nameForm of NAME_FORMS) {
+      const capitales = new Set(poolsFor(nameForm).anyCapital);
       const vistas = new Set<string>();
       for (const p of PROVINCIAS.filter((x) => x.ciudades)) {
         for (const c of p.ciudades!) {
-          expect(capitales.has(c[style]), `${p.id} → ${c[style]}`).toBe(false);
-          expect(vistas.has(c[style]), `${p.id} → ${c[style]} repetida`).toBe(false);
-          vistas.add(c[style]);
+          expect(capitales.has(c[nameForm]), `${p.id} → ${c[nameForm]}`).toBe(false);
+          expect(vistas.has(c[nameForm]), `${p.id} → ${c[nameForm]} repetida`).toBe(false);
+          vistas.add(c[nameForm]);
         }
       }
     }
   });
 
   it("las ciudades trampa de las comunidades solo están donde la capital se llama como la comunidad, y no son capitales", () => {
-    const capitales = new Set(poolsFor("castellano").capitalCualquiera);
+    const capitales = new Set(poolsFor("castellano").anyCapital);
     for (const c of AUTONOMIAS) {
-      const coincide = capitalesDe(c).some((f) => c.nombre.castellano.includes(f.castellano));
+      const coincide = capitalesOf(c).some((f) => c.nombre.castellano.includes(f.castellano));
       expect(Boolean(c.ciudadesTrampa), `${c.id}: ciudades trampa`).toBe(coincide);
       expect(Boolean(c.trampasCapital), `${c.id}: trampa fija`).toBe(!coincide);
       for (const f of c.ciudadesTrampa ?? []) expect(capitales.has(f.castellano), `${c.id} → ${f.castellano}`).toBe(false);
@@ -115,16 +115,16 @@ describe("territorio", () => {
 
   it("las trampas fijas de las capitales autonómicas no son su capital ni el nombre exacto de una capital que sea la respuesta", () => {
     for (const c of AUTONOMIAS.filter((x) => x.trampasCapital)) {
-      for (const style of NAME_STYLES) {
-        const capitales = capitalesDe(c).map((f) => f[style]);
-        for (const t of c.trampasCapital!) expect(capitales, `${c.id} → ${t[style]}`).not.toContain(t[style]);
+      for (const nameForm of NAME_FORMS) {
+        const capitales = capitalesOf(c).map((f) => f[nameForm]);
+        for (const t of c.trampasCapital!) expect(capitales, `${c.id} → ${t[nameForm]}`).not.toContain(t[nameForm]);
       }
     }
   });
 
   it("una ciudad que es capital autonómica y de provincia se escribe igual en los dos sitios, en todas sus formas", () => {
     for (const c of COMUNIDADES) {
-      for (const cap of capitalesDe(c)) {
+      for (const cap of capitalesOf(c)) {
         const prov = PROVINCIAS.find((p) => p.capital.castellano === cap.castellano);
         if (prov) expect(cap, `${c.id} → ${cap.castellano}`).toEqual(prov.capital);
       }
@@ -136,14 +136,14 @@ describe("textos de las notas", () => {
   const textos = [
     ...AUTONOMIAS.flatMap((c) => [["notaCapital", c.id, c.notaCapital], ["curiosidadCapital", c.id, c.curiosidadCapital]]),
     ...PROVINCIAS.flatMap((p) => [["notaCapital de provincia", p.id, p.notaCapital], ["curiosidad de provincia", p.id, p.curiosidad]]),
-    ...Object.entries(BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]]),
-    ...Object.entries(BANDERAS_PROVINCIAS).flatMap(([id, b]) => [["descripcion de bandera de provincia", id, b.descripcion], ["significado de bandera de provincia", id, b.significado]]),
+    ...Object.entries(AUTONOMIA_BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]]),
+    ...Object.entries(PROVINCIA_BANDERAS).flatMap(([id, b]) => [["descripcion de bandera de provincia", id, b.descripcion], ["significado de bandera de provincia", id, b.significado]]),
     ...MUNICIPIOS.map((m) => ["curiosidad de municipio", m.id, m.curiosidad])
   ].filter(([, , t]) => t) as [string, string, string][];
   const donde = (campo: string, id: string, t: string) => `${campo} de ${id}: «${t.slice(0, 40)}…»`;
 
   // Los espacios junto a los saltos de línea (\n) y al principio o al final sí se permiten:
-  // el juego los quita al mostrar el texto (prepararTexto), así que no hace falta cuidarlos al editar.
+  // el juego los quita al mostrar el texto (prepareText), así que no hace falta cuidarlos al editar.
   it("no tienen espacios dobles dentro de una frase", () => {
     for (const [campo, id, t] of textos) {
       for (const linea of t.split("\n")) expect(linea.trim(), donde(campo, id, t)).not.toMatch(/ {2}/);
@@ -173,7 +173,7 @@ describe("banderas", () => {
   });
 
   it("cada bandera dice de dónde sale, y las que piden atribución tienen autor", () => {
-    for (const [id, b] of Object.entries(BANDERAS)) {
+    for (const [id, b] of Object.entries(AUTONOMIA_BANDERAS)) {
       expect(b.fuente.url, id).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
       if (b.fuente.licencia.startsWith("CC BY")) {
         expect(b.fuente.autor, `${id} → autor`).toBeTruthy();
@@ -184,7 +184,7 @@ describe("banderas", () => {
 
   it("las trampas existen y son distintas de la propia", () => {
     const ids = AUTONOMIAS.map((c) => c.id);
-    for (const [id, b] of Object.entries(BANDERAS)) {
+    for (const [id, b] of Object.entries(AUTONOMIA_BANDERAS)) {
       for (const t of b.trampas) expect(ids, `${id} → trampa ${t}`).toContain(t);
       expect(b.trampas, id).not.toContain(id);
     }
@@ -203,21 +203,21 @@ describe("banderas de provincia", () => {
   });
 
   it("no hay banderas de provincias que forman ellas solas una comunidad (repetirían la de la comunidad)", () => {
-    for (const id of Object.keys(BANDERAS_PROVINCIAS)) {
-      expect(provinciasDe(PROVINCIAS.find((p) => p.id === id)!.comunidad).length, id).toBeGreaterThan(1);
+    for (const id of Object.keys(PROVINCIA_BANDERAS)) {
+      expect(provinciasOf(PROVINCIAS.find((p) => p.id === id)!.comunidad).length, id).toBeGreaterThan(1);
     }
   });
 
   it("las trampas son otras provincias con bandera", () => {
-    const ids = Object.keys(BANDERAS_PROVINCIAS);
-    for (const [id, b] of Object.entries(BANDERAS_PROVINCIAS)) {
+    const ids = Object.keys(PROVINCIA_BANDERAS);
+    for (const [id, b] of Object.entries(PROVINCIA_BANDERAS)) {
       for (const t of b.trampas) expect(ids, `${id} → trampa ${t}`).toContain(t);
       expect(b.trampas, id).not.toContain(id);
     }
   });
 
   it("todas dicen de dónde salen, con autor y licencia", () => {
-    for (const [id, b] of Object.entries(BANDERAS_PROVINCIAS)) {
+    for (const [id, b] of Object.entries(PROVINCIA_BANDERAS)) {
       expect(b.fuente.autor, `${id} → autor`).toBeTruthy();
       expect(b.fuente.licenciaUrl, `${id} → licencia`).toBeTruthy();
     }
@@ -279,9 +279,9 @@ describe("municipios", () => {
     }
   });
 
-  for (const style of NAME_STYLES) {
-    it(`[${style}] los nombres no se repiten (la pregunta sería ambigua)`, () => {
-      const nombres = MUNICIPIOS.map((m) => m.nombre[style]);
+  for (const nameForm of NAME_FORMS) {
+    it(`[${nameForm}] los nombres no se repiten (la pregunta sería ambigua)`, () => {
+      const nombres = MUNICIPIOS.map((m) => m.nombre[nameForm]);
       expect(nombres.filter((n, i) => nombres.indexOf(n) !== i)).toEqual([]);
     });
   }

@@ -2,9 +2,9 @@
 
 import { CATEGORY_IDS, OLD_CATEGORY_IDS } from "../../sections/geografia/engine/categories";
 import { SECTIONS, type Section } from "./types";
-import { NAME_STYLES, TERRITORIOS, type NameStyle, type Territorio } from "../../sections/geografia/engine/types";
+import { NAME_FORMS, TERRITORIOS, type NameForm, type Territorio } from "../../sections/geografia/engine/types";
 import { TAREA_IDS, tareasConPreguntas } from "../../sections/ccse/engine/questions";
-import { DEFAULT_NAMES, DEFAULT_OPTIONS, DEFAULT_TERRITORIOS, OPTION_COUNTS, type OptionCount } from "../../sections/geografia/engine/round-questions";
+import { DEFAULT_NAME_FORMS, DEFAULT_OPTION_COUNT, DEFAULT_TERRITORIOS, OPTION_COUNTS, type OptionCount } from "../../sections/geografia/engine/round-questions";
 import { DEFAULT_ROUND_LENGTH, DEFAULT_TIME_LIMIT, ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "./round-settings";
 
 /**
@@ -23,7 +23,7 @@ export interface SavedState {
   /** Categorías que existían la última vez: las nuevas se marcan solas. */
   known: string[];
   /** Formas de los nombres marcadas en Opciones (al menos una). Si hay varias, se sortea en cada pregunta. */
-  names: NameStyle[];
+  names: NameForm[];
   /** Territorios marcados en Opciones (al menos uno): comunidades, provincias o los dos. */
   territorios: Territorio[];
   /** Dificultad: número de opciones por pregunta (4, 6 u 8). */
@@ -84,11 +84,11 @@ export function loadState(): SavedState {
   const known = renameCategoryIds(raw.known) ?? [];
   for (const id of CATEGORY_IDS) if (!known.includes(id) && !selected.includes(id)) selected.push(id);
   if (!selected.length) selected = [...CATEGORY_IDS];
-  const checkedNames = Array.isArray(raw.names) ? NAME_STYLES.filter((s) => (raw.names as unknown[]).includes(s)) : [];
-  const names = checkedNames.length ? checkedNames : [...DEFAULT_NAMES];
+  const checkedNames = Array.isArray(raw.names) ? NAME_FORMS.filter((s) => (raw.names as unknown[]).includes(s)) : [];
+  const names = checkedNames.length ? checkedNames : [...DEFAULT_NAME_FORMS];
   const checkedTerritorios = Array.isArray(raw.territorios) ? TERRITORIOS.filter((t) => (raw.territorios as unknown[]).includes(t)) : [];
   const territorios = checkedTerritorios.length ? checkedTerritorios : [...DEFAULT_TERRITORIOS];
-  const opciones = OPTION_COUNTS.find((n) => n === raw.opciones) ?? DEFAULT_OPTIONS;
+  const opciones = OPTION_COUNTS.find((n) => n === raw.opciones) ?? DEFAULT_OPTION_COUNT;
   const longitud = ROUND_LENGTHS.find((n) => n === raw.longitud) ?? DEFAULT_ROUND_LENGTH;
   const tiempo = TIME_LIMITS.find((n) => n === raw.tiempo) ?? DEFAULT_TIME_LIMIT;
   const seccion = SECTIONS.find((s) => s === raw.seccion) ?? null;
@@ -131,11 +131,11 @@ export function saveState(state: SavedState): void {
  * así los récords anteriores siguen valiendo, como récords sin tiempo, aunque ahora el tiempo por defecto sea 1 minuto.
  */
 export const geografiaRecordKey = (
-  selected: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, opciones: OptionCount = DEFAULT_OPTIONS,
+  selected: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, opciones: OptionCount = DEFAULT_OPTION_COUNT,
   longitud: RoundLength = DEFAULT_ROUND_LENGTH, tiempo: TimeLimit = "sinTiempo"
 ) =>
   CATEGORY_IDS.filter((id) => selected.includes(id)).join("+") + "/" + TERRITORIOS.filter((t) => territorios.includes(t)).join("+") +
-  (opciones === DEFAULT_OPTIONS ? "" : `/${opciones}`) + recordKeyEnding(longitud, tiempo);
+  (opciones === DEFAULT_OPTION_COUNT ? "" : `/${opciones}`) + recordKeyEnding(longitud, tiempo);
 
 /**
  * Final de la clave de un récord, igual en las dos secciones: el número de preguntas y el tiempo, si no son

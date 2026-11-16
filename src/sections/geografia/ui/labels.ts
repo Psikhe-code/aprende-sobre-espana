@@ -1,10 +1,10 @@
 // Geografía: textos con los que se presentan sus opciones en el inicio y en Opciones.
 
 import type { OptionCount } from "../engine/round-questions";
-import type { NameStyle, Territorio } from "../engine/types";
+import type { NameForm, Territorio } from "../engine/types";
 
 /** Cómo se presenta cada forma de los nombres en Opciones. */
-export const NAME_LABELS: Record<NameStyle, { name: string; example: string; short: string }> = {
+export const NAME_LABELS: Record<NameForm, { name: string; example: string; short: string }> = {
   oficial: { name: "Nombre oficial", example: "Girona, Bizkaia, Illes Balears…", short: "oficial" },
   castellano: { name: "En castellano", example: "Gerona, Vizcaya, Islas Baleares…", short: "en castellano" }
 };
