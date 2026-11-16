@@ -31,7 +31,10 @@ export interface SavedState {
   longitud: RoundLength;
   /** Tiempo por pregunta: 60, 30 o 10 segundos, o sin tiempo. */
   tiempo: TimeLimit;
-  /** Sección elegida la última vez (el juego vuelve a ella al abrirlo); null si aún no se ha elegido ninguna. */
+  /**
+   * Sección elegida la última vez; null si aún no se ha elegido ninguna. Al abrir el juego sale siempre el menú
+   * de secciones: solo se vuelve a esta cuando la página se recarga sola para aplicar una versión nueva.
+   */
   seccion: Seccion | null;
   /** Opciones del examen de nacionalidad (sus récords van en `best`, con claves que empiezan por «ccse/»). */
   ccse: OpcionesCcse;
