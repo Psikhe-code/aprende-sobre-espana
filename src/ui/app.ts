@@ -24,7 +24,9 @@ export interface App {
   enMenu(): boolean;
 }
 
-const tranquila = (s: Screen) => !(["play", "end", "sim", "simEnd"] as Screen[]).includes(s);
+/** Pantallas de juego: sin la cabecera grande. */
+const DE_JUEGO: readonly Screen[] = ["play", "end", "sim", "simEnd"];
+const tranquila = (s: Screen) => !DE_JUEGO.includes(s);
 /** Pantallas con la versión al pie: el menú de secciones y el inicio de cada sección. */
 const CON_VERSION: readonly Screen[] = ["sections", "start", "ccseStart"];
 
@@ -108,7 +110,7 @@ export function startApp(): App {
   $("menu").addEventListener("click", ctx.goHome);
 
   renderVersion();
-  drawContours(document.getElementById("contours") as unknown as SVGSVGElement);
+  drawContours(document.querySelector<SVGSVGElement>("#contours")!);
   // Al abrir el juego, siempre el menú de secciones. Solo si la página se ha recargado para aplicar
   // una versión nueva, se vuelve a la sección donde estaba el jugador.
   let trasActualizar = false;

@@ -3,7 +3,7 @@
 // Mientras se hace no se dice si una respuesta es correcta, como en la prueba real.
 // Las reglas (reparto, aprobado, entrega) viven en src/engine/simulacro.ts; aquí solo se dibujan.
 
-import { tarea, type PreguntaCcseJugable } from "../engine/ccse";
+import type { PreguntaCcseJugable } from "../engine/ccse";
 import { Countdown } from "../engine/countdown";
 import type { PreguntaJugable } from "../engine/types";
 import {
@@ -107,12 +107,11 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PreguntaJugable[
     const q = s.actual;
     $("simSheet").replaceChildren(`Pregunta ${pad(s.indice + 1)} `, el("span", "", `/ ${pad(s.total)}`));
     $("simRespondidas").textContent = `${s.respondidas}/${s.total}`;
-    const t = tarea(q.tarea);
-    $("simCat").textContent = t ? `Tarea ${t.numero} · ${t.nombre}` : "";
+    $("simCat").textContent = q.etiqueta;
     $("simQuestion").textContent = q.text;
     const elegida = s.respuestas[s.indice];
     $("simOpts").replaceChildren(...q.options.map((o, j) => {
-      const b = el("button", "opt" + (o === elegida ? " elegida" : "")) as HTMLButtonElement;
+      const b = el("button", "opt" + (o === elegida ? " elegida" : ""));
       b.id = "sim-opt-" + j;
       b.dataset.value = o;
       b.setAttribute("aria-pressed", String(o === elegida));
@@ -124,7 +123,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PreguntaJugable[
     $("simNext").hidden = s.indice === s.total - 1;
     $("simMapa").replaceChildren(...s.preguntas.map((_, j) => {
       const hecha = s.respuestas[j] !== null;
-      const b = el("button", "sim-n" + (hecha ? " hecha" : ""), String(j + 1)) as HTMLButtonElement;
+      const b = el("button", "sim-n" + (hecha ? " hecha" : ""), String(j + 1));
       b.id = "sim-n-" + (j + 1);
       b.setAttribute("aria-label", `Pregunta ${j + 1}, ${hecha ? "respondida" : "sin responder"}`);
       if (j === s.indice) b.setAttribute("aria-current", "true");

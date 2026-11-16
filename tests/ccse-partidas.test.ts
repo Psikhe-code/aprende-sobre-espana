@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import {
-  PREGUNTAS_CCSE, TAREAS, cabeCcse, otraVueltaCcse, partidaCcse, preguntasDe, repasoCcse, tamanoCcse, tareasConPreguntas
+  PREGUNTAS_CCSE, TAREAS, cabeCcse, nombreTarea, otraVueltaCcse, partidaCcse, preguntasDe, repasoCcse, tamanoCcse, tarea, tareasConPreguntas
 } from "../src/engine/ccse";
 import { ROUND_LENGTH, ROUND_LENGTHS } from "../src/engine/round";
 import { ccseKey, loadState, STORAGE_KEY } from "../src/engine/storage";
@@ -21,6 +21,12 @@ describe("examen de nacionalidad: datos de prueba", () => {
 });
 
 describe("examen de nacionalidad: partidas", () => {
+  it("cada pregunta lleva encima el nombre de su tarea, también en el repaso", () => {
+    const partida = partidaCcse({ tareas: TODAS, length: "sinLimite" });
+    for (const q of [...partida, ...repasoCcse(partida)]) expect(q.etiqueta, q.id).toBe(nombreTarea(tarea(q.tarea)!));
+    expect(nombreTarea(TAREAS[0])).toBe(`Tarea ${TAREAS[0].numero} · ${TAREAS[0].nombre}`);
+  });
+
   it("solo salen preguntas de las tareas marcadas, sin repetir, con el número de preguntas elegido", () => {
     for (const tareas of [tareasConPreguntas(), TODAS, [1]]) {
       for (const length of ROUND_LENGTHS) {
