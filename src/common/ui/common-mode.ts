@@ -13,7 +13,7 @@ export interface SectionMode {
   canPlay(): boolean;
   /** Preguntas de una partida nueva. */
   buildRound(): PlayableQuestion[];
-  /** Sin límite: otra vuelta a la baraja, sin empezar por la última que salió. */
+  /** Sin límite: otra vuelta, sin empezar por la última que salió. */
   reshuffleRound(lastId: string): PlayableQuestion[];
   /** Repaso de fallos: las mismas preguntas, con las opciones preparadas de nuevo. */
   buildReviewRound(misses: PlayableQuestion[]): PlayableQuestion[];

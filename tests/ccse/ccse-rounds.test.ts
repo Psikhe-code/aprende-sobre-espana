@@ -78,7 +78,7 @@ describe("examen de nacionalidad: partidas", () => {
     }
   });
 
-  it("otra vuelta a la baraja tiene todas las preguntas y no empieza por la última que salió", () => {
+  it("otra vuelta tiene todas las preguntas y no empieza por la última que salió", () => {
     for (let r = 0; r < 50; r++) {
       const first = buildRound({ tareas: ALL_TAREAS, roundLength: "sinLimite" });
       const last = first[first.length - 1].id;

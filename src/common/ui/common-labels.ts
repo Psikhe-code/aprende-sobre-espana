@@ -32,3 +32,16 @@ export const timeUsed = (ms: number) => {
   const s = Math.round(ms / 1000);
   return s < 60 ? `${s} s` : `${Math.floor(s / 60)} min` + (s % 60 ? ` ${s % 60} s` : "");
 };
+
+/**
+ * Texto de la tarjeta de fin de vuelta (partida sin límite): cuántas preguntas tiene la vuelta, cómo va la partida
+ * entera y qué pasa si se sigue. La racha solo se nombra si hay una.
+ */
+export function cycleEndText(questionsPerCycle: number, hits: number, total: number, streak: number): string {
+  const aciertos = `${hits} ${hits === 1 ? "acierto" : "aciertos"} de ${total}`;
+  const racha = streak > 0 ? ` y una racha de ${streak}` : "";
+  return (
+    `Has respondido las ${questionsPerCycle} preguntas de esta selección. Llevas ${aciertos}${racha}. ` +
+    "Si sigues, vuelven a salir en orden aleatorio, sin perder tus aciertos ni tu racha."
+  );
+}

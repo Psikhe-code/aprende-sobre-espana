@@ -41,12 +41,12 @@ export class Round {
   /** Repaso de fallos: se juega igual pero no cuenta para récords. */
   readonly review: boolean;
   /**
-   * Partida sin límite: sigue hasta que el jugador la termina (`stop`). Al acabarse la baraja
-   * (`endOfDeck`), la interfaz pregunta si seguir, y para seguir se añade otra vuelta con `append`.
+   * Partida sin límite: sigue hasta que el jugador la termina (`stop`). Al completar una vuelta
+   * (`endOfCycle`), la interfaz pregunta si seguir, y para seguir se añade otra vuelta con `append`.
    */
   readonly unlimited: boolean;
-  /** Preguntas de una vuelta a la baraja (las de la selección), para decir cuántas se han respondido. */
-  readonly deckSize: number;
+  /** Preguntas de una vuelta: las de la selección. En la partida sin límite, cada vuelta las repite todas. */
+  readonly questionsPerCycle: number;
   /**
    * Preguntas que debe tener una partida completa con esta selección: normalmente 10,
    * menos si la selección no da para tantas (ver roundSize). Solo cuenta para récords si las tiene.
@@ -66,7 +66,7 @@ export class Round {
     this.list = [...questions];
     this.review = options.review ?? false;
     this.unlimited = options.unlimited ?? false;
-    this.deckSize = questions.length;
+    this.questionsPerCycle = questions.length;
     this.expected = options.expected ?? (this.unlimited ? questions.length : ROUND_LENGTH);
   }
 
@@ -82,8 +82,8 @@ export class Round {
   get isLast() { return this.i === this.questions.length - 1; }
   /** Normal: respondida la última pregunta. Sin límite: cuando el jugador la termina. */
   get finished() { return this.unlimited ? this.stopped : this.isLast && this.answered; }
-  /** Sin límite: respondida la última pregunta de la baraja. Para seguir, hay que añadir otra vuelta. */
-  get endOfDeck() { return this.unlimited && !this.stopped && this.isLast && this.answered; }
+  /** Sin límite: respondida la última pregunta de la vuelta. Para seguir, hay que añadir otra. */
+  get endOfCycle() { return this.unlimited && !this.stopped && this.isLast && this.answered; }
 
   /** Responde la pregunta actual. Solo se puede responder una vez cada pregunta. */
   answer(givenAnswer: string): AnswerResult {
@@ -120,7 +120,7 @@ export class Round {
     return true;
   }
 
-  /** Sin límite: añade otra vuelta a la baraja al final, para seguir jugando. */
+  /** Sin límite: añade otra vuelta al final, para seguir jugando. */
   append(more: PlayableQuestion[]): void {
     if (!this.unlimited) throw new Error("Solo una partida sin límite puede seguir");
     if (this.stopped) throw new Error("La partida ya está terminada");

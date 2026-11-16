@@ -142,7 +142,7 @@ describe("partidas: elección de preguntas", () => {
     }
   });
 
-  it("otra vuelta a la baraja tiene todas las preguntas, y no empieza por la última que salió", () => {
+  it("otra vuelta tiene todas las preguntas, y no empieza por la última que salió", () => {
     const settings = { categories: ["capitales"], territorios: ["provincia" as const] };
     for (let r = 0; r < 100; r++) {
       const first = buildRound({ ...settings, roundLength: "sinLimite" });

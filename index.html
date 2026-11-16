@@ -206,17 +206,17 @@
           <div class="row"><button class="primary" id="next">Siguiente</button></div>
         </div>
       </div>
-      <!-- Partida sin límite: se han respondido todas las preguntas de la selección -->
-      <div class="card" id="deckEnd" hidden>
-        <div class="q-cat">Fin de la baraja</div>
-        <p class="question">Has respondido todas las preguntas</p>
-        <p class="explanation" id="deckEndText"></p>
+      <!-- Partida sin límite: se ha completado una vuelta (han salido todas las preguntas de la selección) -->
+      <div class="card" id="cycleEnd" hidden>
+        <div class="q-cat">Partida sin límite</div>
+        <p class="question">Has completado una vuelta</p>
+        <p class="explanation" id="cycleEndText"></p>
         <div class="row">
-          <button class="primary" id="reshuffle">Barajar y seguir</button>
-          <button class="ghost" id="deckStop">Terminar</button>
+          <button class="primary" id="keepPlaying">Seguir jugando</button>
+          <button class="ghost" id="cycleStop">Terminar</button>
         </div>
       </div>
-      <!-- Avisos para lectores de pantalla. Fuera de las tarjetas: si una se esconde (fin de la baraja), su aviso se sigue leyendo. -->
+      <!-- Avisos para lectores de pantalla. Fuera de las tarjetas: si una se esconde (fin de una vuelta), su aviso se sigue leyendo. -->
       <p class="sr-only" id="announce" aria-live="polite"></p>
       <div class="row">
         <button class="ghost" id="stop" hidden>Terminar</button>

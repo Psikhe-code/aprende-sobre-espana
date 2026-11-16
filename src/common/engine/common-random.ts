@@ -15,7 +15,7 @@ export function shuffle<T>(items: readonly T[], rng: Rng = Math.random): T[] {
 }
 
 /**
- * Partida sin límite, al empezar otra vuelta a la baraja: si la nueva empieza por la última pregunta de la
+ * Partida sin límite, al empezar otra vuelta: si la nueva empieza por la última pregunta de la
  * anterior (`ultimaId`), la cambia por la segunda, para que no salga dos veces seguidas.
  */
 export function notStartingWith<T extends { id: string }>(questions: T[], lastId?: string): T[] {

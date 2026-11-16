@@ -14,7 +14,7 @@ export const canPlay = (g: GeografiaSettings) =>
   g.categories.length > 0 && g.nameForms.length > 0 && g.territorios.length > 0 &&
   roundSize(g.categories, g.territorios) > 0 && lengthFits(g.roundLength, g.categories, g.territorios);
 
-/** Ajustes con los que se prepara una partida (o otra vuelta a la baraja). */
+/** Ajustes con los que se prepara una partida (o otra vuelta, en la partida sin límite). */
 export const roundSettings = (g: GeografiaSettings): RoundSettings =>
   ({ categories: g.categories, nameForms: g.nameForms, territorios: g.territorios, optionCount: g.optionCount, roundLength: g.roundLength });
 
