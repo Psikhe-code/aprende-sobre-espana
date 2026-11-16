@@ -1,4 +1,4 @@
-import { test, expect, abrir, opciones, responder, SOLO_BANDERAS } from "./helpers";
+import { test, expect, openSection, changeSettings, answerQuestions, ONLY_BANDERAS } from "./helpers";
 
 // Lo que necesita quien juega con teclado, con lector de pantalla (programa que lee la pantalla en voz alta)
 // o con el dedo en el móvil. Lo propio de la partida (atajos, foco en cada pregunta) está en round.screen.ts.
@@ -25,21 +25,21 @@ test("al cambiar de pantalla con el teclado, el foco pasa a la pantalla nueva", 
 
 test("cada pantalla tiene nombre, y los títulos de cada grupo son títulos de verdad", async ({ page }) => {
   await page.goto("./");
-  for (const pantalla of await page.locator(".screen").all()) {
-    expect(await pantalla.getAttribute("aria-label"), await pantalla.getAttribute("id") ?? "").toBeTruthy();
+  for (const screen of await page.locator(".screen").all()) {
+    expect(await screen.getAttribute("aria-label"), await screen.getAttribute("id") ?? "").toBeTruthy();
   }
   // Todos los títulos de grupo (.label) son h2, salvo «10 preguntas al azar de…», que empieza una frase.
   const label = await page.locator(".label").evaluateAll((els) => els.map((e) => [e.id, e.tagName]));
-  for (const [id, etiqueta] of label) {
-    expect(etiqueta, id).toBe(["roundLabel", "ccseRoundLabel"].includes(id) ? "DIV" : "H2");
+  for (const [id, accessibleName] of label) {
+    expect(accessibleName, id).toBe(["roundLabel", "ccseRoundLabel"].includes(id) ? "DIV" : "H2");
   }
-  await abrir(page);
+  await openSection(page);
   await page.locator("#openOptions").click();
   await expect(page.getByRole("heading", { name: "Opciones · Categorías" })).toBeVisible();
 });
 
 test("las tarjetas sin marcar se leen igual de bien: sin transparencia", async ({ page }) => {
-  await abrir(page);
+  await openSection(page);
   await page.locator("#openOptions").click();
   await page.locator("#cat-banderas").click();
   await expect(page.locator("#cat-banderas")).toHaveAttribute("aria-pressed", "false");
@@ -47,23 +47,23 @@ test("las tarjetas sin marcar se leen igual de bien: sin transparencia", async (
 });
 
 test("los botones pequeños miden al menos 44 px de alto, para pulsarlos con el dedo", async ({ page }) => {
-  await abrir(page);
+  await openSection(page);
   for (const id of ["toSections", "openCredits"]) {
-    const caja = await page.locator(`#${id}`).boundingBox();
-    expect(caja!.height, id).toBeGreaterThanOrEqual(44);
+    const box = await page.locator(`#${id}`).boundingBox();
+    expect(box!.height, id).toBeGreaterThanOrEqual(44);
   }
 });
 
 test("los atajos de teclado solo se explican donde hay teclado", async ({ page, isMobile }) => {
-  await abrir(page);
-  const atajos = page.locator("#start .shortcuts");
-  if (isMobile) await expect(atajos).toBeHidden();
-  else await expect(atajos).toBeVisible();
+  await openSection(page);
+  const shortcuts = page.locator("#start .shortcuts");
+  if (isMobile) await expect(shortcuts).toBeHidden();
+  else await expect(shortcuts).toBeVisible();
 });
 
 test("texto alternativo de las banderas: neutro en la pregunta, con el nombre en los fallos, vacío en Créditos", async ({ page }) => {
-  await abrir(page);
-  await opciones(page, SOLO_BANDERAS);
+  await openSection(page);
+  await changeSettings(page, ONLY_BANDERAS);
   await page.locator("#go").click();
   // En la pregunta no puede delatar la respuesta.
   await expect(page.locator("#flag img")).toHaveAttribute("alt", /^Bandera de una (provincia|comunidad o ciudad autónoma)$/);
@@ -71,12 +71,12 @@ test("texto alternativo de las banderas: neutro en la pregunta, con el nombre en
 
   // En los fallos ya se sabe de quién es: el texto alternativo lo dice (la respuesta, tal como sale escrita).
   await page.locator("#go").click();
-  await responder(page, 9);
+  await answerQuestions(page, 9);
   await page.locator("#opts .opt").first().click();
   await page.locator("#next").click();
-  for (const fallo of await page.locator("#misses .miss").all()) {
-    const respuesta = await fallo.locator(".miss-a b").textContent();
-    await expect(fallo.locator("img")).toHaveAttribute("alt", `Bandera: ${respuesta}`);
+  for (const miss of await page.locator("#misses .miss").all()) {
+    const answer = await miss.locator(".miss-a b").textContent();
+    await expect(miss.locator("img")).toHaveAttribute("alt", `Bandera: ${answer}`);
   }
 
   // En Créditos el nombre está escrito al lado: el texto alternativo va vacío, para no leerlo dos veces.

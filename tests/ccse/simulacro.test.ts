@@ -8,15 +8,15 @@ import {
 // Simulacro del examen, con datos de prueba que tienen preguntas en las cinco tareas (test-data.ts).
 // Que los datos reales permiten hacerlo se comprueba en data.test.ts.
 
-vi.mock("../../src/sections/ccse/data/ccse.json", async () => ({ default: (await import("./test-data")).ccseSimulacroPrueba() }));
+vi.mock("../../src/sections/ccse/data/ccse.json", async () => ({ default: (await import("./test-data")).ccseSimulacroTestData() }));
 
 /** Un simulacro respondido: en las preguntas de `bien`, la respuesta correcta; en `sinResponder`, nada; en las demás, una equivocada. */
-function respondido(bien: number, sinResponder = 0) {
+function answeredSimulacro(correctCount: number, unansweredCount = 0) {
   const s = new Simulacro(simulacroQuestions());
   s.questions.forEach((q, j) => {
     s.goTo(j);
-    if (j < bien) s.answer(q.answer);
-    else if (j < s.total - sinResponder) s.answer(q.options.find((o) => o !== q.answer)!);
+    if (j < correctCount) s.answer(q.answer);
+    else if (j < s.total - unansweredCount) s.answer(q.options.find((o) => o !== q.answer)!);
   });
   return s;
 }
@@ -30,11 +30,11 @@ describe("simulacro: preguntas", () => {
 
   it("salen las de cada tarea según el reparto, por orden de tareas y sin repetir ninguna", () => {
     for (let r = 0; r < 30; r++) {
-      const preguntas = simulacroQuestions();
-      expect(preguntas).toHaveLength(SIMULACRO_QUESTION_COUNT);
-      expect(new Set(preguntas.map((q) => q.id)).size).toBe(preguntas.length);
-      const esperado = SIMULACRO_DISTRIBUTION.flatMap((x) => Array(x.questionCount).fill(x.tarea));
-      expect(preguntas.map((q) => q.tarea)).toEqual(esperado);
+      const questions = simulacroQuestions();
+      expect(questions).toHaveLength(SIMULACRO_QUESTION_COUNT);
+      expect(new Set(questions.map((q) => q.id)).size).toBe(questions.length);
+      const expected = SIMULACRO_DISTRIBUTION.flatMap((x) => Array(x.questionCount).fill(x.tarea));
+      expect(questions.map((q) => q.tarea)).toEqual(expected);
     }
   });
 
@@ -50,11 +50,11 @@ describe("simulacro: preguntas", () => {
   it("no se puede hacer si alguna tarea tiene menos preguntas de las que pide el reparto", () => {
     expect(canDoSimulacro()).toBe(true);
     for (const r of SIMULACRO_DISTRIBUTION) {
-      const deLaTarea = CCSE_QUESTIONS.filter((p) => p.tarea === r.tarea);
-      const quitada = CCSE_QUESTIONS.filter((p) => p !== deLaTarea[0] || deLaTarea.length > r.questionCount);
-      const pocas = [...CCSE_QUESTIONS.filter((p) => p.tarea !== r.tarea), ...deLaTarea.slice(0, r.questionCount - 1)];
-      expect(canDoSimulacro(pocas)).toBe(false);
-      expect(canDoSimulacro(quitada)).toBe(true);
+      const ofTarea = CCSE_QUESTIONS.filter((p) => p.tarea === r.tarea);
+      const withOneLess = CCSE_QUESTIONS.filter((p) => p !== ofTarea[0] || ofTarea.length > r.questionCount);
+      const tooFew = [...CCSE_QUESTIONS.filter((p) => p.tarea !== r.tarea), ...ofTarea.slice(0, r.questionCount - 1)];
+      expect(canDoSimulacro(tooFew)).toBe(false);
+      expect(canDoSimulacro(withOneLess)).toBe(true);
     }
   });
 });
@@ -82,7 +82,7 @@ describe("simulacro: respuestas y entrega", () => {
   });
 
   it("al entregar cuenta los aciertos, y lo que no se ha respondido es un fallo", () => {
-    const s = respondido(12, 3);
+    const s = answeredSimulacro(12, 3);
     const r = s.submit();
     expect(r.hits).toBe(12);
     expect(r.total).toBe(SIMULACRO_QUESTION_COUNT);
@@ -94,16 +94,16 @@ describe("simulacro: respuestas y entrega", () => {
   });
 
   it("apto con 15 aciertos o más", () => {
-    expect(respondido(SIMULACRO_APTO_HITS - 1).submit().apto).toBe(false);
-    expect(respondido(SIMULACRO_APTO_HITS).submit().apto).toBe(true);
-    expect(respondido(SIMULACRO_QUESTION_COUNT).submit()).toMatchObject({ apto: true, hits: SIMULACRO_QUESTION_COUNT, misses: [] });
-    expect(respondido(0, SIMULACRO_QUESTION_COUNT).submit()).toMatchObject({ apto: false, hits: 0 });
+    expect(answeredSimulacro(SIMULACRO_APTO_HITS - 1).submit().apto).toBe(false);
+    expect(answeredSimulacro(SIMULACRO_APTO_HITS).submit().apto).toBe(true);
+    expect(answeredSimulacro(SIMULACRO_QUESTION_COUNT).submit()).toMatchObject({ apto: true, hits: SIMULACRO_QUESTION_COUNT, misses: [] });
+    expect(answeredSimulacro(0, SIMULACRO_QUESTION_COUNT).submit()).toMatchObject({ apto: false, hits: 0 });
   });
 
   it("da los aciertos de cada tarea", () => {
-    const r = respondido(SIMULACRO_QUESTION_COUNT).submit();
+    const r = answeredSimulacro(SIMULACRO_QUESTION_COUNT).submit();
     expect(r.byTarea).toEqual(SIMULACRO_DISTRIBUTION.map((x) => ({ tarea: x.tarea, hits: x.questionCount, total: x.questionCount })));
-    const s = respondido(11); // las 10 de la Tarea 1 y la primera de la Tarea 2
+    const s = answeredSimulacro(11); // las 10 de la Tarea 1 y la primera de la Tarea 2
     const t = s.submit().byTarea;
     expect(t[0]).toEqual({ tarea: 1, hits: 10, total: 10 });
     expect(t[1]).toEqual({ tarea: 2, hits: 1, total: 3 });
@@ -111,7 +111,7 @@ describe("simulacro: respuestas y entrega", () => {
   });
 
   it("después de entregar ya no se pueden cambiar las respuestas, y entregar otra vez da lo mismo", () => {
-    const s = respondido(20);
+    const s = answeredSimulacro(20);
     const r = s.submit();
     s.goTo(0);
     s.answer(s.current.options.find((o) => o !== s.current.answer)!);

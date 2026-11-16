@@ -81,20 +81,20 @@ describe("se acaba el tiempo", () => {
 });
 
 describe("partidas sin límite", () => {
-  const baraja = () => [rq("a", "A"), rq("b", "B"), rq("c", "C")];
+  const deck = () => [rq("a", "A"), rq("b", "B"), rq("c", "C")];
 
   it("al acabarse la baraja se para y, para seguir, se añade otra vuelta", () => {
-    const g = new Round(baraja(), { unlimited: true });
+    const g = new Round(deck(), { unlimited: true });
     expect(g.deckSize).toBe(3);
-    for (const respuesta of ["A", "X", "C"]) {
+    for (const givenAnswer of ["A", "X", "C"]) {
       expect(g.endOfDeck).toBe(false);
-      g.answer(respuesta);
-      if (respuesta !== "C") g.next();
+      g.answer(givenAnswer);
+      if (givenAnswer !== "C") g.next();
     }
     expect(g.endOfDeck).toBe(true);
     expect(g.finished).toBe(false);
     expect(g.next()).toBe(false);
-    g.append(baraja());
+    g.append(deck());
     expect(g.endOfDeck).toBe(false);
     expect(g.next()).toBe(true);
     expect(g.index).toBe(3);
@@ -104,23 +104,23 @@ describe("partidas sin límite", () => {
   });
 
   it("termina cuando el jugador quiere, y la pregunta sin responder no cuenta", () => {
-    const g = new Round(baraja(), { unlimited: true });
+    const g = new Round(deck(), { unlimited: true });
     g.answer("A"); g.next();
     g.answer("B"); g.next();
     g.stop();
     expect(g.finished).toBe(true);
     expect(() => g.answer("C")).toThrow();
-    expect(() => g.append(baraja())).toThrow();
+    expect(() => g.append(deck())).toThrow();
     const r = g.result();
     expect(r).toMatchObject({ hits: 2, total: 2, bestStreak: 2, unlimited: true, counts: true });
   });
 
   it("solo cuenta para el récord si se ha respondido alguna pregunta, y el récord es la mejor racha", () => {
-    const vacia = new Round(baraja(), { unlimited: true });
-    vacia.stop();
-    expect(vacia.result().counts).toBe(false);
+    const empty = new Round(deck(), { unlimited: true });
+    empty.stop();
+    expect(empty.result().counts).toBe(false);
 
-    const g = new Round(baraja(), { unlimited: true });
+    const g = new Round(deck(), { unlimited: true });
     g.answer("X"); g.next();
     g.answer("B"); g.next();
     g.answer("C");
@@ -133,8 +133,8 @@ describe("partidas sin límite", () => {
   });
 
   it("una partida normal no se puede alargar ni terminar a mitad", () => {
-    const g = new Round(baraja());
-    expect(() => g.append(baraja())).toThrow();
+    const g = new Round(deck());
+    expect(() => g.append(deck())).toThrow();
     expect(() => g.stop()).toThrow();
     expect(g.endOfDeck).toBe(false);
   });

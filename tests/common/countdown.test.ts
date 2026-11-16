@@ -4,14 +4,14 @@ import { describe, expect, it } from "vitest";
 import { Countdown } from "../../src/common/engine/countdown";
 
 /** Reloj de mentira: el test decide cuánto pasa. */
-function reloj() {
+function clock() {
   let t = 1000;
   return { now: () => t, avanza: (ms: number) => { t += ms; } };
 }
 
 describe("cuenta atrás de una pregunta", () => {
   it("no corre hasta que se arranca", () => {
-    const r = reloj();
+    const r = clock();
     const c = new Countdown(60_000, r.now);
     r.avanza(5000);
     expect(c.remaining()).toBe(60_000);
@@ -23,7 +23,7 @@ describe("cuenta atrás de una pregunta", () => {
   });
 
   it("al pausarla no pierde tiempo, y al reanudarla sigue donde estaba", () => {
-    const r = reloj();
+    const r = clock();
     const c = new Countdown(30_000, r.now);
     c.start();
     r.avanza(10_000);
@@ -36,7 +36,7 @@ describe("cuenta atrás de una pregunta", () => {
   });
 
   it("arrancarla dos veces no reinicia la cuenta", () => {
-    const r = reloj();
+    const r = clock();
     const c = new Countdown(10_000, r.now);
     c.start();
     r.avanza(4000);
@@ -46,7 +46,7 @@ describe("cuenta atrás de una pregunta", () => {
   });
 
   it("se acaba en cero, sin pasar a negativo, y los segundos se redondean hacia arriba", () => {
-    const r = reloj();
+    const r = clock();
     const c = new Countdown(10_000, r.now);
     c.start();
     r.avanza(9001);

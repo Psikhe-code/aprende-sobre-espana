@@ -3,46 +3,46 @@
 // real se va rellenando poco a poco (y al principio está vacía).
 // Tarea 1: 30 preguntas completas (entre ellas, de verdadero o falso y sin nota); Tarea 2: 5; las demás, vacías.
 
-const vacia = (tarea: number, n: number) => ({
-  id: `ccse-${tarea * 1000 + n}`, tarea, referencia: tarea * 1000 + n,
+const emptyEntry = (tareaEntries: number, n: number) => ({
+  id: `ccse-${tareaEntries * 1000 + n}`, tarea: tareaEntries, referencia: tareaEntries * 1000 + n,
   pregunta: "", opciones: ["", "", ""], respuesta: "", nota: "", fuentes: [] as { texto: string; url?: string }[]
 });
 
-function completa(tarea: number, n: number) {
-  const e = vacia(tarea, n);
-  const vf = n % 7 === 0;
-  const sinNota = n % 5 === 0;
+function completeEntry(tareaEntries: number, n: number) {
+  const e = emptyEntry(tareaEntries, n);
+  const isTrueFalse = n % 7 === 0;
+  const withoutWhy = n % 5 === 0;
   return {
     ...e,
     pregunta: `Pregunta de prueba ${e.referencia}`,
-    opciones: vf ? ["Verdadero", "Falso", ""] : [`Opción a ${e.referencia}`, `Opción b ${e.referencia}`, `Opción c ${e.referencia}`],
-    respuesta: "abc"[n % (vf ? 2 : 3)],
-    nota: sinNota ? "" : `Nota de prueba ${e.referencia}`,
-    fuentes: sinNota ? [] : [{ texto: `Fuente de prueba ${e.referencia}`, url: "https://example.org/" }]
+    opciones: isTrueFalse ? ["Verdadero", "Falso", ""] : [`Opción a ${e.referencia}`, `Opción b ${e.referencia}`, `Opción c ${e.referencia}`],
+    respuesta: "abc"[n % (isTrueFalse ? 2 : 3)],
+    nota: withoutWhy ? "" : `Nota de prueba ${e.referencia}`,
+    fuentes: withoutWhy ? [] : [{ texto: `Fuente de prueba ${e.referencia}`, url: "https://example.org/" }]
   };
 }
 
-const tarea = (numero: number, completas: number, total: number) =>
-  Array.from({ length: total }, (_, i) => (i < completas ? completa(numero, i + 1) : vacia(numero, i + 1)));
+const tareaEntries = (tareaNumber: number, completeCount: number, total: number) =>
+  Array.from({ length: total }, (_, i) => (i < completeCount ? completeEntry(tareaNumber, i + 1) : emptyEntry(tareaNumber, i + 1)));
 
-export function ccsePrueba() {
+export function ccseTestData() {
   return {
-    tareas: [1, 2, 3, 4, 5].map((numero) => ({ numero, nombre: `Tema de prueba ${numero}` })),
-    preguntas: [...tarea(1, 30, 40), ...tarea(2, 5, 10), ...tarea(3, 0, 5), ...tarea(4, 0, 5), ...tarea(5, 0, 5)]
+    tareas: [1, 2, 3, 4, 5].map((tareaNumber) => ({ numero: tareaNumber, nombre: `Tema de prueba ${tareaNumber}` })),
+    preguntas: [...tareaEntries(1, 30, 40), ...tareaEntries(2, 5, 10), ...tareaEntries(3, 0, 5), ...tareaEntries(4, 0, 5), ...tareaEntries(5, 0, 5)]
   };
 }
 
 /** Los datos de prueba sin ninguna pregunta rellena, como la plantilla recién creada. */
-export function ccseVacio() {
-  const d = ccsePrueba();
-  return { ...d, preguntas: d.preguntas.map((p) => vacia(p.tarea, p.referencia % 1000)) };
+export function ccseEmptyTestData() {
+  const d = ccseTestData();
+  return { ...d, preguntas: d.preguntas.map((p) => emptyEntry(p.tarea, p.referencia % 1000)) };
 }
 
 /**
  * Datos de prueba con preguntas en las cinco tareas, algunas más de las que pide el simulacro
  * (tareas 1 a 5: 14, 5, 4, 5 y 9), para probar el simulacro de examen.
  */
-export function ccseSimulacroPrueba() {
-  const d = ccsePrueba();
-  return { ...d, preguntas: [...tarea(1, 14, 14), ...tarea(2, 5, 5), ...tarea(3, 4, 4), ...tarea(4, 5, 5), ...tarea(5, 9, 9)] };
+export function ccseSimulacroTestData() {
+  const d = ccseTestData();
+  return { ...d, preguntas: [...tareaEntries(1, 14, 14), ...tareaEntries(2, 5, 5), ...tareaEntries(3, 4, 4), ...tareaEntries(4, 5, 5), ...tareaEntries(5, 9, 9)] };
 }

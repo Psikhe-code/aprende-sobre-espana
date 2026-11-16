@@ -12,11 +12,11 @@ import { AUTONOMIA_BANDERAS, PROVINCIA_BANDERAS } from "../../src/sections/geogr
 
 // Comprobaciones del contenido: si alguien edita un JSON y se equivoca, el test dice dónde.
 
-const svgs = (carpeta: string, todos: Record<string, string>) =>
-  Object.fromEntries(Object.entries(todos).filter(([f]) => f.includes(`/${carpeta}/`)).map(([f, texto]) => [f.split("/").pop()!, texto]));
-const TODOS_LOS_SVG = import.meta.glob("../../src/sections/geografia/data/banderas/*/*.svg", { eager: true, query: "?raw", import: "default" }) as Record<string, string>;
-const FLAG_FILES = svgs("comunidades", TODOS_LOS_SVG);
-const PROVINCE_FLAG_FILES = svgs("provincias", TODOS_LOS_SVG);
+const svgs = (folder: string, all: Record<string, string>) =>
+  Object.fromEntries(Object.entries(all).filter(([f]) => f.includes(`/${folder}/`)).map(([f, text]) => [f.split("/").pop()!, text]));
+const ALL_SVGS = import.meta.glob("../../src/sections/geografia/data/banderas/*/*.svg", { eager: true, query: "?raw", import: "default" }) as Record<string, string>;
+const FLAG_FILES = svgs("comunidades", ALL_SVGS);
+const PROVINCE_FLAG_FILES = svgs("provincias", ALL_SVGS);
 
 describe("formato de los archivos", () => {
   it("territorio.json cumple su esquema", () => {
@@ -30,19 +30,19 @@ describe("formato de los archivos", () => {
   });
   it("el esquema detecta un campo mal escrito", () => {
     // Prueba de que la validación funciona: "trampa" en vez de "trampas".
-    const roto = { comunidades: [{ id: "01", archivo: "andalucia.svg", trampa: ["11"], descripcion: "Descripción de prueba", significado: "Significado de prueba" }], provincias: [] };
-    expect(schemaErrors(banderasSchema, roto).length).toBeGreaterThan(0);
+    const broken = { comunidades: [{ id: "01", archivo: "andalucia.svg", trampa: ["11"], descripcion: "Descripción de prueba", significado: "Significado de prueba" }], provincias: [] };
+    expect(schemaErrors(banderasSchema, broken).length).toBeGreaterThan(0);
   });
 });
 
 describe("territorio", () => {
-  const codigos = (n: number) => Array.from({ length: n }, (_, i) => String(i + 1).padStart(2, "0"));
+  const codes = (n: number) => Array.from({ length: n }, (_, i) => String(i + 1).padStart(2, "0"));
 
   it("tiene 17 comunidades, 2 ciudades autónomas y 52 provincias, con códigos INE", () => {
-    expect(AUTONOMIAS.map((c) => c.id)).toEqual(codigos(19));
-    expect(COMUNIDADES.map((c) => c.id)).toEqual(codigos(17));
+    expect(AUTONOMIAS.map((c) => c.id)).toEqual(codes(19));
+    expect(COMUNIDADES.map((c) => c.id)).toEqual(codes(17));
     expect(AUTONOMIAS.filter((c) => c.tipo === "ciudad").map((c) => c.nombre.castellano)).toEqual(["Ceuta", "Melilla"]);
-    expect(PROVINCIAS.map((p) => p.id)).toEqual(codigos(52));
+    expect(PROVINCIAS.map((p) => p.id)).toEqual(codes(52));
   });
 
   for (const nameForm of NAME_FORMS) {
@@ -92,12 +92,12 @@ describe("territorio", () => {
   it("las ciudades de las provincias no son capitales ni se repiten", () => {
     for (const nameForm of NAME_FORMS) {
       const capitales = new Set(poolsFor(nameForm).anyCapital);
-      const vistas = new Set<string>();
+      const seenIds = new Set<string>();
       for (const p of PROVINCIAS.filter((x) => x.ciudades)) {
         for (const c of p.ciudades!) {
           expect(capitales.has(c[nameForm]), `${p.id} → ${c[nameForm]}`).toBe(false);
-          expect(vistas.has(c[nameForm]), `${p.id} → ${c[nameForm]} repetida`).toBe(false);
-          vistas.add(c[nameForm]);
+          expect(seenIds.has(c[nameForm]), `${p.id} → ${c[nameForm]} repetida`).toBe(false);
+          seenIds.add(c[nameForm]);
         }
       }
     }
@@ -106,9 +106,9 @@ describe("territorio", () => {
   it("las ciudades trampa de las comunidades solo están donde la capital se llama como la comunidad, y no son capitales", () => {
     const capitales = new Set(poolsFor("castellano").anyCapital);
     for (const c of AUTONOMIAS) {
-      const coincide = capitalesOf(c).some((f) => c.nombre.castellano.includes(f.castellano));
-      expect(Boolean(c.ciudadesTrampa), `${c.id}: ciudades trampa`).toBe(coincide);
-      expect(Boolean(c.trampasCapital), `${c.id}: trampa fija`).toBe(!coincide);
+      const matches = capitalesOf(c).some((f) => c.nombre.castellano.includes(f.castellano));
+      expect(Boolean(c.ciudadesTrampa), `${c.id}: ciudades trampa`).toBe(matches);
+      expect(Boolean(c.trampasCapital), `${c.id}: trampa fija`).toBe(!matches);
       for (const f of c.ciudadesTrampa ?? []) expect(capitales.has(f.castellano), `${c.id} → ${f.castellano}`).toBe(false);
     }
   });
@@ -133,35 +133,35 @@ describe("territorio", () => {
 });
 
 describe("textos de las notas", () => {
-  const textos = [
+  const texts = [
     ...AUTONOMIAS.flatMap((c) => [["notaCapital", c.id, c.notaCapital], ["curiosidadCapital", c.id, c.curiosidadCapital]]),
     ...PROVINCIAS.flatMap((p) => [["notaCapital de provincia", p.id, p.notaCapital], ["curiosidad de provincia", p.id, p.curiosidad]]),
     ...Object.entries(AUTONOMIA_BANDERAS).flatMap(([id, b]) => [["descripcion de bandera", id, b.descripcion], ["significado de bandera", id, b.significado]]),
     ...Object.entries(PROVINCIA_BANDERAS).flatMap(([id, b]) => [["descripcion de bandera de provincia", id, b.descripcion], ["significado de bandera de provincia", id, b.significado]]),
     ...MUNICIPIOS.map((m) => ["curiosidad de municipio", m.id, m.curiosidad])
   ].filter(([, , t]) => t) as [string, string, string][];
-  const donde = (campo: string, id: string, t: string) => `${campo} de ${id}: «${t.slice(0, 40)}…»`;
+  const where = (field: string, id: string, t: string) => `${field} de ${id}: «${t.slice(0, 40)}…»`;
 
   // Los espacios junto a los saltos de línea (\n) y al principio o al final sí se permiten:
   // el juego los quita al mostrar el texto (prepareText), así que no hace falta cuidarlos al editar.
   it("no tienen espacios dobles dentro de una frase", () => {
-    for (const [campo, id, t] of textos) {
-      for (const linea of t.split("\n")) expect(linea.trim(), donde(campo, id, t)).not.toMatch(/ {2}/);
+    for (const [field, id, t] of texts) {
+      for (const line of t.split("\n")) expect(line.trim(), where(field, id, t)).not.toMatch(/ {2}/);
     }
   });
 
   it("las marcas entre llaves son válidas y apuntan a provincias y municipios que existen", () => {
     const provincias = new Set(PROVINCIAS.map((p) => p.id));
     const municipios = new Set(MUNICIPIOS.map((m) => m.id));
-    for (const [campo, id, t] of textos) {
-      for (const [marca] of t.matchAll(/\{[^}]*\}/g)) {
-        const m = marca.match(/^\{provincia(?:\.capital)?:(\d{2})\}$/);
-        const mun = marca.match(/^\{municipio:(\d{5})\}$/);
-        const valida = m ? provincias.has(m[1]) : mun ? municipios.has(mun[1]) : marca === "{capital}" && campo.includes("Capital");
-        expect(valida, `${donde(campo, id, t)} → ${marca}`).toBe(true);
+    for (const [field, id, t] of texts) {
+      for (const [mark] of t.matchAll(/\{[^}]*\}/g)) {
+        const m = mark.match(/^\{provincia(?:\.capital)?:(\d{2})\}$/);
+        const mun = mark.match(/^\{municipio:(\d{5})\}$/);
+        const isValid = m ? provincias.has(m[1]) : mun ? municipios.has(mun[1]) : mark === "{capital}" && field.includes("Capital");
+        expect(isValid, `${where(field, id, t)} → ${mark}`).toBe(true);
       }
       // Llaves sueltas, sin cerrar o sin abrir.
-      expect(t.replace(/\{[^{}]*\}/g, ""), donde(campo, id, t)).not.toMatch(/[{}]/);
+      expect(t.replace(/\{[^{}]*\}/g, ""), where(field, id, t)).not.toMatch(/[{}]/);
     }
   });
 });
@@ -232,14 +232,14 @@ describe("imágenes de las banderas", () => {
 
   it("están limpias con SVGO: en una sola línea y sin datos del programa de dibujo", () => {
     // Si falla con una bandera nueva: npm run limpiar-bandera -- src/sections/geografia/data/banderas/<carpeta>/<archivo>.svg
-    for (const [archivo, texto] of Object.entries({ ...FLAG_FILES, ...PROVINCE_FLAG_FILES })) {
-      expect(texto.trim(), archivo).not.toMatch(/\n|<metadata|<!--|inkscape:|sodipodi:|xmlns:rdf/);
+    for (const [file, text] of Object.entries({ ...FLAG_FILES, ...PROVINCE_FLAG_FILES })) {
+      expect(text.trim(), file).not.toMatch(/\n|<metadata|<!--|inkscape:|sodipodi:|xmlns:rdf/);
     }
   });
 });
 
 describe("municipios", () => {
-  const deProvincia = (id: string) => MUNICIPIOS.filter((m) => m.id.startsWith(id));
+  const ofProvincia = (id: string) => MUNICIPIOS.filter((m) => m.id.startsWith(id));
 
   it("van en orden de código INE, sin repetirse, y son de provincias que existen", () => {
     const ids = MUNICIPIOS.map((m) => m.id);
@@ -250,11 +250,11 @@ describe("municipios", () => {
 
   it("están los tres más poblados de cada provincia (puestos 1, 2 y 3), y la capital", () => {
     for (const p of PROVINCIAS) {
-      const puestos = deProvincia(p.id).map((m) => m.puesto).filter((n) => n <= 3).sort();
+      const ranks = ofProvincia(p.id).map((m) => m.puesto).filter((n) => n <= 3).sort();
       // Ceuta y Melilla tienen un solo municipio.
-      expect(puestos, p.id).toEqual(AUTONOMIAS.find((c) => c.id === p.comunidad)!.tipo === "ciudad" ? [1] : [1, 2, 3]);
+      expect(ranks, p.id).toEqual(AUTONOMIAS.find((c) => c.id === p.comunidad)!.tipo === "ciudad" ? [1] : [1, 2, 3]);
       // La capital, con las mismas formas del nombre que en territorio.json.
-      expect(deProvincia(p.id).filter((m) => m.nombre.oficial === p.capital.oficial).map((m) => m.nombre), p.id).toEqual([p.capital]);
+      expect(ofProvincia(p.id).filter((m) => m.nombre.oficial === p.capital.oficial).map((m) => m.nombre), p.id).toEqual([p.capital]);
     }
   });
 
@@ -264,8 +264,8 @@ describe("municipios", () => {
 
   it("el puesto concuerda con la población: en cada provincia, a más puesto, menos habitantes", () => {
     for (const p of PROVINCIAS) {
-      const orden = deProvincia(p.id).sort((a, b) => a.puesto - b.puesto);
-      for (let i = 1; i < orden.length; i++) expect(orden[i].poblacion, orden[i].id).toBeLessThan(orden[i - 1].poblacion);
+      const order = ofProvincia(p.id).sort((a, b) => a.puesto - b.puesto);
+      for (let i = 1; i < order.length; i++) expect(order[i].poblacion, order[i].id).toBeLessThan(order[i - 1].poblacion);
     }
   });
 
@@ -281,8 +281,8 @@ describe("municipios", () => {
 
   for (const nameForm of NAME_FORMS) {
     it(`[${nameForm}] los nombres no se repiten (la pregunta sería ambigua)`, () => {
-      const nombres = MUNICIPIOS.map((m) => m.nombre[nameForm]);
-      expect(nombres.filter((n, i) => nombres.indexOf(n) !== i)).toEqual([]);
+      const names = MUNICIPIOS.map((m) => m.nombre[nameForm]);
+      expect(names.filter((n, i) => names.indexOf(n) !== i)).toEqual([]);
     });
   }
 });

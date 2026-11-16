@@ -42,11 +42,11 @@ describe("examen de nacionalidad: datos", () => {
   });
 
   it("ninguna pregunta está a medias: o está vacía, o tiene enunciado, opciones y la letra de la respuesta", () => {
-    const aMedias = CCSE_ENTRIES.flatMap((e) => {
+    const partial = CCSE_ENTRIES.flatMap((e) => {
       const r = entryStatus(e);
       return r.status === "partial" ? [`Pregunta ${e.referencia}: falta ${r.missing.join(", ")}`] : [];
     });
-    expect(aMedias).toEqual([]);
+    expect(partial).toEqual([]);
   });
 
   it("la respuesta es una de las opciones, y las opciones no se repiten", () => {
@@ -61,28 +61,28 @@ describe("examen de nacionalidad: datos", () => {
   });
 
   it("las preguntas sin rellenar no salen en el juego", () => {
-    const vacias = CCSE_ENTRIES.filter((e) => entryStatus(e).status === "empty").map((e) => e.id);
-    for (const id of vacias) expect(CCSE_QUESTIONS.some((p) => p.id === id)).toBe(false);
-    expect(CCSE_QUESTIONS.length + vacias.length).toBe(CCSE_ENTRIES.length);
+    const emptyIds = CCSE_ENTRIES.filter((e) => entryStatus(e).status === "empty").map((e) => e.id);
+    for (const id of emptyIds) expect(CCSE_QUESTIONS.some((p) => p.id === id)).toBe(false);
+    expect(CCSE_QUESTIONS.length + emptyIds.length).toBe(CCSE_ENTRIES.length);
   });
 });
 
 describe("examen de nacionalidad: rellenar la plantilla", () => {
-  const vacia: CcseEntry = {
+  const empty: CcseEntry = {
     id: "ccse-1999", tarea: 1, referencia: 1999, pregunta: "", opciones: ["", "", ""], respuesta: "", nota: "", fuentes: []
   };
-  const con = (cambios: Partial<CcseEntry>) => entryStatus({ ...vacia, ...cambios });
-  const missingCount = (cambios: Partial<CcseEntry>) => {
-    const r = con(cambios);
+  const withChanges = (changes: Partial<CcseEntry>) => entryStatus({ ...empty, ...changes });
+  const missingCount = (changes: Partial<CcseEntry>) => {
+    const r = withChanges(changes);
     return r.status === "partial" ? r.missing.length : 0;
   };
 
   it("sin enunciado, opciones ni respuesta, está vacía", () => {
-    expect(con({}).status).toBe("empty");
+    expect(withChanges({}).status).toBe("empty");
   });
 
   it("la letra elige la opción en el orden escrito, y los espacios de más no cuentan", () => {
-    const r = con({ pregunta: " ¿Uno? ", opciones: ["Primera", " Segunda ", "Tercera"], respuesta: "b" });
+    const r = withChanges({ pregunta: " ¿Uno? ", opciones: ["Primera", " Segunda ", "Tercera"], respuesta: "b" });
     expect(r.status).toBe("complete");
     if (r.status !== "complete") return;
     expect(r.question.answer).toBe("Segunda");
@@ -92,22 +92,22 @@ describe("examen de nacionalidad: rellenar la plantilla", () => {
   });
 
   it("con dos opciones vale, dejando la tercera vacía; «Verdadero» y «Falso» no se barajan", () => {
-    const r = con({ pregunta: "¿Dos?", opciones: ["Verdadero", "Falso", ""], respuesta: "a" });
+    const r = withChanges({ pregunta: "¿Dos?", opciones: ["Verdadero", "Falso", ""], respuesta: "a" });
     expect(r.status === "complete" && r.question.options).toEqual(["Verdadero", "Falso"]);
     expect(r.status === "complete" && r.question.fixedOrder).toBe(true);
-    const otra = con({ pregunta: "¿Dos?", opciones: ["Sí", "No", ""], respuesta: "b" });
-    expect(otra.status === "complete" && otra.question.fixedOrder).toBeUndefined();
+    const other = withChanges({ pregunta: "¿Dos?", opciones: ["Sí", "No", ""], respuesta: "b" });
+    expect(other.status === "complete" && other.question.fixedOrder).toBeUndefined();
   });
 
   it("a medias, dice qué falta", () => {
-    const bien = { pregunta: "¿Una?", opciones: ["A", "B", "C"], respuesta: "a" };
-    expect(missingCount(bien)).toBe(0);
-    expect(missingCount({ ...bien, pregunta: "" })).toBe(1);
-    expect(missingCount({ ...bien, respuesta: "" })).toBe(1);
-    expect(missingCount({ ...bien, respuesta: "c", opciones: ["A", "B", ""] })).toBe(1);
-    expect(missingCount({ ...bien, opciones: ["A", "", ""] })).toBe(1);
-    expect(missingCount({ ...bien, opciones: ["A", "", "C"] })).toBe(1);
-    expect(missingCount({ ...bien, opciones: ["A", "A", "C"] })).toBe(1);
+    const valid = { pregunta: "¿Una?", opciones: ["A", "B", "C"], respuesta: "a" };
+    expect(missingCount(valid)).toBe(0);
+    expect(missingCount({ ...valid, pregunta: "" })).toBe(1);
+    expect(missingCount({ ...valid, respuesta: "" })).toBe(1);
+    expect(missingCount({ ...valid, respuesta: "c", opciones: ["A", "B", ""] })).toBe(1);
+    expect(missingCount({ ...valid, opciones: ["A", "", ""] })).toBe(1);
+    expect(missingCount({ ...valid, opciones: ["A", "", "C"] })).toBe(1);
+    expect(missingCount({ ...valid, opciones: ["A", "A", "C"] })).toBe(1);
     expect(missingCount({ opciones: ["A", "B", "C"] })).toBe(2);
   });
 });
