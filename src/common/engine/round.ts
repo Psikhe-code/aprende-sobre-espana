@@ -151,12 +151,12 @@ export const recordValue = (r: RoundResult) => (r.unlimited ? r.bestStreak : r.h
  * Actualiza los récords con el resultado de una partida (aciertos; mejor racha si es sin límite).
  * Devuelve los récords nuevos (sin modificar los anteriores) y si se ha batido el récord.
  */
-export function applyRecord(best: Record<string, number>, key: string, result: RoundResult) {
-  const previous = best[key];
+export function applyRecord(records: Record<string, number>, key: string, result: RoundResult) {
+  const previous = records[key];
   const value = recordValue(result);
   const isNewRecord = result.counts && (previous == null || value > previous);
   return {
-    best: isNewRecord ? { ...best, [key]: value } : best,
+    records: isNewRecord ? { ...records, [key]: value } : records,
     isNewRecord,
     record: isNewRecord ? value : previous
   };

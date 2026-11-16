@@ -1,75 +1,80 @@
-// Lo que se guarda en el dispositivo: valores por defecto, lo que se recuerda y la conversión de lo antiguo.
+// Lo que se guarda en el dispositivo: lo de por defecto, lo que se descarta al cargar y las opciones de cada sección.
 
 import { describe, expect, it } from "vitest";
-import { geografiaRecordKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
+import { loadState, saveState, sectionSettings, STORAGE_KEY } from "../../src/common/engine/storage";
+import { recordKeyEnding } from "../../src/common/engine/round-settings";
+
+/** Hace como si en el dispositivo estuviera guardado `data` (o un texto, tal cual) mientras se ejecuta `fn`. */
+function withSavedData(data: unknown, fn: (store: Map<string, string>) => void) {
+  const store = new Map([[STORAGE_KEY, typeof data === "string" ? data : JSON.stringify(data)]]);
+  const previous = (globalThis as { localStorage?: unknown }).localStorage;
+  (globalThis as { localStorage?: unknown }).localStorage = {
+    getItem: (k: string) => store.get(k) ?? null,
+    setItem: (k: string, v: string) => { store.set(k, v); }
+  };
+  try { fn(store); } finally { (globalThis as { localStorage?: unknown }).localStorage = previous; }
+}
 
 describe("guardado", () => {
-  const withSavedData = (data: unknown, fn: () => void) => {
-    const store = new Map([[STORAGE_KEY, JSON.stringify(data)]]);
-    const previous = (globalThis as { localStorage?: unknown }).localStorage;
-    (globalThis as { localStorage?: unknown }).localStorage = {
-      getItem: (k: string) => store.get(k) ?? null,
-      setItem: (k: string, v: string) => { store.set(k, v); }
-    };
-    try { fn(); } finally { (globalThis as { localStorage?: unknown }).localStorage = previous; }
-  };
-
-  it("por defecto están marcados los dos territorios", () => {
-    expect(loadState().territorios).toEqual(["comunidad", "provincia"]);
+  it("la primera vez, sin sección elegida, sin récords y sin opciones guardadas", () => {
+    expect(loadState()).toEqual({ section: null, records: {}, settings: {} });
   });
 
-  it("la clave del récord incluye las categorías, los territorios, la dificultad y el número de preguntas (si no son los de por defecto)", () => {
-    expect(geografiaRecordKey(["banderas", "capitales"], ["provincia", "comunidad"])).toBe("capitales+banderas/comunidad+provincia");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"])).toBe("capitales/comunidad");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4)).toBe("capitales/comunidad");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 8)).toBe("capitales/comunidad/8");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4, 10)).toBe("capitales/comunidad");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4, 25)).toBe("capitales/comunidad/25preguntas");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 8, 100)).toBe("capitales/comunidad/8/100preguntas");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 6, "sinLimite")).toBe("capitales/comunidad/6/sinlimite");
-    // El tiempo: sin tiempo no se escribe (los récords de antes eran sin tiempo); con tiempo, en segundos.
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4, 10, "sinTiempo")).toBe("capitales/comunidad");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4, 10, 60)).toBe("capitales/comunidad/60s");
-    expect(geografiaRecordKey(["capitales"], ["comunidad"], 8, 25, 10)).toBe("capitales/comunidad/8/25preguntas/10s");
+  it("se recuerdan la sección, los récords y las opciones", () => {
+    const saved = { section: "ccse", records: { "ccse/1/10preguntas/60s": 7 }, settings: { ccse: { tareas: [1] } } };
+    withSavedData(saved, () => expect(loadState()).toEqual(saved));
   });
 
-  it("por defecto, 1 minuto por pregunta, y se recuerda el tiempo elegido", () => {
-    expect(loadState().tiempo).toBe(60);
-    withSavedData({ tiempo: 10 }, () => expect(loadState().tiempo).toBe(10));
-    withSavedData({ tiempo: "sinTiempo" }, () => expect(loadState().tiempo).toBe("sinTiempo"));
-    withSavedData({ tiempo: 45 }, () => expect(loadState().tiempo).toBe(60));
+  it("se descarta lo que no tiene la forma esperada: un récord que no es un número, una sección que no es un texto", () => {
+    withSavedData({ section: 3, records: { a: 5, b: "5", c: { x: 1 }, d: null }, settings: [1, 2] }, () =>
+      expect(loadState()).toEqual({ section: null, records: { a: 5 }, settings: {} }));
+    withSavedData("esto no es JSON", () => expect(loadState()).toEqual({ section: null, records: {}, settings: {} }));
+    withSavedData(null, () => expect(loadState()).toEqual({ section: null, records: {}, settings: {} }));
   });
 
-  it("la primera vez no hay sección elegida; después, se recuerda la última", () => {
-    expect(loadState().seccion).toBe(null);
-    withSavedData({ seccion: "ccse" }, () => expect(loadState().seccion).toBe("ccse"));
-    withSavedData({ seccion: "historia" }, () => expect(loadState().seccion).toBe(null));
+  it("lo guardado con el formato de antes no se convierte: se empieza de cero", () => {
+    withSavedData({ seccion: "ccse", best: { "capitales/comunidad": 8 }, selected: ["banderas"], ccse: { tareas: [1] } }, () =>
+      expect(loadState()).toEqual({ section: null, records: {}, settings: {} }));
   });
 
-  it("por defecto, 10 preguntas por partida, y se recuerda el número elegido", () => {
-    expect(loadState().longitud).toBe(10);
-    withSavedData({ longitud: 50 }, () => expect(loadState().longitud).toBe(50));
-    withSavedData({ longitud: "sinLimite" }, () => expect(loadState().longitud).toBe("sinLimite"));
-    withSavedData({ longitud: 30 }, () => expect(loadState().longitud).toBe(10));
-  });
-
-  it("la dificultad por defecto es 4 opciones, y se recuerda la elegida", () => {
-    expect(loadState().opciones).toBe(4);
-    withSavedData({ opciones: 8 }, () => expect(loadState().opciones).toBe(8));
-    withSavedData({ opciones: 5 }, () => expect(loadState().opciones).toBe(4));
-  });
-
-  it("convierte lo guardado con los nombres antiguos de categoría, sin perder selección ni récords", () => {
-    withSavedData({
-      selected: ["banderasCCAA"], known: ["capitalesCCAA", "banderasCCAA"], names: ["oficial"],
-      best: { "capitalesCCAA+banderasCCAA": 8, banderasCCAA: 6 }
-    }, () => {
+  it("al guardar, se guarda todo, y al volver a cargar sale lo mismo", () => {
+    withSavedData({}, (store) => {
       const s = loadState();
-      // «divisiones» no existía cuando se guardó, así que se marca sola, como toda categoría nueva.
-      expect(s.selected).toEqual(["banderas", "divisiones"]);
-      expect(s.names).toEqual(["oficial"]);
-      expect(s.best).toEqual({ "capitales+banderas/comunidad": 8, "banderas/comunidad": 6 });
+      s.section = "geografia";
+      s.records["geografia/x"] = 9;
+      s.settings.geografia = { categories: ["capitales"] };
+      saveState(s);
+      expect(JSON.parse(store.get(STORAGE_KEY)!)).toEqual(s);
+      expect(loadState()).toEqual(s);
     });
   });
 });
 
+describe("opciones de cada sección", () => {
+  const load = (raw: unknown) => ({ n: typeof raw === "object" && raw !== null && "n" in raw && typeof raw.n === "number" ? raw.n : 1 });
+
+  it("se comprueban con el `load` de la sección: lo que falta o no vale, por defecto", () => {
+    expect(sectionSettings(loadState(), "x", load)).toEqual({ n: 1 });
+    withSavedData({ settings: { x: { n: 5 } } }, () => expect(sectionSettings(loadState(), "x", load)).toEqual({ n: 5 }));
+    withSavedData({ settings: { x: { n: "5" } } }, () => expect(sectionSettings(loadState(), "x", load)).toEqual({ n: 1 }));
+  });
+
+  it("se comprueban una sola vez: después se devuelven las mismas, y lo que se cambia en ellas se guarda", () => {
+    withSavedData({}, (store) => {
+      const s = loadState();
+      const first = sectionSettings(s, "x", load);
+      first.n = 7;
+      expect(sectionSettings(s, "x", load)).toBe(first);
+      saveState(s);
+      expect(JSON.parse(store.get(STORAGE_KEY)!).settings.x).toEqual({ n: 7 });
+    });
+  });
+});
+
+describe("clave del récord", () => {
+  it("su final, igual en todas las secciones: el número de preguntas y el tiempo, siempre escritos", () => {
+    expect(recordKeyEnding(10, 60)).toBe("/10preguntas/60s");
+    expect(recordKeyEnding(25, 10)).toBe("/25preguntas/10s");
+    expect(recordKeyEnding("sinLimite", "sinTiempo")).toBe("/sinlimite/sintiempo");
+  });
+});

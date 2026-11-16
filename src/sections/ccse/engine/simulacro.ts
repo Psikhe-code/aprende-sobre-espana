@@ -86,8 +86,8 @@ export class Simulacro {
 }
 
 /** Apunta el resultado si es el mejor hasta ahora. Devuelve los récords (cambiados o no) y el mejor resultado. */
-export function applySimulacroRecord(best: Record<string, number>, hits: number) {
-  const previous = best[SIMULACRO_RECORD_KEY];
+export function applySimulacroRecord(records: Record<string, number>, hits: number) {
+  const previous = records[SIMULACRO_RECORD_KEY];
   const isNewRecord = previous == null || hits > previous;
-  return { best: isNewRecord ? { ...best, [SIMULACRO_RECORD_KEY]: hits } : best, isNewRecord, record: isNewRecord ? hits : previous };
+  return { records: isNewRecord ? { ...records, [SIMULACRO_RECORD_KEY]: hits } : records, isNewRecord, record: isNewRecord ? hits : previous };
 }

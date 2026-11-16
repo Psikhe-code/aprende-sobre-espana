@@ -10,8 +10,8 @@ import { imageElement } from "./images";
 export function renderEnd(ctx: AppContext, round: Round): void {
   const { state } = ctx;
   const r = round.result();
-  const rec = applyRecord(state.best, ctx.mode().recordKey(), r);
-  if (rec.isNewRecord) { state.best = rec.best; ctx.save(); }
+  const rec = applyRecord(state.records, ctx.mode().recordKey(), r);
+  if (rec.isNewRecord) { state.records = rec.records; ctx.save(); }
 
   $("score").replaceChildren(String(r.hits), el("small", "", `/${r.total}`));
   $("endTitle").textContent = ratingText(r, ctx.mode().rating);

@@ -7,7 +7,12 @@ import { canPlay } from "../../src/sections/ccse/engine/selection";
 import { ccseMode } from "../../src/sections/ccse/ui/mode";
 import { CCSE_APTO_RATIO, ccseRating } from "../../src/sections/ccse/engine/rating";
 import { SIMULACRO_APTO_HITS, SIMULACRO_QUESTION_COUNT } from "../../src/sections/ccse/engine/simulacro-rules";
-import { ccseRecordKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
+import type { SavedState } from "../../src/common/engine/storage";
+import { loadCcseSettings, type CcseSettings } from "../../src/sections/ccse/engine/settings";
+import { recordKey } from "../../src/sections/ccse/engine/selection";
+
+/** Lo guardado de alguien con estas opciones del examen, para pedirle a la sección su modo. */
+const stateWith = (c: CcseSettings): SavedState => ({ section: "ccse", records: {}, settings: { ccse: c } });
 
 // Examen de nacionalidad: partidas y guardado, con datos de prueba (test-data.ts) en vez de la
 // plantilla real, que se va rellenando poco a poco. Las reglas de los datos reales, en data.test.ts.
@@ -88,11 +93,10 @@ describe("examen de nacionalidad: partidas", () => {
     expect(buildReviewRound(misses).map((q) => q.id)).toEqual(misses.map((q) => q.id));
   });
 
-  it("la clave del récord empieza por «ccse/», con las tareas, y el número de preguntas y el tiempo si no son los de por defecto", () => {
-    expect(ccseRecordKey([1])).toBe("ccse/1");
-    expect(ccseRecordKey([2, 1])).toBe("ccse/1+2");
-    expect(ccseRecordKey([1], 25, 60)).toBe("ccse/1/25preguntas/60s");
-    expect(ccseRecordKey([1, 3], "sinLimite", "sinTiempo")).toBe("ccse/1+3/sinlimite");
+  it("la clave del récord empieza por «ccse/», con las tareas en orden, el número de preguntas y el tiempo", () => {
+    const c = loadCcseSettings(undefined);
+    expect(recordKey({ ...c, tareas: [2, 1] })).toBe("ccse/1+2/10preguntas/60s");
+    expect(recordKey({ ...c, tareas: [1, 3], roundLength: "sinLimite", timeLimit: "sinTiempo" })).toBe("ccse/1+3/sinlimite/sintiempo");
   });
 });
 
@@ -100,12 +104,12 @@ describe("examen de nacionalidad: lo que da a la partida común", () => {
   it("cada partida tiene el número de preguntas elegido (sin límite, todas), así que cuenta para el récord", () => {
     const tested: RoundLength[] = [];
     for (const n of ROUND_LENGTHS) {
-      const s = loadState();
-      s.ccse.longitud = n;
+      const s = loadCcseSettings(undefined);
+      s.roundLength = n;
       if (!canPlay(s)) continue;
-      const mode = ccseMode(s);
+      const mode = ccseMode(stateWith(s));
       expect(mode.buildRound(), String(n)).toHaveLength(mode.roundSize());
-      expect(mode.roundSize(), String(n)).toBe(n === "sinLimite" ? tareaQuestions(s.ccse.tareas).length : n);
+      expect(mode.roundSize(), String(n)).toBe(n === "sinLimite" ? tareaQuestions(s.tareas).length : n);
       tested.push(n);
     }
     // Que no pase sin comprobar nada: con los datos de prueba caben al menos 10, 25 y sin límite.
@@ -126,50 +130,36 @@ describe("examen de nacionalidad: valoración del resultado", () => {
 
 describe("examen de nacionalidad: si se puede jugar", () => {
   it("con las opciones por defecto, sí; sin ninguna tarea marcada, no", () => {
-    const s = loadState();
+    const s = loadCcseSettings(undefined);
     expect(canPlay(s)).toBe(true);
-    expect(canPlay({ ...s, ccse: { ...s.ccse, tareas: [] } })).toBe(false);
+    expect(canPlay({ ...s, tareas: [] })).toBe(false);
   });
 
   it("solo si las tareas marcadas tienen preguntas y caben las elegidas (25, 50 y 100, solo si hay al menos esas)", () => {
-    const s = loadState();
+    const s = loadCcseSettings(undefined);
     for (const t of ALL_TAREAS) for (const roundLength of ROUND_LENGTHS) {
       const available = tareaQuestions([t]).length;
       const fits = available > 0 && (roundLength === "sinLimite" || roundLength === ROUND_LENGTH || available >= roundLength);
-      expect(canPlay({ ...s, ccse: { ...s.ccse, tareas: [t], longitud: roundLength } }), `tarea ${t} · ${roundLength}`).toBe(fits);
+      expect(canPlay({ ...s, tareas: [t], roundLength }), `tarea ${t} · ${roundLength}`).toBe(fits);
     }
   });
 });
 
-describe("examen de nacionalidad: guardado", () => {
-  const withSavedData = (data: unknown, fn: () => void) => {
-    const store = new Map([[STORAGE_KEY, JSON.stringify(data)]]);
-    const previous = (globalThis as { localStorage?: unknown }).localStorage;
-    (globalThis as { localStorage?: unknown }).localStorage = {
-      getItem: (k: string) => store.get(k) ?? null,
-      setItem: (k: string, v: string) => { store.set(k, v); }
-    };
-    try { fn(); } finally { (globalThis as { localStorage?: unknown }).localStorage = previous; }
-  };
-
-  it("opciones del examen: por defecto, todas las tareas con preguntas, 10 preguntas y 1 minuto; y se recuerdan", () => {
-    withSavedData({}, () => {
-      const defaults = loadState().ccse;
-      expect(defaults.tareas).toEqual(tareasWithQuestions());
-      expect(defaults.longitud).toBe(10);
-      expect(defaults.tiempo).toBe(60);
-    });
-    withSavedData({ ccse: { tareas: [1], conocidas: [1, 2], longitud: "sinLimite", tiempo: 10 } }, () => {
-      expect(loadState().ccse).toMatchObject({ tareas: [1], longitud: "sinLimite", tiempo: 10 });
-    });
+describe("examen de nacionalidad: opciones guardadas", () => {
+  it("por defecto, todas las tareas con preguntas, 10 preguntas y 1 minuto; y se recuerda lo elegido", () => {
+    expect(loadCcseSettings(undefined)).toEqual({ tareas: tareasWithQuestions(), knownTareas: tareasWithQuestions(), roundLength: 10, timeLimit: 60 });
+    expect(loadCcseSettings({ tareas: [1], knownTareas: [1, 2], roundLength: "sinLimite", timeLimit: 10 }))
+      .toMatchObject({ tareas: [1], roundLength: "sinLimite", timeLimit: 10 });
     // Tareas sin preguntas o que no existen no se quedan marcadas; si no queda ninguna, vuelven las de por defecto.
-    withSavedData({ ccse: { tareas: [9, 4], conocidas: [1, 2] } }, () => expect(loadState().ccse.tareas).toEqual(tareasWithQuestions()));
+    expect(loadCcseSettings({ tareas: [9, 4], knownTareas: [1, 2] }).tareas).toEqual(tareasWithQuestions());
+    // Lo que no vale, por defecto.
+    expect(loadCcseSettings({ roundLength: 30, timeLimit: 45 })).toMatchObject({ roundLength: 10, timeLimit: 60 });
   });
 
   it("una tarea que recibe sus primeras preguntas se marca sola", () => {
     // Guardado cuando solo la Tarea 1 tenía preguntas: la 2 es nueva.
-    withSavedData({ ccse: { tareas: [1], conocidas: [1] } }, () => expect(loadState().ccse.tareas).toEqual([1, 2]));
+    expect(loadCcseSettings({ tareas: [1], knownTareas: [1] }).tareas).toEqual([1, 2]);
     // Guardado cuando aún no había ninguna.
-    withSavedData({ ccse: { tareas: [], conocidas: [] } }, () => expect(loadState().ccse.tareas).toEqual([1, 2]));
+    expect(loadCcseSettings({ tareas: [], knownTareas: [] }).tareas).toEqual([1, 2]);
   });
 });

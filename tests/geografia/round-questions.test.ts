@@ -6,7 +6,7 @@ import { buildRound, buildReviewRound, reshuffleRound, roundSize, questionCount,
 import { ROUND_LENGTH, ROUND_LENGTHS } from "../../src/common/engine/round-settings";
 import { PROVINCIAS, poolsFor } from "../../src/sections/geografia/engine/territorio";
 import { PROVINCIA_BANDERAS } from "../../src/sections/geografia/engine/questions";
-import { loadState } from "../../src/common/engine/storage";
+import { loadGeografiaSettings } from "../../src/sections/geografia/engine/settings";
 import { NAME_FORMS } from "../../src/sections/geografia/engine/types";
 
 /** Preguntas de capital de provincia que hay en los datos (las provincias con trampas). */
@@ -77,7 +77,7 @@ describe("partidas: elección de preguntas", () => {
   });
 
   it("por defecto están marcadas todas las formas, la oficial primero", () => {
-    expect(loadState().names).toEqual(["oficial", "castellano"]);
+    expect(loadGeografiaSettings(undefined).nameForms).toEqual(["oficial", "castellano"]);
   });
 
   it("reparten las preguntas entre las categorías", () => {

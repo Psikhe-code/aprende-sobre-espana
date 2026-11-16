@@ -2,11 +2,10 @@
 // sirve para que TypeScript compruebe el resto del código.
 
 /**
- * Sección del juego: geografía o examen de nacionalidad (CCSE). Cada una tiene sus preguntas, sus opciones
- * y sus récords; la partida (round.ts) y su pantalla son las mismas.
+ * El id de una sección del juego («geografia», «ccse»). Las que hay están en la lista de secciones
+ * (src/sections/sections.ts). Cada una tiene sus preguntas, sus opciones y sus récords; la partida es la misma.
  */
-export type Section = "geografia" | "ccse";
-export const SECTIONS: readonly Section[] = ["geografia", "ccse"];
+export type Section = string;
 
 /** Una fuente que respalda la nota de una pregunta. */
 export interface Fuente {

@@ -59,7 +59,7 @@ export function startApp(): App {
   let screen: Screen = "sections";
   const idleListeners: (() => void)[] = [];
   /** La sección actual: la elegida la última vez o, si no hay ninguna, la primera de la lista. */
-  const section = (): SectionDefinition => SECTION_LIST.find((s) => s.id === state.seccion) ?? SECTION_LIST[0];
+  const section = (): SectionDefinition => SECTION_LIST.find((s) => s.id === state.section) ?? SECTION_LIST[0];
 
   const ctx: AppContext = {
     state,
@@ -106,7 +106,7 @@ export function startApp(): App {
   // El menú de secciones, con una tarjeta por sección, y los botones del inicio de cada una.
   $("sectionList").replaceChildren(...SECTION_LIST.map((s) => {
     const card = sectionCard(s);
-    card.addEventListener("click", () => { state.seccion = s.id; ctx.save(); ctx.goHome(); });
+    card.addEventListener("click", () => { state.section = s.id; ctx.save(); ctx.goHome(); });
     return card;
   }));
   for (const s of SECTION_LIST) {
@@ -127,7 +127,7 @@ export function startApp(): App {
     afterUpdate = sessionStorage.getItem(UPDATE_RELOAD_KEY) !== null;
     sessionStorage.removeItem(UPDATE_RELOAD_KEY);
   } catch { /* sin sessionStorage, se abre el menú */ }
-  if (afterUpdate && state.seccion !== null) ctx.goHome();
+  if (afterUpdate && state.section !== null) ctx.goHome();
   else ctx.show("sections");
 
   return {
