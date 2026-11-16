@@ -1,21 +1,23 @@
 /**
- * @fileoverview La partida en marcha, sin nada de pantalla.
+ * @fileoverview Describe la lógica de las partidas, independiente de la interfaz.
  */
 
 import type { PlayableQuestion } from "./common-types";
 import { ROUND_LENGTH } from "./common-round-settings";
 
-
+/** Pregunta fallada o sin responder durante una partida. */
 export interface Miss {
   question: PlayableQuestion;
-  /** Lo que respondió el jugador, o null si se acabó el tiempo sin responder. */
+
+  /** Respuesta del jugador, o null si se agotó el tiempo. */
   given: string | null;
 }
 
+/** Resultado de una pregunta respondida o agotada por tiempo. */
 export interface AnswerResult {
   correct: boolean;
   answer: string;
-  /** null: se acabó el tiempo. */
+  /** Respuesta del jugador, o null si se agotó el tiempo. */
   given: string | null;
 }
 
