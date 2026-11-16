@@ -1,5 +1,5 @@
 import { test, expect, openSection, useCcseData } from "./helpers";
-import { ccseTestData, ccseEmptyTestData } from "../tests/ccse/test-data";
+import { ccseTestData, ccseEmptyTestData } from "../tests/ccse/ccse-test-data";
 import { UPCOMING_SECTIONS } from "../src/sections/upcoming";
 
 // Las partidas y Opciones se prueban con datos de prueba, porque la plantilla real se va

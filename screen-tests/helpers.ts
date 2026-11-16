@@ -17,7 +17,7 @@ export const test = base.extend<{ noConsoleErrors: void }>({
 export { expect };
 
 /**
- * Hace que el juego cargue estas preguntas del examen en vez de las de ccse.json (ver tests/ccse/test-data.ts).
+ * Hace que el juego cargue estas preguntas del examen en vez de las de ccse.json (ver tests/ccse/ccse-test-data.ts).
  * Hay que llamarlo antes de abrir el juego.
  */
 export async function useCcseData(page: Page, data: unknown) {

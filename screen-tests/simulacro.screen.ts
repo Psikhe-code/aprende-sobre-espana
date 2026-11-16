@@ -1,6 +1,6 @@
 import { test, expect, openSection, useCcseData, setTabHidden } from "./helpers";
-import { ccseTestData, ccseSimulacroTestData } from "../tests/ccse/test-data";
-import { SIMULACRO_MINUTES, SIMULACRO_QUESTION_COUNT, SIMULACRO_DISTRIBUTION, SIMULACRO_APTO_HITS } from "../src/sections/ccse/engine/simulacro-rules";
+import { ccseTestData, ccseSimulacroTestData } from "../tests/ccse/ccse-test-data";
+import { SIMULACRO_MINUTES, SIMULACRO_QUESTION_COUNT, SIMULACRO_DISTRIBUTION, SIMULACRO_APTO_HITS } from "../src/sections/ccse/engine/ccse-simulacro-rules";
 
 // Simulacro de examen, con datos de prueba que tienen preguntas en las cinco tareas.
 // Las reglas (reparto, aprobado) salen del motor, así que si cambian, los tests siguen valiendo.

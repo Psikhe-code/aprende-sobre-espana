@@ -1,7 +1,7 @@
 // Una partida de principio a fin: responder, el repaso de fallos, salir y el teclado.
 
 import { test, expect, openSection, changeSettings, useCcseData, answerQuestions } from "./helpers";
-import { ccseTestData } from "../tests/ccse/test-data";
+import { ccseTestData } from "../tests/ccse/ccse-test-data";
 
 test("una partida de 10 se juega entera y deja el récord en el inicio", async ({ page }) => {
   await openSection(page);
