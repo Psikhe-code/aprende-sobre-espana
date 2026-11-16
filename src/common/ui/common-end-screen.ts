@@ -1,4 +1,6 @@
-// Pantalla final: aciertos, valoración, récord y lista de fallos.
+/**
+ * @fileoverview Pantalla final: aciertos, valoración, récord y lista de fallos.
+ */
 
 import { applyRecord, ratingText, type Round } from "../engine/common-round";
 import type { AppContext } from "./common-context";

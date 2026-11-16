@@ -1,4 +1,6 @@
-// Examen de nacionalidad: pantalla de inicio.
+/**
+ * @fileoverview Examen de nacionalidad: pantalla de inicio.
+ */
 
 import type { SavedState } from "../../../common/engine/common-storage";
 import { $, el } from "../../../common/ui/common-dom";

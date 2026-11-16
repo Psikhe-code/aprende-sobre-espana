@@ -1,4 +1,6 @@
-// Que las preguntas y sus opciones se ven sin bajar, y qué cabecera sale en cada pantalla.
+/**
+ * @fileoverview Que las preguntas y sus opciones se ven sin bajar, y qué cabecera sale en cada pantalla.
+ */
 
 import { test, expect, openSection, changeSettings, answerQuestions, ONLY_BANDERAS, ONLY_CAPITALES } from "./helpers";
 import type { Page } from "@playwright/test";

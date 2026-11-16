@@ -1,4 +1,7 @@
-// Ayudas para los tests de pantalla: abrir el juego, cambiar opciones, responder y esconder la pestaña.
+/**
+ * @fileoverview Ayudas para los tests de pantalla: abrir el juego, cambiar opciones, responder y esconder la pestaña.
+ */
+
 import { test as base, expect, type Page } from "@playwright/test";
 
 /**

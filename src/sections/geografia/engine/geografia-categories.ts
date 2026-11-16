@@ -1,4 +1,6 @@
-// Geografía: sus categorías.
+/**
+ * @fileoverview Geografía: sus categorías.
+ */
 
 import type { Category, NameForm, Question } from "./geografia-types";
 import { autonomiaCapitalQuestions, provinciaCapitalQuestions, autonomiaBanderaQuestions, provinciaBanderaQuestions, provinciaComunidadQuestions, municipioProvinciaQuestions } from "./geografia-questions";

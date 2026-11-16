@@ -1,5 +1,7 @@
-// El molde de sección: lo que cada sección da al juego para salir en el menú y tener sus pantallas.
-// La lista de secciones (src/sections/sections.ts) es lo único que se toca al añadir una.
+/**
+ * @fileoverview El molde de sección: lo que cada sección da al juego para salir en el menú y tener sus pantallas.
+ * La lista de secciones (src/sections/sections.ts) es lo único que se toca al añadir una.
+ */
 
 import type { SavedState } from "../engine/common-storage";
 import type { Section } from "../engine/common-types";

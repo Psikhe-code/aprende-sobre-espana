@@ -1,5 +1,7 @@
-// Reloj de cada pregunta en pantalla: barra que se vacía y segundos que quedan.
-// La cuenta en sí (arrancar, pausar, cuánto queda) está en common/engine/common-countdown.ts.
+/**
+ * @fileoverview Reloj de cada pregunta en pantalla: barra que se vacía y segundos que quedan.
+ * La cuenta en sí (arrancar, pausar, cuánto queda) está en common/engine/common-countdown.ts.
+ */
 
 import { Countdown } from "../engine/common-countdown";
 import type { TimeLimit } from "../engine/common-round-settings";

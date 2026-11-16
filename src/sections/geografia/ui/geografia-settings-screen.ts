@@ -1,4 +1,6 @@
-// Geografía: pantalla de Opciones.
+/**
+ * @fileoverview Geografía: pantalla de Opciones.
+ */
 
 import { CATEGORIES, CATEGORY_IDS } from "../engine/geografia-categories";
 import { questionsIn, questionCount, lengthFits, OPTION_COUNTS } from "../engine/geografia-round-questions";

@@ -1,4 +1,6 @@
-// La cuenta atrás del reloj: cuánto queda, la pausa y el fin del tiempo.
+/**
+ * @fileoverview La cuenta atrás del reloj: cuánto queda, la pausa y el fin del tiempo.
+ */
 
 import { describe, expect, it } from "vitest";
 import { Countdown } from "../../src/common/engine/common-countdown";

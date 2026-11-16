@@ -1,8 +1,10 @@
-// Pantalla de la partida: pregunta, opciones, reloj, nota al responder, fin de la baraja,
-// y los botones de la pantalla final que empiezan otra partida (jugar otra vez, repasar fallos).
-// Las reglas (aciertos, racha, final) viven en common/engine/common-round.ts; aquí solo se dibujan.
-// Es la misma para las dos secciones: lo que cambia (de dónde salen las preguntas, el tiempo, el récord)
-// se lo pregunta al modo de la sección actual (common-mode.ts).
+/**
+ * @fileoverview Pantalla de la partida: pregunta, opciones, reloj, nota al responder, fin de la baraja,
+ * y los botones de la pantalla final que empiezan otra partida (jugar otra vez, repasar fallos).
+ * Las reglas (aciertos, racha, final) viven en common/engine/common-round.ts; aquí solo se dibujan.
+ * Es la misma para las dos secciones: lo que cambia (de dónde salen las preguntas, el tiempo, el récord)
+ * se lo pregunta al modo de la sección actual (common-mode.ts).
+ */
 
 import { Round, type AnswerResult } from "../engine/common-round";
 import type { PlayableQuestion } from "../engine/common-types";

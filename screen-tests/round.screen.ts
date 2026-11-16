@@ -1,4 +1,6 @@
-// Una partida de principio a fin: responder, el repaso de fallos, salir y el teclado.
+/**
+ * @fileoverview Una partida de principio a fin: responder, el repaso de fallos, salir y el teclado.
+ */
 
 import { test, expect, openSection, changeSettings, useCcseData, answerQuestions } from "./helpers";
 import { ccseTestData } from "../tests/ccse/ccse-test-data";

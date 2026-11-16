@@ -1,6 +1,8 @@
-// Lo que cambia de una sección a otra en la partida: de dónde salen las preguntas, cuántas son,
-// con qué tiempo se juega y con qué clave se guarda el récord. La pantalla de la partida (common-round-screen.ts)
-// y la final (common-end-screen.ts) son las mismas para las dos secciones y le preguntan todo esto al modo.
+/**
+ * @fileoverview Lo que cambia de una sección a otra en la partida: de dónde salen las preguntas, cuántas son,
+ * con qué tiempo se juega y con qué clave se guarda el récord. La pantalla de la partida (common-round-screen.ts)
+ * y la final (common-end-screen.ts) son las mismas para las dos secciones y le preguntan todo esto al modo.
+ */
 
 import type { TimeLimit } from "../engine/common-round-settings";
 import type { PlayableQuestion, Section } from "../engine/common-types";

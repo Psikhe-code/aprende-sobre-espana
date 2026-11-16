@@ -1,9 +1,11 @@
-// Examen de nacionalidad (prueba CCSE del Instituto Cervantes): preguntas y partidas.
-// ccse.json es una plantilla con una entrada por cada pregunta del Manual CCSE (las 300). El texto
-// (enunciado, opciones y letra de la respuesta) lo rellena el usuario; la nota y las fuentes son
-// propias. Solo salen en el juego las completas; las vacías se saltan, y las que están a medias
-// las señalan los tests (ver entryStatus).
-// A diferencia de geografía, las opciones vienen escritas en los datos (no se generan).
+/**
+ * @fileoverview Examen de nacionalidad (prueba CCSE del Instituto Cervantes): preguntas y partidas.
+ * ccse.json es una plantilla con una entrada por cada pregunta del Manual CCSE (las 300). El texto
+ * (enunciado, opciones y letra de la respuesta) lo rellena el usuario; la nota y las fuentes son
+ * propias. Solo salen en el juego las completas; las vacías se saltan, y las que están a medias
+ * las señalan los tests (ver entryStatus).
+ * A diferencia de geografía, las opciones vienen escritas en los datos (no se generan).
+ */
 
 import datos from "../data/ccse.json";
 import { fitsFor, sizeFor, type RoundLength } from "../../../common/engine/common-round-settings";

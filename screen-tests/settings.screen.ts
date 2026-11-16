@@ -1,4 +1,6 @@
-// La pantalla de Opciones: cómo se eligen, se anuncian y se guardan.
+/**
+ * @fileoverview La pantalla de Opciones: cómo se eligen, se anuncian y se guardan.
+ */
 
 import { test, expect, openSection, ONLY_CAPITALES } from "./helpers";
 

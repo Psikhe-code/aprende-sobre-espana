@@ -1,4 +1,6 @@
-// Ayuda para los tests de datos de cada sección: validar un JSON contra su esquema.
+/**
+ * @fileoverview Ayuda para los tests de datos de cada sección: validar un JSON contra su esquema.
+ */
 
 import Ajv from "ajv";
 

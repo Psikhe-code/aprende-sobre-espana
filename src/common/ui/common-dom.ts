@@ -1,5 +1,7 @@
-// Utilidades de pantalla que usan todas las demás: buscar y crear elementos, tarjetas de Opciones,
-// grupos de opciones, fuentes de las notas y avisos para lectores de pantalla.
+/**
+ * @fileoverview Utilidades de pantalla que usan todas las demás: buscar y crear elementos, tarjetas de Opciones,
+ * grupos de opciones, fuentes de las notas y avisos para lectores de pantalla.
+ */
 
 import type { Fuente } from "../engine/common-types";
 

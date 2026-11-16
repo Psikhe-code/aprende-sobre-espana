@@ -1,5 +1,8 @@
-// Configuración de SVGO, el programa que limpia los SVG de las banderas (npm run limpiar-banderas).
-// Quita lo que no se ve (datos del programa de dibujo, comentarios, decimales de sobra) sin cambiar el dibujo.
+/**
+ * @fileoverview Configuración de SVGO, el programa que limpia los SVG de las banderas (npm run limpiar-banderas).
+ * Quita lo que no se ve (datos del programa de dibujo, comentarios, decimales de sobra) sin cambiar el dibujo.
+ */
+
 export default {
   multipass: true,
   plugins: [

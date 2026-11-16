@@ -1,4 +1,6 @@
-// Geografía: sus opciones guardadas (lo que se elige en Opciones), comprobadas al cargarlas.
+/**
+ * @fileoverview Geografía: sus opciones guardadas (lo que se elige en Opciones), comprobadas al cargarlas.
+ */
 
 import { sectionSettings, type SavedState } from "../../../common/engine/common-storage";
 import { DEFAULT_ROUND_LENGTH, DEFAULT_TIME_LIMIT, ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "../../../common/engine/common-round-settings";

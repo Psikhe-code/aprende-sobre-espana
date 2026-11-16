@@ -1,4 +1,7 @@
-// Geografía: lo que da al juego para salir en el menú y tener sus pantallas (ver common/ui/common-section.ts).
+/**
+ * @fileoverview Geografía: lo que da al juego para salir en el menú y tener sus pantallas (ver
+ * common/ui/common-section.ts).
+ */
 
 import type { SectionDefinition } from "../../../common/ui/common-section";
 import { geografiaMode } from "./geografia-mode";

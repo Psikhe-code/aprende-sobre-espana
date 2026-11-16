@@ -1,4 +1,6 @@
-// Geografía: cómo se valora el resultado de una partida.
+/**
+ * @fileoverview Geografía: cómo se valora el resultado de una partida.
+ */
 
 import type { Rating } from "../../../common/engine/common-round";
 

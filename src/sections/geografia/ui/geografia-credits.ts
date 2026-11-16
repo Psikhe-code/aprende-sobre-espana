@@ -1,4 +1,7 @@
-// Geografía: lo suyo en Créditos que no está fijo en index.html: la lista de banderas, con su autor y su licencia.
+/**
+ * @fileoverview Geografía: lo suyo en Créditos que no está fijo en index.html: la lista de banderas, con su autor y su
+ * licencia.
+ */
 
 import { AUTONOMIA_BANDERAS, PROVINCIA_BANDERAS, type Bandera } from "../engine/geografia-questions";
 import { AUTONOMIAS, provincia } from "../engine/geografia-territorio";

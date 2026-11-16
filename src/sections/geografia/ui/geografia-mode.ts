@@ -1,4 +1,6 @@
-// Geografía: lo que da a la partida común (ver common/ui/common-mode.ts).
+/**
+ * @fileoverview Geografía: lo que da a la partida común (ver common/ui/common-mode.ts).
+ */
 
 import type { SavedState } from "../../../common/engine/common-storage";
 import type { PlayableQuestion } from "../../../common/engine/common-types";

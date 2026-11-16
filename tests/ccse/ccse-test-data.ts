@@ -1,7 +1,9 @@
-// Datos de prueba del examen de nacionalidad, con el mismo formato que ccse.json.
-// Los tests de partidas y los de pantalla los usan en vez de los reales, porque la plantilla
-// real se va rellenando poco a poco (y al principio está vacía).
-// Tarea 1: 30 preguntas completas (entre ellas, de verdadero o falso y sin nota); Tarea 2: 5; las demás, vacías.
+/**
+ * @fileoverview Datos de prueba del examen de nacionalidad, con el mismo formato que ccse.json.
+ * Los tests de partidas y los de pantalla los usan en vez de los reales, porque la plantilla
+ * real se va rellenando poco a poco (y al principio está vacía).
+ * Tarea 1: 30 preguntas completas (entre ellas, de verdadero o falso y sin nota); Tarea 2: 5; las demás, vacías.
+ */
 
 const emptyEntry = (tareaEntries: number, n: number) => ({
   id: `ccse-${tareaEntries * 1000 + n}`, tarea: tareaEntries, referencia: tareaEntries * 1000 + n,

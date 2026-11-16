@@ -1,5 +1,7 @@
-// Imágenes de las preguntas: dibujarlas y descargarlas por adelantado. Valen para cualquier sección;
-// qué imagen lleva cada pregunta lo decide la sección.
+/**
+ * @fileoverview Imágenes de las preguntas: dibujarlas y descargarlas por adelantado. Valen para cualquier sección;
+ * qué imagen lleva cada pregunta lo decide la sección.
+ */
 
 /** Una imagen. Con `alt` vacío, el lector de pantalla no la lee (cuando lo que muestra ya está escrito al lado). */
 export function imageElement(src: string, alt: string): HTMLImageElement {

@@ -1,6 +1,8 @@
-// Piezas de pantalla que tienen igual las dos secciones (y tendrán las que vengan): en el inicio, el número
-// de preguntas y el récord; en Opciones, los grupos «Preguntas por partida» y «Tiempo por pregunta»; y en el
-// resultado, la línea de la respuesta de cada fallo.
+/**
+ * @fileoverview Piezas de pantalla que tienen igual las dos secciones (y tendrán las que vengan): en el inicio, el
+ * número de preguntas y el récord; en Opciones, los grupos «Preguntas por partida» y «Tiempo por pregunta»; y en el
+ * resultado, la línea de la respuesta de cada fallo.
+ */
 
 import { ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "../engine/common-round-settings";
 import { el, tabToChecked, toggleCard, type Change } from "./common-dom";

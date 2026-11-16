@@ -1,4 +1,6 @@
-// Textos con los que se presentan, en todas las secciones, las opciones comunes y el tiempo.
+/**
+ * @fileoverview Textos con los que se presentan, en todas las secciones, las opciones comunes y el tiempo.
+ */
 
 import type { RoundLength, TimeLimit } from "../engine/common-round-settings";
 

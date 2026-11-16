@@ -1,5 +1,7 @@
-// Lo que comparten las pantallas: las opciones guardadas, la sección y cómo moverse entre pantallas.
-// Lo crea common-app.ts y se lo pasa a cada pantalla, para que ninguna dependa de otra directamente.
+/**
+ * @fileoverview Lo que comparten las pantallas: las opciones guardadas, la sección y cómo moverse entre pantallas.
+ * Lo crea common-app.ts y se lo pasa a cada pantalla, para que ninguna dependa de otra directamente.
+ */
 
 import type { SavedState } from "../engine/common-storage";
 import type { SectionMode } from "./common-mode";

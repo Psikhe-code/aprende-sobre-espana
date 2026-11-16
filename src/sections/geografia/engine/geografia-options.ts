@@ -1,4 +1,6 @@
-// Geografía: las opciones de cada pregunta, la respuesta y las equivocadas.
+/**
+ * @fileoverview Geografía: las opciones de cada pregunta, la respuesta y las equivocadas.
+ */
 
 import type { Rng } from "../../../common/engine/common-types";
 import type { NameForm, Pools, Question, RoundQuestion } from "./geografia-types";

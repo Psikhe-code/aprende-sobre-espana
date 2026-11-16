@@ -1,7 +1,9 @@
-// Pantallas del simulacro de examen: el examen (25 preguntas, un reloj de 45 minutos para todo y un mapa
-// para ir a cualquier pregunta) y su resultado (apto o no apto, aciertos por tarea y los fallos con su nota).
-// Mientras se hace no se dice si una respuesta es correcta, como en la prueba real.
-// Las reglas (reparto, aprobado, entrega) viven en engine/ccse-simulacro.ts; aquí solo se dibujan.
+/**
+ * @fileoverview Pantallas del simulacro de examen: el examen (25 preguntas, un reloj de 45 minutos para todo y un mapa
+ * para ir a cualquier pregunta) y su resultado (apto o no apto, aciertos por tarea y los fallos con su nota).
+ * Mientras se hace no se dice si una respuesta es correcta, como en la prueba real.
+ * Las reglas (reparto, aprobado, entrega) viven en engine/ccse-simulacro.ts; aquí solo se dibujan.
+ */
 
 import type { CcseRoundQuestion } from "../engine/ccse-questions";
 import { Countdown } from "../../../common/engine/common-countdown";

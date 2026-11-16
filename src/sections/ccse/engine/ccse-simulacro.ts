@@ -1,8 +1,10 @@
-// Simulacro del examen de nacionalidad: como la prueba CCSE real, 25 preguntas repartidas por tareas
-// (10 de la Tarea 1, 3 de la 2, 2 de la 3, 3 de la 4 y 7 de la 5), 45 minutos para todo y «apto» con
-// 15 aciertos. Mientras se hace, no se dice si una respuesta es correcta: se puede ir y volver entre
-// las preguntas y cambiar las respuestas hasta entregar. Sin nada de interfaz: la pantalla está en
-// ui/ccse-simulacro-screen.ts.
+/**
+ * @fileoverview Simulacro del examen de nacionalidad: como la prueba CCSE real, 25 preguntas repartidas por tareas
+ * (10 de la Tarea 1, 3 de la 2, 2 de la 3, 3 de la 4 y 7 de la 5), 45 minutos para todo y «apto» con
+ * 15 aciertos. Mientras se hace, no se dice si una respuesta es correcta: se puede ir y volver entre
+ * las preguntas y cambiar las respuestas hasta entregar. Sin nada de interfaz: la pantalla está en
+ * ui/ccse-simulacro-screen.ts.
+ */
 
 import { prepare, CCSE_QUESTIONS, type CcseQuestion, type CcseRoundQuestion } from "./ccse-questions";
 import { shuffle } from "../../../common/engine/common-random";

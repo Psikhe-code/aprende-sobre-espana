@@ -1,4 +1,6 @@
-// Las preguntas de Geografía: enunciados, respuestas, trampas y notas de cada categoría.
+/**
+ * @fileoverview Las preguntas de Geografía: enunciados, respuestas, trampas y notas de cada categoría.
+ */
 
 import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../../src/sections/geografia/engine/geografia-categories";

@@ -1,5 +1,8 @@
-// Arranca el juego y decide qué pantalla se ve. Conoce las secciones por su lista (src/sections/sections.ts):
-// las pantallas comunes están en common/ui, y las de cada sección, en sections/<sección>/ui.
+/**
+ * @fileoverview Arranca el juego y decide qué pantalla se ve. Conoce las secciones por su lista
+ * (src/sections/sections.ts): las pantallas comunes están en common/ui, y las de cada sección, en
+ * sections/<sección>/ui.
+ */
 
 import { loadState, saveState } from "../engine/common-storage";
 import type { AppContext, Screen } from "./common-context";

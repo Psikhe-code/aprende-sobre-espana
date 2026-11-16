@@ -1,4 +1,6 @@
-// Valores que Vite escribe en el código al construir el juego (ver «define» en vite.config.ts).
+/**
+ * @fileoverview Valores que Vite escribe en el código al construir el juego (ver «define» en vite.config.ts).
+ */
 
 /** Número de versión del juego, el de package.json (p. ej. "0.1.1"). */
 declare const __VERSION__: string;
