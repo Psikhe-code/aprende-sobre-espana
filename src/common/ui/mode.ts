@@ -3,19 +3,19 @@
 // y la final (end-screen.ts) son las mismas para las dos secciones y le preguntan todo esto al modo.
 
 import type { TimeLimit } from "../engine/round-settings";
-import type { PreguntaJugable, Seccion } from "../engine/types";
+import type { PlayableQuestion, Section } from "../engine/types";
 
 
 export interface Modo {
-  seccion: Seccion;
+  seccion: Section;
   /** Si con las opciones marcadas se puede jugar. */
   puedeJugar(): boolean;
   /** Preguntas de una partida nueva. */
-  nueva(): PreguntaJugable[];
+  nueva(): PlayableQuestion[];
   /** Sin límite: otra vuelta a la baraja, sin empezar por la última que salió. */
-  otraVuelta(ultimaId: string): PreguntaJugable[];
+  otraVuelta(ultimaId: string): PlayableQuestion[];
   /** Repaso de fallos: las mismas preguntas, con las opciones preparadas de nuevo. */
-  repaso(fallos: PreguntaJugable[]): PreguntaJugable[];
+  repaso(fallos: PlayableQuestion[]): PlayableQuestion[];
   /** Cuántas preguntas tiene una partida completa (para saber si cuenta para el récord). */
   esperadas(): number;
   sinLimite(): boolean;

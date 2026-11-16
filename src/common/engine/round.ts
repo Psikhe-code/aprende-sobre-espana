@@ -1,11 +1,11 @@
 // La partida en marcha, sin nada de pantalla.
 
-import type { PreguntaJugable, Seccion } from "./types";
+import type { PlayableQuestion, Section } from "./types";
 import { ROUND_LENGTH } from "./round-settings";
 
 
 export interface Miss {
-  question: PreguntaJugable;
+  question: PlayableQuestion;
   /** Lo que respondió el jugador, o null si se acabó el tiempo sin responder. */
   given: string | null;
 }
@@ -17,7 +17,7 @@ export interface AnswerResult {
   given: string | null;
 }
 
-export interface GameResult {
+export interface RoundResult {
   hits: number;
   total: number;
   bestStreak: number;
@@ -32,8 +32,8 @@ export interface GameResult {
   counts: boolean;
 }
 
-export class GameSession {
-  private list: PreguntaJugable[];
+export class Round {
+  private list: PlayableQuestion[];
   /** Repaso de fallos: se juega igual pero no cuenta para récords. */
   readonly review: boolean;
   /**
@@ -57,7 +57,7 @@ export class GameSession {
   private missList: Miss[] = [];
   private stopped = false;
 
-  constructor(questions: PreguntaJugable[], options: { review?: boolean; expected?: number; unlimited?: boolean } = {}) {
+  constructor(questions: PlayableQuestion[], options: { review?: boolean; expected?: number; unlimited?: boolean } = {}) {
     if (!questions.length) throw new Error("Una partida necesita al menos una pregunta");
     this.list = [...questions];
     this.review = options.review ?? false;
@@ -66,10 +66,10 @@ export class GameSession {
     this.expected = options.expected ?? (this.unlimited ? questions.length : ROUND_LENGTH);
   }
 
-  get questions(): readonly PreguntaJugable[] { return this.list; }
+  get questions(): readonly PlayableQuestion[] { return this.list; }
   get index() { return this.i; }
   get total() { return this.questions.length; }
-  get current(): PreguntaJugable { return this.questions[this.i]; }
+  get current(): PlayableQuestion { return this.questions[this.i]; }
   get hits() { return this.hitCount; }
   get streak() { return this.streakCount; }
   /** Resultado de cada pregunta ya respondida (true = acierto). */
@@ -117,7 +117,7 @@ export class GameSession {
   }
 
   /** Sin límite: añade otra vuelta a la baraja al final, para seguir jugando. */
-  append(more: PreguntaJugable[]): void {
+  append(more: PlayableQuestion[]): void {
     if (!this.unlimited) throw new Error("Solo una partida sin límite puede seguir");
     if (this.stopped) throw new Error("La partida ya está terminada");
     this.list.push(...more);
@@ -129,7 +129,7 @@ export class GameSession {
     this.stopped = true;
   }
 
-  result(): GameResult {
+  result(): RoundResult {
     const answered = this.outcomes.length;
     return {
       hits: this.hitCount,
@@ -145,13 +145,13 @@ export class GameSession {
 }
 
 /** Lo que se compara para el récord: los aciertos o, en una partida sin límite, la mejor racha. */
-export const recordValue = (r: GameResult) => (r.unlimited ? r.bestStreak : r.hits);
+export const recordValue = (r: RoundResult) => (r.unlimited ? r.bestStreak : r.hits);
 
 /**
  * Actualiza los récords con el resultado de una partida (aciertos; mejor racha si es sin límite).
  * Devuelve los récords nuevos (sin modificar los anteriores) y si se ha batido el récord.
  */
-export function applyRecord(best: Record<string, number>, key: string, result: GameResult) {
+export function applyRecord(best: Record<string, number>, key: string, result: RoundResult) {
   const previous = best[key];
   const value = recordValue(result);
   const isNewRecord = result.counts && (previous == null || value > previous);
@@ -166,12 +166,12 @@ export function applyRecord(best: Record<string, number>, key: string, result: G
  * Aprobado de la prueba real del examen de nacionalidad: 15 aciertos de 25, el 60 %. Las partidas del examen se
  * valoran con él como referencia (el simulacro usa el número exacto de aciertos, en simulacro.ts).
  */
-export const APROBADO_CCSE = 0.6;
+export const CCSE_APTO_RATIO = 0.6;
 
 /** Valoración del resultado de una partida: en el examen, con el aprobado como referencia; en geografía, las del atlas. */
-export function valoracion(r: Pick<GameResult, "hits" | "total">, seccion: Seccion): string {
+export function rating(r: Pick<RoundResult, "hits" | "total">, section: Section): string {
   if (!r.total) return "Sin respuestas";
   const pct = r.hits / r.total;
-  if (seccion === "ccse") return pct === 1 ? "Pleno" : pct >= 0.8 ? "Gran nivel" : pct >= APROBADO_CCSE ? "Por encima del aprobado" : "Toca repasar";
+  if (section === "ccse") return pct === 1 ? "Pleno" : pct >= 0.8 ? "Gran nivel" : pct >= CCSE_APTO_RATIO ? "Por encima del aprobado" : "Toca repasar";
   return pct === 1 ? "Mapa completo" : pct >= 0.8 ? "Gran nivel" : pct >= 0.5 ? "Buen rumbo" : "Toca repasar el atlas";
 }

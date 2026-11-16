@@ -5,8 +5,8 @@
  * Sección del juego: geografía o examen de nacionalidad (CCSE). Cada una tiene sus preguntas, sus opciones
  * y sus récords; la partida (round.ts) y su pantalla son las mismas.
  */
-export type Seccion = "geografia" | "ccse";
-export const SECCIONES: readonly Seccion[] = ["geografia", "ccse"];
+export type Section = "geografia" | "ccse";
+export const SECTIONS: readonly Section[] = ["geografia", "ccse"];
 
 /** Una fuente que respalda la nota de una pregunta. */
 export interface Fuente {
@@ -19,7 +19,7 @@ export interface Fuente {
  * Lo que una partida necesita de cada pregunta, venga de geografía (RoundQuestion) o del examen de
  * nacionalidad. El desarrollo de la partida (round.ts) y su pantalla solo usan esto.
  */
-export interface PreguntaJugable {
+export interface PlayableQuestion {
   /** Identificador fijo (no se repite en una partida; sirve para estadísticas). */
   id: string;
   text: string;
@@ -27,7 +27,7 @@ export interface PreguntaJugable {
   answer: string;
   options: string[];
   /** Lo que se escribe encima de la pregunta: su categoría («Capitales de provincia») o su tarea («Tarea 1 · …»). */
-  etiqueta: string;
+  label: string;
   /** Explicación que se muestra al responder. */
   why: string;
   fact?: string;
@@ -36,7 +36,7 @@ export interface PreguntaJugable {
   aliases: string[];
   flag?: string;
   /** Dónde se ha comprobado la explicación (en el examen de nacionalidad). */
-  fuentes?: Fuente[];
+  sources?: Fuente[];
 }
 
 /** Generador de números aleatorios en [0, 1). Se puede sustituir en los tests. */

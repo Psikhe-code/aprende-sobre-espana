@@ -3,15 +3,15 @@
 
 import { BANDERAS, BANDERAS_PROVINCIAS, type BanderaInfo } from "../../sections/geografia/engine/questions";
 import { AUTONOMIAS, provincia } from "../../sections/geografia/engine/territorio";
-import { type Seccion } from "../engine/types";
+import { type Section } from "../engine/types";
 import { NAME_STYLES } from "../../sections/geografia/engine/types";
 import { $, el, enlaceExterno } from "./dom";
 import { flagImage } from "../../sections/geografia/ui/banderas";
 
 /** Nombre de cada sección en el nombre de la pantalla, para el lector de pantalla. */
-const NOMBRE: Record<Seccion, string> = { geografia: "Créditos de Geografía", ccse: "Créditos del Examen de nacionalidad" };
+const NOMBRE: Record<Section, string> = { geografia: "Créditos de Geografía", ccse: "Créditos del Examen de nacionalidad" };
 
-export function renderCredits(seccion: Seccion): void {
+export function renderCredits(seccion: Section): void {
   // Los bloques con data-seccion son de una sección; los demás, de todas.
   for (const bloque of document.querySelectorAll<HTMLElement>("#credits [data-seccion]")) {
     bloque.hidden = bloque.dataset.seccion !== seccion;

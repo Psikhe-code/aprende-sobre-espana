@@ -1,20 +1,20 @@
 // Pantalla final: aciertos, valoración, récord y lista de fallos.
 
-import { applyRecord, valoracion, type GameSession } from "../engine/round";
+import { applyRecord, rating, type Round } from "../engine/round";
 import type { Contexto } from "./context";
 import { lineaRespuesta } from "./widgets";
 import { $, el } from "./dom";
 import { flagImage } from "../../sections/geografia/ui/banderas";
 
 /** Apunta el récord, si lo hay, y dibuja el resultado de la partida. */
-export function renderEnd(ctx: Contexto, game: GameSession): void {
+export function renderEnd(ctx: Contexto, game: Round): void {
   const { state } = ctx;
   const r = game.result();
   const rec = applyRecord(state.best, ctx.modo().claveRecord(), r);
   if (rec.isNewRecord) { state.best = rec.best; ctx.save(); }
 
   $("score").replaceChildren(String(r.hits), el("small", "", `/${r.total}`));
-  $("endTitle").textContent = valoracion(r, ctx.modo().seccion);
+  $("endTitle").textContent = rating(r, ctx.modo().seccion);
   const recText = r.review || rec.record == null ? ""
     : r.unlimited ? ` · Mejor racha con esta selección: ${rec.record}`
     : ` · Récord con esta selección: ${rec.record}/${game.expected}`;

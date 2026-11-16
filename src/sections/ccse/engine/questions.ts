@@ -7,8 +7,8 @@
 
 import datos from "../data/ccse.json";
 import { fitsFor, sizeFor, type RoundLength } from "../../../common/engine/round-settings";
-import { shuffle, sinEmpezarPor } from "../../../common/engine/random";
-import type { Fuente, PreguntaJugable, Rng } from "../../../common/engine/types";
+import { shuffle, notStartingWith } from "../../../common/engine/random";
+import type { Fuente, PlayableQuestion, Rng } from "../../../common/engine/types";
 
 export interface Tarea {
   numero: number;
@@ -117,7 +117,7 @@ export const tamanoCcse = (tareas: readonly number[], length: RoundLength) => si
 export const cabeCcse = (length: RoundLength, tareas: readonly number[]) => fitsFor(length, preguntasDe(tareas).length);
 
 /** Pregunta del examen preparada para jugar: con sus opciones en el orden de esta partida. */
-export interface PreguntaCcseJugable extends PreguntaJugable {
+export interface PreguntaCcseJugable extends PlayableQuestion {
   tarea: number;
 }
 
@@ -131,10 +131,10 @@ export function jugable(p: PreguntaCcse, rng: Rng = Math.random): PreguntaCcseJu
     text: p.pregunta,
     answer: p.respuesta,
     options: p.ordenFijo ? [...p.opciones] : shuffle([...p.opciones], rng),
-    etiqueta: etiquetaTarea(p.tarea),
+    label: etiquetaTarea(p.tarea),
     why: p.nota,
     aliases: [],
-    fuentes: p.fuentes
+    sources: p.fuentes
   };
 }
 
@@ -155,11 +155,11 @@ export function partidaCcse({ tareas, length = 10, rng = Math.random }: AjustesC
  * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
  */
 export function otraVueltaCcse(ajustes: AjustesCcse, ultimaId?: string): PreguntaCcseJugable[] {
-  return sinEmpezarPor(partidaCcse({ ...ajustes, length: "sinLimite" }), ultimaId);
+  return notStartingWith(partidaCcse({ ...ajustes, length: "sinLimite" }), ultimaId);
 }
 
 /** Repaso de fallos: las mismas preguntas, con las opciones barajadas de nuevo. */
-export function repasoCcse(fallos: readonly PreguntaJugable[], rng: Rng = Math.random): PreguntaCcseJugable[] {
+export function repasoCcse(fallos: readonly PlayableQuestion[], rng: Rng = Math.random): PreguntaCcseJugable[] {
   return fallos.flatMap((f) => {
     const p = PREGUNTAS_CCSE.find((x) => x.id === f.id);
     return p ? [jugable(p, rng)] : [];

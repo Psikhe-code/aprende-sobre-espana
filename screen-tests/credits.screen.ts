@@ -1,17 +1,17 @@
 import type { Page } from "@playwright/test";
 import { test, expect } from "./helpers";
-import type { Seccion } from "../src/common/engine/types";
+import type { Section } from "../src/common/engine/types";
 
 // Cada sección tiene sus créditos: los bloques con data-seccion salen solo en los de esa sección,
 // y los demás (las tipografías, el botón de volver), en todas.
 
-async function abrirCreditos(page: Page, seccion: Seccion) {
+async function abrirCreditos(page: Page, seccion: Section) {
   await page.locator(`#sec-${seccion}`).click();
   await page.locator(seccion === "ccse" ? "#ccseOpenCredits" : "#openCredits").click();
   await expect(page.locator("#credits")).toBeVisible();
 }
 
-async function comprobar(page: Page, seccion: Seccion) {
+async function comprobar(page: Page, seccion: Section) {
   for (const bloque of await page.locator("#credits [data-seccion]").all()) {
     if ((await bloque.getAttribute("data-seccion")) === seccion) await expect(bloque).toBeVisible();
     else await expect(bloque).toBeHidden();
@@ -19,7 +19,7 @@ async function comprobar(page: Page, seccion: Seccion) {
   for (const comun of await page.locator("#credits > :not([data-seccion])").all()) await expect(comun).toBeVisible();
 }
 
-async function volverAlMenu(page: Page, seccion: Seccion) {
+async function volverAlMenu(page: Page, seccion: Section) {
   await page.locator("#closeCredits").click();
   await page.locator(seccion === "ccse" ? "#ccseToSections" : "#toSections").click();
 }

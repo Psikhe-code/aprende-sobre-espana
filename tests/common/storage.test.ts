@@ -1,7 +1,7 @@
 // Lo que se guarda en el dispositivo: valores por defecto, lo que se recuerda y la conversión de lo antiguo.
 
 import { describe, expect, it } from "vitest";
-import { comboKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
+import { geografiaRecordKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
 
 describe("guardado", () => {
   const conGuardado = (datos: unknown, fn: () => void) => {
@@ -19,18 +19,18 @@ describe("guardado", () => {
   });
 
   it("la clave del récord incluye las categorías, los territorios, la dificultad y el número de preguntas (si no son los de por defecto)", () => {
-    expect(comboKey(["banderas", "capitales"], ["provincia", "comunidad"])).toBe("capitales+banderas/comunidad+provincia");
-    expect(comboKey(["capitales"], ["comunidad"])).toBe("capitales/comunidad");
-    expect(comboKey(["capitales"], ["comunidad"], 4)).toBe("capitales/comunidad");
-    expect(comboKey(["capitales"], ["comunidad"], 8)).toBe("capitales/comunidad/8");
-    expect(comboKey(["capitales"], ["comunidad"], 4, 10)).toBe("capitales/comunidad");
-    expect(comboKey(["capitales"], ["comunidad"], 4, 25)).toBe("capitales/comunidad/25preguntas");
-    expect(comboKey(["capitales"], ["comunidad"], 8, 100)).toBe("capitales/comunidad/8/100preguntas");
-    expect(comboKey(["capitales"], ["comunidad"], 6, "sinLimite")).toBe("capitales/comunidad/6/sinlimite");
+    expect(geografiaRecordKey(["banderas", "capitales"], ["provincia", "comunidad"])).toBe("capitales+banderas/comunidad+provincia");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"])).toBe("capitales/comunidad");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4)).toBe("capitales/comunidad");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 8)).toBe("capitales/comunidad/8");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4, 10)).toBe("capitales/comunidad");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4, 25)).toBe("capitales/comunidad/25preguntas");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 8, 100)).toBe("capitales/comunidad/8/100preguntas");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 6, "sinLimite")).toBe("capitales/comunidad/6/sinlimite");
     // El tiempo: sin tiempo no se escribe (los récords de antes eran sin tiempo); con tiempo, en segundos.
-    expect(comboKey(["capitales"], ["comunidad"], 4, 10, "sinTiempo")).toBe("capitales/comunidad");
-    expect(comboKey(["capitales"], ["comunidad"], 4, 10, 60)).toBe("capitales/comunidad/60s");
-    expect(comboKey(["capitales"], ["comunidad"], 8, 25, 10)).toBe("capitales/comunidad/8/25preguntas/10s");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4, 10, "sinTiempo")).toBe("capitales/comunidad");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 4, 10, 60)).toBe("capitales/comunidad/60s");
+    expect(geografiaRecordKey(["capitales"], ["comunidad"], 8, 25, 10)).toBe("capitales/comunidad/8/25preguntas/10s");
   });
 
   it("por defecto, 1 minuto por pregunta, y se recuerda el tiempo elegido", () => {

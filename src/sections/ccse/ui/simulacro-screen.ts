@@ -5,7 +5,7 @@
 
 import type { PreguntaCcseJugable } from "../engine/questions";
 import { Countdown } from "../../../common/engine/countdown";
-import type { PreguntaJugable } from "../../../common/engine/types";
+import type { PlayableQuestion } from "../../../common/engine/types";
 import {
   APROBADO_SIMULACRO, CLAVE_SIMULACRO, MINUTOS_SIMULACRO, PREGUNTAS_SIMULACRO, REPARTO_SIMULACRO, Simulacro,
   apuntarSimulacro, preguntasSimulacro, simulacroPosible, type ResultadoSimulacro
@@ -43,14 +43,14 @@ export function renderInicioSimulacro(state: SavedState): void {
 }
 
 /** Prepara las pantallas del simulacro (sus botones y teclas). `repasar` empieza el repaso de los fallos. */
-export function crearSimulacro(ctx: Contexto, repasar: (fallos: PreguntaJugable[]) => void): PantallaSimulacro {
+export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion[]) => void): PantallaSimulacro {
   let sim: Simulacro | null = null;
   let reloj: Countdown | null = null;
   let intervalo = 0;
   /** Qué se confirma en el aviso que está abierto: entregar o salir. */
   let confirmando: "entregar" | "salir" | null = null;
   let avisos = new Set<number>();
-  let fallos: PreguntaJugable[] = [];
+  let fallos: PlayableQuestion[] = [];
 
   const anunciar = (texto: string) => { $("simAnnounce").textContent = texto; };
 
@@ -97,7 +97,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PreguntaJugable[
     const q = s.actual;
     $("simSheet").replaceChildren(`Pregunta ${pad(s.indice + 1)} `, el("span", "", `/ ${pad(s.total)}`));
     $("simRespondidas").textContent = `${s.respondidas}/${s.total}`;
-    $("simCat").textContent = q.etiqueta;
+    $("simCat").textContent = q.label;
     $("simQuestion").textContent = q.text;
     const elegida = s.respuestas[s.indice];
     $("simOpts").replaceChildren(...q.options.map((o, j) => {
@@ -206,7 +206,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PreguntaJugable[
       row.append(lineaRespuesta(f.question.answer, f.given, "sin responder"));
       if (f.question.why) row.append(el("p", "why miss-why", f.question.why));
       const fuentes = el("p", "source");
-      pintarFuentes(fuentes, f.question.fuentes);
+      pintarFuentes(fuentes, f.question.sources);
       if (!fuentes.hidden) row.append(fuentes);
       lista.append(row);
     }

@@ -1,6 +1,6 @@
 // Geografía: las formas de sus datos (qué campos tiene cada cosa).
 
-import type { PreguntaJugable } from "../../../common/engine/types";
+import type { PlayableQuestion } from "../../../common/engine/types";
 
 /** Una pregunta del banco de geografía, independiente de la partida en la que salga. */
 export interface Question {
@@ -59,9 +59,9 @@ export const TERRITORIOS: Territorio[] = ["comunidad", "provincia"];
 
 /**
  * Pregunta de geografía lista para jugar: respuesta y forma de los nombres fijadas, y opciones ya generadas.
- * Es también una PreguntaJugable: TypeScript comprueba que tiene todo lo que necesita la partida.
+ * Es también una PlayableQuestion: TypeScript comprueba que tiene todo lo que necesita la partida.
  */
-export interface RoundQuestion extends Question, PreguntaJugable {
+export interface RoundQuestion extends Question, PlayableQuestion {
   answer: string;
   answerKey: string;
   category: string;

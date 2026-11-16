@@ -2,7 +2,7 @@
 // y las de cada sección, en sections/<sección>/ui.
 
 import { loadState, saveState } from "../engine/storage";
-import type { Seccion } from "../engine/types";
+import type { Section } from "../engine/types";
 import { SCREENS, type Contexto, type Screen } from "./context";
 import { drawContours } from "./contours";
 import { renderCredits } from "./credits-screen";
@@ -38,7 +38,7 @@ const CON_VERSION: readonly Screen[] = ["sections", "start", "ccseStart"];
 export const RECARGA_POR_ACTUALIZACION = "aprende-sobre-espana:recarga-por-actualizacion";
 
 /** Texto de la cabecera grande: en la pantalla de secciones y en cada sección. */
-const CABECERAS: Record<Seccion | "secciones", { eyebrow: string; lede: string }> = {
+const CABECERAS: Record<Section | "secciones", { eyebrow: string; lede: string }> = {
   secciones: {
     eyebrow: "Atlas de bolsillo",
     lede: "Geografía de España y preparación del examen de nacionalidad. Elige por dónde empezar; luego puedes cambiar de sección cuando quieras."
@@ -57,7 +57,7 @@ export function startApp(): App {
   const state = loadState();
   let screen: Screen = "start";
   const idleListeners: (() => void)[] = [];
-  const seccion = (): Seccion => state.seccion ?? "geografia";
+  const seccion = (): Section => state.seccion ?? "geografia";
 
   const ctx: Contexto = {
     state,
@@ -100,7 +100,7 @@ export function startApp(): App {
   const partida = crearPartida(ctx);
   const simulacro = crearSimulacro(ctx, partida.repasar);
 
-  const elegirSeccion = (s: Seccion) => () => { state.seccion = s; ctx.save(); ctx.goHome(); };
+  const elegirSeccion = (s: Section) => () => { state.seccion = s; ctx.save(); ctx.goHome(); };
   $("sec-geografia").addEventListener("click", elegirSeccion("geografia"));
   $("sec-ccse").addEventListener("click", elegirSeccion("ccse"));
   for (const id of ["toSections", "ccseToSections"]) $(id).addEventListener("click", () => ctx.show("sections"));
