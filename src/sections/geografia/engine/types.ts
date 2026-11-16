@@ -19,19 +19,19 @@ export interface Question {
    */
   answerKey: string | string[];
   /**
-   * Pool del que salen las opciones incorrectas (clave de POOLS).
-   * "num" genera números dentro de `range`. null = solo `traps`.
+   * Pool del que salen las opciones incorrectas (una clave de los pools: ver poolsFor).
+   * "num" genera números dentro de `range`. null = solo `trapOptions`.
    */
-  type: string | null;
+  pool: string | null;
   /** Incorrectas "trampa": las confusiones típicas. Si hay más de las que caben, se sortean. */
-  traps: string[];
+  trapOptions: string[];
   /**
    * Trampa fija: siempre sale una de estas como incorrecta (sorteada si hay varias). Es la confusión
    * que la pregunta quiere enseñar: el nombre del propio territorio («Asturias» como capital de Asturias),
    * o algo que se le parece («Mallorca» como capital de las Islas Baleares).
    * Cuenta dentro del máximo de trampas, así que sigue quedando un hueco al azar.
    */
-  forcedTraps?: string[];
+  fixedTrapOptions?: string[];
   /** Explicación que se muestra al responder. */
   why: string;
   /** Curiosidad opcional que se muestra al responder, después de la explicación. */
@@ -40,7 +40,7 @@ export interface Question {
   meaning?: string;
   /** Valores del pool que nunca deben salir como incorrectos (porque también serían válidos). */
   exclude: string[];
-  /** Solo para type "num": [mínimo, máximo]. */
+  /** Solo para el pool "num": [mínimo, máximo]. */
   range?: [number, number];
   /** Bandera que se muestra con la pregunta: código de la comunidad ("12") o "p" y código de provincia ("p48"). */
   flag?: string;
@@ -65,7 +65,7 @@ export interface RoundQuestion extends Question, PlayableQuestion {
   answer: string;
   answerKey: string;
   category: string;
-  style: NameStyle;
+  nameForm: NameForm;
   options: string[];
 }
 
@@ -73,11 +73,11 @@ export interface RoundQuestion extends Question, PlayableQuestion {
  * Formas en que se escribe un nombre de lugar. Son las claves de los nombres en territorio.json.
  * "oficial": la denominación oficial (Girona, Bizkaia…).
  * "castellano": la que recomienda la RAE para textos en español (Gerona, Vizcaya…).
- * Para añadir otra (p. ej. "ingles"), se añade aquí, en NAME_STYLES, en el esquema y en los datos.
+ * Para añadir otra (p. ej. "ingles"), se añade aquí, en NAME_FORMS, en el esquema y en los datos.
  */
-export type NameStyle = "oficial" | "castellano";
+export type NameForm = "oficial" | "castellano";
 /** Todas las formas, en orden: primero la oficial. */
-export const NAME_STYLES: NameStyle[] = ["oficial", "castellano"];
+export const NAME_FORMS: NameForm[] = ["oficial", "castellano"];
 
 export interface Category {
   id: string;
@@ -88,7 +88,7 @@ export interface Category {
    * Todas sus preguntas, de todos los territorios, en una forma de los nombres. Se generan la primera vez
    * y después se devuelven las mismas (los datos no cambian durante el juego): por eso son de solo lectura.
    */
-  questions: (style: NameStyle) => readonly Question[];
+  questions: (nameForm: NameForm) => readonly Question[];
 }
 
 export type Pools = Readonly<Record<string, readonly string[]>>;
