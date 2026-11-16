@@ -1,5 +1,7 @@
+// La cuenta atrás del reloj: cuánto queda, la pausa y el fin del tiempo.
+
 import { describe, expect, it } from "vitest";
-import { Countdown } from "../src/common/engine/countdown";
+import { Countdown } from "../../src/common/engine/countdown";
 
 /** Reloj de mentira: el test decide cuánto pasa. */
 function reloj() {

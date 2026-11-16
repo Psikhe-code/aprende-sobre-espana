@@ -1,6 +1,6 @@
 // El reloj se prueba con el reloj del navegador controlado por el test: el tiempo solo pasa
 // cuando el test lo dice (`pasa`), así no hay que esperar de verdad.
-import { test, expect, abrir, opciones, pasa, responder, pestañaOculta, segundos, SOLO_BANDERAS, SOLO_CAPITALES } from "./ayuda";
+import { test, expect, abrir, opciones, pasa, responder, pestañaOculta, segundos, SOLO_BANDERAS, SOLO_CAPITALES } from "./helpers";
 
 test.beforeEach(async ({ page }) => {
   await page.clock.install({ time: 0 });

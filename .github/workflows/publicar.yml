@@ -59,7 +59,7 @@ jobs:
           key: playwright-${{ runner.os }}-${{ steps.version-playwright.outputs.version }}
       - run: npx playwright install chromium
         timeout-minutes: 5
-      - run: npm run test:pantalla
+      - run: npm run test:screen
       - if: failure()
         uses: actions/upload-artifact@v4
         with:

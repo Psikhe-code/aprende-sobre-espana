@@ -1,4 +1,6 @@
-import { test, expect, abrir, opciones, responder, SOLO_CAPITALES } from "./ayuda";
+// La partida sin límite: fin de la baraja, barajar y seguir, terminar y récord de racha.
+
+import { test, expect, abrir, opciones, responder, SOLO_CAPITALES } from "./helpers";
 
 test("partida sin límite: fin de la baraja, barajar y seguir, terminar y récord de racha", async ({ page }) => {
   await abrir(page);

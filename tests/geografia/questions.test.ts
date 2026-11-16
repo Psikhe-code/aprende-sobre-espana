@@ -1,10 +1,12 @@
+// Las preguntas de Geografía: enunciados, respuestas, trampas y notas de cada categoría.
+
 import { describe, expect, it } from "vitest";
-import { CATEGORIES } from "../src/sections/geografia/engine/categories";
-import { makeOptions, prepare } from "../src/sections/geografia/engine/options";
-import { BANDERAS, BANDERAS_PROVINCIAS, notaAutomatica, notaCapitalProvincia, prepararTexto, provinciasTrampa } from "../src/sections/geografia/engine/questions";
-import { AUTONOMIAS, AÑO_POBLACION, COMUNIDADES, MUNICIPIOS, PROVINCIAS, autonomia, capitalesDe, deAutonomia, poolsFor, provincia, provinciasDe } from "../src/sections/geografia/engine/territorio";
-import { questionsIn } from "../src/sections/geografia/engine/round-questions";
-import { NAME_STYLES, type NameStyle, type Question } from "../src/sections/geografia/engine/types";
+import { CATEGORIES } from "../../src/sections/geografia/engine/categories";
+import { makeOptions, prepare } from "../../src/sections/geografia/engine/options";
+import { BANDERAS, BANDERAS_PROVINCIAS, notaAutomatica, notaCapitalProvincia, prepararTexto, provinciasTrampa } from "../../src/sections/geografia/engine/questions";
+import { AUTONOMIAS, AÑO_POBLACION, COMUNIDADES, MUNICIPIOS, PROVINCIAS, autonomia, capitalesDe, deAutonomia, poolsFor, provincia, provinciasDe } from "../../src/sections/geografia/engine/territorio";
+import { questionsIn } from "../../src/sections/geografia/engine/round-questions";
+import { NAME_STYLES, type NameStyle, type Question } from "../../src/sections/geografia/engine/types";
 
 const REPS = 30;
 const bank = (style: NameStyle) => CATEGORIES.flatMap((c) => c.questions(style).map((q) => ({ ...q, category: c.id, style })));
