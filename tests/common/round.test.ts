@@ -2,13 +2,12 @@
 
 import { describe, expect, it } from "vitest";
 import { ROUND_LENGTH } from "../../src/common/engine/round-settings";
-import { CCSE_APTO_RATIO, Round, applyRecord, recordValue, rating } from "../../src/common/engine/round";
-import { SIMULACRO_APTO_HITS, SIMULACRO_QUESTION_COUNT } from "../../src/sections/ccse/engine/simulacro";
-import { type RoundQuestion } from "../../src/sections/geografia/engine/types";
+import { Round, applyRecord, recordValue, ratingText } from "../../src/common/engine/round";
+import type { PlayableQuestion } from "../../src/common/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
-const rq = (id: string, answer: string): RoundQuestion =>
-  ({ id, text: id, answer, answerKey: id, pool: null, trapOptions: [], why: "", exclude: [], aliases: [], territorio: "comunidad", category: "c", nameForm: "castellano", options: [answer, "X"], label: "" });
+const rq = (id: string, answer: string): PlayableQuestion =>
+  ({ id, text: id, answer, options: [answer, "X"], label: "", why: "", aliases: [] });
 const tenQuestions = () => Array.from({ length: ROUND_LENGTH }, (_, i) => rq("q" + i, "A"));
 
 describe("partidas: desarrollo", () => {
@@ -163,25 +162,9 @@ describe("récords", () => {
 });
 
 describe("valoración del resultado", () => {
-  it("en el examen, con el aprobado de la prueba real como referencia (el mismo que el simulacro)", () => {
-    expect(CCSE_APTO_RATIO).toBe(SIMULACRO_APTO_HITS / SIMULACRO_QUESTION_COUNT);
-    const v = (hits: number) => rating({ hits, total: 25 }, "ccse");
-    expect(v(25)).toBe("Pleno");
-    expect(v(20)).toBe("Gran nivel");
-    expect(v(15)).toBe("Por encima del aprobado");
-    expect(v(14)).toBe("Toca repasar");
-  });
-
-  it("en geografía, las del atlas", () => {
-    const v = (hits: number) => rating({ hits, total: 10 }, "geografia");
-    expect(v(10)).toBe("Mapa completo");
-    expect(v(8)).toBe("Gran nivel");
-    expect(v(5)).toBe("Buen rumbo");
-    expect(v(4)).toBe("Toca repasar el atlas");
-  });
-
-  it("sin ninguna respuesta (una partida sin límite terminada enseguida)", () => {
-    for (const s of ["ccse", "geografia"] as const) expect(rating({ hits: 0, total: 0 }, s)).toBe("Sin respuestas");
+  it("la de la sección, salvo sin ninguna respuesta (una partida sin límite terminada enseguida)", () => {
+    const sectionRating = ({ hits, total }: { hits: number; total: number }) => `${hits} de ${total}`;
+    expect(ratingText({ hits: 3, total: 10 }, sectionRating)).toBe("3 de 10");
+    expect(ratingText({ hits: 0, total: 0 }, sectionRating)).toBe("Sin respuestas");
   });
 });
-

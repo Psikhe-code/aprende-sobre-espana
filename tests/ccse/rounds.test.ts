@@ -5,6 +5,8 @@ import {
 import { ROUND_LENGTH, ROUND_LENGTHS, type RoundLength } from "../../src/common/engine/round-settings";
 import { canPlay } from "../../src/sections/ccse/engine/selection";
 import { ccseMode } from "../../src/sections/ccse/ui/mode";
+import { CCSE_APTO_RATIO, ccseRating } from "../../src/sections/ccse/engine/rating";
+import { SIMULACRO_APTO_HITS, SIMULACRO_QUESTION_COUNT } from "../../src/sections/ccse/engine/simulacro-rules";
 import { ccseRecordKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
 
 // Examen de nacionalidad: partidas y guardado, con datos de prueba (test-data.ts) en vez de la
@@ -108,6 +110,17 @@ describe("examen de nacionalidad: lo que da a la partida común", () => {
     }
     // Que no pase sin comprobar nada: con los datos de prueba caben al menos 10, 25 y sin límite.
     expect(tested).toEqual(expect.arrayContaining([10, 25, "sinLimite"]));
+  });
+});
+
+describe("examen de nacionalidad: valoración del resultado", () => {
+  it("con el aprobado de la prueba real como referencia (el mismo que el simulacro)", () => {
+    expect(CCSE_APTO_RATIO).toBe(SIMULACRO_APTO_HITS / SIMULACRO_QUESTION_COUNT);
+    const v = (hits: number) => ccseRating({ hits, total: 25 });
+    expect(v(25)).toBe("Pleno");
+    expect(v(20)).toBe("Gran nivel");
+    expect(v(15)).toBe("Por encima del aprobado");
+    expect(v(14)).toBe("Toca repasar");
   });
 });
 

@@ -38,15 +38,16 @@ src/
   common/                    ← LO DE TODAS LAS SECCIONES
     engine/
       types.ts               tipos comunes: sección, pregunta jugable, fuente
-      round.ts               la partida en marcha: respuestas, aciertos, racha, final, récords y valoración
+      round.ts               la partida en marcha: respuestas, aciertos, racha, final y récords
       round-settings.ts      preguntas por partida y tiempo por pregunta
       countdown.ts           cuenta atrás de cada pregunta (arrancar, pausar, cuánto queda)
       random.ts              el azar del juego
       storage.ts             ajustes y récords guardados en el dispositivo
     ui/
-      app.ts                 arranca el juego y decide qué pantalla se ve; la versión al pie
+      app.ts                 arranca el juego y decide qué pantalla se ve, con la lista de secciones; el menú y la versión al pie
       context.ts             lo que comparten las pantallas (opciones guardadas, sección, cambiar de pantalla)
-      mode.ts                lo que cada sección da a la partida (de dónde salen las preguntas, récords…)
+      section.ts             el molde de sección: lo que cada sección da al juego (menú, cabecera, pantallas, botones…)
+      mode.ts                lo que cada sección da a la partida (de dónde salen las preguntas, récords, valoración…)
       round-screen.ts        pantalla de la partida (pregunta, nota, fin de la baraja)
       timer.ts               reloj de cada pregunta en pantalla
       end-screen.ts          pantalla final: resultado, récord y fallos
@@ -58,6 +59,7 @@ src/
       contours.ts            curvas de nivel decorativas de la cabecera
       styles.css             estilos (tema claro y oscuro según el sistema)
   sections/
+    sections.ts              la lista de secciones, en el orden del menú: lo único que se toca al añadir una
     geografia/               ← GEOGRAFÍA
       data/
         territorio.json      comunidades y provincias, con sus códigos INE
@@ -73,10 +75,13 @@ src/
         options.ts           genera las opciones de cada pregunta
         round-questions.ts   elige las preguntas de una partida
         selection.ts         lo que se deduce de sus opciones (si se puede jugar, clave del récord…)
+        rating.ts            valoración del resultado de una partida
       ui/
+        section.ts           lo que da al juego (ver common/ui/section.ts)
         mode.ts              lo que da a la partida común
         start-screen.ts      pantalla de inicio
         settings-screen.ts   pantalla de Opciones
+        credits.ts           su lista de banderas en Créditos
         labels.ts            textos de sus opciones
         banderas.ts          imágenes de las banderas: la de cada pregunta y las de Créditos
     ccse/                    ← EXAMEN DE NACIONALIDAD
@@ -88,7 +93,9 @@ src/
         selection.ts         si se puede jugar con sus opciones
         simulacro.ts         simulacro: preguntas por tareas, respuestas, entrega y resultado
         simulacro-rules.ts   reglas del simulacro (reparto por tareas, 45 minutos, aprobado con 15)
+        rating.ts            valoración del resultado de una partida, con el aprobado como referencia
       ui/
+        section.ts           lo que da al juego (ver common/ui/section.ts)
         mode.ts              lo que da a la partida común
         start-screen.ts      pantalla de inicio
         settings-screen.ts   pantalla de Opciones
@@ -192,7 +199,7 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 ## Cómo funciona
 
-**Secciones.** Geografía y examen de nacionalidad tienen cada una su inicio, sus Opciones, sus récords y sus Créditos (los del examen, con claves que empiezan por `ccse/`), pero la partida, el reloj, el resultado y el repaso de fallos son los mismos. Lo que cambia se lo pregunta la partida al **modo** de la sección actual (`mode.ts`: lo común en `common/ui`, y el de cada sección en su carpeta `ui`): de dónde salen las preguntas, cuántas son, con qué tiempo se juega y con qué clave se guarda el récord. Las preguntas de las dos secciones se juegan con el mismo formato (`PlayableQuestion`, en `common/engine/types.ts`), que lleva ya la etiqueta (`label`) que sale encima de la pregunta: la de su categoría y territorio («Capitales de provincia»), que pone `prepare` (en `options.ts`), o la de su tarea («Tarea 1 · …»), que pone `prepare` (en `ccse/engine/questions.ts`). Las de geografía (`RoundQuestion`) son también una `PlayableQuestion`, y TypeScript comprueba que no les falta nada. En el examen, las opciones vienen escritas en los datos y se barajan en cada partida; al responder, debajo de la nota salen sus fuentes, con enlace. El resultado se valora con el aprobado de la prueba real como referencia (el 60 %).
+**Secciones.** Geografía y examen de nacionalidad tienen cada una su inicio, sus Opciones, sus récords y sus Créditos (los del examen, con claves que empiezan por `ccse/`), pero la partida, el reloj, el resultado y el repaso de fallos son los mismos. El juego conoce las secciones por una **lista** (`src/sections/sections.ts`), y cada una da lo suyo con el mismo molde (`common/ui/section.ts`): su tarjeta del menú, la cabecera, los `id` de sus pantallas y botones, su inicio, sus Opciones, lo suyo en Créditos y, si las tiene, pantallas propias (el simulacro). Para añadir una sección se crea su carpeta y se añade a la lista. Lo que cambia se lo pregunta la partida al **modo** de la sección actual (`mode.ts`: lo común en `common/ui`, y el de cada sección en su carpeta `ui`): de dónde salen las preguntas, cuántas son, con qué tiempo se juega, con qué clave se guarda el récord y cómo se valora el resultado. Las preguntas de las dos secciones se juegan con el mismo formato (`PlayableQuestion`, en `common/engine/types.ts`), que lleva ya la etiqueta (`label`) que sale encima de la pregunta: la de su categoría y territorio («Capitales de provincia»), que pone `prepare` (en `options.ts`), o la de su tarea («Tarea 1 · …»), que pone `prepare` (en `ccse/engine/questions.ts`). Las de geografía (`RoundQuestion`) son también una `PlayableQuestion`, y TypeScript comprueba que no les falta nada. En el examen, las opciones vienen escritas en los datos y se barajan en cada partida; al responder, debajo de la nota salen sus fuentes, con enlace. El resultado se valora con el aprobado de la prueba real como referencia (el 60 %).
 
 **Simulacro de examen.** Desde el inicio del examen, «Hacer un simulacro» abre una prueba como la real: 25 preguntas repartidas por tareas (10 de la Tarea 1, 3 de la 2, 2 de la 3, 3 de la 4 y 7 de la 5, en ese orden), 45 minutos para todo y «apto» con 15 aciertos. Las reglas están en `simulacro-rules.ts` y el reparto se comprobó con la Universitat de València y un examen real de 2015. No usa las Opciones del examen. Mientras se hace no se dice si una respuesta es correcta: se elige una opción (se puede cambiar), se va y se vuelve con «Anterior» y «Siguiente» o con el mapa de las 25 preguntas, y al final se entrega; si faltan respuestas, el aviso dice cuántas, y contarán como fallos. Salir también pide confirmación, porque se pierde el simulacro. El reloj es uno para todo el examen, se pausa al cambiar de pestaña (como en las partidas), se pone en rojo en los últimos 5 minutos y, al acabarse, entrega solo. El resultado dice apto o no apto, los aciertos de cada tarea, el tiempo usado y los fallos (también los no respondidos) con la respuesta, la nota y sus fuentes; desde ahí se puede repasar los fallos en una partida normal. Se guarda el mejor resultado (`ccse/simulacro`), que sale en el inicio. Solo se ofrece si cada tarea tiene al menos las preguntas que pide el reparto.
 

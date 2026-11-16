@@ -13,7 +13,7 @@
   <div class="app">
     <header class="masthead">
       <svg id="contours" viewBox="0 0 300 220" aria-hidden="true"></svg>
-      <!-- El texto de estas dos líneas cambia con la sección (app.ts, CABECERAS) -->
+      <!-- El texto de estas dos líneas cambia con la sección (app.ts y la definición de cada sección) -->
       <div class="eyebrow" id="eyebrow">Atlas de bolsillo</div>
       <h1>Aprende sobre España</h1>
       <p class="lede" id="lede"></p>
@@ -22,20 +22,8 @@
     <!-- Secciones -->
     <section id="sections" class="screen" tabindex="-1" aria-label="Secciones" hidden>
       <h2 class="label">¿Qué quieres aprender?</h2>
-      <div class="cats section-list">
-        <button class="cat section-card" id="sec-geografia">
-          <span class="cat-text">
-            <span class="cat-name">Geografía</span>
-            <span class="cat-desc">Capitales, banderas, provincias y municipios de España.</span>
-          </span>
-        </button>
-        <button class="cat section-card" id="sec-ccse">
-          <span class="cat-text">
-            <span class="cat-name">Examen de nacionalidad</span>
-            <span class="cat-desc">Practica los temas de la prueba CCSE: la Constitución, las instituciones, la cultura y la sociedad españolas.</span>
-          </span>
-        </button>
-      </div>
+      <!-- Una tarjeta por sección, que pone app.ts con los datos de la lista de secciones -->
+      <div class="cats section-list" id="sectionList"></div>
     </section>
 
     <!-- Inicio -->

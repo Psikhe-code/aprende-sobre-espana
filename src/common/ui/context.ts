@@ -4,8 +4,11 @@
 import type { SavedState } from "../engine/storage";
 import type { SectionMode } from "./mode";
 
-export type Screen = "sections" | "start" | "settings" | "ccseStart" | "ccseSettings" | "play" | "end" | "sim" | "simEnd" | "credits";
-export const SCREENS: readonly Screen[] = ["sections", "start", "settings", "ccseStart", "ccseSettings", "play", "end", "sim", "simEnd", "credits"];
+/**
+ * Una pantalla: el id de su <section> en index.html. Las comunes están en app.ts (COMMON_SCREENS),
+ * y las de cada sección, en su definición (common/ui/section.ts).
+ */
+export type Screen = string;
 
 export interface AppContext {
   /** Opciones y récords del jugador. Se cambian aquí y se guardan con `save`. */

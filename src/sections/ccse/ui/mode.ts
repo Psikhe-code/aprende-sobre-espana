@@ -4,6 +4,7 @@ import { ccseRecordKey, type SavedState } from "../../../common/engine/storage";
 import type { SectionMode } from "../../../common/ui/mode";
 import { reshuffleRound, buildRound, buildReviewRound, roundSize, type CcseRoundSettings } from "../engine/questions";
 import { canPlay } from "../engine/selection";
+import { ccseRating } from "../engine/rating";
 
 export function ccseMode(state: SavedState): SectionMode {
   // Con su tipo escrito: así, si un campo cambia de nombre, TypeScript avisa aquí (sin él, un campo mal
@@ -19,6 +20,7 @@ export function ccseMode(state: SavedState): SectionMode {
     isUnlimited: () => state.ccse.longitud === "sinLimite",
     timeLimit: () => state.ccse.tiempo,
     selectionKey: () => "ccse:" + JSON.stringify([state.ccse.tareas, state.ccse.longitud]),
-    recordKey: () => ccseRecordKey(state.ccse.tareas, state.ccse.longitud, state.ccse.tiempo)
+    recordKey: () => ccseRecordKey(state.ccse.tareas, state.ccse.longitud, state.ccse.tiempo),
+    rating: ccseRating
   };
 }

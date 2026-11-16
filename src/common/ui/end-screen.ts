@@ -1,6 +1,6 @@
 // Pantalla final: aciertos, valoración, récord y lista de fallos.
 
-import { applyRecord, rating, type Round } from "../engine/round";
+import { applyRecord, ratingText, type Round } from "../engine/round";
 import type { AppContext } from "./context";
 import { answerLine } from "./widgets";
 import { $, el } from "./dom";
@@ -14,7 +14,7 @@ export function renderEnd(ctx: AppContext, round: Round): void {
   if (rec.isNewRecord) { state.best = rec.best; ctx.save(); }
 
   $("score").replaceChildren(String(r.hits), el("small", "", `/${r.total}`));
-  $("endTitle").textContent = rating(r, ctx.mode().section);
+  $("endTitle").textContent = ratingText(r, ctx.mode().rating);
   const recText = r.review || rec.record == null ? ""
     : r.unlimited ? ` · Mejor racha con esta selección: ${rec.record}`
     : ` · Récord con esta selección: ${rec.record}/${round.expected}`;
