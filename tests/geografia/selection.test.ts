@@ -5,6 +5,8 @@ import { ROUND_LENGTH, ROUND_LENGTHS, TIME_LIMITS, type RoundLength } from "../.
 import { roundSettings, recordKey, canPlay, selectionKey } from "../../src/sections/geografia/engine/selection";
 import { loadState, type SavedState } from "../../src/common/engine/storage";
 import { NAME_FORMS, TERRITORIOS } from "../../src/sections/geografia/engine/types";
+import { modoGeografia } from "../../src/sections/geografia/ui/mode";
+import { questionCount } from "../../src/sections/geografia/engine/round-questions";
 
 // Lo que se deduce de las opciones marcadas en Geografía (la selección): si se puede jugar, con qué ajustes
 // y con qué clave se guarda el récord. Las reglas, como están en CLAUDE.md.
@@ -35,6 +37,21 @@ describe("selección de geografía", () => {
   it("la partida se prepara con lo marcado", () => {
     const s = { ...base(), selected: [CATEGORY_IDS[0]], names: [NAME_FORMS[0]], territorios: [TERRITORIOS[0]], opciones: OPTION_COUNTS[1], longitud: ROUND_LENGTHS[1] };
     expect(roundSettings(s)).toEqual({ categories: s.selected, nameForms: s.names, territorios: s.territorios, optionCount: s.opciones, roundLength: s.longitud });
+  });
+
+  it("lo que da a la partida común: cada partida tiene el número de preguntas elegido (sin límite, todas) y las opciones elegidas", () => {
+    const probadas: RoundLength[] = [];
+    for (const longitud of ROUND_LENGTHS) {
+      const s = { ...base(), longitud, opciones: OPTION_COUNTS[1] };
+      if (!canPlay(s)) continue;
+      const modo = modoGeografia(s);
+      const preguntas = modo.nueva();
+      expect(preguntas, String(longitud)).toHaveLength(modo.esperadas());
+      expect(modo.esperadas(), String(longitud)).toBe(longitud === "sinLimite" ? questionCount(s.selected, s.territorios) : longitud);
+      expect(preguntas.every((q) => q.options.length === OPTION_COUNTS[1]), String(longitud)).toBe(true);
+      probadas.push(longitud);
+    }
+    expect(probadas).toEqual([...ROUND_LENGTHS]);
   });
 
   it("la partida preparada deja de valer si cambia algo que decide las preguntas, pero no si cambia el tiempo", () => {

@@ -2,11 +2,13 @@
 
 import { ccseRecordKey, type SavedState } from "../../../common/engine/storage";
 import type { Modo } from "../../../common/ui/mode";
-import { reshuffleRound, buildRound, buildReviewRound, roundSize } from "../engine/questions";
+import { reshuffleRound, buildRound, buildReviewRound, roundSize, type CcseRoundSettings } from "../engine/questions";
 import { canPlay } from "../engine/selection";
 
 export function modoCcse(state: SavedState): Modo {
-  const ajustes = () => ({ tareas: state.ccse.tareas, length: state.ccse.longitud });
+  // Con su tipo escrito: así, si un campo cambia de nombre, TypeScript avisa aquí (sin él, un campo mal
+  // escrito se ignoraba sin dar error, y la partida usaba el número de preguntas por defecto).
+  const ajustes = (): CcseRoundSettings => ({ tareas: state.ccse.tareas, roundLength: state.ccse.longitud });
   return {
     seccion: "ccse",
     puedeJugar: () => canPlay(state),
