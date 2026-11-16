@@ -43,7 +43,7 @@ describe("simulacro: preguntas", () => {
       const p = CCSE_QUESTIONS.find((x) => x.id === q.id)!;
       expect([...q.options].sort()).toEqual([...p.options].sort());
       expect(q.answer).toBe(p.answer);
-      expect(q.why).toBe(p.why);
+      expect(q.explanation).toBe(p.explanation);
     }
   });
 

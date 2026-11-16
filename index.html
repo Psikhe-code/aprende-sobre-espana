@@ -198,10 +198,10 @@
         <div class="opts" id="opts"></div>
         <div class="feedback" id="feedback" hidden>
           <span class="verdict" id="verdict"></span>
-          <p class="why" id="why"></p>
+          <p class="explanation" id="explanation"></p>
           <p class="aka" id="aka" hidden></p>
-          <p class="fact" id="meaning" hidden><b>Significado</b> <span id="meaningText"></span></p>
-          <p class="fact" id="fact" hidden><b>Curiosidad</b> <span id="factText"></span></p>
+          <!-- Información complementaria: la pone cada pregunta (common-round-screen.ts), un párrafo por bloque -->
+          <div class="extra-info" id="extraInfo"></div>
           <p class="source" id="source" hidden></p>
           <div class="row"><button class="primary" id="next">Siguiente</button></div>
         </div>
@@ -210,7 +210,7 @@
       <div class="card" id="deckEnd" hidden>
         <div class="q-cat">Fin de la baraja</div>
         <p class="question">Has respondido todas las preguntas</p>
-        <p class="why" id="deckEndText"></p>
+        <p class="explanation" id="deckEndText"></p>
         <div class="row">
           <button class="primary" id="reshuffle">Barajar y seguir</button>
           <button class="ghost" id="deckStop">Terminar</button>
@@ -251,7 +251,7 @@
       <nav class="sim-map" id="simMap" aria-label="Ir a una pregunta"></nav>
       <!-- role="alertdialog": al llevar el foco a sus botones, el lector de pantalla lee también el texto del aviso -->
       <div class="card sim-confirm" id="simConfirm" role="alertdialog" aria-labelledby="simConfirmText" hidden>
-        <p class="why" id="simConfirmText"></p>
+        <p class="explanation" id="simConfirmText"></p>
         <div class="row">
           <button class="primary" id="simConfirmYes"></button>
           <button class="ghost" id="simConfirmNo">Seguir con el examen</button>

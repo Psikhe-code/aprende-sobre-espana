@@ -206,7 +206,7 @@ export function createSimulacroScreen(ctx: AppContext, startReview: (misses: Pla
       row.append(el("span", "miss-cat", `Pregunta ${questions.indexOf(f.question) + 1} · Tarea ${f.question.tarea}`));
       row.append(el("span", "miss-q", f.question.text));
       row.append(answerLine(f.question.answer, f.given, "sin responder"));
-      if (f.question.why) row.append(el("p", "why miss-why", f.question.why));
+      if (f.question.explanation) row.append(el("p", "explanation", f.question.explanation));
       const sourcesLine = el("p", "source");
       renderSources(sourcesLine, f.question.sources);
       if (!sourcesLine.hidden) row.append(sourcesLine);

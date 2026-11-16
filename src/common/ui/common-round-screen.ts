@@ -146,15 +146,18 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     const v = $("verdict");
     v.className = "verdict " + (r.correct ? "ok" : "bad");
     v.textContent = r.correct ? "Correcto" : r.given === null ? "Se acabó el tiempo · Era: " + r.answer : "Era: " + r.answer;
-    $("why").textContent = round.current.why;
-    $("why").hidden = !round.current.why; // en el examen, mientras falte la nota
+    $("explanation").textContent = round.current.explanation;
+    $("explanation").hidden = !round.current.explanation; // en el examen, mientras falte la nota
     // Otras formas de los nombres: "Girona · en castellano, Gerona"
-    $("aka").replaceChildren(...round.current.aliases.map((a) => el("span", "", a)));
-    $("aka").hidden = !round.current.aliases.length;
-    $("meaningText").textContent = round.current.meaning ?? "";
-    $("meaning").hidden = !round.current.meaning;
-    $("factText").textContent = round.current.fact ?? "";
-    $("fact").hidden = !round.current.fact;
+    const aliases = round.current.aliases ?? [];
+    $("aka").replaceChildren(...aliases.map((a) => el("span", "", a)));
+    $("aka").hidden = !aliases.length;
+    // Información complementaria, en el orden en que la da la sección: cada bloque, con su título.
+    $("extraInfo").replaceChildren(...(round.current.extraInfo ?? []).map((info) => {
+      const p = el("p", "extra-info-item");
+      p.append(el("b", "", info.title), " ", el("span", "", info.text));
+      return p;
+    }));
     renderSources($("source"), round.current.sources);
     announce(r.correct ? "Correcto." : r.given === null ? `Se acabó el tiempo. Era ${r.answer}.` : `Incorrecto. Era ${r.answer}.`);
     $("next").textContent = round.isLast && !round.unlimited ? "Ver resultado" : "Siguiente";

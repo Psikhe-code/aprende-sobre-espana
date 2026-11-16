@@ -32,19 +32,26 @@ export interface PlayableQuestion {
   /** Texto que se muestra sobre el enunciado de la pregunta. */
   label: string;
 
-  /** Explicaciones que se muestran después de responder. */
-  why: string;
-  fact?: string;
-  meaning?: string;
+  /** Explicación que se muestra después de responder. */
+  explanation: string;
+
+  /** Información complementaria que se muestra después de la explicación, en el orden indicado. */
+  extraInfo?: ExtraInfoItem[];
 
   /** Denominaciones alternativas, en textos preparados para mostrarse al jugador. */
-  aliases: string[];
+  aliases?: string[];
 
   /** Imagen opcional que acompaña a la pregunta. */
   image?: QuestionImage;
 
   /** Fuentes que respaldan la explicación de la pregunta. */
   sources?: Fuente[];
+}
+
+/** Un bloque de información complementaria de una pregunta, con su título. */
+export interface ExtraInfoItem {
+  title: string;
+  text: string;
 }
 
 /** Imagen asociada a una pregunta. */

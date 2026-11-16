@@ -13,14 +13,14 @@ const emptyEntry = (tareaEntries: number, n: number) => ({
 function completeEntry(tareaEntries: number, n: number) {
   const e = emptyEntry(tareaEntries, n);
   const isTrueFalse = n % 7 === 0;
-  const withoutWhy = n % 5 === 0;
+  const withoutNota = n % 5 === 0;
   return {
     ...e,
     pregunta: `Pregunta de prueba ${e.referencia}`,
     opciones: isTrueFalse ? ["Verdadero", "Falso", ""] : [`Opción a ${e.referencia}`, `Opción b ${e.referencia}`, `Opción c ${e.referencia}`],
     respuesta: "abc"[n % (isTrueFalse ? 2 : 3)],
-    nota: withoutWhy ? "" : `Nota de prueba ${e.referencia}`,
-    fuentes: withoutWhy ? [] : [{ texto: `Fuente de prueba ${e.referencia}`, url: "https://example.org/" }]
+    nota: withoutNota ? "" : `Nota de prueba ${e.referencia}`,
+    fuentes: withoutNota ? [] : [{ texto: `Fuente de prueba ${e.referencia}`, url: "https://example.org/" }]
   };
 }
 

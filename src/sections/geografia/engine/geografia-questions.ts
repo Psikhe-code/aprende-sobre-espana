@@ -5,6 +5,7 @@
 import { NAME_FORMS, type NameForm, type Question, type Territorio } from "./geografia-types";
 import { AUTONOMIAS, PROVINCIAS, MUNICIPIOS, POPULATION_YEAR, autonomia, provinciasOf, deAutonomiaText, capitalesOf, neighborAutonomias, provincia, municipioProvinciaId, isCapital, type Comunidad, type NameForms, type Municipio, type Provincia } from "./geografia-territorio";
 import banderas from "../data/banderas.json";
+import type { ExtraInfoItem } from "../../../common/engine/common-types";
 
 // Preguntas generadas a partir de los datos del territorio y de las banderas.
 // Cada pregunta se genera en una forma de los nombres (oficial o castellano), toda entera en esa forma.
@@ -24,6 +25,12 @@ function aliases(names: NameForms[], nameForm: NameForm): string[] {
   }
   return [...new Set(out)];
 }
+
+/** La curiosidad de una pregunta (de `curiosidad` en los datos), como información complementaria. */
+export const curiosidadInfo = (text: string): ExtraInfoItem => ({ title: "Curiosidad", text });
+
+/** El significado de una bandera (de `significado` en los datos), como información complementaria. */
+export const significadoInfo = (text: string): ExtraInfoItem => ({ title: "Significado", text });
 
 /**
  * Prepara un texto de las notas para mostrarlo en la forma de la pregunta:
@@ -49,7 +56,7 @@ export function prepareText(text: string, nameForm: NameForm, capital?: string):
  * es también capital de provincia (y de cuál), que es justo lo que explica las trampas.
  * "Zaragoza es la capital de Aragón y también de la provincia de Zaragoza."
  */
-export function autonomiaCapitalWhy(c: Comunidad, nameForm: NameForm): string {
+export function autonomiaCapitalExplanation(c: Comunidad, nameForm: NameForm): string {
   const [capital] = capitalesOf(c);
   const deText = deAutonomiaText(c, nameForm);
   const provincia = PROVINCIAS.find((p) => p.capital.castellano === capital.castellano);
@@ -72,8 +79,8 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
     const answers = capitales.map((f) => f[nameForm]);
     const deText = deAutonomiaText(c, nameForm);
     const prepareNote = (text?: string) => (text ? prepareText(text, nameForm, answers.join(" y ")) : undefined);
-    const ownWhy = prepareNote(c.notaCapital);
-    const fact = prepareNote(c.curiosidadCapital);
+    const ownExplanation = prepareNote(c.notaCapital);
+    const curiosidad = prepareNote(c.curiosidadCapital);
     const base = {
       id: `capital-ccaa:${c.id}`,
       pool: "capitalOrCiudad",
@@ -87,7 +94,7 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
       territorio: "comunidad" as const,
       // Trampa fija: el nombre de la comunidad o algo parecido (Andalucía, La Mancha, Mallorca…).
       ...(c.trampasCapital ? { fixedTrapOptions: c.trampasCapital.map((f) => f[nameForm]) } : {}),
-      ...(fact ? { fact } : {})
+      ...(curiosidad ? { extraInfo: [curiosidadInfo(curiosidad)] } : {})
     };
     if (capitales.length > 1) {
       // Capitalidad compartida (Canarias): todas son correctas, así que ninguna sale como incorrecta.
@@ -97,7 +104,7 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
         answer: answers,
         answerKey: capitales.map((f) => "ciudad:" + f.castellano),
         exclude: answers,
-        why: ownWhy ?? `La capitalidad ${deText} es compartida entre ${answers.join(" y ")}.`
+        explanation: ownExplanation ?? `La capitalidad ${deText} es compartida entre ${answers.join(" y ")}.`
       };
     }
     return {
@@ -106,7 +113,7 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
       answer: answers[0],
       answerKey: "ciudad:" + capitales[0].castellano,
       exclude: [],
-      why: ownWhy ?? autonomiaCapitalWhy(c, nameForm)
+      explanation: ownExplanation ?? autonomiaCapitalExplanation(c, nameForm)
     };
   });
 }
@@ -115,7 +122,7 @@ export function autonomiaCapitalQuestions(nameForm: NameForm): Question[] {
  * Nota de la pregunta de capital de provincia: relaciona la provincia con su comunidad.
  * "Bilbao es la capital de la provincia de Vizcaya. La capital del País Vasco es Vitoria."
  */
-export function provinciaCapitalWhy(p: Provincia, nameForm: NameForm): string {
+export function provinciaCapitalExplanation(p: Provincia, nameForm: NameForm): string {
   const c = autonomia(p.comunidad);
   const deText = deAutonomiaText(c, nameForm);
   const base = `${p.capital[nameForm]} es la capital de la provincia de ${p.nombre[nameForm]}`;
@@ -155,7 +162,7 @@ export function provinciaCapitalQuestions(nameForm: NameForm): Question[] {
       // que enseña la pregunta (en casi todas las provincias, la capital se llama igual).
       fixedTrapOptions: [p.nombre[nameForm]],
       exclude: [],
-      why: p.notaCapital ? prepareText(p.notaCapital, nameForm, capital) : provinciaCapitalWhy(p, nameForm),
+      explanation: p.notaCapital ? prepareText(p.notaCapital, nameForm, capital) : provinciaCapitalExplanation(p, nameForm),
       aliases: aliases([p.nombre, p.capital], nameForm),
       territorio: "provincia" as const
     };
@@ -203,8 +210,8 @@ export function provinciaComunidadQuestions(nameForm: NameForm): Question[] {
       pool: "autonomia",
       trapOptions: trapComunidadIds(p).map((id) => autonomia(id).nombre[nameForm]).filter((n) => !ciudades.includes(n)),
       exclude: ciudades,
-      why: `La provincia de ${p.nombre[nameForm]} es ${deAutonomiaText(c, nameForm)}, que tiene ${NUMBER_WORDS[provinciaNames.length]} provincias: ${listText}.`,
-      fact: p.curiosidad ? prepareText(p.curiosidad, nameForm) : undefined,
+      explanation: `La provincia de ${p.nombre[nameForm]} es ${deAutonomiaText(c, nameForm)}, que tiene ${NUMBER_WORDS[provinciaNames.length]} provincias: ${listText}.`,
+      extraInfo: p.curiosidad ? [curiosidadInfo(prepareText(p.curiosidad, nameForm))] : undefined,
       aliases: aliases([p.nombre, c.nombre], nameForm),
       territorio: "comunidad" as const
     };
@@ -228,7 +235,7 @@ export function trapProvinciaIds(p: Provincia): string[] {
  * qué puesto ocupa y su población; si no, su población. Por qué es conocido lo cuenta su curiosidad.
  * La población lleva siempre la fuente y el año: «293.837 habitantes (INE, 2025)».
  */
-export function municipioWhy(m: Municipio, nameForm: NameForm): string {
+export function municipioExplanation(m: Municipio, nameForm: NameForm): string {
   const p = provincia(municipioProvinciaId(m));
   const name = m.nombre[nameForm];
   const populationText = `${m.poblacion.toLocaleString("es-ES")} habitantes (INE, ${POPULATION_YEAR})`;
@@ -252,7 +259,7 @@ export function municipioWhy(m: Municipio, nameForm: NameForm): string {
  * «En la provincia de Gerona hay otro municipio que también se llama Torrent, con 182 habitantes.»
  * Usa el nombre oficial, que es el que comparten.
  */
-export function sameNameWhy(m: Municipio, nameForm: NameForm): string {
+export function sameNameExplanation(m: Municipio, nameForm: NameForm): string {
   return (m.mismoNombre ?? []).map((x) =>
     `En la provincia de ${provincia(x.id.slice(0, 2)).nombre[nameForm]} hay otro municipio que también se llama ${m.nombre.oficial}, con ${x.poblacion.toLocaleString("es-ES")} habitantes.`
   ).join(" ");
@@ -276,8 +283,8 @@ export function municipioProvinciaQuestions(nameForm: NameForm): Question[] {
       trapOptions: trapProvinciaIds(p).map((id) => provincia(id).nombre[nameForm]),
       // Si en otra provincia hay un municipio que se llama igual, esa provincia también sería correcta.
       exclude: (m.mismoNombre ?? []).map((x) => provincia(x.id.slice(0, 2)).nombre[nameForm]),
-      why: [municipioWhy(m, nameForm), sameNameWhy(m, nameForm)].filter(Boolean).join("\n"),
-      fact: m.curiosidad ? prepareText(m.curiosidad, nameForm) : undefined,
+      explanation: [municipioExplanation(m, nameForm), sameNameExplanation(m, nameForm)].filter(Boolean).join("\n"),
+      extraInfo: m.curiosidad ? [curiosidadInfo(prepareText(m.curiosidad, nameForm))] : undefined,
       aliases: aliases([m.nombre, p.nombre], nameForm),
       territorio: "provincia" as const
     };
@@ -351,8 +358,8 @@ function banderaQuestions(spec: BanderaQuestionsSpec, nameForm: NameForm): Quest
       pool: spec.pool,
       trapOptions: b.trampas.map((t) => spec.name(t)[nameForm]),
       exclude: [],
-      why: prepareText(b.descripcion, nameForm),
-      meaning: prepareText(b.significado, nameForm),
+      explanation: prepareText(b.descripcion, nameForm),
+      extraInfo: [significadoInfo(prepareText(b.significado, nameForm))],
       banderaKey: toBanderaKey(spec.territorio, id),
       aliases: aliases([name], nameForm),
       territorio: spec.territorio

@@ -5,7 +5,7 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORIES } from "../../src/sections/geografia/engine/geografia-categories";
 import { makeOptions, prepare } from "../../src/sections/geografia/engine/geografia-options";
-import { AUTONOMIA_BANDERAS, PROVINCIA_BANDERAS, autonomiaCapitalWhy, provinciaCapitalWhy, prepareText, trapProvinciaIds } from "../../src/sections/geografia/engine/geografia-questions";
+import { AUTONOMIA_BANDERAS, PROVINCIA_BANDERAS, autonomiaCapitalExplanation, curiosidadInfo, provinciaCapitalExplanation, prepareText, significadoInfo, trapProvinciaIds } from "../../src/sections/geografia/engine/geografia-questions";
 import { AUTONOMIAS, POPULATION_YEAR, COMUNIDADES, MUNICIPIOS, PROVINCIAS, autonomia, capitalesOf, deAutonomiaText, poolsFor, provincia, provinciasOf } from "../../src/sections/geografia/engine/geografia-territorio";
 import { questionsIn } from "../../src/sections/geografia/engine/geografia-round-questions";
 import { NAME_FORMS, type NameForm, type Question } from "../../src/sections/geografia/engine/geografia-types";
@@ -45,16 +45,16 @@ for (const nameForm of NAME_FORMS) {
           : provinciasOf(c.id).map((p) => p.capital[nameForm]);
         expect(q.trapOptions, c.id).toEqual([...ofComunidad, ...(c.ciudadesTrampa ?? []).map((f) => f[nameForm])].filter((x) => !correctAnswers.includes(x)));
         expect(q.fixedTrapOptions, c.id).toEqual(c.trampasCapital?.map((f) => f[nameForm]));
-        if (c.notaCapital) expect(q.why, c.id).toBe(prepareText(c.notaCapital, nameForm, correctAnswers.join(" y ")));
-        if (c.curiosidadCapital) expect(q.fact, c.id).toBe(prepareText(c.curiosidadCapital, nameForm, correctAnswers.join(" y ")));
+        if (c.notaCapital) expect(q.explanation, c.id).toBe(prepareText(c.notaCapital, nameForm, correctAnswers.join(" y ")));
+        expect(q.extraInfo, c.id).toEqual(c.curiosidadCapital ? [curiosidadInfo(prepareText(c.curiosidadCapital, nameForm, correctAnswers.join(" y ")))] : undefined);
       }
     });
 
     it("capitales autonómicas sin nota propia: nota automática que dice si también es capital de provincia", () => {
-      expect(autonomiaCapitalWhy(autonomia("02"), "castellano")).toBe("Zaragoza es la capital de Aragón y también de la provincia de Zaragoza.");
-      expect(autonomiaCapitalWhy(autonomia("15"), "oficial")).toBe("Pamplona/Iruña es la capital de la Comunidad Foral de Navarra y también de la provincia de Navarra.");
+      expect(autonomiaCapitalExplanation(autonomia("02"), "castellano")).toBe("Zaragoza es la capital de Aragón y también de la provincia de Zaragoza.");
+      expect(autonomiaCapitalExplanation(autonomia("15"), "oficial")).toBe("Pamplona/Iruña es la capital de la Comunidad Foral de Navarra y también de la provincia de Navarra.");
       for (const c of AUTONOMIAS.filter((x) => !x.notaCapital && capitalesOf(x).length === 1)) {
-        expect(find(nameForm, `capital-ccaa:${c.id}`).why, c.id).toBe(autonomiaCapitalWhy(c, nameForm));
+        expect(find(nameForm, `capital-ccaa:${c.id}`).explanation, c.id).toBe(autonomiaCapitalExplanation(c, nameForm));
       }
     });
 
@@ -67,17 +67,17 @@ for (const nameForm of NAME_FORMS) {
         expect(q.answer, p.id).toBe(capital);
         expect(q.trapOptions, p.id).toEqual([...new Set(trapOptions)].filter((x) => x !== capital));
         expect(q.fixedTrapOptions, p.id).toEqual([p.nombre[nameForm]]);
-        expect(q.why, p.id).toBe(p.notaCapital ? prepareText(p.notaCapital, nameForm, capital) : provinciaCapitalWhy(p, nameForm));
+        expect(q.explanation, p.id).toBe(p.notaCapital ? prepareText(p.notaCapital, nameForm, capital) : provinciaCapitalExplanation(p, nameForm));
         // Mismo lugar que la capital de su comunidad, si coincide (Oviedo).
         expect(q.answerKey, p.id).toBe("ciudad:" + p.capital.castellano);
       }
     });
 
     it("la nota automática de provincia, para las que no tengan una propia", () => {
-      const withoutWhy = (id: string) => ({ ...provincia(id), notaCapital: undefined });
-      expect(provinciaCapitalWhy(withoutWhy("48"), "castellano")).toBe("Bilbao es la capital de la provincia de Vizcaya. La capital del País Vasco es Vitoria.");
-      expect(provinciaCapitalWhy(withoutWhy("01"), "castellano")).toBe("Vitoria es la capital de la provincia de Álava y también del País Vasco.");
-      expect(provinciaCapitalWhy(withoutWhy("33"), "castellano")).toBe("Oviedo es la capital de la provincia de Asturias. Como es la única provincia de Asturias, también es la capital de la comunidad.");
+      const withoutExplanation = (id: string) => ({ ...provincia(id), notaCapital: undefined });
+      expect(provinciaCapitalExplanation(withoutExplanation("48"), "castellano")).toBe("Bilbao es la capital de la provincia de Vizcaya. La capital del País Vasco es Vitoria.");
+      expect(provinciaCapitalExplanation(withoutExplanation("01"), "castellano")).toBe("Vitoria es la capital de la provincia de Álava y también del País Vasco.");
+      expect(provinciaCapitalExplanation(withoutExplanation("33"), "castellano")).toBe("Oviedo es la capital de la provincia de Asturias. Como es la única provincia de Asturias, también es la capital de la comunidad.");
     });
 
     it("la trampa fija sale siempre, y una sola, también cuando hay varias para sortear", () => {
@@ -98,8 +98,8 @@ for (const nameForm of NAME_FORMS) {
     it("banderas: descripción y significado de los datos, enunciado y trampas", () => {
       for (const c of AUTONOMIAS) {
         const q = find(nameForm, `bandera-ccaa:${c.id}`);
-        expect(q.why, c.id).toBe(prepareText(AUTONOMIA_BANDERAS[c.id].descripcion, nameForm));
-        expect(q.meaning, c.id).toBe(prepareText(AUTONOMIA_BANDERAS[c.id].significado, nameForm));
+        expect(q.explanation, c.id).toBe(prepareText(AUTONOMIA_BANDERAS[c.id].descripcion, nameForm));
+        expect(q.extraInfo, c.id).toEqual([significadoInfo(prepareText(AUTONOMIA_BANDERAS[c.id].significado, nameForm))]);
         expect(q.banderaKey, c.id).toBe(c.id);
       }
       for (const [id, b] of Object.entries(PROVINCIA_BANDERAS)) {
@@ -107,14 +107,15 @@ for (const nameForm of NAME_FORMS) {
         expect(q.text).toBe("¿De qué provincia es esta bandera?");
         expect(q.answer, id).toBe(provinciaName(id));
         expect(q.trapOptions, id).toEqual(b.trampas.map(provinciaName));
-        expect(q.why, id).toBe(prepareText(b.descripcion, nameForm));
-        expect(q.meaning, id).toBe(prepareText(b.significado, nameForm));
+        expect(q.explanation, id).toBe(prepareText(b.descripcion, nameForm));
+        expect(q.extraInfo, id).toEqual([significadoInfo(prepareText(b.significado, nameForm))]);
         expect(q.banderaKey, id).toBe("p" + id);
         expect(q.pool, id).toBe("provinciaWithBandera");
       }
       expect(pools.provinciaWithBandera).toHaveLength(Object.keys(PROVINCIA_BANDERAS).length);
       // Solo las banderas tienen significado.
-      expect(all.filter((q) => q.meaning).every((q) => q.category === "banderas")).toBe(true);
+      const hasTitle = (q: (typeof all)[number], title: string) => (q.extraInfo ?? []).some((i) => i.title === title);
+      expect(all.filter((q) => hasTitle(q, "Significado")).every((q) => q.category === "banderas")).toBe(true);
     });
 
     it("divisiones: las provincias de comunidades con varias provincias, con nota que las nombra todas", () => {
@@ -126,10 +127,10 @@ for (const nameForm of NAME_FORMS) {
         const c = autonomia(p.comunidad);
         expect(q.text, p.id).toBe(`¿De qué comunidad autónoma es la provincia de ${p.nombre[nameForm]}?`);
         expect(q.answer, p.id).toBe(c.nombre[nameForm]);
-        expect(q.why, p.id).toMatch(new RegExp(`^La provincia de ${p.nombre[nameForm].replace(/[/()]/g, "\\$&")} es ${deAutonomiaText(c, nameForm)}, que tiene `));
-        for (const x of provinciasOf(c.id)) expect(q.why, `${p.id} → ${x.id}`).toContain(x.nombre[nameForm]);
+        expect(q.explanation, p.id).toMatch(new RegExp(`^La provincia de ${p.nombre[nameForm].replace(/[/()]/g, "\\$&")} es ${deAutonomiaText(c, nameForm)}, que tiene `));
+        for (const x of provinciasOf(c.id)) expect(q.explanation, `${p.id} → ${x.id}`).toContain(x.nombre[nameForm]);
         // La curiosidad de la provincia, si la tiene, sale en esta pregunta.
-        expect(q.fact, p.id).toBe(p.curiosidad ? prepareText(p.curiosidad, nameForm) : undefined);
+        expect(q.extraInfo, p.id).toEqual(p.curiosidad ? [curiosidadInfo(prepareText(p.curiosidad, nameForm))] : undefined);
       }
     });
 
@@ -187,8 +188,8 @@ for (const nameForm of NAME_FORMS) {
         const others = (m.mismoNombre ?? []).map((x) =>
           `En la provincia de ${provinciaName(x.id.slice(0, 2))} hay otro municipio que también se llama ${m.nombre.oficial}, con ${x.poblacion.toLocaleString("es-ES")} habitantes.`);
         const q = find(nameForm, `municipio-provincia:${m.id}`);
-        expect(q.why, m.id).toBe([expectedText, others.join(" ")].filter(Boolean).join("\n"));
-        expect(q.fact, m.id).toBe(m.curiosidad ? prepareText(m.curiosidad, nameForm) : undefined);
+        expect(q.explanation, m.id).toBe([expectedText, others.join(" ")].filter(Boolean).join("\n"));
+        expect(q.extraInfo, m.id).toEqual(m.curiosidad ? [curiosidadInfo(prepareText(m.curiosidad, nameForm))] : undefined);
       }
       // Los miles se separan con punto, como se escribe en español.
       expect((293837).toLocaleString("es-ES")).toBe("293.837");
@@ -224,18 +225,23 @@ for (const nameForm of NAME_FORMS) {
         }
         for (const a of answers) expect(q.trapOptions, q.id).not.toContain(a);
         expect(new Set(q.trapOptions).size, q.id).toBe(q.trapOptions.length);
-        expect(q.why.length, q.id).toBeGreaterThan(10);
-        expect(q.why, q.id).not.toContain("{");
-        for (const text of [q.fact, q.meaning]) {
-          if (text === undefined) continue;
+        expect(q.explanation.length, q.id).toBeGreaterThan(10);
+        expect(q.explanation, q.id).not.toContain("{");
+        for (const { text } of q.extraInfo ?? []) {
           expect(text.length, q.id).toBeGreaterThan(10);
           expect(text, q.id).not.toContain("{");
         }
       }
     });
 
+    it("la información complementaria lleva su título: «Significado» y «Curiosidad»", () => {
+      expect(significadoInfo("Texto")).toEqual({ title: "Significado", text: "Texto" });
+      expect(curiosidadInfo("Texto")).toEqual({ title: "Curiosidad", text: "Texto" });
+    });
+
     it("solo las capitales, las provincias y los municipios tienen curiosidad", () => {
-      expect(all.filter((q) => q.fact).every((q) => q.category === "capitales" || /^(municipio-provincia|provincia-ccaa):/.test(q.id))).toBe(true);
+      const hasCuriosidad = (q: (typeof all)[number]) => (q.extraInfo ?? []).some((i) => i.title === "Curiosidad");
+      expect(all.filter(hasCuriosidad).every((q) => q.category === "capitales" || /^(municipio-provincia|provincia-ccaa):/.test(q.id))).toBe(true);
     });
   });
 
@@ -337,7 +343,7 @@ describe("formas de los nombres", () => {
 
 describe("reglas de las opciones (con datos de prueba)", () => {
   const synthetic = (over: Partial<Question>): Question & { answer: string } =>
-    ({ id: "x", text: "", answer: "A", answerKey: "a", pool: "t", trapOptions: [], why: "", exclude: [], aliases: [], ...over }) as Question & { answer: string };
+    ({ id: "x", text: "", answer: "A", answerKey: "a", pool: "t", trapOptions: [], explanation: "", exclude: [], aliases: [], ...over }) as Question & { answer: string };
 
   it("con pool, como mucho n-2 trampas: siempre queda una opción aleatoria", () => {
     const q = synthetic({ trapOptions: ["B", "C", "D", "E"] });
