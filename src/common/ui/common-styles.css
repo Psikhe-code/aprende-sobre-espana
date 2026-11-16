@@ -308,10 +308,12 @@ h1 {
 .verdict { display: inline-flex; align-self: flex-start; font-family: var(--f-display); font-weight: 700; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; }
 .verdict.ok { background: var(--ok-bg); color: var(--ok); }
 .verdict.bad { background: var(--bad-bg); color: var(--bad); }
-.why { margin: 0; max-width: 62ch; white-space: pre-line; } /* pre-line: respeta los \n de las notas */
+.explanation { margin: 0; max-width: 62ch; white-space: pre-line; } /* pre-line: respeta los \n de las notas */
 .aka { margin: -4px 0 0; display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--muted); }
-.fact { margin: 0; max-width: 62ch; white-space: pre-line; font-size: 15px; padding-left: 12px; border-left: 3px solid var(--ochre); }
-.fact b { display: block; font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ochre); }
+/* display: contents: sus párrafos ocupan el sitio del contenedor, con la misma separación que los demás. */
+.extra-info { display: contents; }
+.extra-info-item { margin: 0; max-width: 62ch; white-space: pre-line; font-size: 15px; padding-left: 12px; border-left: 3px solid var(--ochre); }
+.extra-info-item b { display: block; font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ochre); }
 /* Fuentes de la nota (examen de nacionalidad): pequeñas, con enlace a cada una. */
 .source { margin: 0; max-width: 62ch; font-size: 13px; color: var(--muted); }
 .source b { font-family: var(--f-display); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 4px; }
@@ -335,7 +337,7 @@ h1 {
 .sim-tareas { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip.full { border-color: var(--ok); color: var(--ok); }
 .miss-cat { font-family: var(--f-display); font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--water); }
-.miss .why { font-size: 15px; margin-top: 6px; }
+.miss .explanation { font-size: 15px; margin-top: 6px; }
 .miss .source { margin-top: 4px; }
 
 /* Secciones: dos tarjetas grandes, una debajo de otra. */

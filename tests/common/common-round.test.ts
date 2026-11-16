@@ -9,7 +9,7 @@ import type { PlayableQuestion } from "../../src/common/engine/common-types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
 const rq = (id: string, answer: string): PlayableQuestion =>
-  ({ id, text: id, answer, options: [answer, "X"], label: "", why: "", aliases: [] });
+  ({ id, text: id, answer, options: [answer, "X"], label: "", explanation: "" });
 const tenQuestions = () => Array.from({ length: ROUND_LENGTH }, (_, i) => rq("q" + i, "A"));
 
 describe("partidas: desarrollo", () => {

@@ -43,7 +43,7 @@ test("en el simulacro no se dice si se acierta: se elige, se cambia, se va y se 
   await options.nth(0).click();
   await expect(options.nth(0)).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#simOpts .right, #simOpts .wrong")).toHaveCount(0);
-  await expect(page.locator("#sim .why:visible")).toHaveCount(0);
+  await expect(page.locator("#sim .explanation:visible")).toHaveCount(0);
   await expect(page.locator("#sim-n-1")).toHaveClass(/answered/);
   await expect(page.locator("#simAnswered")).toHaveText(`1/${SIMULACRO_QUESTION_COUNT}`);
 
@@ -108,8 +108,8 @@ test("al entregar se avisa de las que faltan; el resultado dice apto o no apto y
   await expect(page.locator("#simMisses .miss-a", { hasText: "sin responder" })).toHaveCount(2);
   for (const f of await misses.all()) {
     await expect(f.locator(".miss-a")).toContainText("Respuesta: ");
-    if (await f.locator(".why").count()) {
-      await expect(f.locator(".why")).toHaveText(/^Nota de prueba \d+$/);
+    if (await f.locator(".explanation").count()) {
+      await expect(f.locator(".explanation")).toHaveText(/^Nota de prueba \d+$/);
       await expect(f.locator(".source a")).toHaveAttribute("href", /^https:\/\//);
     }
   }

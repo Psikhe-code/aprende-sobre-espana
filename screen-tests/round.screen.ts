@@ -2,7 +2,7 @@
  * @fileoverview Una partida de principio a fin: responder, el repaso de fallos, salir y el teclado.
  */
 
-import { test, expect, openSection, changeSettings, useCcseData, answerQuestions } from "./helpers";
+import { test, expect, openSection, changeSettings, useCcseData, answerQuestions, ONLY_BANDERAS, ONLY_CAPITALES } from "./helpers";
 import { ccseTestData } from "../tests/ccse/ccse-test-data";
 
 test("una partida de 10 se juega entera y deja el récord en el inicio", async ({ page }) => {
@@ -39,6 +39,34 @@ test("el repaso de fallos repite solo las falladas, marcado como repaso", async 
   await expect(page.locator("#qcat")).toContainText("Repaso · ");
   await answerQuestions(page, misses);
   await expect(page.locator("#endSub")).toContainText("Repaso de fallos");
+});
+
+test("al responder, la información complementaria sale con su título: el significado en las banderas", async ({ page }) => {
+  await openSection(page);
+  await changeSettings(page, ONLY_BANDERAS);
+  await page.locator("#go").click();
+  for (let i = 0; i < 3; i++) {
+    await page.locator("#opts .opt").first().click();
+    const items = page.locator("#extraInfo .extra-info-item");
+    await expect(items).toHaveCount(1);
+    await expect(items.locator("b")).toHaveText("Significado");
+    await expect(items.locator("span")).not.toBeEmpty();
+    await expect(items).toBeVisible();
+    await page.locator("#next").click();
+  }
+});
+
+test("si la pregunta no tiene información complementaria, no sale nada", async ({ page }) => {
+  // Las capitales de provincia no tienen curiosidad ni significado.
+  await openSection(page);
+  await changeSettings(page, [...ONLY_CAPITALES, "terr-comunidad"]);
+  await page.locator("#go").click();
+  for (let i = 0; i < 3; i++) {
+    await page.locator("#opts .opt").first().click();
+    await expect(page.locator("#explanation")).toBeVisible();
+    await expect(page.locator("#extraInfo").locator("*")).toHaveCount(0);
+    await page.locator("#next").click();
+  }
 });
 
 test("«Salir al menú» vuelve al inicio sin guardar récord", async ({ page }) => {

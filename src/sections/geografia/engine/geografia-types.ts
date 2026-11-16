@@ -2,7 +2,7 @@
  * @fileoverview Geografía: las formas de sus datos (qué campos tiene cada cosa).
  */
 
-import type { PlayableQuestion } from "../../../common/engine/common-types";
+import type { ExtraInfoItem, PlayableQuestion } from "../../../common/engine/common-types";
 
 /** Una pregunta del banco de geografía, independiente de la partida en la que salga. */
 export interface Question {
@@ -35,11 +35,9 @@ export interface Question {
    */
   fixedTrapOptions?: string[];
   /** Explicación que se muestra al responder. */
-  why: string;
-  /** Curiosidad opcional que se muestra al responder, después de la explicación. */
-  fact?: string;
-  /** Significado opcional (de una bandera) que se muestra al responder, después de la explicación. */
-  meaning?: string;
+  explanation: string;
+  /** Información complementaria que se muestra al responder, después de la explicación: el significado de la bandera o la curiosidad. */
+  extraInfo?: ExtraInfoItem[];
   /** Valores del pool que nunca deben salir como incorrectos (porque también serían válidos). */
   exclude: string[];
   /** Solo para el pool "num": [mínimo, máximo]. */
@@ -69,6 +67,8 @@ export interface RoundQuestion extends Question, PlayableQuestion {
   category: string;
   nameForm: NameForm;
   options: string[];
+  /** En Geografía siempre hay (aunque esté vacía); en la partida común es opcional. */
+  aliases: string[];
 }
 
 /**

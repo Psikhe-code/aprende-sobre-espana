@@ -25,7 +25,7 @@ describe("examen de nacionalidad: datos de prueba", () => {
   it("se usan los de prueba: tareas 1 y 2 con preguntas, y también de verdadero o falso y sin nota", () => {
     expect(tareasWithQuestions()).toEqual([1, 2]);
     expect(CCSE_QUESTIONS.some((p) => p.options.length === 2 && p.fixedOrder)).toBe(true);
-    expect(CCSE_QUESTIONS.some((p) => !p.why)).toBe(true);
+    expect(CCSE_QUESTIONS.some((p) => !p.explanation)).toBe(true);
   });
 });
 
@@ -57,7 +57,7 @@ describe("examen de nacionalidad: partidas", () => {
         if (p.fixedOrder) expect(q.options).toEqual(p.options);
         expect(q.answer).toBe(p.answer);
         expect(q.text).toBe(p.text);
-        expect(q.why).toBe(p.why);
+        expect(q.explanation).toBe(p.explanation);
         expect(q.sources).toEqual(p.sources);
       }
     }
