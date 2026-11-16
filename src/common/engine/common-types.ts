@@ -26,7 +26,7 @@ export interface PlayableQuestion {
   readonly text: string;
 
   /** Respuesta correcta, que debe coincidir con una de las opciones. */
-  readonly answer: string;
+  readonly correctAnswer: string;
   readonly options: readonly string[];
 
   /** Texto que se muestra sobre el enunciado de la pregunta. */

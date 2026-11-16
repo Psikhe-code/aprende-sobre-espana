@@ -51,7 +51,7 @@ describe("examen de nacionalidad: datos", () => {
 
   it("la respuesta es una de las opciones, y las opciones no se repiten", () => {
     for (const p of CCSE_QUESTIONS) {
-      expect(p.options, p.id).toContain(p.answer);
+      expect(p.options, p.id).toContain(p.correctAnswer);
       expect(new Set(p.options).size, p.id).toBe(p.options.length);
     }
   });
@@ -85,7 +85,7 @@ describe("examen de nacionalidad: rellenar la plantilla", () => {
     const r = withChanges({ pregunta: " ¿Uno? ", opciones: ["Primera", " Segunda ", "Tercera"], respuesta: "b" });
     expect(r.status).toBe("complete");
     if (r.status !== "complete") return;
-    expect(r.question.answer).toBe("Segunda");
+    expect(r.question.correctAnswer).toBe("Segunda");
     expect(r.question.text).toBe("¿Uno?");
     expect(r.question.options).toEqual(["Primera", "Segunda", "Tercera"]);
     expect(r.question.fixedOrder).toBeUndefined();

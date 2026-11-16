@@ -75,8 +75,8 @@ test("texto alternativo de las banderas: neutro en la pregunta, con el nombre en
   await page.locator("#opts .opt").first().click();
   await page.locator("#next").click();
   for (const miss of await page.locator("#misses .miss").all()) {
-    const answer = await miss.locator(".miss-a b").textContent();
-    await expect(miss.locator("img")).toHaveAttribute("alt", `Bandera: ${answer}`);
+    const correctAnswer = await miss.locator(".miss-a b").textContent();
+    await expect(miss.locator("img")).toHaveAttribute("alt", `Bandera: ${correctAnswer}`);
   }
 
   // En Créditos el nombre está escrito al lado: el texto alternativo va vacío, para no leerlo dos veces.

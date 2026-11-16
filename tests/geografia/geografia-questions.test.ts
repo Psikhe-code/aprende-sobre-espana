@@ -64,12 +64,12 @@ for (const nameForm of NAME_FORMS) {
         const capital = p.capital[nameForm];
         const trapOptions = [...p.trampas!.flatMap((id) => [provincia(id).capital, ...(provincia(id).ciudades ?? [])]), ...(p.ciudades ?? [])].map((f) => f[nameForm]);
         expect(q.text, p.id).toBe(`¿Cuál es la capital de la provincia de ${p.nombre[nameForm]}?`);
-        expect(q.answer, p.id).toBe(capital);
+        expect(q.correctAnswer, p.id).toBe(capital);
         expect(q.trapOptions, p.id).toEqual([...new Set(trapOptions)].filter((x) => x !== capital));
         expect(q.fixedTrapOptions, p.id).toEqual([p.nombre[nameForm]]);
         expect(q.explanation, p.id).toBe(p.notaCapital ? prepareText(p.notaCapital, nameForm, capital) : provinciaCapitalExplanation(p, nameForm));
         // Mismo lugar que la capital de su comunidad, si coincide (Oviedo).
-        expect(q.answerKey, p.id).toBe("ciudad:" + p.capital.castellano);
+        expect(q.correctAnswerKey, p.id).toBe("ciudad:" + p.capital.castellano);
       }
     });
 
@@ -105,7 +105,7 @@ for (const nameForm of NAME_FORMS) {
       for (const [id, b] of Object.entries(PROVINCIA_BANDERAS)) {
         const q = find(nameForm, `bandera-provincia:${id}`);
         expect(q.text).toBe("¿De qué provincia es esta bandera?");
-        expect(q.answer, id).toBe(provinciaName(id));
+        expect(q.correctAnswer, id).toBe(provinciaName(id));
         expect(q.trapOptions, id).toEqual(b.trampas.map(provinciaName));
         expect(q.explanation, id).toBe(prepareText(b.descripcion, nameForm));
         expect(q.extraInfo, id).toEqual([significadoInfo(prepareText(b.significado, nameForm))]);
@@ -126,7 +126,7 @@ for (const nameForm of NAME_FORMS) {
         const q = find(nameForm, `provincia-ccaa:${p.id}`);
         const c = autonomia(p.comunidad);
         expect(q.text, p.id).toBe(`¿De qué comunidad autónoma es la provincia de ${p.nombre[nameForm]}?`);
-        expect(q.answer, p.id).toBe(c.nombre[nameForm]);
+        expect(q.correctAnswer, p.id).toBe(c.nombre[nameForm]);
         expect(q.explanation, p.id).toMatch(new RegExp(`^La provincia de ${p.nombre[nameForm].replace(/[/()]/g, "\\$&")} es ${deAutonomiaText(c, nameForm)}, que tiene `));
         for (const x of provinciasOf(c.id)) expect(q.explanation, `${p.id} → ${x.id}`).toContain(x.nombre[nameForm]);
         // La curiosidad de la provincia, si la tiene, sale en esta pregunta.
@@ -156,8 +156,8 @@ for (const nameForm of NAME_FORMS) {
         const q = find(nameForm, `municipio-provincia:${m.id}`);
         const p = provincia(m.id.slice(0, 2));
         expect(q.text, m.id).toBe(`¿De qué provincia es el municipio de ${m.nombre[nameForm]}?`);
-        expect(q.answer, m.id).toBe(p.nombre[nameForm]);
-        expect(q.answerKey, m.id).toBe("provincia:" + p.id);
+        expect(q.correctAnswer, m.id).toBe(p.nombre[nameForm]);
+        expect(q.correctAnswerKey, m.id).toBe("provincia:" + p.id);
       }
     });
 
@@ -216,14 +216,14 @@ for (const nameForm of NAME_FORMS) {
 
     it("cada pregunta es coherente: tipo existente, respuesta y trampas en su pool, en la misma forma", () => {
       for (const q of all) {
-        const answers = ([] as string[]).concat(q.answer);
-        expect(([] as string[]).concat(q.answerKey), q.id).toHaveLength(answers.length);
+        const correctAnswers = ([] as string[]).concat(q.correctAnswer);
+        expect(([] as string[]).concat(q.correctAnswerKey), q.id).toHaveLength(correctAnswers.length);
         if (q.pool) {
           expect(pools[q.pool], `${q.id} → tipo ${q.pool}`).toBeDefined();
-          for (const a of answers) expect(pools[q.pool], `${q.id} → ${a}`).toContain(a);
+          for (const a of correctAnswers) expect(pools[q.pool], `${q.id} → ${a}`).toContain(a);
           for (const t of q.trapOptions) expect(pools[q.pool], `${q.id} → trampa ${t}`).toContain(t);
         }
-        for (const a of answers) expect(q.trapOptions, q.id).not.toContain(a);
+        for (const a of correctAnswers) expect(q.trapOptions, q.id).not.toContain(a);
         expect(new Set(q.trapOptions).size, q.id).toBe(q.trapOptions.length);
         expect(q.explanation.length, q.id).toBeGreaterThan(10);
         expect(q.explanation, q.id).not.toContain("{");
@@ -252,11 +252,11 @@ for (const nameForm of NAME_FORMS) {
           for (const q0 of all) {
             const q = prepare(q0, n, pools);
             expect(q.options, q.id).toHaveLength(n);
-            expect(q.options, q.id).toContain(q.answer);
+            expect(q.options, q.id).toContain(q.correctAnswer);
             expect(new Set(q.options).size, q.id).toBe(n);
             for (const o of q.options) if (!q.fixedTrapOptions?.includes(o)) expect(pools[q.pool!], `${q.id} → ${o}`).toContain(o);
             if (q.fixedTrapOptions) expect(q.options.filter((o) => q.fixedTrapOptions!.includes(o)), `${q.id} → trampa fija`).toHaveLength(1);
-            for (const x of q.exclude) if (x !== q.answer) expect(q.options, `${q.id} → ${x}`).not.toContain(x);
+            for (const x of q.exclude) if (x !== q.correctAnswer) expect(q.options, `${q.id} → ${x}`).not.toContain(x);
           }
         }
       });
@@ -269,7 +269,7 @@ for (const nameForm of NAME_FORMS) {
       for (let r = 0; r < 300; r++) {
         for (const q0 of qs) {
           const q = prepare(q0, 4, pools);
-          q.options.filter((o) => o !== q.answer && capitales.includes(o)).forEach((o) => seen.add(o));
+          q.options.filter((o) => o !== q.correctAnswer && capitales.includes(o)).forEach((o) => seen.add(o));
         }
       }
       expect([...seen].sort()).toEqual([...new Set(capitales)].sort());
@@ -277,16 +277,16 @@ for (const nameForm of NAME_FORMS) {
 
     it("Ceuta y Melilla: su capital es la propia ciudad", () => {
       for (const c of AUTONOMIAS.filter((x) => x.tipo === "ciudad")) {
-        expect(find(nameForm, `capital-ccaa:${c.id}`).answer, c.id).toBe(c.nombre[nameForm]);
+        expect(find(nameForm, `capital-ccaa:${c.id}`).correctAnswer, c.id).toBe(c.nombre[nameForm]);
       }
     });
 
     it("Canarias: ninguna de sus dos capitales sale como incorrecta", () => {
       const q0 = find(nameForm, "capital-ccaa:05");
-      expect(Array.isArray(q0.answer)).toBe(true);
+      expect(Array.isArray(q0.correctAnswer)).toBe(true);
       for (let r = 0; r < 100; r++) {
         const q = prepare(q0, 8, pools);
-        expect((q0.answer as string[]).filter((c) => q.options.includes(c))).toEqual([q.answer]);
+        expect((q0.correctAnswer as string[]).filter((c) => q.options.includes(c))).toEqual([q.correctAnswer]);
       }
     });
   });
@@ -313,10 +313,10 @@ describe("preparación de los textos de las notas", () => {
 
 describe("formas de los nombres", () => {
   it("castellano usa la forma española y oficial la denominación oficial", () => {
-    expect(find("castellano", "capital-ccaa:16").answer).toBe("Vitoria");
-    expect(find("oficial", "capital-ccaa:16").answer).toBe("Vitoria-Gasteiz");
-    expect(find("castellano", "bandera-ccaa:04").answer).toBe("Islas Baleares");
-    expect(find("oficial", "bandera-ccaa:04").answer).toBe("Illes Balears");
+    expect(find("castellano", "capital-ccaa:16").correctAnswer).toBe("Vitoria");
+    expect(find("oficial", "capital-ccaa:16").correctAnswer).toBe("Vitoria-Gasteiz");
+    expect(find("castellano", "bandera-ccaa:04").correctAnswer).toBe("Islas Baleares");
+    expect(find("oficial", "bandera-ccaa:04").correctAnswer).toBe("Illes Balears");
     expect(poolsFor("castellano").anyCapital).toContain("Gerona");
     expect(poolsFor("oficial").anyCapital).toContain("Girona");
     expect(find("castellano", "capital-ccaa:04").text).toBe("¿Cuál es la capital de las Islas Baleares?");
@@ -326,7 +326,7 @@ describe("formas de los nombres", () => {
   it("la misma pregunta tiene el mismo identificador y el mismo lugar como respuesta en todas las formas", () => {
     const [a, b] = NAME_FORMS.map(bank);
     expect(a.map((q) => q.id)).toEqual(b.map((q) => q.id));
-    expect(a.map((q) => q.answerKey)).toEqual(b.map((q) => q.answerKey));
+    expect(a.map((q) => q.correctAnswerKey)).toEqual(b.map((q) => q.correctAnswerKey));
   });
 
   it("al responder se muestra la otra forma, solo si es distinta", () => {
@@ -342,8 +342,8 @@ describe("formas de los nombres", () => {
 });
 
 describe("reglas de las opciones (con datos de prueba)", () => {
-  const synthetic = (over: Partial<Question>): Question & { answer: string } =>
-    ({ id: "x", text: "", answer: "A", answerKey: "a", pool: "t", trapOptions: [], explanation: "", exclude: [], aliases: [], ...over }) as Question & { answer: string };
+  const synthetic = (over: Partial<Question>): Question & { correctAnswer: string } =>
+    ({ id: "x", text: "", correctAnswer: "A", correctAnswerKey: "a", pool: "t", trapOptions: [], explanation: "", exclude: [], aliases: [], ...over }) as Question & { correctAnswer: string };
 
   it("con pool, como mucho n-2 trampas: siempre queda una opción aleatoria", () => {
     const q = synthetic({ trapOptions: ["B", "C", "D", "E"] });
@@ -383,7 +383,7 @@ describe("reglas de las opciones (con datos de prueba)", () => {
   });
 
   it("tipo numérico: las incorrectas son números del rango", () => {
-    const q = synthetic({ answer: "17", pool: "num", range: [12, 22] });
+    const q = synthetic({ correctAnswer: "17", pool: "num", range: [12, 22] });
     for (let r = 0; r < 20; r++) {
       for (const o of makeOptions(q, 6, {})) {
         expect(Number(o)).toBeGreaterThanOrEqual(12);

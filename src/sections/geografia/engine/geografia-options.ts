@@ -27,8 +27,8 @@ export function poolFor(q: Question, pools: Pools): readonly string[] {
  * - Nunca aparecen valores de `exclude` ni duplicados.
  * - Si el pool se queda corto, se completa con las trampas que sobren.
  */
-export function makeOptions(q: Question & { answer: string }, n: number, pools: Pools, rng: Rng = Math.random): string[] {
-  const banned = new Set([q.answer, ...q.exclude]);
+export function makeOptions(q: Question & { correctAnswer: string }, n: number, pools: Pools, rng: Rng = Math.random): string[] {
+  const banned = new Set([q.correctAnswer, ...q.exclude]);
   const fixedCandidates = [...new Set(q.fixedTrapOptions ?? [])].filter((v) => !banned.has(v));
   const fixed = fixedCandidates.length && n > 1 ? [pick(fixedCandidates, rng)] : [];
   fixed.forEach((v) => banned.add(v));
@@ -41,14 +41,14 @@ export function makeOptions(q: Question & { answer: string }, n: number, pools: 
   while (wrong.length < n - 1 && fill.length) wrong.push(fill.pop()!);
   const rest = trapOptions.slice(k);
   while (wrong.length < n - 1 && rest.length) wrong.push(rest.pop()!);
-  return shuffle([q.answer, ...wrong], rng);
+  return shuffle([q.correctAnswer, ...wrong], rng);
 }
 
 /** Si hay varias respuestas válidas, fija una (con su lugar correspondiente). */
-export function fixAnswer<T extends Question>(q: T, rng: Rng = Math.random): T & { answer: string; answerKey: string } {
-  if (!Array.isArray(q.answer)) return q as T & { answer: string; answerKey: string };
-  const i = pick(q.answer.map((_, j) => j), rng);
-  return { ...q, answer: q.answer[i], answerKey: (q.answerKey as readonly string[])[i] };
+export function selectCorrectAnswer<T extends Question>(q: T, rng: Rng = Math.random): T & { correctAnswer: string; correctAnswerKey: string } {
+  if (!Array.isArray(q.correctAnswer)) return q as T & { correctAnswer: string; correctAnswerKey: string };
+  const i = pick(q.correctAnswer.map((_, j) => j), rng);
+  return { ...q, correctAnswer: q.correctAnswer[i], correctAnswerKey: (q.correctAnswerKey as readonly string[])[i] };
 }
 
 /**
@@ -56,6 +56,6 @@ export function fixAnswer<T extends Question>(q: T, rng: Rng = Math.random): T &
  * También pone la etiqueta que sale encima («Capitales de provincia»): la de su categoría y su territorio.
  */
 export function prepare(q: Question & { category: string; nameForm: NameForm }, n: number, pools: Pools, rng: Rng = Math.random): RoundQuestion {
-  const fixed = fixAnswer(q, rng);
+  const fixed = selectCorrectAnswer(q, rng);
   return { ...fixed, options: makeOptions(fixed, n, pools, rng), label: categoryById(q.category)?.labels[q.territorio] ?? "" };
 }

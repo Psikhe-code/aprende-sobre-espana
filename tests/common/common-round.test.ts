@@ -7,9 +7,9 @@ import { ROUND_LENGTH } from "../../src/common/engine/common-round-settings";
 import { Round, applyRecord, recordValue, ratingText } from "../../src/common/engine/common-round";
 import type { PlayableQuestion } from "../../src/common/engine/common-types";
 
-/** Pregunta de prueba cuya respuesta correcta es `answer`. */
-const rq = (id: string, answer: string): PlayableQuestion =>
-  ({ id, text: id, answer, options: [answer, "X"], label: "", explanation: "" });
+/** Pregunta de prueba cuya respuesta correcta es `correctAnswer`. */
+const rq = (id: string, correctAnswer: string): PlayableQuestion =>
+  ({ id, text: id, correctAnswer, options: [correctAnswer, "X"], label: "", explanation: "" });
 const tenQuestions = () => Array.from({ length: ROUND_LENGTH }, (_, i) => rq("q" + i, "A"));
 
 describe("partidas: desarrollo", () => {
@@ -24,7 +24,7 @@ describe("partidas: desarrollo", () => {
     expect(r.hits).toBe(7);
     expect(r.bestStreak).toBe(3);
     expect(r.misses.map((m) => m.question.id)).toEqual(["q2", "q6", "q8"]);
-    expect(r.misses[0].given).toBe("X");
+    expect(r.misses[0].givenAnswer).toBe("X");
     expect(g.finished).toBe(true);
   });
 
@@ -69,7 +69,7 @@ describe("se acaba el tiempo", () => {
     const g = new Round([rq("a", "A"), rq("b", "B"), rq("c", "C")], { expected: 3 });
     g.answer("A"); g.next();
     const r = g.timeout();
-    expect(r).toEqual({ correct: false, answer: "B", given: null });
+    expect(r).toEqual({ correct: false, correctAnswer: "B", givenAnswer: null });
     expect(g.streak).toBe(0);
     expect(() => g.timeout()).toThrow();
     expect(() => g.answer("B")).toThrow();
@@ -77,7 +77,7 @@ describe("se acaba el tiempo", () => {
     g.answer("C");
     const res = g.result();
     expect(res).toMatchObject({ hits: 2, total: 3, counts: true });
-    expect(res.misses).toEqual([{ question: g.questions[1], given: null }]);
+    expect(res.misses).toEqual([{ question: g.questions[1], givenAnswer: null }]);
   });
 });
 

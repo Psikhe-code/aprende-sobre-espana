@@ -42,7 +42,7 @@ export interface CcseQuestion {
   options: string[];
   /** Si las opciones salen siempre en este orden (p. ej. «Verdadero» y «Falso»). */
   fixedOrder?: boolean;
-  answer: string;
+  correctAnswer: string;
   explanation: string;
   sources: Fuente[];
 }
@@ -84,7 +84,7 @@ export function entryStatus(e: CcseEntry): EntryStatus {
       text: text,
       options: filled,
       ...(fixedOrder ? { fixedOrder: true } : {}),
-      answer: options[i],
+      correctAnswer: options[i],
       explanation: e.nota.trim(),
       sources: e.fuentes
     }
@@ -131,7 +131,7 @@ export function prepare(p: CcseQuestion, rng: Rng = Math.random): CcseRoundQuest
     id: p.id,
     tarea: p.tarea,
     text: p.text,
-    answer: p.answer,
+    correctAnswer: p.correctAnswer,
     options: p.fixedOrder ? [...p.options] : shuffle([...p.options], rng),
     label: tareaLabel(p.tarea),
     explanation: p.explanation,
