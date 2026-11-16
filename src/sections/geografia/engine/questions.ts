@@ -1,6 +1,6 @@
 // Geografía: sus preguntas, generadas a partir de los datos.
 
-import { NAME_FORMS, type NameForm, type Question } from "./types";
+import { NAME_FORMS, type NameForm, type Question, type Territorio } from "./types";
 import { AUTONOMIAS, PROVINCIAS, MUNICIPIOS, POPULATION_YEAR, autonomia, provinciasOf, deAutonomiaText, capitalesOf, neighborAutonomias, provincia, municipioProvinciaId, isCapital, type Comunidad, type NameForms, type Municipio, type Provincia } from "./territorio";
 import banderas from "../data/banderas.json";
 
@@ -298,7 +298,7 @@ export interface Bandera {
   /** De dónde sale la imagen: se muestra en Créditos. */
   fuente: { titulo: string; url: string; autor?: string; licencia: string; licenciaUrl?: string };
 }
-const byId = (listText: Bandera[]) => Object.fromEntries(listText.map((b) => [b.id, b]));
+const byId = (list: Bandera[]) => Object.fromEntries(list.map((b) => [b.id, b]));
 /** Información de cada bandera, por código INE de la comunidad o ciudad autónoma (banderas.json, «comunidades»). */
 export const AUTONOMIA_BANDERAS: Record<string, Bandera> = byId(banderas.comunidades);
 /**
@@ -317,47 +317,72 @@ export function banderaByKey(key: string): Bandera | undefined {
   return key.startsWith("p") ? PROVINCIA_BANDERAS[key.slice(1)] : AUTONOMIA_BANDERAS[key];
 }
 
-/** Banderas de las 17 comunidades y las 2 ciudades autónomas. */
-export function autonomiaBanderaQuestions(nameForm: NameForm): Question[] {
-  return AUTONOMIAS.map((c) => ({
-    id: `bandera-ccaa:${c.id}`,
-    // Mismo enunciado para todas: si dijera "ciudad" solo en Ceuta y Melilla, delataría la respuesta.
-    text: "¿De qué comunidad o ciudad autónoma es esta bandera?",
-    answer: c.nombre[nameForm],
-    answerKey: "autonomia:" + c.id,
-    pool: "autonomia",
-    trapOptions: AUTONOMIA_BANDERAS[c.id].trampas.map((id) => autonomia(id).nombre[nameForm]),
-    exclude: [],
-    why: prepareText(AUTONOMIA_BANDERAS[c.id].descripcion, nameForm),
-    meaning: prepareText(AUTONOMIA_BANDERAS[c.id].significado, nameForm),
-    flag: flagKey("comunidad", c.id),
-    aliases: aliases([c.nombre], nameForm),
-    territorio: "comunidad" as const
-  }));
+/** Lo que cambia entre las preguntas de banderas de comunidades y las de provincias. */
+interface BanderaQuestionsSpec {
+  territorio: Territorio;
+  /** Banderas de este territorio, por código INE, y los códigos de las que salen, en orden. */
+  banderas: Record<string, Bandera>;
+  ids: string[];
+  /** Nombre, en todas sus formas, de la comunidad o provincia con este código (también de las trampas). */
+  name: (id: string) => NameForms;
+  /** Principio del identificador de la pregunta («bandera-ccaa») y del lugar de la respuesta («autonomia»). */
+  idPrefix: string;
+  answerKeyPrefix: string;
+  text: string;
+  /** Pool del que salen las opciones equivocadas que no son trampas. */
+  pool: string;
 }
 
 /**
- * Banderas de provincia: las que tienen bandera aprobada y en uso (ver BANDERAS_PROVINCIAS).
- * Pool: las provincias con bandera, para que todas las opciones sean banderas que se pueden aprender.
- * Trampas: las provincias con banderas parecidas (del mismo color, o blancas con cruz roja).
+ * Preguntas de banderas: «¿De qué comunidad (o provincia) es esta bandera?». La nota es la descripción de la bandera,
+ * y después su significado. Trampas: las de banderas parecidas (`trampas` en banderas.json).
  */
-export function provinciaBanderaQuestions(nameForm: NameForm): Question[] {
-  return Object.keys(PROVINCIA_BANDERAS).sort().map((id) => {
-    const p = provincia(id);
-    const b = PROVINCIA_BANDERAS[id];
+function banderaQuestions(spec: BanderaQuestionsSpec, nameForm: NameForm): Question[] {
+  return spec.ids.map((id) => {
+    const b = spec.banderas[id];
+    const name = spec.name(id);
     return {
-      id: `bandera-provincia:${id}`,
-      text: "¿De qué provincia es esta bandera?",
-      answer: p.nombre[nameForm],
-      answerKey: "provincia:" + id,
-      pool: "provinciaWithBandera",
-      trapOptions: b.trampas.map((t) => provincia(t).nombre[nameForm]),
+      id: `${spec.idPrefix}:${id}`,
+      text: spec.text,
+      answer: name[nameForm],
+      answerKey: `${spec.answerKeyPrefix}:${id}`,
+      pool: spec.pool,
+      trapOptions: b.trampas.map((t) => spec.name(t)[nameForm]),
       exclude: [],
       why: prepareText(b.descripcion, nameForm),
       meaning: prepareText(b.significado, nameForm),
-      flag: flagKey("provincia", id),
-      aliases: aliases([p.nombre], nameForm),
-      territorio: "provincia" as const
+      flag: flagKey(spec.territorio, id),
+      aliases: aliases([name], nameForm),
+      territorio: spec.territorio
     };
   });
 }
+
+/** Banderas de las 17 comunidades y las 2 ciudades autónomas. */
+export const autonomiaBanderaQuestions = (nameForm: NameForm): Question[] => banderaQuestions({
+  territorio: "comunidad",
+  banderas: AUTONOMIA_BANDERAS,
+  ids: AUTONOMIAS.map((c) => c.id),
+  name: (id) => autonomia(id).nombre,
+  idPrefix: "bandera-ccaa",
+  answerKeyPrefix: "autonomia",
+  // Mismo enunciado para todas: si dijera "ciudad" solo en Ceuta y Melilla, delataría la respuesta.
+  text: "¿De qué comunidad o ciudad autónoma es esta bandera?",
+  pool: "autonomia"
+}, nameForm);
+
+/**
+ * Banderas de provincia: las que tienen bandera aprobada y en uso (ver PROVINCIA_BANDERAS).
+ * Pool: las provincias con bandera, para que todas las opciones sean banderas que se pueden aprender.
+ * Trampas: las provincias con banderas parecidas (del mismo color, o blancas con cruz roja).
+ */
+export const provinciaBanderaQuestions = (nameForm: NameForm): Question[] => banderaQuestions({
+  territorio: "provincia",
+  banderas: PROVINCIA_BANDERAS,
+  ids: Object.keys(PROVINCIA_BANDERAS).sort(),
+  name: (id) => provincia(id).nombre,
+  idPrefix: "bandera-provincia",
+  answerKeyPrefix: "provincia",
+  text: "¿De qué provincia es esta bandera?",
+  pool: "provinciaWithBandera"
+}, nameForm);
