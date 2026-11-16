@@ -3,7 +3,7 @@
 import { CATEGORY_IDS, OLD_CATEGORY_IDS } from "../../sections/geografia/engine/categories";
 import { SECTIONS, type Section } from "./types";
 import { NAME_FORMS, TERRITORIOS, type NameForm, type Territorio } from "../../sections/geografia/engine/types";
-import { TAREA_IDS, tareasConPreguntas } from "../../sections/ccse/engine/questions";
+import { TAREA_IDS, tareasWithQuestions } from "../../sections/ccse/engine/questions";
 import { DEFAULT_NAME_FORMS, DEFAULT_OPTION_COUNT, DEFAULT_TERRITORIOS, OPTION_COUNTS, type OptionCount } from "../../sections/geografia/engine/round-questions";
 import { DEFAULT_ROUND_LENGTH, DEFAULT_TIME_LIMIT, ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "./round-settings";
 
@@ -100,7 +100,7 @@ export function loadState(): SavedState {
 
 /** Opciones del examen guardadas, comprobadas una a una (como las de geografía). */
 function loadCcseSettings(raw: Partial<CcseSettings> | undefined): CcseSettings {
-  const withQuestions = tareasConPreguntas();
+  const withQuestions = tareasWithQuestions();
   const validTareas = (x: unknown) => (Array.isArray(x) ? TAREA_IDS.filter((n) => x.includes(n)) : undefined);
   const conocidas = validTareas(raw?.conocidas) ?? [];
   let tareas = (validTareas(raw?.tareas) ?? [...withQuestions]).filter((n) => withQuestions.includes(n));
