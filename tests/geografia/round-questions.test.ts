@@ -14,8 +14,8 @@ const CAPITALES_PROVINCIA = PROVINCIAS.filter((p) => p.trampas).length;
 
 describe("partidas: elección de preguntas", () => {
   it("cada pregunta lleva encima la etiqueta de su categoría y su territorio, también en el repaso y al barajar otra vez", () => {
-    const todas = buildRound({ categories: CATEGORY_IDS, roundLength: "sinLimite" });
-    for (const q of [...todas, ...buildReviewRound(todas), ...reshuffleRound({ categories: CATEGORY_IDS }, todas[0].id)]) {
+    const all = buildRound({ categories: CATEGORY_IDS, roundLength: "sinLimite" });
+    for (const q of [...all, ...buildReviewRound(all), ...reshuffleRound({ categories: CATEGORY_IDS }, all[0].id)]) {
       expect(q.label, q.id).toBe(categoryById(q.category)!.labels[q.territorio]);
       expect(q.label, q.id).not.toBe("");
     }
@@ -81,16 +81,16 @@ describe("partidas: elección de preguntas", () => {
   });
 
   it("reparten las preguntas entre las categorías", () => {
-    const cuenta: Record<string, number> = {};
+    const count: Record<string, number> = {};
     let total = 0;
     for (let r = 0; r < 300; r++) {
-      for (const q of buildRound({ categories: CATEGORY_IDS })) cuenta[q.category] = (cuenta[q.category] ?? 0) + 1;
+      for (const q of buildRound({ categories: CATEGORY_IDS })) count[q.category] = (count[q.category] ?? 0) + 1;
       total += ROUND_LENGTH;
     }
     // Se sortea primero la categoría: cada una sale más o menos en la misma proporción.
     for (const id of CATEGORY_IDS) {
-      expect(cuenta[id] / total, id).toBeGreaterThan(1 / CATEGORY_IDS.length - 0.08);
-      expect(cuenta[id] / total, id).toBeLessThan(1 / CATEGORY_IDS.length + 0.08);
+      expect(count[id] / total, id).toBeGreaterThan(1 / CATEGORY_IDS.length - 0.08);
+      expect(count[id] / total, id).toBeLessThan(1 / CATEGORY_IDS.length + 0.08);
     }
   });
 
@@ -122,32 +122,32 @@ describe("partidas: elección de preguntas", () => {
     expect(roundSize(["banderas"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, Object.keys(PROVINCIA_BANDERAS).length));
     expect(roundSize(["divisiones"], ["provincia"])).toBe(ROUND_LENGTH);
     // Las preguntas que hay son las distintas de la selección; sin límite, una vuelta entera.
-    const todas = new Set(CATEGORY_IDS.flatMap((id) => questionsIn(id).map((q) => q.id))).size;
-    expect(questionCount(CATEGORY_IDS)).toBe(todas);
-    expect(roundSize(CATEGORY_IDS, undefined, "sinLimite")).toBe(todas);
-    expect(roundSize(CATEGORY_IDS, undefined, 100)).toBe(Math.min(100, todas));
+    const all = new Set(CATEGORY_IDS.flatMap((id) => questionsIn(id).map((q) => q.id))).size;
+    expect(questionCount(CATEGORY_IDS)).toBe(all);
+    expect(roundSize(CATEGORY_IDS, undefined, "sinLimite")).toBe(all);
+    expect(roundSize(CATEGORY_IDS, undefined, 100)).toBe(Math.min(100, all));
   });
 
   it("25, 50 y 100 preguntas solo se pueden elegir si la selección tiene al menos esas; 10 y sin límite, siempre", () => {
-    for (const categorias of [["capitales"], ["banderas"], ["divisiones"], CATEGORY_IDS]) {
+    for (const categories of [["capitales"], ["banderas"], ["divisiones"], CATEGORY_IDS]) {
       for (const territorios of [["comunidad"], ["provincia"], ["comunidad", "provincia"]] as const) {
-        const hay = questionCount(categorias, [...territorios]);
+        const available = questionCount(categories, [...territorios]);
         for (const length of ROUND_LENGTHS) {
-          const esperado = length === "sinLimite" || length === ROUND_LENGTH || hay >= length;
-          expect(lengthFits(length, categorias, [...territorios]), `${categorias} ${territorios} ${length}`).toBe(esperado);
+          const expected = length === "sinLimite" || length === ROUND_LENGTH || available >= length;
+          expect(lengthFits(length, categories, [...territorios]), `${categories} ${territorios} ${length}`).toBe(expected);
         }
       }
     }
   });
 
   it("otra vuelta a la baraja tiene todas las preguntas, y no empieza por la última que salió", () => {
-    const ajustes = { categories: ["capitales"], territorios: ["provincia" as const] };
+    const settings = { categories: ["capitales"], territorios: ["provincia" as const] };
     for (let r = 0; r < 100; r++) {
-      const primera = buildRound({ ...ajustes, roundLength: "sinLimite" });
-      const ultima = primera[primera.length - 1].id;
-      const otra = reshuffleRound(ajustes, ultima);
-      expect(otra.map((q) => q.id).sort()).toEqual(primera.map((q) => q.id).sort());
-      expect(otra[0].id).not.toBe(ultima);
+      const first = buildRound({ ...settings, roundLength: "sinLimite" });
+      const last = first[first.length - 1].id;
+      const other = reshuffleRound(settings, last);
+      expect(other.map((q) => q.id).sort()).toEqual(first.map((q) => q.id).sort());
+      expect(other[0].id).not.toBe(last);
     }
   });
 
@@ -156,14 +156,14 @@ describe("partidas: elección de preguntas", () => {
       for (const nameForm of NAME_FORMS) expect(c.questions(nameForm)).toBe(c.questions(nameForm));
     }
     for (const nameForm of NAME_FORMS) expect(poolsFor(nameForm)).toBe(poolsFor(nameForm));
-    const banco = () => JSON.stringify([CATEGORIES.map((c) => NAME_FORMS.map((s) => c.questions(s))), NAME_FORMS.map(poolsFor)]);
-    const antes = banco();
+    const bank = () => JSON.stringify([CATEGORIES.map((c) => NAME_FORMS.map((s) => c.questions(s))), NAME_FORMS.map(poolsFor)]);
+    const before = bank();
     for (let r = 0; r < 50; r++) {
       const round = buildRound({ categories: CATEGORY_IDS, optionCount: 8 });
       buildReviewRound(round, { optionCount: 6 });
       reshuffleRound({ categories: CATEGORY_IDS }, round[0].id);
     }
-    expect(banco()).toBe(antes);
+    expect(bank()).toBe(before);
   });
 
   it("el repaso conserva las preguntas y regenera las opciones", () => {

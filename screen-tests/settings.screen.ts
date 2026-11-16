@@ -1,20 +1,20 @@
 // La pantalla de Opciones: cómo se eligen, se anuncian y se guardan.
 
-import { test, expect, abrir, SOLO_CAPITALES } from "./helpers";
+import { test, expect, openSection, ONLY_CAPITALES } from "./helpers";
 
 test("las tarjetas se anuncian bien: categorías como botones, tiempo como grupo de opciones", async ({ page }) => {
-  await abrir(page);
+  await openSection(page);
   await page.locator("#openOptions").click();
   await expect(page.getByRole("button", { name: /^Capitales/, pressed: true })).toBeVisible();
-  const tiempo = page.getByRole("radiogroup", { name: "Tiempo por pregunta" });
-  await expect(tiempo.getByRole("radio")).toHaveCount(4);
-  await expect(tiempo.getByRole("radio", { name: /^1 minuto/ })).toBeChecked();
+  const timeLimit = page.getByRole("radiogroup", { name: "Tiempo por pregunta" });
+  await expect(timeLimit.getByRole("radio")).toHaveCount(4);
+  await expect(timeLimit.getByRole("radio", { name: /^1 minuto/ })).toBeChecked();
   await expect(page.getByRole("radiogroup", { name: "Preguntas por partida" }).getByRole("radio", { name: /^10 preguntas/ })).toBeChecked();
 });
 
 test("en los grupos de opciones, las flechas pasan a otra y saltan las desactivadas", async ({ page, isMobile }) => {
   test.skip(isMobile, "con teclado, solo en escritorio");
-  await abrir(page);
+  await openSection(page);
   await page.locator("#openOptions").click();
 
   // El tabulador entra en la marcada.
@@ -36,9 +36,9 @@ test("en los grupos de opciones, las flechas pasan a otra y saltan las desactiva
 });
 
 test("si la selección no llega a un número de preguntas, sale desactivado y lo dice", async ({ page }) => {
-  await abrir(page);
+  await openSection(page);
   await page.locator("#openOptions").click();
-  for (const id of SOLO_CAPITALES) await page.locator(`[id="${id}"]`).click();
+  for (const id of ONLY_CAPITALES) await page.locator(`[id="${id}"]`).click();
   for (const n of [50, 100]) {
     await expect(page.locator(`[id="len-${n}"]`)).toBeDisabled();
     await expect(page.locator(`[id="len-${n}"] .cat-desc`)).toHaveText(/^Con esta selección hay \d+ preguntas\.$/);
@@ -56,7 +56,7 @@ test("si la selección no llega a un número de preguntas, sale desactivado y lo
 });
 
 test("las opciones se guardan: al volver a abrir el juego siguen marcadas", async ({ page }) => {
-  await abrir(page);
+  await openSection(page);
   await page.locator("#openOptions").click();
   await page.locator('[id="time-10"]').click();
   await page.locator('[id="option-count-8"]').click();

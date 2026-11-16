@@ -1,11 +1,11 @@
 // La partida sin límite: fin de la baraja, barajar y seguir, terminar y récord de racha.
 
-import { test, expect, abrir, opciones, responder, SOLO_CAPITALES } from "./helpers";
+import { test, expect, openSection, changeSettings, answerQuestions, ONLY_CAPITALES } from "./helpers";
 
 test("partida sin límite: fin de la baraja, barajar y seguir, terminar y récord de racha", async ({ page }) => {
-  await abrir(page);
+  await openSection(page);
   // Solo capitales de provincia: pocas preguntas, para llegar pronto al fin de la baraja.
-  await opciones(page, [...SOLO_CAPITALES, "terr-comunidad", "len-sinLimite", "time-sinTiempo"]);
+  await changeSettings(page, [...ONLY_CAPITALES, "terr-comunidad", "len-sinLimite", "time-sinTiempo"]);
   await expect(page.locator("#roundLabel")).toHaveText("Preguntas sin límite, al azar, de");
   await page.locator("#go").click();
   await expect(page.locator("#track")).toBeHidden();
@@ -15,7 +15,7 @@ test("partida sin límite: fin de la baraja, barajar y seguir, terminar y récor
   // Hasta acabar la baraja: tantas como preguntas hay (la tarjeta lo dice).
   let n = 0;
   while (await page.locator("#deckEnd").isHidden()) {
-    await responder(page, 1);
+    await answerQuestions(page, 1);
     n++;
     expect(n, "la baraja se acaba").toBeLessThan(100);
   }
@@ -27,7 +27,7 @@ test("partida sin límite: fin de la baraja, barajar y seguir, terminar y récor
 
   await page.locator("#reshuffle").click();
   await expect(page.locator("#sheet")).toHaveText(`Hoja ${String(n + 1).padStart(2, "0")}`);
-  await responder(page, 1);
+  await answerQuestions(page, 1);
   await page.locator("#stop").click();
 
   await expect(page.locator("#score")).toHaveText(new RegExp(`^\\d+/${n + 1}$`));

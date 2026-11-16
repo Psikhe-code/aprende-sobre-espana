@@ -14,7 +14,7 @@ import { questionCount } from "../../src/sections/geografia/engine/round-questio
 const base = (): SavedState => loadState(); // las opciones por defecto (en los tests no hay nada guardado)
 
 /** Regla de «Preguntas por partida»: 25, 50 y 100, solo si hay al menos esas; 10 y sin límite, siempre que haya alguna. */
-const cabe = (longitud: RoundLength, hay: number) => hay > 0 && (longitud === "sinLimite" || longitud === ROUND_LENGTH || hay >= longitud);
+const fits = (roundLength: RoundLength, available: number) => available > 0 && (roundLength === "sinLimite" || roundLength === ROUND_LENGTH || available >= roundLength);
 
 describe("selección de geografía", () => {
   it("con las opciones por defecto se puede jugar", () => {
@@ -22,15 +22,15 @@ describe("selección de geografía", () => {
   });
 
   it("sin ninguna categoría, forma de los nombres o territorio marcados, no se puede jugar", () => {
-    for (const vacio of [{ selected: [] }, { names: [] }, { territorios: [] }]) {
-      expect(canPlay({ ...base(), ...vacio }), JSON.stringify(vacio)).toBe(false);
+    for (const emptyChoice of [{ selected: [] }, { names: [] }, { territorios: [] }]) {
+      expect(canPlay({ ...base(), ...emptyChoice }), JSON.stringify(emptyChoice)).toBe(false);
     }
   });
 
   it("solo se puede jugar si la selección tiene preguntas y caben las elegidas por partida", () => {
-    for (const cat of CATEGORY_IDS) for (const t of TERRITORIOS) for (const longitud of ROUND_LENGTHS) {
-      const s = { ...base(), selected: [cat], territorios: [t], longitud };
-      expect(canPlay(s), `${cat} · ${t} · ${longitud}`).toBe(cabe(longitud, questionsIn(cat, [t]).length));
+    for (const cat of CATEGORY_IDS) for (const t of TERRITORIOS) for (const roundLength of ROUND_LENGTHS) {
+      const s = { ...base(), selected: [cat], territorios: [t], longitud: roundLength };
+      expect(canPlay(s), `${cat} · ${t} · ${roundLength}`).toBe(fits(roundLength, questionsIn(cat, [t]).length));
     }
   });
 
@@ -40,37 +40,37 @@ describe("selección de geografía", () => {
   });
 
   it("lo que da a la partida común: cada partida tiene el número de preguntas elegido (sin límite, todas) y las opciones elegidas", () => {
-    const probadas: RoundLength[] = [];
-    for (const longitud of ROUND_LENGTHS) {
-      const s = { ...base(), longitud, opciones: OPTION_COUNTS[1] };
+    const tested: RoundLength[] = [];
+    for (const roundLength of ROUND_LENGTHS) {
+      const s = { ...base(), longitud: roundLength, opciones: OPTION_COUNTS[1] };
       if (!canPlay(s)) continue;
       const mode = geografiaMode(s);
       const questions = mode.buildRound();
-      expect(questions, String(longitud)).toHaveLength(mode.roundSize());
-      expect(mode.roundSize(), String(longitud)).toBe(longitud === "sinLimite" ? questionCount(s.selected, s.territorios) : longitud);
-      expect(questions.every((q) => q.options.length === OPTION_COUNTS[1]), String(longitud)).toBe(true);
-      probadas.push(longitud);
+      expect(questions, String(roundLength)).toHaveLength(mode.roundSize());
+      expect(mode.roundSize(), String(roundLength)).toBe(roundLength === "sinLimite" ? questionCount(s.selected, s.territorios) : roundLength);
+      expect(questions.every((q) => q.options.length === OPTION_COUNTS[1]), String(roundLength)).toBe(true);
+      tested.push(roundLength);
     }
-    expect(probadas).toEqual([...ROUND_LENGTHS]);
+    expect(tested).toEqual([...ROUND_LENGTHS]);
   });
 
   it("la partida preparada deja de valer si cambia algo que decide las preguntas, pero no si cambia el tiempo", () => {
     const s = base();
-    const cambios: Partial<SavedState>[] = [
+    const changes: Partial<SavedState>[] = [
       { selected: [CATEGORY_IDS[0]] }, { names: [NAME_FORMS[0]] }, { territorios: [TERRITORIOS[0]] },
       { opciones: OPTION_COUNTS[2] }, { longitud: "sinLimite" }
     ];
-    for (const c of cambios) expect(selectionKey({ ...s, ...c }), JSON.stringify(c)).not.toBe(selectionKey(s));
-    for (const tiempo of TIME_LIMITS) expect(selectionKey({ ...s, tiempo })).toBe(selectionKey(s));
+    for (const c of changes) expect(selectionKey({ ...s, ...c }), JSON.stringify(c)).not.toBe(selectionKey(s));
+    for (const timeLimit of TIME_LIMITS) expect(selectionKey({ ...s, tiempo: timeLimit })).toBe(selectionKey(s));
   });
 
   it("los récords van aparte por categorías, territorio, dificultad, preguntas y tiempo, pero no por la forma de los nombres", () => {
     const s = base();
-    const cambios: Partial<SavedState>[] = [
+    const changes: Partial<SavedState>[] = [
       { selected: [CATEGORY_IDS[0]] }, { territorios: [TERRITORIOS[0]] }, { opciones: OPTION_COUNTS[2] },
       { longitud: "sinLimite" }, { tiempo: TIME_LIMITS.find((t) => t !== s.tiempo)! }
     ];
-    for (const c of cambios) expect(recordKey({ ...s, ...c }), JSON.stringify(c)).not.toBe(recordKey(s));
+    for (const c of changes) expect(recordKey({ ...s, ...c }), JSON.stringify(c)).not.toBe(recordKey(s));
     expect(recordKey({ ...s, names: [NAME_FORMS[0]] })).toBe(recordKey(s));
   });
 });
