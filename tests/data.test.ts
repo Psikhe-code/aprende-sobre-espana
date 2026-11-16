@@ -1,22 +1,22 @@
 import { describe, expect, it } from "vitest";
 import Ajv from "ajv";
-import territorio from "../src/data/territorio.json";
-import banderas from "../src/data/banderas.json";
-import municipios from "../src/data/municipios.json";
-import municipiosSchema from "../src/data/schema/municipios.schema.json";
-import territorioSchema from "../src/data/schema/territorio.schema.json";
-import banderasSchema from "../src/data/schema/banderas.schema.json";
-import ccse from "../src/data/ccse.json";
-import ccseSchema from "../src/data/schema/ccse.schema.json";
-import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../src/engine/territory";
-import { NAME_STYLES } from "../src/engine/types";
-import { BANDERAS, BANDERAS_PROVINCIAS } from "../src/engine/questions";
+import territorio from "../src/sections/geografia/data/territorio.json";
+import banderas from "../src/sections/geografia/data/banderas.json";
+import municipios from "../src/sections/geografia/data/municipios.json";
+import municipiosSchema from "../src/sections/geografia/data/schema/municipios.schema.json";
+import territorioSchema from "../src/sections/geografia/data/schema/territorio.schema.json";
+import banderasSchema from "../src/sections/geografia/data/schema/banderas.schema.json";
+import ccse from "../src/sections/ccse/data/ccse.json";
+import ccseSchema from "../src/sections/ccse/data/schema/ccse.schema.json";
+import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasDe, capitalesDe, poolsFor } from "../src/sections/geografia/engine/territorio";
+import { NAME_STYLES } from "../src/sections/geografia/engine/types";
+import { BANDERAS, BANDERAS_PROVINCIAS } from "../src/sections/geografia/engine/questions";
 
 // Comprobaciones del contenido: si alguien edita un JSON y se equivoca, el test dice dónde.
 
 const svgs = (carpeta: string, todos: Record<string, string>) =>
   Object.fromEntries(Object.entries(todos).filter(([f]) => f.includes(`/${carpeta}/`)).map(([f, texto]) => [f.split("/").pop()!, texto]));
-const TODOS_LOS_SVG = import.meta.glob("../src/data/banderas/*/*.svg", { eager: true, query: "?raw", import: "default" }) as Record<string, string>;
+const TODOS_LOS_SVG = import.meta.glob("../src/sections/geografia/data/banderas/*/*.svg", { eager: true, query: "?raw", import: "default" }) as Record<string, string>;
 const FLAG_FILES = svgs("comunidades", TODOS_LOS_SVG);
 const PROVINCE_FLAG_FILES = svgs("provincias", TODOS_LOS_SVG);
 
@@ -244,7 +244,7 @@ describe("imágenes de las banderas", () => {
   });
 
   it("están limpias con SVGO: en una sola línea y sin datos del programa de dibujo", () => {
-    // Si falla con una bandera nueva: npm run limpiar-bandera -- src/data/banderas/<carpeta>/<archivo>.svg
+    // Si falla con una bandera nueva: npm run limpiar-bandera -- src/sections/geografia/data/banderas/<carpeta>/<archivo>.svg
     for (const [archivo, texto] of Object.entries({ ...FLAG_FILES, ...PROVINCE_FLAG_FILES })) {
       expect(texto.trim(), archivo).not.toMatch(/\n|<metadata|<!--|inkscape:|sodipodi:|xmlns:rdf/);
     }

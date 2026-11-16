@@ -1,0 +1,138 @@
+// Arranca el juego y decide qué pantalla se ve. Cada pantalla tiene su archivo: las comunes, en common/ui,
+// y las de cada sección, en sections/<sección>/ui.
+
+import { loadState, saveState } from "../engine/storage";
+import type { Seccion } from "../engine/types";
+import { SCREENS, type Contexto, type Screen } from "./context";
+import { drawContours } from "./contours";
+import { renderCredits } from "./credits-screen";
+import { $ } from "./dom";
+import { renderStartCcse } from "../../sections/ccse/ui/start-screen";
+import { crearOpcionesCcse } from "../../sections/ccse/ui/settings-screen";
+import { renderStart } from "../../sections/geografia/ui/start-screen";
+import { modoCcse } from "../../sections/ccse/ui/mode";
+import { modoGeografia } from "../../sections/geografia/ui/mode";
+import { crearOpciones } from "../../sections/geografia/ui/settings-screen";
+import { crearPartida } from "./round-screen";
+import { crearSimulacro } from "../../sections/ccse/ui/simulacro-screen";
+
+export interface App {
+  /** true en las pantallas donde se puede recargar sin perder nada (todas menos la partida, el simulacro y sus resultados). */
+  isIdle(): boolean;
+  /** Se llama cada vez que el jugador vuelve a una pantalla tranquila. */
+  onIdle(callback: () => void): void;
+  /** true si se está viendo el menú de secciones. */
+  enMenu(): boolean;
+}
+
+/** Pantallas de juego: sin la cabecera grande. */
+const DE_JUEGO: readonly Screen[] = ["play", "end", "sim", "simEnd"];
+const tranquila = (s: Screen) => !DE_JUEGO.includes(s);
+/** Pantallas con la versión al pie: el menú de secciones y el inicio de cada sección. */
+const CON_VERSION: readonly Screen[] = ["sections", "start", "ccseStart"];
+
+/**
+ * Marca que la página se va a recargar para aplicar una versión nueva (main.ts). Así, al volver a abrirse,
+ * el juego sigue en la sección donde estaba el jugador en vez de saltar al menú de secciones.
+ */
+export const RECARGA_POR_ACTUALIZACION = "aprende-sobre-espana:recarga-por-actualizacion";
+
+/** Texto de la cabecera grande: en la pantalla de secciones y en cada sección. */
+const CABECERAS: Record<Seccion | "secciones", { eyebrow: string; lede: string }> = {
+  secciones: {
+    eyebrow: "Atlas de bolsillo",
+    lede: "Geografía de España y preparación del examen de nacionalidad. Elige por dónde empezar; luego puedes cambiar de sección cuando quieras."
+  },
+  geografia: {
+    eyebrow: "Atlas de bolsillo · Geografía de España",
+    lede: "Capitales, banderas, provincias y municipios de las comunidades autónomas. Elige en Opciones qué categorías y territorios entran, cuántas preguntas tiene cada partida y cuánto tiempo hay para responder."
+  },
+  ccse: {
+    eyebrow: "Examen de nacionalidad · Práctica",
+    lede: "La Constitución, las instituciones, los derechos, la cultura y la sociedad españolas, con las preguntas de la prueba CCSE del Instituto Cervantes."
+  }
+};
+
+export function startApp(): App {
+  const state = loadState();
+  let screen: Screen = "start";
+  const idleListeners: (() => void)[] = [];
+  const seccion = (): Seccion => state.seccion ?? "geografia";
+
+  const ctx: Contexto = {
+    state,
+    save: () => saveState(state),
+    pantalla: () => screen,
+    show(id) {
+      if (id !== "play") partida.alSalir();
+      if (id !== "sim") simulacro.alSalir();
+      screen = id;
+      SCREENS.forEach((s) => { $(s).hidden = s !== id; });
+      // Si el foco estaba en la pantalla que se acaba de esconder (en el botón pulsado), pasa a la nueva:
+      // el lector de pantalla dice cuál es, y el tabulador sigue desde ahí. La partida y el resultado
+      // lo llevan después a la pregunta o al resultado. Al abrir el juego no se mueve.
+      const activo = document.activeElement;
+      if (activo instanceof HTMLElement && activo.closest<HTMLElement>(".screen")?.hidden) $(id).focus({ preventScroll: true });
+      $("version").hidden = !CON_VERSION.includes(id);
+      // En la partida, el simulacro y sus resultados, la cabecera pequeña: la pregunta empieza arriba.
+      document.querySelector(".app")!.classList.toggle("compacta", !tranquila(id));
+      const cabecera = CABECERAS[id === "sections" ? "secciones" : seccion()];
+      $("eyebrow").textContent = cabecera.eyebrow;
+      $("lede").textContent = cabecera.lede;
+      window.scrollTo({ top: 0 });
+      if (tranquila(id)) idleListeners.forEach((f) => f());
+    },
+    goHome() {
+      if (seccion() === "ccse") renderStartCcse(state);
+      else renderStart(state);
+      partida.preparar();
+      ctx.show(seccion() === "ccse" ? "ccseStart" : "start");
+    },
+    openOptions() {
+      if (seccion() === "ccse") { opcionesCcse.render(); ctx.show("ccseOptions"); }
+      else { opciones.render(); ctx.show("options"); }
+    },
+    modo: () => (seccion() === "ccse" ? modoCcse(state) : modoGeografia(state))
+  };
+
+  const opciones = crearOpciones(ctx);
+  const opcionesCcse = crearOpcionesCcse(ctx);
+  const partida = crearPartida(ctx);
+  const simulacro = crearSimulacro(ctx, partida.repasar);
+
+  const elegirSeccion = (s: Seccion) => () => { state.seccion = s; ctx.save(); ctx.goHome(); };
+  $("sec-geografia").addEventListener("click", elegirSeccion("geografia"));
+  $("sec-ccse").addEventListener("click", elegirSeccion("ccse"));
+  for (const id of ["toSections", "ccseToSections"]) $(id).addEventListener("click", () => ctx.show("sections"));
+
+  for (const id of ["openOptions", "ccseOpenOptions"]) $(id).addEventListener("click", ctx.openOptions);
+  for (const id of ["openCredits", "ccseOpenCredits"]) $(id).addEventListener("click", () => { renderCredits(seccion()); ctx.show("credits"); });
+  $("closeCredits").addEventListener("click", ctx.goHome);
+  $("menu").addEventListener("click", ctx.goHome);
+
+  renderVersion();
+  drawContours(document.querySelector<SVGSVGElement>("#contours")!);
+  // Al abrir el juego, siempre el menú de secciones. Solo si la página se ha recargado para aplicar
+  // una versión nueva, se vuelve a la sección donde estaba el jugador.
+  let trasActualizar = false;
+  try {
+    trasActualizar = sessionStorage.getItem(RECARGA_POR_ACTUALIZACION) !== null;
+    sessionStorage.removeItem(RECARGA_POR_ACTUALIZACION);
+  } catch { /* sin sessionStorage, se abre el menú */ }
+  if (trasActualizar && state.seccion !== null) ctx.goHome();
+  else ctx.show("sections");
+
+  return {
+    isIdle: () => tranquila(screen),
+    onIdle: (callback) => { idleListeners.push(callback); },
+    enMenu: () => screen === "sections"
+  };
+}
+
+/** Versión al pie del menú de secciones y del inicio de cada sección, para saber si ya se ve la última publicada. */
+export function renderVersion(): void {
+  const publicado = new Date(__PUBLICADO__);
+  $("version").textContent = import.meta.env.DEV
+    ? `Versión ${__VERSION__} · en desarrollo`
+    : `Versión ${__VERSION__} · publicada el ${publicado.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" })} a las ${publicado.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}`;
+}

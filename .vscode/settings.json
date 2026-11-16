@@ -1,7 +1,7 @@
 {
   // Autocompletado y avisos al editar los datos del juego en VS Code
   "json.schemas": [
-    { "fileMatch": ["src/data/territorio.json"], "url": "./src/data/schema/territorio.schema.json" },
-    { "fileMatch": ["src/data/banderas.json"], "url": "./src/data/schema/banderas.schema.json" }
+    { "fileMatch": ["src/sections/geografia/data/territorio.json"], "url": "./src/sections/geografia/data/schema/territorio.schema.json" },
+    { "fileMatch": ["src/sections/geografia/data/banderas.json"], "url": "./src/sections/geografia/data/schema/banderas.schema.json" }
   ]
 }

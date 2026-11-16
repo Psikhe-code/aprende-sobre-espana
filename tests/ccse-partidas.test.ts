@@ -1,15 +1,15 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   PREGUNTAS_CCSE, TAREAS, cabeCcse, nombreTarea, otraVueltaCcse, partidaCcse, preguntasDe, repasoCcse, tamanoCcse, tarea, tareasConPreguntas
-} from "../src/engine/ccse";
-import { ROUND_LENGTH, ROUND_LENGTHS } from "../src/engine/round";
-import { puedeJugarCcse } from "../src/engine/seleccion";
-import { ccseKey, loadState, STORAGE_KEY } from "../src/engine/storage";
+} from "../src/sections/ccse/engine/questions";
+import { ROUND_LENGTH, ROUND_LENGTHS } from "../src/common/engine/round-settings";
+import { puedeJugarCcse } from "../src/sections/ccse/engine/selection";
+import { ccseKey, loadState, STORAGE_KEY } from "../src/common/engine/storage";
 
 // Examen de nacionalidad: partidas y guardado, con datos de prueba (ccse-prueba.ts) en vez de la
 // plantilla real, que se va rellenando poco a poco. Las reglas de los datos reales, en ccse.test.ts.
 
-vi.mock("../src/data/ccse.json", async () => ({ default: (await import("./ccse-prueba")).ccsePrueba() }));
+vi.mock("../src/sections/ccse/data/ccse.json", async () => ({ default: (await import("./ccse-prueba")).ccsePrueba() }));
 
 const TODAS = TAREAS.map((t) => t.numero);
 

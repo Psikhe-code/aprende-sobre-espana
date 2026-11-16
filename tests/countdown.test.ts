@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Countdown } from "../src/engine/countdown";
+import { Countdown } from "../src/common/engine/countdown";
 
 /** Reloj de mentira: el test decide cuánto pasa. */
 function reloj() {

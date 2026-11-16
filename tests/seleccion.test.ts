@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { CATEGORY_IDS } from "../src/engine/categories";
-import { questionsIn, ROUND_LENGTH, ROUND_LENGTHS, OPTION_COUNTS, TIME_LIMITS, type RoundLength } from "../src/engine/round";
-import { ajustesPartida, claveRecord, puedeJugar, seleccionActual } from "../src/engine/seleccion";
-import { loadState, type SavedState } from "../src/engine/storage";
-import { NAME_STYLES, TERRITORIOS } from "../src/engine/types";
+import { CATEGORY_IDS } from "../src/sections/geografia/engine/categories";
+import { questionsIn, OPTION_COUNTS } from "../src/sections/geografia/engine/round-questions";
+import { ROUND_LENGTH, ROUND_LENGTHS, TIME_LIMITS, type RoundLength } from "../src/common/engine/round-settings";
+import { ajustesPartida, claveRecord, puedeJugar, seleccionActual } from "../src/sections/geografia/engine/selection";
+import { loadState, type SavedState } from "../src/common/engine/storage";
+import { NAME_STYLES, TERRITORIOS } from "../src/sections/geografia/engine/types";
 
 // Lo que se deduce de las opciones marcadas en Geografía (la selección): si se puede jugar, con qué ajustes
 // y con qué clave se guarda el récord. Las reglas, como están en CLAUDE.md.
