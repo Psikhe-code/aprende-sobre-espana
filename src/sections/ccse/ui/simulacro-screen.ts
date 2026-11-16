@@ -3,12 +3,12 @@
 // Mientras se hace no se dice si una respuesta es correcta, como en la prueba real.
 // Las reglas (reparto, aprobado, entrega) viven en engine/simulacro.ts; aquí solo se dibujan.
 
-import type { PreguntaCcseJugable } from "../engine/questions";
+import type { CcseRoundQuestion } from "../engine/questions";
 import { Countdown } from "../../../common/engine/countdown";
 import type { PlayableQuestion } from "../../../common/engine/types";
 import {
-  APROBADO_SIMULACRO, CLAVE_SIMULACRO, MINUTOS_SIMULACRO, PREGUNTAS_SIMULACRO, REPARTO_SIMULACRO, Simulacro,
-  apuntarSimulacro, preguntasSimulacro, simulacroPosible, type ResultadoSimulacro
+  SIMULACRO_APTO_HITS, SIMULACRO_RECORD_KEY, SIMULACRO_MINUTES, SIMULACRO_QUESTION_COUNT, SIMULACRO_DISTRIBUTION, Simulacro,
+  applySimulacroRecord, simulacroQuestions, canDoSimulacro, type SimulacroResult
 } from "../engine/simulacro";
 import type { SavedState } from "../../../common/engine/storage";
 import type { Contexto } from "../../../common/ui/context";
@@ -23,23 +23,23 @@ export interface PantallaSimulacro {
 
 /** Qué es el simulacro, para el inicio del examen: sale de las reglas, así que si cambian, cambia solo. */
 export function textoSimulacro(): string {
-  const reparto = REPARTO_SIMULACRO.map((r) => r.preguntas);
+  const reparto = SIMULACRO_DISTRIBUTION.map((r) => r.questionCount);
   const lista = reparto.slice(0, -1).join(", ") + " y " + reparto[reparto.length - 1];
-  return `Como la prueba real: ${PREGUNTAS_SIMULACRO} preguntas repartidas por tareas (${lista}), ${MINUTOS_SIMULACRO} minutos ` +
-    `para todo y apto con ${APROBADO_SIMULACRO} aciertos. No sabrás si aciertas hasta entregar.`;
+  return `Como la prueba real: ${SIMULACRO_QUESTION_COUNT} preguntas repartidas por tareas (${lista}), ${SIMULACRO_MINUTES} minutos ` +
+    `para todo y apto con ${SIMULACRO_APTO_HITS} aciertos. No sabrás si aciertas hasta entregar.`;
 }
 
 /** Bloque del simulacro en el inicio del examen: solo si hay preguntas de sobra en cada tarea. */
 export function renderInicioSimulacro(state: SavedState): void {
-  const posible = simulacroPosible();
+  const posible = canDoSimulacro();
   $("simResumen").hidden = !posible;
   if (!posible) return;
   $("simInfo").textContent = textoSimulacro();
-  const mejor = state.best[CLAVE_SIMULACRO];
+  const mejor = state.best[SIMULACRO_RECORD_KEY];
   const record = $("simRecord");
   record.replaceChildren();
   if (mejor == null) record.textContent = "Aún no has hecho ningún simulacro.";
-  else record.append("Mejor resultado: ", el("b", "", `${mejor}/${PREGUNTAS_SIMULACRO}`));
+  else record.append("Mejor resultado: ", el("b", "", `${mejor}/${SIMULACRO_QUESTION_COUNT}`));
 }
 
 /** Prepara las pantallas del simulacro (sus botones y teclas). `repasar` empieza el repaso de los fallos. */
@@ -55,9 +55,9 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
   const anunciar = (texto: string) => { $("simAnnounce").textContent = texto; };
 
   function empezar() {
-    if (!simulacroPosible()) return;
-    sim = new Simulacro(preguntasSimulacro());
-    reloj = new Countdown(MINUTOS_SIMULACRO * 60 * 1000);
+    if (!canDoSimulacro()) return;
+    sim = new Simulacro(simulacroQuestions());
+    reloj = new Countdown(SIMULACRO_MINUTES * 60 * 1000);
     avisos = new Set();
     cerrarAviso();
     ctx.show("sim");
@@ -94,12 +94,12 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
   function dibujar() {
     if (!sim) return;
     const s = sim;
-    const q = s.actual;
-    $("simSheet").replaceChildren(`Pregunta ${pad(s.indice + 1)} `, el("span", "", `/ ${pad(s.total)}`));
-    $("simRespondidas").textContent = `${s.respondidas}/${s.total}`;
+    const q = s.current;
+    $("simSheet").replaceChildren(`Pregunta ${pad(s.index + 1)} `, el("span", "", `/ ${pad(s.total)}`));
+    $("simRespondidas").textContent = `${s.answeredCount}/${s.total}`;
     $("simCat").textContent = q.label;
     $("simQuestion").textContent = q.text;
-    const elegida = s.respuestas[s.indice];
+    const elegida = s.answers[s.index];
     $("simOpts").replaceChildren(...q.options.map((o, j) => {
       const b = el("button", "opt" + (o === elegida ? " elegida" : ""));
       b.id = "sim-opt-" + j;
@@ -109,14 +109,14 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
       b.addEventListener("click", () => elegir(o));
       return b;
     }));
-    $<HTMLButtonElement>("simPrev").disabled = s.indice === 0;
-    $("simNext").hidden = s.indice === s.total - 1;
-    $("simMapa").replaceChildren(...s.preguntas.map((_, j) => {
-      const hecha = s.respuestas[j] !== null;
+    $<HTMLButtonElement>("simPrev").disabled = s.index === 0;
+    $("simNext").hidden = s.index === s.total - 1;
+    $("simMapa").replaceChildren(...s.questions.map((_, j) => {
+      const hecha = s.answers[j] !== null;
       const b = el("button", "sim-n" + (hecha ? " hecha" : ""), String(j + 1));
       b.id = "sim-n-" + (j + 1);
       b.setAttribute("aria-label", `Pregunta ${j + 1}, ${hecha ? "respondida" : "sin responder"}`);
-      if (j === s.indice) b.setAttribute("aria-current", "true");
+      if (j === s.index) b.setAttribute("aria-current", "true");
       b.addEventListener("click", () => ir(j));
       return b;
     }));
@@ -124,20 +124,20 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
 
   function elegir(opcion: string) {
     if (!sim || confirmando) return;
-    sim.responder(opcion);
-    const i = sim.indice;
+    sim.answer(opcion);
+    const i = sim.index;
     dibujar();
-    $("sim-opt-" + sim.actual.options.indexOf(opcion)).focus({ preventScroll: true });
+    $("sim-opt-" + sim.current.options.indexOf(opcion)).focus({ preventScroll: true });
     anunciar(`Respuesta de la pregunta ${i + 1}: ${opcion}.`);
   }
 
   function ir(i: number, foco?: string) {
     if (!sim || confirmando) return;
-    sim.ir(i);
+    sim.goTo(i);
     dibujar();
     window.scrollTo({ top: 0 });
     // El foco se queda en el botón con el que se ha llegado (Siguiente, Anterior o el número del mapa).
-    const destino = foco && !$(foco).hidden && !$<HTMLButtonElement>(foco).disabled ? foco : "sim-n-" + (sim.indice + 1);
+    const destino = foco && !$(foco).hidden && !$<HTMLButtonElement>(foco).disabled ? foco : "sim-n-" + (sim.index + 1);
     $(destino).focus({ preventScroll: true });
   }
 
@@ -145,7 +145,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
   function pedirConfirmacion(que: "entregar" | "salir") {
     if (!sim) return;
     confirmando = que;
-    const n = sim.sinResponder;
+    const n = sim.unansweredCount;
     $("simConfirmarTexto").textContent = que === "salir"
       ? "Si sales ahora, se pierde este simulacro."
       : n ? `Te ${n === 1 ? "queda 1 pregunta" : `quedan ${n} preguntas`} sin responder, que ${n === 1 ? "contará" : "contarán"} como ${n === 1 ? "fallo" : "fallos"}. Al entregar ya no podrás cambiar las respuestas.`
@@ -170,36 +170,36 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
 
   /** Entrega el examen: al pulsar «Entregar» o al acabarse el tiempo. */
   function entregar(porTiempo: boolean) {
-    if (!sim || !reloj || sim.entregado) return;
+    if (!sim || !reloj || sim.submitted) return;
     pararReloj();
     cerrarAviso();
-    const r = sim.entregar();
+    const r = sim.submit();
     const tiempo = reloj.ms - reloj.remaining();
-    const rec = apuntarSimulacro(ctx.state.best, r.aciertos);
-    if (rec.nuevo) { ctx.state.best = rec.best; ctx.save(); }
-    fallos = r.fallos.map((f) => f.question);
-    dibujarResultado(sim.preguntas, r, porTiempo ? "Se acabó el tiempo" : `Tiempo: ${usado(tiempo)}`, rec.mejor);
+    const rec = applySimulacroRecord(ctx.state.best, r.hits);
+    if (rec.isNewRecord) { ctx.state.best = rec.best; ctx.save(); }
+    fallos = r.misses.map((f) => f.question);
+    dibujarResultado(sim.questions, r, porTiempo ? "Se acabó el tiempo" : `Tiempo: ${usado(tiempo)}`, rec.record);
     ctx.show("simEnd");
   }
 
-  function dibujarResultado(preguntas: readonly PreguntaCcseJugable[], r: ResultadoSimulacro, tiempo: string, mejor: number) {
-    $("simScore").replaceChildren(String(r.aciertos), el("small", "", `/${r.total}`));
+  function dibujarResultado(preguntas: readonly CcseRoundQuestion[], r: SimulacroResult, tiempo: string, mejor: number) {
+    $("simScore").replaceChildren(String(r.hits), el("small", "", `/${r.total}`));
     $("simTitle").textContent = r.apto ? "Apto" : "No apto";
     $("simTitle").classList.toggle("apto", r.apto);
     $("simTitle").classList.toggle("no-apto", !r.apto);
-    $("simSub").textContent = `Simulacro de examen · Apto con ${APROBADO_SIMULACRO} aciertos · ${tiempo} · Mejor resultado: ${mejor}/${r.total}`;
-    $("simPorTarea").replaceChildren(...r.porTarea.map((t) =>
-      el("span", "chip" + (t.aciertos === t.total ? " llena" : ""), `Tarea ${t.tarea} · ${t.aciertos}/${t.total}`)));
+    $("simSub").textContent = `Simulacro de examen · Apto con ${SIMULACRO_APTO_HITS} aciertos · ${tiempo} · Mejor resultado: ${mejor}/${r.total}`;
+    $("simPorTarea").replaceChildren(...r.byTarea.map((t) =>
+      el("span", "chip" + (t.hits === t.total ? " llena" : ""), `Tarea ${t.tarea} · ${t.hits}/${t.total}`)));
 
     const lista = $("simMisses");
     lista.replaceChildren();
-    $("simMissLabel").hidden = !r.fallos.length;
-    $("simReview").hidden = !r.fallos.length;
-    if (!r.fallos.length) {
+    $("simMissLabel").hidden = !r.misses.length;
+    $("simReview").hidden = !r.misses.length;
+    if (!r.misses.length) {
       lista.append(el("p", "allright", "Sin fallos en este simulacro."));
       return;
     }
-    for (const f of r.fallos) {
+    for (const f of r.misses) {
       const row = el("div", "miss");
       row.append(el("span", "miss-cat", `Pregunta ${preguntas.indexOf(f.question) + 1} · Tarea ${f.question.tarea}`));
       row.append(el("span", "miss-q", f.question.text));
@@ -216,8 +216,8 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
   $("simAgain").addEventListener("click", empezar);
   $("simMenu").addEventListener("click", ctx.goHome);
   $("simReview").addEventListener("click", () => repasar(fallos));
-  $("simPrev").addEventListener("click", () => sim && ir(sim.indice - 1, "simPrev"));
-  $("simNext").addEventListener("click", () => sim && ir(sim.indice + 1, "simNext"));
+  $("simPrev").addEventListener("click", () => sim && ir(sim.index - 1, "simPrev"));
+  $("simNext").addEventListener("click", () => sim && ir(sim.index + 1, "simNext"));
   $("simEntregar").addEventListener("click", () => pedirConfirmacion("entregar"));
   $("simSalir").addEventListener("click", () => pedirConfirmacion("salir"));
   $("simConfirmarSi").addEventListener("click", confirmar);
@@ -233,15 +233,15 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     const numero = teclaNumero(e);
     if (numero !== null) {
-      const o = sim.actual.options[numero - 1];
+      const o = sim.current.options[numero - 1];
       if (o !== undefined) { e.preventDefault(); elegir(o); }
-    } else if (e.key === "ArrowRight") { e.preventDefault(); ir(sim.indice + 1, "simNext"); }
-    else if (e.key === "ArrowLeft") { e.preventDefault(); ir(sim.indice - 1, "simPrev"); }
+    } else if (e.key === "ArrowRight") { e.preventDefault(); ir(sim.index + 1, "simNext"); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); ir(sim.index - 1, "simPrev"); }
   });
 
   // Al cambiar de pestaña o bloquear el móvil, el reloj se para; al volver, sigue (como en las partidas).
   document.addEventListener("visibilitychange", () => {
-    if (!reloj || !sim || sim.entregado || ctx.pantalla() !== "sim") return;
+    if (!reloj || !sim || sim.submitted || ctx.pantalla() !== "sim") return;
     if (document.hidden) reloj.pause();
     else { reloj.start(); tic(); }
   });
@@ -249,7 +249,7 @@ export function crearSimulacro(ctx: Contexto, repasar: (fallos: PlayableQuestion
   return {
     alSalir() {
       // Solo se llega aquí sin entregar si se sale de la pantalla por otro camino: el examen se da por perdido.
-      if (sim && !sim.entregado) { pararReloj(); sim = null; }
+      if (sim && !sim.submitted) { pararReloj(); sim = null; }
     }
   };
 }

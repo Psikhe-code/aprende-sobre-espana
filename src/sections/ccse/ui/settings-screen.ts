@@ -3,8 +3,8 @@
 import type { Contexto } from "../../../common/ui/context";
 import { $, cambiarCon, radioGroup, toggleCard } from "../../../common/ui/dom";
 import { avisoLongitud, grupoLongitud, grupoTiempo } from "../../../common/ui/widgets";
-import { TAREAS, cabeCcse, preguntasDe, tareasConPreguntas } from "../engine/questions";
-import { puedeJugarCcse } from "../engine/selection";
+import { TAREAS, lengthFits, tareaQuestions, tareasWithQuestions } from "../engine/questions";
+import { canPlay } from "../engine/selection";
 
 /** Prepara las Opciones del examen (sus botones) y devuelve cómo dibujarlas. */
 export function crearOpcionesCcse(ctx: Contexto): { render: () => void } {
@@ -14,9 +14,9 @@ export function crearOpcionesCcse(ctx: Contexto): { render: () => void } {
 
   function render() {
     // Tareas: se pueden marcar varias. Las que aún no tienen preguntas se ven, pero no se pueden marcar.
-    const conPreguntas = tareasConPreguntas();
+    const conPreguntas = tareasWithQuestions();
     $("ccseTareas").replaceChildren(...TAREAS.map((t) => {
-      const n = preguntasDe([t.numero]).length;
+      const n = tareaQuestions([t.numero]).length;
       const on = ccse.tareas.includes(t.numero);
       const card = toggleCard("tarea-" + t.numero, on, `Tarea ${t.numero}`,
         [["cat-desc", t.nombre], ["cat-count", n ? `${n} preguntas` : "Próximamente"]],
@@ -30,23 +30,23 @@ export function crearOpcionesCcse(ctx: Contexto): { render: () => void } {
     $("ccseNoneWarn").hidden = !ninguna;
 
     // Preguntas por partida: como en geografía, 25, 50 y 100 solo si hay al menos esas.
-    const hay = preguntasDe(ccse.tareas).length;
+    const hay = tareaQuestions(ccse.tareas).length;
     grupoLongitud($("ccseLongitud"), {
       prefijo: "ccse-len-", actual: ccse.longitud, hay, cambiar,
-      cabe: (n) => cabeCcse(n, ccse.tareas),
+      cabe: (n) => lengthFits(n, ccse.tareas),
       elegir: (n) => { ccse.longitud = n; }
     });
-    const tooLong = !ninguna && !cabeCcse(ccse.longitud, ccse.tareas);
+    const tooLong = !ninguna && !lengthFits(ccse.longitud, ccse.tareas);
     $("ccseLengthWarn").hidden = !tooLong;
     $("ccseLengthWarn").textContent = tooLong ? avisoLongitud(hay) : "";
 
     grupoTiempo($("ccseTiempo"), { prefijo: "ccse-tiempo-", actual: ccse.tiempo, elegir: (t) => { ccse.tiempo = t; }, cambiar });
 
-    $<HTMLButtonElement>("ccseDone").disabled = !puedeJugarCcse(ctx.state);
+    $<HTMLButtonElement>("ccseDone").disabled = !canPlay(ctx.state);
   }
 
   for (const id of ["ccseLongitud", "ccseTiempo"]) radioGroup($(id));
-  $("ccseDone").addEventListener("click", () => { if (puedeJugarCcse(ctx.state)) ctx.goHome(); });
+  $("ccseDone").addEventListener("click", () => { if (canPlay(ctx.state)) ctx.goHome(); });
 
   return { render };
 }

@@ -4,90 +4,90 @@
 // las preguntas y cambiar las respuestas hasta entregar. Sin nada de interfaz: la pantalla está en
 // ui/simulacro-screen.ts.
 
-import { jugable, PREGUNTAS_CCSE, type PreguntaCcse, type PreguntaCcseJugable } from "./questions";
+import { prepare, CCSE_QUESTIONS, type CcseQuestion, type CcseRoundQuestion } from "./questions";
 import { shuffle } from "../../../common/engine/random";
 import type { Rng } from "../../../common/engine/types";
-import { APROBADO_SIMULACRO, CLAVE_SIMULACRO, REPARTO_SIMULACRO } from "./simulacro-rules";
+import { SIMULACRO_APTO_HITS, SIMULACRO_RECORD_KEY, SIMULACRO_DISTRIBUTION } from "./simulacro-rules";
 
 export * from "./simulacro-rules";
 
 /** Si hay preguntas de sobra en cada tarea para hacer el simulacro. */
-export const simulacroPosible = (preguntas: readonly PreguntaCcse[] = PREGUNTAS_CCSE) =>
-  REPARTO_SIMULACRO.every((r) => preguntas.filter((p) => p.tarea === r.tarea).length >= r.preguntas);
+export const canDoSimulacro = (questions: readonly CcseQuestion[] = CCSE_QUESTIONS) =>
+  SIMULACRO_DISTRIBUTION.every((r) => questions.filter((p) => p.tarea === r.tarea).length >= r.questionCount);
 
 /**
  * Preguntas de un simulacro: las de cada tarea, al azar, y por orden de tareas (primero las 10 de la
  * Tarea 1, después las 3 de la 2…), como en la prueba. Las opciones se barajan, salvo las de orden fijo.
  */
-export function preguntasSimulacro(rng: Rng = Math.random, preguntas: readonly PreguntaCcse[] = PREGUNTAS_CCSE): PreguntaCcseJugable[] {
-  return REPARTO_SIMULACRO.flatMap((r) =>
-    shuffle(preguntas.filter((p) => p.tarea === r.tarea), rng).slice(0, r.preguntas).map((p) => jugable(p, rng)));
+export function simulacroQuestions(rng: Rng = Math.random, questions: readonly CcseQuestion[] = CCSE_QUESTIONS): CcseRoundQuestion[] {
+  return SIMULACRO_DISTRIBUTION.flatMap((r) =>
+    shuffle(questions.filter((p) => p.tarea === r.tarea), rng).slice(0, r.questionCount).map((p) => prepare(p, rng)));
 }
 
-export interface ResultadoSimulacro {
-  aciertos: number;
+export interface SimulacroResult {
+  hits: number;
   total: number;
   apto: boolean;
   /** Preguntas falladas o sin responder (`given` es null), en el orden del examen. */
-  fallos: { question: PreguntaCcseJugable; given: string | null }[];
+  misses: { question: CcseRoundQuestion; given: string | null }[];
   /** Aciertos de cada tarea, en el orden del reparto. */
-  porTarea: { tarea: number; aciertos: number; total: number }[];
+  byTarea: { tarea: number; hits: number; total: number }[];
 }
 
 /** Un simulacro en marcha: qué pregunta se ve, qué se ha respondido en cada una y la entrega. */
 export class Simulacro {
   /** Respuesta elegida en cada pregunta, o null si aún no se ha respondido. Solo se cambia con `elegir`. */
-  private readonly elegidas: (string | null)[];
+  private readonly chosen: (string | null)[];
   private i = 0;
-  private resultado: ResultadoSimulacro | null = null;
+  private result: SimulacroResult | null = null;
 
-  constructor(readonly preguntas: readonly PreguntaCcseJugable[]) {
-    this.elegidas = preguntas.map(() => null);
+  constructor(readonly questions: readonly CcseRoundQuestion[]) {
+    this.chosen = questions.map(() => null);
   }
 
-  get indice(): number { return this.i; }
+  get index(): number { return this.i; }
   /** Respuesta elegida en cada pregunta, o null si aún no se ha respondido. Desde fuera, solo para leerla. */
-  get respuestas(): readonly (string | null)[] { return this.elegidas; }
-  get actual(): PreguntaCcseJugable { return this.preguntas[this.i]; }
-  get total(): number { return this.preguntas.length; }
-  get entregado(): boolean { return this.resultado !== null; }
-  get respondidas(): number { return this.respuestas.filter((r) => r !== null).length; }
-  get sinResponder(): number { return this.total - this.respondidas; }
+  get answers(): readonly (string | null)[] { return this.chosen; }
+  get current(): CcseRoundQuestion { return this.questions[this.i]; }
+  get total(): number { return this.questions.length; }
+  get submitted(): boolean { return this.result !== null; }
+  get answeredCount(): number { return this.answers.filter((r) => r !== null).length; }
+  get unansweredCount(): number { return this.total - this.answeredCount; }
 
   /** Va a otra pregunta (si existe). */
-  ir(i: number): void {
+  goTo(i: number): void {
     if (i >= 0 && i < this.total) this.i = i;
   }
 
   /** Elige una opción en la pregunta que se ve; se puede cambiar cuantas veces se quiera hasta entregar. */
-  responder(opcion: string): void {
-    if (this.entregado || !this.actual.options.includes(opcion)) return;
-    this.elegidas[this.i] = opcion;
+  answer(option: string): void {
+    if (this.submitted || !this.current.options.includes(option)) return;
+    this.chosen[this.i] = option;
   }
 
   /** Entrega el examen (también cuando se acaba el tiempo): lo que no se ha respondido cuenta como fallo. */
-  entregar(): ResultadoSimulacro {
-    if (this.resultado) return this.resultado;
-    const bien = this.preguntas.map((q, j) => this.respuestas[j] === q.answer);
-    const aciertos = bien.filter(Boolean).length;
-    const tareas = [...new Set(this.preguntas.map((q) => q.tarea))];
-    this.resultado = {
-      aciertos,
+  submit(): SimulacroResult {
+    if (this.result) return this.result;
+    const correct = this.questions.map((q, j) => this.answers[j] === q.answer);
+    const hits = correct.filter(Boolean).length;
+    const tareas = [...new Set(this.questions.map((q) => q.tarea))];
+    this.result = {
+      hits: hits,
       total: this.total,
-      apto: aciertos >= APROBADO_SIMULACRO,
-      fallos: this.preguntas.flatMap((q, j) => (bien[j] ? [] : [{ question: q, given: this.respuestas[j] }])),
-      porTarea: tareas.map((t) => {
-        const js = this.preguntas.flatMap((q, j) => (q.tarea === t ? [j] : []));
-        return { tarea: t, aciertos: js.filter((j) => bien[j]).length, total: js.length };
+      apto: hits >= SIMULACRO_APTO_HITS,
+      misses: this.questions.flatMap((q, j) => (correct[j] ? [] : [{ question: q, given: this.answers[j] }])),
+      byTarea: tareas.map((t) => {
+        const js = this.questions.flatMap((q, j) => (q.tarea === t ? [j] : []));
+        return { tarea: t, hits: js.filter((j) => correct[j]).length, total: js.length };
       })
     };
-    return this.resultado;
+    return this.result;
   }
 }
 
 /** Apunta el resultado si es el mejor hasta ahora. Devuelve los récords (cambiados o no) y el mejor resultado. */
-export function apuntarSimulacro(best: Record<string, number>, aciertos: number) {
-  const anterior = best[CLAVE_SIMULACRO];
-  const nuevo = anterior == null || aciertos > anterior;
-  return { best: nuevo ? { ...best, [CLAVE_SIMULACRO]: aciertos } : best, nuevo, mejor: nuevo ? aciertos : anterior };
+export function applySimulacroRecord(best: Record<string, number>, hits: number) {
+  const previous = best[SIMULACRO_RECORD_KEY];
+  const isNewRecord = previous == null || hits > previous;
+  return { best: isNewRecord ? { ...best, [SIMULACRO_RECORD_KEY]: hits } : best, isNewRecord, record: isNewRecord ? hits : previous };
 }

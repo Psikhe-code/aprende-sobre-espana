@@ -3,7 +3,7 @@
 import { describe, expect, it } from "vitest";
 import { ROUND_LENGTH } from "../../src/common/engine/round-settings";
 import { CCSE_APTO_RATIO, Round, applyRecord, recordValue, rating } from "../../src/common/engine/round";
-import { APROBADO_SIMULACRO, PREGUNTAS_SIMULACRO } from "../../src/sections/ccse/engine/simulacro";
+import { SIMULACRO_APTO_HITS, SIMULACRO_QUESTION_COUNT } from "../../src/sections/ccse/engine/simulacro";
 import { type RoundQuestion } from "../../src/sections/geografia/engine/types";
 
 /** Pregunta de prueba cuya respuesta correcta es `answer`. */
@@ -164,7 +164,7 @@ describe("récords", () => {
 
 describe("valoración del resultado", () => {
   it("en el examen, con el aprobado de la prueba real como referencia (el mismo que el simulacro)", () => {
-    expect(CCSE_APTO_RATIO).toBe(APROBADO_SIMULACRO / PREGUNTAS_SIMULACRO);
+    expect(CCSE_APTO_RATIO).toBe(SIMULACRO_APTO_HITS / SIMULACRO_QUESTION_COUNT);
     const v = (hits: number) => rating({ hits, total: 25 }, "ccse");
     expect(v(25)).toBe("Pleno");
     expect(v(20)).toBe("Gran nivel");
