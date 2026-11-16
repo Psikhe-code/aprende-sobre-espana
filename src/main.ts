@@ -8,10 +8,10 @@ import "@fontsource/barlow-condensed/latin-600.css";
 import "@fontsource/barlow-condensed/latin-700.css";
 import "@fontsource/literata/latin-500.css";
 import "@fontsource/literata/latin-600.css";
-import "./common/ui/styles.css";
+import "./common/ui/common-styles.css";
 
 import { registerSW } from "virtual:pwa-register";
-import { UPDATE_RELOAD_KEY, startApp } from "./common/ui/app";
+import { UPDATE_RELOAD_KEY, startApp } from "./common/ui/common-app";
 
 const app = startApp();
 
@@ -20,7 +20,7 @@ const app = startApp();
 if ("serviceWorker" in navigator) {
   try {
     let pending = false;
-    // Antes de recargar, si el jugador está dentro de una sección, se apunta para que siga en ella (app.ts).
+    // Antes de recargar, si el jugador está dentro de una sección, se apunta para que siga en ella (common-app.ts).
     const actualizar = () => {
       try {
         if (!app.inMenu()) sessionStorage.setItem(UPDATE_RELOAD_KEY, "1");

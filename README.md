@@ -30,85 +30,85 @@ Para cambios grandes: se trabaja en una rama aparte y se mezcla con un *pull req
 
 ## Estructura
 
-En cada carpeta, `engine/` es el **motor** (las reglas, sin nada de pantalla), `ui/` son las **pantallas** (solo dibujan y llaman al motor) y `data/` los **datos**. Lo común a todas las secciones está en `common/`, y lo de cada sección, en `sections/<sección>/`. Los nombres siguen las reglas de CLAUDE.md («Nombres en el código»): inglés para programar y español para el vocabulario del juego; los archivos, en minúsculas y con guiones, y las pantallas acaban en `-screen`.
+En cada carpeta, `engine/` es el **motor** (las reglas, sin nada de pantalla), `ui/` son las **pantallas** (solo dibujan y llaman al motor) y `data/` los **datos**. Lo común a todas las secciones está en `common/`, y lo de cada sección, en `sections/<sección>/`. Los nombres siguen las reglas de CLAUDE.md («Nombres en el código»): inglés para programar y español para el vocabulario del juego; los archivos, en minúsculas y con guiones; los de `common/` empiezan por `common-` y los de cada sección, por su id (`geografia-`, `ccse-`), para que ningún nombre se repita; y las pantallas acaban en `-screen`.
 
 ```
 src/
-  main.ts                    punto de entrada: carga lo necesario y arranca el juego
-  common/                    ← LO DE TODAS LAS SECCIONES
+  main.ts                             punto de entrada: carga lo necesario y arranca el juego
+  common/                             ← LO DE TODAS LAS SECCIONES
     engine/
-      types.ts               tipos comunes: sección, pregunta jugable, fuente
-      round.ts               la partida en marcha: respuestas, aciertos, racha, final y récords
-      round-settings.ts      preguntas por partida y tiempo por pregunta
-      countdown.ts           cuenta atrás de cada pregunta (arrancar, pausar, cuánto queda)
-      random.ts              el azar del juego
-      storage.ts             lo guardado en el dispositivo: la sección elegida, los récords y las opciones de cada sección
+      common-types.ts                 tipos comunes: sección, pregunta jugable, fuente
+      common-round.ts                 la partida en marcha: respuestas, aciertos, racha, final y récords
+      common-round-settings.ts        preguntas por partida y tiempo por pregunta
+      common-countdown.ts             cuenta atrás de cada pregunta (arrancar, pausar, cuánto queda)
+      common-random.ts                el azar del juego
+      common-storage.ts               lo guardado en el dispositivo: la sección elegida, los récords y las opciones de cada sección
     ui/
-      app.ts                 arranca el juego y decide qué pantalla se ve, con la lista de secciones; el menú y la versión al pie
-      context.ts             lo que comparten las pantallas (opciones guardadas, sección, cambiar de pantalla)
-      section.ts             el molde de sección: lo que cada sección da al juego (menú, cabecera, pantallas, botones…)
-      mode.ts                lo que cada sección da a la partida (de dónde salen las preguntas, récords, valoración…)
-      round-screen.ts        pantalla de la partida (pregunta, nota, fin de la baraja)
-      timer.ts               reloj de cada pregunta en pantalla
-      end-screen.ts          pantalla final: resultado, récord y fallos
-      credits-screen.ts      Créditos de cada sección
-      widgets.ts             piezas iguales en todas las secciones: número de preguntas y récord del inicio, grupos de Opciones de preguntas y tiempo, respuesta de cada fallo
-      dom.ts                 utilidades: crear elementos y enlaces externos, tarjetas y grupos de Opciones, fuentes de las notas, avisos
-      labels.ts              textos de las preguntas por partida, los tiempos y el reloj del simulacro
-      images.ts              imagen de la pregunta: dibujarla y descargar por adelantado la de la siguiente
-      contours.ts            curvas de nivel decorativas de la cabecera
-      styles.css             estilos (tema claro y oscuro según el sistema)
+      common-app.ts                   arranca el juego y decide qué pantalla se ve, con la lista de secciones; el menú y la versión al pie
+      common-context.ts               lo que comparten las pantallas (opciones guardadas, sección, cambiar de pantalla)
+      common-section.ts               el molde de sección: lo que cada sección da al juego (menú, cabecera, pantallas, botones…)
+      common-mode.ts                  lo que cada sección da a la partida (de dónde salen las preguntas, récords, valoración…)
+      common-round-screen.ts          pantalla de la partida (pregunta, nota, fin de la baraja)
+      common-timer.ts                 reloj de cada pregunta en pantalla
+      common-end-screen.ts            pantalla final: resultado, récord y fallos
+      common-credits-screen.ts        Créditos de cada sección
+      common-widgets.ts               piezas iguales en todas las secciones: número de preguntas y récord del inicio, grupos de Opciones de preguntas y tiempo, respuesta de cada fallo
+      common-dom.ts                   utilidades: crear elementos y enlaces externos, tarjetas y grupos de Opciones, fuentes de las notas, avisos
+      common-labels.ts                textos de las preguntas por partida, los tiempos y el reloj del simulacro
+      common-images.ts                imagen de la pregunta: dibujarla y descargar por adelantado la de la siguiente
+      common-contours.ts              curvas de nivel decorativas de la cabecera
+      common-styles.css               estilos (tema claro y oscuro según el sistema)
   sections/
-    sections.ts              la lista de secciones, en el orden del menú: lo único que se toca al añadir una
-    upcoming.ts              las que vendrán, que salen en el menú como «Próximamente» (Historia, Gastronomía)
-    geografia/               ← GEOGRAFÍA
+    sections.ts                       la lista de secciones, en el orden del menú: lo único que se toca al añadir una
+    upcoming.ts                       las que vendrán, que salen en el menú como «Próximamente» (Historia, Gastronomía)
+    geografia/                        ← GEOGRAFÍA
       data/
-        territorio.json      comunidades y provincias, con sus códigos INE
-        banderas.json        banderas de las comunidades y de las provincias: archivo, banderas parecidas y explicación
-        municipios.json      municipios de cada provincia, con su código INE y su población
-        banderas/            una imagen SVG por comunidad o ciudad autónoma (comunidades/) y por provincia con bandera (provincias/)
-        schema/              descripción formal del formato de sus JSON (se valida en los tests)
+        territorio.json               comunidades y provincias, con sus códigos INE
+        banderas.json                 banderas de las comunidades y de las provincias: archivo, banderas parecidas y explicación
+        municipios.json               municipios de cada provincia, con su código INE y su población
+        banderas/                     una imagen SVG por comunidad o ciudad autónoma (comunidades/) y por provincia con bandera (provincias/)
+        schema/                       descripción formal del formato de sus JSON (se valida en los tests)
       engine/
-        types.ts             sus tipos: pregunta del banco y preparada, categoría, territorio, formas del nombre
-        territorio.ts        carga el territorio y monta los pools de respuestas
-        questions.ts         genera las preguntas a partir de los datos
-        categories.ts        lista de categorías
-        options.ts           genera las opciones de cada pregunta
-        round-questions.ts   elige las preguntas de una partida
-        selection.ts         lo que se deduce de sus opciones (si se puede jugar, clave del récord…)
-        settings.ts          sus opciones guardadas, comprobadas al cargarlas
-        rating.ts            valoración del resultado de una partida
+        geografia-types.ts            sus tipos: pregunta del banco y preparada, categoría, territorio, formas del nombre
+        geografia-territorio.ts       carga el territorio y monta los pools de respuestas
+        geografia-questions.ts        genera las preguntas a partir de los datos
+        geografia-categories.ts       lista de categorías
+        geografia-options.ts          genera las opciones de cada pregunta
+        geografia-round-questions.ts  elige las preguntas de una partida
+        geografia-selection.ts        lo que se deduce de sus opciones (si se puede jugar, clave del récord…)
+        geografia-settings.ts         sus opciones guardadas, comprobadas al cargarlas
+        geografia-rating.ts           valoración del resultado de una partida
       ui/
-        section.ts           lo que da al juego (ver common/ui/section.ts)
-        mode.ts              lo que da a la partida común
-        start-screen.ts      pantalla de inicio
-        settings-screen.ts   pantalla de Opciones
-        credits.ts           su lista de banderas en Créditos
-        labels.ts            textos de sus opciones
-        banderas.ts          imágenes de las banderas: la de cada pregunta y las de Créditos
-    ccse/                    ← EXAMEN DE NACIONALIDAD
+        geografia-section.ts          lo que da al juego (ver common/ui/common-section.ts)
+        geografia-mode.ts             lo que da a la partida común
+        geografia-start-screen.ts     pantalla de inicio
+        geografia-settings-screen.ts  pantalla de Opciones
+        geografia-credits.ts          su lista de banderas en Créditos
+        geografia-labels.ts           textos de sus opciones
+        geografia-banderas.ts         imágenes de las banderas: la de cada pregunta y las de Créditos
+    ccse/                             ← EXAMEN DE NACIONALIDAD
       data/
-        ccse.json            tareas y plantilla de las 300 preguntas, con su nota y sus fuentes
-        schema/              descripción formal del formato de ccse.json
+        ccse.json                     tareas y plantilla de las 300 preguntas, con su nota y sus fuentes
+        schema/                       descripción formal del formato de ccse.json
       engine/
-        questions.ts         preguntas y partidas
-        selection.ts         lo que se deduce de sus opciones (si se puede jugar, clave del récord…)
-        settings.ts          sus opciones guardadas, comprobadas al cargarlas
-        simulacro.ts         simulacro: preguntas por tareas, respuestas, entrega y resultado
-        simulacro-rules.ts   reglas del simulacro (reparto por tareas, 45 minutos, aprobado con 15)
-        rating.ts            valoración del resultado de una partida, con el aprobado como referencia
+        ccse-questions.ts             preguntas y partidas
+        ccse-selection.ts             lo que se deduce de sus opciones (si se puede jugar, clave del récord…)
+        ccse-settings.ts              sus opciones guardadas, comprobadas al cargarlas
+        ccse-simulacro.ts             simulacro: preguntas por tareas, respuestas, entrega y resultado
+        ccse-simulacro-rules.ts       reglas del simulacro (reparto por tareas, 45 minutos, aprobado con 15)
+        ccse-rating.ts                valoración del resultado de una partida, con el aprobado como referencia
       ui/
-        section.ts           lo que da al juego (ver common/ui/section.ts)
-        mode.ts              lo que da a la partida común
-        start-screen.ts      pantalla de inicio
-        settings-screen.ts   pantalla de Opciones
-        simulacro-screen.ts  pantallas del simulacro y de su resultado
-tests/                     comprobaciones automáticas del motor y los datos
-  common/                  lo de todas las secciones
-  geografia/               lo de Geografía
-  ccse/                    lo del examen, con sus datos de prueba (test-data.ts)
-screen-tests/              tests de pantalla: juegan al juego en un navegador
-public/                    iconos de la app
+        ccse-section.ts               lo que da al juego (ver common/ui/common-section.ts)
+        ccse-mode.ts                  lo que da a la partida común
+        ccse-start-screen.ts          pantalla de inicio
+        ccse-settings-screen.ts       pantalla de Opciones
+        ccse-simulacro-screen.ts      pantallas del simulacro y de su resultado
+tests/                                comprobaciones automáticas del motor y los datos
+  common/                             lo de todas las secciones
+  geografia/                          lo de Geografía
+  ccse/                               lo del examen, con sus datos de prueba (ccse-test-data.ts)
+screen-tests/                         tests de pantalla: juegan al juego en un navegador
+public/                               iconos de la app
 ```
 
 ## Los datos
@@ -129,7 +129,7 @@ Cada nombre se escribe en todas sus formas, **aunque coincidan**, y siempre con 
 - **`oficial`**: la denominación oficial (Girona, Lleida, A Coruña, Ourense, Bizkaia, Gipuzkoa, Illes Balears, Castelló de la Plana/Castellón de la Plana…).
 - **`castellano`**: la forma que recomienda la RAE para textos en español (Gerona, Lérida, La Coruña, Orense, Vizcaya, Guipúzcoa, Islas Baleares…).
 
-Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una línea más dentro de cada nombre, en el esquema y en `NAME_FORMS` (`src/sections/geografia/engine/types.ts`). Un juego en otro idioma necesitaría además traducir los enunciados, las explicaciones y la interfaz.
+Para añadir otra forma en el futuro (por ejemplo, `ingles`), se añade como una línea más dentro de cada nombre, en el esquema y en `NAME_FORMS` (`src/sections/geografia/engine/geografia-types.ts`). Un juego en otro idioma necesitaría además traducir los enunciados, las explicaciones y la interfaz.
 
 ### Archivos
 
@@ -202,11 +202,11 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 
 ## Cómo funciona
 
-**Secciones.** Geografía y examen de nacionalidad tienen cada una su inicio, sus Opciones, sus récords y sus Créditos, pero la partida, el reloj, el resultado y el repaso de fallos son los mismos. El juego conoce las secciones por una **lista** (`src/sections/sections.ts`), y cada una da lo suyo con el mismo molde (`common/ui/section.ts`): su tarjeta del menú, la cabecera, los `id` de sus pantallas y botones, su inicio, sus Opciones, lo suyo en Créditos y, si las tiene, pantallas propias (el simulacro). Para añadir una sección se crea su carpeta y se añade a la lista. Las que vendrán (`src/sections/upcoming.ts`) salen al final del menú como «Próximamente», desactivadas, sin código propio hasta que tengan preguntas. Lo que cambia se lo pregunta la partida al **modo** de la sección actual (`mode.ts`: lo común en `common/ui`, y el de cada sección en su carpeta `ui`): de dónde salen las preguntas, cuántas son, con qué tiempo se juega, con qué clave se guarda el récord y cómo se valora el resultado. Las preguntas de las dos secciones se juegan con el mismo formato (`PlayableQuestion`, en `common/engine/types.ts`), que lleva ya la etiqueta (`label`) que sale encima de la pregunta: la de su categoría y territorio («Capitales de provincia»), que pone `prepare` (en `options.ts`), o la de su tarea («Tarea 1 · …»), que pone `prepare` (en `ccse/engine/questions.ts`). Las de geografía (`RoundQuestion`) son también una `PlayableQuestion`, y TypeScript comprueba que no les falta nada. En el examen, las opciones vienen escritas en los datos y se barajan en cada partida; al responder, debajo de la nota salen sus fuentes, con enlace. El resultado se valora con el aprobado de la prueba real como referencia (el 60 %). **Lo guardado** (`common/engine/storage.ts`) son tres cosas: la sección elegida, los récords (cada clave empieza por el id de su sección: «geografia/capitales/comunidad/4opciones/10preguntas/60s», «ccse/1+2/10preguntas/sintiempo», «ccse/simulacro») y las opciones de cada sección, guardadas por su id. Cada sección comprueba las suyas al cargarlas (`settings.ts`): lo que falta o no vale se cambia por lo de por defecto. Lo guardado antes de la versión 0.2.33 no se convierte: se empieza de cero.
+**Secciones.** Geografía y examen de nacionalidad tienen cada una su inicio, sus Opciones, sus récords y sus Créditos, pero la partida, el reloj, el resultado y el repaso de fallos son los mismos. El juego conoce las secciones por una **lista** (`src/sections/sections.ts`), y cada una da lo suyo con el mismo molde (`common/ui/common-section.ts`): su tarjeta del menú, la cabecera, los `id` de sus pantallas y botones, su inicio, sus Opciones, lo suyo en Créditos y, si las tiene, pantallas propias (el simulacro). Para añadir una sección se crea su carpeta y se añade a la lista. Las que vendrán (`src/sections/upcoming.ts`) salen al final del menú como «Próximamente», desactivadas, sin código propio hasta que tengan preguntas. Lo que cambia se lo pregunta la partida al **modo** de la sección actual (`common-mode.ts`, en `common/ui`, y el de cada sección en su carpeta `ui`: `geografia-mode.ts`, `ccse-mode.ts`): de dónde salen las preguntas, cuántas son, con qué tiempo se juega, con qué clave se guarda el récord y cómo se valora el resultado. Las preguntas de las dos secciones se juegan con el mismo formato (`PlayableQuestion`, en `common/engine/common-types.ts`), que lleva ya la etiqueta (`label`) que sale encima de la pregunta: la de su categoría y territorio («Capitales de provincia»), que pone `prepare` (en `geografia-options.ts`), o la de su tarea («Tarea 1 · …»), que pone `prepare` (en `ccse/engine/ccse-questions.ts`). Las de geografía (`RoundQuestion`) son también una `PlayableQuestion`, y TypeScript comprueba que no les falta nada. En el examen, las opciones vienen escritas en los datos y se barajan en cada partida; al responder, debajo de la nota salen sus fuentes, con enlace. El resultado se valora con el aprobado de la prueba real como referencia (el 60 %). **Lo guardado** (`common/engine/common-storage.ts`) son tres cosas: la sección elegida, los récords (cada clave empieza por el id de su sección: «geografia/capitales/comunidad/4opciones/10preguntas/60s», «ccse/1+2/10preguntas/sintiempo», «ccse/simulacro») y las opciones de cada sección, guardadas por su id. Cada sección comprueba las suyas al cargarlas (`geografia-settings.ts`, `ccse-settings.ts`): lo que falta o no vale se cambia por lo de por defecto. Lo guardado antes de la versión 0.2.33 no se convierte: se empieza de cero.
 
-**Simulacro de examen.** Desde el inicio del examen, «Hacer un simulacro» abre una prueba como la real: 25 preguntas repartidas por tareas (10 de la Tarea 1, 3 de la 2, 2 de la 3, 3 de la 4 y 7 de la 5, en ese orden), 45 minutos para todo y «apto» con 15 aciertos. Las reglas están en `simulacro-rules.ts` y el reparto se comprobó con la Universitat de València y un examen real de 2015. No usa las Opciones del examen. Mientras se hace no se dice si una respuesta es correcta: se elige una opción (se puede cambiar), se va y se vuelve con «Anterior» y «Siguiente» o con el mapa de las 25 preguntas, y al final se entrega; si faltan respuestas, el aviso dice cuántas, y contarán como fallos. Salir también pide confirmación, porque se pierde el simulacro. El reloj es uno para todo el examen, se pausa al cambiar de pestaña (como en las partidas), se pone en rojo en los últimos 5 minutos y, al acabarse, entrega solo. El resultado dice apto o no apto, los aciertos de cada tarea, el tiempo usado y los fallos (también los no respondidos) con la respuesta, la nota y sus fuentes; desde ahí se puede repasar los fallos en una partida normal. Se guarda el mejor resultado (`ccse/simulacro`), que sale en el inicio. Solo se ofrece si cada tarea tiene al menos las preguntas que pide el reparto.
+**Simulacro de examen.** Desde el inicio del examen, «Hacer un simulacro» abre una prueba como la real: 25 preguntas repartidas por tareas (10 de la Tarea 1, 3 de la 2, 2 de la 3, 3 de la 4 y 7 de la 5, en ese orden), 45 minutos para todo y «apto» con 15 aciertos. Las reglas están en `ccse-simulacro-rules.ts` y el reparto se comprobó con la Universitat de València y un examen real de 2015. No usa las Opciones del examen. Mientras se hace no se dice si una respuesta es correcta: se elige una opción (se puede cambiar), se va y se vuelve con «Anterior» y «Siguiente» o con el mapa de las 25 preguntas, y al final se entrega; si faltan respuestas, el aviso dice cuántas, y contarán como fallos. Salir también pide confirmación, porque se pierde el simulacro. El reloj es uno para todo el examen, se pausa al cambiar de pestaña (como en las partidas), se pone en rojo en los últimos 5 minutos y, al acabarse, entrega solo. El resultado dice apto o no apto, los aciertos de cada tarea, el tiempo usado y los fallos (también los no respondidos) con la respuesta, la nota y sus fuentes; desde ahí se puede repasar los fallos en una partida normal. Se guarda el mejor resultado (`ccse/simulacro`), que sale en el inicio. Solo se ofrece si cada tarea tiene al menos las preguntas que pide el reparto.
 
-**Preguntas.** En geografía se generan a partir de los datos (`questions.ts`), una vez por cada forma de los nombres, y se guardan (`generatedOnce` en `categories.ts`): como los datos no cambian mientras se juega, contar preguntas en Opciones o preparar una partida usa las ya generadas. Los pools de las opciones (`poolsFor`) se guardan igual. Las listas guardadas están congeladas, para que nadie las cambie sin querer. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
+**Preguntas.** En geografía se generan a partir de los datos (`geografia-questions.ts`), una vez por cada forma de los nombres, y se guardan (`generatedOnce` en `geografia-categories.ts`): como los datos no cambian mientras se juega, contar preguntas en Opciones o preparar una partida usa las ya generadas. Los pools de las opciones (`poolsFor`) se guardan igual. Las listas guardadas están congeladas, para que nadie las cambie sin querer. Cada una tiene un identificador fijo, como `capital-ccaa:12` o `bandera-ccaa:12`, igual en todas las formas, y sabe qué lugar es su respuesta (`answerKey`), independientemente de cómo se escriba.
 
 **Forma de los nombres.** En Opciones se marcan las formas con las que se quiere jugar: oficial, castellano o las dos (por defecto). Si hay varias marcadas, se sortea una en cada pregunta, para aprenderlas todas. Cada pregunta va **entera** en una forma (enunciado, respuesta y opciones), así que nunca se mezclan Gerona y Girona en las mismas opciones. Al responder se muestra la otra forma cuando es distinta: *«Vitoria-Gasteiz · en castellano, Vitoria»*.
 
@@ -217,21 +217,21 @@ En **VS Code**, los esquemas dan autocompletado y subrayan los errores mientras 
 - Algunas preguntas tienen una trampa fija (`fixedTrapOptions`) que sale siempre (si hay varias, una sorteada): en las capitales de provincia, el propio nombre de la provincia («Asturias» como capital de Asturias), y en las autonómicas, la de `trampasCapital` («Andalucía», «Mallorca»…). Es justo la confusión que enseña la pregunta.
 - Al menos una incorrecta es siempre aleatoria del pool, para que las partidas no se repitan.
 - Lo que está en `exclude` nunca sale como incorrecto. Por ejemplo, en Canarias ninguna de sus dos capitales aparece como incorrecta.
-- **Dificultad:** en Opciones se elige el número de opciones por pregunta: 4 (por defecto), 6 u 8 (`OPTION_COUNTS` en `round-questions.ts`). Con más opciones salen más trampas a la vez; la trampa fija sigue saliendo siempre y queda al menos un hueco al azar. En el móvil, con 6 u 8 las opciones van en dos columnas. La **respuesta abierta** aparece en Opciones como «próximamente», sin poder marcarse.
-- **Tiempo por pregunta:** en Opciones se elige 1 minuto (por defecto), 30 segundos, 10 segundos (nivel difícil) o sin tiempo (`TIME_LIMITS` en `common/engine/round-settings.ts`). Encima de la pregunta, una barra se vacía y dice los segundos que quedan; en los últimos 5, en rojo. El reloj empieza cuando la pregunta se ve (si tiene bandera, cuando está dibujada), se para al responder, para que leer la nota no gaste tiempo, y se pausa al cambiar de pestaña o bloquear el móvil. Si se acaba, cuenta como fallo: se marca la respuesta, sale la nota y se rompe la racha; en los fallos pone «se acabó el tiempo». El repaso de fallos va siempre sin tiempo. La cuenta atrás está en `countdown.ts`, sin nada de interfaz, para poder probarla.
+- **Dificultad:** en Opciones se elige el número de opciones por pregunta: 4 (por defecto), 6 u 8 (`OPTION_COUNTS` en `geografia-round-questions.ts`). Con más opciones salen más trampas a la vez; la trampa fija sigue saliendo siempre y queda al menos un hueco al azar. En el móvil, con 6 u 8 las opciones van en dos columnas. La **respuesta abierta** aparece en Opciones como «próximamente», sin poder marcarse.
+- **Tiempo por pregunta:** en Opciones se elige 1 minuto (por defecto), 30 segundos, 10 segundos (nivel difícil) o sin tiempo (`TIME_LIMITS` en `common/engine/common-round-settings.ts`). Encima de la pregunta, una barra se vacía y dice los segundos que quedan; en los últimos 5, en rojo. El reloj empieza cuando la pregunta se ve (si tiene bandera, cuando está dibujada), se para al responder, para que leer la nota no gaste tiempo, y se pausa al cambiar de pestaña o bloquear el móvil. Si se acaba, cuenta como fallo: se marca la respuesta, sale la nota y se rompe la racha; en los fallos pone «se acabó el tiempo». El repaso de fallos va siempre sin tiempo. La cuenta atrás está en `common-countdown.ts`, sin nada de interfaz, para poder probarla.
 - Los récords se guardan por categorías, territorios, dificultad, número de preguntas y tiempo. En la partida sin límite, el récord es la mejor racha.
 
-**Partida.** `round-questions.ts` elige las preguntas de las categorías y territorios marcados, sorteando primero la categoría para repartirlas, sin repetir ninguna pregunta. El mismo lugar sí puede ser la respuesta de dos preguntas distintas (la capital de Asturias como comunidad y como provincia, Oviedo). `common/engine/round.ts` lleva el desarrollo: responder, avanzar, aciertos, racha, fallos y si la partida cuenta para el récord. La interfaz solo dibuja lo que el motor le dice.
+**Partida.** `geografia-round-questions.ts` elige las preguntas de las categorías y territorios marcados, sorteando primero la categoría para repartirlas, sin repetir ninguna pregunta. El mismo lugar sí puede ser la respuesta de dos preguntas distintas (la capital de Asturias como comunidad y como provincia, Oviedo). `common/engine/common-round.ts` lleva el desarrollo: responder, avanzar, aciertos, racha, fallos y si la partida cuenta para el récord. La interfaz solo dibuja lo que el motor le dice.
 
-**Preguntas por partida.** En Opciones se elige 10 (por defecto), 25, 50, 100 o sin límite (`ROUND_LENGTHS` en `common/engine/round-settings.ts`). 25, 50 y 100 solo se pueden elegir si la selección tiene al menos esas preguntas (`lengthFits`); con 10, si hay menos, la partida tiene las que haya. **Sin límite**, la partida sigue hasta pulsar «Terminar», que lleva al resultado y al repaso de fallos. Si se acaban las preguntas, sale una tarjeta «Fin de la baraja» para barajarlas otra vez y seguir con la misma racha (`reshuffle`, que nunca empieza por la última que salió), o terminar.
+**Preguntas por partida.** En Opciones se elige 10 (por defecto), 25, 50, 100 o sin límite (`ROUND_LENGTHS` en `common/engine/common-round-settings.ts`). 25, 50 y 100 solo se pueden elegir si la selección tiene al menos esas preguntas (`lengthFits`); con 10, si hay menos, la partida tiene las que haya. **Sin límite**, la partida sigue hasta pulsar «Terminar», que lleva al resultado y al repaso de fallos. Si se acaban las preguntas, sale una tarjeta «Fin de la baraja» para barajarlas otra vez y seguir con la misma racha (`reshuffle`, que nunca empieza por la última que salió), o terminar.
 
-**Cabecera.** En inicio, Opciones y Créditos se ve la cabecera grande (título y presentación); en la partida y el resultado, solo una línea pequeña con el nombre del juego (clase `compact`, en `app.ts`), para que la pregunta empiece arriba. Cada pregunta nueva empieza arriba del todo, aunque para leer la nota se haya bajado. Las banderas miden como mucho 400 px de ancho, y en móviles bajos las 4 opciones de las preguntas de bandera van en dos columnas: así, en un móvil corriente y en un portátil, la pregunta, la bandera y las opciones se ven sin bajar (lo comprueba `layout.screen.ts`). Los efectos al pasar el ratón solo están en pantallas con ratón: en el móvil se quedaban puestos tras tocar.
+**Cabecera.** En inicio, Opciones y Créditos se ve la cabecera grande (título y presentación); en la partida y el resultado, solo una línea pequeña con el nombre del juego (clase `compact`, en `common-app.ts`), para que la pregunta empiece arriba. Cada pregunta nueva empieza arriba del todo, aunque para leer la nota se haya bajado. Las banderas miden como mucho 400 px de ancho, y en móviles bajos las 4 opciones de las preguntas de bandera van en dos columnas: así, en un móvil corriente y en un portátil, la pregunta, la bandera y las opciones se ven sin bajar (lo comprueba `layout.screen.ts`). Los efectos al pasar el ratón solo están en pantallas con ratón: en el móvil se quedaban puestos tras tocar.
 
-**Accesibilidad.** En Opciones, las tarjetas que se pueden marcar varias (categorías, nombres, territorios) son botones que se marcan y desmarcan; las de los grupos en los que solo se marca una (dificultad, tiempo, preguntas por partida) son un grupo de opciones (`radioGroup` en `dom.ts`): el tabulador entra solo en la marcada y con las flechas se pasa a otra. El reloj se anuncia como reloj, y a los 5 segundos avisa. En la partida, las teclas numéricas responden e Intro pasa a la siguiente (con Ctrl, Alt o Cmd no responden, porque son atajos del navegador; sirve también la fila de números de un teclado francés sin Mayúsculas; e Intro sobre un enlace de las fuentes lo abre sin pasar de pregunta). Al pasar de pregunta, el foco va al enunciado, y al terminar, al resultado, para que el lector de pantalla los lea. Los avisos para el lector (`announce`) están fuera de las tarjetas, para que se lean aunque una tarjeta se esconda. Cada pantalla tiene nombre (`aria-label` en su `<section>`) y, al cambiar de pantalla con un botón, el foco pasa a la nueva (`show`, en `app.ts`): el lector dice cuál es y el tabulador sigue desde ahí. Los títulos de cada grupo («Opciones · Categorías», «Tus fallos»…) son `h2`, para poder saltar de uno a otro. El aviso antes de entregar o salir del simulacro es un cuadro de aviso (`role="alertdialog"`) con su texto como nombre: al pasar el foco a sus botones, el lector lo lee. Las tarjetas sin marcar llevan el nombre en gris, sin transparencia, para que todo su texto tenga el contraste mínimo (4,5 a 1); las desactivadas sí van transparentes. Los botones de texto pequeños («← Todas las secciones», «Créditos») miden al menos 44 px de alto, para pulsarlos con el dedo, y los atajos de teclado no se explican en pantallas táctiles. Las banderas tienen un texto alternativo neutro en la pregunta (no puede delatar la respuesta); en la lista de fallos dice de quién es («Bandera: Cantabria») y en Créditos va vacío, porque el nombre está escrito al lado.
+**Accesibilidad.** En Opciones, las tarjetas que se pueden marcar varias (categorías, nombres, territorios) son botones que se marcan y desmarcan; las de los grupos en los que solo se marca una (dificultad, tiempo, preguntas por partida) son un grupo de opciones (`radioGroup` en `common-dom.ts`): el tabulador entra solo en la marcada y con las flechas se pasa a otra. El reloj se anuncia como reloj, y a los 5 segundos avisa. En la partida, las teclas numéricas responden e Intro pasa a la siguiente (con Ctrl, Alt o Cmd no responden, porque son atajos del navegador; sirve también la fila de números de un teclado francés sin Mayúsculas; e Intro sobre un enlace de las fuentes lo abre sin pasar de pregunta). Al pasar de pregunta, el foco va al enunciado, y al terminar, al resultado, para que el lector de pantalla los lea. Los avisos para el lector (`announce`) están fuera de las tarjetas, para que se lean aunque una tarjeta se esconda. Cada pantalla tiene nombre (`aria-label` en su `<section>`) y, al cambiar de pantalla con un botón, el foco pasa a la nueva (`show`, en `common-app.ts`): el lector dice cuál es y el tabulador sigue desde ahí. Los títulos de cada grupo («Opciones · Categorías», «Tus fallos»…) son `h2`, para poder saltar de uno a otro. El aviso antes de entregar o salir del simulacro es un cuadro de aviso (`role="alertdialog"`) con su texto como nombre: al pasar el foco a sus botones, el lector lo lee. Las tarjetas sin marcar llevan el nombre en gris, sin transparencia, para que todo su texto tenga el contraste mínimo (4,5 a 1); las desactivadas sí van transparentes. Los botones de texto pequeños («← Todas las secciones», «Créditos») miden al menos 44 px de alto, para pulsarlos con el dedo, y los atajos de teclado no se explican en pantallas táctiles. Las banderas tienen un texto alternativo neutro en la pregunta (no puede delatar la respuesta); en la lista de fallos dice de quién es («Bandera: Cantabria») y en Créditos va vacío, porque el nombre está escrito al lado.
 
 **Modo sin conexión.** Al abrir el juego se guarda en el dispositivo solo lo imprescindible: código, estilos, fuentes e iconos: unos 770 KB, que son unos 420 KB al descargarse, porque van comprimidos (medido en noviembre de 2026; de ellos, unos 260 KB son las preguntas del examen, que van dentro del código). Las banderas no se descargan todas de golpe: cada una se guarda la primera vez que sale, así que sin conexión funcionan las que ya se han visto. Cuando sea una app de Android, irán todas dentro de la app. Se configura en `vite.config.ts`.
 
-**Imagen de la pregunta.** Una pregunta puede llevar una imagen (`image`, en `common/engine/types.ts`): la dirección del archivo y dos textos alternativos, uno neutro mientras se responde, para no delatar la respuesta, y otro para la lista de fallos («Bandera: Cantabria»). La pone cada sección (en Geografía, su modo pone la bandera, con `banderas.ts`), y la partida solo la dibuja, sin saber de qué es (`common/ui/images.ts`). Mientras se responde una pregunta, el juego descarga y dibuja por adelantado la imagen de la siguiente, para que aparezca al instante aunque la conexión o el móvil sean lentos. La de la primera pregunta también: la partida se prepara ya en la pantalla de inicio (y al terminar la anterior, para «Jugar otra vez»).
+**Imagen de la pregunta.** Una pregunta puede llevar una imagen (`image`, en `common/engine/common-types.ts`): la dirección del archivo y dos textos alternativos, uno neutro mientras se responde, para no delatar la respuesta, y otro para la lista de fallos («Bandera: Cantabria»). La pone cada sección (en Geografía, su modo pone la bandera, con `geografia-banderas.ts`), y la partida solo la dibuja, sin saber de qué es (`common/ui/common-images.ts`). Mientras se responde una pregunta, el juego descarga y dibuja por adelantado la imagen de la siguiente, para que aparezca al instante aunque la conexión o el móvil sean lentos. La de la primera pregunta también: la partida se prepara ya en la pantalla de inicio (y al terminar la anterior, para «Jugar otra vez»).
 
 **Versión.** Al pie del menú de secciones y del inicio de cada sección se ve la versión (la de `package.json`) y cuándo se publicó, para saber si ya está aplicada la última. Cada cambio sube la versión: en esta primera etapa, el último número (0.1.1, 0.1.2…); el del medio, en hitos grandes. Se escribe al construir el juego (`define` en `vite.config.ts`). Cuando la página se recarga sola para aplicar una versión nueva, el juego sigue en la sección donde estaba el jugador, en vez de volver al menú (`main.ts` lo apunta en `sessionStorage` antes de recargar).
 
@@ -255,7 +255,7 @@ Solo están las de las provincias que tienen una bandera **aprobada formalmente 
 - Sus escudos son muy detallados: Cádiz pesaba 5 MB y, limpia, 1,7 MB (unos 400 KB al descargarse).
 - En Jaén se usa la versión sin la cinta con «Provincia de Jaén» bajo el escudo, porque esa cinta delataría la respuesta.
 
-En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Commons, enlace, autor y licencia. Algunas son de dominio público o CC0. Otras tienen licencia **CC BY** o **CC BY-SA**, que permiten usarlas citando al autor; por eso el juego tiene **Créditos** (enlace en el inicio de cada sección), y los de Geografía las listan todas. Cada sección enseña solo sus créditos: en `index.html`, los bloques de la pantalla de Créditos llevan `data-section` con la sección a la que pertenecen, y `renderCredits` (en `credits-screen.ts`) esconde los de las demás; los que no lo llevan (las tipografías) salen en todas. La lista de banderas solo se pinta en Geografía, así que en los créditos del examen no se descarga ninguna. El esquema y los tests exigen autor y enlace a la licencia cuando la licencia pide atribución.
+En `banderas.json`, cada bandera tiene su `fuente`: nombre del archivo en Commons, enlace, autor y licencia. Algunas son de dominio público o CC0. Otras tienen licencia **CC BY** o **CC BY-SA**, que permiten usarlas citando al autor; por eso el juego tiene **Créditos** (enlace en el inicio de cada sección), y los de Geografía las listan todas. Cada sección enseña solo sus créditos: en `index.html`, los bloques de la pantalla de Créditos llevan `data-section` con la sección a la que pertenecen, y `renderCredits` (en `common-credits-screen.ts`) esconde los de las demás; los que no lo llevan (las tipografías) salen en todas. La lista de banderas solo se pinta en Geografía, así que en los créditos del examen no se descarga ninguna. El esquema y los tests exigen autor y enlace a la licencia cuando la licencia pide atribución.
 
 ## Descargas con GitHub Actions
 
@@ -295,17 +295,17 @@ Cada proceso solo arranca si el commit que subes cambia su script (o su workflow
 
 `npm test` comprueba lo que hay en `tests/`, una carpeta por sección y otra (`common/`) para lo de todas:
 
-- **Datos de Geografía** (`geografia/data.test.ts`): que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen, que no sobran imágenes y que están limpias con SVGO; que en cada provincia están sus tres municipios más poblados y su capital, que los demás llevan curiosidad y que el puesto concuerda con la población.
-- **Preguntas y opciones de Geografía** (`geografia/questions.test.ts`), en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
-- **Partidas de Geografía** (`geografia/round-questions.test.ts`): en cientos de partidas al azar, con cada número de preguntas, sin repetir pregunta y bien repartidas; qué números se pueden elegir con cada selección; otra vuelta a la baraja; con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa.
-- **Selección de Geografía** (`geografia/selection.test.ts`): cuándo se puede jugar (con alguna categoría, forma y territorio, y si caben las preguntas elegidas: 25, 50 y 100 solo si hay al menos esas), con qué ajustes se prepara la partida, cuándo deja de valer la preparada (no al cambiar el tiempo) y qué separa los récords (no la forma de los nombres).
-- **Partida en marcha** (`common/round.test.ts`): aciertos, racha, fallos (también por tiempo), final y récords; la partida sin límite (fin de la baraja, otra vuelta, terminar y su récord de racha); y la valoración: los textos del resultado según los aciertos, y que el aprobado del examen es el mismo que el del simulacro.
-- **Guardado** (`common/storage.test.ts`): lo de por defecto; que se recuerdan la sección, los récords y las opciones; que se descarta lo que no tiene la forma esperada (texto que no es JSON, récords que no son números) y lo guardado con el formato de antes de la versión 0.2.33; que las opciones de cada sección se comprueban una vez y lo que se cambia en ellas se guarda; y el final de la clave del récord. Las opciones de cada sección (lo de por defecto, lo que no vale, las categorías y tareas nuevas que se marcan solas) y su clave del récord, en sus tests (`geografia/selection.test.ts`, `ccse/rounds.test.ts`).
-- **Textos** (`common/labels.test.ts`): cómo se escribe el tiempo del simulacro, en el reloj y al terminar; el número de preguntas del inicio y el aviso de Opciones cuando ya no caben.
-- **Cuenta atrás** (`common/countdown.test.ts`): con un reloj de mentira, que no corre hasta arrancarla, que la pausa no pierde tiempo, que no baja de cero y cómo se redondean los segundos.
-- **Datos del examen** (`ccse/data.test.ts`): que `ccse.json` cumple su esquema; que las entradas tienen identificador único ligado a su referencia, de su tarea, en orden y sin huecos; que ninguna está a medias (y, si lo está, qué le falta); que la letra elige bien la respuesta, que «Verdadero» y «Falso» no se barajan y que las vacías no salen; que cada nota tiene fuentes; y que cada tarea tiene preguntas de sobra para el simulacro.
-- **Partidas del examen** (`ccse/rounds.test.ts`), con datos de prueba (`ccse/test-data.ts`), porque la plantilla real se va rellenando poco a poco: que las partidas solo sacan preguntas de las tareas marcadas, sin repetir, con las opciones barajadas; otra vuelta, repaso y clave del récord; cuándo se puede jugar; que se recuerdan las opciones del examen, y que una tarea que recibe sus primeras preguntas se marca sola.
-- **Simulacro** (`ccse/simulacro.test.ts`, con datos de prueba en las cinco tareas): que salen las preguntas de cada tarea según el reparto, en orden y sin repetir; que no se ofrece si una tarea tiene menos de las necesarias; que se puede ir, volver y cambiar la respuesta hasta entregar, y ya no después; que al entregar cuenta los aciertos (lo no respondido es fallo), los de cada tarea y el apto desde 15; y el mejor resultado.
+- **Datos de Geografía** (`geografia/geografia-data.test.ts`): que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen, que no sobran imágenes y que están limpias con SVGO; que en cada provincia están sus tres municipios más poblados y su capital, que los demás llevan curiosidad y que el puesto concuerda con la población.
+- **Preguntas y opciones de Geografía** (`geografia/geografia-questions.test.ts`), en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
+- **Partidas de Geografía** (`geografia/geografia-round-questions.test.ts`): en cientos de partidas al azar, con cada número de preguntas, sin repetir pregunta y bien repartidas; qué números se pueden elegir con cada selección; otra vuelta a la baraja; con varias formas marcadas salen todas, cada pregunta entera en la suya, y con una sola, solo esa.
+- **Selección de Geografía** (`geografia/geografia-selection.test.ts`): cuándo se puede jugar (con alguna categoría, forma y territorio, y si caben las preguntas elegidas: 25, 50 y 100 solo si hay al menos esas), con qué ajustes se prepara la partida, cuándo deja de valer la preparada (no al cambiar el tiempo) y qué separa los récords (no la forma de los nombres).
+- **Partida en marcha** (`common/common-round.test.ts`): aciertos, racha, fallos (también por tiempo), final y récords; la partida sin límite (fin de la baraja, otra vuelta, terminar y su récord de racha); y la valoración: los textos del resultado según los aciertos, y que el aprobado del examen es el mismo que el del simulacro.
+- **Guardado** (`common/common-storage.test.ts`): lo de por defecto; que se recuerdan la sección, los récords y las opciones; que se descarta lo que no tiene la forma esperada (texto que no es JSON, récords que no son números) y lo guardado con el formato de antes de la versión 0.2.33; que las opciones de cada sección se comprueban una vez y lo que se cambia en ellas se guarda; y el final de la clave del récord. Las opciones de cada sección (lo de por defecto, lo que no vale, las categorías y tareas nuevas que se marcan solas) y su clave del récord, en sus tests (`geografia/geografia-selection.test.ts`, `ccse/ccse-rounds.test.ts`).
+- **Textos** (`common/common-labels.test.ts`): cómo se escribe el tiempo del simulacro, en el reloj y al terminar; el número de preguntas del inicio y el aviso de Opciones cuando ya no caben.
+- **Cuenta atrás** (`common/common-countdown.test.ts`): con un reloj de mentira, que no corre hasta arrancarla, que la pausa no pierde tiempo, que no baja de cero y cómo se redondean los segundos.
+- **Datos del examen** (`ccse/ccse-data.test.ts`): que `ccse.json` cumple su esquema; que las entradas tienen identificador único ligado a su referencia, de su tarea, en orden y sin huecos; que ninguna está a medias (y, si lo está, qué le falta); que la letra elige bien la respuesta, que «Verdadero» y «Falso» no se barajan y que las vacías no salen; que cada nota tiene fuentes; y que cada tarea tiene preguntas de sobra para el simulacro.
+- **Partidas del examen** (`ccse/ccse-rounds.test.ts`), con datos de prueba (`ccse/ccse-test-data.ts`), porque la plantilla real se va rellenando poco a poco: que las partidas solo sacan preguntas de las tareas marcadas, sin repetir, con las opciones barajadas; otra vuelta, repaso y clave del récord; cuándo se puede jugar; que se recuerdan las opciones del examen, y que una tarea que recibe sus primeras preguntas se marca sola.
+- **Simulacro** (`ccse/ccse-simulacro.test.ts`, con datos de prueba en las cinco tareas): que salen las preguntas de cada tarea según el reparto, en orden y sin repetir; que no se ofrece si una tarea tiene menos de las necesarias; que se puede ir, volver y cambiar la respuesta hasta entregar, y ya no después; que al entregar cuenta los aciertos (lo no respondido es fallo), los de cada tarea y el apto desde 15; y el mejor resultado.
 
 Los tests comprueban **reglas**, no copian el contenido: por ejemplo, que las trampas de una capital de provincia son las capitales y ciudades de las provincias de su campo `trampas`, sin escribir cuáles son. Por eso se puede cambiar una nota, una trampa o una ciudad en los JSON (también desde github.dev) sin tocar los tests: si el cambio rompe una regla (una trampa que no existe, una marca mal escrita…), el test dice dónde.
 

@@ -13,7 +13,7 @@
   <div class="app">
     <header class="masthead">
       <svg id="contours" viewBox="0 0 300 220" aria-hidden="true"></svg>
-      <!-- El texto de estas dos líneas cambia con la sección (app.ts y la definición de cada sección) -->
+      <!-- El texto de estas dos líneas cambia con la sección (common-app.ts y la definición de cada sección) -->
       <div class="eyebrow" id="eyebrow">Atlas de bolsillo</div>
       <h1>Aprende sobre España</h1>
       <p class="lede" id="lede"></p>
@@ -22,7 +22,7 @@
     <!-- Secciones -->
     <section id="sections" class="screen" tabindex="-1" aria-label="Secciones" hidden>
       <h2 class="label">¿Qué quieres aprender?</h2>
-      <!-- Una tarjeta por sección, que pone app.ts con los datos de la lista de secciones -->
+      <!-- Una tarjeta por sección, que pone common-app.ts con los datos de la lista de secciones -->
       <div class="cats section-list" id="sectionList"></div>
     </section>
 
@@ -102,7 +102,7 @@
     </section>
 
     <!-- Créditos -->
-    <!-- Créditos: cada bloque con data-section sale solo en los créditos de esa sección (credits-screen.ts);
+    <!-- Créditos: cada bloque con data-section sale solo en los créditos de esa sección (common-credits-screen.ts);
          los que no lo llevan (las tipografías) salen en todas. -->
     <section id="credits" class="screen" tabindex="-1" aria-label="Créditos" hidden>
       <div class="stack tight" data-section="ccse">
@@ -224,7 +224,7 @@
       </div>
     </section>
 
-    <!-- Simulacro de examen: 25 preguntas, sin decir si se acierta hasta entregar (simulacro.ts) -->
+    <!-- Simulacro de examen: 25 preguntas, sin decir si se acierta hasta entregar (ccse-simulacro-screen.ts) -->
     <section id="sim" class="screen play" tabindex="-1" aria-label="Simulacro de examen" hidden>
       <div class="hud">
         <div class="sheet" id="simSheet"></div>
@@ -304,7 +304,7 @@
       </div>
     </section>
 
-    <!-- Versión y fecha de publicación: al pie del menú de secciones y del inicio de cada sección (app.ts) -->
+    <!-- Versión y fecha de publicación: al pie del menú de secciones y del inicio de cada sección (common-app.ts) -->
     <p class="version" id="version"></p>
   </div>
   <script type="module" src="./src/main.ts"></script>
