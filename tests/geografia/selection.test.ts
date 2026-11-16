@@ -5,7 +5,7 @@ import { ROUND_LENGTH, ROUND_LENGTHS, TIME_LIMITS, type RoundLength } from "../.
 import { roundSettings, recordKey, canPlay, selectionKey } from "../../src/sections/geografia/engine/selection";
 import { loadState, type SavedState } from "../../src/common/engine/storage";
 import { NAME_FORMS, TERRITORIOS } from "../../src/sections/geografia/engine/types";
-import { modoGeografia } from "../../src/sections/geografia/ui/mode";
+import { geografiaMode } from "../../src/sections/geografia/ui/mode";
 import { questionCount } from "../../src/sections/geografia/engine/round-questions";
 
 // Lo que se deduce de las opciones marcadas en Geografía (la selección): si se puede jugar, con qué ajustes
@@ -44,7 +44,7 @@ describe("selección de geografía", () => {
     for (const longitud of ROUND_LENGTHS) {
       const s = { ...base(), longitud, opciones: OPTION_COUNTS[1] };
       if (!canPlay(s)) continue;
-      const mode = modoGeografia(s);
+      const mode = geografiaMode(s);
       const questions = mode.buildRound();
       expect(questions, String(longitud)).toHaveLength(mode.roundSize());
       expect(mode.roundSize(), String(longitud)).toBe(longitud === "sinLimite" ? questionCount(s.selected, s.territorios) : longitud);

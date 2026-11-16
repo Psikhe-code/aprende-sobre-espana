@@ -4,7 +4,7 @@ import {
 } from "../../src/sections/ccse/engine/questions";
 import { ROUND_LENGTH, ROUND_LENGTHS, type RoundLength } from "../../src/common/engine/round-settings";
 import { canPlay } from "../../src/sections/ccse/engine/selection";
-import { modoCcse } from "../../src/sections/ccse/ui/mode";
+import { ccseMode } from "../../src/sections/ccse/ui/mode";
 import { ccseRecordKey, loadState, STORAGE_KEY } from "../../src/common/engine/storage";
 
 // Examen de nacionalidad: partidas y guardado, con datos de prueba (test-data.ts) en vez de la
@@ -101,7 +101,7 @@ describe("examen de nacionalidad: lo que da a la partida común", () => {
       const s = loadState();
       s.ccse.longitud = n;
       if (!canPlay(s)) continue;
-      const mode = modoCcse(s);
+      const mode = ccseMode(s);
       expect(mode.buildRound(), String(n)).toHaveLength(mode.roundSize());
       expect(mode.roundSize(), String(n)).toBe(n === "sinLimite" ? tareaQuestions(s.ccse.tareas).length : n);
       probadas.push(n);

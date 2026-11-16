@@ -59,8 +59,8 @@ test("la versión sale al pie del menú de secciones y del inicio de cada secci�
 
 test("el inicio del examen dice de dónde salen las preguntas y enlaza a la prueba", async ({ page }) => {
   await abrir(page, "ccse");
-  await expect(page.locator("#ccseAviso")).toContainText("Manual CCSE 2026 del Instituto Cervantes");
-  await expect(page.locator('#ccseAviso a[href^="https://cervantes.org/"]')).toHaveAttribute("target", "_blank");
+  await expect(page.locator("#ccseNotice")).toContainText("Manual CCSE 2026 del Instituto Cervantes");
+  await expect(page.locator('#ccseNotice a[href^="https://cervantes.org/"]')).toHaveAttribute("target", "_blank");
   await expect(page.locator("#lede")).toContainText("prueba CCSE");
 });
 
@@ -130,10 +130,10 @@ test("mientras no hay ninguna pregunta rellena, el inicio del examen lo dice y n
   await preguntasCcse(page, ccseVacio());
   await page.goto("./");
   await page.locator("#sec-ccse").click();
-  await expect(page.locator("#ccseVacio")).toBeVisible();
+  await expect(page.locator("#ccseEmpty")).toBeVisible();
   await expect(page.locator("#ccseGo")).toBeHidden();
   await expect(page.locator("#ccseOpenOptions")).toBeHidden();
-  await expect(page.locator("#ccseAviso")).toBeVisible();
+  await expect(page.locator("#ccseNotice")).toBeVisible();
   // Se puede seguir cambiando de sección.
   await page.locator("#ccseToSections").click();
   await expect(page.locator("#sections")).toBeVisible();

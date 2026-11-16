@@ -16,7 +16,7 @@ export const TERRITORIO_LABELS: Record<Territorio, { name: string; example: stri
 };
 
 /** Explicación de cada dificultad en Opciones. */
-export const DIFICULTAD_DESC: Record<OptionCount, string> = {
+export const OPTION_COUNT_DESCRIPTIONS: Record<OptionCount, string> = {
   4: "La respuesta y tres opciones más.",
   6: "Más trampas entre las opciones.",
   8: "Casi todas las trampas a la vez."

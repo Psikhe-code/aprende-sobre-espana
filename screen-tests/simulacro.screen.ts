@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
 
 test("el inicio del examen ofrece el simulacro y explica cómo es", async ({ page }) => {
   await abrir(page, "ccse");
-  await expect(page.locator("#simResumen")).toBeVisible();
+  await expect(page.locator("#simSummary")).toBeVisible();
   await expect(page.locator("#simInfo")).toContainText(`${SIMULACRO_QUESTION_COUNT} preguntas`);
   await expect(page.locator("#simInfo")).toContainText(`${SIMULACRO_MINUTES} minutos`);
   await expect(page.locator("#simInfo")).toContainText(`apto con ${SIMULACRO_APTO_HITS} aciertos`);
@@ -26,7 +26,7 @@ test("sin preguntas de sobra en cada tarea, no se ofrece el simulacro", async ({
   await preguntasCcse(page, ccsePrueba());
   await abrir(page, "ccse");
   await expect(page.locator("#ccseGo")).toBeVisible();
-  await expect(page.locator("#simResumen")).toBeHidden();
+  await expect(page.locator("#simSummary")).toBeHidden();
 });
 
 test("en el simulacro no se dice si se acierta: se elige, se cambia, se va y se vuelve", async ({ page }) => {
@@ -35,7 +35,7 @@ test("en el simulacro no se dice si se acierta: se elige, se cambia, se va y se 
   await expect(page.locator("#sim")).toBeVisible();
   await expect(page.locator("#simSheet")).toHaveText(`Pregunta 01 / ${SIMULACRO_QUESTION_COUNT}`);
   await expect(page.locator("#simTimerText")).toHaveText(`${SIMULACRO_MINUTES}:00`);
-  await expect(page.locator("#simMapa button")).toHaveCount(SIMULACRO_QUESTION_COUNT);
+  await expect(page.locator("#simMap button")).toHaveCount(SIMULACRO_QUESTION_COUNT);
   await expect(page.locator("#simPrev")).toBeDisabled();
 
   // Elegir marca la opción, pero no dice si es correcta ni enseña la nota.
@@ -44,8 +44,8 @@ test("en el simulacro no se dice si se acierta: se elige, se cambia, se va y se 
   await expect(opciones.nth(0)).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#simOpts .right, #simOpts .wrong")).toHaveCount(0);
   await expect(page.locator("#sim .why:visible")).toHaveCount(0);
-  await expect(page.locator("#sim-n-1")).toHaveClass(/hecha/);
-  await expect(page.locator("#simRespondidas")).toHaveText(`1/${SIMULACRO_QUESTION_COUNT}`);
+  await expect(page.locator("#sim-n-1")).toHaveClass(/answered/);
+  await expect(page.locator("#simAnswered")).toHaveText(`1/${SIMULACRO_QUESTION_COUNT}`);
 
   // Se puede cambiar.
   await opciones.nth(1).click();
@@ -81,26 +81,26 @@ test("al entregar se avisa de las que faltan; el resultado dice apto o no apto y
     await page.locator("#simOpts .opt").first().click();
     await page.locator("#simNext").click();
   }
-  await page.locator("#simEntregar").click();
-  await expect(page.locator("#simConfirmar")).toBeVisible();
-  await expect(page.locator("#simConfirmarTexto")).toContainText("Te quedan 2 preguntas sin responder");
+  await page.locator("#simSubmit").click();
+  await expect(page.locator("#simConfirm")).toBeVisible();
+  await expect(page.locator("#simConfirmText")).toContainText("Te quedan 2 preguntas sin responder");
   // Es un cuadro de aviso con su texto como nombre: el lector de pantalla lo lee al pasar el foco a sus botones.
   await expect(page.getByRole("alertdialog")).toHaveAccessibleName(/Te quedan 2 preguntas sin responder/);
-  await expect(page.locator("#simConfirmarNo")).toBeFocused();
+  await expect(page.locator("#simConfirmNo")).toBeFocused();
   // Se puede seguir con el examen…
-  await page.locator("#simConfirmarNo").click();
-  await expect(page.locator("#simConfirmar")).toBeHidden();
+  await page.locator("#simConfirmNo").click();
+  await expect(page.locator("#simConfirm")).toBeHidden();
   await expect(page.locator("#sim")).toBeVisible();
   // …o entregar igualmente.
-  await page.locator("#simEntregar").click();
-  await page.locator("#simConfirmarSi").click();
+  await page.locator("#simSubmit").click();
+  await page.locator("#simConfirmYes").click();
 
   await expect(page.locator("#simEnd")).toBeVisible();
   const score = await page.locator("#simScore").innerText();
   const [aciertos, total] = score.split("/").map(Number);
   expect(total).toBe(SIMULACRO_QUESTION_COUNT);
   await expect(page.locator("#simTitle")).toHaveText(aciertos >= SIMULACRO_APTO_HITS ? "Apto" : "No apto");
-  await expect(page.locator("#simPorTarea .chip")).toHaveCount(SIMULACRO_DISTRIBUTION.length);
+  await expect(page.locator("#simByTarea .chip")).toHaveCount(SIMULACRO_DISTRIBUTION.length);
 
   // Los fallos: cada uno con la respuesta correcta, lo que se dijo (o «sin responder») y, si la tiene, la nota con sus fuentes.
   const fallos = page.locator("#simMisses .miss");
@@ -129,17 +129,17 @@ test("salir del simulacro pide confirmación y lo da por perdido", async ({ page
   await abrir(page, "ccse");
   await page.locator("#simGo").click();
   await page.locator("#simOpts .opt").first().click();
-  await page.locator("#simSalir").click();
-  await expect(page.locator("#simConfirmarTexto")).toHaveText("Si sales ahora, se pierde este simulacro.");
+  await page.locator("#simLeave").click();
+  await expect(page.locator("#simConfirmText")).toHaveText("Si sales ahora, se pierde este simulacro.");
   await page.keyboard.press("Escape");
-  await expect(page.locator("#simConfirmar")).toBeHidden();
-  await page.locator("#simSalir").click();
-  await page.locator("#simConfirmarSi").click();
+  await expect(page.locator("#simConfirm")).toBeHidden();
+  await page.locator("#simLeave").click();
+  await page.locator("#simConfirmYes").click();
   await expect(page.locator("#ccseStart")).toBeVisible();
   await expect(page.locator("#simRecord")).toHaveText("Aún no has hecho ningún simulacro.");
   // Uno nuevo empieza de cero.
   await page.locator("#simGo").click();
-  await expect(page.locator("#simRespondidas")).toHaveText(`0/${SIMULACRO_QUESTION_COUNT}`);
+  await expect(page.locator("#simAnswered")).toHaveText(`0/${SIMULACRO_QUESTION_COUNT}`);
 });
 
 test("el reloj marca los 45 minutos de todo el examen, se para con la pestaña oculta y al acabarse se entrega solo", async ({ page }) => {

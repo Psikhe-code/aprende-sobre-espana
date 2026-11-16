@@ -8,7 +8,7 @@ import { Round, type AnswerResult } from "../engine/round";
 import type { PlayableQuestion } from "../engine/types";
 import type { AppContext } from "./context";
 import { $, announce, el, isInteractive, pad, renderSources, numberKey } from "./dom";
-import { flagImage, precargarBandera } from "../../sections/geografia/ui/banderas";
+import { flagImage, preloadFlag } from "../../sections/geografia/ui/banderas";
 import { renderEnd } from "./end-screen";
 import { createTimer } from "./timer";
 
@@ -40,7 +40,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     if (!mode.canPlay()) { prepared = null; return; }
     if (prepared?.selectionKey !== mode.selectionKey()) prepared = { selectionKey: mode.selectionKey(), questions: mode.buildRound() };
     const first = prepared.questions[0];
-    if (first?.flag) precargarBandera(first.flag);
+    if (first?.flag) preloadFlag(first.flag);
   }
 
   function start(givenRound?: Round) {
@@ -79,7 +79,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     flag.hidden = !q.flag;
     // Mientras se responde esta, se va descargando la bandera de la siguiente.
     const nextQuestion = g.questions[g.index + 1];
-    if (nextQuestion?.flag) precargarBandera(nextQuestion.flag);
+    if (nextQuestion?.flag) preloadFlag(nextQuestion.flag);
 
     renderTrack();
 
