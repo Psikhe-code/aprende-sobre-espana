@@ -1,8 +1,9 @@
-// Lo que se deduce de las opciones marcadas (la selección actual): si se puede jugar,
-// con qué ajustes se prepara la partida y con qué clave se guarda su récord.
+// Lo que se deduce de las opciones marcadas (la selección actual) en cada sección: si se puede jugar,
+// con qué ajustes se prepara la partida y con qué clave se guarda su récord. Sin nada de pantalla.
 
-import { lengthFits, roundSize, type RoundSettings } from "../engine/round";
-import { comboKey, type SavedState } from "../engine/storage";
+import { cabeCcse, tamanoCcse } from "./ccse";
+import { lengthFits, roundSize, type RoundSettings } from "./round";
+import { comboKey, type SavedState } from "./storage";
 
 /** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y preguntas suficientes. */
 export const puedeJugar = (s: SavedState) =>
@@ -21,3 +22,7 @@ export const seleccionActual = (s: SavedState) => JSON.stringify([s.selected, s.
 
 /** Clave del récord de la selección actual. */
 export const claveRecord = (s: SavedState) => comboKey(s.selected, s.territorios, s.opciones, s.longitud, s.tiempo);
+
+/** Examen de nacionalidad: si se puede jugar, es decir, alguna tarea con preguntas y que quepa el número elegido. */
+export const puedeJugarCcse = (s: SavedState) =>
+  tamanoCcse(s.ccse.tareas, s.ccse.longitud) > 0 && cabeCcse(s.ccse.longitud, s.ccse.tareas);

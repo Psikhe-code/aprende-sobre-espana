@@ -6,7 +6,7 @@ import { NAME_STYLES, TERRITORIOS } from "../engine/types";
 import type { Contexto } from "./contexto";
 import { $, radioGroup, tabuladorEnLaMarcada, toggleCard } from "./dom";
 import { DIFICULTAD_DESC, LONGITUD_LABELS, NAME_LABELS, TERRITORIO_LABELS, TIEMPO_LABELS } from "./labels";
-import { puedeJugar } from "./seleccion";
+import { puedeJugar } from "../engine/seleccion";
 
 /** Prepara la pantalla de Opciones (sus botones) y devuelve cómo dibujarla. */
 export function crearOpciones(ctx: Contexto): { render: () => void } {

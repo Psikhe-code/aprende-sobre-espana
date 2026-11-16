@@ -3,6 +3,7 @@ import {
   PREGUNTAS_CCSE, TAREAS, cabeCcse, nombreTarea, otraVueltaCcse, partidaCcse, preguntasDe, repasoCcse, tamanoCcse, tarea, tareasConPreguntas
 } from "../src/engine/ccse";
 import { ROUND_LENGTH, ROUND_LENGTHS } from "../src/engine/round";
+import { puedeJugarCcse } from "../src/engine/seleccion";
 import { ccseKey, loadState, STORAGE_KEY } from "../src/engine/storage";
 
 // Examen de nacionalidad: partidas y guardado, con datos de prueba (ccse-prueba.ts) en vez de la
@@ -89,6 +90,23 @@ describe("examen de nacionalidad: partidas", () => {
     expect(ccseKey([2, 1])).toBe("ccse/1+2");
     expect(ccseKey([1], 25, 60)).toBe("ccse/1/25preguntas/60s");
     expect(ccseKey([1, 3], "sinLimite", "sinTiempo")).toBe("ccse/1+3/sinlimite");
+  });
+});
+
+describe("examen de nacionalidad: si se puede jugar", () => {
+  it("con las opciones por defecto, sí; sin ninguna tarea marcada, no", () => {
+    const s = loadState();
+    expect(puedeJugarCcse(s)).toBe(true);
+    expect(puedeJugarCcse({ ...s, ccse: { ...s.ccse, tareas: [] } })).toBe(false);
+  });
+
+  it("solo si las tareas marcadas tienen preguntas y caben las elegidas (25, 50 y 100, solo si hay al menos esas)", () => {
+    const s = loadState();
+    for (const t of TODAS) for (const longitud of ROUND_LENGTHS) {
+      const hay = preguntasDe([t]).length;
+      const cabe = hay > 0 && (longitud === "sinLimite" || longitud === ROUND_LENGTH || hay >= longitud);
+      expect(puedeJugarCcse({ ...s, ccse: { ...s.ccse, tareas: [t], longitud } }), `tarea ${t} · ${longitud}`).toBe(cabe);
+    }
   });
 });
 
