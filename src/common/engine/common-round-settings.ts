@@ -13,23 +13,23 @@ export type QuestionCount = (typeof QUESTION_COUNTS)[number];
 export const DEFAULT_QUESTION_COUNT = QUESTION_COUNTS[0];
 
 /**
- * Tiempo por pregunta seleccionable en Opciones, en segundos, o "sinTiempo".
- * Por defecto, 60 segundos. El repaso de fallos siempre se realiza sin tiempo.
+ * Tiempo por pregunta seleccionable en Opciones, en segundos, o `"sinTiempo"`.
+ * El repaso de fallos siempre se realiza sin tiempo.
  */
 export const TIME_LIMITS = ["sinTiempo", 60, 30, 10] as const;
 export type TimeLimit = (typeof TIME_LIMITS)[number];
 export const DEFAULT_TIME_LIMIT: TimeLimit = 60;
 
 /**
- * Cuántas preguntas tendrá una partida de este número de preguntas, si hay `availableQuestionCount` preguntas
- * distintas: las elegidas, o menos si no hay tantas. Sin límite: las que hay (una vuelta).
+ * Calcula cuántas preguntas tendrá una partida según la cantidad solicitada y las disponibles.
+ * Si hay menos de las solicitadas, utiliza las disponibles. En «Sin límite», devuelve las de una vuelta.
  */
 export const countRoundQuestions = (questionCount: QuestionCount, availableQuestionCount: number) =>
   questionCount === "sinLimite" ? availableQuestionCount : Math.min(questionCount, availableQuestionCount);
 
 /**
- * Final de la clave de un récord, igual en todas las secciones: el número de preguntas y el tiempo,
- * «/10preguntas/60s», «/sinlimite/sintiempo». Los récords van aparte por número de preguntas y por tiempo.
+ * Genera el sufijo de la clave de un récord a partir del número de preguntas y el tiempo por pregunta.
+ * Permite guardar récords separados para cada combinación.
  */
 export const recordKeyEnding = (questionCount: QuestionCount, timeLimit: TimeLimit) =>
   `/${questionCount === "sinLimite" ? "sinlimite" : questionCount + "preguntas"}/${timeLimit === "sinTiempo" ? "sintiempo" : timeLimit + "s"}`;
