@@ -55,7 +55,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     else {
       const questions = prepared?.selectionKey === mode.selectionKey() ? prepared.questions : mode.buildRound();
       prepared = null; // cada partida preparada se juega una sola vez
-      round = new Round(questions, { expected: mode.roundQuestionCount(), unlimited: mode.isUnlimited() });
+      round = new Round(questions, { unlimited: mode.isUnlimited() });
     }
     // Sin límite no hay barra de progreso (no se sabe cuándo acaba), sino el botón «Terminar».
     $("track").hidden = round.unlimited;
@@ -67,7 +67,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
 
   function renderQuestion() {
     if (!round) return;
-    const q = round.current;
+    const q = round.currentQuestion;
     $("sheet").replaceChildren(`Hoja ${pad(round.index + 1)} `, ...(round.unlimited ? [] : [el("span", "", `/ ${pad(round.total)}`)]));
     $("card").hidden = false;
     $("cycleEnd").hidden = true;
@@ -146,19 +146,19 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     const v = $("verdict");
     v.className = "verdict " + (r.correct ? "ok" : "bad");
     v.textContent = r.correct ? "Correcto" : r.givenAnswer === null ? "Se acabó el tiempo · Era: " + r.correctAnswer : "Era: " + r.correctAnswer;
-    $("explanation").textContent = round.current.explanation;
-    $("explanation").hidden = !round.current.explanation; // en el examen, mientras falte la nota
+    $("explanation").textContent = round.currentQuestion.explanation;
+    $("explanation").hidden = !round.currentQuestion.explanation; // en el examen, mientras falte la nota
     // Otras formas de los nombres: "Girona · en castellano, Gerona"
-    const aliases = round.current.aliases ?? [];
+    const aliases = round.currentQuestion.aliases ?? [];
     $("aka").replaceChildren(...aliases.map((a) => el("span", "", a)));
     $("aka").hidden = !aliases.length;
     // Información complementaria, en el orden en que la da la sección: cada bloque, con su título.
-    $("extraInfo").replaceChildren(...(round.current.extraInfo ?? []).map((info) => {
+    $("extraInfo").replaceChildren(...(round.currentQuestion.extraInfo ?? []).map((info) => {
       const p = el("p", "extra-info-item");
       p.append(el("b", "", info.title), " ", el("span", "", info.text));
       return p;
     }));
-    renderSources($("source"), round.current.sources);
+    renderSources($("source"), round.currentQuestion.sources);
     announce(r.correct ? "Correcto." : r.givenAnswer === null ? `Se acabó el tiempo. Era ${r.correctAnswer}.` : `Incorrecto. Era ${r.correctAnswer}.`);
     $("next").textContent = round.isLast && !round.unlimited ? "Ver resultado" : "Siguiente";
     $("feedback").hidden = false;
@@ -187,7 +187,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
 
   function keepPlaying() {
     if (!round?.endOfCycle) return;
-    round.append(ctx.mode().reshuffleRound(round.current.id));
+    round.append(ctx.mode().reshuffleRound(round.currentQuestion.id));
     round.next();
     renderQuestion();
   }

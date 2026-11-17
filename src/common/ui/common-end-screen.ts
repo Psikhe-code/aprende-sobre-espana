@@ -19,7 +19,7 @@ export function renderEnd(ctx: AppContext, round: Round): void {
   $("endTitle").textContent = ratingText(r, ctx.mode().rating);
   const recText = r.review || rec.record == null ? ""
     : r.unlimited ? ` · Mejor racha con esta selección: ${rec.record}`
-    : ` · Récord con esta selección: ${rec.record}/${round.expected}`;
+    : ` · Récord con esta selección: ${rec.record}/${r.total}`;
   const kind = r.review ? "Repaso de fallos" : r.unlimited ? "Partida sin límite" : "Partida";
   $("endSub").textContent = `${kind} · Mejor racha: ${r.bestStreak}` + recText;
 

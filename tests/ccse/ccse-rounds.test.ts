@@ -108,8 +108,7 @@ describe("examen de nacionalidad: lo que da a la partida común", () => {
       s.questionCount = n;
       if (!canPlay(s)) continue;
       const mode = ccseMode(stateWith(s));
-      expect(mode.buildRound(), String(n)).toHaveLength(mode.roundQuestionCount());
-      expect(mode.roundQuestionCount(), String(n)).toBe(n === "sinLimite" ? tareaQuestions(s.tareas).length : n);
+      expect(mode.buildRound(), String(n)).toHaveLength(n === "sinLimite" ? tareaQuestions(s.tareas).length : n);
       tested.push(n);
     }
     // Que no pase sin comprobar nada: con los datos de prueba caben al menos 10, 25 y sin límite.

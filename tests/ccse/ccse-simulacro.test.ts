@@ -64,7 +64,7 @@ describe("simulacro: respuestas y entrega", () => {
     const s = new Simulacro(simulacroQuestions());
     expect(s.index).toBe(0);
     expect(s.unansweredCount).toBe(s.total);
-    const [a, b] = s.current.options;
+    const [a, b] = s.currentQuestion.options;
     s.answer(a);
     s.goTo(5);
     expect(s.index).toBe(5);
@@ -114,8 +114,8 @@ describe("simulacro: respuestas y entrega", () => {
     const s = answeredSimulacro(20);
     const r = s.submit();
     s.goTo(0);
-    s.answer(s.current.options.find((o) => o !== s.current.correctAnswer)!);
-    expect(s.givenAnswers[0]).toBe(s.current.correctAnswer);
+    s.answer(s.currentQuestion.options.find((o) => o !== s.currentQuestion.correctAnswer)!);
+    expect(s.givenAnswers[0]).toBe(s.currentQuestion.correctAnswer);
     expect(s.submit()).toBe(r);
     expect(s.submitted).toBe(true);
   });

@@ -96,7 +96,7 @@ export function createSimulacroScreen(ctx: AppContext, startReview: (misses: Pla
   function render() {
     if (!sim) return;
     const s = sim;
-    const q = s.current;
+    const q = s.currentQuestion;
     $("simSheet").replaceChildren(`Pregunta ${pad(s.index + 1)} `, el("span", "", `/ ${pad(s.total)}`));
     $("simAnswered").textContent = `${s.answeredCount}/${s.total}`;
     $("simCat").textContent = q.label;
@@ -129,7 +129,7 @@ export function createSimulacroScreen(ctx: AppContext, startReview: (misses: Pla
     sim.answer(option);
     const i = sim.index;
     render();
-    $("sim-opt-" + sim.current.options.indexOf(option)).focus({ preventScroll: true });
+    $("sim-opt-" + sim.currentQuestion.options.indexOf(option)).focus({ preventScroll: true });
     announceSim(`Respuesta de la pregunta ${i + 1}: ${option}.`);
   }
 
@@ -235,7 +235,7 @@ export function createSimulacroScreen(ctx: AppContext, startReview: (misses: Pla
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     const number = numberKey(e);
     if (number !== null) {
-      const o = sim.current.options[number - 1];
+      const o = sim.currentQuestion.options[number - 1];
       if (o !== undefined) { e.preventDefault(); choose(o); }
     } else if (e.key === "ArrowRight") { e.preventDefault(); goTo(sim.index + 1, "simNext"); }
     else if (e.key === "ArrowLeft") { e.preventDefault(); goTo(sim.index - 1, "simPrev"); }

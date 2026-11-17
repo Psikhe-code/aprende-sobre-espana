@@ -4,7 +4,7 @@
 
 import type { SavedState } from "../../../common/engine/common-storage";
 import type { SectionMode } from "../../../common/ui/common-mode";
-import { reshuffleRound, buildRound, buildReviewRound, countRoundQuestions, type CcseRoundParams } from "../engine/ccse-questions";
+import { reshuffleRound, buildRound, buildReviewRound, type CcseRoundParams } from "../engine/ccse-questions";
 import { canPlay, recordKey, selectionKey } from "../engine/ccse-selection";
 import { ccseSettings } from "../engine/ccse-settings";
 import { ccseRating } from "../engine/ccse-rating";
@@ -20,7 +20,6 @@ export function ccseMode(state: SavedState): SectionMode {
     buildRound: () => buildRound(params()),
     reshuffleRound: (lastId) => reshuffleRound(params(), lastId),
     buildReviewRound: (misses) => buildReviewRound(misses),
-    roundQuestionCount: () => countRoundQuestions(settings.tareas, settings.questionCount),
     isUnlimited: () => settings.questionCount === "sinLimite",
     timeLimit: () => settings.timeLimit,
     selectionKey: () => CCSE_ID + ":" + selectionKey(settings),

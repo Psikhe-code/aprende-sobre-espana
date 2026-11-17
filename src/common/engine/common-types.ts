@@ -12,6 +12,7 @@ export type Section = string;
 export interface Fuente {
   /** Referencia de la fuente que se muestra al jugador. */
   readonly texto: string;
+
   /** Enlace al documento o recurso original, si está disponible. */
   readonly url?: string;
 }
