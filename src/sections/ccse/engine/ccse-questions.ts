@@ -8,7 +8,7 @@
  */
 
 import datos from "../data/ccse.json";
-import { DEFAULT_QUESTION_COUNT, questionCountFitsFor, countRoundQuestionsFor, type QuestionCount } from "../../../common/engine/common-round-settings";
+import { DEFAULT_QUESTION_COUNT, countRoundQuestions, type QuestionCount } from "../../../common/engine/common-round-settings";
 import { shuffle, notStartingWith } from "../../../common/engine/common-random";
 import type { Fuente, PlayableQuestion, Rng } from "../../../common/engine/common-types";
 
@@ -112,13 +112,8 @@ export const tareaQuestions = (tareas: readonly number[]) => CCSE_QUESTIONS.filt
 /** Tareas que ya tienen preguntas (las demás salen en Opciones como «próximamente»). */
 export const tareasWithQuestions = () => TAREA_IDS.filter((n) => CCSE_QUESTIONS.some((p) => p.tarea === n));
 
-/** Cuántas preguntas tendrá una partida con estas tareas (ver countRoundQuestionsFor). */
-export const countRoundQuestions = (tareas: readonly number[], questionCount: QuestionCount) =>
-  countRoundQuestionsFor(questionCount, tareaQuestions(tareas).length);
-
-/** Si se puede elegir este número de preguntas con estas tareas (ver questionCountFitsFor). */
-export const questionCountFits = (questionCount: QuestionCount, tareas: readonly number[]) =>
-  questionCountFitsFor(questionCount, tareaQuestions(tareas).length);
+/** Cuántas preguntas distintas hay en las tareas marcadas. */
+export const countAvailableQuestions = (tareas: readonly number[]) => tareaQuestions(tareas).length;
 
 /** Pregunta del examen preparada para jugar: con sus opciones en el orden de esta partida. */
 export interface CcseRoundQuestion extends PlayableQuestion {
@@ -154,7 +149,7 @@ export interface CcseRoundParams {
 /** Preguntas de una partida: al azar entre las de las tareas marcadas, sin repetir ninguna. */
 export function buildRound({ tareas, questionCount = DEFAULT_QUESTION_COUNT, rng = Math.random }: CcseRoundParams): CcseRoundQuestion[] {
   const all = shuffle([...tareaQuestions(tareas)], rng);
-  return all.slice(0, countRoundQuestionsFor(questionCount, all.length)).map((p) => prepare(p, rng));
+  return all.slice(0, countRoundQuestions(questionCount, all.length)).map((p) => prepare(p, rng));
 }
 
 /**

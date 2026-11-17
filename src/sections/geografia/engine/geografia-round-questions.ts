@@ -2,7 +2,7 @@
  * @fileoverview Geografía: qué preguntas salen en cada partida.
  */
 
-import { DEFAULT_QUESTION_COUNT, questionCountFitsFor, countRoundQuestionsFor, type QuestionCount } from "../../../common/engine/common-round-settings";
+import { DEFAULT_QUESTION_COUNT, countRoundQuestions, type QuestionCount } from "../../../common/engine/common-round-settings";
 import { type Rng } from "../../../common/engine/common-types";
 import { NAME_FORMS, TERRITORIOS, type NameForm, type Question, type RoundQuestion, type Territorio } from "./geografia-types";
 import { categoryById } from "./geografia-categories";
@@ -44,25 +44,9 @@ export function questionsIn(categoryId: string, territorios: Territorio[] = DEFA
 }
 
 /** Cuántas preguntas distintas hay con esta selección de categorías y territorios. */
-export function availableQuestionCount(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS): number {
+export function countAvailableQuestions(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS): number {
   return new Set(categories.flatMap((id) => questionsIn(id, territorios)).map((q) => q.id)).size;
 }
-
-/**
- * Cuántas preguntas tendrá una partida con esta selección: las elegidas, o menos si no hay tantas
- * (por ejemplo, solo capitales de provincia). Cero si la selección no tiene preguntas.
- * Sin límite: las que hay, que es lo que dura una vuelta.
- */
-export function countRoundQuestions(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, questionCount: QuestionCount = DEFAULT_QUESTION_COUNT): number {
-  return countRoundQuestionsFor(questionCount, availableQuestionCount(categories, territorios));
-}
-
-/**
- * Si se puede elegir este número de preguntas con esta selección. Las 10 y «sin límite», siempre
- * (si hay menos de 10, la partida tiene las que haya); 25, 50 y 100, solo si hay al menos esas.
- */
-export const questionCountFits = (questionCount: QuestionCount, categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS) =>
-  questionCountFitsFor(questionCount, availableQuestionCount(categories, territorios));
 
 type Picked = Question & { category: string; nameForm: NameForm; correctAnswer: string };
 
@@ -95,9 +79,9 @@ export function pickQuestions({ categories, questionCount = DEFAULT_QUESTION_COU
     }
     decks[catId] = shuffle([...ids], rng);
   }
-  const maxQuestions = questionCount === "sinLimite" ? Infinity : questionCount;
+  const roundQuestionCount = countRoundQuestions(questionCount, versions.size);
   const out: Picked[] = [];
-  while (out.length < maxQuestions) {
+  while (out.length < roundQuestionCount) {
     const live = Object.keys(decks).filter((id) => decks[id].length);
     if (!live.length) break;
     const category = pick(live, rng);

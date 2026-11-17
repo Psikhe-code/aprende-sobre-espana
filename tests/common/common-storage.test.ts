@@ -24,7 +24,7 @@ describe("guardado", () => {
   });
 
   it("se recuerdan la sección, los récords y las opciones", () => {
-    const saved = { section: "ccse", records: { "ccse/1/10preguntas/60s": 7 }, settings: { ccse: { tareas: [1] } } };
+    const saved = { section: "ccse", records: { "ccse/1/10preguntas/60s": 7 }, settings: { ccse: { selectedTareas: [1] } } };
     withSavedData(saved, () => expect(loadState()).toEqual(saved));
   });
 
@@ -45,7 +45,7 @@ describe("guardado", () => {
       const s = loadState();
       s.section = "geografia";
       s.records["geografia/x"] = 9;
-      s.settings.geografia = { categories: ["capitales"] };
+      s.settings.geografia = { selectedCategories: ["capitales"] };
       saveState(s);
       expect(JSON.parse(store.get(STORAGE_KEY)!)).toEqual(s);
       expect(loadState()).toEqual(s);

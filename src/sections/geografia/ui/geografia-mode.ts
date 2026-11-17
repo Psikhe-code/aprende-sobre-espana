@@ -29,9 +29,9 @@ export function geografiaMode(state: SavedState): SectionMode {
     canPlay: () => canPlay(settings),
     buildRound: () => withImages(buildRound(roundParams(settings))),
     reshuffleRound: (lastId) => withImages(reshuffleRound(roundParams(settings), lastId)),
-    buildReviewRound: (misses) => withImages(buildReviewRound(misses.filter(isGeografiaQuestion), { optionCount: settings.optionCount })),
-    isUnlimited: () => settings.questionCount === "sinLimite",
-    timeLimit: () => settings.timeLimit,
+    buildReviewRound: (misses) => withImages(buildReviewRound(misses.filter(isGeografiaQuestion), { optionCount: settings.selectedOptionCount })),
+    isUnlimited: () => settings.selectedQuestionCount === "sinLimite",
+    timeLimit: () => settings.selectedTimeLimit,
     selectionKey: () => GEOGRAFIA_ID + ":" + selectionKey(settings),
     recordKey: () => recordKey(settings),
     rating: geografiaRating
