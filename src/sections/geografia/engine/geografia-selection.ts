@@ -3,17 +3,16 @@
  */
 
 import { countAvailableQuestions, type RoundParams } from "./geografia-round-questions";
-import { canChooseQuestionCount, recordKeyEnding } from "../../../common/engine/common-round-settings";
+import { recordKeyEnding } from "../../../common/engine/common-round-settings";
 import { CATEGORY_IDS } from "./geografia-categories";
 import { TERRITORIOS } from "./geografia-types";
 import type { GeografiaSettings } from "./geografia-settings";
 import { GEOGRAFIA_ID } from "./geografia-id";
 
-/** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y preguntas suficientes. */
+/** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y alguna pregunta. */
 export function canPlay(settings: GeografiaSettings): boolean {
   if (!settings.selectedCategories.length || !settings.selectedNameForms.length || !settings.selectedTerritorios.length) return false;
-  const availableQuestionCount = countAvailableQuestions(settings.selectedCategories, settings.selectedTerritorios);
-  return availableQuestionCount > 0 && canChooseQuestionCount(settings.selectedQuestionCount, availableQuestionCount);
+  return countAvailableQuestions(settings.selectedCategories, settings.selectedTerritorios) > 0;
 }
 
 /** Lo que necesita el motor para preparar una partida con las opciones elegidas. */

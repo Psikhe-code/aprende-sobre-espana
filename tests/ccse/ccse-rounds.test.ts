@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   CCSE_QUESTIONS, TAREAS, tareaName, reshuffleRound, buildRound, tareaQuestions, buildReviewRound, countAvailableQuestions, tarea, tareasWithQuestions
 } from "../../src/sections/ccse/engine/ccse-questions";
-import { DEFAULT_QUESTION_COUNT, QUESTION_COUNTS, type QuestionCount } from "../../src/common/engine/common-round-settings";
+import { QUESTION_COUNTS } from "../../src/common/engine/common-round-settings";
 import { canPlay } from "../../src/sections/ccse/engine/ccse-selection";
 import { ccseMode } from "../../src/sections/ccse/ui/ccse-mode";
 import { CCSE_APTO_RATIO, ccseRating } from "../../src/sections/ccse/engine/ccse-rating";
@@ -92,18 +92,14 @@ describe("examen de nacionalidad: partidas", () => {
 });
 
 describe("examen de nacionalidad: lo que da a la partida común", () => {
-  it("cada partida tiene el número de preguntas elegido (sin límite, todas), así que cuenta para el récord", () => {
-    const tested: QuestionCount[] = [];
+  it("cada partida tiene el número de preguntas elegido o, si hay menos, todas las que haya (sin límite, todas)", () => {
     for (const n of QUESTION_COUNTS) {
       const s = loadCcseSettings(undefined);
       s.selectedQuestionCount = n;
-      if (!canPlay(s)) continue;
+      const availableQuestionCount = tareaQuestions(s.selectedTareas).length;
       const mode = ccseMode(stateWith(s));
-      expect(mode.buildRound(), String(n)).toHaveLength(n === "sinLimite" ? tareaQuestions(s.selectedTareas).length : n);
-      tested.push(n);
+      expect(mode.buildRound(), String(n)).toHaveLength(n === "sinLimite" ? availableQuestionCount : Math.min(n, availableQuestionCount));
     }
-    // Que no pase sin comprobar nada: con los datos de prueba caben al menos 10, 25 y sin límite.
-    expect(tested).toEqual(expect.arrayContaining([10, 25, "sinLimite"]));
   });
 });
 
@@ -125,12 +121,11 @@ describe("examen de nacionalidad: si se puede jugar", () => {
     expect(canPlay({ ...s, selectedTareas: [] })).toBe(false);
   });
 
-  it("solo si las tareas marcadas tienen preguntas y caben las elegidas (25, 50 y 100, solo si hay al menos esas)", () => {
+  it("solo si las tareas marcadas tienen preguntas, sea cual sea el número de preguntas elegido", () => {
     const s = loadCcseSettings(undefined);
     for (const t of ALL_TAREAS) for (const questionCount of QUESTION_COUNTS) {
-      const available = tareaQuestions([t]).length;
-      const fits = available > 0 && (questionCount === "sinLimite" || questionCount === DEFAULT_QUESTION_COUNT || available >= questionCount);
-      expect(canPlay({ ...s, selectedTareas: [t], selectedQuestionCount: questionCount }), `tarea ${t} · ${questionCount}`).toBe(fits);
+      const hasQuestions = tareaQuestions([t]).length > 0;
+      expect(canPlay({ ...s, selectedTareas: [t], selectedQuestionCount: questionCount }), `tarea ${t} · ${questionCount}`).toBe(hasQuestions);
     }
   });
 });

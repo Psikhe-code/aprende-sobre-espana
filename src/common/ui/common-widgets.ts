@@ -4,7 +4,7 @@
  * resultado, la línea de la respuesta de cada fallo.
  */
 
-import { QUESTION_COUNTS, TIME_LIMITS, canChooseQuestionCount, type QuestionCount, type TimeLimit } from "../engine/common-round-settings";
+import { QUESTION_COUNTS, TIME_LIMITS, type QuestionCount, type TimeLimit } from "../engine/common-round-settings";
 import { el, tabToChecked, toggleCard, type Change } from "./common-dom";
 import { QUESTION_COUNT_LABELS, TIME_LIMIT_LABELS } from "./common-labels";
 
@@ -21,29 +21,26 @@ export function renderRecord(target: HTMLElement, record: number | undefined, qu
 }
 
 /**
- * Opciones: grupo «Preguntas por partida» (se marca una). 25, 50 y 100 solo si la selección tiene al menos esas
- * (`canChooseQuestionCount`); si no, salen desactivadas y dicen cuántas hay. Los ids de las tarjetas son `prefix` y el número.
+ * Opciones: grupo «Preguntas por partida» (se marca una). Todas se pueden elegir: si la selección tiene menos
+ * preguntas que las de una tarjeta, la tarjeta lo dice, y la partida tendrá las que haya.
+ * Los ids de las tarjetas son `prefix` y el número.
  */
 export function renderQuestionCountGroup(group: HTMLElement, o: {
   prefix: string; current: QuestionCount; availableQuestionCount: number; change: Change;
   choose: (questionCount: QuestionCount) => void;
 }): void {
   group.replaceChildren(...QUESTION_COUNTS.map((questionCount) => {
-    const canChoose = canChooseQuestionCount(questionCount, o.availableQuestionCount);
-    const card = toggleCard(o.prefix + questionCount, o.current === questionCount, QUESTION_COUNT_LABELS[questionCount].name,
-      [["cat-desc", canChoose || !o.availableQuestionCount
-        ? QUESTION_COUNT_LABELS[questionCount].desc : `Con esta selección hay ${o.availableQuestionCount} preguntas.`]],
+    const fewer = questionCount !== "sinLimite" && o.availableQuestionCount > 0 && o.availableQuestionCount < questionCount;
+    return toggleCard(o.prefix + questionCount, o.current === questionCount, QUESTION_COUNT_LABELS[questionCount].name,
+      [["cat-desc", fewer ? fewerQuestionsText(o.availableQuestionCount) : QUESTION_COUNT_LABELS[questionCount].desc]],
       o.change(o.prefix + questionCount, () => o.choose(questionCount)), true);
-    // La elegida no se desactiva aunque ya no quepa: se ve marcada, con el aviso de debajo (questionCountWarning).
-    card.disabled = !canChoose && o.current !== questionCount;
-    return card;
   }));
   tabToChecked(group);
 }
 
-/** Opciones: aviso cuando el número de preguntas elegido ya no cabe en la selección. */
-export const questionCountWarning = (availableQuestionCount: number) =>
-  `Con esta selección hay ${availableQuestionCount} preguntas: elige menos preguntas por partida o «Sin límite».`;
+/** Opciones: lo que dice una tarjeta de preguntas por partida cuando la selección tiene menos. */
+export const fewerQuestionsText = (availableQuestionCount: number) =>
+  `Con esta selección solo hay ${availableQuestionCount} preguntas: saldrán todas.`;
 
 /** Opciones: grupo «Tiempo por pregunta» (se marca uno). Los ids de las tarjetas son `prefix` y el tiempo. */
 export function renderTimeLimitGroup(group: HTMLElement, o: {

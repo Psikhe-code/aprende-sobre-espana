@@ -37,24 +37,23 @@ test("en los grupos de opciones, las flechas pasan a otra y saltan las desactiva
   await expect(page.locator('[id="option-count-4"]')).toBeFocused();
 });
 
-test("si la selección no llega a un número de preguntas, sale desactivado y lo dice", async ({ page }) => {
+test("si la selección tiene menos preguntas, la tarjeta lo dice pero se puede elegir, y la partida tiene las que haya", async ({ page }) => {
   await openSection(page);
   await page.locator("#openOptions").click();
   for (const id of ONLY_CAPITALES) await page.locator(`[id="${id}"]`).click();
   for (const n of [50, 100]) {
-    await expect(page.locator(`[id="question-count-${n}"]`)).toBeDisabled();
-    await expect(page.locator(`[id="question-count-${n}"] .cat-desc`)).toHaveText(/^Con esta selección hay \d+ preguntas\.$/);
+    await expect(page.locator(`[id="question-count-${n}"]`)).toBeEnabled();
+    await expect(page.locator(`[id="question-count-${n}"] .cat-desc`)).toHaveText(/^Con esta selección solo hay \d+ preguntas: saldrán todas\.$/);
   }
-  await expect(page.locator('[id="question-count-sinLimite"]')).toBeEnabled();
+  const text = await page.locator('[id="question-count-50"] .cat-desc').textContent();
+  const available = Number(text!.match(/\d+/)![0]);
 
-  // Elegida una que cabe y quitado un territorio, ya no cabe: aviso y «Listo» desactivado.
-  await page.locator('[id="question-count-25"]').click();
-  await page.locator('[id="terr-comunidad"]').click();
-  await expect(page.locator("#questionCountWarn")).toBeVisible();
-  await expect(page.locator("#doneOptions")).toBeDisabled();
-  await page.locator('[id="question-count-10"]').click();
-  await expect(page.locator("#questionCountWarn")).toBeHidden();
+  await page.locator('[id="question-count-50"]').click();
   await expect(page.locator("#doneOptions")).toBeEnabled();
+  await page.locator("#doneOptions").click();
+  await expect(page.locator("#roundLabel")).toHaveText(`${available} preguntas al azar de`);
+  await page.locator("#go").click();
+  await expect(page.locator("#track i")).toHaveCount(available);
 });
 
 test("las opciones se guardan: al volver a abrir el juego siguen marcadas", async ({ page }) => {
