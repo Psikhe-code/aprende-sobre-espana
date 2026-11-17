@@ -57,7 +57,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
       prepared = null; // cada partida preparada se juega una sola vez
       round = new Round(questions, { unlimited: mode.isUnlimited() });
     }
-    // Sin límite no hay barra de progreso (no se sabe cuándo acaba), sino el botón «Terminar».
+    // Sin límite no hay barra de progreso: no se sabe cuándo acaba.
     $("track").hidden = round.unlimited;
     $("track").style.setProperty("--n", String(round.total));
     $("track").classList.toggle("long", round.total > 25);
@@ -71,7 +71,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     $("sheet").replaceChildren(`Hoja ${pad(round.index + 1)} `, ...(round.unlimited ? [] : [el("span", "", `/ ${pad(round.total)}`)]));
     $("card").hidden = false;
     $("cycleEnd").hidden = true;
-    $("stop").hidden = !round.unlimited;
+    $("stop").hidden = false; // se esconde en la tarjeta de fin de vuelta, que tiene el suyo
     $("hits").textContent = String(round.hits);
     $("streak").textContent = String(round.streak);
     $("qcat").textContent = (round.review ? "Repaso · " : "") + q.label;
@@ -192,9 +192,9 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     renderQuestion();
   }
 
-  /** Sin límite: termina la partida y muestra el resultado. */
+  /** Termina la partida cuando el jugador quiere y muestra el resultado de lo respondido. */
   function stop() {
-    if (!round?.unlimited || round.finished) return;
+    if (!round || round.finished) return;
     timer.stop();
     round.stop();
     finish();
@@ -211,7 +211,6 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
 
   $("again").addEventListener("click", () => start());
   $("next").addEventListener("click", next);
-  $("quit").addEventListener("click", () => { round = null; ctx.goHome(); });
   $("stop").addEventListener("click", stop);
   $("cycleStop").addEventListener("click", stop);
   $("keepPlaying").addEventListener("click", keepPlaying);

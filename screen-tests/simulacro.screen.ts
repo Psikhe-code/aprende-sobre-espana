@@ -121,7 +121,8 @@ test("al entregar se avisa de las que faltan; el resultado dice apto o no apto y
   await expect(page.locator("#sheet")).toHaveText(new RegExp(`/ ${String(total - hits).padStart(2, "0")}$`));
 
   // El mejor resultado sale en el inicio.
-  await page.locator("#quit").click();
+  await page.locator("#stop").click();
+  await page.locator("#menu").click();
   await expect(page.locator("#simRecord")).toHaveText(`Mejor resultado: ${hits}/${SIMULACRO_QUESTION_COUNT}`);
 });
 

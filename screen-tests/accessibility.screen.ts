@@ -67,7 +67,8 @@ test("texto alternativo de las banderas: neutro en la pregunta, con el nombre en
   await page.locator("#go").click();
   // En la pregunta no puede delatar la respuesta.
   await expect(page.locator("#questionImage img")).toHaveAttribute("alt", /^Bandera de una (provincia|comunidad o ciudad autónoma)$/);
-  await page.locator("#quit").click();
+  await page.locator("#stop").click();
+  await page.locator("#menu").click();
 
   // En los fallos ya se sabe de quién es: el texto alternativo lo dice (la respuesta, tal como sale escrita).
   await page.locator("#go").click();
