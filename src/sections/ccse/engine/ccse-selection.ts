@@ -3,15 +3,12 @@
  */
 
 import { countAvailableQuestions } from "./ccse-questions";
-import { canChooseQuestionCount, recordKeyEnding } from "../../../common/engine/common-round-settings";
+import { recordKeyEnding } from "../../../common/engine/common-round-settings";
 import type { CcseSettings } from "./ccse-settings";
 import { CCSE_ID } from "./ccse-id";
 
-/** Si se puede jugar: alguna tarea con preguntas y que quepa el número elegido. */
-export function canPlay(settings: CcseSettings): boolean {
-  const availableQuestionCount = countAvailableQuestions(settings.selectedTareas);
-  return availableQuestionCount > 0 && canChooseQuestionCount(settings.selectedQuestionCount, availableQuestionCount);
-}
+/** Si se puede jugar: alguna tarea marcada con preguntas. */
+export const canPlay = (settings: CcseSettings) => countAvailableQuestions(settings.selectedTareas) > 0;
 
 /** Lo que decide qué preguntas salen, como texto: si cambia, la partida preparada ya no vale. */
 export const selectionKey = (settings: CcseSettings) => JSON.stringify([settings.selectedTareas, settings.selectedQuestionCount]);

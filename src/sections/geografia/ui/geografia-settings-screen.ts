@@ -4,10 +4,9 @@
 
 import { CATEGORIES, CATEGORY_IDS } from "../engine/geografia-categories";
 import { questionsIn, countAvailableQuestions, OPTION_COUNTS } from "../engine/geografia-round-questions";
-import { canChooseQuestionCount } from "../../../common/engine/common-round-settings";
 import { NAME_FORMS, TERRITORIOS } from "../engine/geografia-types";
 import type { AppContext } from "../../../common/ui/common-context";
-import { questionCountWarning, renderQuestionCountGroup, renderTimeLimitGroup } from "../../../common/ui/common-widgets";
+import { renderQuestionCountGroup, renderTimeLimitGroup } from "../../../common/ui/common-widgets";
 import { $, changeWith, radioGroup, tabToChecked, toggleCard } from "../../../common/ui/common-dom";
 import { OPTION_COUNT_DESCRIPTIONS, NAME_LABELS, TERRITORIO_LABELS } from "./geografia-labels";
 import { canPlay } from "../engine/geografia-selection";
@@ -79,12 +78,8 @@ export function createGeografiaSettings(ctx: AppContext): { render: () => void }
     // Categorías y territorios marcados, pero sin preguntas (p. ej. solo banderas y solo provincias).
     const empty = !noCats && !noTerr && availableQuestionCount === 0;
     $("emptyWarn").hidden = !empty;
-    // El número de preguntas elegido ya no cabe (p. ej. 50 y se ha dejado solo Capitales).
-    const tooLong = !noCats && !noTerr && !empty && !canChooseQuestionCount(settings.selectedQuestionCount, availableQuestionCount);
-    $("questionCountWarn").hidden = !tooLong;
-    $("questionCountWarn").textContent = tooLong ? questionCountWarning(availableQuestionCount) : "";
 
-    $<HTMLButtonElement>("doneOptions").disabled = noCats || noNames || noTerr || empty || tooLong;
+    $<HTMLButtonElement>("doneOptions").disabled = noCats || noNames || noTerr || empty;
   }
 
   for (const id of ["optionCount", "timeLimit", "questionCount"]) radioGroup($(id));

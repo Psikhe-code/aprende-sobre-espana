@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CATEGORY_IDS } from "../../src/sections/geografia/engine/geografia-categories";
 import { questionsIn, OPTION_COUNTS } from "../../src/sections/geografia/engine/geografia-round-questions";
-import { DEFAULT_QUESTION_COUNT, QUESTION_COUNTS, TIME_LIMITS, type QuestionCount } from "../../src/common/engine/common-round-settings";
+import { QUESTION_COUNTS, TIME_LIMITS, type QuestionCount } from "../../src/common/engine/common-round-settings";
 import { roundParams, recordKey, canPlay, selectionKey } from "../../src/sections/geografia/engine/geografia-selection";
 import type { SavedState } from "../../src/common/engine/common-storage";
 import { loadGeografiaSettings, type GeografiaSettings } from "../../src/sections/geografia/engine/geografia-settings";
@@ -18,8 +18,6 @@ const base = (): GeografiaSettings => loadGeografiaSettings(undefined);
 /** Lo guardado de alguien con estas opciones de Geografía, para pedirle a la sección su modo. */
 const stateWith = (g: GeografiaSettings): SavedState => ({ section: "geografia", records: {}, settings: { geografia: g } });
 
-/** Regla de «Preguntas por partida»: 25, 50 y 100, solo si hay al menos esas; 10 y sin límite, siempre que haya alguna. */
-const fits = (questionCount: QuestionCount, available: number) => available > 0 && (questionCount === "sinLimite" || questionCount === DEFAULT_QUESTION_COUNT || available >= questionCount);
 
 describe("selección de geografía", () => {
   it("por defecto: todas las categorías, las dos formas de los nombres, los dos territorios, 4 opciones, 10 preguntas y 1 minuto", () => {
@@ -52,10 +50,10 @@ describe("selección de geografía", () => {
     }
   });
 
-  it("solo se puede jugar si la selección tiene preguntas y caben las elegidas por partida", () => {
+  it("solo se puede jugar si la selección tiene alguna pregunta, sea cual sea el número de preguntas elegido", () => {
     for (const cat of CATEGORY_IDS) for (const t of TERRITORIOS) for (const questionCount of QUESTION_COUNTS) {
       const s = { ...base(), selectedCategories: [cat], selectedTerritorios: [t], selectedQuestionCount: questionCount };
-      expect(canPlay(s), `${cat} · ${t} · ${questionCount}`).toBe(fits(questionCount, questionsIn(cat, [t]).length));
+      expect(canPlay(s), `${cat} · ${t} · ${questionCount}`).toBe(questionsIn(cat, [t]).length > 0);
     }
   });
 

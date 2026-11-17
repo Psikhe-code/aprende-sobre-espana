@@ -1,7 +1,7 @@
 {
   "name": "aprende-sobre-espana",
   "private": true,
-  "version": "0.2.48",
+  "version": "0.2.49",
   "description": "Juego de preguntas sobre España: geografía y preparación del examen de nacionalidad",
   "type": "module",
   "scripts": {

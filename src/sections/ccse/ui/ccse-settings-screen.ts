@@ -4,9 +4,8 @@
 
 import type { AppContext } from "../../../common/ui/common-context";
 import { $, changeWith, radioGroup, toggleCard } from "../../../common/ui/common-dom";
-import { questionCountWarning, renderQuestionCountGroup, renderTimeLimitGroup } from "../../../common/ui/common-widgets";
+import { renderQuestionCountGroup, renderTimeLimitGroup } from "../../../common/ui/common-widgets";
 import { TAREAS, countAvailableQuestions, tareaQuestions, tareasWithQuestions } from "../engine/ccse-questions";
-import { canChooseQuestionCount } from "../../../common/engine/common-round-settings";
 import { canPlay } from "../engine/ccse-selection";
 import { ccseSettings } from "../engine/ccse-settings";
 
@@ -39,9 +38,6 @@ export function createCcseSettings(ctx: AppContext): { render: () => void } {
       prefix: "ccse-question-count-", current: settings.selectedQuestionCount, availableQuestionCount, change,
       choose: (questionCount) => { settings.selectedQuestionCount = questionCount; }
     });
-    const tooLong = !noTareas && !canChooseQuestionCount(settings.selectedQuestionCount, availableQuestionCount);
-    $("ccseQuestionCountWarn").hidden = !tooLong;
-    $("ccseQuestionCountWarn").textContent = tooLong ? questionCountWarning(availableQuestionCount) : "";
 
     renderTimeLimitGroup($("ccseTimeLimit"), { prefix: "ccse-time-", current: settings.selectedTimeLimit, choose: (t) => { settings.selectedTimeLimit = t; }, change: change });
 

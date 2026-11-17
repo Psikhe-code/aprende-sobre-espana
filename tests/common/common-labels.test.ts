@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { questionCountWarning, roundText } from "../../src/common/ui/common-widgets";
+import { fewerQuestionsText, roundText } from "../../src/common/ui/common-widgets";
 import { clockTime, cycleEndText, timeUsed } from "../../src/common/ui/common-labels";
 
 // Textos que genera el código: se comprueban palabra por palabra.
@@ -28,8 +28,8 @@ describe("inicio y Opciones de cada sección", () => {
     expect(roundText("sinLimite", 300)).toBe("Preguntas sin límite, al azar, de");
   });
 
-  it("el aviso cuando ya no caben las preguntas elegidas", () => {
-    expect(questionCountWarning(19)).toBe("Con esta selección hay 19 preguntas: elige menos preguntas por partida o «Sin límite».");
+  it("la tarjeta de preguntas por partida cuando la selección tiene menos", () => {
+    expect(fewerQuestionsText(19)).toBe("Con esta selección solo hay 19 preguntas: saldrán todas.");
   });
 });
 

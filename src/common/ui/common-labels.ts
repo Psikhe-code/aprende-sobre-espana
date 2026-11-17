@@ -10,7 +10,7 @@ export const QUESTION_COUNT_LABELS: Record<QuestionCount, { name: string; desc: 
   25: { name: "25 preguntas", desc: "Una partida media." },
   50: { name: "50 preguntas", desc: "Una partida larga." },
   100: { name: "100 preguntas", desc: "Para repasarlo casi todo." },
-  sinLimite: { name: "Sin límite", desc: "Hasta que pulses «Terminar». Si se acaban, se barajan otra vez." }
+  sinLimite: { name: "Sin límite", desc: "Hasta que pulses «Terminar». Al acabarse, puedes seguir con las mismas en otro orden." }
 };
 
 /** Cómo se presenta cada tiempo por pregunta en Opciones y en el inicio. */

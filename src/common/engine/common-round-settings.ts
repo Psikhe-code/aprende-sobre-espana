@@ -28,13 +28,6 @@ export const countRoundQuestions = (questionCount: QuestionCount, availableQuest
   questionCount === "sinLimite" ? availableQuestionCount : Math.min(questionCount, availableQuestionCount);
 
 /**
- * Si se puede elegir este número de preguntas habiendo `availableQuestionCount`: 10 (el número por defecto) y
- * sin límite, siempre; 25, 50 y 100, si hay al menos esas.
- */
-export const canChooseQuestionCount = (questionCount: QuestionCount, availableQuestionCount: number) =>
-  questionCount === "sinLimite" || questionCount === DEFAULT_QUESTION_COUNT || availableQuestionCount >= questionCount;
-
-/**
  * Final de la clave de un récord, igual en todas las secciones: el número de preguntas y el tiempo,
  * «/10preguntas/60s», «/sinlimite/sintiempo». Los récords van aparte por número de preguntas y por tiempo.
  */
