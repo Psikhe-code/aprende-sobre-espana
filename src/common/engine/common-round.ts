@@ -3,7 +3,15 @@
  */
 
 import type { PlayableQuestion } from "./common-types";
-import { DEFAULT_QUESTION_COUNT } from "./common-round-settings";
+
+/** Resultado de una pregunta respondida o agotada por tiempo. */
+export interface AnswerResult {
+  correct: boolean;
+  correctAnswer: string;
+
+  /** Respuesta del jugador, o null si se agotó el tiempo. */
+  givenAnswer: string | null;
+}
 
 /** Pregunta fallada o sin responder durante una partida. */
 export interface Miss {
@@ -13,143 +21,146 @@ export interface Miss {
   givenAnswer: string | null;
 }
 
-/** Resultado de una pregunta respondida o agotada por tiempo. */
-export interface AnswerResult {
-  correct: boolean;
-  correctAnswer: string;
-  /** Respuesta del jugador, o null si se agotó el tiempo. */
-  givenAnswer: string | null;
-}
-
+/** Resultado global de una partida. */
 export interface RoundResult {
   hits: number;
+
+  /** Número de preguntas de la partida; en partidas sin límite, solo las respondidas. */
   total: number;
-  bestStreak: number;
+
   misses: Miss[];
+
+  bestStreak: number;
+
+  /** Indica si es una partida de repaso de fallos. */
   review: boolean;
-  /** Partida sin límite: su récord es la mejor racha, no los aciertos. */
+
+  /** Indica si es una partida sin límite de preguntas. */
   unlimited: boolean;
-  /**
-   * Si cuenta para récords: partida normal y completa, o partida sin límite terminada
-   * con al menos una pregunta respondida. El repaso de fallos nunca cuenta.
-   */
+
+  /** Indica si el resultado cuenta para récords. */
   counts: boolean;
 }
 
+/** Gestiona el estado y la progresión de una partida. */
 export class Round {
-  private list: PlayableQuestion[];
-  /** Repaso de fallos: se juega igual pero no cuenta para récords. */
-  readonly review: boolean;
-  /**
-   * Partida sin límite: sigue hasta que el jugador la termina (`stop`). Al completar una vuelta
-   * (`endOfCycle`), la interfaz pregunta si seguir, y para seguir se añade otra vuelta con `append`.
-   */
-  readonly unlimited: boolean;
-  /** Preguntas de una vuelta: las de la selección. En la partida sin límite, cada vuelta las repite todas. */
-  readonly questionsPerCycle: number;
-  /**
-   * Preguntas que debe tener una partida completa con esta selección: normalmente 10,
-   * menos si la selección no da para tantas (ver roundQuestionCount). Solo cuenta para récords si las tiene.
-   */
-  readonly expected: number;
+  private readonly internalQuestions: PlayableQuestion[];
 
-  private i = 0;
-  private hitCount = 0;
-  private streakCount = 0;
-  private best = 0;
-  private outcomes: boolean[] = [];
-  private missList: Miss[] = [];
+  /** Indica si es una partida de repaso de fallos. */
+  readonly review: boolean;
+
+  /** Indica si es una partida sin límite de preguntas. */
+  readonly unlimited: boolean;
+
+  /** Número de preguntas de la selección, que se repiten en cada vuelta del modo sin límite. */
+  readonly questionsPerCycle: number;
+
+  private internalIndex = 0;
+  private internalHits = 0;
+  private internalStreak = 0;
+  private bestStreak = 0;
+  private readonly internalResults: boolean[] = [];
+  private readonly missList: Miss[] = [];
   private stopped = false;
 
-  constructor(questions: PlayableQuestion[], options: { review?: boolean; expected?: number; unlimited?: boolean } = {}) {
-    if (!questions.length) throw new Error("Una partida necesita al menos una pregunta");
-    this.list = [...questions];
+  constructor(questions: readonly PlayableQuestion[], options: { review?: boolean; unlimited?: boolean } = {}) {
+    if (questions.length === 0) throw new Error("Una partida necesita al menos una pregunta");
+
+    this.internalQuestions = [...questions];
     this.review = options.review ?? false;
     this.unlimited = options.unlimited ?? false;
     this.questionsPerCycle = questions.length;
-    this.expected = options.expected ?? (this.unlimited ? questions.length : DEFAULT_QUESTION_COUNT);
   }
 
-  get questions(): readonly PlayableQuestion[] { return this.list; }
-  get index() { return this.i; }
+  get questions(): readonly PlayableQuestion[] { return this.internalQuestions; }
   get total() { return this.questions.length; }
-  get current(): PlayableQuestion { return this.questions[this.i]; }
-  get hits() { return this.hitCount; }
-  get streak() { return this.streakCount; }
+  get index() { return this.internalIndex; }
+  get currentQuestion(): PlayableQuestion { return this.questions[this.internalIndex]; }
+
+  get hits() { return this.internalHits; }
+  get streak() { return this.internalStreak; }
   /** Resultado de cada pregunta ya respondida (true = acierto). */
-  get results(): readonly boolean[] { return this.outcomes; }
-  get answered() { return this.outcomes.length > this.i; }
-  get isLast() { return this.i === this.questions.length - 1; }
-  /** Normal: respondida la última pregunta. Sin límite: cuando el jugador la termina. */
-  get finished() { return this.unlimited ? this.stopped : this.isLast && this.answered; }
-  /** Sin límite: respondida la última pregunta de la vuelta. Para seguir, hay que añadir otra. */
+  get results(): readonly boolean[] { return this.internalResults; }
+
+  get answered() { return this.internalResults.length > this.internalIndex; }
+  get isLast() { return this.internalIndex === this.questions.length - 1; }
+
+  /** Sin límite: indica que se ha completado la vuelta y se puede añadir otra. */
   get endOfCycle() { return this.unlimited && !this.stopped && this.isLast && this.answered; }
 
-  /** Responde la pregunta actual. Solo se puede responder una vez cada pregunta. */
+  /** Normal: al responder la última pregunta. Sin límite: al detener la partida. */
+  get finished() { return this.unlimited ? this.stopped : this.isLast && this.answered; }
+
+  /** Registra la respuesta del jugador a la pregunta actual. */
   answer(givenAnswer: string): AnswerResult {
     return this.resolve(givenAnswer);
   }
 
-  /** Se acabó el tiempo de la pregunta actual sin responder: cuenta como fallo y rompe la racha. */
+  /** Registra el agotamiento del tiempo como fallo y rompe la racha. */
   timeout(): AnswerResult {
     return this.resolve(null);
   }
 
+  /** Implementación común para registrar una respuesta o el agotamiento del tiempo. */
   private resolve(givenAnswer: string | null): AnswerResult {
     if (this.stopped) throw new Error("La partida ya está terminada");
     if (this.answered) throw new Error("Esta pregunta ya está respondida");
-    const q = this.current;
-    const correct = givenAnswer !== null && givenAnswer === q.correctAnswer;
-    this.outcomes.push(correct);
+
+    const question = this.currentQuestion;
+    const correct = givenAnswer !== null && givenAnswer === question.correctAnswer;
+
+    this.internalResults.push(correct);
     if (correct) {
-      this.hitCount++;
-      this.streakCount++;
-      this.best = Math.max(this.best, this.streakCount);
+      this.internalHits++;
+      this.internalStreak++;
+      this.bestStreak = Math.max(this.bestStreak, this.internalStreak);
     } else {
-      this.streakCount = 0;
-      this.missList.push({ question: q, givenAnswer });
+      this.internalStreak = 0;
+      this.missList.push({ question, givenAnswer });
     }
-    return { correct, correctAnswer: q.correctAnswer, givenAnswer };
+    return { correct, correctAnswer: question.correctAnswer, givenAnswer };
   }
 
   /** Pasa a la siguiente pregunta. Devuelve false si ya no quedan. */
   next(): boolean {
+    if (this.stopped) throw new Error("La partida ya está terminada");
     if (!this.answered) throw new Error("Hay que responder antes de pasar");
     if (this.isLast) return false;
-    this.i++;
+    this.internalIndex++;
     return true;
   }
 
-  /** Sin límite: añade otra vuelta al final, para seguir jugando. */
-  append(more: PlayableQuestion[]): void {
+  /** En «Sin límite»: añade otra vuelta al final, para seguir jugando. */
+  append(more: readonly PlayableQuestion[]): void {
     if (!this.unlimited) throw new Error("Solo una partida sin límite puede seguir");
     if (this.stopped) throw new Error("La partida ya está terminada");
-    this.list.push(...more);
+    this.internalQuestions.push(...more);
   }
 
-  /** Sin límite: termina la partida. La pregunta sin responder, si la hay, no cuenta. */
+  /** En «Sin límite»: termina la partida. Si hay pregunta sin responder, no cuenta. */
   stop(): void {
     if (!this.unlimited) throw new Error("Solo se termina así una partida sin límite");
     this.stopped = true;
   }
 
+  /** Construye el resultado de la partida sin modificar su estado. */
   result(): RoundResult {
-    const answered = this.outcomes.length;
+    const answeredCount = this.internalResults.length;
     return {
-      hits: this.hitCount,
+      hits: this.internalHits,
       // Sin límite: las preguntas respondidas, no las que había preparadas.
-      total: this.unlimited ? answered : this.total,
-      bestStreak: this.best,
+      total: this.unlimited ? answeredCount : this.total,
       misses: [...this.missList],
+      bestStreak: this.bestStreak,
       review: this.review,
       unlimited: this.unlimited,
-      counts: !this.review && this.finished && (this.unlimited ? answered > 0 : this.total === this.expected)
+      counts: !this.review && this.finished && (!this.unlimited || answeredCount > 0)
     };
   }
 }
 
 /** Lo que se compara para el récord: los aciertos o, en una partida sin límite, la mejor racha. */
-export const recordValue = (r: RoundResult) => (r.unlimited ? r.bestStreak : r.hits);
+export const recordValue = (result: RoundResult) => (result.unlimited ? result.bestStreak : result.hits);
 
 /**
  * Actualiza los récords con el resultado de una partida (aciertos; mejor racha si es sin límite).
@@ -166,9 +177,9 @@ export function applyRecord(records: Record<string, number>, key: string, result
   };
 }
 
-/** Valoración de una partida con alguna respuesta: cada sección tiene las suyas («Gran nivel», «Toca repasar»…). */
-export type Rating = (r: Pick<RoundResult, "hits" | "total">) => string;
+/** Función de valoración del resultado. Cada sección tiene las suyas («Gran nivel», «Toca repasar»…). */
+export type Rating = (result: Pick<RoundResult, "hits" | "total">) => string;
 
-/** Valoración del resultado: la de la sección o, si no se respondió nada (sin límite, terminada enseguida), «Sin respuestas». */
-export const ratingText = (r: Pick<RoundResult, "hits" | "total">, sectionRating: Rating): string =>
-  r.total ? sectionRating(r) : "Sin respuestas";
+/** Aplica la valoración de la sección, o devuelve «Sin respuestas» si el total es cero. */
+export const ratingText = (result: Pick<RoundResult, "hits" | "total">, sectionRating: Rating): string =>
+  result.total > 0 ? sectionRating(result) : "Sin respuestas";

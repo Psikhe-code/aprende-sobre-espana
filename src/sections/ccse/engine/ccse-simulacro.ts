@@ -50,7 +50,7 @@ export class Simulacro {
   get index(): number { return this.i; }
   /** Respuesta elegida en cada pregunta, o null si aún no se ha respondido. Desde fuera, solo para leerla. */
   get givenAnswers(): readonly (string | null)[] { return this.chosen; }
-  get current(): CcseRoundQuestion { return this.questions[this.i]; }
+  get currentQuestion(): CcseRoundQuestion { return this.questions[this.i]; }
   get total(): number { return this.questions.length; }
   get submitted(): boolean { return this.result !== null; }
   get answeredCount(): number { return this.givenAnswers.filter((r) => r !== null).length; }
@@ -63,7 +63,7 @@ export class Simulacro {
 
   /** Elige una opción en la pregunta que se ve; se puede cambiar cuantas veces se quiera hasta entregar. */
   answer(option: string): void {
-    if (this.submitted || !this.current.options.includes(option)) return;
+    if (this.submitted || !this.currentQuestion.options.includes(option)) return;
     this.chosen[this.i] = option;
   }
 

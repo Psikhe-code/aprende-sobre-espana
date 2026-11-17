@@ -71,8 +71,7 @@ describe("selección de geografía", () => {
       if (!canPlay(s)) continue;
       const mode = geografiaMode(stateWith(s));
       const questions = mode.buildRound();
-      expect(questions, String(questionCount)).toHaveLength(mode.roundQuestionCount());
-      expect(mode.roundQuestionCount(), String(questionCount)).toBe(questionCount === "sinLimite" ? availableQuestionCount(s.categories, s.territorios) : questionCount);
+      expect(questions, String(questionCount)).toHaveLength(questionCount === "sinLimite" ? availableQuestionCount(s.categories, s.territorios) : questionCount);
       expect(questions.every((q) => q.options.length === OPTION_COUNTS[1]), String(questionCount)).toBe(true);
       tested.push(questionCount);
     }

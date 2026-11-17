@@ -58,15 +58,18 @@ describe("partidas: desarrollo", () => {
     const play = (g: Round) => { do g.answer("A"); while (g.next()); return g.result(); };
     expect(play(new Round(tenQuestions())).counts).toBe(true);
     expect(play(new Round(tenQuestions(), { review: true })).counts).toBe(false);
-    expect(play(new Round(tenQuestions().slice(0, 3))).counts).toBe(false);
-    // Una selección que solo da para 8 preguntas cuenta si la partida tiene esas 8.
-    expect(play(new Round(tenQuestions().slice(0, 8), { expected: 8 })).counts).toBe(true);
+    // Una selección que solo da para 3 preguntas cuenta igual: la partida tiene todas las que hay.
+    expect(play(new Round(tenQuestions().slice(0, 3))).counts).toBe(true);
+    // A medias, no.
+    const half = new Round(tenQuestions());
+    half.answer("A"); half.next();
+    expect(half.result().counts).toBe(false);
   });
 });
 
 describe("se acaba el tiempo", () => {
   it("cuenta como fallo sin respuesta: rompe la racha y queda entre los fallos", () => {
-    const g = new Round([rq("a", "A"), rq("b", "B"), rq("c", "C")], { expected: 3 });
+    const g = new Round([rq("a", "A"), rq("b", "B"), rq("c", "C")]);
     g.answer("A"); g.next();
     const r = g.timeout();
     expect(r).toEqual({ correct: false, correctAnswer: "B", givenAnswer: null });
@@ -112,6 +115,11 @@ describe("partidas sin límite", () => {
     expect(g.finished).toBe(true);
     expect(() => g.answer("C")).toThrow();
     expect(() => g.append(cycleQuestions())).toThrow();
+    // Tampoco se puede pasar a la siguiente, aunque la actual ya estuviera respondida.
+    const answeredThenStopped = new Round(cycleQuestions(), { unlimited: true });
+    answeredThenStopped.answer("A");
+    answeredThenStopped.stop();
+    expect(() => answeredThenStopped.next()).toThrow("La partida ya está terminada");
     const r = g.result();
     expect(r).toMatchObject({ hits: 2, total: 2, bestStreak: 2, unlimited: true, counts: true });
   });
