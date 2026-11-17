@@ -141,16 +141,44 @@ describe("partidas sin límite", () => {
     expect(applyRecord({}, "k", r).records.k).toBe(r.bestStreak);
   });
 
-  it("una partida normal no se puede alargar ni terminar a mitad", () => {
+  it("una partida normal no se puede alargar", () => {
     const g = new Round(cycleQuestions());
     expect(() => g.append(cycleQuestions())).toThrow();
-    expect(() => g.stop()).toThrow();
     expect(g.endOfCycle).toBe(false);
   });
 });
 
+describe("terminar una partida normal antes de acabar", () => {
+  it("el resultado es de las preguntas respondidas, con sus fallos, y no cuenta para el récord", () => {
+    const g = new Round(tenQuestions());
+    g.answer("A"); g.next();
+    g.answer("X"); g.next();
+    g.stop();
+    expect(g.finished).toBe(true);
+    expect(() => g.answer("A")).toThrow();
+    expect(() => g.next()).toThrow();
+    const r = g.result();
+    expect(r).toMatchObject({ hits: 1, total: 2, endedEarly: true, counts: false });
+    expect(r.misses.map((m) => m.question.id)).toEqual(["q1"]);
+  });
+
+  it("terminada sin responder nada, no tiene respuestas", () => {
+    const g = new Round(tenQuestions());
+    g.stop();
+    expect(g.result()).toMatchObject({ hits: 0, total: 0, endedEarly: true, counts: false });
+    expect(ratingText(g.result(), () => "valoración")).toBe("Sin respuestas");
+  });
+
+  it("terminada después de responder la última, cuenta como completa", () => {
+    const g = new Round(tenQuestions());
+    do g.answer("A"); while (g.next());
+    g.stop();
+    expect(g.result()).toMatchObject({ total: DEFAULT_QUESTION_COUNT, endedEarly: false, counts: true });
+  });
+});
+
 describe("récords", () => {
-  const result = (hits: number, counts = true) => ({ hits, total: 10, bestStreak: 0, misses: [], review: false, unlimited: false, counts });
+  const result = (hits: number, counts = true) => ({ hits, total: 10, bestStreak: 0, misses: [], review: false, unlimited: false, endedEarly: false, counts });
 
   it("guarda el primer resultado y solo lo cambia si se supera", () => {
     let records: Record<string, number> = {};

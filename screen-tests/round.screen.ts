@@ -69,13 +69,27 @@ test("si la pregunta no tiene información complementaria, no sale nada", async 
   }
 });
 
-test("«Salir al menú» vuelve al inicio sin guardar récord", async ({ page }) => {
+test("«Terminar» a mitad enseña el resultado de lo respondido, con sus fallos, y no guarda récord", async ({ page }) => {
   await openSection(page);
   await page.locator("#go").click();
+  await expect(page.locator("#stop")).toBeVisible();
   await answerQuestions(page, 3);
-  await page.locator("#quit").click();
+  await page.locator("#stop").click();
+  await expect(page.locator("#score")).toHaveText(/^\d+\/3$/);
+  await expect(page.locator("#endSub")).toHaveText(/^Partida terminada antes de acabar · Mejor racha: \d+$/);
+  await page.locator("#menu").click();
   await expect(page.locator("#go")).toBeVisible();
   await expect(page.locator("#record")).toHaveText("Aún no has jugado con esta selección.");
+});
+
+test("«Terminar» sin responder nada: «Sin respuestas»", async ({ page }) => {
+  await openSection(page);
+  await page.locator("#go").click();
+  await page.locator("#stop").click();
+  await expect(page.locator("#score")).toHaveText("0/0");
+  await expect(page.locator("#endTitle")).toHaveText("Sin respuestas");
+  await expect(page.locator("#review")).toBeHidden();
+  await expect(page.locator("#misses")).toBeEmpty();
 });
 
 test("partida de 100 con todo: la barra de progreso cabe en la pantalla", async ({ page }) => {

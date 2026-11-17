@@ -25,7 +25,7 @@ export interface Miss {
 export interface RoundResult {
   hits: number;
 
-  /** Número de preguntas de la partida; en partidas sin límite, solo las respondidas. */
+  /** Número de preguntas de la partida; en partidas sin límite o terminadas antes de acabar, solo las respondidas. */
   total: number;
 
   misses: Miss[];
@@ -37,6 +37,9 @@ export interface RoundResult {
 
   /** Indica si es una partida sin límite de preguntas. */
   unlimited: boolean;
+
+  /** Indica si una partida con número de preguntas se terminó antes de responderlas todas. */
+  endedEarly: boolean;
 
   /** Indica si el resultado cuenta para récords. */
   counts: boolean;
@@ -88,8 +91,8 @@ export class Round {
   /** Sin límite: indica que se ha completado la vuelta y se puede añadir otra. */
   get endOfCycle() { return this.unlimited && !this.stopped && this.isLast && this.answered; }
 
-  /** Normal: al responder la última pregunta. Sin límite: al detener la partida. */
-  get finished() { return this.unlimited ? this.stopped : this.isLast && this.answered; }
+  /** Al terminarla el jugador o, si no es sin límite, al responder la última pregunta. */
+  get finished() { return this.stopped || (!this.unlimited && this.isLast && this.answered); }
 
   /** Registra la respuesta del jugador a la pregunta actual. */
   answer(givenAnswer: string): AnswerResult {
@@ -137,24 +140,25 @@ export class Round {
     this.internalQuestions.push(...more);
   }
 
-  /** En «Sin límite»: termina la partida. Si hay pregunta sin responder, no cuenta. */
+  /** Termina la partida cuando el jugador quiere. Si hay pregunta sin responder, no cuenta. */
   stop(): void {
-    if (!this.unlimited) throw new Error("Solo se termina así una partida sin límite");
     this.stopped = true;
   }
 
   /** Construye el resultado de la partida sin modificar su estado. */
   result(): RoundResult {
     const answeredCount = this.internalResults.length;
+    const endedEarly = this.stopped && !this.unlimited && answeredCount < this.total;
     return {
       hits: this.internalHits,
-      // Sin límite: las preguntas respondidas, no las que había preparadas.
-      total: this.unlimited ? answeredCount : this.total,
+      // Sin límite o terminada antes: las preguntas respondidas, no las que había preparadas.
+      total: this.unlimited || endedEarly ? answeredCount : this.total,
       misses: [...this.missList],
       bestStreak: this.bestStreak,
       review: this.review,
       unlimited: this.unlimited,
-      counts: !this.review && this.finished && (!this.unlimited || answeredCount > 0)
+      endedEarly,
+      counts: !this.review && this.finished && !endedEarly && answeredCount > 0
     };
   }
 }

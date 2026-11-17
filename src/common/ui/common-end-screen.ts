@@ -19,15 +19,16 @@ export function renderEnd(ctx: AppContext, round: Round): void {
   $("endTitle").textContent = ratingText(r, ctx.mode().rating);
   const recText = r.review || rec.record == null ? ""
     : r.unlimited ? ` · Mejor racha con esta selección: ${rec.record}`
-    : ` · Récord con esta selección: ${rec.record}/${r.total}`;
+    : ` · Récord con esta selección: ${rec.record}/${round.total}`; // de la partida entera, aunque se terminara antes
   const kind = r.review ? "Repaso de fallos" : r.unlimited ? "Partida sin límite" : "Partida";
-  $("endSub").textContent = `${kind} · Mejor racha: ${r.bestStreak}` + recText;
+  const early = !r.endedEarly ? "" : r.review ? " terminado antes de acabar" : " terminada antes de acabar";
+  $("endSub").textContent = `${kind}${early} · Mejor racha: ${r.bestStreak}` + recText;
 
   const misses = $("misses");
   misses.replaceChildren();
   $("missLabel").hidden = !r.misses.length;
   if (!r.misses.length) {
-    misses.append(el("p", "allright", "Sin fallos en esta partida."));
+    if (r.total > 0) misses.append(el("p", "allright", "Sin fallos en esta partida.")); // sin respuestas, nada que decir
   } else {
     for (const m of r.misses) {
       const row = el("div", "miss");
