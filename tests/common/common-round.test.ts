@@ -3,14 +3,14 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { ROUND_LENGTH } from "../../src/common/engine/common-round-settings";
+import { DEFAULT_QUESTION_COUNT } from "../../src/common/engine/common-round-settings";
 import { Round, applyRecord, recordValue, ratingText } from "../../src/common/engine/common-round";
 import type { PlayableQuestion } from "../../src/common/engine/common-types";
 
 /** Pregunta de prueba cuya respuesta correcta es `correctAnswer`. */
 const rq = (id: string, correctAnswer: string): PlayableQuestion =>
   ({ id, text: id, correctAnswer, options: [correctAnswer, "X"], label: "", explanation: "" });
-const tenQuestions = () => Array.from({ length: ROUND_LENGTH }, (_, i) => rq("q" + i, "A"));
+const tenQuestions = () => Array.from({ length: DEFAULT_QUESTION_COUNT }, (_, i) => rq("q" + i, "A"));
 
 describe("partidas: desarrollo", () => {
   it("cuenta aciertos, racha y mejor racha", () => {

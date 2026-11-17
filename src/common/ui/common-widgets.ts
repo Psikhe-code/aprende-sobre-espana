@@ -4,43 +4,44 @@
  * resultado, la línea de la respuesta de cada fallo.
  */
 
-import { ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "../engine/common-round-settings";
+import { QUESTION_COUNTS, TIME_LIMITS, type QuestionCount, type TimeLimit } from "../engine/common-round-settings";
 import { el, tabToChecked, toggleCard, type Change } from "./common-dom";
-import { ROUND_LENGTH_LABELS, TIME_LIMIT_LABELS } from "./common-labels";
+import { QUESTION_COUNT_LABELS, TIME_LIMIT_LABELS } from "./common-labels";
 
-/** Inicio: lo que se va a jugar. `size`, las preguntas que tendrá la partida (0 si aún no se sabe). */
-export const roundText = (roundLength: RoundLength, size: number) =>
-  roundLength === "sinLimite" ? "Preguntas sin límite, al azar, de" : `${size || roundLength} preguntas al azar de`;
+/** Inicio: lo que se va a jugar. `roundQuestionCount`, las preguntas que tendrá la partida (0 si aún no se sabe). */
+export const roundText = (questionCount: QuestionCount, roundQuestionCount: number) =>
+  questionCount === "sinLimite" ? "Preguntas sin límite, al azar, de" : `${roundQuestionCount || questionCount} preguntas al azar de`;
 
-/** Inicio: el récord de la selección. Sin límite, la mejor racha; si no, los aciertos sobre `size`. */
-export function renderRecord(target: HTMLElement, record: number | undefined, roundLength: RoundLength, size: number): void {
+/** Inicio: el récord de la selección. Sin límite, la mejor racha; si no, los aciertos sobre `roundQuestionCount`. */
+export function renderRecord(target: HTMLElement, record: number | undefined, questionCount: QuestionCount, roundQuestionCount: number): void {
   target.replaceChildren();
   if (record == null) target.textContent = "Aún no has jugado con esta selección.";
-  else if (roundLength === "sinLimite") target.append("Mejor racha con esta selección: ", el("b", "", String(record)));
-  else target.append("Récord con esta selección: ", el("b", "", `${record}/${size}`));
+  else if (questionCount === "sinLimite") target.append("Mejor racha con esta selección: ", el("b", "", String(record)));
+  else target.append("Récord con esta selección: ", el("b", "", `${record}/${roundQuestionCount}`));
 }
 
 /**
  * Opciones: grupo «Preguntas por partida» (se marca una). 25, 50 y 100 solo si la selección tiene al menos esas
  * (`fits`); si no, salen desactivadas y dicen cuántas hay. Los ids de las tarjetas son `prefix` y el número.
  */
-export function renderRoundLengthGroup(group: HTMLElement, o: {
-  prefix: string; current: RoundLength; available: number; fits: (n: RoundLength) => boolean; choose: (n: RoundLength) => void; change: Change;
+export function renderQuestionCountGroup(group: HTMLElement, o: {
+  prefix: string; current: QuestionCount; available: number; change: Change;
+  fits: (questionCount: QuestionCount) => boolean; choose: (questionCount: QuestionCount) => void;
 }): void {
-  group.replaceChildren(...ROUND_LENGTHS.map((n) => {
-    const fits = o.fits(n);
-    const card = toggleCard(o.prefix + n, o.current === n, ROUND_LENGTH_LABELS[n].name,
-      [["cat-desc", fits || !o.available ? ROUND_LENGTH_LABELS[n].desc : `Con esta selección hay ${o.available} preguntas.`]],
-      o.change(o.prefix + n, () => o.choose(n)), true);
-    // La elegida no se desactiva aunque ya no quepa: se ve marcada, con el aviso de debajo (roundLengthWarning).
-    card.disabled = !fits && o.current !== n;
+  group.replaceChildren(...QUESTION_COUNTS.map((questionCount) => {
+    const fits = o.fits(questionCount);
+    const card = toggleCard(o.prefix + questionCount, o.current === questionCount, QUESTION_COUNT_LABELS[questionCount].name,
+      [["cat-desc", fits || !o.available ? QUESTION_COUNT_LABELS[questionCount].desc : `Con esta selección hay ${o.available} preguntas.`]],
+      o.change(o.prefix + questionCount, () => o.choose(questionCount)), true);
+    // La elegida no se desactiva aunque ya no quepa: se ve marcada, con el aviso de debajo (questionCountWarning).
+    card.disabled = !fits && o.current !== questionCount;
     return card;
   }));
   tabToChecked(group);
 }
 
 /** Opciones: aviso cuando el número de preguntas elegido ya no cabe en la selección. */
-export const roundLengthWarning = (available: number) =>
+export const questionCountWarning = (available: number) =>
   `Con esta selección hay ${available} preguntas: elige menos preguntas por partida o «Sin límite».`;
 
 /** Opciones: grupo «Tiempo por pregunta» (se marca uno). Los ids de las tarjetas son `prefix` y el tiempo. */

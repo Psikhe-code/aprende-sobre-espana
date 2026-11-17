@@ -55,7 +55,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     else {
       const questions = prepared?.selectionKey === mode.selectionKey() ? prepared.questions : mode.buildRound();
       prepared = null; // cada partida preparada se juega una sola vez
-      round = new Round(questions, { expected: mode.roundSize(), unlimited: mode.isUnlimited() });
+      round = new Round(questions, { expected: mode.roundQuestionCount(), unlimited: mode.isUnlimited() });
     }
     // Sin límite no hay barra de progreso (no se sabe cuándo acaba), sino el botón «Terminar».
     $("track").hidden = round.unlimited;
@@ -67,15 +67,14 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
 
   function renderQuestion() {
     if (!round) return;
-    const g = round;
-    const q = g.current;
-    $("sheet").replaceChildren(`Hoja ${pad(g.index + 1)} `, ...(g.unlimited ? [] : [el("span", "", `/ ${pad(g.total)}`)]));
+    const q = round.current;
+    $("sheet").replaceChildren(`Hoja ${pad(round.index + 1)} `, ...(round.unlimited ? [] : [el("span", "", `/ ${pad(round.total)}`)]));
     $("card").hidden = false;
     $("cycleEnd").hidden = true;
-    $("stop").hidden = !g.unlimited;
-    $("hits").textContent = String(g.hits);
-    $("streak").textContent = String(g.streak);
-    $("qcat").textContent = (g.review ? "Repaso · " : "") + q.label;
+    $("stop").hidden = !round.unlimited;
+    $("hits").textContent = String(round.hits);
+    $("streak").textContent = String(round.streak);
+    $("qcat").textContent = (round.review ? "Repaso · " : "") + q.label;
     $("question").textContent = q.text;
 
     const image = $("questionImage");
@@ -83,7 +82,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     if (q.image) image.append(imageElement(q.image.src, q.image.alt));
     image.hidden = !q.image;
     // Mientras se responde esta, se va descargando la imagen de la siguiente.
-    const nextQuestion = g.questions[g.index + 1];
+    const nextQuestion = round.questions[round.index + 1];
     if (nextQuestion?.image) preloadImage(nextQuestion.image.src);
 
     renderTrack();
@@ -116,14 +115,14 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     card.style.animation = "";
 
     // El repaso de fallos va sin tiempo.
-    timer.start(g.review ? "sinTiempo" : ctx.mode().timeLimit());
+    timer.start(round.review ? "sinTiempo" : ctx.mode().timeLimit());
   }
 
   function renderTrack() {
     if (!round || round.unlimited) return;
-    const g = round;
-    $("track").replaceChildren(...g.questions.map((_, j) =>
-      el("i", j < g.results.length ? (g.results[j] ? "ok" : "bad") : j === g.index ? "cur" : "")));
+    const { questions, results, index } = round;
+    $("track").replaceChildren(...questions.map((_, j) =>
+      el("i", j < results.length ? (results[j] ? "ok" : "bad") : j === index ? "cur" : "")));
   }
 
   function answer(btn: HTMLButtonElement) {

@@ -2,7 +2,7 @@
  * @fileoverview Geografía: qué preguntas salen en cada partida.
  */
 
-import { ROUND_LENGTH, fitsFor, sizeFor, type RoundLength } from "../../../common/engine/common-round-settings";
+import { DEFAULT_QUESTION_COUNT, questionCountFitsFor, countRoundQuestionsFor, type QuestionCount } from "../../../common/engine/common-round-settings";
 import { type Rng } from "../../../common/engine/common-types";
 import { NAME_FORMS, TERRITORIOS, type NameForm, type Question, type RoundQuestion, type Territorio } from "./geografia-types";
 import { categoryById } from "./geografia-categories";
@@ -20,10 +20,14 @@ export const DEFAULT_NAME_FORMS: NameForm[] = [...NAME_FORMS];
 /** Territorios por defecto: comunidades y provincias. */
 export const DEFAULT_TERRITORIOS: Territorio[] = [...TERRITORIOS];
 
-export interface RoundSettings {
+/**
+ * Lo que necesita el motor para preparar una partida. Sale de las opciones del jugador (`settings`), salvo al
+ * barajar otra vuelta de la partida sin límite, que va siempre sin límite.
+ */
+export interface RoundParams {
   categories: string[];
   /** Preguntas de la partida. Sin límite: una vuelta entera (todas las de la selección). */
-  roundLength?: RoundLength;
+  questionCount?: QuestionCount;
   /** Opciones por pregunta (la dificultad). */
   optionCount?: OptionCount;
   /** Formas de los nombres marcadas. Si hay varias, se sortea una en cada pregunta. */
@@ -40,7 +44,7 @@ export function questionsIn(categoryId: string, territorios: Territorio[] = DEFA
 }
 
 /** Cuántas preguntas distintas hay con esta selección de categorías y territorios. */
-export function questionCount(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS): number {
+export function availableQuestionCount(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS): number {
   return new Set(categories.flatMap((id) => questionsIn(id, territorios)).map((q) => q.id)).size;
 }
 
@@ -49,16 +53,16 @@ export function questionCount(categories: string[], territorios: Territorio[] = 
  * (por ejemplo, solo capitales de provincia). Cero si la selección no tiene preguntas.
  * Sin límite: las que hay, que es lo que dura una vuelta.
  */
-export function roundSize(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, length: RoundLength = ROUND_LENGTH): number {
-  return sizeFor(length, questionCount(categories, territorios));
+export function countRoundQuestions(categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS, questionCount: QuestionCount = DEFAULT_QUESTION_COUNT): number {
+  return countRoundQuestionsFor(questionCount, availableQuestionCount(categories, territorios));
 }
 
 /**
  * Si se puede elegir este número de preguntas con esta selección. Las 10 y «sin límite», siempre
  * (si hay menos de 10, la partida tiene las que haya); 25, 50 y 100, solo si hay al menos esas.
  */
-export const lengthFits = (length: RoundLength, categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS) =>
-  fitsFor(length, questionCount(categories, territorios));
+export const questionCountFits = (questionCount: QuestionCount, categories: string[], territorios: Territorio[] = DEFAULT_TERRITORIOS) =>
+  questionCountFitsFor(questionCount, availableQuestionCount(categories, territorios));
 
 type Picked = Question & { category: string; nameForm: NameForm; correctAnswer: string };
 
@@ -71,7 +75,7 @@ type Picked = Question & { category: string; nameForm: NameForm; correctAnswer: 
  * - No se repite ninguna pregunta. El mismo lugar sí puede volver a ser la respuesta en otra pregunta
  *   (Vigo y Pontevedra, de la provincia de Pontevedra; la capital de Asturias como comunidad y como provincia).
  */
-export function pickQuestions({ categories, roundLength = ROUND_LENGTH, nameForms: checkedForms = DEFAULT_NAME_FORMS, territorios = DEFAULT_TERRITORIOS, rng = Math.random }: RoundSettings): Picked[] {
+export function pickQuestions({ categories, questionCount = DEFAULT_QUESTION_COUNT, nameForms: checkedForms = DEFAULT_NAME_FORMS, territorios = DEFAULT_TERRITORIOS, rng = Math.random }: RoundParams): Picked[] {
   const nameForms = NAME_FORMS.filter((f) => checkedForms.includes(f));
   if (!nameForms.length) throw new Error("Hay que marcar al menos una forma de los nombres");
   // La misma pregunta (mismo id) generada en cada forma.
@@ -91,9 +95,9 @@ export function pickQuestions({ categories, roundLength = ROUND_LENGTH, nameForm
     }
     decks[catId] = shuffle([...ids], rng);
   }
-  const max = roundLength === "sinLimite" ? Infinity : roundLength;
+  const maxQuestions = questionCount === "sinLimite" ? Infinity : questionCount;
   const out: Picked[] = [];
-  while (out.length < max) {
+  while (out.length < maxQuestions) {
     const live = Object.keys(decks).filter((id) => decks[id].length);
     if (!live.length) break;
     const category = pick(live, rng);
@@ -104,17 +108,17 @@ export function pickQuestions({ categories, roundLength = ROUND_LENGTH, nameForm
   return out;
 }
 
-export function buildRound(settings: RoundSettings): RoundQuestion[] {
-  const n = settings.optionCount ?? DEFAULT_OPTION_COUNT;
-  return pickQuestions(settings).map((q) => prepare(q, n, poolsFor(q.nameForm), settings.rng));
+export function buildRound(params: RoundParams): RoundQuestion[] {
+  const optionCount = params.optionCount ?? DEFAULT_OPTION_COUNT;
+  return pickQuestions(params).map((q) => prepare(q, optionCount, poolsFor(q.nameForm), params.rng));
 }
 
 /**
  * Otra vuelta en una partida sin límite: todas las preguntas de nuevo, barajadas y con opciones nuevas.
  * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
  */
-export function reshuffleRound(settings: RoundSettings, lastId?: string): RoundQuestion[] {
-  return notStartingWith(buildRound({ ...settings, roundLength: "sinLimite" }), lastId);
+export function reshuffleRound(params: RoundParams, lastId?: string): RoundQuestion[] {
+  return notStartingWith(buildRound({ ...params, questionCount: "sinLimite" }), lastId);
 }
 
 /** Prepara de nuevo una lista de preguntas (repaso de fallos), con opciones nuevas y la misma forma. */

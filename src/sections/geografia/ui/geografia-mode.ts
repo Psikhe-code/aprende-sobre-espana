@@ -5,8 +5,8 @@
 import type { SavedState } from "../../../common/engine/common-storage";
 import type { PlayableQuestion } from "../../../common/engine/common-types";
 import type { SectionMode } from "../../../common/ui/common-mode";
-import { buildRound, buildReviewRound, reshuffleRound, roundSize } from "../engine/geografia-round-questions";
-import { roundSettings, recordKey, canPlay, selectionKey } from "../engine/geografia-selection";
+import { buildRound, buildReviewRound, reshuffleRound, countRoundQuestions } from "../engine/geografia-round-questions";
+import { roundParams, recordKey, canPlay, selectionKey } from "../engine/geografia-selection";
 import type { RoundQuestion } from "../engine/geografia-types";
 import { geografiaSettings } from "../engine/geografia-settings";
 import { banderaQuestionImage } from "./geografia-banderas";
@@ -24,17 +24,17 @@ const withImages = (questions: RoundQuestion[]): RoundQuestion[] =>
   });
 
 export function geografiaMode(state: SavedState): SectionMode {
-  const g = geografiaSettings(state);
+  const settings = geografiaSettings(state);
   return {
-    canPlay: () => canPlay(g),
-    buildRound: () => withImages(buildRound(roundSettings(g))),
-    reshuffleRound: (lastId) => withImages(reshuffleRound(roundSettings(g), lastId)),
-    buildReviewRound: (misses) => withImages(buildReviewRound(misses.filter(isGeografiaQuestion), { optionCount: g.optionCount })),
-    roundSize: () => roundSize(g.categories, g.territorios, g.roundLength),
-    isUnlimited: () => g.roundLength === "sinLimite",
-    timeLimit: () => g.timeLimit,
-    selectionKey: () => GEOGRAFIA_ID + ":" + selectionKey(g),
-    recordKey: () => recordKey(g),
+    canPlay: () => canPlay(settings),
+    buildRound: () => withImages(buildRound(roundParams(settings))),
+    reshuffleRound: (lastId) => withImages(reshuffleRound(roundParams(settings), lastId)),
+    buildReviewRound: (misses) => withImages(buildReviewRound(misses.filter(isGeografiaQuestion), { optionCount: settings.optionCount })),
+    roundQuestionCount: () => countRoundQuestions(settings.categories, settings.territorios, settings.questionCount),
+    isUnlimited: () => settings.questionCount === "sinLimite",
+    timeLimit: () => settings.timeLimit,
+    selectionKey: () => GEOGRAFIA_ID + ":" + selectionKey(settings),
+    recordKey: () => recordKey(settings),
     rating: geografiaRating
   };
 }

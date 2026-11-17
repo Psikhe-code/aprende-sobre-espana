@@ -42,18 +42,18 @@ test("si la selección no llega a un número de preguntas, sale desactivado y lo
   await page.locator("#openOptions").click();
   for (const id of ONLY_CAPITALES) await page.locator(`[id="${id}"]`).click();
   for (const n of [50, 100]) {
-    await expect(page.locator(`[id="len-${n}"]`)).toBeDisabled();
-    await expect(page.locator(`[id="len-${n}"] .cat-desc`)).toHaveText(/^Con esta selección hay \d+ preguntas\.$/);
+    await expect(page.locator(`[id="question-count-${n}"]`)).toBeDisabled();
+    await expect(page.locator(`[id="question-count-${n}"] .cat-desc`)).toHaveText(/^Con esta selección hay \d+ preguntas\.$/);
   }
-  await expect(page.locator('[id="len-sinLimite"]')).toBeEnabled();
+  await expect(page.locator('[id="question-count-sinLimite"]')).toBeEnabled();
 
   // Elegida una que cabe y quitado un territorio, ya no cabe: aviso y «Listo» desactivado.
-  await page.locator('[id="len-25"]').click();
+  await page.locator('[id="question-count-25"]').click();
   await page.locator('[id="terr-comunidad"]').click();
-  await expect(page.locator("#lengthWarn")).toBeVisible();
+  await expect(page.locator("#questionCountWarn")).toBeVisible();
   await expect(page.locator("#doneOptions")).toBeDisabled();
-  await page.locator('[id="len-10"]').click();
-  await expect(page.locator("#lengthWarn")).toBeHidden();
+  await page.locator('[id="question-count-10"]').click();
+  await expect(page.locator("#questionCountWarn")).toBeHidden();
   await expect(page.locator("#doneOptions")).toBeEnabled();
 });
 

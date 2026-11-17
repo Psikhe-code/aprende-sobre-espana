@@ -4,8 +4,8 @@
 
 import { describe, expect, it } from "vitest";
 import { CATEGORIES, CATEGORY_IDS, categoryById } from "../../src/sections/geografia/engine/geografia-categories";
-import { buildRound, buildReviewRound, reshuffleRound, roundSize, questionCount, questionsIn, lengthFits, OPTION_COUNTS } from "../../src/sections/geografia/engine/geografia-round-questions";
-import { ROUND_LENGTH, ROUND_LENGTHS } from "../../src/common/engine/common-round-settings";
+import { buildRound, buildReviewRound, reshuffleRound, countRoundQuestions, availableQuestionCount, questionsIn, questionCountFits, OPTION_COUNTS } from "../../src/sections/geografia/engine/geografia-round-questions";
+import { DEFAULT_QUESTION_COUNT, QUESTION_COUNTS } from "../../src/common/engine/common-round-settings";
 import { PROVINCIAS, poolsFor } from "../../src/sections/geografia/engine/geografia-territorio";
 import { PROVINCIA_BANDERAS } from "../../src/sections/geografia/engine/geografia-questions";
 import { loadGeografiaSettings } from "../../src/sections/geografia/engine/geografia-settings";
@@ -16,18 +16,18 @@ const CAPITALES_PROVINCIA = PROVINCIAS.filter((p) => p.trampas).length;
 
 describe("partidas: elección de preguntas", () => {
   it("cada pregunta lleva encima la etiqueta de su categoría y su territorio, también en el repaso y al barajar otra vez", () => {
-    const all = buildRound({ categories: CATEGORY_IDS, roundLength: "sinLimite" });
+    const all = buildRound({ categories: CATEGORY_IDS, questionCount: "sinLimite" });
     for (const q of [...all, ...buildReviewRound(all), ...reshuffleRound({ categories: CATEGORY_IDS }, all[0].id)]) {
       expect(q.label, q.id).toBe(categoryById(q.category)!.labels[q.territorio]);
       expect(q.label, q.id).not.toBe("");
     }
   });
 
-  it(`tienen ${ROUND_LENGTH} preguntas sin repetir`, () => {
+  it(`tienen ${DEFAULT_QUESTION_COUNT} preguntas sin repetir`, () => {
     for (let r = 0; r < 300; r++) {
       const round = buildRound({ categories: CATEGORY_IDS });
-      expect(round).toHaveLength(ROUND_LENGTH);
-      expect(new Set(round.map((q) => q.id)).size).toBe(ROUND_LENGTH);
+      expect(round).toHaveLength(DEFAULT_QUESTION_COUNT);
+      expect(new Set(round.map((q) => q.id)).size).toBe(DEFAULT_QUESTION_COUNT);
     }
   });
 
@@ -38,18 +38,18 @@ describe("partidas: elección de preguntas", () => {
   });
 
   it("en cada número de preguntas, tienen esas preguntas sin repetir ninguna", () => {
-    for (const length of ROUND_LENGTHS) {
+    for (const questionCount of QUESTION_COUNTS) {
       for (let r = 0; r < 20; r++) {
-        const round = buildRound({ categories: CATEGORY_IDS, roundLength: length });
-        expect(round, String(length)).toHaveLength(length === "sinLimite" ? questionCount(CATEGORY_IDS) : length);
-        expect(new Set(round.map((q) => q.id)).size, String(length)).toBe(round.length);
+        const round = buildRound({ categories: CATEGORY_IDS, questionCount: questionCount });
+        expect(round, String(questionCount)).toHaveLength(questionCount === "sinLimite" ? availableQuestionCount(CATEGORY_IDS) : questionCount);
+        expect(new Set(round.map((q) => q.id)).size, String(questionCount)).toBe(round.length);
       }
     }
   });
 
   it("sí pueden repetir el mismo lugar como respuesta en preguntas distintas", () => {
     // Todas las de Divisiones de provincias: hay muchos más municipios que provincias, así que se repiten respuestas.
-    const round = buildRound({ categories: ["divisiones"], territorios: ["provincia"], roundLength: "sinLimite" });
+    const round = buildRound({ categories: ["divisiones"], territorios: ["provincia"], questionCount: "sinLimite" });
     expect(round).toHaveLength(questionsIn("divisiones", ["provincia"]).length);
     expect(new Set(round.map((q) => q.correctAnswer)).size).toBeLessThan(round.length);
   });
@@ -87,7 +87,7 @@ describe("partidas: elección de preguntas", () => {
     let total = 0;
     for (let r = 0; r < 300; r++) {
       for (const q of buildRound({ categories: CATEGORY_IDS })) count[q.category] = (count[q.category] ?? 0) + 1;
-      total += ROUND_LENGTH;
+      total += DEFAULT_QUESTION_COUNT;
     }
     // Se sortea primero la categoría: cada una sale más o menos en la misma proporción.
     for (const id of CATEGORY_IDS) {
@@ -112,31 +112,31 @@ describe("partidas: elección de preguntas", () => {
       for (const q of buildRound({ categories: CATEGORY_IDS, territorios: ["comunidad"] })) expect(q.territorio).toBe("comunidad");
       const provincias = buildRound({ categories: CATEGORY_IDS, territorios: ["provincia"] });
       for (const q of provincias) expect(q.territorio).toBe("provincia");
-      expect(provincias).toHaveLength(ROUND_LENGTH);
+      expect(provincias).toHaveLength(DEFAULT_QUESTION_COUNT);
       // Solo capitales de provincia: hay menos de 10, así que la partida tiene las que haya.
       expect(buildRound({ categories: ["capitales"], territorios: ["provincia"] })).toHaveLength(CAPITALES_PROVINCIA);
     }
   });
 
   it("calcula cuántas preguntas tendrá la partida según la selección", () => {
-    expect(roundSize(CATEGORY_IDS)).toBe(ROUND_LENGTH);
-    expect(roundSize(["capitales"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, CAPITALES_PROVINCIA));
-    expect(roundSize(["banderas"], ["provincia"])).toBe(Math.min(ROUND_LENGTH, Object.keys(PROVINCIA_BANDERAS).length));
-    expect(roundSize(["divisiones"], ["provincia"])).toBe(ROUND_LENGTH);
+    expect(countRoundQuestions(CATEGORY_IDS)).toBe(DEFAULT_QUESTION_COUNT);
+    expect(countRoundQuestions(["capitales"], ["provincia"])).toBe(Math.min(DEFAULT_QUESTION_COUNT, CAPITALES_PROVINCIA));
+    expect(countRoundQuestions(["banderas"], ["provincia"])).toBe(Math.min(DEFAULT_QUESTION_COUNT, Object.keys(PROVINCIA_BANDERAS).length));
+    expect(countRoundQuestions(["divisiones"], ["provincia"])).toBe(DEFAULT_QUESTION_COUNT);
     // Las preguntas que hay son las distintas de la selección; sin límite, una vuelta entera.
     const all = new Set(CATEGORY_IDS.flatMap((id) => questionsIn(id).map((q) => q.id))).size;
-    expect(questionCount(CATEGORY_IDS)).toBe(all);
-    expect(roundSize(CATEGORY_IDS, undefined, "sinLimite")).toBe(all);
-    expect(roundSize(CATEGORY_IDS, undefined, 100)).toBe(Math.min(100, all));
+    expect(availableQuestionCount(CATEGORY_IDS)).toBe(all);
+    expect(countRoundQuestions(CATEGORY_IDS, undefined, "sinLimite")).toBe(all);
+    expect(countRoundQuestions(CATEGORY_IDS, undefined, 100)).toBe(Math.min(100, all));
   });
 
   it("25, 50 y 100 preguntas solo se pueden elegir si la selección tiene al menos esas; 10 y sin límite, siempre", () => {
     for (const categories of [["capitales"], ["banderas"], ["divisiones"], CATEGORY_IDS]) {
       for (const territorios of [["comunidad"], ["provincia"], ["comunidad", "provincia"]] as const) {
-        const available = questionCount(categories, [...territorios]);
-        for (const length of ROUND_LENGTHS) {
-          const expected = length === "sinLimite" || length === ROUND_LENGTH || available >= length;
-          expect(lengthFits(length, categories, [...territorios]), `${categories} ${territorios} ${length}`).toBe(expected);
+        const available = availableQuestionCount(categories, [...territorios]);
+        for (const questionCount of QUESTION_COUNTS) {
+          const expected = questionCount === "sinLimite" || questionCount === DEFAULT_QUESTION_COUNT || available >= questionCount;
+          expect(questionCountFits(questionCount, categories, [...territorios]), `${categories} ${territorios} ${questionCount}`).toBe(expected);
         }
       }
     }
@@ -145,7 +145,7 @@ describe("partidas: elección de preguntas", () => {
   it("otra vuelta tiene todas las preguntas, y no empieza por la última que salió", () => {
     const settings = { categories: ["capitales"], territorios: ["provincia" as const] };
     for (let r = 0; r < 100; r++) {
-      const first = buildRound({ ...settings, roundLength: "sinLimite" });
+      const first = buildRound({ ...settings, questionCount: "sinLimite" });
       const last = first[first.length - 1].id;
       const other = reshuffleRound(settings, last);
       expect(other.map((q) => q.id).sort()).toEqual(first.map((q) => q.id).sort());

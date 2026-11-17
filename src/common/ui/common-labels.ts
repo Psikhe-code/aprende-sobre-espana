@@ -2,10 +2,10 @@
  * @fileoverview Textos con los que se presentan, en todas las secciones, las opciones comunes y el tiempo.
  */
 
-import type { RoundLength, TimeLimit } from "../engine/common-round-settings";
+import type { QuestionCount, TimeLimit } from "../engine/common-round-settings";
 
 /** Cómo se presenta cada número de preguntas en Opciones. */
-export const ROUND_LENGTH_LABELS: Record<RoundLength, { name: string; desc: string }> = {
+export const QUESTION_COUNT_LABELS: Record<QuestionCount, { name: string; desc: string }> = {
   10: { name: "10 preguntas", desc: "Una partida rápida." },
   25: { name: "25 preguntas", desc: "Una partida media." },
   50: { name: "50 preguntas", desc: "Una partida larga." },

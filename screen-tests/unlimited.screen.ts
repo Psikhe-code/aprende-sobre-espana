@@ -7,7 +7,7 @@ import { test, expect, openSection, changeSettings, answerQuestions, ONLY_CAPITA
 test("partida sin límite: fin de una vuelta, seguir jugando, terminar y récord de racha", async ({ page }) => {
   await openSection(page);
   // Solo capitales de provincia: pocas preguntas, para completar pronto una vuelta.
-  await changeSettings(page, [...ONLY_CAPITALES, "terr-comunidad", "len-sinLimite", "time-sinTiempo"]);
+  await changeSettings(page, [...ONLY_CAPITALES, "terr-comunidad", "question-count-sinLimite", "time-sinTiempo"]);
   await expect(page.locator("#roundLabel")).toHaveText("Preguntas sin límite, al azar, de");
   await page.locator("#go").click();
   await expect(page.locator("#track")).toBeHidden();

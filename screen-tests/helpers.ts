@@ -36,7 +36,7 @@ export async function openSection(page: Page, section: "geografia" | "ccse" = "g
   await expect(page.locator(section === "ccse" ? "#ccseStart" : "#go")).toBeVisible();
 }
 
-/** Abre Opciones, pulsa las tarjetas indicadas por su id (p. ej. "cat-banderas", "len-25") y vuelve al inicio. */
+/** Abre Opciones, pulsa las tarjetas indicadas por su id (p. ej. "cat-banderas", "question-count-25") y vuelve al inicio. */
 export async function changeSettings(page: Page, cardIds: string[]) {
   await page.locator("#openOptions").click();
   for (const id of cardIds) await page.locator(`[id="${id}"]`).click();
