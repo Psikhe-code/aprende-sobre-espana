@@ -18,7 +18,7 @@ export interface SectionMode {
   /** Repaso de fallos: las mismas preguntas, con las opciones preparadas de nuevo. */
   buildReviewRound(misses: PlayableQuestion[]): PlayableQuestion[];
   /** Cuántas preguntas tiene una partida completa (para saber si cuenta para el récord). */
-  roundSize(): number;
+  roundQuestionCount(): number;
   isUnlimited(): boolean;
   timeLimit(): TimeLimit;
   /** Lo que decide qué preguntas salen, como texto: si cambia, la partida preparada ya no vale. */

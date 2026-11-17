@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { roundLengthWarning, roundText } from "../../src/common/ui/common-widgets";
+import { questionCountWarning, roundText } from "../../src/common/ui/common-widgets";
 import { clockTime, cycleEndText, timeUsed } from "../../src/common/ui/common-labels";
 
 // Textos que genera el código: se comprueban palabra por palabra.
@@ -29,7 +29,7 @@ describe("inicio y Opciones de cada sección", () => {
   });
 
   it("el aviso cuando ya no caben las preguntas elegidas", () => {
-    expect(roundLengthWarning(19)).toBe("Con esta selección hay 19 preguntas: elige menos preguntas por partida o «Sin límite».");
+    expect(questionCountWarning(19)).toBe("Con esta selección hay 19 preguntas: elige menos preguntas por partida o «Sin límite».");
   });
 });
 

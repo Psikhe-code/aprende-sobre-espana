@@ -2,7 +2,7 @@
  * @fileoverview Geografía: lo que se deduce de las opciones marcadas (la selección actual).
  */
 
-import { lengthFits, roundSize, type RoundSettings } from "./geografia-round-questions";
+import { questionCountFits, countRoundQuestions, type RoundParams } from "./geografia-round-questions";
 import { recordKeyEnding } from "../../../common/engine/common-round-settings";
 import { CATEGORY_IDS } from "./geografia-categories";
 import { TERRITORIOS } from "./geografia-types";
@@ -10,26 +10,30 @@ import type { GeografiaSettings } from "./geografia-settings";
 import { GEOGRAFIA_ID } from "./geografia-id";
 
 /** Si con las opciones marcadas se puede jugar: alguna categoría, forma y territorio, y preguntas suficientes. */
-export const canPlay = (g: GeografiaSettings) =>
-  g.categories.length > 0 && g.nameForms.length > 0 && g.territorios.length > 0 &&
-  roundSize(g.categories, g.territorios) > 0 && lengthFits(g.roundLength, g.categories, g.territorios);
+export const canPlay = (settings: GeografiaSettings) =>
+  settings.categories.length > 0 && settings.nameForms.length > 0 && settings.territorios.length > 0 &&
+  countRoundQuestions(settings.categories, settings.territorios) > 0 &&
+  questionCountFits(settings.questionCount, settings.categories, settings.territorios);
 
-/** Ajustes con los que se prepara una partida (o otra vuelta, en la partida sin límite). */
-export const roundSettings = (g: GeografiaSettings): RoundSettings =>
-  ({ categories: g.categories, nameForms: g.nameForms, territorios: g.territorios, optionCount: g.optionCount, roundLength: g.roundLength });
+/** Lo que necesita el motor para preparar una partida con las opciones elegidas. */
+export const roundParams = (settings: GeografiaSettings): RoundParams => ({
+  categories: settings.categories, nameForms: settings.nameForms, territorios: settings.territorios,
+  optionCount: settings.optionCount, questionCount: settings.questionCount
+});
 
 /**
  * Lo que decide qué preguntas salen, como texto: si cambia, la partida preparada ya no vale.
  * El tiempo no está, porque no cambia las preguntas.
  */
-export const selectionKey = (g: GeografiaSettings) => JSON.stringify([g.categories, g.nameForms, g.territorios, g.optionCount, g.roundLength]);
+export const selectionKey = (settings: GeografiaSettings) =>
+  JSON.stringify([settings.categories, settings.nameForms, settings.territorios, settings.optionCount, settings.questionCount]);
 
 /**
  * Clave del récord de la selección actual: las categorías, los territorios, la dificultad, el número de preguntas
  * y el tiempo, en el orden oficial: «geografia/capitales+banderas/comunidad/4opciones/10preguntas/60s».
  * La forma de los nombres no está: no cambia lo que se pregunta.
  */
-export const recordKey = (g: GeografiaSettings) =>
-  GEOGRAFIA_ID + "/" + CATEGORY_IDS.filter((id) => g.categories.includes(id)).join("+") +
-  "/" + TERRITORIOS.filter((t) => g.territorios.includes(t)).join("+") +
-  `/${g.optionCount}opciones` + recordKeyEnding(g.roundLength, g.timeLimit);
+export const recordKey = (settings: GeografiaSettings) =>
+  GEOGRAFIA_ID + "/" + CATEGORY_IDS.filter((id) => settings.categories.includes(id)).join("+") +
+  "/" + TERRITORIOS.filter((t) => settings.territorios.includes(t)).join("+") +
+  `/${settings.optionCount}opciones` + recordKeyEnding(settings.questionCount, settings.timeLimit);

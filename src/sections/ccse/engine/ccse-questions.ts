@@ -8,7 +8,7 @@
  */
 
 import datos from "../data/ccse.json";
-import { fitsFor, sizeFor, type RoundLength } from "../../../common/engine/common-round-settings";
+import { DEFAULT_QUESTION_COUNT, questionCountFitsFor, countRoundQuestionsFor, type QuestionCount } from "../../../common/engine/common-round-settings";
 import { shuffle, notStartingWith } from "../../../common/engine/common-random";
 import type { Fuente, PlayableQuestion, Rng } from "../../../common/engine/common-types";
 
@@ -112,11 +112,13 @@ export const tareaQuestions = (tareas: readonly number[]) => CCSE_QUESTIONS.filt
 /** Tareas que ya tienen preguntas (las demás salen en Opciones como «próximamente»). */
 export const tareasWithQuestions = () => TAREA_IDS.filter((n) => CCSE_QUESTIONS.some((p) => p.tarea === n));
 
-/** Cuántas preguntas tendrá una partida con estas tareas (ver sizeFor). */
-export const roundSize = (tareas: readonly number[], length: RoundLength) => sizeFor(length, tareaQuestions(tareas).length);
+/** Cuántas preguntas tendrá una partida con estas tareas (ver countRoundQuestionsFor). */
+export const countRoundQuestions = (tareas: readonly number[], questionCount: QuestionCount) =>
+  countRoundQuestionsFor(questionCount, tareaQuestions(tareas).length);
 
-/** Si se puede elegir este número de preguntas con estas tareas (ver fitsFor). */
-export const lengthFits = (length: RoundLength, tareas: readonly number[]) => fitsFor(length, tareaQuestions(tareas).length);
+/** Si se puede elegir este número de preguntas con estas tareas (ver questionCountFitsFor). */
+export const questionCountFits = (questionCount: QuestionCount, tareas: readonly number[]) =>
+  questionCountFitsFor(questionCount, tareaQuestions(tareas).length);
 
 /** Pregunta del examen preparada para jugar: con sus opciones en el orden de esta partida. */
 export interface CcseRoundQuestion extends PlayableQuestion {
@@ -139,24 +141,28 @@ export function prepare(p: CcseQuestion, rng: Rng = Math.random): CcseRoundQuest
   };
 }
 
-export interface CcseRoundSettings {
+/**
+ * Lo que necesita el motor para preparar una partida. Sale de las opciones del jugador (`settings`), salvo al
+ * barajar otra vuelta de la partida sin límite, que va siempre sin límite.
+ */
+export interface CcseRoundParams {
   tareas: readonly number[];
-  roundLength?: RoundLength;
+  questionCount?: QuestionCount;
   rng?: Rng;
 }
 
 /** Preguntas de una partida: al azar entre las de las tareas marcadas, sin repetir ninguna. */
-export function buildRound({ tareas, roundLength: length = 10, rng = Math.random }: CcseRoundSettings): CcseRoundQuestion[] {
+export function buildRound({ tareas, questionCount = DEFAULT_QUESTION_COUNT, rng = Math.random }: CcseRoundParams): CcseRoundQuestion[] {
   const all = shuffle([...tareaQuestions(tareas)], rng);
-  return all.slice(0, sizeFor(length, all.length)).map((p) => prepare(p, rng));
+  return all.slice(0, countRoundQuestionsFor(questionCount, all.length)).map((p) => prepare(p, rng));
 }
 
 /**
  * Otra vuelta en una partida sin límite: todas las preguntas de nuevo, barajadas.
  * La primera nunca es la última que acaba de salir, para que no se repita una detrás de otra.
  */
-export function reshuffleRound(settings: CcseRoundSettings, lastId?: string): CcseRoundQuestion[] {
-  return notStartingWith(buildRound({ ...settings, roundLength: "sinLimite" }), lastId);
+export function reshuffleRound(params: CcseRoundParams, lastId?: string): CcseRoundQuestion[] {
+  return notStartingWith(buildRound({ ...params, questionCount: "sinLimite" }), lastId);
 }
 
 /** Repaso de fallos: las mismas preguntas, con las opciones barajadas de nuevo. */

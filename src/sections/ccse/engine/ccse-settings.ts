@@ -3,7 +3,7 @@
  */
 
 import { sectionSettings, type SavedState } from "../../../common/engine/common-storage";
-import { DEFAULT_ROUND_LENGTH, DEFAULT_TIME_LIMIT, ROUND_LENGTHS, TIME_LIMITS, type RoundLength, type TimeLimit } from "../../../common/engine/common-round-settings";
+import { DEFAULT_QUESTION_COUNT, DEFAULT_TIME_LIMIT, QUESTION_COUNTS, TIME_LIMITS, type QuestionCount, type TimeLimit } from "../../../common/engine/common-round-settings";
 import { TAREA_IDS, tareasWithQuestions } from "./ccse-questions";
 import { CCSE_ID } from "./ccse-id";
 
@@ -13,7 +13,7 @@ export interface CcseSettings {
   /** Tareas que tenían preguntas la última vez: las que reciban sus primeras preguntas se marcan solas. */
   knownTareas: number[];
   /** Preguntas por partida: 10, 25, 50, 100 o sin límite. */
-  roundLength: RoundLength;
+  questionCount: QuestionCount;
   /** Tiempo por pregunta: 60, 30 o 10 segundos, o sin tiempo. */
   timeLimit: TimeLimit;
 }
@@ -33,7 +33,7 @@ export function loadCcseSettings(raw: unknown): CcseSettings {
   return {
     tareas,
     knownTareas: [...withQuestions],
-    roundLength: ROUND_LENGTHS.find((n) => n === r.roundLength) ?? DEFAULT_ROUND_LENGTH,
+    questionCount: QUESTION_COUNTS.find((n) => n === r.questionCount) ?? DEFAULT_QUESTION_COUNT,
     timeLimit: TIME_LIMITS.find((n) => n === r.timeLimit) ?? DEFAULT_TIME_LIMIT
   };
 }

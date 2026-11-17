@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 import {
-  CCSE_QUESTIONS, TAREAS, lengthFits, tareaName, reshuffleRound, buildRound, tareaQuestions, buildReviewRound, roundSize, tarea, tareasWithQuestions
+  CCSE_QUESTIONS, TAREAS, questionCountFits, tareaName, reshuffleRound, buildRound, tareaQuestions, buildReviewRound, countRoundQuestions, tarea, tareasWithQuestions
 } from "../../src/sections/ccse/engine/ccse-questions";
-import { ROUND_LENGTH, ROUND_LENGTHS, type RoundLength } from "../../src/common/engine/common-round-settings";
+import { DEFAULT_QUESTION_COUNT, QUESTION_COUNTS, type QuestionCount } from "../../src/common/engine/common-round-settings";
 import { canPlay } from "../../src/sections/ccse/engine/ccse-selection";
 import { ccseMode } from "../../src/sections/ccse/ui/ccse-mode";
 import { CCSE_APTO_RATIO, ccseRating } from "../../src/sections/ccse/engine/ccse-rating";
@@ -31,18 +31,18 @@ describe("examen de nacionalidad: datos de prueba", () => {
 
 describe("examen de nacionalidad: partidas", () => {
   it("cada pregunta lleva encima el nombre de su tarea, también en el repaso", () => {
-    const roundQuestions = buildRound({ tareas: ALL_TAREAS, roundLength: "sinLimite" });
+    const roundQuestions = buildRound({ tareas: ALL_TAREAS, questionCount: "sinLimite" });
     for (const q of [...roundQuestions, ...buildReviewRound(roundQuestions)]) expect(q.label, q.id).toBe(tareaName(tarea(q.tarea)!));
     expect(tareaName(TAREAS[0])).toBe(`Tarea ${TAREAS[0].numero} · ${TAREAS[0].nombre}`);
   });
 
   it("solo salen preguntas de las tareas marcadas, sin repetir, con el número de preguntas elegido", () => {
     for (const tareas of [tareasWithQuestions(), ALL_TAREAS, [1]]) {
-      for (const length of ROUND_LENGTHS) {
+      for (const questionCount of QUESTION_COUNTS) {
         const available = tareaQuestions(tareas).length;
         if (!available) continue;
-        const roundQuestions = buildRound({ tareas, roundLength: length });
-        expect(roundQuestions).toHaveLength(roundSize(tareas, length));
+        const roundQuestions = buildRound({ tareas, questionCount: questionCount });
+        expect(roundQuestions).toHaveLength(countRoundQuestions(tareas, questionCount));
         expect(new Set(roundQuestions.map((q) => q.id)).size).toBe(roundQuestions.length);
         for (const q of roundQuestions) expect(tareas).toContain(q.tarea);
       }
@@ -51,7 +51,7 @@ describe("examen de nacionalidad: partidas", () => {
 
   it("cada pregunta sale con sus opciones (barajadas) y su respuesta, su nota y sus fuentes", () => {
     for (let r = 0; r < 20; r++) {
-      for (const q of buildRound({ tareas: ALL_TAREAS, roundLength: "sinLimite" })) {
+      for (const q of buildRound({ tareas: ALL_TAREAS, questionCount: "sinLimite" })) {
         const p = CCSE_QUESTIONS.find((x) => x.id === q.id)!;
         expect([...q.options].sort()).toEqual([...p.options].sort());
         if (p.fixedOrder) expect(q.options).toEqual(p.options);
@@ -72,15 +72,15 @@ describe("examen de nacionalidad: partidas", () => {
   it("25, 50 y 100 preguntas solo se pueden elegir si hay al menos esas; 10 y sin límite, siempre", () => {
     for (const tareas of [[1], ALL_TAREAS, []]) {
       const available = tareaQuestions(tareas).length;
-      for (const length of ROUND_LENGTHS) {
-        expect(lengthFits(length, tareas)).toBe(length === "sinLimite" || length === ROUND_LENGTH || available >= length);
+      for (const questionCount of QUESTION_COUNTS) {
+        expect(questionCountFits(questionCount, tareas)).toBe(questionCount === "sinLimite" || questionCount === DEFAULT_QUESTION_COUNT || available >= questionCount);
       }
     }
   });
 
   it("otra vuelta tiene todas las preguntas y no empieza por la última que salió", () => {
     for (let r = 0; r < 50; r++) {
-      const first = buildRound({ tareas: ALL_TAREAS, roundLength: "sinLimite" });
+      const first = buildRound({ tareas: ALL_TAREAS, questionCount: "sinLimite" });
       const last = first[first.length - 1].id;
       const other = reshuffleRound({ tareas: ALL_TAREAS }, last);
       expect(other.map((q) => q.id).sort()).toEqual(first.map((q) => q.id).sort());
@@ -96,20 +96,20 @@ describe("examen de nacionalidad: partidas", () => {
   it("la clave del récord empieza por «ccse/», con las tareas en orden, el número de preguntas y el tiempo", () => {
     const c = loadCcseSettings(undefined);
     expect(recordKey({ ...c, tareas: [2, 1] })).toBe("ccse/1+2/10preguntas/60s");
-    expect(recordKey({ ...c, tareas: [1, 3], roundLength: "sinLimite", timeLimit: "sinTiempo" })).toBe("ccse/1+3/sinlimite/sintiempo");
+    expect(recordKey({ ...c, tareas: [1, 3], questionCount: "sinLimite", timeLimit: "sinTiempo" })).toBe("ccse/1+3/sinlimite/sintiempo");
   });
 });
 
 describe("examen de nacionalidad: lo que da a la partida común", () => {
   it("cada partida tiene el número de preguntas elegido (sin límite, todas), así que cuenta para el récord", () => {
-    const tested: RoundLength[] = [];
-    for (const n of ROUND_LENGTHS) {
+    const tested: QuestionCount[] = [];
+    for (const n of QUESTION_COUNTS) {
       const s = loadCcseSettings(undefined);
-      s.roundLength = n;
+      s.questionCount = n;
       if (!canPlay(s)) continue;
       const mode = ccseMode(stateWith(s));
-      expect(mode.buildRound(), String(n)).toHaveLength(mode.roundSize());
-      expect(mode.roundSize(), String(n)).toBe(n === "sinLimite" ? tareaQuestions(s.tareas).length : n);
+      expect(mode.buildRound(), String(n)).toHaveLength(mode.roundQuestionCount());
+      expect(mode.roundQuestionCount(), String(n)).toBe(n === "sinLimite" ? tareaQuestions(s.tareas).length : n);
       tested.push(n);
     }
     // Que no pase sin comprobar nada: con los datos de prueba caben al menos 10, 25 y sin límite.
@@ -137,23 +137,23 @@ describe("examen de nacionalidad: si se puede jugar", () => {
 
   it("solo si las tareas marcadas tienen preguntas y caben las elegidas (25, 50 y 100, solo si hay al menos esas)", () => {
     const s = loadCcseSettings(undefined);
-    for (const t of ALL_TAREAS) for (const roundLength of ROUND_LENGTHS) {
+    for (const t of ALL_TAREAS) for (const questionCount of QUESTION_COUNTS) {
       const available = tareaQuestions([t]).length;
-      const fits = available > 0 && (roundLength === "sinLimite" || roundLength === ROUND_LENGTH || available >= roundLength);
-      expect(canPlay({ ...s, tareas: [t], roundLength }), `tarea ${t} · ${roundLength}`).toBe(fits);
+      const fits = available > 0 && (questionCount === "sinLimite" || questionCount === DEFAULT_QUESTION_COUNT || available >= questionCount);
+      expect(canPlay({ ...s, tareas: [t], questionCount: questionCount }), `tarea ${t} · ${questionCount}`).toBe(fits);
     }
   });
 });
 
 describe("examen de nacionalidad: opciones guardadas", () => {
   it("por defecto, todas las tareas con preguntas, 10 preguntas y 1 minuto; y se recuerda lo elegido", () => {
-    expect(loadCcseSettings(undefined)).toEqual({ tareas: tareasWithQuestions(), knownTareas: tareasWithQuestions(), roundLength: 10, timeLimit: 60 });
-    expect(loadCcseSettings({ tareas: [1], knownTareas: [1, 2], roundLength: "sinLimite", timeLimit: 10 }))
-      .toMatchObject({ tareas: [1], roundLength: "sinLimite", timeLimit: 10 });
+    expect(loadCcseSettings(undefined)).toEqual({ tareas: tareasWithQuestions(), knownTareas: tareasWithQuestions(), questionCount: 10, timeLimit: 60 });
+    expect(loadCcseSettings({ tareas: [1], knownTareas: [1, 2], questionCount: "sinLimite", timeLimit: 10 }))
+      .toMatchObject({ tareas: [1], questionCount: "sinLimite", timeLimit: 10 });
     // Tareas sin preguntas o que no existen no se quedan marcadas; si no queda ninguna, vuelven las de por defecto.
     expect(loadCcseSettings({ tareas: [9, 4], knownTareas: [1, 2] }).tareas).toEqual(tareasWithQuestions());
     // Lo que no vale, por defecto.
-    expect(loadCcseSettings({ roundLength: 30, timeLimit: 45 })).toMatchObject({ roundLength: 10, timeLimit: 60 });
+    expect(loadCcseSettings({ questionCount: 30, timeLimit: 45 })).toMatchObject({ questionCount: 10, timeLimit: 60 });
   });
 
   it("una tarea que recibe sus primeras preguntas se marca sola", () => {

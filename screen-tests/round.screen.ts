@@ -80,7 +80,7 @@ test("«Salir al menú» vuelve al inicio sin guardar récord", async ({ page })
 
 test("partida de 100 con todo: la barra de progreso cabe en la pantalla", async ({ page }) => {
   await openSection(page);
-  await changeSettings(page, ["len-100"]);
+  await changeSettings(page, ["question-count-100"]);
   await expect(page.locator("#roundLabel")).toHaveText("100 preguntas al azar de");
   await page.locator("#go").click();
   await expect(page.locator("#track i")).toHaveCount(100);

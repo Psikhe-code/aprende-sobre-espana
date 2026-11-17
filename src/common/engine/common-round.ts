@@ -3,7 +3,7 @@
  */
 
 import type { PlayableQuestion } from "./common-types";
-import { ROUND_LENGTH } from "./common-round-settings";
+import { DEFAULT_QUESTION_COUNT } from "./common-round-settings";
 
 /** Pregunta fallada o sin responder durante una partida. */
 export interface Miss {
@@ -49,7 +49,7 @@ export class Round {
   readonly questionsPerCycle: number;
   /**
    * Preguntas que debe tener una partida completa con esta selección: normalmente 10,
-   * menos si la selección no da para tantas (ver roundSize). Solo cuenta para récords si las tiene.
+   * menos si la selección no da para tantas (ver roundQuestionCount). Solo cuenta para récords si las tiene.
    */
   readonly expected: number;
 
@@ -67,7 +67,7 @@ export class Round {
     this.review = options.review ?? false;
     this.unlimited = options.unlimited ?? false;
     this.questionsPerCycle = questions.length;
-    this.expected = options.expected ?? (this.unlimited ? questions.length : ROUND_LENGTH);
+    this.expected = options.expected ?? (this.unlimited ? questions.length : DEFAULT_QUESTION_COUNT);
   }
 
   get questions(): readonly PlayableQuestion[] { return this.list; }

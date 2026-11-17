@@ -13,28 +13,28 @@ export function poolFor(q: Question, pools: Pools): readonly string[] {
 }
 
 /**
- * Devuelve `n` opciones mezcladas: la correcta, algunas trampas y el resto del pool.
+ * Devuelve `optionCount` opciones mezcladas: la correcta, algunas trampas y el resto del pool.
  *
  * - Siempre sale una trampa fija (`fixedTrapOptions`), sorteada si hay varias.
- * - Si hay pool, como mucho n-2 incorrectas son trampas (contando las fijas): siempre queda
+ * - Si hay pool, como mucho `optionCount` - 2 incorrectas son trampas (contando las fijas): siempre queda
  *   al menos un hueco aleatorio, para que las partidas no se repitan.
  * - Nunca aparecen valores de `exclude` ni duplicados.
  * - Si el pool se queda corto, se completa con las trampas que sobren.
  */
-export function makeOptions(q: Question & { correctAnswer: string }, n: number, pools: Pools, rng: Rng = Math.random): string[] {
+export function makeOptions(q: Question & { correctAnswer: string }, optionCount: number, pools: Pools, rng: Rng = Math.random): string[] {
   const banned = new Set([q.correctAnswer, ...q.exclude]);
   const fixedCandidates = [...new Set(q.fixedTrapOptions ?? [])].filter((v) => !banned.has(v));
-  const fixed = fixedCandidates.length && n > 1 ? [pick(fixedCandidates, rng)] : [];
+  const fixed = fixedCandidates.length && optionCount > 1 ? [pick(fixedCandidates, rng)] : [];
   fixed.forEach((v) => banned.add(v));
   const trapOptions = shuffle(q.trapOptions.filter((v) => !banned.has(v)), rng);
   const pool = poolFor(q, pools);
-  const k = Math.max(0, (pool.length ? Math.min(trapOptions.length + fixed.length, n - 2) : n - 1) - fixed.length);
+  const k = Math.max(0, (pool.length ? Math.min(trapOptions.length + fixed.length, optionCount - 2) : optionCount - 1) - fixed.length);
   const wrong = [...fixed, ...trapOptions.slice(0, k)];
   wrong.forEach((v) => banned.add(v));
   const fill = shuffle(pool.filter((v) => !banned.has(v)), rng);
-  while (wrong.length < n - 1 && fill.length) wrong.push(fill.pop()!);
+  while (wrong.length < optionCount - 1 && fill.length) wrong.push(fill.pop()!);
   const rest = trapOptions.slice(k);
-  while (wrong.length < n - 1 && rest.length) wrong.push(rest.pop()!);
+  while (wrong.length < optionCount - 1 && rest.length) wrong.push(rest.pop()!);
   return shuffle([q.correctAnswer, ...wrong], rng);
 }
 
@@ -48,7 +48,7 @@ export function selectCorrectAnswer<T extends Question>(q: T, rng: Rng = Math.ra
  * Fija la respuesta y genera las opciones para esta partida, con los pools de la forma de la pregunta.
  * También pone la etiqueta que sale encima («Capitales de provincia»): la de su categoría y su territorio.
  */
-export function prepare(q: Question & { category: string; nameForm: NameForm }, n: number, pools: Pools, rng: Rng = Math.random): RoundQuestion {
+export function prepare(q: Question & { category: string; nameForm: NameForm }, optionCount: number, pools: Pools, rng: Rng = Math.random): RoundQuestion {
   const fixed = selectCorrectAnswer(q, rng);
-  return { ...fixed, options: makeOptions(fixed, n, pools, rng), label: categoryById(q.category)?.labels[q.territorio] ?? "" };
+  return { ...fixed, options: makeOptions(fixed, optionCount, pools, rng), label: categoryById(q.category)?.labels[q.territorio] ?? "" };
 }
