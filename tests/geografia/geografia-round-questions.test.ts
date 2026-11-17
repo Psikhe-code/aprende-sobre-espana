@@ -4,7 +4,7 @@
 
 import { describe, expect, it } from "vitest";
 import { CATEGORIES, CATEGORY_IDS, categoryById } from "../../src/sections/geografia/engine/geografia-categories";
-import { buildRound, buildReviewRound, reshuffleRound, countRoundQuestions, availableQuestionCount, questionsIn, questionCountFits, OPTION_COUNTS } from "../../src/sections/geografia/engine/geografia-round-questions";
+import { buildRound, buildReviewRound, reshuffleRound, countAvailableQuestions, questionsIn, OPTION_COUNTS } from "../../src/sections/geografia/engine/geografia-round-questions";
 import { DEFAULT_QUESTION_COUNT, QUESTION_COUNTS } from "../../src/common/engine/common-round-settings";
 import { PROVINCIAS, poolsFor } from "../../src/sections/geografia/engine/geografia-territorio";
 import { PROVINCIA_BANDERAS } from "../../src/sections/geografia/engine/geografia-questions";
@@ -41,7 +41,7 @@ describe("partidas: elección de preguntas", () => {
     for (const questionCount of QUESTION_COUNTS) {
       for (let r = 0; r < 20; r++) {
         const round = buildRound({ categories: CATEGORY_IDS, questionCount: questionCount });
-        expect(round, String(questionCount)).toHaveLength(questionCount === "sinLimite" ? availableQuestionCount(CATEGORY_IDS) : questionCount);
+        expect(round, String(questionCount)).toHaveLength(questionCount === "sinLimite" ? countAvailableQuestions(CATEGORY_IDS) : questionCount);
         expect(new Set(round.map((q) => q.id)).size, String(questionCount)).toBe(round.length);
       }
     }
@@ -79,7 +79,7 @@ describe("partidas: elección de preguntas", () => {
   });
 
   it("por defecto están marcadas todas las formas, la oficial primero", () => {
-    expect(loadGeografiaSettings(undefined).nameForms).toEqual(["oficial", "castellano"]);
+    expect(loadGeografiaSettings(undefined).selectedNameForms).toEqual(["oficial", "castellano"]);
   });
 
   it("reparten las preguntas entre las categorías", () => {
@@ -118,25 +118,20 @@ describe("partidas: elección de preguntas", () => {
     }
   });
 
-  it("calcula cuántas preguntas tendrá la partida según la selección", () => {
-    expect(countRoundQuestions(CATEGORY_IDS)).toBe(DEFAULT_QUESTION_COUNT);
-    expect(countRoundQuestions(["capitales"], ["provincia"])).toBe(Math.min(DEFAULT_QUESTION_COUNT, CAPITALES_PROVINCIA));
-    expect(countRoundQuestions(["banderas"], ["provincia"])).toBe(Math.min(DEFAULT_QUESTION_COUNT, Object.keys(PROVINCIA_BANDERAS).length));
-    expect(countRoundQuestions(["divisiones"], ["provincia"])).toBe(DEFAULT_QUESTION_COUNT);
-    // Las preguntas que hay son las distintas de la selección; sin límite, una vuelta entera.
+  it("cuenta las preguntas distintas de la selección", () => {
+    expect(countAvailableQuestions(["capitales"], ["provincia"])).toBe(CAPITALES_PROVINCIA);
+    expect(countAvailableQuestions(["banderas"], ["provincia"])).toBe(Object.keys(PROVINCIA_BANDERAS).length);
     const all = new Set(CATEGORY_IDS.flatMap((id) => questionsIn(id).map((q) => q.id))).size;
-    expect(availableQuestionCount(CATEGORY_IDS)).toBe(all);
-    expect(countRoundQuestions(CATEGORY_IDS, undefined, "sinLimite")).toBe(all);
-    expect(countRoundQuestions(CATEGORY_IDS, undefined, 100)).toBe(Math.min(100, all));
+    expect(countAvailableQuestions(CATEGORY_IDS)).toBe(all);
   });
 
-  it("25, 50 y 100 preguntas solo se pueden elegir si la selección tiene al menos esas; 10 y sin límite, siempre", () => {
+  it("cada partida tiene las preguntas elegidas, o todas las que haya si son menos (sin límite, una vuelta)", () => {
     for (const categories of [["capitales"], ["banderas"], ["divisiones"], CATEGORY_IDS]) {
       for (const territorios of [["comunidad"], ["provincia"], ["comunidad", "provincia"]] as const) {
-        const available = availableQuestionCount(categories, [...territorios]);
+        const availableQuestionCount = countAvailableQuestions(categories, [...territorios]);
         for (const questionCount of QUESTION_COUNTS) {
-          const expected = questionCount === "sinLimite" || questionCount === DEFAULT_QUESTION_COUNT || available >= questionCount;
-          expect(questionCountFits(questionCount, categories, [...territorios]), `${categories} ${territorios} ${questionCount}`).toBe(expected);
+          const expected = questionCount === "sinLimite" ? availableQuestionCount : Math.min(questionCount, availableQuestionCount);
+          expect(buildRound({ categories, territorios: [...territorios], questionCount }), `${categories} ${territorios} ${questionCount}`).toHaveLength(expected);
         }
       }
     }

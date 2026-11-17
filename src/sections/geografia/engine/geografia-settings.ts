@@ -11,19 +11,19 @@ import { GEOGRAFIA_ID } from "./geografia-id";
 
 export interface GeografiaSettings {
   /** Categorías marcadas (al menos una para poder jugar). */
-  categories: string[];
+  selectedCategories: string[];
   /** Categorías que existían la última vez: las nuevas se marcan solas. */
   knownCategories: string[];
   /** Formas de los nombres marcadas. Si hay varias, se sortea en cada pregunta. */
-  nameForms: NameForm[];
+  selectedNameForms: NameForm[];
   /** Territorios marcados: comunidades, provincias o los dos. */
-  territorios: Territorio[];
+  selectedTerritorios: Territorio[];
   /** Dificultad: número de opciones por pregunta (4, 6 u 8). */
-  optionCount: OptionCount;
+  selectedOptionCount: OptionCount;
   /** Preguntas por partida: 10, 25, 50, 100 o sin límite. */
-  questionCount: QuestionCount;
+  selectedQuestionCount: QuestionCount;
   /** Tiempo por pregunta: 60, 30 o 10 segundos, o sin tiempo. */
-  timeLimit: TimeLimit;
+  selectedTimeLimit: TimeLimit;
 }
 
 /** Los valores de `allowed` que hay en `x`, en el orden de `allowed` (o undefined si `x` no es una lista). */
@@ -37,19 +37,19 @@ const listOf = <T>(x: unknown, allowed: readonly T[]): T[] | undefined =>
 export function loadGeografiaSettings(raw: unknown): GeografiaSettings {
   const r = (typeof raw === "object" && raw !== null ? raw : {}) as Record<string, unknown>;
   const known = listOf(r.knownCategories, CATEGORY_IDS) ?? [];
-  let categories = listOf(r.categories, CATEGORY_IDS) ?? [...CATEGORY_IDS];
-  categories = CATEGORY_IDS.filter((id) => categories.includes(id) || !known.includes(id));
-  if (!categories.length) categories = [...CATEGORY_IDS];
-  const nameForms = listOf(r.nameForms, NAME_FORMS);
-  const territorios = listOf(r.territorios, TERRITORIOS);
+  let selectedCategories = listOf(r.selectedCategories, CATEGORY_IDS) ?? [...CATEGORY_IDS];
+  selectedCategories = CATEGORY_IDS.filter((id) => selectedCategories.includes(id) || !known.includes(id));
+  if (!selectedCategories.length) selectedCategories = [...CATEGORY_IDS];
+  const nameForms = listOf(r.selectedNameForms, NAME_FORMS);
+  const territorios = listOf(r.selectedTerritorios, TERRITORIOS);
   return {
-    categories,
+    selectedCategories,
     knownCategories: [...CATEGORY_IDS],
-    nameForms: nameForms?.length ? nameForms : [...DEFAULT_NAME_FORMS],
-    territorios: territorios?.length ? territorios : [...DEFAULT_TERRITORIOS],
-    optionCount: OPTION_COUNTS.find((n) => n === r.optionCount) ?? DEFAULT_OPTION_COUNT,
-    questionCount: QUESTION_COUNTS.find((n) => n === r.questionCount) ?? DEFAULT_QUESTION_COUNT,
-    timeLimit: TIME_LIMITS.find((n) => n === r.timeLimit) ?? DEFAULT_TIME_LIMIT
+    selectedNameForms: nameForms?.length ? nameForms : [...DEFAULT_NAME_FORMS],
+    selectedTerritorios: territorios?.length ? territorios : [...DEFAULT_TERRITORIOS],
+    selectedOptionCount: OPTION_COUNTS.find((n) => n === r.selectedOptionCount) ?? DEFAULT_OPTION_COUNT,
+    selectedQuestionCount: QUESTION_COUNTS.find((n) => n === r.selectedQuestionCount) ?? DEFAULT_QUESTION_COUNT,
+    selectedTimeLimit: TIME_LIMITS.find((n) => n === r.selectedTimeLimit) ?? DEFAULT_TIME_LIMIT
   };
 }
 

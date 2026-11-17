@@ -6,7 +6,8 @@ import type { SavedState } from "../../../common/engine/common-storage";
 import { $, el } from "../../../common/ui/common-dom";
 import { TIME_LIMIT_LABELS } from "../../../common/ui/common-labels";
 import { renderRecord, roundText } from "../../../common/ui/common-widgets";
-import { CCSE_QUESTIONS, TAREAS, tareaName, countRoundQuestions } from "../engine/ccse-questions";
+import { CCSE_QUESTIONS, TAREAS, tareaName, countAvailableQuestions } from "../engine/ccse-questions";
+import { countRoundQuestions } from "../../../common/engine/common-round-settings";
 import { renderSimulacroStart } from "./ccse-simulacro-screen";
 import { ccseSettings } from "../engine/ccse-settings";
 import { recordKey } from "../engine/ccse-selection";
@@ -21,10 +22,10 @@ export function renderCcseStart(state: SavedState): void {
   renderSimulacroStart(state);
   if (empty) return;
   const settings = ccseSettings(state);
-  const roundQuestionCount = countRoundQuestions(settings.tareas, settings.questionCount);
-  $("ccseRoundLabel").textContent = roundText(settings.questionCount, roundQuestionCount);
-  $("ccseChips").replaceChildren(...TAREAS.filter((t) => settings.tareas.includes(t.numero))
+  const roundQuestionCount = countRoundQuestions(settings.selectedQuestionCount, countAvailableQuestions(settings.selectedTareas));
+  $("ccseRoundLabel").textContent = roundText(settings.selectedQuestionCount, roundQuestionCount);
+  $("ccseChips").replaceChildren(...TAREAS.filter((t) => settings.selectedTareas.includes(t.numero))
     .map((t) => el("span", "chip", tareaName(t))));
-  $("ccseTimeLimitInfo").textContent = `Tiempo: ${TIME_LIMIT_LABELS[settings.timeLimit].info}.`;
-  renderRecord($("ccseRecord"), state.records[recordKey(settings)], settings.questionCount, roundQuestionCount);
+  $("ccseTimeLimitInfo").textContent = `Tiempo: ${TIME_LIMIT_LABELS[settings.selectedTimeLimit].info}.`;
+  renderRecord($("ccseRecord"), state.records[recordKey(settings)], settings.selectedQuestionCount, roundQuestionCount);
 }

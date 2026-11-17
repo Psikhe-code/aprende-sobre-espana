@@ -9,13 +9,13 @@ import { CCSE_ID } from "./ccse-id";
 
 export interface CcseSettings {
   /** Tareas marcadas (solo las que tienen preguntas). */
-  tareas: number[];
+  selectedTareas: number[];
   /** Tareas que tenían preguntas la última vez: las que reciban sus primeras preguntas se marcan solas. */
   knownTareas: number[];
   /** Preguntas por partida: 10, 25, 50, 100 o sin límite. */
-  questionCount: QuestionCount;
+  selectedQuestionCount: QuestionCount;
   /** Tiempo por pregunta: 60, 30 o 10 segundos, o sin tiempo. */
-  timeLimit: TimeLimit;
+  selectedTimeLimit: TimeLimit;
 }
 
 /**
@@ -27,14 +27,14 @@ export function loadCcseSettings(raw: unknown): CcseSettings {
   const withQuestions = tareasWithQuestions();
   const validTareas = (x: unknown) => (Array.isArray(x) ? TAREA_IDS.filter((n) => x.includes(n)) : undefined);
   const known = validTareas(r.knownTareas) ?? [];
-  const saved = validTareas(r.tareas) ?? [...withQuestions];
-  let tareas = withQuestions.filter((n) => saved.includes(n) || !known.includes(n));
-  if (!tareas.length) tareas = [...withQuestions];
+  const saved = validTareas(r.selectedTareas) ?? [...withQuestions];
+  let selectedTareas = withQuestions.filter((n) => saved.includes(n) || !known.includes(n));
+  if (!selectedTareas.length) selectedTareas = [...withQuestions];
   return {
-    tareas,
+    selectedTareas,
     knownTareas: [...withQuestions],
-    questionCount: QUESTION_COUNTS.find((n) => n === r.questionCount) ?? DEFAULT_QUESTION_COUNT,
-    timeLimit: TIME_LIMITS.find((n) => n === r.timeLimit) ?? DEFAULT_TIME_LIMIT
+    selectedQuestionCount: QUESTION_COUNTS.find((n) => n === r.selectedQuestionCount) ?? DEFAULT_QUESTION_COUNT,
+    selectedTimeLimit: TIME_LIMITS.find((n) => n === r.selectedTimeLimit) ?? DEFAULT_TIME_LIMIT
   };
 }
 
