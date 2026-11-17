@@ -16,7 +16,7 @@ Contexto y decisiones del proyecto. El README explica el código; aquí van las 
 - **Los cambios del usuario** pueden ir directamente a `main` si son pequeños, como corregir una nota o una errata; edita desde github.dev. Para cambios más grandes o que toquen varios archivos, recomiéndale una rama. Si un cambio suyo en `main` hace fallar los tests (la publicación se para), avísale y propón el arreglo en un PR.
 - **Enlaces de prueba por PR** (Netlify, Cloudflare Pages…): descartados por ahora, porque trabaja solo y aún no hay jugadores. Reconsiderarlo si eso cambia. Para probar una rama sin mezclarla, la opción es Codespaces.
 - **Si el usuario solo pregunta, responde sin cambiar nada.** Haz cambios cuando los pida.
-- El usuario está aprendiendo GitHub y programación. Explica en lenguaje claro, en español, sin dar por sabidos los términos técnicos.
+- Explica con claridad, en español, cuando corresponda, y el porqué de lo que se hace. El código, siempre lo mejor posible: nada de simplificarlo para que sea más fácil de explicar.
 - **Comprobaciones antes de un PR, según el tipo de cambio** (para no gastar tiempo ni tokens de más):
   - Textos, notas, trampas o datos: solo `npx tsc --noEmit` y `npm test`. Sin tests nuevos ni navegador.
   - Lógica del motor (cómo se eligen preguntas u opciones): lo anterior y tests nuevos de esa lógica.
