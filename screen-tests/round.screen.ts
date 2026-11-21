@@ -108,6 +108,8 @@ test("con el teclado: los números responden (Ctrl y Alt no), Intro pasa, y el f
   await page.locator("#go").click();
   // El foco va al enunciado, para que el lector de pantalla lo lea (el botón «Jugar» ya no se ve).
   await expect(page.locator("#question")).toBeFocused();
+  // Con bandera, hasta que se ve no se puede responder: se espera a que se pueda.
+  await expect(page.locator("#opts .opt").first()).toBeEnabled();
 
   // Con Ctrl, Alt o Cmd, un número es un atajo del navegador o del sistema: no responde.
   for (const key of ["Control+2", "Alt+2", "Meta+2"]) await page.keyboard.press(key);
@@ -120,6 +122,7 @@ test("con el teclado: los números responden (Ctrl y Alt no), Intro pasa, y el f
   await page.keyboard.press("Enter");
   await expect(page.locator("#sheet")).toHaveText("Hoja 02 / 10");
   await expect(page.locator("#question")).toBeFocused();
+  await expect(page.locator("#opts .opt").first()).toBeEnabled();
 
   // En un teclado francés, la tecla del 3 escribe «"» sin Mayúsculas: también responde la tercera.
   await page.evaluate(() => document.dispatchEvent(new KeyboardEvent("keydown", { key: '"', code: "Digit3", bubbles: true })));
@@ -127,6 +130,7 @@ test("con el teclado: los números responden (Ctrl y Alt no), Intro pasa, y el f
 
   for (let i = 0; i < 8; i++) {
     await page.keyboard.press("Enter");
+    await expect(page.locator("#opts .opt").first()).toBeEnabled();
     await page.keyboard.press("1");
   }
   await page.keyboard.press("Enter");

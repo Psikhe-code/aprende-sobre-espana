@@ -42,7 +42,7 @@ test("se pausa con la pestaña oculta, y después de responder ya no vuelve a co
   await expect(page.locator("#timerText")).toHaveText("54 s");
 });
 
-test("con una bandera lenta, el reloj espera a que se dibuje, y no arranca si ya se ha respondido", async ({ page }) => {
+test("con una bandera lenta, el reloj y las opciones esperan a que se dibuje", async ({ page }) => {
   // La bandera tarda 2 s en dibujarse.
   await page.addInitScript(() => {
     HTMLImageElement.prototype.decode = function () { return new Promise((ok) => setTimeout(ok, 2000)); };
@@ -52,15 +52,11 @@ test("con una bandera lenta, el reloj espera a que se dibuje, y no arranca si ya
   await page.locator("#go").click();
   await advanceClock(page, 1500);
   await expect(page.locator("#timerText")).toHaveText("60 s");
-  await page.locator("#opts .opt").first().click();
-  await advanceClock(page, 20_000);
-  await expect(page.locator("#timerText")).toHaveText("60 s");
+  await expect(page.locator("#opts .opt").first()).toBeDisabled();
 
-  // Sin responder, empieza al dibujarse (a los 2 s).
-  await page.locator("#next").click();
-  await advanceClock(page, 1500);
-  await expect(page.locator("#timerText")).toHaveText("60 s");
+  // Empieza al dibujarse (a los 2 s), y entonces ya se puede responder.
   await advanceClock(page, 4500);
+  await expect(page.locator("#opts .opt").first()).toBeEnabled();
   const s = await timerSeconds(page);
   expect(s).toBeGreaterThanOrEqual(55);
   expect(s).toBeLessThanOrEqual(57);

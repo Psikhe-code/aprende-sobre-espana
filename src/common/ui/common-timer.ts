@@ -9,11 +9,13 @@ import { $, announce } from "./common-dom";
 
 export interface Timer {
   /**
-   * Arranca el reloj de la pregunta que se acaba de dibujar (o lo esconde, si es sin tiempo).
-   * Empieza cuando la pregunta se ve: si tiene imagen, cuando está dibujada, para que una imagen
-   * lenta no quite tiempo. Si la imagen falla o tarda más de 3 s, empieza igual.
+   * Prepara el reloj de la pregunta que se acaba de dibujar, lleno y parado (o lo esconde, si es sin tiempo).
+   * Empieza a correr con `run()`, cuando la pregunta se ve entera: si tiene imagen, cuando está dibujada,
+   * para que una imagen lenta (o que no llega) no quite tiempo.
    */
   start(timeLimit: TimeLimit): void;
+  /** Lo pone a correr. Solo la primera vez después de `start()`; después de `stop()` ya no hace nada. */
+  run(): void;
   /**
    * Lo para donde esté (al responder, salir o terminar) y lo da por acabado: ya no vuelve a arrancar,
    * ni al volver a la pestaña ni cuando termina de dibujarse la imagen. Al responder se queda a la vista
@@ -48,17 +50,14 @@ export function createTimer(onExpire: () => void): Timer {
     countdown = c;
     finalWarningGiven = false;
     draw(c);
-    const go = () => {
-      if (countdown !== c || ready) return;
-      ready = true;
-      if (!document.hidden) c.start();
-      keepTicking();
-    };
-    const img = $("questionImage").querySelector("img");
-    if (img) {
-      img.decode().then(go, go);
-      setTimeout(go, 3000);
-    } else go();
+  }
+
+  function run() {
+    const c = countdown;
+    if (!c || ready) return;
+    ready = true;
+    if (!document.hidden) c.start();
+    keepTicking();
   }
 
   function keepTicking() { if (!frame) frame = requestAnimationFrame(tick); }
@@ -88,5 +87,5 @@ export function createTimer(onExpire: () => void): Timer {
     else { countdown.start(); keepTicking(); }
   });
 
-  return { start: start, stop: stop, hide: () => { $("timer").hidden = true; } };
+  return { start, run, stop, hide: () => { $("timer").hidden = true; } };
 }

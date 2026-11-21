@@ -65,6 +65,13 @@ export interface QuestionImage {
 
   /** Texto alternativo en la lista de fallos, cuando ya se sabe la respuesta. */
   readonly answerAlt: string;
+
+  /**
+   * Ancho y alto de la imagen (en cualquier unidad: solo importa la proporción). Con ellos se reserva su hueco
+   * antes de que llegue, para que la pantalla no se mueva al aparecer.
+   */
+  readonly width: number;
+  readonly height: number;
 }
 
 /**

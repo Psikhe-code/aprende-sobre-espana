@@ -35,7 +35,7 @@ export function renderEnd(ctx: AppContext, round: Round): void {
       row.append(el("span", "miss-q", m.question.text));
       if (m.question.image) {
         const f = el("div", "miss-image");
-        f.append(imageElement(m.question.image.src, m.question.image.answerAlt)); // aquí ya se sabe la respuesta
+        f.append(imageElement(m.question.image.src, m.question.image.answerAlt, m.question.image)); // aquí ya se sabe la respuesta
         row.append(f);
       }
       row.append(answerLine(m.question.correctAnswer, m.givenAnswer, "se acabó el tiempo"));

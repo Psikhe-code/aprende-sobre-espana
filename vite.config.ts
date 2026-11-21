@@ -1,6 +1,7 @@
 import { defineConfig } from "vitest/config";
 import { VitePWA } from "vite-plugin-pwa";
 import paquete from "./package.json";
+import { imageSizePlugin } from "./image-size-plugin";
 
 export default defineConfig({
   // Rutas relativas: el mismo build sirve en un servidor, en GitHub Pages o dentro de la app de Android.
@@ -11,6 +12,7 @@ export default defineConfig({
     __PUBLICADO__: JSON.stringify(new Date().toISOString())
   },
   plugins: [
+    imageSizePlugin(),
     VitePWA({
       // "prompt": la versión nueva espera a que el juego decida cuándo aplicarla (ver src/main.ts).
       registerType: "prompt",

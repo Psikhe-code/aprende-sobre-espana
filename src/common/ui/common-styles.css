@@ -253,7 +253,23 @@ h1 {
    El tamaño depende del ancho de la tarjeta, no del alto de la ventana: así, con el zoom del navegador,
    crece igual que el texto y los botones. */
 .question-image { display: flex; justify-content: center; margin-top: -4px; }
-.question-image img { display: block; width: min(90%, 400px); height: auto; border: 1px solid var(--line); border-radius: 3px; }
+/* El recuadro tiene ya la proporción de la imagen (aspect-ratio, desde el código): mientras llega, guarda su hueco
+   con un fondo suave, y la pantalla no se mueve al aparecer. */
+.image-frame {
+  position: relative; width: min(90%, 400px);
+  border: 1px solid var(--line); border-radius: 3px; overflow: hidden; background: var(--bg);
+}
+.image-frame img { display: block; width: 100%; height: 100%; }
+/* Mientras carga o si no ha llegado, la imagen no se ve (sin el icono de imagen rota) y el aviso ocupa el recuadro. */
+.image-frame.loading img, .image-frame.failed img { visibility: hidden; }
+.image-status {
+  position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; padding: 12px; text-align: center; color: var(--muted); font-size: 15px;
+}
+.image-frame.loading .image-status, .image-frame.failed .image-status { display: flex; }
+.image-frame.failed .image-status { color: var(--ink); }
+/* Mientras no se ve la imagen, las opciones no se pueden pulsar: más suaves, para que se note. */
+.opts.waiting .opt { opacity: .55; }
 .miss-image { display: flex; margin-block: 4px 2px; }
 .miss-image img { display: block; height: 36px; width: auto; border: 1px solid var(--line); border-radius: 2px; }
 .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
