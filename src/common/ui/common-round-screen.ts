@@ -10,7 +10,7 @@ import { Round, type AnswerResult } from "../engine/common-round";
 import type { PlayableQuestion } from "../engine/common-types";
 import type { AppContext } from "./common-context";
 import { $, announce, el, isInteractive, pad, renderSources, numberKey } from "./common-dom";
-import { imageElement, preloadImage } from "./common-images";
+import { preloadImage, renderQuestionImage } from "./common-images";
 import { renderEnd } from "./common-end-screen";
 import { createTimer } from "./common-timer";
 import { cycleEndText } from "./common-labels";
@@ -28,6 +28,8 @@ export interface RoundScreen {
 
 export function createRoundScreen(ctx: AppContext): RoundScreen {
   let round: Round | null = null;
+  /** Cancela la carga de la imagen de la pregunta que se ve (al pasar a otra o salir). */
+  let cancelImage = () => {};
   const timer = createTimer(() => {
     // Se acabó el tiempo: cuenta como fallo y se muestra la respuesta, como al fallar.
     if (round && !round.answered) showResult(round.timeout(), null);
@@ -77,10 +79,6 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     $("qcat").textContent = (round.review ? "Repaso · " : "") + q.label;
     $("question").textContent = q.text;
 
-    const image = $("questionImage");
-    image.replaceChildren();
-    if (q.image) image.append(imageElement(q.image.src, q.image.alt));
-    image.hidden = !q.image;
     // Mientras se responde esta, se va descargando la imagen de la siguiente.
     const nextQuestion = round.questions[round.index + 1];
     if (nextQuestion?.image) preloadImage(nextQuestion.image.src);
@@ -116,6 +114,28 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
 
     // El repaso de fallos va sin tiempo.
     timer.start(round.review ? "sinTiempo" : ctx.mode().timeLimit());
+
+    // Con imagen, la pregunta no empieza hasta que se ve: hasta entonces, el reloj quieto y las opciones sin poder
+    // pulsarse (responder sin ver la bandera no tiene sentido). Si no llega, el recuadro lo dice y deja reintentar.
+    cancelImage();
+    const image = $("questionImage");
+    image.hidden = !q.image;
+    if (!q.image) {
+      image.replaceChildren();
+      timer.run();
+      return;
+    }
+    setOptionsEnabled(false);
+    cancelImage = renderQuestionImage(image, q.image, () => {
+      setOptionsEnabled(true);
+      timer.run();
+    });
+  }
+
+  /** Deja pulsar las opciones o no (mientras carga la imagen). */
+  function setOptionsEnabled(enabled: boolean) {
+    $("opts").classList.toggle("waiting", !enabled);
+    for (const b of $("opts").querySelectorAll<HTMLButtonElement>(".opt")) b.disabled = !enabled;
   }
 
   function renderTrack() {
@@ -196,6 +216,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
   function stop() {
     if (!round || round.finished) return;
     timer.stop();
+    cancelImage();
     round.stop();
     finish();
   }
@@ -226,7 +247,7 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     const number = numberKey(e);
     if (!round.answered && number !== null) {
       const b = $("opts").querySelectorAll<HTMLButtonElement>(".opt")[number - 1];
-      if (b) answer(b);
+      if (b && !b.disabled) answer(b);
     } else if (round.answered && e.key === "Enter" && !e.ctrlKey && !e.altKey && !e.metaKey && !isInteractive(e.target)) {
       // Si el foco está en un botón (Siguiente, Terminar…) o en un enlace (las fuentes), Intro ya lo pulsa o lo abre:
       // no se pasa además a la siguiente pregunta.
@@ -234,5 +255,5 @@ export function createRoundScreen(ctx: AppContext): RoundScreen {
     }
   });
 
-  return { start: () => start(), prepare, onLeave: () => timer.stop(), startReview };
+  return { start: () => start(), prepare, onLeave: () => { timer.stop(); cancelImage(); }, startReview };
 }

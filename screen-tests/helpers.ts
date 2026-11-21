@@ -6,13 +6,17 @@ import { test as base, expect, type Page } from "@playwright/test";
 
 /**
  * Como `test` de Playwright, pero cada test falla también si hay algún error en la consola
- * del navegador, aunque lo que se ve parezca correcto.
+ * del navegador, aunque lo que se ve parezca correcto. Los que provoca el propio test (una descarga
+ * que falla a propósito) se dejan pasar con `test.use({ allowedConsoleErrors: [/…/] })`.
  */
-export const test = base.extend<{ noConsoleErrors: void }>({
-  noConsoleErrors: [async ({ page }, use) => {
+export const test = base.extend<{ noConsoleErrors: void; allowedConsoleErrors: RegExp[] }>({
+  allowedConsoleErrors: [[], { option: true }],
+  noConsoleErrors: [async ({ page, allowedConsoleErrors }, use) => {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(String(e)));
-    page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
+    page.on("console", (m) => {
+      if (m.type() === "error" && !allowedConsoleErrors.some((r) => r.test(m.text()))) errors.push(m.text());
+    });
     await use();
     expect(errors, "errores en la consola del navegador").toEqual([]);
   }, { auto: true }]

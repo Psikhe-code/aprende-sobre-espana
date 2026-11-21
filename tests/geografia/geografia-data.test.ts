@@ -15,6 +15,7 @@ import { AUTONOMIA_BANDERAS, PROVINCIA_BANDERAS } from "../../src/sections/geogr
 const svgs = (folder: string, all: Record<string, string>) =>
   Object.fromEntries(Object.entries(all).filter(([f]) => f.includes(`/${folder}/`)).map(([f, text]) => [f.split("/").pop()!, text]));
 const ALL_SVGS = import.meta.glob("../../src/sections/geografia/data/banderas/*/*.svg", { eager: true, query: "?raw", import: "default" }) as Record<string, string>;
+const ALL_SIZES = import.meta.glob("../../src/sections/geografia/data/banderas/*/*.svg", { eager: true, query: "?dimensions", import: "default" }) as Record<string, { width: number; height: number }>;
 const FLAG_FILES = svgs("comunidades", ALL_SVGS);
 const PROVINCE_FLAG_FILES = svgs("provincias", ALL_SVGS);
 
@@ -235,6 +236,21 @@ describe("imágenes de las banderas", () => {
     for (const [file, text] of Object.entries({ ...FLAG_FILES, ...PROVINCE_FLAG_FILES })) {
       expect(text.trim(), file).not.toMatch(/\n|<metadata|<!--|inkscape:|sodipodi:|xmlns:rdf/);
     }
+  });
+
+  it("cada una tiene su tamaño, con la proporción de su SVG, para reservar su hueco antes de que llegue", () => {
+    // El tamaño lo lee Vite al construir el juego (image-size-plugin.ts). Aquí se compara con lo que dice la
+    // etiqueta <svg>: width y height, o, si no están, el viewBox.
+    for (const [path, size] of Object.entries(ALL_SIZES)) {
+      const tag = ALL_SVGS[path].match(/<svg[^>]*>/)![0];
+      const attr = (name: string) => tag.match(new RegExp(`\\s${name}="([\\d.]+)"`))?.[1];
+      const viewBox = tag.match(/viewBox="[\d.-]+ [\d.-]+ ([\d.]+) ([\d.]+)"/);
+      const [w, h] = attr("width") && attr("height") ? [attr("width"), attr("height")].map(Number) : [viewBox![1], viewBox![2]].map(Number);
+      expect(size.width, path).toBeGreaterThan(0);
+      expect(size.height, path).toBeGreaterThan(0);
+      expect(size.width / size.height, path).toBeCloseTo(w / h, 2);
+    }
+    expect(Object.keys(ALL_SIZES).sort()).toEqual(Object.keys(ALL_SVGS).sort());
   });
 });
 

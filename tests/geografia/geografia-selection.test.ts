@@ -88,6 +88,9 @@ describe("selección de geografía", () => {
       expect(q.image?.src, q.id).toMatch(/\.svg|^data:image\/svg/);
       expect(q.image?.alt, q.id).toMatch(/^Bandera de una (provincia|comunidad o ciudad autónoma)$/);
       expect(q.image?.answerAlt, q.id).toBe(`Bandera: ${q.correctAnswer}`);
+      // Con su tamaño, para reservar su hueco (que coincide con el de su SVG se comprueba en geografia-data.test.ts).
+      expect(q.image?.width, q.id).toBeGreaterThan(0);
+      expect(q.image?.height, q.id).toBeGreaterThan(0);
     }
     const others = geografiaMode(stateWith({ ...base(), selectedCategories: ["capitales", "divisiones"], selectedQuestionCount: "sinLimite" })).buildRound();
     expect(others.filter((q) => q.image).map((q) => q.id)).toEqual([]);
