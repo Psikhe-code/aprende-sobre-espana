@@ -299,7 +299,6 @@ Cada proceso solo arranca si el commit que subes cambia su script (o su workflow
 `npm test` comprueba lo que hay en `tests/`, una carpeta por sección y otra (`common/`) para lo de todas:
 
 - **Lista de secciones** (`sections.test.ts`): que no hay dos secciones con el mismo id, contando las que vendrán, y que las pantallas y los botones que declara cada sección existen en `index.html`.
-- **Documentación del código** (`docs.test.ts`): que cada archivo de `src` está, en su carpeta, en «Estructura» (más arriba), y que esa lista no nombra archivos que ya no existen; y que cada archivo de código (también los tests y la configuración) empieza con su `@fileoverview`.
 
 - **Datos de Geografía** (`geografia/geografia-data.test.ts`): que los JSON cumplen su esquema; que están las 17 comunidades, las 2 ciudades autónomas y las 52 provincias con sus códigos; que los nombres no se repiten en ningún estilo; que las referencias entre archivos existen y son coherentes; que cada bandera tiene su imagen, que no sobran imágenes y que están limpias con SVGO; que en cada provincia están sus tres municipios más poblados y su capital, que los demás llevan curiosidad y que el puesto concuerda con la población.
 - **Preguntas y opciones de Geografía** (`geografia/geografia-questions.test.ts`), en cada forma de los nombres: con 4, 6 y 8 opciones en todas las preguntas, la correcta aparece, no hay duplicados ni excluidas y todas las opciones van en la misma forma; la otra forma se muestra solo cuando es distinta.
