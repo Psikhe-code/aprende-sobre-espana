@@ -1,12 +1,14 @@
+/**
+ * @fileoverview Simulacro del examen, con datos de prueba que tienen preguntas en las cinco tareas (ccse-test-data.ts).
+ * Que los datos reales permiten hacerlo se comprueba en ccse-data.test.ts.
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { CCSE_QUESTIONS } from "../../src/sections/ccse/engine/ccse-questions";
 import {
   SIMULACRO_APTO_HITS, SIMULACRO_RECORD_KEY, SIMULACRO_QUESTION_COUNT, SIMULACRO_DISTRIBUTION, Simulacro, applySimulacroRecord,
   simulacroQuestions, canDoSimulacro
 } from "../../src/sections/ccse/engine/ccse-simulacro";
-
-// Simulacro del examen, con datos de prueba que tienen preguntas en las cinco tareas (ccse-test-data.ts).
-// Que los datos reales permiten hacerlo se comprueba en ccse-data.test.ts.
 
 vi.mock("../../src/sections/ccse/data/ccse.json", async () => ({ default: (await import("./ccse-test-data")).ccseSimulacroTestData() }));
 

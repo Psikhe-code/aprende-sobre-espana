@@ -1,12 +1,14 @@
+/**
+ * @fileoverview Examen de nacionalidad: reglas de los datos reales (las partidas, en ccse-rounds.test.ts). Como en el resto de tests,
+ * las expectativas salen de los datos, así que añadir o corregir preguntas no obliga a tocarlos.
+ */
+
 import { describe, expect, it } from "vitest";
 import { CCSE_ENTRIES, CCSE_QUESTIONS, TAREA_IDS, entryStatus, type CcseEntry } from "../../src/sections/ccse/engine/ccse-questions";
 import { SIMULACRO_DISTRIBUTION, canDoSimulacro } from "../../src/sections/ccse/engine/ccse-simulacro";
 import ccse from "../../src/sections/ccse/data/ccse.json";
 import ccseSchema from "../../src/sections/ccse/data/schema/ccse.schema.json";
 import { schemaErrors } from "../common/common-schema-errors";
-
-// Examen de nacionalidad: reglas de los datos reales (las partidas, en ccse-rounds.test.ts). Como en el resto de tests,
-// las expectativas salen de los datos, así que añadir o corregir preguntas no obliga a tocarlos.
 
 describe("examen de nacionalidad: formato del archivo", () => {
   it("ccse.json cumple su esquema", () => {

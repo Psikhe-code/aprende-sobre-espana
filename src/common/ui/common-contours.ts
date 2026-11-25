@@ -1,4 +1,8 @@
-/** Curvas de nivel decorativas de la cabecera. */
+/**
+ * @fileoverview Curvas de nivel decorativas de la cabecera.
+ */
+
+/** Dibuja las curvas de nivel en el SVG de la cabecera. */
 export function drawContours(svg: SVGSVGElement): void {
   const cx = 190, cy = 95;
   let html = "";

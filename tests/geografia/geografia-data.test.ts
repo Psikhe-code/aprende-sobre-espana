@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Comprobaciones del contenido de los datos de Geografía: si alguien edita un JSON y se equivoca, el test dice dónde.
+ */
+
 import { describe, expect, it } from "vitest";
 import { schemaErrors } from "../common/common-schema-errors";
 import territorio from "../../src/sections/geografia/data/territorio.json";
@@ -9,8 +13,6 @@ import banderasSchema from "../../src/sections/geografia/data/schema/banderas.sc
 import { AUTONOMIAS, COMUNIDADES, MUNICIPIOS, PROVINCIAS, provinciasOf, capitalesOf, poolsFor } from "../../src/sections/geografia/engine/geografia-territorio";
 import { NAME_FORMS } from "../../src/sections/geografia/engine/geografia-types";
 import { AUTONOMIA_BANDERAS, PROVINCIA_BANDERAS } from "../../src/sections/geografia/engine/geografia-questions";
-
-// Comprobaciones del contenido: si alguien edita un JSON y se equivoca, el test dice dónde.
 
 const svgs = (folder: string, all: Record<string, string>) =>
   Object.fromEntries(Object.entries(all).filter(([f]) => f.includes(`/${folder}/`)).map(([f, text]) => [f.split("/").pop()!, text]));

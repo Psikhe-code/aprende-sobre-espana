@@ -1,8 +1,10 @@
+/**
+ * @fileoverview Textos que genera el código: se comprueban palabra por palabra.
+ */
+
 import { describe, expect, it } from "vitest";
 import { fewerQuestionsText, roundText } from "../../src/common/ui/common-widgets";
 import { clockTime, cycleEndText, timeUsed } from "../../src/common/ui/common-labels";
-
-// Textos que genera el código: se comprueban palabra por palabra.
 
 describe("tiempo del simulacro", () => {
   it("en el reloj, como minutos y segundos, redondeando hacia arriba lo que queda", () => {

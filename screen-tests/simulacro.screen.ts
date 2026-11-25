@@ -1,9 +1,11 @@
+/**
+ * @fileoverview El simulacro de examen en pantalla, con datos de prueba que tienen preguntas en las cinco tareas.
+ * Las reglas (reparto, aprobado) salen del motor, así que si cambian, los tests siguen valiendo.
+ */
+
 import { test, expect, openSection, useCcseData, setTabHidden } from "./helpers";
 import { ccseTestData, ccseSimulacroTestData } from "../tests/ccse/ccse-test-data";
 import { SIMULACRO_MINUTES, SIMULACRO_QUESTION_COUNT, SIMULACRO_DISTRIBUTION, SIMULACRO_APTO_HITS } from "../src/sections/ccse/engine/ccse-simulacro-rules";
-
-// Simulacro de examen, con datos de prueba que tienen preguntas en las cinco tareas.
-// Las reglas (reparto, aprobado) salen del motor, así que si cambian, los tests siguen valiendo.
 
 /** Tarea que le toca a cada pregunta del simulacro, en orden: 1, 1, …, 2, 2, 2, 3… */
 const TAREA_BY_POSITION = SIMULACRO_DISTRIBUTION.flatMap((r) => Array<number>(r.questionCount).fill(r.tarea));

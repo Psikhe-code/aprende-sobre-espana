@@ -35,6 +35,7 @@ En cada carpeta, `engine/` es el **motor** (las reglas, sin nada de pantalla), `
 ```
 src/
   main.ts                             punto de entrada: carga lo necesario y arranca el juego
+  globals.d.ts                        valores que Vite escribe en el código al construirlo: la versión y la fecha de publicación
   common/                             ← LO DE TODAS LAS SECCIONES
     engine/
       common-types.ts                 tipos comunes: sección, pregunta jugable, fuente
