@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Configuración de Vite: cómo se construye el juego (versión y fecha), el modo sin conexión (PWA) y los tests.
+ */
+
 import { defineConfig } from "vitest/config";
 import { VitePWA } from "vite-plugin-pwa";
 import paquete from "./package.json";

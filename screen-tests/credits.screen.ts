@@ -1,9 +1,11 @@
+/**
+ * @fileoverview Los Créditos de cada sección: los bloques con data-section salen solo en los de esa sección,
+ * y los demás (las tipografías, el botón de volver), en todas.
+ */
+
 import type { Page } from "@playwright/test";
 import { test, expect } from "./helpers";
 import type { Section } from "../src/common/engine/common-types";
-
-// Cada sección tiene sus créditos: los bloques con data-section salen solo en los de esa sección,
-// y los demás (las tipografías, el botón de volver), en todas.
 
 async function openCredits(page: Page, section: Section) {
   await page.locator(`#sec-${section}`).click();

@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Examen de nacionalidad: partidas y guardado, con datos de prueba (ccse-test-data.ts) en vez de la
+ * plantilla real, que se va rellenando poco a poco. Las reglas de los datos reales, en ccse-data.test.ts.
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import {
   CCSE_QUESTIONS, TAREAS, tareaName, reshuffleRound, buildRound, tareaQuestions, buildReviewRound, countAvailableQuestions, tarea, tareasWithQuestions
@@ -13,9 +18,6 @@ import { recordKey } from "../../src/sections/ccse/engine/ccse-selection";
 
 /** Lo guardado de alguien con estas opciones del examen, para pedirle a la sección su modo. */
 const stateWith = (c: CcseSettings): SavedState => ({ section: "ccse", records: {}, settings: { ccse: c } });
-
-// Examen de nacionalidad: partidas y guardado, con datos de prueba (ccse-test-data.ts) en vez de la
-// plantilla real, que se va rellenando poco a poco. Las reglas de los datos reales, en ccse-data.test.ts.
 
 vi.mock("../../src/sections/ccse/data/ccse.json", async () => ({ default: (await import("./ccse-test-data")).ccseTestData() }));
 

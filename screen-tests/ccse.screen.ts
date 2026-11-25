@@ -1,3 +1,7 @@
+/**
+ * @fileoverview El examen de nacionalidad en pantalla: el menú de secciones, el inicio de la sección, Opciones y las partidas.
+ */
+
 import { test, expect, openSection, useCcseData } from "./helpers";
 import { ccseTestData, ccseEmptyTestData } from "../tests/ccse/ccse-test-data";
 import { UPCOMING_SECTIONS } from "../src/sections/upcoming";

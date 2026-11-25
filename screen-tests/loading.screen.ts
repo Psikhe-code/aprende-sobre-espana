@@ -1,6 +1,9 @@
+/**
+ * @fileoverview Lo que se ve al abrir el juego, antes de que cargue el código (en un móvil lento puede tardar un poco).
+ */
+
 import { test, expect } from "./helpers";
 
-// Lo que se ve al abrir el juego, antes de que cargue el código (en un móvil lento puede tardar un poco).
 test.describe("antes de que cargue el código", () => {
   test.use({ javaScriptEnabled: false });
 

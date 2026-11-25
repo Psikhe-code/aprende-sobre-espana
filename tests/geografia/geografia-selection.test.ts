@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Lo que se deduce de las opciones marcadas en Geografía (la selección): si se puede jugar, con qué ajustes
+ * y con qué clave se guarda el récord. Las reglas, como están en CLAUDE.md.
+ */
+
 import { describe, expect, it } from "vitest";
 import { CATEGORY_IDS } from "../../src/sections/geografia/engine/geografia-categories";
 import { questionsIn, OPTION_COUNTS } from "../../src/sections/geografia/engine/geografia-round-questions";
@@ -9,9 +14,6 @@ import { NAME_FORMS, TERRITORIOS } from "../../src/sections/geografia/engine/geo
 import { geografiaMode } from "../../src/sections/geografia/ui/geografia-mode";
 import { countAvailableQuestions } from "../../src/sections/geografia/engine/geografia-round-questions";
 import { geografiaRating } from "../../src/sections/geografia/engine/geografia-rating";
-
-// Lo que se deduce de las opciones marcadas en Geografía (la selección): si se puede jugar, con qué ajustes
-// y con qué clave se guarda el récord. Las reglas, como están en CLAUDE.md.
 
 /** Las opciones por defecto (las de alguien que nunca ha cambiado nada). */
 const base = (): GeografiaSettings => loadGeografiaSettings(undefined);
