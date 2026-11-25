@@ -32,6 +32,8 @@ Para cambios grandes: se trabaja en una rama aparte y se mezcla con un *pull req
 
 En cada carpeta, `engine/` es el **motor** (las reglas, sin nada de pantalla), `ui/` son las **pantallas** (solo dibujan y llaman al motor) y `data/` los **datos**. Lo común a todas las secciones está en `common/`, y lo de cada sección, en `sections/<sección>/`. Los nombres siguen las reglas de CLAUDE.md («Nombres en el código»): inglés para programar y español para el vocabulario del juego; los archivos, en minúsculas y con guiones; los de `common/` empiezan por `common-` y los de cada sección, por su id (`geografia-`, `ccse-`), para que ningún nombre se repita; y las pantallas acaban en `-screen`.
 
+Lo que exporta cada archivo (funciones, constantes, clases y tipos), con una línea de para qué sirve, está en [INDEX.md](INDEX.md).
+
 ```
 src/
   main.ts                             punto de entrada: carga lo necesario y arranca el juego
